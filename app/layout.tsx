@@ -31,7 +31,6 @@ export const metadata: Metadata = {
     "style",
     "finden",
     "stylefinden.com",
-    "stylefinden.com",
     "find style"
   ],
   openGraph: {

@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
@@ -8,7 +6,9 @@ export default function Home() {
           <h1 className="max-w-xs text-5xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             STYLEFINDEN
           </h1>
-
+          <p className="text-black dark:text-white pt-20 text-lg font-semibold leading-relaxed tracking-tight text-center sm:text-left">
+          Unsere Website ist bald verfügbar. Schau einfach später wieder vorbei!
+          </p>
         </div>
       </main>
     </div>
