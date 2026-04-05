@@ -16,8 +16,36 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "STYLEFINDEN",
-  description: "stylefinden",
+  metadataBase: new URL("https://stylefinden.com"),
+  alternates: {
+    canonical: "https://stylefinden.com",
+  },
+  title: {
+    default: "STYLEFINDEN",
+    template: "%s | STYLEFINDEN",
+  },
+  description: "STYLEFINDEN is a platform for finding the best style for you.",
+  keywords: [
+    "STYLEFINDEN",
+    "stylefinden",
+    "style",
+    "finden",
+    "stylefinden.com",
+    "stylefinden.com",
+    "find style"
+  ],
+  openGraph: {
+    title: "STYLEFINDEN",
+    description: "STYLEFINDEN",
+    url: "https://stylefinden.com",
+    siteName: "STYLEFINDEN",
+    locale: "de_DE",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  authors: [{ name: "STYLEFINDEN", url: "https://stylefinden.com" }],
 };
 
 export default function RootLayout({
