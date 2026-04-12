@@ -42,7 +42,18 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      {
+        url: '/sf-black.svg',
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/sf-white.svg',
+        type: 'image/svg+xml',
+        media: '(prefers-color-scheme: dark)',
+      },
+    ],
   },
   authors: [{ name: "STYLEFINDEN", url: "https://stylefinden.com" }],
 };
