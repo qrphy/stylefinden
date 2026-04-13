@@ -44,13 +44,13 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/sf-black.svg',
-        type: 'image/svg+xml',
+        url: '/sf-black.png',
+        type: 'image/png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/sf-white.svg',
-        type: 'image/svg+xml',
+        url: '/sf-white.png',
+        type: 'image/png',
         media: '(prefers-color-scheme: dark)',
       },
     ],
