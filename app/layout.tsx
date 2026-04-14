@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     default: "STYLEFINDEN",
     template: "%s | STYLEFINDEN",
   },
-  description: "STYLEFINDEN is a platform for finding the best style for you.",
+  description: "STYLEFINDEN ist eine Plattform für das Finden des besten Stils für Sie.",
   keywords: [
     "STYLEFINDEN",
     "stylefinden",
@@ -42,18 +42,13 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: [
-      {
-        url: '/sf-black.png',
-        type: 'image/png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/sf-white.png',
-        type: 'image/png',
-        media: '(prefers-color-scheme: dark)',
-      },
-    ],
+    icon: 'stylefinden-logo.png',
+    shortcut: 'stylefinden-logo.png',
+    apple: 'stylefinden-logo.png',
+    other: {
+      rel: 'icon',
+      url: 'stylefinden-logo.png',
+    },
   },
   authors: [{ name: "STYLEFINDEN", url: "https://stylefinden.com" }],
 };
