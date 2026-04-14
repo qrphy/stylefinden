@@ -4,6 +4,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics"
+import Header from "@/components/layout/Header"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,10 +62,11 @@ export default function RootLayout({
   return (
     <html
     
-      lang="en"
+      lang="de"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Header />
         {children}
         <Analytics />
         <SpeedInsights />
