@@ -20,27 +20,30 @@ export default function Header() {
 
           {/* Nav Links */}
           <div className="absolute inset-x-0 flex justify-center items-center gap-10">
-            <a className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/outfits" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Outfits
             </a>
-            <a className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/frisuren" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Frisuren
             </a>
-            <a className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/accessoires" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
               Accessoires
             </a>
-            <a className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/trends" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
               Trends
             </a>
-            <a className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/blog" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
               Blog
+              </a>
+              <a href="/stylingleitfaden" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            Styling Leitfaden
               </a>
           </div>
         </div>
   
         {/* Mobil Navigation */}
         <details className="relative md:hidden">
-          <summary className="list-none relative flex items-center p-3 bg-white border-b border-gray-200 shadow-sm w-full">
+          <summary className="list-none relative flex items-center p-4 bg-white border-b border-gray-200 shadow-sm w-full">
 
             {/* Hamburger Menu Icon */}
             <svg
@@ -62,26 +65,29 @@ export default function Header() {
               <path d="M6 6l12 12M6 18L18 6" />
             </svg>
 
-            <h1 className="absolute inset-x-0 text-2xl font-bold text-black text-center pointer-events-none">
+            <h1 className="absolute inset-x-0 text-3xl font-black text-black text-center pointer-events-none">
               STYLEFINDEN
             </h1>
           </summary>
   
-          <div className="absolute left-0 w-40  border border-black/10 bg-white shadow-md">
-            <a href="#" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+          <div className="absolute left-0 w-40 h-66 border border-black/10 bg-white shadow-md">
+            <a href="/outfits" className="block px-4 py-2 text-md font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Outfits
             </a>
-            <a href="#" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/frisuren" className="block px-4 py-2 text-md font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Frisuren
             </a>
-            <a href="#" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/accessories" className="block px-4 py-2 text-md font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Accessoires
             </a>
-            <a href="#" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/trends" className="block px-4 py-2 text-md font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
               Trends
             </a>
-            <a href="#" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            <a href="/blog" className="block px-4 py-2 text-md font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Blog
+            </a>
+            <a href="/stylingleitfaden" className="block px-4 py-2 text-md font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            Styling Leitfaden
             </a>
           </div>
         </details>
