@@ -47,12 +47,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: 'stylefinden-icon.ico',
-    shortcut: 'stylefinden-icon.ico',
-    apple: 'stylefinden-icon.ico',
-    other: {
-      rel: 'icon',
-      url: 'stylefinden-icon.ico',
+    icon: '/stylefinden-icon.ico',
     },
   },
   authors: [{ name: "STYLEFINDEN", url: "https://stylefinden.com" }],
