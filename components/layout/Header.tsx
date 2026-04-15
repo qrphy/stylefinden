@@ -2,58 +2,80 @@ export default function Header() {
   return (
     <header>
       <style>{`
-        /* Hamburger / X ikon kontrolü */
         details .icon-hamburger { display: block; }
         details .icon-close     { display: none;  }
         details[open] .icon-hamburger { display: none;  }
         details[open] .icon-close     { display: block; }
-
-        /* 1000px altı → mobil görünüm */
-        .header-desktop { display: none; }
-        .header-mobile  { display: block; }
-
-        /* 1000px ve üzeri → desktop görünüm */
-        @media (min-width: 1000px) {
-          .header-desktop { display: flex; }
-          .header-mobile  { display: none; }
-        }
       `}</style>
 
-      {/* Desktop Navigation */}
-      <div className="header-desktop items-center bg-white w-full h-20 border-b border-gray-200 shadow-sm px-8 relative">
+      {/* Desktop Navigation*/}
+      <div className="hidden md:flex items-center bg-white w-full border-b border-gray-200 shadow-sm relative
+                      h-14 px-4
+                      lg:h-20 lg:px-6
+                      xl:h-20 xl:px-8">
 
         {/* Logo */}
         <img
           src="/stylefinden-logo.png"
           alt="STYLEFINDEN"
-          className="h-20 w-auto object-contain z-10"
+          className="w-auto object-contain z-10
+                     h-10
+                     lg:h-14
+                     xl:h-16"
         />
 
         {/* Nav Links */}
-        <div className="absolute inset-x-0 flex justify-center items-center gap-10">
-          <a href="/outfits" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+        <div className="absolute inset-x-0 flex justify-center items-center
+                        gap-6
+                        lg:gap-10
+                        xl:gap-10">
+          <a href="/outfits"
+            className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
+                       text-sm tracking-widest
+                       lg:text-sm lg:tracking-widest
+                       xl:text-sm xl:tracking-widest">
             Outfits
           </a>
-          <a href="/frisuren" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+          <a href="/frisuren"
+            className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
+                       text-sm tracking-widest
+                       lg:text-sm lg:tracking-widest
+                       xl:text-sm xl:tracking-widest">
             Frisuren
           </a>
-          <a href="/accessoires" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+          <a href="/accessoires"
+            className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
+                       text-sm tracking-widest
+                       lg:text-sm lg:tracking-widest
+                       xl:text-sm xl:tracking-widest">
             Accessoires
           </a>
-          <a href="/trends" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+          <a href="/trends"
+            className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
+                       text-sm tracking-widest
+                       lg:text-sm lg:tracking-widest
+                       xl:text-sm xl:tracking-widest">
             Trends
           </a>
-          <a href="/blog" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+          <a href="/blog"
+            className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
+                       text-sm tracking-widest
+                       lg:text-sm lg:tracking-widest
+                       xl:text-sm xl:tracking-widest">
             Blog
           </a>
-          <a href="/stylingleitfaden" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+          <a href="/stylingleitfaden"
+            className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
+                       text-sm tracking-widest
+                       lg:text-sm lg:tracking-widest
+                       xl:text-sm xl:tracking-widest">
             Styling Leitfaden
           </a>
         </div>
       </div>
 
       {/* Mobil Navigation */}
-      <details className="header-mobile relative">
+      <details className="relative md:hidden">
         <summary className="list-none relative flex items-center p-4 bg-white border-b border-gray-200 shadow-sm w-full">
 
           {/* Hamburger Menu Icon */}
