@@ -48,6 +48,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/stylefinden-icon.ico',
+    shortcut: '/stylefinden-icon.ico',
+    apple: '/stylefinden-icon.ico',
+    other: {
+      rel: 'icon',
+      url: 'stylefinden-icon.ico',
     },
   },
   authors: [{ name: "STYLEFINDEN", url: "https://stylefinden.com" }],
