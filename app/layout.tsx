@@ -33,7 +33,10 @@ export const metadata: Metadata = {
     "style",
     "finden",
     "stylefinden.com",
-    "find style"
+    "find style",
+    "styling",
+    "outfit",
+    "clothes"
   ],
   openGraph: {
     title: "STYLEFINDEN",
@@ -44,12 +47,12 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: 'stylefinden-logo.png',
-    shortcut: 'stylefinden-logo.png',
-    apple: 'stylefinden-logo.png',
+    icon: 'stylefinden-icon.ico',
+    shortcut: 'stylefinden-icon.ico',
+    apple: 'stylefinden-icon.ico',
     other: {
       rel: 'icon',
-      url: 'stylefinden-logo.png',
+      url: 'stylefinden-icon.ico',
     },
   },
   authors: [{ name: "STYLEFINDEN", url: "https://stylefinden.com" }],
