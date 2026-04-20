@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 const saisonCollections = [
   {
-    slug: "summer-dress",
+    slug: "summer",
     label: "Sommerkleider",
     description: "Leichte Kleider, florale Prints & Leinenroben für heiße Tage",
     tags: ["Maxi", "Midi", "Mini", "Floral"],
@@ -30,15 +30,15 @@ const saisonCollections = [
     active: true,
   },
   {
-    slug: "winter-outfit",
+    slug: "winter",
     label: "Winteroutfits",
     description: "Warme Layering-Looks, Mäntel und kuschelige Kombis für kalte Tage",
     tags: ["Mantel", "Layering", "Strick", "Boots"],
-    badge: "Bald",
+    badge: "Neu",
     accent: "bg-[#e3f2fd]",
     accentText: "text-[#1565c0]",
     image: "/outfits/sfold.png",
-    active: false,
+    active: true,
   },
   {
     slug: "herbst-look",

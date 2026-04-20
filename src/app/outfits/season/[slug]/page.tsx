@@ -42,7 +42,7 @@ type SeasonData = {
 };
 
 const seasons: Record<string, SeasonData> = {
-  "summer-dress": {
+  "summer": {
     label: "Sommerkleider",
     subtitle: "Sommer 2025",
     description:
@@ -85,8 +85,8 @@ const seasons: Record<string, SeasonData> = {
       {
         q: "Welche Sommerkleid-Schnitte passen zu welchem Körpertyp?",
         a: "Maxi-Kleider betonen die Taille und eignen sich für alle Figuren. Midi-Kleider strecken optisch die Beine. A-Linien-Schnitte harmonieren mit Birnenformen, während Empire-Schnitte den Bauchbereich elegant kaschieren.",
-      },
-      {
+      }, 
+     {
         q: "Welche Accessoires passen zum Sommerkleid?",
         a: "Strohhüte, Rattan-Taschen, goldene Schmuckstücke und flache Sandalen ergänzen Sommerkleider perfekt. Für den Abend empfehlen sich Riemchensandalen mit kleinem Absatz und eine minimalistische Clutch.",
       },
@@ -99,7 +99,64 @@ const seasons: Record<string, SeasonData> = {
     },
   },
 
-  // Buraya yeni sezonlar eklenebilir: "winter", "herbst", "fruehling", vb.
+  "winter": {
+    label: "Winteroutfits",
+    subtitle: "Winter 2025 / 2026",
+    description:
+      "Warme Layering-Looks, elegante Mäntel und kuschelige Kombis – entdecke kuratierte Winteroutfits für jeden Stil, jeden Tag und jeden Anlass.",
+    accent: "bg-[#e3f2fd]",
+    accentText: "text-[#1565c0]",
+    tipTitle: "Wärme trifft Eleganz,",
+    tipBody:
+      "Der perfekte Winterlook kombiniert Funktionalität mit Stil – für City, Office und Wochenende.",
+    tipTags: ["Mantel", "Layering", "Strick", "Boots"],
+    filters: ["Alle", "Mantel", "Strick", "Layering", "Casual", "Elegant", "Business"],
+    outfitGridLabel: "Aktuelle Winter-Looks",
+    styleGuideHref: "/blog/seasonal-guides/winter-style-guide",
+    stats: [
+      { value: "60+", label: "Looks" },
+      { value: "4", label: "Styles" },
+      { value: "Täglich", label: "Aktualisiert" },
+    ],
+    outfits: [
+      { id: 1, title: "Classic Wool Coat",      subtitle: "City & Business",    tag: "Trending", style: "Mantel",  image: "/outfits/sfold.png", href: "/outfits/classic-wool-coat"      },
+      { id: 2, title: "Chunky Knit Combo",      subtitle: "Casual & Cozy",      tag: "Beliebt",  style: "Strick",  image: "/outfits/sfold.png", href: "/outfits/chunky-knit-combo"      },
+      { id: 3, title: "Monochrome Layer Look",  subtitle: "Minimal & Modern",   tag: "Neu",      style: "Layering",image: "/outfits/sfold.png", href: "/outfits/monochrome-layer-look"  },
+      { id: 4, title: "Teddy Coat Outfit",      subtitle: "Weekend & Freizeit", tag: "Trending", style: "Mantel",  image: "/outfits/sfold.png", href: "/outfits/teddy-coat-outfit"      },
+      { id: 5, title: "Turtleneck & Trousers",  subtitle: "Office & Business",  tag: "Beliebt",  style: "Business",image: "/outfits/sfold.png", href: "/outfits/turtleneck-trousers"    },
+      { id: 6, title: "Plaid Scarf Look",       subtitle: "Casual & Alltag",    tag: "Neu",      style: "Casual",  image: "/outfits/sfold.png", href: "/outfits/plaid-scarf-look"       },
+      { id: 7, title: "Velvet Evening Look",    subtitle: "Abend & Event",      tag: "Trending", style: "Elegant", image: "/outfits/sfold.png", href: "/outfits/velvet-evening-look"    },
+      { id: 8, title: "Oversized Puffer Coat",  subtitle: "Street & Urban",     tag: "Neu",      style: "Mantel",  image: "/outfits/sfold.png", href: "/outfits/oversized-puffer-coat"  },
+    ],
+    relatedCategories: [
+      { label: "Sommerkleider",  href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Herbstlooks",    href: "/outfits/season/herbst",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Büro & Business",href: "/outfits/occasion/buero",   accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Classic Style",  href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
+    ],
+    faqs: [
+      {
+        q: "Wie layert man Winteroutfits richtig?",
+        a: "Beginne mit einer dünnen Basisschicht (Turtleneck, Thermoshirt), füge eine wärmende Mittelschicht (Strickpullover, Wollweste) hinzu und schließe mit einem Mantel oder einer Jacke ab. So bleibt der Look stilvoll und du kannst Schichten je nach Temperatur anpassen.",
+      },
+      {
+        q: "Welche Mäntel sind im Winter 2025/2026 im Trend?",
+        a: "Oversized Wollmäntel in Camel und Dunkelgrün, strukturierte Teddy-Coats und taillierte Midi-Mäntel sind die großen Wintertrends. Auch Puffer-Coats in gedeckten Tönen wie Navy, Schwarz und Olivgrün bleiben ein sicherer Alltagsbegleiter.",
+      },
+      {
+        q: "Welche Schuhe passen zu Winteroutfits?",
+        a: "Chelsea Boots und Kniehohe Stiefel sind die vielseitigsten Winterbegleiter. Chunky Loafer mit dicken Socken verleihen dem Look einen modernen Touch. Für elegante Anlässe sind schwarze Stiefeletten mit Absatz eine zeitlose Wahl.",
+      },
+    ],
+    seo: {
+      title: "Winteroutfits 2025 – Warme Looks für kalte Tage",
+      description:
+        "Entdecke kuratierte Winteroutfits 2025: Elegante Mäntel, cozy Strick-Kombis und stylische Layering-Looks für jeden Anlass – von Alltag bis Abend.",
+      keywords: ["Winteroutfits", "Winter Look 2025", "Wintermantel Outfit", "Layering Look", "Strick Outfit", "Wintermode", "cozy Outfit", "Winterstyle"],
+    },
+  },
+
+  // Buraya yeni sezonlar eklenebilir: "herbst", "fruehling", vb.
 };
 
 // ─── Static Params (SSG) ──────────────────────────────────────────────────────
