@@ -66,46 +66,70 @@ const saisonCollections = [
 
 const anlassCollections = [
   {
-    slug: "buero-outfit",
+    slug: "buero",
     label: "Büro & Business",
     description: "Polished und professionell – Looks für Meeting, Office und Co.",
-    badge: "Bald",
-    active: false,
+    tags: ["Blazer", "Tailoring", "Neutral", "Polished"],
+    badge: "Neu",
+    accent: "bg-[#f3e5f5]",
+    accentText: "text-[#6a1b9a]",
+    image: "/outfits/sfold.png",
+    active: true,
   },
   {
-    slug: "abend-outfit",
+    slug: "abend",
     label: "Abend & Event",
     description: "Elegante Outfits für Dinner, Partys und besondere Anlässe",
-    badge: "Bald",
-    active: false,
+    tags: ["Midi", "Silk", "Statement", "Elegant"],
+    badge: "Neu",
+    accent: "bg-gray-900",
+    accentText: "text-white",
+    image: "/outfits/sfold.png",
+    active: true,
   },
   {
-    slug: "casual-outfit",
+    slug: "casual",
     label: "Casual & Alltag",
     description: "Bequeme, stylische Alltagslooks für entspannte Tage",
-    badge: "Bald",
-    active: false,
+    tags: ["Denim", "Basics", "Komfort", "Layering"],
+    badge: "Neu",
+    accent: "bg-[#fff8e1]",
+    accentText: "text-[#f57f17]",
+    image: "/outfits/sfold.png",
+    active: true,
   },
   {
-    slug: "strand-outfit",
+    slug: "strand",
     label: "Strand & Urlaub",
     description: "Beach Vibes, Cover-ups und sommerliche Urlaubslooks",
-    badge: "Bald",
-    active: false,
+    tags: ["Linen", "Cover-up", "Maxi", "Kaftan"],
+    badge: "Neu",
+    accent: "bg-[#e3f2fd]",
+    accentText: "text-[#1565c0]",
+    image: "/outfits/sfold.png",
+    active: true,
   },
   {
-    slug: "festival-outfit",
+    slug: "festival",
     label: "Festival & Outdoor",
     description: "Boho, Denim und verspielte Layering-Looks für Open Air",
-    badge: "Bald",
-    active: false,
+    tags: ["Boho", "Denim", "Fransen", "Floral"],
+    badge: "Neu",
+    accent: "bg-[#fce4ec]",
+    accentText: "text-[#c62828]",
+    image: "/outfits/sfold.png",
+    active: true,
   },
   {
-    slug: "date-night-outfit",
+    slug: "date-night",
     label: "Date Night",
     description: "Romantische und selbstbewusste Looks für unvergessliche Abende",
-    badge: "Bald",
-    active: false,
+    tags: ["Midi", "Romantic", "Bold", "Feminin"],
+    badge: "Neu",
+    accent: "bg-[#fce4ec]",
+    accentText: "text-[#c62828]",
+    image: "/outfits/sfold.png",
+    active: true,
   },
 ];
 
@@ -297,41 +321,82 @@ export default function OutfitsPage() {
             <div className="flex-1 h-px bg-gray-100" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
-            {anlassCollections.map((col) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4 md:gap-5">
+            {anlassCollections.map((col) =>
               col.active ? (
                 <a
                   key={col.slug}
                   href={`/outfits/occasion/${col.slug}`}
-                  className="group flex flex-col gap-3 p-5 bg-gray-50 hover:bg-black transition-colors duration-300"
+                  className="group relative overflow-hidden flex flex-col"
                 >
-                  <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
-                    {col.badge}
-                  </span>
-                  <h3 className="text-sm font-black text-black group-hover:text-white tracking-tight leading-tight transition-colors duration-300">
-                    {col.label}
-                  </h3>
-                  <p className="text-xs text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors duration-300 line-clamp-2">
-                    {col.description}
-                  </p>
+                  <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
+                    <img
+                      src={col.image}
+                      alt={col.label}
+                      className="absolute inset-0 w-full h-full object-cover object-top
+                                 transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
+                    <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
+                      {col.badge}
+                    </span>
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h2 className="text-lg font-black text-white tracking-tight leading-tight">
+                        {col.label}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className={`flex flex-col gap-3 p-5 ${col.accent}`}>
+                    <p className={`text-xs leading-relaxed ${col.accentText === "text-white" ? "text-gray-300" : "text-gray-700"}`}>{col.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {col.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-white text-gray-600 border border-gray-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className={`self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase ${col.accentText === "text-white" ? "text-gray-300" : col.accentText} group-hover:gap-3 transition-all duration-200`}>
+                      Entdecken
+                      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2.5}>
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </span>
+                  </div>
                 </a>
               ) : (
-                <div
-                  key={col.slug}
-                  className="flex flex-col gap-3 p-5 bg-gray-50 opacity-50 cursor-not-allowed"
-                >
-                  <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
-                    {col.badge}
-                  </span>
-                  <h3 className="text-sm font-black text-black tracking-tight leading-tight">
-                    {col.label}
-                  </h3>
-                  <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
-                    {col.description}
-                  </p>
+                <div key={col.slug} className="relative flex flex-col opacity-60 cursor-not-allowed">
+                  <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
+                    <img
+                      src={col.image}
+                      alt={col.label}
+                      className="absolute inset-0 w-full h-full object-cover object-top grayscale"
+                    />
+                    <div className="absolute inset-0 bg-white/40" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
+                    <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
+                      {col.badge}
+                    </span>
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h2 className="text-lg font-black text-black tracking-tight leading-tight">{col.label}</h2>
+                    </div>
+                  </div>
+                  <div className={`flex flex-col gap-3 p-5 ${col.accent}`}>
+                    <p className="text-xs text-gray-600 leading-relaxed">{col.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {col.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-white/70 text-gray-500 border border-gray-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="self-start text-xs font-semibold tracking-widest uppercase text-gray-400">
+                      Demnächst verfügbar
+                    </span>
+                  </div>
                 </div>
               )
-            ))}
+            )}
           </div>
         </div>
       </section>
