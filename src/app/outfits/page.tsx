@@ -110,10 +110,50 @@ const anlassCollections = [
 ];
 
 const stilCollections = [
-  { slug: "boho",        label: "Boho",        description: "Fließende Stoffe, Fransen & Naturfarben", badge: "Neu",  active: true  },
-  { slug: "minimalist",  label: "Minimalist",  description: "Clean, schlicht und zeitlos elegant",       badge: "Neu",  active: true  },
-  { slug: "streetstyle", label: "Street Style",description: "Urban, bold und immer im Trend",            badge: "Neu",  active: true  },
-  { slug: "classic",     label: "Classic",     description: "Zeitlose Basics mit modernem Twist",        badge: "Neu",  active: true  },
+  {
+    slug: "boho",
+    label: "Boho",
+    description: "Fließende Stoffe, Fransen & Naturfarben",
+    tags: ["Maxi", "Floral", "Fransen", "Linen"],
+    badge: "Neu",
+    accent: "bg-[#e8f5e9]",
+    accentText: "text-[#2e7d32]",
+    image: "/outfits/sfold.png",
+    active: true,
+  },
+  {
+    slug: "minimalist",
+    label: "Minimalist",
+    description: "Clean, schlicht und zeitlos elegant",
+    tags: ["Neutral", "Monochrome", "Basics", "Clean"],
+    badge: "Neu",
+    accent: "bg-gray-100",
+    accentText: "text-gray-700",
+    image: "/outfits/sfold.png",
+    active: true,
+  },
+  {
+    slug: "streetstyle",
+    label: "Street Style",
+    description: "Urban, bold und immer im Trend",
+    tags: ["Denim", "Oversized", "Graphic", "Sneaker"],
+    badge: "Neu",
+    accent: "bg-gray-900",
+    accentText: "text-white",
+    image: "/outfits/sfold.png",
+    active: true,
+  },
+  {
+    slug: "classic",
+    label: "Classic",
+    description: "Zeitlose Basics mit modernem Twist",
+    tags: ["Blazer", "Trench", "Tailoring", "Neutral"],
+    badge: "Neu",
+    accent: "bg-[#fafafa]",
+    accentText: "text-gray-900",
+    image: "/outfits/sfold.png",
+    active: true,
+  },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -307,37 +347,82 @@ export default function OutfitsPage() {
             <div className="flex-1 h-px bg-gray-100" />
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-            {stilCollections.map((col) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
+            {stilCollections.map((col) =>
               col.active ? (
                 <a
                   key={col.slug}
                   href={`/outfits/style/${col.slug}`}
-                  className="group flex flex-col gap-3 p-6 md:p-8 border border-black hover:bg-black transition-colors duration-300"
+                  className="group relative overflow-hidden flex flex-col"
                 >
-                  <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
-                    {col.badge}
-                  </span>
-                  <h3 className="text-base font-black text-black group-hover:text-white tracking-tight transition-colors duration-300">
-                    {col.label}
-                  </h3>
-                  <p className="text-xs text-gray-500 group-hover:text-gray-300 leading-relaxed transition-colors duration-300">
-                    {col.description}
-                  </p>
+                  <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
+                    <img
+                      src={col.image}
+                      alt={col.label}
+                      className="absolute inset-0 w-full h-full object-cover object-top
+                                 transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
+                    <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
+                      {col.badge}
+                    </span>
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h2 className="text-lg font-black text-white tracking-tight leading-tight">
+                        {col.label}
+                      </h2>
+                    </div>
+                  </div>
+                  <div className={`flex flex-col gap-3 p-5 ${col.accent}`}>
+                    <p className={`text-xs leading-relaxed ${col.accentText === "text-white" ? "text-gray-300" : "text-gray-700"}`}>{col.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {col.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-white text-gray-600 border border-gray-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className={`self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase ${col.accentText === "text-white" ? "text-gray-300" : col.accentText} group-hover:gap-3 transition-all duration-200`}>
+                      Entdecken
+                      <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2.5}>
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </span>
+                  </div>
                 </a>
               ) : (
-                <div
-                  key={col.slug}
-                  className="flex flex-col gap-3 p-6 md:p-8 border border-gray-200 opacity-50 cursor-not-allowed"
-                >
-                  <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
-                    {col.badge}
-                  </span>
-                  <h3 className="text-base font-black text-black tracking-tight">{col.label}</h3>
-                  <p className="text-xs text-gray-400 leading-relaxed">{col.description}</p>
+                <div key={col.slug} className="relative flex flex-col opacity-60 cursor-not-allowed">
+                  <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
+                    <img
+                      src={col.image}
+                      alt={col.label}
+                      className="absolute inset-0 w-full h-full object-cover object-top grayscale"
+                    />
+                    <div className="absolute inset-0 bg-white/40" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
+                    <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
+                      {col.badge}
+                    </span>
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h2 className="text-lg font-black text-black tracking-tight leading-tight">{col.label}</h2>
+                    </div>
+                  </div>
+                  <div className={`flex flex-col gap-3 p-5 ${col.accent}`}>
+                    <p className="text-xs text-gray-600 leading-relaxed">{col.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {col.tags.map((tag) => (
+                        <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-white/70 text-gray-500 border border-gray-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="self-start text-xs font-semibold tracking-widest uppercase text-gray-400">
+                      Demnächst verfügbar
+                    </span>
+                  </div>
                 </div>
               )
-            ))}
+            )}
           </div>
         </div>
       </section>
