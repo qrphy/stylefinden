@@ -110,10 +110,10 @@ const anlassCollections = [
 ];
 
 const stilCollections = [
-  { slug: "boho-style",       label: "Boho",       description: "Fließende Stoffe, Fransen & Naturfarben", badge: "Bald", active: false },
-  { slug: "minimalist-style", label: "Minimalist", description: "Clean, schlicht und zeitlos elegant",       badge: "Bald", active: false },
-  { slug: "streetstyle",      label: "Street Style",description: "Urban, bold und immer im Trend",           badge: "Bald", active: false },
-  { slug: "classic-style",    label: "Classic",    description: "Zeitlose Basics mit modernem Twist",        badge: "Bald", active: false },
+  { slug: "boho",        label: "Boho",        description: "Fließende Stoffe, Fransen & Naturfarben", badge: "Neu",  active: true  },
+  { slug: "minimalist",  label: "Minimalist",  description: "Clean, schlicht und zeitlos elegant",       badge: "Neu",  active: true  },
+  { slug: "streetstyle", label: "Street Style",description: "Urban, bold und immer im Trend",            badge: "Neu",  active: true  },
+  { slug: "classic",     label: "Classic",     description: "Zeitlose Basics mit modernem Twist",        badge: "Neu",  active: true  },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
