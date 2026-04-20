@@ -156,7 +156,119 @@ const seasons: Record<string, SeasonData> = {
     },
   },
 
-  // Buraya yeni sezonlar eklenebilir: "herbst", "fruehling", vb.
+  "herbst": {
+    label: "Herbstlooks",
+    subtitle: "Herbst 2025",
+    description:
+      "Erdtöne, knackige Übergangslooks und elegante Trench Coats – entdecke kuratierte Herbstoutfits für jeden Stil und jeden Tag.",
+    accent: "bg-[#efebe9]",
+    accentText: "text-[#4e342e]",
+    tipTitle: "Erdtöne, warme Texturen,",
+    tipBody:
+      "Der perfekte Herbstlook lebt von Schichtungen, satter Farbpalette und dem richtigen Mantel.",
+    tipTags: ["Trench", "Erdtöne", "Stiefel", "Layering"],
+    filters: ["Alle", "Trench", "Strick", "Denim", "Casual", "Elegant", "Layering"],
+    outfitGridLabel: "Aktuelle Herbst-Looks",
+    styleGuideHref: "/blog/seasonal-guides/herbst-style-guide",
+    stats: [
+      { value: "70+", label: "Looks" },
+      { value: "4", label: "Styles" },
+      { value: "Täglich", label: "Aktualisiert" },
+    ],
+    outfits: [
+      { id: 1, title: "Camel Trench Coat",      subtitle: "City & Alltag",      tag: "Trending", style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/camel-trench-coat"      },
+      { id: 2, title: "Rust Knit & Jeans",      subtitle: "Casual & Weekend",   tag: "Beliebt",  style: "Strick",   image: "/outfits/sfold.png", href: "/outfits/rust-knit-jeans"        },
+      { id: 3, title: "Olive Cargo Look",        subtitle: "Street & Urban",     tag: "Neu",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/olive-cargo-look"       },
+      { id: 4, title: "Plaid Blazer Outfit",     subtitle: "Office & Business",  tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/plaid-blazer-outfit"    },
+      { id: 5, title: "Denim Layer Look",        subtitle: "Casual & Modern",    tag: "Beliebt",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-layer-look"       },
+      { id: 6, title: "Brown Leather Jacket",    subtitle: "Street & Freizeit",  tag: "Neu",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/brown-leather-jacket"   },
+      { id: 7, title: "Midi Skirt & Boots",      subtitle: "Elegant & Chic",     tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/midi-skirt-boots"       },
+      { id: 8, title: "Oversized Blazer Look",   subtitle: "Business Casual",    tag: "Neu",      style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/oversized-blazer-look"  },
+    ],
+    relatedCategories: [
+      { label: "Winteroutfits",  href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Frühlingslooks", href: "/outfits/season/fruehling", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Classic Style",  href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
+    ],
+    faqs: [
+      {
+        q: "Welche Farben sind im Herbst 2025 angesagt?",
+        a: "Erdtöne wie Camel, Rostbraun, Olivgrün und Dunkelrot dominieren die Herbstpalette 2025. Dazu kommen gedeckte Neutraltöne wie Greige und Dunkelgrau als vielseitige Basisfarben.",
+      },
+      {
+        q: "Wie kombiniert man einen Trench Coat im Herbst?",
+        a: "Ein Camel Trench Coat passt zu fast allem: über einem schlichten weißen Hemd und Straight-Leg-Jeans für den Alltag, über einem Midi-Kleid für elegante Anlässe oder über einem kräftigen Rollkragenpullover für kühlere Tage.",
+      },
+      {
+        q: "Welche Schuhe passen zu Herbstoutfits?",
+        a: "Kniehohe Stiefel in Braun oder Schwarz sind der klassische Herbstbegleiter. Ankle Boots mit Blockabsatz verleihen dem Look einen modernen Touch, während Chelsea Boots eine vielseitige Alltagsoption sind.",
+      },
+    ],
+    seo: {
+      title: "Herbstoutfits 2025 – Looks für die goldene Jahreszeit",
+      description:
+        "Entdecke kuratierte Herbstoutfits 2025: Trench Coats, Erdton-Kombis, Layering-Looks und elegante Stiefeloutfits für jeden Anlass – von Alltag bis Abend.",
+      keywords: ["Herbstoutfits", "Herbst Look 2025", "Trench Coat Outfit", "Herbstmode", "Erdtöne Outfit", "Layering Herbst", "Herbststyle", "Übergangsoutfit"],
+    },
+  },
+
+  "fruehling": {
+    label: "Frühlingslooks",
+    subtitle: "Frühling 2026",
+    description:
+      "Pastelltöne, leichte Blazer und frische Kombinationen – entdecke kuratierte Frühlingsoutfits für helle Tage voller Energie.",
+    accent: "bg-[#e8f5e9]",
+    accentText: "text-[#2e7d32]",
+    tipTitle: "Frische Farben, leichte Stoffe,",
+    tipBody:
+      "Der perfekte Frühlingslook bringt neue Energie in den Kleiderschrank – mit Pastell, Leinen und Floral.",
+    tipTags: ["Pastell", "Leinen", "Blazer", "Floral"],
+    filters: ["Alle", "Pastell", "Floral", "Blazer", "Leinen", "Casual", "Elegant"],
+    outfitGridLabel: "Aktuelle Frühlings-Looks",
+    styleGuideHref: "/blog/seasonal-guides/fruehling-style-guide",
+    stats: [
+      { value: "65+", label: "Looks" },
+      { value: "4", label: "Styles" },
+      { value: "Täglich", label: "Aktualisiert" },
+    ],
+    outfits: [
+      { id: 1, title: "Pastel Blazer Set",       subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",  image: "/outfits/sfold.png", href: "/outfits/pastel-blazer-set"      },
+      { id: 2, title: "Floral Midi Dress",        subtitle: "Alltag & Freizeit",  tag: "Beliebt",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/floral-midi-dress"      },
+      { id: 3, title: "Linen Wide-Leg Pants",     subtitle: "Casual & Modern",    tag: "Neu",      style: "Leinen",  image: "/outfits/sfold.png", href: "/outfits/linen-wide-leg-pants"   },
+      { id: 4, title: "White & Sage Combo",       subtitle: "Minimal & Fresh",    tag: "Trending", style: "Pastell", image: "/outfits/sfold.png", href: "/outfits/white-sage-combo"       },
+      { id: 5, title: "Denim & Floral Top",       subtitle: "Street & Casual",    tag: "Beliebt",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/denim-floral-top"       },
+      { id: 6, title: "Mint Trench Look",         subtitle: "City & Business",    tag: "Neu",      style: "Blazer",  image: "/outfits/sfold.png", href: "/outfits/mint-trench-look"       },
+      { id: 7, title: "Lilac Knit Dress",         subtitle: "Elegant & Soft",     tag: "Trending", style: "Pastell", image: "/outfits/sfold.png", href: "/outfits/lilac-knit-dress"       },
+      { id: 8, title: "Striped Linen Shirt Look", subtitle: "Weekend & Outdoor",  tag: "Neu",      style: "Leinen",  image: "/outfits/sfold.png", href: "/outfits/striped-linen-shirt"    },
+    ],
+    relatedCategories: [
+      { label: "Sommerkleider",  href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Herbstlooks",    href: "/outfits/season/herbst",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Beach Looks",    href: "/outfits/occasion/strand",  accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+    ],
+    faqs: [
+      {
+        q: "Welche Farben sind im Frühling 2026 angesagt?",
+        a: "Weiche Pastelltöne wie Mintgrün, Flieder, Babyblau und zartes Rosa dominieren den Frühling 2026. Dazu kommen frische Neutraltöne wie Off-White und Hellbeige als elegante Basis.",
+      },
+      {
+        q: "Wie stylt man einen Frühlingsblazor?",
+        a: "Ein Pastellblazer funktioniert over einer einfarbigen Hose für den Office-Look, über einem leichten Blumenkleid für einen femininen Touch oder mit Jeans und weißem T-Shirt für einen casual-chic Alltagslook.",
+      },
+      {
+        q: "Welche Schuhe passen zu Frühlingsoutfits?",
+        a: "Weiße Sneakers sind der vielseitigste Frühlingsbegleiter. Loafer in Nude oder Pastell verleihen dem Look einen eleganten Touch, während flache Sandalen an wärmeren Frühlingstagen die erste Wahl sind.",
+      },
+    ],
+    seo: {
+      title: "Frühlingsoutfits 2026 – Frische Looks für helle Tage",
+      description:
+        "Entdecke kuratierte Frühlingsoutfits 2026: Pastell-Blazer, Blumenkleider, Leinenkombi und leichte Layering-Looks für jeden Anlass – von Alltag bis Abend.",
+      keywords: ["Frühlingsoutfits", "Frühling Look 2026", "Pastell Outfit", "Frühlingsmode", "Leinenoutfit", "Blazer Outfit Frühling", "Frühlingstyle", "Blumenkleid"],
+    },
+  },
 };
 
 // ─── Static Params (SSG) ──────────────────────────────────────────────────────
