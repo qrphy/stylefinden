@@ -164,7 +164,7 @@ export default function OutfitsPage() {
               col.active ? (
                 <a
                   key={col.slug}
-                  href={`/outfits/${col.slug}`}
+                  href={`/outfits/season/${col.slug}`}
                   className="group relative overflow-hidden flex flex-col"
                 >
                   {/* Image */}
@@ -262,7 +262,7 @@ export default function OutfitsPage() {
               col.active ? (
                 <a
                   key={col.slug}
-                  href={`/outfits/${col.slug}`}
+                  href={`/outfits/occasion/${col.slug}`}
                   className="group flex flex-col gap-3 p-5 bg-gray-50 hover:bg-black transition-colors duration-300"
                 >
                   <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
@@ -312,7 +312,7 @@ export default function OutfitsPage() {
               col.active ? (
                 <a
                   key={col.slug}
-                  href={`/outfits/${col.slug}`}
+                  href={`/outfits/style/${col.slug}`}
                   className="group flex flex-col gap-3 p-6 md:p-8 border border-black hover:bg-black transition-colors duration-300"
                 >
                   <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeColors[col.badge]}`}>
