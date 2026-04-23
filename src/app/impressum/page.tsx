@@ -1,6 +1,6 @@
 export default function ImpressumPage() {
     return (
-      <main style={{ maxWidth: "800px", margin: "0 auto", padding: "40px" }}>
+      <main style={{ maxWidth: "600px", margin: "0 auto", padding: "40px", fontSize: "16px"}}>
         <h1>Impressum</h1>
   
         <h2>Angaben gemäß §5 TMG</h2>
