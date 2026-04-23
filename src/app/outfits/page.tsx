@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-// ─── Daten ────────────────────────────────────────────────────────────────────
+// ─── Data ────────────────────────────────────────────────────────────────────
 
 const saisonCollections = [
   {
@@ -212,7 +212,7 @@ export default function OutfitsPage() {
         </div>
       </section>
 
-      {/* ── Saison Kollektionen ── */}
+      {/* ── Season Collections ── */}
       <section className="w-full">
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
 
@@ -312,7 +312,7 @@ export default function OutfitsPage() {
         </div>
       </section>
 
-      {/* ── Anlass Kollektionen ── */}
+      {/* ── Occasion Collections ── */}
       <section className="w-full border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
 
@@ -405,7 +405,7 @@ export default function OutfitsPage() {
         </div>
       </section>
 
-      {/* ── Stil Kollektionen ── */}
+      {/* ── Style Collections ── */}
       <section className="w-full border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
 

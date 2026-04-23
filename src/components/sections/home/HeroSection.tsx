@@ -40,7 +40,7 @@ export default function HeroSection() {
               </a>
             </div>
 
-            {/* Plugin Statistics */}
+            {/* Site Statistics */}
             <div className="flex items-center gap-8 pt-4 border-t border-gray-100 w-full justify-center md:justify-start">
               <div className="flex flex-col items-center md:items-start">
                 <span className="text-xl font-black text-black">300+</span>
@@ -59,10 +59,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* ── Right: Imagine ── */}
+          {/* ── Right: Image ── */}
           <div className="relative w-full md:w-1/2 xl:w-5/12 flex-shrink-0">
 
-            {/* Main Imagine */}
+            {/* Main Image */}
             <div className="relative overflow-hidden bg-gray-100 aspect-[3/4] w-full max-w-sm mx-auto md:max-w-none">
               <img
                 src="seasons/sfold.png"
@@ -72,17 +72,17 @@ export default function HeroSection() {
                 decoding="sync"
                 className="w-full h-full object-cover object-top"
               />
-              {/* Görsel yoksa fallback gradient */}
+              {/* Fallback gradient */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
             </div>
 
-            {/* Üst sol dekoratif kart */}
+            {/* Top left decorative card */}
             <div className="absolute -top-4 -left-4 md:-left-8 bg-white border border-gray-200 shadow-sm px-4 py-3 hidden sm:flex flex-col gap-1">
               <span className="text-xs tracking-widest uppercase text-gray-400">Neu</span>
               <span className="text-sm font-bold text-black">Herbst Trends 2025</span>
             </div>
 
-            {/* Alt sağ dekoratif kart */}
+            {/* Bottom right decorative card */}
             <div className="absolute -bottom-4 -right-4 md:-right-8 bg-black text-white px-4 py-3 hidden sm:flex flex-col gap-1">
               <span className="text-xs tracking-widest uppercase text-gray-400">Täglich</span>
               <span className="text-sm font-bold">Neue Inspirationen</span>

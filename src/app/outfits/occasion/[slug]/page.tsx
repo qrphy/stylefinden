@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-// ─── Veri Katmanı ─────────────────────────────────────────────────────────────
+// ─── Data Layer ───────────────────────────────────────────────────────────────
 
 type OutfitItem = {
   id: number;
@@ -479,7 +479,7 @@ export default async function OccasionPage(
               </div>
             </div>
 
-            {/* Accent Kart */}
+            {/* Accent Card */}
             <div className={`hidden md:flex flex-col gap-3 ${occasion.accent} border border-gray-100 p-8 xl:p-10 w-full md:w-80 xl:w-96 flex-shrink-0`}>
               <span className={`text-xs font-semibold tracking-widest uppercase ${occasion.accentText === "text-white" ? "text-gray-500" : occasion.accentText}`}>
                 Style Tipp
