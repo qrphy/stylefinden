@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
     <header>
@@ -15,6 +17,7 @@ export default function Header() {
                       xl:h-20 xl:px-8">
 
         {/* Logo */}
+        <Link rel="stylesheet" href="/" className="flex items-center gap-1 rounded-xl">
         <img
           src="/stylefinden-logo.png"
           alt="STYLEFINDEN"
@@ -22,7 +25,9 @@ export default function Header() {
                      h-10
                      lg:h-14
                      xl:h-16"
+                     
         />
+</Link>
 
         {/* Nav Links */}
         <div className="absolute inset-x-0 flex justify-center items-center

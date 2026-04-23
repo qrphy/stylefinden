@@ -236,6 +236,8 @@ export default function OutfitsPage() {
                     <img
                       src={col.image}
                       alt={col.label}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover object-top
                                  transition-transform duration-500 ease-out group-hover:scale-105"
                     />
@@ -333,6 +335,8 @@ export default function OutfitsPage() {
                     <img
                       src={col.image}
                       alt={col.label}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover object-top
                                  transition-transform duration-500 ease-out group-hover:scale-105"
                     />
@@ -424,6 +428,8 @@ export default function OutfitsPage() {
                     <img
                       src={col.image}
                       alt={col.label}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover object-top
                                  transition-transform duration-500 ease-out group-hover:scale-105"
                     />

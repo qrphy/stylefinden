@@ -1,0 +1,137 @@
+const categories = [
+  { label: "Schmuck",       href: "/accessoires?typ=schmuck",       icon: "◈" },
+  { label: "Taschen",       href: "/accessoires?typ=taschen",       icon: "◻" },
+  { label: "Sonnenbrillen", href: "/accessoires?typ=sonnenbrillen", icon: "◉" },
+];
+
+const accessories = [
+  { id: 1, name: "Goldene Hoop-Ohrringe",         category: "Schmuck",       badge: "Klassiker",    pairsWith: "Passt zu jedem Look",  tip: "Zu Casual wie auch Abend-Outfits",  image: "/accessoires/hoop-ohrringe.jpg",   featured: true  },
+  { id: 2, name: "Minimalistische Kettenhalskette",category: "Schmuck",       badge: "Trending",     pairsWith: "Layering-Look",        tip: "Mehrere Ketten kombinieren",        image: "/accessoires/kettenhalskette.jpg", featured: false },
+  { id: 3, name: "Breiter Statement Ring",         category: "Schmuck",       badge: "Statement",    pairsWith: "Minimalist Outfits",   tip: "Ein Ring, der alles sagt",          image: "/accessoires/statement-ring.jpg", featured: false },
+  { id: 4, name: "Canvas Tote Bag",               category: "Taschen",       badge: "Alltags-Must", pairsWith: "Casual & Business",    tip: "Geräumig & stilvoll",               image: "/accessoires/tote-bag.jpg",       featured: true  },
+  { id: 5, name: "Mini Crossbody Bag",             category: "Taschen",       badge: "Trending",     pairsWith: "Abend & Freizeit",     tip: "Kompakt, aber wirkungsvoll",        image: "/accessoires/crossbody-bag.jpg",  featured: false },
+  { id: 6, name: "Strukturierte Bucket Bag",       category: "Taschen",       badge: "Klassiker",    pairsWith: "Business & Casual",    tip: "Zeitloser Begleiter",               image: "/accessoires/bucket-bag.jpg",     featured: false },
+  { id: 7, name: "Cat-Eye Sonnenbrille",           category: "Sonnenbrillen", badge: "Ikonisch",     pairsWith: "Feminine Looks",       tip: "Sofortiger Glamour-Faktor",         image: "/accessoires/cat-eye-brille.jpg", featured: true  },
+  { id: 8, name: "Oversized Square Brille",        category: "Sonnenbrillen", badge: "90s Revival",  pairsWith: "Street Style",         tip: "Bold & Modern",                     image: "/accessoires/oversized-brille.jpg",featured: false },
+  { id: 9, name: "Runde Vintage-Fassung",          category: "Sonnenbrillen", badge: "Zeitlos",      pairsWith: "Boho & Minimal",       tip: "Weiche Züge, starker Auftritt",     image: "/accessoires/vintage-brille.jpg", featured: false },
+];
+
+const badgeStyle: Record<string, string> = {
+  "Klassiker":    "bg-black text-white",
+  "Trending":     "bg-white text-black border border-black",
+  "Statement":    "bg-gray-900 text-white",
+  "Alltags-Must": "bg-black text-white",
+  "Ikonisch":     "bg-gray-900 text-white",
+  "90s Revival":  "bg-white text-black border border-black",
+  "Zeitlos":      "bg-gray-100 text-gray-700",
+};
+
+const grouped = categories.map((cat) => ({
+  ...cat,
+  featured: accessories.find((a) => a.category === cat.label && a.featured)!,
+  items:    accessories.filter((a) => a.category === cat.label && !a.featured),
+}));
+
+export default function AccessoriesHighlights() {
+  return (
+    <section className="w-full bg-white border-t border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+          <div className="flex flex-col gap-2">
+            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Accessoires</span>
+            <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+              Details, die <span className="italic font-light">alles verändern.</span>
+            </h2>
+            <p className="text-sm text-gray-500 leading-relaxed mt-1 max-w-lg">
+              Zeitlose Klassiker und aktuelle Trends – Schmuck, Taschen und Sonnenbrillen, die zu jedem Outfit passen.
+            </p>
+          </div>
+          <a href="/accessoires" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group shrink-0">
+            Alle Accessoires
+            <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </a>
+        </div>
+
+        <div className="flex gap-2 mb-10 overflow-x-auto pb-1">
+          {categories.map((cat) => (
+            <a key={cat.label} href={cat.href} className="flex items-center gap-2 px-5 py-2 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-600 hover:bg-black hover:text-white transition-colors duration-200 shrink-0">
+              <span>{cat.icon}</span>
+              {cat.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-16">
+          {grouped.map((cat, ci) => (
+            <div key={cat.label}>
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">{cat.label}</span>
+                <div className="flex-1 h-px bg-gray-100" />
+                <a href={cat.href} className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200">Alle →</a>
+              </div>
+
+              <div className={`flex flex-col md:flex-row gap-4 md:gap-5 ${ci % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
+                {cat.featured && (
+                  <a href={`/accessoires/${cat.featured.id}`} className="group relative overflow-hidden bg-gray-100 flex-shrink-0 w-full md:w-2/5 aspect-[4/5]">
+                    <img src={cat.featured.image} alt={cat.featured.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-all duration-300" />
+                    <div className="absolute top-4 left-4">
+                      <span className={`px-3 py-1 text-xs font-semibold tracking-widest uppercase ${badgeStyle[cat.featured.badge] ?? "bg-gray-100 text-gray-700"}`}>
+                        {cat.featured.badge}
+                      </span>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-1">
+                      <span className="text-xs tracking-widest uppercase text-white/60">{cat.featured.tip}</span>
+                      <div className="flex items-end justify-between gap-2">
+                        <h3 className="text-xl font-black text-white leading-tight">{cat.featured.name}</h3>
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" strokeWidth={2}>
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </div>
+                      <span className="text-xs tracking-widest uppercase text-white/50 mt-0.5">{cat.featured.pairsWith}</span>
+                    </div>
+                  </a>
+                )}
+
+                <div className="flex flex-col gap-4 flex-1">
+                  {cat.items.map((item) => (
+                    <a key={item.id} href={`/accessoires/${item.id}`} className="group flex items-stretch gap-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 overflow-hidden">
+                      <div className="relative w-28 md:w-36 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
+                        <img src={item.image} alt={item.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
+                      </div>
+                      <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1">
+                        <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeStyle[item.badge] ?? "bg-gray-100 text-gray-700"}`}>
+                          {item.badge}
+                        </span>
+                        <h3 className="text-sm font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200">{item.name}</h3>
+                        <p className="text-xs tracking-widest uppercase text-gray-400">{item.tip}</p>
+                        <span className="text-xs text-gray-500 italic mt-0.5">✦ {item.pairsWith}</span>
+                      </div>
+                      <div className="flex items-center pr-5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-gray-400" fill="none" strokeWidth={2}>
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="flex justify-center mt-14">
+          <a href="/accessoires" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
+            Alle Accessoires entdecken
+          </a>
+        </div>
+
+      </div>
+    </section>
+  );
+}

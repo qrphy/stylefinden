@@ -262,6 +262,8 @@ const seasons: Record<string, SeasonData> = {
         a: "Weiße Sneakers sind der vielseitigste Frühlingsbegleiter. Loafer in Nude oder Pastell verleihen dem Look einen eleganten Touch, während flache Sandalen an wärmeren Frühlingstagen die erste Wahl sind.",
       },
     ],
+    
+    // SEO TAGS
     seo: {
       title: "Frühlingsoutfits 2026 – Frische Looks für helle Tage",
       description:
@@ -441,12 +443,14 @@ export default async function SeasonPage(
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
-            {season.outfits.map((outfit) => (
+            {season.outfits.map((outfit, index) => (
               <a key={outfit.id} href={outfit.href} className="group flex flex-col gap-3">
                 <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                   <img
                     src={outfit.image}
                     alt={`${outfit.title} – ${outfit.subtitle}`}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover object-top
                                transition-transform duration-500 ease-out group-hover:scale-105"
                   />

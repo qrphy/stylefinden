@@ -436,12 +436,14 @@ export default async function StylePage(
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
-            {styleData.outfits.map((outfit) => (
+            {styleData.outfits.map((outfit, index) => (
               <a key={outfit.id} href={outfit.href} className="group flex flex-col gap-3">
                 <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                   <img
                     src={outfit.image}
                     alt={`${outfit.title} – ${outfit.subtitle}`}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
                     className="absolute inset-0 w-full h-full object-cover object-top
                                transition-transform duration-500 ease-out group-hover:scale-105"
                   />
