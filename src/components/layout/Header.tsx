@@ -41,19 +41,19 @@ export default function Header() {
                        xl:text-sm xl:tracking-widest">
             Outfits
           </a>
-          <a href="/frisuren"
+          <a href="/hairstyles"
             className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
                        text-sm tracking-widest
                        lg:text-sm lg:tracking-widest
                        xl:text-sm xl:tracking-widest">
-            Frisuren
+            Hairstyles
           </a>
-          <a href="/accessoires"
+          <a href="/accessories"
             className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
                        text-sm tracking-widest
                        lg:text-sm lg:tracking-widest
                        xl:text-sm xl:tracking-widest">
-            Accessoires
+            Accessories
           </a>
           <a href="/trends"
             className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
@@ -69,12 +69,12 @@ export default function Header() {
                        xl:text-sm xl:tracking-widest">
             Blog
           </a>
-          <a href="/stylingleitfaden"
+          <a href="/style-guide"
             className="font-medium uppercase text-gray-600 hover:text-black transition-colors duration-200
                        text-sm tracking-widest
                        lg:text-sm lg:tracking-widest
                        xl:text-sm xl:tracking-widest">
-            Styling Leitfaden
+            Style Guide
           </a>
         </div>
       </div>
@@ -112,11 +112,11 @@ export default function Header() {
           <a href="/outfits" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Outfits
           </a>
-          <a href="/frisuren" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
-            Frisuren
+          <a href="/hairstyles" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            Hairstyles
           </a>
-          <a href="/accessoires" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
-            Accessoires
+          <a href="/accessories" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            Accessories
           </a>
           <a href="/trends" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Trends
@@ -124,8 +124,8 @@ export default function Header() {
           <a href="/blog" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
             Blog
           </a>
-          <a href="/stylingleitfaden" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
-            Styling Leitfaden
+          <a href="/style-guide" className="block px-4 py-2 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">
+            Style Guide
           </a>
         </div>
       </details>

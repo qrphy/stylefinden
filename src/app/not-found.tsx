@@ -47,11 +47,11 @@ export default function NotFound() {
           </span>
           <div className="flex flex-wrap justify-center gap-2">
             {[
-              { label: "Frisuren",          href: "/frisuren" },
-              { label: "Accessoires",       href: "/accessoires" },
+              { label: "Frisuren",          href: "/hairstyles" },
+              { label: "Accessoires",       href: "/accessories" },
               { label: "Trends",            href: "/trends" },
               { label: "Blog",              href: "/blog" },
-              { label: "Styling Leitfaden", href: "/stylingleitfaden" },
+              { label: "Styling Leitfaden", href: "/style-guide" },
             ].map((link) => (
               <a
                 key={link.href}

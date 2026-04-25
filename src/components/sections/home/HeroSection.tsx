@@ -33,7 +33,7 @@ export default function HeroSection() {
                 Jetzt entdecken
               </a>
               <a
-                href="/stylingleitfaden"
+                href="/style-guide"
                 className="w-full sm:w-auto px-8 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200"
               >
                 Styling Leitfaden

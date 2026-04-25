@@ -10,14 +10,14 @@ const categories = [
     slug: "frisuren",
     label: "Frisuren",
     description: "Aktuelle Styles & Schnitte",
-    image: "/categories/frisuren.jpg",
+    image: "/categories/hairstyles.jpg",
     size: "normal",
   },
   {
     slug: "accessoires",
     label: "Accessoires",
     description: "Taschen, Schmuck & mehr",
-    image: "/categories/accessoires.jpg",
+    image: "/categories/accessories.jpg",
     size: "normal",
   },
   {
@@ -38,7 +38,7 @@ const categories = [
     slug: "stylingleitfaden",
     label: "Styling Leitfaden",
     description: "Dein persönlicher Stil-Guide",
-    image: "/categories/stylingleitfaden.jpg",
+    image: "/categories/style-guide.jpg",
     size: "large",
   },
 ];

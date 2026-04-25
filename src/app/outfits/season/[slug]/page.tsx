@@ -75,7 +75,7 @@ const seasons: Record<string, SeasonData> = {
       { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Beach Looks",    href: "/outfits/occasion/strand",  accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
       { label: "Festival Style", href: "/outfits/occasion/festival",accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Herbstlooks",    href: "/outfits/season/herbst",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Herbstlooks",    href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
     ],
     faqs: [
       {
@@ -130,7 +130,7 @@ const seasons: Record<string, SeasonData> = {
     ],
     relatedCategories: [
       { label: "Sommerkleider",  href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Herbstlooks",    href: "/outfits/season/herbst",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Herbstlooks",    href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
       { label: "Büro & Business",href: "/outfits/occasion/buero",   accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
       { label: "Classic Style",  href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
@@ -156,7 +156,7 @@ const seasons: Record<string, SeasonData> = {
     },
   },
 
-  "herbst": {
+  "autumn": {
     label: "Herbstlooks",
     subtitle: "Herbst 2025",
     description:
@@ -169,7 +169,7 @@ const seasons: Record<string, SeasonData> = {
     tipTags: ["Trench", "Erdtöne", "Stiefel", "Layering"],
     filters: ["Alle", "Trench", "Strick", "Denim", "Casual", "Elegant", "Layering"],
     outfitGridLabel: "Aktuelle Herbst-Looks",
-    styleGuideHref: "/blog/seasonal-guides/herbst-style-guide",
+    styleGuideHref: "/blog/seasonal-guides/autumn-style-guide",
     stats: [
       { value: "70+", label: "Looks" },
       { value: "4", label: "Styles" },
@@ -187,7 +187,7 @@ const seasons: Record<string, SeasonData> = {
     ],
     relatedCategories: [
       { label: "Winteroutfits",  href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Frühlingslooks", href: "/outfits/season/fruehling", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Frühlingslooks", href: "/outfits/season/spring", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Classic Style",  href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
@@ -213,7 +213,7 @@ const seasons: Record<string, SeasonData> = {
     },
   },
 
-  "fruehling": {
+  "spring": {
     label: "Frühlingslooks",
     subtitle: "Frühling 2026",
     description:
@@ -226,7 +226,7 @@ const seasons: Record<string, SeasonData> = {
     tipTags: ["Pastell", "Leinen", "Blazer", "Floral"],
     filters: ["Alle", "Pastell", "Floral", "Blazer", "Leinen", "Casual", "Elegant"],
     outfitGridLabel: "Aktuelle Frühlings-Looks",
-    styleGuideHref: "/blog/seasonal-guides/fruehling-style-guide",
+    styleGuideHref: "/blog/seasonal-guides/spring-style-guide",
     stats: [
       { value: "65+", label: "Looks" },
       { value: "4", label: "Styles" },
@@ -244,7 +244,7 @@ const seasons: Record<string, SeasonData> = {
     ],
     relatedCategories: [
       { label: "Sommerkleider",  href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Herbstlooks",    href: "/outfits/season/herbst",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Herbstlooks",    href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
       { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Beach Looks",    href: "/outfits/occasion/strand",  accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],

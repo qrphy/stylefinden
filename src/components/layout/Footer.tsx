@@ -46,11 +46,11 @@ export default function Footer() {
               Entdecken
             </span>
             <a href="/outfits" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Outfits</a>
-            <a href="/frisuren" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Frisuren</a>
-            <a href="/accessoires" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Accessoires</a>
+            <a href="/hairstyles" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Frisuren</a>
+            <a href="/accessories" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Accessoires</a>
             <a href="/trends" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Trends</a>
             <a href="/blog" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Blog</a>
-            <a href="/stylingleitfaden" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Styling Leitfaden</a>
+            <a href="/style-guide" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Styling Leitfaden</a>
           </div>
 
           {/* Mobil: accordion */}
@@ -65,11 +65,11 @@ export default function Footer() {
             </summary>
             <div className="accordion-content flex-col gap-3">
               <a href="/outfits" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Outfits</a>
-              <a href="/frisuren" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Frisuren</a>
-              <a href="/accessoires" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Accessoires</a>
+              <a href="/hairstyles" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Frisuren</a>
+              <a href="/accessories" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Accessoires</a>
               <a href="/trends" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Trends</a>
               <a href="/blog" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Blog</a>
-              <a href="/stylingleitfaden" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Styling Leitfaden</a>
+              <a href="/style-guide" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Styling Leitfaden</a>
             </div>
           </details>
 
@@ -81,8 +81,8 @@ export default function Footer() {
               Rechtliches
             </span>
             <a href="/impressum" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Impressum</a>
-            <a href="/datenschutz" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Datenschutz</a>
-            <a href="/kontakt" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Kontakt</a>
+            <a href="/privacy" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Datenschutz</a>
+            <a href="/contact" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Kontakt</a>
           </div>
 
           {/* Mobil: accordion */}
@@ -97,8 +97,8 @@ export default function Footer() {
             </summary>
             <div className="accordion-content flex-col gap-3">
               <a href="/impressum" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Impressum</a>
-              <a href="/datenschutz" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Datenschutz</a>
-              <a href="/kontakt" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Kontakt</a>
+              <a href="/privacy" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Datenschutz</a>
+              <a href="/contact" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Kontakt</a>
             </div>
           </details>
 

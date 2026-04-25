@@ -30,7 +30,7 @@ export default function CookieBanner() {
         <p className="text-xs text-gray-500 leading-relaxed max-w-2xl">
           Wir verwenden Cookies, um die Nutzung unserer Website zu analysieren und das Erlebnis zu verbessern.{" "}
           <Link
-            href="/datenschutz"
+            href="/privacy"
             className="underline underline-offset-2 hover:text-black transition-colors duration-200"
           >
             Datenschutzerklärung

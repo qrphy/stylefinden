@@ -42,7 +42,7 @@ type OccasionData = {
 };
 
 const occasions: Record<string, OccasionData> = {
-  "buero": {
+  "office": {
     label: "Büro & Business",
     subtitle: "Professional & Polished",
     description:
@@ -55,7 +55,7 @@ const occasions: Record<string, OccasionData> = {
     tipTags: ["Blazer", "Tailoring", "Neutral", "Polished"],
     filters: ["Alle", "Blazer", "Tailoring", "Smart Casual", "Meeting", "Casual Friday", "Elegant"],
     outfitGridLabel: "Aktuelle Business-Looks",
-    styleGuideHref: "/blog/occasion-guides/buero-style-guide",
+    styleGuideHref: "/blog/occasion-guides/office-style-guide",
     stats: [
       { value: "50+", label: "Looks" },
       { value: "3", label: "Styles" },
@@ -74,7 +74,7 @@ const occasions: Record<string, OccasionData> = {
     relatedCategories: [
       { label: "Classic Style",  href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900" },
       { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700" },
-      { label: "Abend & Event",  href: "/outfits/occasion/abend",    accent: "bg-gray-900",  accentText: "text-white"    },
+      { label: "Abend & Event",  href: "/outfits/occasion/evening",    accent: "bg-gray-900",  accentText: "text-white"    },
       { label: "Winteroutfits",  href: "/outfits/season/winter",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]"},
     ],
     faqs: [
@@ -99,7 +99,7 @@ const occasions: Record<string, OccasionData> = {
     },
   },
 
-  "abend": {
+  "evening": {
     label: "Abend & Event",
     subtitle: "Glamourös & Unvergesslich",
     description:
@@ -112,7 +112,7 @@ const occasions: Record<string, OccasionData> = {
     tipTags: ["Midi", "Silk", "Statement", "Elegant"],
     filters: ["Alle", "Midi", "Maxi", "Mini", "Cocktail", "Gala", "Dinner"],
     outfitGridLabel: "Aktuelle Abend-Looks",
-    styleGuideHref: "/blog/occasion-guides/abend-style-guide",
+    styleGuideHref: "/blog/occasion-guides/evening-style-guide",
     stats: [
       { value: "45+", label: "Looks" },
       { value: "3", label: "Styles" },
@@ -132,7 +132,7 @@ const occasions: Record<string, OccasionData> = {
       { label: "Date Night",     href: "/outfits/occasion/date-night", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
       { label: "Classic Style",  href: "/outfits/style/classic",       accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
       { label: "Winteroutfits",  href: "/outfits/season/winter",       accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Büro & Business",href: "/outfits/occasion/buero",      accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Büro & Business",href: "/outfits/occasion/office",      accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
     ],
     faqs: [
       {
@@ -213,7 +213,7 @@ const occasions: Record<string, OccasionData> = {
     },
   },
 
-  "strand": {
+  "beach": {
     label: "Strand & Urlaub",
     subtitle: "Beach & Vacation Vibes",
     description:
@@ -226,7 +226,7 @@ const occasions: Record<string, OccasionData> = {
     tipTags: ["Linen", "Cover-up", "Maxi", "Kaftan"],
     filters: ["Alle", "Cover-up", "Maxi", "Mini", "Kaftan", "Linen", "Boho"],
     outfitGridLabel: "Aktuelle Beach-Looks",
-    styleGuideHref: "/blog/occasion-guides/strand-style-guide",
+    styleGuideHref: "/blog/occasion-guides/beach-style-guide",
     stats: [
       { value: "55+", label: "Looks" },
       { value: "3", label: "Styles" },
@@ -303,7 +303,7 @@ const occasions: Record<string, OccasionData> = {
       { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Sommerkleider",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Street Style",   href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Strand & Urlaub",href: "/outfits/occasion/strand",   accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Strand & Urlaub",href: "/outfits/occasion/beach",   accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
@@ -357,7 +357,7 @@ const occasions: Record<string, OccasionData> = {
       { id: 8, title: "Monochrome Bold Set",       subtitle: "Statement & Stark",    tag: "Neu",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/monochrome-bold-set"    },
     ],
     relatedCategories: [
-      { label: "Abend & Event",  href: "/outfits/occasion/abend",    accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Abend & Event",  href: "/outfits/occasion/evening",    accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Classic Style",  href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
       { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Sommerkleider",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },

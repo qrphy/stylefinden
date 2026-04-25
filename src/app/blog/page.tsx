@@ -13,15 +13,15 @@ const categories = [
     accent: "#1a1a1a",
   },
   {
-    slug: "frisuren-guides",
-    label: "Frisuren Guides",
-    description: "Schnitte, Pflege & Styling",
+    slug: "hairstyle-guides",
+    label: "Hairstyle Guides",
+    description: "Cuts, care & styling",
     accent: "#1a1a1a",
   },
   {
-    slug: "accessoires-guides",
-    label: "Accessoires Guides",
-    description: "Taschen, Schmuck & Details",
+    slug: "accessories-guides",
+    label: "Accessories Guides",
+    description: "Bags, jewelry & details",
     accent: "#1a1a1a",
   },
   {
@@ -66,7 +66,7 @@ const posts = [
     excerpt: "Das perfekte Accessoire kann ein Outfit komplett verändern. Wir zeigen dir, wann du weniger und wann du mehr einsetzen solltest.",
     date: "3. April 2025",
     readTime: "3 Min",
-    image: "/blog/accessoires-guide.jpg",
+    image: "/blog/accessories-guide.jpg",
     featured: false,
   },
   {

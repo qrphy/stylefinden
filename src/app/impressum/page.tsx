@@ -1,4 +1,13 @@
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: "Impressum",
+    description: "",
+  }
+
+
 export default function ImpressumPage() {
+
     return (
       <main style={{ maxWidth: "600px", margin: "0 auto", padding: "40px", fontSize: "16px"}}>
         <h1>Impressum</h1>

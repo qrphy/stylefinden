@@ -89,7 +89,7 @@ export default function NewsletterForm() {
                 )}
                 <p className="text-xs text-white/30 leading-relaxed">
                   Mit der Anmeldung stimmst du unserer{" "}
-                  <a href="/datenschutz" className="underline underline-offset-2 hover:text-white/60 transition-colors duration-200">
+                  <a href="/privacy" className="underline underline-offset-2 hover:text-white/60 transition-colors duration-200">
                     Datenschutzerklärung
                   </a>{" "}
                   zu.

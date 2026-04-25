@@ -45,7 +45,7 @@ export default function KontaktPage() {
             Impressum
           </a>{" "}
           und unserer{" "}
-          <a href="/datenschutz" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
+          <a href="/privacy" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
             Datenschutzerklärung
           </a>
           .

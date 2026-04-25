@@ -1,10 +1,10 @@
 const filters = [
-  { label: "Alle Frisuren",   href: "/frisuren" },
-  { label: "Kurzhaar",        href: "/frisuren?typ=kurz" },
-  { label: "Bob & Lob",       href: "/frisuren?typ=bob" },
-  { label: "Langhaar",        href: "/frisuren?typ=lang" },
-  { label: "Locken",          href: "/frisuren?typ=locken" },
-  { label: "Hochsteckfrisur", href: "/frisuren?typ=hochsteck" },
+  { label: "Alle Frisuren",   href: "/hairstyles" },
+  { label: "Kurzhaar",        href: "/hairstyles?typ=kurz" },
+  { label: "Bob & Lob",       href: "/hairstyles?typ=bob" },
+  { label: "Langhaar",        href: "/hairstyles?typ=lang" },
+  { label: "Locken",          href: "/hairstyles?typ=locken" },
+  { label: "Hochsteckfrisur", href: "/hairstyles?typ=hochsteck" },
 ];
 
 const hairstyles = [
@@ -34,7 +34,7 @@ export default function HairstyleHighlights() {
               <span className="italic font-light">Haarschnitt.</span>
             </h2>
           </div>
-          <a href="/frisuren" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group">
+          <a href="/hairstyles" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group">
             Alle Frisuren
             <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
               <path d="M5 12h14M13 6l6 6-6 6" />
@@ -60,7 +60,7 @@ export default function HairstyleHighlights() {
           {featured.map((h) => (
             <a
               key={h.id}
-              href={`/frisuren/${h.id}`}
+              href={`/hairstyles/${h.id}`}
               className="group relative md:col-span-1 xl:col-span-2 overflow-hidden bg-gray-100 aspect-[3/4] md:aspect-auto md:row-span-2 flex flex-col justify-end"
             >
               <img src={h.image} alt={h.name} loading="eager" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" />
@@ -85,7 +85,7 @@ export default function HairstyleHighlights() {
           ))}
 
           {rest.map((h) => (
-            <a key={h.id} href={`/frisuren/${h.id}`} className="group flex flex-col gap-3">
+            <a key={h.id} href={`/hairstyles/${h.id}`} className="group flex flex-col gap-3">
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                 <img src={h.image} alt={h.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
@@ -101,7 +101,7 @@ export default function HairstyleHighlights() {
         </div>
 
         <div className="flex justify-center mt-12">
-          <a href="/frisuren" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
+          <a href="/hairstyles" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
             Alle Frisuren entdecken
           </a>
         </div>
