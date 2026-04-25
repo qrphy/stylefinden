@@ -1,26 +1,26 @@
 const seasons = [
   {
-    id: "fruehling",
-    label: "Jetzt aktuell",
-    season: "Frühling 2025",
-    heading: "Frische Looks für den Frühling",
+    id: "spring",
+    label: "Now trending",
+    season: "Spring 2025",
+    heading: "Fresh looks for Spring",
     description:
-      "Pastelltöne, leichte Stoffe und florale Muster – der Frühling bringt neue Energie in deinen Kleiderschrank. Entdecke die schönsten Kombinationen für sonnige Tage.",
-    tags: ["Pastell", "Leinen", "Floral", "Trench Coat"],
-    cta: { label: "Frühlings-Outfits entdecken", href: "/outfits?saison=fruehling" },
+      "Pastel tones, lightweight fabrics and floral patterns — spring brings new energy to your wardrobe. Discover the most beautiful combinations for sunny days.",
+    tags: ["Pastels", "Linen", "Floral", "Trench Coat"],
+    cta: { label: "Discover Spring Outfits", href: "/outfits?season=spring" },
     image: "seasons/sfold.png",
     accent: "bg-[#e8f5e9]",
     accentText: "text-[#2e7d32]",
   },
   {
-    id: "sommer",
-    label: "Vorschau",
-    season: "Sommer 2025",
-    heading: "Sommer Looks, die begeistern",
+    id: "summer",
+    label: "Preview",
+    season: "Summer 2025",
+    heading: "Summer looks that inspire",
     description:
-      "Leichte Kleider, kühle Leinenhosen und mutige Farben – bereite dich jetzt auf die heißen Monate vor. Unsere kuratierten Sommer-Looks machen jede Gelegenheit zum Highlight.",
-    tags: ["Linen", "Maxikleid", "Strandlook", "Sommerfarben"],
-    cta: { label: "Sommer-Outfits entdecken", href: "/outfits?saison=sommer" },
+      "Light dresses, cool linen trousers and bold colors — get ready for the warm months now. Our curated summer looks make every occasion a highlight.",
+    tags: ["Linen", "Maxi Dress", "Beach Look", "Summer Colors"],
+    cta: { label: "Discover Summer Outfits", href: "/outfits?season=summer" },
     image: "seasons/sfold.png",
     accent: "bg-[#EDCFA9]",
     accentText: "text-[#f57f17]",
@@ -34,10 +34,10 @@ export default function SeasonalHighlights() {
 
         <div className="flex flex-col items-center text-center gap-3 mb-12">
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-            Saisonale Guides
+            Seasonal Guides
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
-            Style passend zur Saison
+            Style for the Season
           </h2>
         </div>
 

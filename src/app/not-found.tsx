@@ -11,47 +11,44 @@ export default function NotFound() {
 
         <div className="flex flex-col gap-3">
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-            Seite nicht gefunden
+            Page not found
           </span>
           <h1 className="text-2xl md:text-3xl font-black text-black tracking-tight leading-tight">
-            Diese Seite existiert{" "}
-            <span className="italic font-light">leider nicht.</span>
+            This page{" "}
+            <span className="italic font-light">doesn&apos;t exist.</span>
           </h1>
           <p className="text-sm text-gray-500 leading-relaxed">
-            Die gesuchte Seite wurde möglicherweise verschoben, umbenannt
-            oder existiert nicht mehr. Lass dich von unseren Kategorien
-            neu inspirieren.
+            The page you&apos;re looking for may have been moved, renamed,
+            or no longer exists. Let our categories inspire you again.
           </p>
         </div>
 
-        {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <a
             href="/"
             className="w-full sm:w-auto px-8 py-3 bg-black text-white text-xs font-semibold tracking-widest uppercase hover:bg-gray-800 transition-colors duration-200 text-center"
           >
-            Zur Startseite
+            Go to Homepage
           </a>
           <a
             href="/outfits"
             className="w-full sm:w-auto px-8 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200 text-center"
           >
-            Outfits entdecken
+            Discover Outfits
           </a>
         </div>
 
-        {/* Quick Catagories */}
         <div className="flex flex-col gap-3 w-full pt-2 border-t border-gray-100">
           <span className="text-xs tracking-widest uppercase text-gray-400">
-            Oder direkt zu
+            Or go directly to
           </span>
           <div className="flex flex-wrap justify-center gap-2">
             {[
-              { label: "Frisuren",          href: "/hairstyles" },
-              { label: "Accessoires",       href: "/accessories" },
-              { label: "Trends",            href: "/trends" },
-              { label: "Blog",              href: "/blog" },
-              { label: "Styling Leitfaden", href: "/style-guide" },
+              { label: "Hairstyles",  href: "/hairstyles" },
+              { label: "Accessories", href: "/accessories" },
+              { label: "Trends",      href: "/trends" },
+              { label: "Blog",        href: "/blog" },
+              { label: "Style Guide", href: "/style-guide" },
             ].map((link) => (
               <a
                 key={link.href}

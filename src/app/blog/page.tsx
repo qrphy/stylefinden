@@ -2,14 +2,14 @@ import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Styling-Tipps, Trend-Reports, Frisuren-Guides und saisonale Inspirationen – alles rund um Mode auf Stylefinden.",
+  description: "Styling tips, trend reports, hairstyle guides and seasonal inspiration — everything about fashion on Stylefinden.",
 }
 
 const categories = [
   {
     slug: "trend-reports",
     label: "Trend Reports",
-    description: "Was die Saison bestimmt",
+    description: "What defines the season",
     accent: "#1a1a1a",
   },
   {
@@ -27,13 +27,13 @@ const categories = [
   {
     slug: "occasion-guides",
     label: "Occasion Guides",
-    description: "Der richtige Look für jeden Anlass",
+    description: "The right look for every occasion",
     accent: "#1a1a1a",
   },
   {
     slug: "seasonal-guides",
     label: "Seasonal Guides",
-    description: "Sommer, Herbst, Winter, Frühling",
+    description: "Summer, Autumn, Winter, Spring",
     accent: "#1a1a1a",
   },
 ]
@@ -41,50 +41,50 @@ const categories = [
 const posts = [
   {
     slug: "capsule-wardrobe-guide",
-    category: "Styling Tipps",
-    title: "Capsule Wardrobe: 10 Teile, 30 Outfits",
-    excerpt: "Wie du mit wenigen hochwertigen Basics eine Garderobe aufbaust, die für jede Situation passt – und dabei Geld sparst.",
-    date: "12. April 2025",
-    readTime: "5 Min",
+    category: "Styling Tips",
+    title: "Capsule Wardrobe: 10 Pieces, 30 Outfits",
+    excerpt: "How to build a wardrobe with a few quality basics that works for every situation — and saves you money.",
+    date: "April 12, 2025",
+    readTime: "5 min",
     image: "/blog/capsule-wardrobe.jpg",
     featured: true,
   },
   {
-    slug: "fruehling-trendfarben-2025",
+    slug: "spring-trend-colors-2025",
     category: "Trends",
-    title: "Die Trendfarben des Frühlings 2025",
-    excerpt: "Von zartem Mintgrün bis zu kräftigem Terrakotta – welche Farben diesen Frühling dominieren und wie du sie kombinierst.",
-    date: "8. April 2025",
-    readTime: "4 Min",
+    title: "The Trend Colors of Spring 2025",
+    excerpt: "From soft mint green to bold terracotta — which colors dominate this spring and how to combine them.",
+    date: "April 8, 2025",
+    readTime: "4 min",
     image: "/blog/fruehling-farben.jpg",
     featured: false,
   },
   {
-    slug: "accessoires-weniger-ist-mehr",
-    category: "Accessoires",
-    title: "Weniger ist mehr: Accessoires richtig einsetzen",
-    excerpt: "Das perfekte Accessoire kann ein Outfit komplett verändern. Wir zeigen dir, wann du weniger und wann du mehr einsetzen solltest.",
-    date: "3. April 2025",
-    readTime: "3 Min",
+    slug: "accessories-less-is-more",
+    category: "Accessories",
+    title: "Less Is More: Using Accessories the Right Way",
+    excerpt: "The perfect accessory can completely transform an outfit. We show you when to use less and when to use more.",
+    date: "April 3, 2025",
+    readTime: "3 min",
     image: "/blog/accessories-guide.jpg",
     featured: false,
   },
   {
     slug: "business-casual-guide",
     category: "Outfit Guide",
-    title: "Business Casual: Die goldene Mitte",
-    excerpt: "Zwischen zu formell und zu lässig – so findest du den perfekten Look für moderne Arbeitsumgebungen.",
-    date: "28. März 2025",
-    readTime: "6 Min",
+    title: "Business Casual: The Golden Middle",
+    excerpt: "Between too formal and too casual — how to find the perfect look for modern work environments.",
+    date: "March 28, 2025",
+    readTime: "6 min",
     image: "/blog/business-casual.jpg",
     featured: false,
   },
 ]
 
 const categoryColor: Record<string, string> = {
-  "Styling Tipps": "bg-black text-white",
+  "Styling Tips": "bg-black text-white",
   "Trends":        "bg-white text-black border border-black",
-  "Accessoires":   "bg-gray-100 text-gray-700",
+  "Accessories":   "bg-gray-100 text-gray-700",
   "Outfit Guide":  "bg-gray-900 text-white",
 }
 
@@ -104,11 +104,11 @@ export default function BlogPage() {
             </span>
             <h1 className="text-4xl md:text-5xl font-black text-black tracking-tight leading-tight">
               Inspiration &{" "}
-              <span className="italic font-light">Styling Wissen.</span>
+              <span className="italic font-light">Style Knowledge.</span>
             </h1>
             <p className="text-base text-gray-500 leading-relaxed">
-              Trend-Reports, Frisuren-Guides, Accessoires-Tipps und saisonale
-              Inspirationen – alles, was du für deinen persönlichen Stil brauchst.
+              Trend reports, hairstyle guides, accessories tips and seasonal
+              inspiration — everything you need for your personal style.
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@ export default function BlogPage() {
       <section className="w-full bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12">
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400 block mb-6">
-            Kategorien
+            Categories
           </span>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {categories.map((cat) => (
@@ -156,10 +156,10 @@ export default function BlogPage() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div className="flex flex-col gap-2">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                Neueste Beiträge
+                Latest Posts
               </span>
               <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
-                Zuletzt erschienen.
+                Recently published.
               </h2>
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function BlogPage() {
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed flex-1">{featuredPost.excerpt}</p>
                 <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-2 border-t border-gray-100">
-                  Weiterlesen
+                  Read More
                   <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>

@@ -27,24 +27,25 @@ export const metadata: Metadata = {
     default: "STYLEFINDEN",
     template: "%s | STYLEFINDEN",
   },
-  description: "STYLEFINDEN ist eine Plattform für das Finden des besten Stils für Sie.",
+  description: "STYLEFINDEN is your fashion platform for outfits, hairstyles, accessories and style inspiration — curated for modern women.",
   keywords: [
     "STYLEFINDEN",
     "stylefinden",
+    "fashion",
     "style",
-    "finden",
-    "stylefinden.com",
-    "find style",
-    "styling",
-    "outfit",
-    "clothes"
+    "outfits",
+    "hairstyles",
+    "accessories",
+    "trends",
+    "style guide",
+    "women fashion"
   ],
   openGraph: {
     title: "STYLEFINDEN",
-    description: "STYLEFINDEN",
+    description: "Your fashion platform for outfits, hairstyles and style inspiration.",
     url: "https://stylefinden.com",
     siteName: "STYLEFINDEN",
-    locale: "de_DE",
+    locale: "en_US",
     type: "website",
   },
   icons: {
@@ -67,7 +68,7 @@ export default function RootLayout({
   return (
     <html
 
-      lang="de"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

@@ -7,7 +7,7 @@ type OutfitItem = {
   id: number;
   title: string;
   subtitle: string;
-  tag: "Trending" | "Neu" | "Beliebt";
+  tag: "Trending" | "New" | "Popular";
   style: string;
   image: string;
   href: string;
@@ -43,230 +43,230 @@ type OccasionData = {
 
 const occasions: Record<string, OccasionData> = {
   "office": {
-    label: "Büro & Business",
+    label: "Office & Business",
     subtitle: "Professional & Polished",
     description:
-      "Tailored Blazer, elegante Hosen und clevere Kombinationen – entdecke kuratierte Business-Outfits für Meeting, Office und alle professionellen Anlässe.",
+      "Tailored blazers, elegant trousers and clever combinations – discover curated business outfits for meetings, the office and all professional occasions.",
     accent: "bg-[#f3e5f5]",
     accentText: "text-[#6a1b9a]",
     tipTitle: "Confidence starts with the right outfit,",
     tipBody:
-      "Ein gutes Business-Outfit verbindet Professionalität mit persönlichem Stil – der erste Eindruck zählt.",
+      "A good business outfit connects professionalism with personal style – first impressions count.",
     tipTags: ["Blazer", "Tailoring", "Neutral", "Polished"],
-    filters: ["Alle", "Blazer", "Tailoring", "Smart Casual", "Meeting", "Casual Friday", "Elegant"],
-    outfitGridLabel: "Aktuelle Business-Looks",
+    filters: ["All", "Blazer", "Tailoring", "Smart Casual", "Meeting", "Casual Friday", "Elegant"],
+    outfitGridLabel: "Latest Business Looks",
     styleGuideHref: "/blog/occasion-guides/office-style-guide",
     stats: [
       { value: "50+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Power Blazer Set",        subtitle: "Meeting & Präsentation", tag: "Trending", style: "Blazer",       image: "/outfits/sfold.png", href: "/outfits/power-blazer-set"       },
-      { id: 2, title: "Tailored Wide-Leg Look",  subtitle: "Office & Alltag",        tag: "Beliebt",  style: "Tailoring",    image: "/outfits/sfold.png", href: "/outfits/tailored-wide-leg"      },
-      { id: 3, title: "Minimal Shirt Dress",     subtitle: "Smart Casual",           tag: "Neu",      style: "Smart Casual", image: "/outfits/sfold.png", href: "/outfits/minimal-shirt-dress"    },
-      { id: 4, title: "Monochrome Office Look",  subtitle: "Clean & Professionell",  tag: "Trending", style: "Neutral",      image: "/outfits/sfold.png", href: "/outfits/monochrome-office"      },
-      { id: 5, title: "Pencil Skirt Combo",      subtitle: "Classic Business",       tag: "Beliebt",  style: "Tailoring",    image: "/outfits/sfold.png", href: "/outfits/pencil-skirt-combo"     },
-      { id: 6, title: "Casual Friday Look",      subtitle: "Entspannt & Stylisch",   tag: "Neu",      style: "Casual Friday",image: "/outfits/sfold.png", href: "/outfits/casual-friday-look"     },
-      { id: 7, title: "Structured Midi Dress",   subtitle: "Konferenz & Event",      tag: "Trending", style: "Elegant",      image: "/outfits/sfold.png", href: "/outfits/structured-midi-dress"  },
-      { id: 8, title: "Linen Blazer Outfit",     subtitle: "Sommer Business",        tag: "Neu",      style: "Blazer",       image: "/outfits/sfold.png", href: "/outfits/linen-blazer-outfit"    },
+      { id: 1, title: "Power Blazer Set",        subtitle: "Meeting & Presentation", tag: "Trending", style: "Blazer",        image: "/outfits/sfold.png", href: "/outfits/power-blazer-set"       },
+      { id: 2, title: "Tailored Wide-Leg Look",  subtitle: "Office & Everyday",      tag: "Popular",  style: "Tailoring",     image: "/outfits/sfold.png", href: "/outfits/tailored-wide-leg"      },
+      { id: 3, title: "Minimal Shirt Dress",     subtitle: "Smart Casual",           tag: "New",      style: "Smart Casual",  image: "/outfits/sfold.png", href: "/outfits/minimal-shirt-dress"    },
+      { id: 4, title: "Monochrome Office Look",  subtitle: "Clean & Professional",   tag: "Trending", style: "Neutral",       image: "/outfits/sfold.png", href: "/outfits/monochrome-office"      },
+      { id: 5, title: "Pencil Skirt Combo",      subtitle: "Classic Business",       tag: "Popular",  style: "Tailoring",     image: "/outfits/sfold.png", href: "/outfits/pencil-skirt-combo"     },
+      { id: 6, title: "Casual Friday Look",      subtitle: "Relaxed & Stylish",      tag: "New",      style: "Casual Friday", image: "/outfits/sfold.png", href: "/outfits/casual-friday-look"     },
+      { id: 7, title: "Structured Midi Dress",   subtitle: "Conference & Event",     tag: "Trending", style: "Elegant",       image: "/outfits/sfold.png", href: "/outfits/structured-midi-dress"  },
+      { id: 8, title: "Linen Blazer Outfit",     subtitle: "Summer Business",        tag: "New",      style: "Blazer",        image: "/outfits/sfold.png", href: "/outfits/linen-blazer-outfit"    },
     ],
     relatedCategories: [
-      { label: "Classic Style",  href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900" },
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700" },
-      { label: "Abend & Event",  href: "/outfits/occasion/evening",    accent: "bg-gray-900",  accentText: "text-white"    },
-      { label: "Winteroutfits",  href: "/outfits/season/winter",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]"},
+      { label: "Classic Style",   href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
+      { label: "Minimalist",      href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Winter Outfits",  href: "/outfits/season/winter",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
-        q: "Was zieht man zu einem wichtigen Meeting an?",
-        a: "Ein gut sitzender Blazer in Schwarz, Navy oder Camel über einer einfarbigen Bluse oder einem Turtleneck, kombiniert mit einer taillierten Hose oder einem Midi-Rock, ist die sichere Wahl für wichtige Meetings. Halte die Accessoires minimal und hochwertig.",
+        q: "What do you wear to an important meeting?",
+        a: "A well-fitting blazer in black, navy or camel over a solid blouse or turtleneck, paired with tailored trousers or a midi skirt, is the safe choice for important meetings. Keep accessories minimal and high quality.",
       },
       {
-        q: "Was ist Business Casual?",
-        a: "Business Casual liegt zwischen formell und lässig: Chino oder Smart Trousers statt Anzughose, ein gepflegtes Hemd oder eine Bluse ohne Krawatte, ein strukturierter Blazer oder ein Strickjacke. Sneakers sind in modernen Offices oft akzeptabel, wenn sie sauber und schlicht sind.",
+        q: "What is business casual?",
+        a: "Business casual falls between formal and relaxed: chinos or smart trousers instead of suit trousers, a neat shirt or blouse without a tie, a structured blazer or cardigan. Sneakers are often acceptable in modern offices if they are clean and simple.",
       },
       {
-        q: "Welche Farben funktionieren im Büro am besten?",
-        a: "Neutrale Töne wie Schwarz, Navy, Grau, Camel und Creme sind die verlässliche Basispalette. Akzente in Bordeaux, Dunkelgrün oder tiefem Blau verleihen dem Look Persönlichkeit, ohne zu dominieren. Helle Pastelltöne wirken im Sommer frisch und professionell.",
+        q: "Which colors work best in the office?",
+        a: "Neutral tones like black, navy, grey, camel and cream are the reliable base palette. Accents in bordeaux, dark green or deep blue add personality without dominating. Soft pastels feel fresh and professional in summer.",
       },
     ],
     seo: {
-      title: "Büro & Business Outfits – Professionell & Stilsicher",
+      title: "Office & Business Outfits – Professional & Polished",
       description:
-        "Entdecke kuratierte Business-Outfits: Blazer-Looks, Tailoring-Kombis und Smart-Casual-Outfits für Office, Meeting und alle professionellen Anlässe.",
-      keywords: ["Business Outfit Damen", "Büro Outfit", "Office Look", "Blazer Outfit", "Business Casual", "Arbeitsoutfit Damen", "Meeting Outfit", "Professional Style"],
+        "Discover curated business outfits: blazer looks, tailoring combinations and smart-casual outfits for the office, meetings and all professional occasions.",
+      keywords: ["Business Outfit Women", "Office Outfit", "Office Look", "Blazer Outfit", "Business Casual", "Work Outfit Women", "Meeting Outfit", "Professional Style"],
     },
   },
 
   "evening": {
-    label: "Abend & Event",
-    subtitle: "Glamourös & Unvergesslich",
+    label: "Evening & Event",
+    subtitle: "Glamorous & Unforgettable",
     description:
-      "Elegante Kleider, Statement-Looks und Abend-Outfits für Dinner, Partys und besondere Anlässe – damit du in Erinnerung bleibst.",
+      "Elegant dresses, statement looks and evening outfits for dinners, parties and special occasions – so you leave a lasting impression.",
     accent: "bg-gray-900",
     accentText: "text-white",
-    tipTitle: "Der Abend gehört dir,",
+    tipTitle: "The evening is yours,",
     tipBody:
-      "Ein gutes Abend-Outfit kombiniert Eleganz mit Selbstbewusstsein – für Dinner, Gala oder Cocktail-Party.",
+      "A good evening outfit combines elegance with confidence – for dinner, gala or cocktail party.",
     tipTags: ["Midi", "Silk", "Statement", "Elegant"],
-    filters: ["Alle", "Midi", "Maxi", "Mini", "Cocktail", "Gala", "Dinner"],
-    outfitGridLabel: "Aktuelle Abend-Looks",
+    filters: ["All", "Midi", "Maxi", "Mini", "Cocktail", "Gala", "Dinner"],
+    outfitGridLabel: "Latest Evening Looks",
     styleGuideHref: "/blog/occasion-guides/evening-style-guide",
     stats: [
       { value: "45+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Silk Slip Dress",         subtitle: "Dinner & Cocktail",    tag: "Trending", style: "Midi",    image: "/outfits/sfold.png", href: "/outfits/silk-slip-dress"        },
-      { id: 2, title: "Velvet Midi Dress",        subtitle: "Gala & Event",         tag: "Beliebt",  style: "Midi",    image: "/outfits/sfold.png", href: "/outfits/velvet-midi-dress"      },
-      { id: 3, title: "Sequin Mini Look",         subtitle: "Party & Club",         tag: "Neu",      style: "Mini",    image: "/outfits/sfold.png", href: "/outfits/sequin-mini-look"       },
-      { id: 4, title: "Black Tie Maxi",           subtitle: "Gala & Hochzeit",      tag: "Trending", style: "Maxi",    image: "/outfits/sfold.png", href: "/outfits/black-tie-maxi"         },
-      { id: 5, title: "Blazer & Satin Pants",     subtitle: "Cocktail & Dinner",    tag: "Beliebt",  style: "Cocktail",image: "/outfits/sfold.png", href: "/outfits/blazer-satin-pants"     },
-      { id: 6, title: "Wrap Evening Dress",       subtitle: "Restaurant & Theater", tag: "Neu",      style: "Midi",    image: "/outfits/sfold.png", href: "/outfits/wrap-evening-dress"     },
-      { id: 7, title: "Feather Trim Look",        subtitle: "Statement & Bold",     tag: "Trending", style: "Gala",    image: "/outfits/sfold.png", href: "/outfits/feather-trim-look"      },
-      { id: 8, title: "Classic LBD Elevated",    subtitle: "Zeitlos & Elegant",    tag: "Neu",      style: "Elegant", image: "/outfits/sfold.png", href: "/outfits/classic-lbd-elevated"   },
+      { id: 1, title: "Silk Slip Dress",         subtitle: "Dinner & Cocktail",    tag: "Trending", style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/silk-slip-dress"        },
+      { id: 2, title: "Velvet Midi Dress",        subtitle: "Gala & Event",         tag: "Popular",  style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/velvet-midi-dress"      },
+      { id: 3, title: "Sequin Mini Look",         subtitle: "Party & Club",         tag: "New",      style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/sequin-mini-look"       },
+      { id: 4, title: "Black Tie Maxi",           subtitle: "Gala & Wedding",       tag: "Trending", style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/black-tie-maxi"         },
+      { id: 5, title: "Blazer & Satin Pants",     subtitle: "Cocktail & Dinner",    tag: "Popular",  style: "Cocktail", image: "/outfits/sfold.png", href: "/outfits/blazer-satin-pants"     },
+      { id: 6, title: "Wrap Evening Dress",       subtitle: "Restaurant & Theatre", tag: "New",      style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/wrap-evening-dress"     },
+      { id: 7, title: "Feather Trim Look",        subtitle: "Statement & Bold",     tag: "Trending", style: "Gala",     image: "/outfits/sfold.png", href: "/outfits/feather-trim-look"      },
+      { id: 8, title: "Classic LBD Elevated",    subtitle: "Timeless & Elegant",   tag: "New",      style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/classic-lbd-elevated"   },
     ],
     relatedCategories: [
-      { label: "Date Night",     href: "/outfits/occasion/date-night", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Classic Style",  href: "/outfits/style/classic",       accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
-      { label: "Winteroutfits",  href: "/outfits/season/winter",       accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Büro & Business",href: "/outfits/occasion/office",      accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Date Night",      href: "/outfits/occasion/date-night", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Classic Style",   href: "/outfits/style/classic",       accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
+      { label: "Winter Outfits",  href: "/outfits/season/winter",       accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Office & Business",href: "/outfits/occasion/office",    accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
     ],
     faqs: [
       {
-        q: "Was zieht man zu einem formellen Abendessen an?",
-        a: "Ein elegantes Midi-Kleid in Schwarz, Navy oder Burgund ist die klassische Wahl. Alternativ wirken Satin-Palazzo-Hosen mit einer eleganten Bluse sehr schick. Wähle hochwertige Stoffe wie Seide, Satin oder Samt und ergänze den Look mit dezenten Schmuck und Heels.",
+        q: "What do you wear to a formal dinner?",
+        a: "An elegant midi dress in black, navy or burgundy is the classic choice. Alternatively, satin palazzo trousers with an elegant blouse look very chic. Choose high-quality fabrics like silk, satin or velvet and complete the look with understated jewelry and heels.",
       },
       {
-        q: "Was ist der Unterschied zwischen Cocktail- und Black-Tie-Dress-Code?",
-        a: "Cocktail bedeutet knielange bis midi Kleider oder elegante Hosenanzüge – festlich, aber nicht zwingend Abendkleid. Black Tie verlangt bodenlange Abendkleider oder sehr formelle Midi-Kleider in edlen Stoffen. Semi-formal liegt dazwischen und erlaubt mehr Spielraum.",
+        q: "What is the difference between cocktail and black-tie dress codes?",
+        a: "Cocktail means knee-length to midi dresses or elegant trouser suits – festive, but not necessarily a ball gown. Black tie calls for floor-length evening gowns or very formal midi dresses in fine fabrics. Semi-formal falls in between and allows more flexibility.",
       },
       {
-        q: "Welche Schuhe passen zu Abend-Outfits?",
-        a: "Spitze Stilettos verleihen jedem Abend-Look Eleganz. Strappy Sandalen mit Blockabsatz sind komfortabler und ebenso glamourös. Für einen modernen Touch funktionieren auch flache Mules oder Kitten Heels in Metallic-Tönen zu festlichen Outfits.",
+        q: "Which shoes pair with evening outfits?",
+        a: "Pointed stilettos add elegance to any evening look. Strappy sandals with a block heel are more comfortable and equally glamorous. For a modern touch, flat mules or kitten heels in metallic tones also work beautifully with festive outfits.",
       },
     ],
     seo: {
-      title: "Abend & Event Outfits – Elegante Looks für besondere Anlässe",
+      title: "Evening & Event Outfits – Elegant Looks for Special Occasions",
       description:
-        "Entdecke kuratierte Abend-Outfits: Midi-Kleider, Cocktail-Looks und Gala-Outfits für Dinner, Partys und unvergessliche Abende.",
-      keywords: ["Abendoutfit Damen", "Abendkleid Outfit", "Event Outfit", "Cocktail Outfit", "Abend Look", "Elegant Outfit", "Party Outfit Damen", "Gala Outfit"],
+        "Discover curated evening outfits: midi dresses, cocktail looks and gala outfits for dinners, parties and unforgettable evenings.",
+      keywords: ["Evening Outfit Women", "Evening Dress Outfit", "Event Outfit", "Cocktail Outfit", "Evening Look", "Elegant Outfit", "Party Outfit Women", "Gala Outfit"],
     },
   },
 
   "casual": {
-    label: "Casual & Alltag",
-    subtitle: "Bequem & Stilvoll",
+    label: "Casual & Everyday",
+    subtitle: "Comfortable & Stylish",
     description:
-      "Bequeme Basics, lässige Kombinationen und Alltagslooks, die mühelos stilvoll wirken – für jeden Tag ohne Kompromisse.",
+      "Comfortable basics, relaxed combinations and everyday looks that feel effortlessly stylish – for every day without compromise.",
     accent: "bg-[#fff8e1]",
     accentText: "text-[#f57f17]",
     tipTitle: "Effortless style every day,",
     tipBody:
-      "Casual bedeutet nicht langweilig – die richtigen Basics und ein gutes Fit machen den Unterschied.",
-    tipTags: ["Denim", "Basics", "Komfort", "Layering"],
-    filters: ["Alle", "Denim", "Basics", "Layering", "Weekend", "Sporty", "Cozy"],
-    outfitGridLabel: "Aktuelle Casual-Looks",
+      "Casual doesn't mean boring – the right basics and a good fit make all the difference.",
+    tipTags: ["Denim", "Basics", "Comfort", "Layering"],
+    filters: ["All", "Denim", "Basics", "Layering", "Weekend", "Sporty", "Cozy"],
+    outfitGridLabel: "Latest Casual Looks",
     styleGuideHref: "/blog/occasion-guides/casual-style-guide",
     stats: [
       { value: "75+", label: "Looks" },
       { value: "4", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
       { id: 1, title: "White Tee & Straight Jeans", subtitle: "Everyday Essential",   tag: "Trending", style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/white-tee-straight-jeans" },
-      { id: 2, title: "Cozy Knit & Wide Leg",       subtitle: "Weekend & Relax",      tag: "Beliebt",  style: "Cozy",     image: "/outfits/sfold.png", href: "/outfits/cozy-knit-wide-leg"       },
-      { id: 3, title: "Denim Jacket Layer",          subtitle: "Street & Casual",      tag: "Neu",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/denim-jacket-layer"       },
-      { id: 4, title: "Linen Shirt Outfit",          subtitle: "Sommer Alltag",        tag: "Trending", style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/linen-shirt-outfit"       },
-      { id: 5, title: "Sweatshirt & Midi Skirt",     subtitle: "Casual Chic",          tag: "Beliebt",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/sweatshirt-midi-skirt"    },
-      { id: 6, title: "Oversized Blazer & Jeans",   subtitle: "Smart Casual",         tag: "Neu",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/oversized-blazer-jeans"   },
+      { id: 2, title: "Cozy Knit & Wide Leg",       subtitle: "Weekend & Relax",      tag: "Popular",  style: "Cozy",     image: "/outfits/sfold.png", href: "/outfits/cozy-knit-wide-leg"       },
+      { id: 3, title: "Denim Jacket Layer",          subtitle: "Street & Casual",      tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/denim-jacket-layer"       },
+      { id: 4, title: "Linen Shirt Outfit",          subtitle: "Summer Everyday",      tag: "Trending", style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/linen-shirt-outfit"       },
+      { id: 5, title: "Sweatshirt & Midi Skirt",     subtitle: "Casual Chic",          tag: "Popular",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/sweatshirt-midi-skirt"    },
+      { id: 6, title: "Oversized Blazer & Jeans",   subtitle: "Smart Casual",         tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/oversized-blazer-jeans"   },
       { id: 7, title: "Sporty Chic Look",            subtitle: "Athleisure & City",    tag: "Trending", style: "Sporty",   image: "/outfits/sfold.png", href: "/outfits/sporty-chic-look"         },
-      { id: 8, title: "Flowy Midi & Sneakers",       subtitle: "Feminine Casual",      tag: "Neu",      style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/flowy-midi-sneakers"      },
+      { id: 8, title: "Flowy Midi & Sneakers",       subtitle: "Feminine Casual",      tag: "New",      style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/flowy-midi-sneakers"      },
     ],
     relatedCategories: [
-      { label: "Street Style",   href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Weekend Looks",  href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Frühlingslooks", href: "/outfits/season/fruehling",  accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Street Style",  href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Minimalist",    href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Weekend Looks", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Spring Looks",  href: "/outfits/season/spring",     accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
     ],
     faqs: [
       {
-        q: "Wie macht man aus einem einfachen Casual-Look etwas Besonderes?",
-        a: "Details machen den Unterschied: Ein weißes T-Shirt wirkt mit gut sitzender Straight-Leg-Jeans und weißen Sneakers sofort polished. Füge einen strukturierten Blazer oder eine Lederjacke hinzu für einen sofortigen Upgrade. Hochwertige Basics und ein guter Fit sind alles.",
+        q: "How do you make a simple casual look stand out?",
+        a: "Details make the difference: a white tee looks instantly polished with well-fitting straight-leg jeans and white sneakers. Add a structured blazer or leather jacket for an immediate upgrade. High-quality basics and a good fit are everything.",
       },
       {
-        q: "Was sind die must-have Basics für einen casual Kleiderschrank?",
-        a: "Weißes T-Shirt, graues Sweatshirt, gut sitzende Straight-Jeans, Leinenhose in Beige oder Schwarz, einfaches Midi-Kleid, klassische Sneakers und eine Denim- oder Lederjacke bilden die perfekte Casual-Basis für endlose Kombinationen.",
+        q: "What are the must-have basics for a casual wardrobe?",
+        a: "White tee, grey sweatshirt, well-fitting straight jeans, linen trousers in beige or black, a simple midi dress, classic sneakers and a denim or leather jacket form the perfect casual foundation for endless combinations.",
       },
       {
-        q: "Wie kombiniert man Sneakers stilvoll?",
-        a: "Clean White Sneakers gehen zu fast allem – von Midi-Röcken bis Blazer-Outfits. Chunky-Sneakers verleihen femininen Looks einen modernen Kontrast. Wichtig: Die Sneakers sollen sauber und in gutem Zustand sein. Ein simpler, sportlicher Schuh hebt das gesamte Outfit.",
+        q: "How do you style sneakers elegantly?",
+        a: "Clean white sneakers go with almost everything – from midi skirts to blazer outfits. Chunky sneakers give feminine looks a modern contrast. The key: sneakers should be clean and in good condition. A simple, sporty shoe elevates the entire outfit.",
       },
     ],
     seo: {
-      title: "Casual & Alltags Outfits – Bequem, Stilvoll & Mühelos",
+      title: "Casual & Everyday Outfits – Comfortable, Stylish & Effortless",
       description:
-        "Entdecke kuratierte Casual-Outfits: Denim-Looks, lässige Basics, Layering-Kombinationen und Alltagslooks für jeden Tag ohne Kompromisse.",
-      keywords: ["Casual Outfit Damen", "Alltagsoutfit", "Lässige Outfits", "Casual Look", "Basic Outfit", "Weekend Outfit", "Casual Chic", "Everyday Style"],
+        "Discover curated casual outfits: denim looks, relaxed basics, layering combinations and everyday looks for every day without compromise.",
+      keywords: ["Casual Outfit Women", "Everyday Outfit", "Relaxed Outfits", "Casual Look", "Basic Outfit", "Weekend Outfit", "Casual Chic", "Everyday Style"],
     },
   },
 
   "beach": {
-    label: "Strand & Urlaub",
+    label: "Beach & Vacation",
     subtitle: "Beach & Vacation Vibes",
     description:
-      "Leichte Cover-ups, sommerliche Kleider und Urlaubslooks – entdecke kuratierte Beach-Outfits für Meer, Pool und Sommerurlaub.",
+      "Light cover-ups, summery dresses and vacation looks – discover curated beach outfits for the sea, pool and summer holidays.",
     accent: "bg-[#e3f2fd]",
     accentText: "text-[#1565c0]",
     tipTitle: "Sun, sea & style,",
     tipBody:
-      "Der perfekte Strandlook ist leicht, luftig und trotzdem stilvoll – von Morgen am Meer bis zum Sonnenuntergang.",
+      "The perfect beach look is light, breezy and still stylish – from morning by the sea to sunset.",
     tipTags: ["Linen", "Cover-up", "Maxi", "Kaftan"],
-    filters: ["Alle", "Cover-up", "Maxi", "Mini", "Kaftan", "Linen", "Boho"],
-    outfitGridLabel: "Aktuelle Beach-Looks",
+    filters: ["All", "Cover-up", "Maxi", "Mini", "Kaftan", "Linen", "Boho"],
+    outfitGridLabel: "Latest Beach Looks",
     styleGuideHref: "/blog/occasion-guides/beach-style-guide",
     stats: [
       { value: "55+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Linen Cover-up Dress",    subtitle: "Strand & Pool",        tag: "Trending", style: "Cover-up", image: "/outfits/sfold.png", href: "/outfits/linen-cover-up-dress"   },
-      { id: 2, title: "Boho Beach Maxi",          subtitle: "Urlaub & Entspannung", tag: "Beliebt",  style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/boho-beach-maxi"        },
-      { id: 3, title: "Crochet Mini & Shorts",   subtitle: "Beach & Casual",       tag: "Neu",      style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/crochet-mini-shorts"    },
-      { id: 4, title: "Stripe Linen Set",         subtitle: "Promenade & Cafe",     tag: "Trending", style: "Linen",    image: "/outfits/sfold.png", href: "/outfits/stripe-linen-set"       },
-      { id: 5, title: "Kaftan Look",              subtitle: "Pool & Sundowner",     tag: "Beliebt",  style: "Kaftan",   image: "/outfits/sfold.png", href: "/outfits/kaftan-look"            },
-      { id: 6, title: "Denim Cut-off & Blouse",  subtitle: "Strandspaziergang",    tag: "Neu",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/denim-cutoff-blouse"    },
-      { id: 7, title: "White Maxi Beach Dress",  subtitle: "Elegant am Meer",      tag: "Trending", style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/white-maxi-beach-dress" },
-      { id: 8, title: "Resort Coord Set",        subtitle: "Luxus & Urlaub",       tag: "Neu",      style: "Cover-up", image: "/outfits/sfold.png", href: "/outfits/resort-coord-set"       },
+      { id: 1, title: "Linen Cover-up Dress",    subtitle: "Beach & Pool",            tag: "Trending", style: "Cover-up", image: "/outfits/sfold.png", href: "/outfits/linen-cover-up-dress"   },
+      { id: 2, title: "Boho Beach Maxi",          subtitle: "Vacation & Relaxation",   tag: "Popular",  style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/boho-beach-maxi"        },
+      { id: 3, title: "Crochet Mini & Shorts",   subtitle: "Beach & Casual",           tag: "New",      style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/crochet-mini-shorts"    },
+      { id: 4, title: "Stripe Linen Set",         subtitle: "Promenade & Café",         tag: "Trending", style: "Linen",    image: "/outfits/sfold.png", href: "/outfits/stripe-linen-set"       },
+      { id: 5, title: "Kaftan Look",              subtitle: "Pool & Sundowner",         tag: "Popular",  style: "Kaftan",   image: "/outfits/sfold.png", href: "/outfits/kaftan-look"            },
+      { id: 6, title: "Denim Cut-off & Blouse",  subtitle: "Beach Stroll",             tag: "New",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/denim-cutoff-blouse"    },
+      { id: 7, title: "White Maxi Beach Dress",  subtitle: "Elegant by the Sea",       tag: "Trending", style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/white-maxi-beach-dress" },
+      { id: 8, title: "Resort Coord Set",        subtitle: "Luxury & Vacation",        tag: "New",      style: "Cover-up", image: "/outfits/sfold.png", href: "/outfits/resort-coord-set"       },
     ],
     relatedCategories: [
-      { label: "Sommerkleider",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Festival Style", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Casual & Alltag",href: "/outfits/occasion/casual",   accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
+      { label: "Summer Dresses",    href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Boho Style",        href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Festival Style",    href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Casual & Everyday", href: "/outfits/occasion/casual",   accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
-        q: "Was zieht man über den Bikini am Strand an?",
-        a: "Ein leichtes Linen-Cover-up-Kleid ist die vielseitigste Option – es funktioniert vom Strand bis zum Strandrestaurant. Alternativ sind Kaftane in bunten Prints oder schlichten Tönen ein eleganter Begleiter. Denim-Shorts mit einer offenen Leinenbluse ergeben einen lässigen Look.",
+        q: "What do you wear over a bikini at the beach?",
+        a: "A light linen cover-up dress is the most versatile option – it works from the beach to a beach restaurant. Alternatively, kaftans in colorful prints or simple tones are an elegant companion. Denim shorts with an open linen blouse create a relaxed look.",
       },
       {
-        q: "Was trägt man am Abend am Urlaubsort?",
-        a: "Eine fließende Maxi-Kleid in kräftigen Sommerfarben oder einem Boho-Print ist perfekt für Sundowner und Abendessen am Urlaubsort. Mit flachen Sandalen und goldenem Schmuck wirkt der Look müheloser glamourös ohne formell zu sein.",
+        q: "What do you wear in the evening at your vacation destination?",
+        a: "A flowing maxi dress in vibrant summer colors or a boho print is perfect for sundowners and dinner at your vacation spot. With flat sandals and gold jewelry, the look becomes effortlessly glamorous without being formal.",
       },
       {
-        q: "Welche Materialien sind ideal für Strand-Outfits?",
-        a: "Leinen ist das ultimative Strandmaterial – atmungsaktiv, trocknet schnell und sieht auch zerknittert chic aus. Baumwoll-Jersey und Viskose sind ebenfalls gute Optionen. Vermeide synthetische Materialien, die bei Hitze unangenehm werden können.",
+        q: "What materials are ideal for beach outfits?",
+        a: "Linen is the ultimate beach material – breathable, dries quickly and looks chic even crumpled. Cotton jersey and viscose are also great options. Avoid synthetic materials that can become uncomfortable in the heat.",
       },
     ],
     seo: {
-      title: "Strand & Urlaub Outfits – Beach Looks für den Sommer",
+      title: "Beach & Vacation Outfits – Beach Looks for Summer",
       description:
-        "Entdecke kuratierte Beach-Outfits: Cover-ups, Maxi-Kleider, Kaftane und Urlaubslooks für Strand, Pool und sommerliche Abende.",
-      keywords: ["Strand Outfit", "Beach Look", "Urlaub Outfit", "Cover-up Kleid", "Strandmode", "Beach Style", "Sommerurlaub Outfit", "Kaftan Outfit"],
+        "Discover curated beach outfits: cover-ups, maxi dresses, kaftans and vacation looks for beach, pool and summer evenings.",
+      keywords: ["Beach Outfit", "Beach Look", "Vacation Outfit", "Cover-up Dress", "Beach Fashion", "Beach Style", "Summer Holiday Outfit", "Kaftan Outfit"],
     },
   },
 
@@ -274,113 +274,113 @@ const occasions: Record<string, OccasionData> = {
     label: "Festival & Outdoor",
     subtitle: "Boho, Bold & Free",
     description:
-      "Fransen, Denim, florale Prints und verspielte Layering-Looks – entdecke kuratierte Festival-Outfits für Open Air, Konzerte und Outdoor-Events.",
+      "Fringe, denim, floral prints and playful layering looks – discover curated festival outfits for open air events, concerts and outdoor occasions.",
     accent: "bg-[#fce4ec]",
     accentText: "text-[#c62828]",
     tipTitle: "Dance like nobody's watching,",
     tipBody:
-      "Das perfekte Festival-Outfit ist bequem, ausdrucksstark und überlebt auch einen langen Tag in der Sonne.",
-    tipTags: ["Boho", "Denim", "Fransen", "Floral"],
-    filters: ["Alle", "Boho", "Denim", "Floral", "Fransen", "Layering", "Bold"],
-    outfitGridLabel: "Aktuelle Festival-Looks",
+      "The perfect festival outfit is comfortable, expressive and survives a long day in the sun.",
+    tipTags: ["Boho", "Denim", "Fringe", "Floral"],
+    filters: ["All", "Boho", "Denim", "Floral", "Fringe", "Layering", "Bold"],
+    outfitGridLabel: "Latest Festival Looks",
     styleGuideHref: "/blog/occasion-guides/festival-style-guide",
     stats: [
       { value: "50+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
       { id: 1, title: "Boho Fringe Dress",        subtitle: "Festival & Open Air",  tag: "Trending", style: "Boho",     image: "/outfits/sfold.png", href: "/outfits/boho-fringe-dress"      },
-      { id: 2, title: "Denim & Crop Top",          subtitle: "Konzert & Outdoor",    tag: "Beliebt",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-crop-top"         },
-      { id: 3, title: "Floral Maxi & Boots",       subtitle: "Boho & Wild",          tag: "Neu",      style: "Floral",   image: "/outfits/sfold.png", href: "/outfits/floral-maxi-boots"      },
-      { id: 4, title: "Crochet & Denim Shorts",   subtitle: "Sommer Festival",      tag: "Trending", style: "Boho",     image: "/outfits/sfold.png", href: "/outfits/crochet-denim-shorts"   },
-      { id: 5, title: "Embroidered Midi Look",     subtitle: "Verspielt & Feminin",  tag: "Beliebt",  style: "Floral",   image: "/outfits/sfold.png", href: "/outfits/embroidered-midi-look"  },
-      { id: 6, title: "Layered Boho Set",          subtitle: "Layering & Style",     tag: "Neu",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/layered-boho-set"       },
+      { id: 2, title: "Denim & Crop Top",          subtitle: "Concert & Outdoor",    tag: "Popular",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-crop-top"         },
+      { id: 3, title: "Floral Maxi & Boots",       subtitle: "Boho & Wild",          tag: "New",      style: "Floral",   image: "/outfits/sfold.png", href: "/outfits/floral-maxi-boots"      },
+      { id: 4, title: "Crochet & Denim Shorts",   subtitle: "Summer Festival",      tag: "Trending", style: "Boho",     image: "/outfits/sfold.png", href: "/outfits/crochet-denim-shorts"   },
+      { id: 5, title: "Embroidered Midi Look",     subtitle: "Playful & Feminine",   tag: "Popular",  style: "Floral",   image: "/outfits/sfold.png", href: "/outfits/embroidered-midi-look"  },
+      { id: 6, title: "Layered Boho Set",          subtitle: "Layering & Style",     tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/layered-boho-set"       },
       { id: 7, title: "Tie-Dye & Wide Leg",        subtitle: "Retro & Bold",         tag: "Trending", style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/tie-dye-wide-leg"       },
-      { id: 8, title: "Western Fringe Jacket",     subtitle: "Statement Look",       tag: "Neu",      style: "Fransen",  image: "/outfits/sfold.png", href: "/outfits/western-fringe-jacket"  },
+      { id: 8, title: "Western Fringe Jacket",     subtitle: "Statement Look",       tag: "New",      style: "Fringe",   image: "/outfits/sfold.png", href: "/outfits/western-fringe-jacket"  },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Sommerkleider",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Street Style",   href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Strand & Urlaub",href: "/outfits/occasion/beach",   accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Boho Style",      href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Summer Dresses",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Street Style",    href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Beach & Vacation",href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
-        q: "Was zieht man zu einem Outdoor-Festival an?",
-        a: "Priorität haben Komfort und Praktikabilität: Bequeme Schuhe (Boots oder Sneakers), atmungsaktive Stoffe und Layering-fähige Stücke. Ein florale Boho-Kleid mit Cowboystiefeln, oder Denim-Shorts mit einem bestickten Top und Fransen-Weste sind klassische Festival-Looks.",
+        q: "What do you wear to an outdoor festival?",
+        a: "Priority is comfort and practicality: comfortable shoes (boots or sneakers), breathable fabrics and layerable pieces. A floral boho dress with cowboy boots, or denim shorts with an embroidered top and fringe vest are classic festival looks.",
       },
       {
-        q: "Wie schützt man sich beim Festival vor Wetter?",
-        a: "Ein leichter Kimono oder eine Denim-Jacke für kühlere Abende, ein Hut für Sonnenschutz und ein kleiner Rucksack statt einer Handtasche sind praktische Festival-Essentials. Wähle Stoffe, die auch nach einem langen Tag noch gut aussehen – Leinen und Jersey sind ideal.",
+        q: "How do you protect yourself from the weather at a festival?",
+        a: "A light kimono or denim jacket for cooler evenings, a hat for sun protection and a small backpack instead of a handbag are practical festival essentials. Choose fabrics that still look good after a long day – linen and jersey are ideal.",
       },
       {
-        q: "Welche Schuhe trägt man auf Festivals?",
-        a: "Cowboy-Boots sind der klassische Festival-Schuh – sie sehen gut aus, sind robust und bieten Unterstützung. Chunky-Sandalen mit Plateausohle oder robuste Sneakers funktionieren ebenfalls. Vermeide Heels auf unebenen Festivalgelände.",
+        q: "Which shoes do you wear at festivals?",
+        a: "Cowboy boots are the classic festival shoe – they look great, are sturdy and provide support. Chunky sandals with a platform sole or robust sneakers also work well. Avoid heels on uneven festival grounds.",
       },
     ],
     seo: {
-      title: "Festival & Outdoor Outfits – Boho, Bold & Unvergesslich",
+      title: "Festival & Outdoor Outfits – Boho, Bold & Unforgettable",
       description:
-        "Entdecke kuratierte Festival-Outfits: Boho-Kleider, Denim-Looks, Fransen-Styles und verspielte Kombinationen für Open Air, Konzerte und Outdoor-Events.",
-      keywords: ["Festival Outfit Damen", "Open Air Outfit", "Boho Festival Look", "Konzert Outfit", "Festival Mode", "Outdoor Outfit", "Sommerfestival Outfit", "Fransen Outfit"],
+        "Discover curated festival outfits: boho dresses, denim looks, fringe styles and playful combinations for open air events, concerts and outdoor occasions.",
+      keywords: ["Festival Outfit Women", "Open Air Outfit", "Boho Festival Look", "Concert Outfit", "Festival Fashion", "Outdoor Outfit", "Summer Festival Outfit", "Fringe Outfit"],
     },
   },
 
   "date-night": {
     label: "Date Night",
-    subtitle: "Romantisch & Selbstbewusst",
+    subtitle: "Romantic & Confident",
     description:
-      "Romantische Kleider, selbstbewusste Kombinationen und Looks, die einen bleibenden Eindruck hinterlassen – für den unvergesslichen Abend.",
+      "Romantic dresses, confident combinations and looks that leave a lasting impression – for an unforgettable evening.",
     accent: "bg-[#fce4ec]",
     accentText: "text-[#c62828]",
     tipTitle: "Dress for the moment,",
     tipBody:
-      "Ein gutes Date-Night-Outfit strahlt Selbstbewusstsein aus – wähle etwas, in dem du dich wirklich wohlfühlst.",
-    tipTags: ["Midi", "Romantic", "Bold", "Feminin"],
-    filters: ["Alle", "Midi", "Mini", "Maxi", "Romantic", "Bold", "Elegant"],
-    outfitGridLabel: "Aktuelle Date Night-Looks",
+      "A good date night outfit radiates confidence – choose something you truly feel good in.",
+    tipTags: ["Midi", "Romantic", "Bold", "Feminine"],
+    filters: ["All", "Midi", "Mini", "Maxi", "Romantic", "Bold", "Elegant"],
+    outfitGridLabel: "Latest Date Night Looks",
     styleGuideHref: "/blog/occasion-guides/date-night-style-guide",
     stats: [
       { value: "40+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Wrap Satin Midi",          subtitle: "Dinner & Romantik",    tag: "Trending", style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/wrap-satin-midi"        },
-      { id: 2, title: "Floral Midi Dress",         subtitle: "Café & Spaziergang",   tag: "Beliebt",  style: "Romantic", image: "/outfits/sfold.png", href: "/outfits/floral-date-midi"       },
-      { id: 3, title: "Leather Mini Skirt Look",  subtitle: "Bold & Confident",     tag: "Neu",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/leather-mini-skirt"     },
+      { id: 1, title: "Wrap Satin Midi",          subtitle: "Dinner & Romance",     tag: "Trending", style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/wrap-satin-midi"        },
+      { id: 2, title: "Floral Midi Dress",         subtitle: "Café & Stroll",        tag: "Popular",  style: "Romantic", image: "/outfits/sfold.png", href: "/outfits/floral-date-midi"       },
+      { id: 3, title: "Leather Mini Skirt Look",  subtitle: "Bold & Confident",     tag: "New",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/leather-mini-skirt"     },
       { id: 4, title: "Slip Dress & Blazer",       subtitle: "Casual Chic Date",     tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/slip-dress-blazer"      },
-      { id: 5, title: "Off-Shoulder Mini",         subtitle: "Feminin & Flirty",     tag: "Beliebt",  style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/off-shoulder-mini"      },
-      { id: 6, title: "Wide Leg & Silk Top",       subtitle: "Sophisticated Date",   tag: "Neu",      style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/wide-leg-silk-top"      },
-      { id: 7, title: "Lace Detail Dress",         subtitle: "Romantisch & Zart",    tag: "Trending", style: "Romantic", image: "/outfits/sfold.png", href: "/outfits/lace-detail-dress"      },
-      { id: 8, title: "Monochrome Bold Set",       subtitle: "Statement & Stark",    tag: "Neu",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/monochrome-bold-set"    },
+      { id: 5, title: "Off-Shoulder Mini",         subtitle: "Feminine & Flirty",    tag: "Popular",  style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/off-shoulder-mini"      },
+      { id: 6, title: "Wide Leg & Silk Top",       subtitle: "Sophisticated Date",   tag: "New",      style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/wide-leg-silk-top"      },
+      { id: 7, title: "Lace Detail Dress",         subtitle: "Romantic & Delicate",  tag: "Trending", style: "Romantic", image: "/outfits/sfold.png", href: "/outfits/lace-detail-dress"      },
+      { id: 8, title: "Monochrome Bold Set",       subtitle: "Statement & Strong",   tag: "New",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/monochrome-bold-set"    },
     ],
     relatedCategories: [
-      { label: "Abend & Event",  href: "/outfits/occasion/evening",    accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Classic Style",  href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Sommerkleider",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Classic Style",   href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
+      { label: "Minimalist",      href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Summer Dresses",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
-        q: "Was zieht man zu einem ersten Date an?",
-        a: "Wähle etwas, in dem du dich wirklich wohlfühlst und selbstbewusst fühlst. Ein gut sitzendes Midi-Kleid oder ein elegantes Casual-Outfit ist meist die beste Wahl – es zeigt Aufwand, ohne overdressed zu wirken. Vermeide komplett neue, ungetragene Stücke, da du weißt, wie sie sich anfühlen.",
+        q: "What do you wear on a first date?",
+        a: "Choose something you truly feel comfortable and confident in. A well-fitting midi dress or an elegant casual outfit is usually the best choice – it shows effort without looking overdressed. Avoid completely new, unworn pieces since you won't know how they feel.",
       },
       {
-        q: "Was ist das perfekte Date-Night-Outfit für ein Restaurantdate?",
-        a: "Ein Wrap-Midi in Satin oder Viskose ist die klassische und sichere Wahl. Alternativ: eine seidig wirkende Bluse zu einer gut sitzenden Hose oder einem Midi-Rock. Ergänze den Look mit dezenten Heels oder eleganten Sandalen und minimalem, hochwertigem Schmuck.",
+        q: "What is the perfect date night outfit for a restaurant date?",
+        a: "A wrap midi in satin or viscose is the classic and safe choice. Alternatively: a silky blouse with well-fitting trousers or a midi skirt. Complete the look with subtle heels or elegant sandals and minimal, high-quality jewelry.",
       },
       {
-        q: "Wie macht man aus einem Alltagsoutfit einen Date-Night-Look?",
-        a: "Einfache Upgrades: Tausche Sneakers gegen Heels oder elegante Sandalen, füge eine Satin-Clutch hinzu, ersetze das Alltagsoberteil durch ein seidigeres oder mit einem besonderen Detail (Ausschnitt, Rückenausschnitt). Ein roter Lippenstift transformiert jeden Look.",
+        q: "How do you transform an everyday outfit into a date night look?",
+        a: "Simple upgrades: swap sneakers for heels or elegant sandals, add a satin clutch, replace the everyday top with something silkier or featuring a special detail (neckline, open back). A red lipstick transforms any look.",
       },
     ],
     seo: {
-      title: "Date Night Outfits – Romantische & Selbstbewusste Looks",
+      title: "Date Night Outfits – Romantic & Confident Looks",
       description:
-        "Entdecke kuratierte Date-Night-Outfits: Romantische Kleider, elegante Kombinationen und selbstbewusste Looks für unvergessliche Abende.",
-      keywords: ["Date Night Outfit", "Date Outfit Damen", "Romantisches Outfit", "Erster Date Outfit", "Abendlook Date", "Date Look", "Romantische Mode", "Dinner Date Outfit"],
+        "Discover curated date night outfits: romantic dresses, elegant combinations and confident looks for unforgettable evenings.",
+      keywords: ["Date Night Outfit", "Date Outfit Women", "Romantic Outfit", "First Date Outfit", "Evening Look Date", "Date Look", "Romantic Fashion", "Dinner Date Outfit"],
     },
   },
 };
@@ -410,7 +410,7 @@ export async function generateMetadata(
       description: occasion.seo.description,
       url: `https://stylefinden.com/outfits/occasion/${slug}`,
       type: "website",
-      locale: "de_DE",
+      locale: "en_US",
       siteName: "STYLEFINDEN",
     },
   };
@@ -420,8 +420,8 @@ export async function generateMetadata(
 
 const tagColors: Record<string, string> = {
   Trending: "bg-black text-white",
-  Neu:      "bg-white text-black border border-black",
-  Beliebt:  "bg-gray-100 text-gray-700",
+  New:      "bg-white text-black border border-black",
+  Popular:  "bg-gray-100 text-gray-700",
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -440,11 +440,11 @@ export default async function OccasionPage(
       {/* ── Breadcrumb ── */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-6 pb-0">
         <nav className="flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors duration-200">Start</a>
+          <a href="/" className="hover:text-black transition-colors duration-200">Home</a>
           <span>/</span>
           <a href="/outfits" className="hover:text-black transition-colors duration-200">Outfits</a>
           <span>/</span>
-          <a href="/outfits/occasion" className="hover:text-black transition-colors duration-200">Anlass</a>
+          <a href="/outfits/occasion" className="hover:text-black transition-colors duration-200">Occasion</a>
           <span>/</span>
           <span className="text-black">{occasion.label}</span>
         </nav>
@@ -482,11 +482,11 @@ export default async function OccasionPage(
             {/* Accent Card */}
             <div className={`hidden md:flex flex-col gap-3 ${occasion.accent} border border-gray-100 p-8 xl:p-10 w-full md:w-80 xl:w-96 flex-shrink-0`}>
               <span className={`text-xs font-semibold tracking-widest uppercase ${occasion.accentText === "text-white" ? "text-gray-500" : occasion.accentText}`}>
-                Style Tipp
+                Style Tip
               </span>
               <p className="text-sm md:text-base font-black text-black leading-snug tracking-tight">
                 {occasion.tipTitle}<br />
-                <span className="italic font-light">für diesen Anlass.</span>
+                <span className="italic font-light">for this occasion.</span>
               </p>
               <p className="text-xs text-gray-600 leading-relaxed">{occasion.tipBody}</p>
               <div className="flex flex-wrap gap-2 mt-2">
@@ -529,11 +529,11 @@ export default async function OccasionPage(
 
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Kuratierte Auswahl</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Curated Selection</span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">{occasion.outfitGridLabel}</h2>
             </div>
             <a href="/outfits" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group">
-              Alle Outfits
+              All Outfits
               <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
@@ -571,8 +571,8 @@ export default async function OccasionPage(
           </div>
 
           <div className="flex justify-center mt-12">
-            <a href={`/outfits?anlass=${slug}`} className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-              Mehr {occasion.label} laden
+            <a href={`/outfits?occasion=${slug}`} className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
+              Load More {occasion.label}
             </a>
           </div>
 
@@ -584,8 +584,8 @@ export default async function OccasionPage(
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
 
           <div className="flex flex-col items-center text-center gap-3 mb-10">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Passend dazu</span>
-            <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">Ähnliche Kategorien</h2>
+            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">You Might Also Like</span>
+            <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">Similar Categories</h2>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
@@ -595,7 +595,7 @@ export default async function OccasionPage(
                 href={cat.href}
                 className={`group flex flex-col justify-between gap-6 p-6 md:p-8 ${cat.accent} hover:opacity-90 transition-opacity duration-200`}
               >
-                <span className={`text-xs font-semibold tracking-widest uppercase ${cat.accentText}`}>Entdecken</span>
+                <span className={`text-xs font-semibold tracking-widest uppercase ${cat.accentText}`}>Discover</span>
                 <div className="flex items-end justify-between">
                   <h3 className="text-sm md:text-base font-black text-black tracking-tight leading-tight">{cat.label}</h3>
                   <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current text-black opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0 ml-2" fill="none" strokeWidth={2}>
@@ -617,11 +617,11 @@ export default async function OccasionPage(
             <div className="flex flex-col gap-5">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Style Guide</span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-                {occasion.label} <span className="italic font-light">richtig stylen</span>
+                {occasion.label} <span className="italic font-light">style it right</span>
               </h2>
               <p className="text-sm text-gray-600 leading-relaxed">{occasion.description}</p>
               <a href={occasion.styleGuideHref} className="self-start flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-600 transition-colors duration-200 group">
-                Zum Style Guide
+                View Style Guide
                 <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
@@ -629,7 +629,7 @@ export default async function OccasionPage(
             </div>
 
             <div className="flex flex-col gap-6">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Häufige Fragen</span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Frequently Asked Questions</span>
               {occasion.faqs.map((faq, i) => (
                 <div key={i} className="flex flex-col gap-2 pb-6 border-b border-gray-200 last:border-0 last:pb-0">
                   <h3 className="text-sm font-black text-black tracking-tight">{faq.q}</h3>

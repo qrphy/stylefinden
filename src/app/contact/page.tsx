@@ -1,22 +1,22 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Kontakt",
-  description: "Kontaktiere uns bei Fragen, Anregungen oder Kooperationsanfragen.",
+  title: "Contact",
+  description: "Get in touch with us for questions, feedback or collaboration inquiries.",
 }
 
-export default function KontaktPage() {
+export default function ContactPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-bold mb-4">Kontakt</h1>
+      <h1 className="text-3xl font-bold mb-4">Contact</h1>
       <p className="text-gray-500 mb-12">
-        Hast du Fragen, Anregungen oder möchtest du mit uns zusammenarbeiten?
-        Schreib uns einfach eine E-Mail – wir melden uns so schnell wie möglich.
+        Do you have questions, suggestions or would you like to collaborate?
+        Just send us an email — we&apos;ll get back to you as soon as possible.
       </p>
 
       <div className="border border-gray-200 p-8">
         <p className="text-xs tracking-widest uppercase text-gray-400 font-semibold mb-4">
-          E-Mail
+          Email
         </p>
         <a
           href="mailto:contact@stylefinden.com"
@@ -28,25 +28,25 @@ export default function KontaktPage() {
         <hr className="border-gray-100 my-8" />
 
         <p className="text-xs tracking-widest uppercase text-gray-400 font-semibold mb-4">
-          Antwortzeit
+          Response Time
         </p>
         <p className="text-sm text-gray-600">
-          Wir antworten in der Regel innerhalb von 1–3 Werktagen.
+          We typically respond within 1–3 business days.
         </p>
 
         <hr className="border-gray-100 my-8" />
 
         <p className="text-xs tracking-widest uppercase text-gray-400 font-semibold mb-4">
-          Rechtliches
+          Legal
         </p>
         <p className="text-sm text-gray-600">
-          Weitere Informationen findest du in unserem{" "}
-          <a href="/impressum" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
-            Impressum
+          For more information please see our{" "}
+          <a href="/legal" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
+            Legal Notice
           </a>{" "}
-          und unserer{" "}
+          and{" "}
           <a href="/privacy" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
-            Datenschutzerklärung
+            Privacy Policy
           </a>
           .
         </p>

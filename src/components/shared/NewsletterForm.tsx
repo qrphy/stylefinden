@@ -16,11 +16,11 @@ export default function NewsletterForm() {
     try {
       await new Promise((r) => setTimeout(r, 800));
       setStatus("success");
-      setMessage("Danke! Du bist jetzt dabei. Schau auch in deinen Spam-Ordner.");
+      setMessage("Thank you! You're now subscribed. Check your spam folder too.");
       setEmail("");
     } catch {
       setStatus("error");
-      setMessage("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
+      setMessage("Something went wrong. Please try again.");
     }
   }
 
@@ -32,13 +32,13 @@ export default function NewsletterForm() {
           <div className="flex flex-col gap-4 xl:max-w-lg">
             <span className="text-xs font-semibold tracking-widest uppercase text-white/40">Newsletter</span>
             <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
-              Kein Trend, <span className="italic font-light">kein Look</span> mehr verpassen.
+              Never miss a trend, <span className="italic font-light">never miss a look.</span>
             </h2>
             <p className="text-sm text-white/60 leading-relaxed">
-              Wöchentlich kuratierte Outfits, Frisuren-Inspirationen und exklusive Style-Tipps – direkt in dein Postfach. Kein Spam, jederzeit abbestellbar.
+              Weekly curated outfits, hairstyle inspiration and exclusive style tips — delivered straight to your inbox. No spam, unsubscribe anytime.
             </p>
             <div className="flex flex-wrap gap-5 mt-2">
-              {[{ icon: "✦", text: "Kein Spam" }, { icon: "✦", text: "Jederzeit kündbar" }, { icon: "✦", text: "DSGVO-konform" }].map((item) => (
+              {[{ icon: "✦", text: "No spam" }, { icon: "✦", text: "Cancel anytime" }, { icon: "✦", text: "GDPR compliant" }].map((item) => (
                 <div key={item.text} className="flex items-center gap-2">
                   <span className="text-white/30 text-xs">{item.icon}</span>
                   <span className="text-xs tracking-widest uppercase text-white/50">{item.text}</span>
@@ -51,13 +51,13 @@ export default function NewsletterForm() {
             {status === "success" ? (
               <div className="flex flex-col items-center gap-3 py-10 border border-white/10 text-center px-8">
                 <span className="text-2xl font-black text-white">✦</span>
-                <p className="text-sm font-semibold tracking-widest uppercase text-white">Erfolgreich angemeldet!</p>
+                <p className="text-sm font-semibold tracking-widest uppercase text-white">Successfully subscribed!</p>
                 <p className="text-xs text-white/50 leading-relaxed">{message}</p>
                 <button
                   onClick={() => setStatus("idle")}
                   className="mt-2 text-xs tracking-widest uppercase text-white/40 hover:text-white transition-colors duration-200 underline underline-offset-4"
                 >
-                  Weitere E-Mail anmelden
+                  Subscribe another email
                 </button>
               </div>
             ) : (
@@ -68,7 +68,7 @@ export default function NewsletterForm() {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="deine@email.de"
+                    placeholder="your@email.com"
                     disabled={status === "loading"}
                     className="flex-1 px-4 py-3 bg-white/5 border border-white/20 text-white placeholder-white/30
                                text-sm tracking-wide focus:outline-none focus:border-white/60
@@ -81,18 +81,18 @@ export default function NewsletterForm() {
                                hover:bg-gray-100 disabled:opacity-60 disabled:cursor-not-allowed
                                transition-colors duration-200 shrink-0"
                   >
-                    {status === "loading" ? "..." : "Anmelden"}
+                    {status === "loading" ? "..." : "Subscribe"}
                   </button>
                 </div>
                 {status === "error" && (
                   <p className="text-xs text-red-400 tracking-wide">{message}</p>
                 )}
                 <p className="text-xs text-white/30 leading-relaxed">
-                  Mit der Anmeldung stimmst du unserer{" "}
+                  By subscribing you agree to our{" "}
                   <a href="/privacy" className="underline underline-offset-2 hover:text-white/60 transition-colors duration-200">
-                    Datenschutzerklärung
-                  </a>{" "}
-                  zu.
+                    Privacy Policy
+                  </a>
+                  .
                 </p>
               </form>
             )}

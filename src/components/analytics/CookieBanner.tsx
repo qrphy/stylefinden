@@ -28,12 +28,12 @@ export default function CookieBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 px-6 py-5 md:px-8">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p className="text-xs text-gray-500 leading-relaxed max-w-2xl">
-          Wir verwenden Cookies, um die Nutzung unserer Website zu analysieren und das Erlebnis zu verbessern.{" "}
+          We use cookies to analyze the use of our website and improve your experience.{" "}
           <Link
             href="/privacy"
             className="underline underline-offset-2 hover:text-black transition-colors duration-200"
           >
-            Datenschutzerklärung
+            Privacy Policy
           </Link>
         </p>
         <div className="flex items-center gap-4 shrink-0">
@@ -41,13 +41,13 @@ export default function CookieBanner() {
             onClick={decline}
             className="text-xs tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
           >
-            Ablehnen
+            Decline
           </button>
           <button
             onClick={accept}
             className="text-xs tracking-widest uppercase bg-black text-white px-6 py-2.5 hover:bg-gray-800 transition-colors duration-200"
           >
-            Akzeptieren
+            Accept
           </button>
         </div>
       </div>

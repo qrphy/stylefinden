@@ -19,6 +19,7 @@ const nextConfig: NextConfig = {
       { source: "/outfits/occasion/buero",           destination: "/outfits/occasion/office",  permanent: true },
       { source: "/outfits/occasion/abend",           destination: "/outfits/occasion/evening", permanent: true },
       { source: "/outfits/occasion/strand",          destination: "/outfits/occasion/beach",   permanent: true },
+      { source: "/impressum",                         destination: "/legal",                    permanent: true },
     ];
   },
   images: {

@@ -7,7 +7,7 @@ type OutfitItem = {
   id: number;
   title: string;
   subtitle: string;
-  tag: "Trending" | "Neu" | "Beliebt";
+  tag: "Trending" | "New" | "Popular";
   style: string;
   image: string;
   href: string;
@@ -44,115 +44,115 @@ type StyleData = {
 const styles: Record<string, StyleData> = {
   "boho": {
     label: "Boho Style",
-    subtitle: "Frei & Verspielt",
+    subtitle: "Free & Playful",
     description:
-      "Fließende Stoffe, Fransen, Naturfarben und femininen Details – entdecke kuratierte Boho-Outfits für alle, die ihren eigenen Rhythmus leben.",
+      "Flowing fabrics, fringe, earthy tones and feminine details – discover curated boho outfits for those who live by their own rhythm.",
     accent: "bg-[#e8f5e9]",
     accentText: "text-[#2e7d32]",
-    tipTitle: "Fließend, frei und feminin,",
+    tipTitle: "Flowing, free and feminine,",
     tipBody:
-      "Boho lebt von Layering, natürlichen Materialien und einem Hauch Romantik – für Festival bis Stadtspaziergang.",
-    tipTags: ["Fransen", "Linen", "Maxi", "Floral"],
-    filters: ["Alle", "Maxi", "Midi", "Floral", "Fransen", "Festival", "Casual"],
-    outfitGridLabel: "Aktuelle Boho-Looks",
+      "Boho lives through layering, natural materials and a touch of romance – from festival to city stroll.",
+    tipTags: ["Fringe", "Linen", "Maxi", "Floral"],
+    filters: ["All", "Maxi", "Midi", "Floral", "Fringe", "Festival", "Casual"],
+    outfitGridLabel: "Latest Boho Looks",
     styleGuideHref: "/blog/occasion-guides/boho-style-guide",
     stats: [
       { value: "55+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Floral Wrap Maxi",       subtitle: "Festival & Natur",   tag: "Trending", style: "Maxi",    image: "/outfits/sfold.png", href: "/outfits/floral-wrap-maxi"      },
-      { id: 2, title: "Fringe Vest & Jeans",    subtitle: "Street & Casual",    tag: "Beliebt",  style: "Fransen", image: "/outfits/sfold.png", href: "/outfits/fringe-vest-jeans"     },
-      { id: 3, title: "Linen Boho Dress",       subtitle: "Strand & Urlaub",    tag: "Neu",      style: "Linen",   image: "/outfits/sfold.png", href: "/outfits/linen-boho-dress"      },
-      { id: 4, title: "Embroidered Midi",       subtitle: "Romantisch & Soft",  tag: "Trending", style: "Midi",    image: "/outfits/sfold.png", href: "/outfits/embroidered-midi"      },
-      { id: 5, title: "Crochet Top & Skirt",    subtitle: "Sommer & Festival",  tag: "Beliebt",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/crochet-top-skirt"     },
-      { id: 6, title: "Boho Layer Look",        subtitle: "Herbst & Natur",     tag: "Neu",      style: "Fransen", image: "/outfits/sfold.png", href: "/outfits/boho-layer-look"       },
-      { id: 7, title: "Paisley Print Dress",    subtitle: "Casual & Verspielt", tag: "Trending", style: "Maxi",    image: "/outfits/sfold.png", href: "/outfits/paisley-print-dress"   },
-      { id: 8, title: "Earthy Boho Set",        subtitle: "Erdtöne & Natur",    tag: "Neu",      style: "Casual",  image: "/outfits/sfold.png", href: "/outfits/earthy-boho-set"       },
+      { id: 1, title: "Floral Wrap Maxi",       subtitle: "Festival & Nature",    tag: "Trending", style: "Maxi",    image: "/outfits/sfold.png", href: "/outfits/floral-wrap-maxi"      },
+      { id: 2, title: "Fringe Vest & Jeans",    subtitle: "Street & Casual",      tag: "Popular",  style: "Fringe",  image: "/outfits/sfold.png", href: "/outfits/fringe-vest-jeans"     },
+      { id: 3, title: "Linen Boho Dress",       subtitle: "Beach & Vacation",     tag: "New",      style: "Linen",   image: "/outfits/sfold.png", href: "/outfits/linen-boho-dress"      },
+      { id: 4, title: "Embroidered Midi",       subtitle: "Romantic & Soft",      tag: "Trending", style: "Midi",    image: "/outfits/sfold.png", href: "/outfits/embroidered-midi"      },
+      { id: 5, title: "Crochet Top & Skirt",    subtitle: "Summer & Festival",    tag: "Popular",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/crochet-top-skirt"     },
+      { id: 6, title: "Boho Layer Look",        subtitle: "Autumn & Nature",      tag: "New",      style: "Fringe",  image: "/outfits/sfold.png", href: "/outfits/boho-layer-look"       },
+      { id: 7, title: "Paisley Print Dress",    subtitle: "Casual & Playful",     tag: "Trending", style: "Maxi",    image: "/outfits/sfold.png", href: "/outfits/paisley-print-dress"   },
+      { id: 8, title: "Earthy Boho Set",        subtitle: "Earth Tones & Nature", tag: "New",      style: "Casual",  image: "/outfits/sfold.png", href: "/outfits/earthy-boho-set"       },
     ],
     relatedCategories: [
-      { label: "Sommerkleider",  href: "/outfits/season/summer",      accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Summer Dresses", href: "/outfits/season/summer",      accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Festival Style", href: "/outfits/occasion/festival",  accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
       { label: "Minimalist",     href: "/outfits/style/minimalist",   accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Beach Looks",    href: "/outfits/occasion/strand",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Beach Looks",    href: "/outfits/occasion/beach",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
-        q: "Was macht einen Boho-Look aus?",
-        a: "Boho-Style zeichnet sich durch fließende Stoffe, erdige Farben, Fransen, Stickereien und natürliche Materialien wie Leinen und Baumwolle aus. Layering ist ein wichtiges Element – Westen über Kleidern, Schals und mehrere Schmuckstücke kombiniert.",
+        q: "What defines a boho look?",
+        a: "Boho style is characterized by flowing fabrics, earthy tones, fringe, embroidery and natural materials like linen and cotton. Layering is a key element – vests over dresses, scarves and multiple jewelry pieces combined.",
       },
       {
-        q: "Wie stylt man Boho für den Alltag?",
-        a: "Für einen alltagstauglichen Boho-Look: ein florale Midi-Kleid mit weißen Sneakers und einer Rattan-Tasche. Oder weite Leinenhose mit einem bestickten Top und flachen Sandalen. Der Schlüssel ist, nicht zu viele Elemente auf einmal zu kombinieren.",
+        q: "How do you style boho for everyday wear?",
+        a: "For an everyday boho look: a floral midi dress with white sneakers and a rattan bag. Or wide linen trousers with an embroidered top and flat sandals. The key is not to combine too many elements at once.",
       },
       {
-        q: "Welche Accessoires passen zum Boho-Style?",
-        a: "Rattan- und Korbgeflechttaschen, Federschmuck, Türkisringe, Ledergürtel mit Details, Sonnenhüte und flache Ledersandalen sind die perfekten Boho-Begleiter. Layering bei Ketten und Armbändern rundet den Look ab.",
+        q: "Which accessories suit the boho style?",
+        a: "Rattan and wicker bags, feather jewelry, turquoise rings, leather belts with details, sun hats and flat leather sandals are the perfect boho companions. Layering necklaces and bracelets rounds off the look.",
       },
     ],
     seo: {
-      title: "Boho Style Outfits – Frei, Feminin & Verspielt",
+      title: "Boho Style Outfits – Free, Feminine & Playful",
       description:
-        "Entdecke kuratierte Boho-Outfits: Fließende Maxi-Kleider, Fransen-Looks, Leinenkombi und feminine Details für Festival, Alltag und Strand.",
-      keywords: ["Boho Outfit", "Boho Style", "Boho Kleid", "Festival Outfit", "Boho Look", "Fransen Outfit", "Bohemian Style", "Boho Sommer"],
+        "Discover curated boho outfits: flowing maxi dresses, fringe looks, linen combinations and feminine details for festival, everyday and beach.",
+      keywords: ["Boho Outfit", "Boho Style", "Boho Dress", "Festival Outfit", "Boho Look", "Fringe Outfit", "Bohemian Style", "Boho Summer"],
     },
   },
 
   "minimalist": {
     label: "Minimalist Style",
-    subtitle: "Clean & Zeitlos",
+    subtitle: "Clean & Timeless",
     description:
-      "Klare Linien, neutrale Farben und hochwertige Basics – entdecke kuratierte Minimalist-Outfits für alle, die weniger als mehr verstehen.",
+      "Clean lines, neutral tones and high-quality basics – discover curated minimalist outfits for those who understand that less is more.",
     accent: "bg-gray-100",
     accentText: "text-gray-700",
-    tipTitle: "Weniger ist mehr,",
+    tipTitle: "Less is more,",
     tipBody:
-      "Minimalistischer Stil lebt von perfektem Fit, hochwertigen Materialien und einer reduzierten Farbpalette.",
+      "Minimalist style thrives on perfect fit, high-quality materials and a reduced color palette.",
     tipTags: ["Neutral", "Clean", "Basics", "Monochrome"],
-    filters: ["Alle", "Monochrome", "Neutral", "Business", "Casual", "Elegant", "Basics"],
-    outfitGridLabel: "Aktuelle Minimalist-Looks",
+    filters: ["All", "Monochrome", "Neutral", "Business", "Casual", "Elegant", "Basics"],
+    outfitGridLabel: "Latest Minimalist Looks",
     styleGuideHref: "/blog/occasion-guides/minimalist-style-guide",
     stats: [
       { value: "60+", label: "Looks" },
       { value: "3", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
       { id: 1, title: "All White Look",          subtitle: "Clean & Modern",     tag: "Trending", style: "Monochrome", image: "/outfits/sfold.png", href: "/outfits/all-white-look"         },
-      { id: 2, title: "Beige Linen Set",          subtitle: "Casual & Elegant",   tag: "Beliebt",  style: "Neutral",   image: "/outfits/sfold.png", href: "/outfits/beige-linen-set"        },
-      { id: 3, title: "Black Straight Trousers",  subtitle: "Office & Business",  tag: "Neu",      style: "Business",  image: "/outfits/sfold.png", href: "/outfits/black-straight-trousers"},
+      { id: 2, title: "Beige Linen Set",          subtitle: "Casual & Elegant",   tag: "Popular",  style: "Neutral",   image: "/outfits/sfold.png", href: "/outfits/beige-linen-set"        },
+      { id: 3, title: "Black Straight Trousers",  subtitle: "Office & Business",  tag: "New",      style: "Business",  image: "/outfits/sfold.png", href: "/outfits/black-straight-trousers"},
       { id: 4, title: "Grey Oversized Blazer",    subtitle: "Smart Casual",       tag: "Trending", style: "Business",  image: "/outfits/sfold.png", href: "/outfits/grey-oversized-blazer"  },
-      { id: 5, title: "Cream Knit & Trousers",   subtitle: "Cozy & Minimal",     tag: "Beliebt",  style: "Neutral",   image: "/outfits/sfold.png", href: "/outfits/cream-knit-trousers"    },
-      { id: 6, title: "Minimal Slip Dress",       subtitle: "Abend & Event",      tag: "Neu",      style: "Elegant",   image: "/outfits/sfold.png", href: "/outfits/minimal-slip-dress"     },
+      { id: 5, title: "Cream Knit & Trousers",   subtitle: "Cozy & Minimal",     tag: "Popular",  style: "Neutral",   image: "/outfits/sfold.png", href: "/outfits/cream-knit-trousers"    },
+      { id: 6, title: "Minimal Slip Dress",       subtitle: "Evening & Event",    tag: "New",      style: "Elegant",   image: "/outfits/sfold.png", href: "/outfits/minimal-slip-dress"     },
       { id: 7, title: "White Shirt & Denim",      subtitle: "Everyday Basics",    tag: "Trending", style: "Basics",    image: "/outfits/sfold.png", href: "/outfits/white-shirt-denim"      },
-      { id: 8, title: "Monochrome Brown Set",     subtitle: "Warm & Schlicht",    tag: "Neu",      style: "Monochrome",image: "/outfits/sfold.png", href: "/outfits/monochrome-brown-set"   },
+      { id: 8, title: "Monochrome Brown Set",     subtitle: "Warm & Simple",      tag: "New",      style: "Monochrome",image: "/outfits/sfold.png", href: "/outfits/monochrome-brown-set"   },
     ],
     relatedCategories: [
-      { label: "Classic Style",  href: "/outfits/style/classic",     accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Büro & Business",href: "/outfits/occasion/buero",    accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Herbstlooks",    href: "/outfits/season/herbst",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Classic Style",    href: "/outfits/style/classic",     accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Office & Business",href: "/outfits/occasion/office",   accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Boho Style",       href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Autumn Looks",     href: "/outfits/season/autumn",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
     ],
     faqs: [
       {
-        q: "Was sind die Grundregeln des minimalistischen Stils?",
-        a: "Minimalistischer Stil basiert auf einer neutralen Farbpalette (Schwarz, Weiß, Beige, Grau), klaren Silhouetten ohne aufwendige Details, hochwertigen Basics und dem Prinzip, dass jedes Teil mit allem anderen kombinierbar sein sollte.",
+        q: "What are the basic rules of minimalist style?",
+        a: "Minimalist style is based on a neutral color palette (black, white, beige, grey), clean silhouettes without elaborate details, high-quality basics and the principle that every piece should be combinable with everything else.",
       },
       {
-        q: "Welche Basics braucht man für einen minimalistischen Kleiderschrank?",
-        a: "Ein weißes Oxford-Hemd, eine gut sitzende schwarze Hose, ein Kaschmir- oder Merinorollkragen, ein beiger Trench Coat, ein strukturierter Blazer und ein einfarbiges Midi-Kleid bilden die perfekte minimalistischen Basis.",
+        q: "What basics do you need for a minimalist wardrobe?",
+        a: "A well-cut blazer in black or camel, a white Oxford shirt, a cashmere or merino turtleneck, a beige trench coat, a structured blazer and a simple midi dress form the perfect minimalist foundation.",
       },
       {
-        q: "Wie fügt man Interesse in minimalistische Outfits ein?",
-        a: "Texturspiel ist der Schlüssel: Seide neben Leinenstruktur, Leder-Accessoires zu Wollstrick, oder glänzende Details zu matten Stoffen. Auch die Silhouette zählt – ein oversizede Blazer über schmalem Hose schafft Spannung ohne Farbe.",
+        q: "How do you add interest to minimalist outfits?",
+        a: "Texture play is the key: silk next to linen texture, leather accessories with wool knitwear, or shiny details with matte fabrics. Silhouette also counts – an oversized blazer over slim trousers creates tension without color.",
       },
     ],
     seo: {
-      title: "Minimalist Style Outfits – Clean, Schlicht & Zeitlos",
+      title: "Minimalist Style Outfits – Clean, Simple & Timeless",
       description:
-        "Entdecke kuratierte Minimalist-Outfits: Monochrome Looks, neutrale Farbkombinationen und zeitlose Basics für Alltag, Office und besondere Anlässe.",
-      keywords: ["Minimalist Outfit", "Minimalistisch Outfit", "Clean Style", "Neutral Outfit", "Monochrome Look", "Minimalist Mode", "Schlicht Elegant", "Capsule Wardrobe"],
+        "Discover curated minimalist outfits: monochrome looks, neutral color combinations and timeless basics for everyday, office and special occasions.",
+      keywords: ["Minimalist Outfit", "Minimalist Style", "Clean Style", "Neutral Outfit", "Monochrome Look", "Minimalist Fashion", "Simple Elegant", "Capsule Wardrobe"],
     },
   },
 
@@ -160,113 +160,113 @@ const styles: Record<string, StyleData> = {
     label: "Street Style",
     subtitle: "Urban & Bold",
     description:
-      "Kühne Kombinationen, Denim, Oversized Pieces und urbane Energie – entdecke kuratierte Street-Style-Outfits für alle, die auf der Straße auffallen wollen.",
+      "Bold combinations, denim, oversized pieces and urban energy – discover curated street style outfits for those who want to stand out.",
     accent: "bg-gray-900",
     accentText: "text-white",
-    tipTitle: "Bold, urban und unverwechselbar,",
+    tipTitle: "Bold, urban and distinctive,",
     tipBody:
-      "Street Style lebt von kreativen Kombinationen, Statement-Pieces und der Freiheit, Regeln zu brechen.",
+      "Street style lives through creative combinations, statement pieces and the freedom to break the rules.",
     tipTags: ["Denim", "Oversized", "Sneaker", "Graphic"],
-    filters: ["Alle", "Denim", "Oversized", "Sporty", "Graphic", "Layering", "Bold"],
-    outfitGridLabel: "Aktuelle Street-Looks",
+    filters: ["All", "Denim", "Oversized", "Sporty", "Graphic", "Layering", "Bold"],
+    outfitGridLabel: "Latest Street Looks",
     styleGuideHref: "/blog/occasion-guides/streetstyle-guide",
     stats: [
       { value: "65+", label: "Looks" },
       { value: "4", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
       { id: 1, title: "Baggy Denim & Crop Top",  subtitle: "Urban & Casual",     tag: "Trending", style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/baggy-denim-crop-top"   },
-      { id: 2, title: "Oversized Hoodie Look",   subtitle: "Cozy & Street",      tag: "Beliebt",  style: "Oversized",image: "/outfits/sfold.png", href: "/outfits/oversized-hoodie-look"  },
-      { id: 3, title: "Graphic Tee & Blazer",    subtitle: "Smart Street",       tag: "Neu",      style: "Graphic",  image: "/outfits/sfold.png", href: "/outfits/graphic-tee-blazer"     },
+      { id: 2, title: "Oversized Hoodie Look",   subtitle: "Cozy & Street",      tag: "Popular",  style: "Oversized",image: "/outfits/sfold.png", href: "/outfits/oversized-hoodie-look"  },
+      { id: 3, title: "Graphic Tee & Blazer",    subtitle: "Smart Street",       tag: "New",      style: "Graphic",  image: "/outfits/sfold.png", href: "/outfits/graphic-tee-blazer"     },
       { id: 4, title: "Cargo Pants Outfit",      subtitle: "Utility & Urban",    tag: "Trending", style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/cargo-pants-outfit"     },
-      { id: 5, title: "Leather Jacket & Jeans",  subtitle: "Classic Street",     tag: "Beliebt",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/leather-jacket-jeans"   },
-      { id: 6, title: "Sporty Layered Set",      subtitle: "Athleisure & City",  tag: "Neu",      style: "Sporty",   image: "/outfits/sfold.png", href: "/outfits/sporty-layered-set"     },
+      { id: 5, title: "Leather Jacket & Jeans",  subtitle: "Classic Street",     tag: "Popular",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/leather-jacket-jeans"   },
+      { id: 6, title: "Sporty Layered Set",      subtitle: "Athleisure & City",  tag: "New",      style: "Sporty",   image: "/outfits/sfold.png", href: "/outfits/sporty-layered-set"     },
       { id: 7, title: "Wide Leg & Tank",         subtitle: "Minimal Street",     tag: "Trending", style: "Oversized",image: "/outfits/sfold.png", href: "/outfits/wide-leg-tank"          },
-      { id: 8, title: "Denim-on-Denim",          subtitle: "Bold & Modern",      tag: "Neu",      style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-on-denim"         },
+      { id: 8, title: "Denim-on-Denim",          subtitle: "Bold & Modern",      tag: "New",      style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-on-denim"         },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Festival Style", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Herbstlooks",    href: "/outfits/season/herbst",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Boho Style",    href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Minimalist",    href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Festival Style",href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Autumn Looks",  href: "/outfits/season/autumn",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
     ],
     faqs: [
       {
-        q: "Was ist Street Style?",
-        a: "Street Style ist ein aus dem Alltag entstandener Modestil, der Hochmode mit persönlichem Ausdruck verbindet. Er zeichnet sich durch Denim, Sneakers, Oversized Pieces, Grafik-Prints und kühne Farbkombinationen aus – und wird oft durch Streetwear-Marken und Stadtkultur geprägt.",
+        q: "What is street style?",
+        a: "Street style is a fashion style that emerged from everyday life, combining high fashion with personal expression. It is characterized by denim, sneakers, oversized pieces, graphic prints and bold color combinations – often shaped by streetwear brands and urban culture.",
       },
       {
-        q: "Wie kombiniert man Street Style für die Arbeit?",
-        a: "Ein gutes Graphic-Tee unter einem strukturierten Blazer, dazu eine gut sitzende Straight-Jeans und Loafer – das ist der perfekte Smart-Street-Office-Look. Statement-Sneakers in Neutraltönen funktionieren auch in vielen modernen Arbeitsumgebungen.",
+        q: "How do you combine street style for work?",
+        a: "A graphic tee under a structured blazer, paired with well-fitting straight jeans and loafers – that's the perfect smart-street office look. Statement sneakers in neutral tones also work in many modern workplaces.",
       },
       {
-        q: "Welche Sneakers passen zu Street-Style-Outfits?",
-        a: "Chunky Sneakers (Dad Shoes) verleihen jedem Look Volumen. Clean White Sneakers wie die Air Force 1 sind zeitlose Klassiker. Low-Top-Modelle in Schwarz oder Grau ergänzen minimale Street Looks, während Colorblocking-Sneakers mutige Statements setzen.",
+        q: "Which sneakers suit street style outfits?",
+        a: "Chunky sneakers (dad shoes) add volume to any look. Clean white sneakers like the Air Force 1 are timeless classics. Low-top models in black or grey complement minimal street looks, while colorblocking sneakers make bold statements.",
       },
     ],
     seo: {
-      title: "Street Style Outfits – Urban, Bold & Unverwechselbar",
+      title: "Street Style Outfits – Urban, Bold & Distinctive",
       description:
-        "Entdecke kuratierte Street-Style-Outfits: Denim Looks, Oversized Pieces, Cargo-Outfits und urbane Kombinationen für alle, die Mode als Ausdruck leben.",
-      keywords: ["Street Style Outfit", "Streetwear", "Urban Outfit", "Denim Look", "Oversized Outfit", "Streetstyle Mode", "Bold Outfit", "Sneaker Outfit"],
+        "Discover curated street style outfits: denim looks, oversized pieces, cargo outfits and urban combinations for those who live fashion as expression.",
+      keywords: ["Street Style Outfit", "Streetwear", "Urban Outfit", "Denim Look", "Oversized Outfit", "Streetstyle Fashion", "Bold Outfit", "Sneaker Outfit"],
     },
   },
 
   "classic": {
     label: "Classic Style",
-    subtitle: "Zeitlos & Elegant",
+    subtitle: "Timeless & Elegant",
     description:
-      "Tailoring, hochwertige Basics und Looks, die nie aus der Mode kommen – entdecke kuratierte Classic-Style-Outfits für Frauen, die auf zeitlose Eleganz setzen.",
+      "Tailoring, high-quality basics and looks that never go out of fashion – discover curated classic style outfits for women who embrace timeless elegance.",
     accent: "bg-[#fafafa]",
     accentText: "text-gray-900",
-    tipTitle: "Zeitlose Eleganz, perfektes Tailoring,",
+    tipTitle: "Timeless elegance, perfect tailoring,",
     tipBody:
-      "Classic Style investiert in Qualität, nicht Quantität – jedes Teil ist ein Langzeitbegleiter.",
+      "Classic style invests in quality, not quantity – every piece is a long-term companion.",
     tipTags: ["Blazer", "Trench", "Tailoring", "Neutral"],
-    filters: ["Alle", "Blazer", "Trench", "Tailoring", "Business", "Abend", "Casual"],
-    outfitGridLabel: "Aktuelle Classic-Looks",
+    filters: ["All", "Blazer", "Trench", "Tailoring", "Business", "Evening", "Casual"],
+    outfitGridLabel: "Latest Classic Looks",
     styleGuideHref: "/blog/occasion-guides/classic-style-guide",
     stats: [
       { value: "70+", label: "Looks" },
       { value: "4", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Camel Blazer & Trousers", subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",   image: "/outfits/sfold.png", href: "/outfits/camel-blazer-trousers"  },
-      { id: 2, title: "Navy & White Stripes",    subtitle: "Smart Casual",       tag: "Beliebt",  style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/navy-white-stripes"     },
-      { id: 3, title: "Wrap Coat Outfit",        subtitle: "City & Business",    tag: "Neu",      style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/wrap-coat-outfit"       },
-      { id: 4, title: "Little Black Dress",      subtitle: "Abend & Event",      tag: "Trending", style: "Abend",    image: "/outfits/sfold.png", href: "/outfits/little-black-dress"     },
-      { id: 5, title: "Pencil Skirt & Blouse",   subtitle: "Office & Elegant",   tag: "Beliebt",  style: "Business", image: "/outfits/sfold.png", href: "/outfits/pencil-skirt-blouse"    },
-      { id: 6, title: "Trench & Straight Jeans", subtitle: "Weekend & City",     tag: "Neu",      style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/trench-straight-jeans"  },
-      { id: 7, title: "Pearl & Silk Blouse",     subtitle: "Elegant & Feminin",  tag: "Trending", style: "Abend",    image: "/outfits/sfold.png", href: "/outfits/pearl-silk-blouse"      },
-      { id: 8, title: "Grey Suit Set",           subtitle: "Power & Profession", tag: "Neu",      style: "Tailoring",image: "/outfits/sfold.png", href: "/outfits/grey-suit-set"          },
+      { id: 1, title: "Camel Blazer & Trousers", subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",    image: "/outfits/sfold.png", href: "/outfits/camel-blazer-trousers"  },
+      { id: 2, title: "Navy & White Stripes",    subtitle: "Smart Casual",       tag: "Popular",  style: "Casual",    image: "/outfits/sfold.png", href: "/outfits/navy-white-stripes"     },
+      { id: 3, title: "Wrap Coat Outfit",        subtitle: "City & Business",    tag: "New",      style: "Trench",    image: "/outfits/sfold.png", href: "/outfits/wrap-coat-outfit"       },
+      { id: 4, title: "Little Black Dress",      subtitle: "Evening & Event",    tag: "Trending", style: "Evening",   image: "/outfits/sfold.png", href: "/outfits/little-black-dress"     },
+      { id: 5, title: "Pencil Skirt & Blouse",   subtitle: "Office & Elegant",   tag: "Popular",  style: "Business",  image: "/outfits/sfold.png", href: "/outfits/pencil-skirt-blouse"    },
+      { id: 6, title: "Trench & Straight Jeans", subtitle: "Weekend & City",     tag: "New",      style: "Trench",    image: "/outfits/sfold.png", href: "/outfits/trench-straight-jeans"  },
+      { id: 7, title: "Pearl & Silk Blouse",     subtitle: "Elegant & Feminine", tag: "Trending", style: "Evening",   image: "/outfits/sfold.png", href: "/outfits/pearl-silk-blouse"      },
+      { id: 8, title: "Grey Suit Set",           subtitle: "Power & Profession", tag: "New",      style: "Tailoring", image: "/outfits/sfold.png", href: "/outfits/grey-suit-set"          },
     ],
     relatedCategories: [
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Büro & Business",href: "/outfits/occasion/buero",    accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Winteroutfits",  href: "/outfits/season/winter",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Abend & Event",  href: "/outfits/occasion/abend",    accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Minimalist",      href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Office & Business",href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Winter Outfits",  href: "/outfits/season/winter",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
       {
-        q: "Was sind die Kernstücke eines klassischen Kleiderschranks?",
-        a: "Ein gut geschnittener Blazer in Schwarz oder Camel, ein weißes Hemd, eine schwarze Taillenhose, ein Trench Coat, ein einfaches schwarzes Kleid und qualitativ hochwertige Pumps oder Loafer bilden die unerschütterliche Basis des Classic Style.",
+        q: "What are the core pieces of a classic wardrobe?",
+        a: "A well-cut blazer in black or camel, a white shirt, a tailored black trouser, a trench coat, a simple black dress and high-quality pumps or loafers form the unshakeable foundation of classic style.",
       },
       {
-        q: "Wie modernisiert man klassische Outfits?",
-        a: "Klassische Stücke lassen sich durch zeitgemäße Details auffrischen: Chunky-Loafer statt spitzer Pumps, ein oversizede Blazer statt taillierter Schnitt, oder das klassische schwarze Kleid mit weißen Sneakers kombiniert. Subtile Aktualisierungen halten den Look frisch.",
+        q: "How do you modernize classic outfits?",
+        a: "Classic pieces can be refreshed with contemporary details: chunky loafers instead of pointed pumps, an oversized blazer instead of a fitted cut, or the classic black dress paired with white sneakers. Subtle updates keep the look fresh.",
       },
       {
-        q: "Welche Farben gehören zum Classic Style?",
-        a: "Schwarz, Weiß, Navy, Camel, Grau und Creme sind die zeitlosen Klassiker. Dazu kommen gelegentliche Akzente in Bordeaux, Dunkelgrün oder Kobaltblau. Die Stärke liegt in der neutralen Basis – sie erlaubt endlose Kombinationsmöglichkeiten.",
+        q: "What colors belong to classic style?",
+        a: "Black, white, navy, camel, grey and cream are the timeless classics. Add occasional accents in bordeaux, dark green or cobalt blue. The strength lies in the neutral base – it allows endless combinations.",
       },
     ],
     seo: {
-      title: "Classic Style Outfits – Zeitlos, Elegant & Unverwechselbar",
+      title: "Classic Style Outfits – Timeless, Elegant & Distinctive",
       description:
-        "Entdecke kuratierte Classic-Style-Outfits: Blazer-Looks, Trench Coats, Abendoutfits und zeitlose Kombinationen für Frauen, die auf bleibende Eleganz setzen.",
-      keywords: ["Classic Style Outfit", "Klassisch Elegant Outfit", "Zeitloses Outfit", "Blazer Outfit", "Trench Coat Look", "Business Outfit Damen", "Classic Mode", "Elegant Outfit"],
+        "Discover curated classic style outfits: blazer looks, trench coats, evening outfits and timeless combinations for women who embrace lasting elegance.",
+      keywords: ["Classic Style Outfit", "Classic Elegant Outfit", "Timeless Outfit", "Blazer Outfit", "Trench Coat Look", "Business Outfit Women", "Classic Fashion", "Elegant Outfit"],
     },
   },
 };
@@ -296,7 +296,7 @@ export async function generateMetadata(
       description: styleData.seo.description,
       url: `https://stylefinden.com/outfits/style/${slug}`,
       type: "website",
-      locale: "de_DE",
+      locale: "en_US",
       siteName: "STYLEFINDEN",
     },
   };
@@ -306,8 +306,8 @@ export async function generateMetadata(
 
 const tagColors: Record<string, string> = {
   Trending: "bg-black text-white",
-  Neu:      "bg-white text-black border border-black",
-  Beliebt:  "bg-gray-100 text-gray-700",
+  New:      "bg-white text-black border border-black",
+  Popular:  "bg-gray-100 text-gray-700",
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -326,11 +326,11 @@ export default async function StylePage(
       {/* ── Breadcrumb ── */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-6 pb-0">
         <nav className="flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors duration-200">Start</a>
+          <a href="/" className="hover:text-black transition-colors duration-200">Home</a>
           <span>/</span>
           <a href="/outfits" className="hover:text-black transition-colors duration-200">Outfits</a>
           <span>/</span>
-          <a href="/outfits/style" className="hover:text-black transition-colors duration-200">Stil</a>
+          <a href="/outfits/style" className="hover:text-black transition-colors duration-200">Style</a>
           <span>/</span>
           <span className="text-black">{styleData.label}</span>
         </nav>
@@ -368,11 +368,11 @@ export default async function StylePage(
             {/* Accent Card */}
             <div className={`hidden md:flex flex-col gap-3 ${styleData.accent} border border-gray-100 p-8 xl:p-10 w-full md:w-80 xl:w-96 flex-shrink-0`}>
               <span className={`text-xs font-semibold tracking-widest uppercase ${styleData.accentText === "text-white" ? "text-gray-500" : styleData.accentText}`}>
-                Style Tipp
+                Style Tip
               </span>
               <p className="text-sm md:text-base font-black text-black leading-snug tracking-tight">
                 {styleData.tipTitle}<br />
-                <span className="italic font-light">für jeden Tag.</span>
+                <span className="italic font-light">for every day.</span>
               </p>
               <p className="text-xs text-gray-600 leading-relaxed">{styleData.tipBody}</p>
               <div className="flex flex-wrap gap-2 mt-2">
@@ -418,7 +418,7 @@ export default async function StylePage(
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div className="flex flex-col gap-2">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                Kuratierte Auswahl
+                Curated Selection
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
                 {styleData.outfitGridLabel}
@@ -428,7 +428,7 @@ export default async function StylePage(
               href="/outfits"
               className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group"
             >
-              Alle Outfits
+              All Outfits
               <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
@@ -470,10 +470,10 @@ export default async function StylePage(
 
           <div className="flex justify-center mt-12">
             <a
-              href={`/outfits?stil=${slug}`}
+              href={`/outfits?style=${slug}`}
               className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200"
             >
-              Mehr {styleData.label} laden
+              Load More {styleData.label}
             </a>
           </div>
 
@@ -486,10 +486,10 @@ export default async function StylePage(
 
           <div className="flex flex-col items-center text-center gap-3 mb-10">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Passend dazu
+              You Might Also Like
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-              Ähnliche Kategorien
+              Similar Categories
             </h2>
           </div>
 
@@ -501,7 +501,7 @@ export default async function StylePage(
                 className={`group flex flex-col justify-between gap-6 p-6 md:p-8 ${cat.accent} hover:opacity-90 transition-opacity duration-200`}
               >
                 <span className={`text-xs font-semibold tracking-widest uppercase ${cat.accentText}`}>
-                  Entdecken
+                  Discover
                 </span>
                 <div className="flex items-end justify-between">
                   <h3 className="text-sm md:text-base font-black text-black tracking-tight leading-tight">
@@ -533,14 +533,14 @@ export default async function StylePage(
                 Style Guide
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-                {styleData.label} <span className="italic font-light">verstehen & stylen</span>
+                {styleData.label} <span className="italic font-light">understand & style</span>
               </h2>
               <p className="text-sm text-gray-600 leading-relaxed">{styleData.description}</p>
               <a
                 href={styleData.styleGuideHref}
                 className="self-start flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-600 transition-colors duration-200 group"
               >
-                Zum Style Guide
+                View Style Guide
                 <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
@@ -549,7 +549,7 @@ export default async function StylePage(
 
             <div className="flex flex-col gap-6">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                Häufige Fragen
+                Frequently Asked Questions
               </span>
               {styleData.faqs.map((faq, i) => (
                 <div key={i} className="flex flex-col gap-2 pb-6 border-b border-gray-200 last:border-0 last:pb-0">

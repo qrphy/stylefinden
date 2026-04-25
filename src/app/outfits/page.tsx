@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Outfits – Looks für jeden Anlass & Stil",
+  title: "Outfits – Looks for Every Occasion & Style",
   description:
-    "Entdecke kuratierte Outfit-Kollektionen für jede Saison, jeden Stil und jeden Anlass – von Sommerkleidern bis hin zu eleganten Abendlooks.",
+    "Discover curated outfit collections for every season, every style and every occasion – from summer dresses to elegant evening looks.",
   alternates: { canonical: "https://stylefinden.com/outfits" },
   openGraph: {
-    title: "Outfits – Looks für jeden Anlass & Stil | STYLEFINDEN",
-    description: "Kuratierte Outfit-Kollektionen für jede Saison und jeden Anlass.",
+    title: "Outfits – Looks for Every Occasion & Style | STYLEFINDEN",
+    description: "Curated outfit collections for every season and every occasion.",
     url: "https://stylefinden.com/outfits",
     type: "website",
-    locale: "de_DE",
+    locale: "en_US",
     siteName: "STYLEFINDEN",
   },
 };
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-const saisonCollections = [
+const seasonCollections = [
   {
     slug: "summer",
-    label: "Sommerkleider",
-    description: "Leichte Kleider, florale Prints & Leinenroben für heiße Tage",
+    label: "Summer Dresses",
+    description: "Light dresses, floral prints & linen robes for hot days",
     tags: ["Maxi", "Midi", "Mini", "Floral"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-[#EDCFA9]",
     accentText: "text-[#f57f17]",
     image: "/outfits/sfold.png",
@@ -31,32 +31,32 @@ const saisonCollections = [
   },
   {
     slug: "winter",
-    label: "Winteroutfits",
-    description: "Warme Layering-Looks, Mäntel und kuschelige Kombis für kalte Tage",
-    tags: ["Mantel", "Layering", "Strick", "Boots"],
-    badge: "Neu",
+    label: "Winter Outfits",
+    description: "Warm layering looks, coats and cozy combinations for cold days",
+    tags: ["Coat", "Layering", "Knitwear", "Boots"],
+    badge: "New",
     accent: "bg-[#e3f2fd]",
     accentText: "text-[#1565c0]",
     image: "/outfits/sfold.png",
     active: true,
   },
   {
-    slug: "herbst",
-    label: "Herbstlooks",
-    description: "Erdtöne, Trench Coats und knackige Übergangslooks",
-    tags: ["Erdtöne", "Trench", "Midi", "Stiefel"],
-    badge: "Neu",
+    slug: "autumn",
+    label: "Autumn Looks",
+    description: "Earth tones, trench coats and crisp transitional looks",
+    tags: ["Earth Tones", "Trench", "Midi", "Boots"],
+    badge: "New",
     accent: "bg-[#efebe9]",
     accentText: "text-[#4e342e]",
     image: "/outfits/sfold.png",
     active: true,
   },
   {
-    slug: "fruehling",
-    label: "Frühlingslooks",
-    description: "Pastelltöne, leichte Blazer und frische Kombinationen",
-    tags: ["Pastell", "Blazer", "Leinen", "Floral"],
-    badge: "Neu",
+    slug: "spring",
+    label: "Spring Looks",
+    description: "Pastel tones, light blazers and fresh combinations",
+    tags: ["Pastels", "Blazer", "Linen", "Floral"],
+    badge: "New",
     accent: "bg-[#e8f5e9]",
     accentText: "text-[#2e7d32]",
     image: "/outfits/sfold.png",
@@ -64,24 +64,24 @@ const saisonCollections = [
   },
 ];
 
-const anlassCollections = [
+const occasionCollections = [
   {
-    slug: "buero",
-    label: "Büro & Business",
-    description: "Polished und professionell – Looks für Meeting, Office und Co.",
+    slug: "office",
+    label: "Office & Business",
+    description: "Polished and professional – looks for meetings, office and more",
     tags: ["Blazer", "Tailoring", "Neutral", "Polished"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-[#f3e5f5]",
     accentText: "text-[#6a1b9a]",
     image: "/outfits/sfold.png",
     active: true,
   },
   {
-    slug: "abend",
-    label: "Abend & Event",
-    description: "Elegante Outfits für Dinner, Partys und besondere Anlässe",
+    slug: "evening",
+    label: "Evening & Event",
+    description: "Elegant outfits for dinners, parties and special occasions",
     tags: ["Midi", "Silk", "Statement", "Elegant"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-gray-900",
     accentText: "text-white",
     image: "/outfits/sfold.png",
@@ -89,21 +89,21 @@ const anlassCollections = [
   },
   {
     slug: "casual",
-    label: "Casual & Alltag",
-    description: "Bequeme, stylische Alltagslooks für entspannte Tage",
-    tags: ["Denim", "Basics", "Komfort", "Layering"],
-    badge: "Neu",
+    label: "Casual & Everyday",
+    description: "Comfortable, stylish everyday looks for relaxed days",
+    tags: ["Denim", "Basics", "Comfort", "Layering"],
+    badge: "New",
     accent: "bg-[#fff8e1]",
     accentText: "text-[#f57f17]",
     image: "/outfits/sfold.png",
     active: true,
   },
   {
-    slug: "strand",
-    label: "Strand & Urlaub",
-    description: "Beach Vibes, Cover-ups und sommerliche Urlaubslooks",
+    slug: "beach",
+    label: "Beach & Vacation",
+    description: "Beach vibes, cover-ups and summery vacation looks",
     tags: ["Linen", "Cover-up", "Maxi", "Kaftan"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-[#e3f2fd]",
     accentText: "text-[#1565c0]",
     image: "/outfits/sfold.png",
@@ -112,9 +112,9 @@ const anlassCollections = [
   {
     slug: "festival",
     label: "Festival & Outdoor",
-    description: "Boho, Denim und verspielte Layering-Looks für Open Air",
-    tags: ["Boho", "Denim", "Fransen", "Floral"],
-    badge: "Neu",
+    description: "Boho, denim and playful layering looks for open air",
+    tags: ["Boho", "Denim", "Fringe", "Floral"],
+    badge: "New",
     accent: "bg-[#fce4ec]",
     accentText: "text-[#c62828]",
     image: "/outfits/sfold.png",
@@ -123,9 +123,9 @@ const anlassCollections = [
   {
     slug: "date-night",
     label: "Date Night",
-    description: "Romantische und selbstbewusste Looks für unvergessliche Abende",
-    tags: ["Midi", "Romantic", "Bold", "Feminin"],
-    badge: "Neu",
+    description: "Romantic and confident looks for unforgettable evenings",
+    tags: ["Midi", "Romantic", "Bold", "Feminine"],
+    badge: "New",
     accent: "bg-[#fce4ec]",
     accentText: "text-[#c62828]",
     image: "/outfits/sfold.png",
@@ -133,13 +133,13 @@ const anlassCollections = [
   },
 ];
 
-const stilCollections = [
+const styleCollections = [
   {
     slug: "boho",
     label: "Boho",
-    description: "Fließende Stoffe, Fransen & Naturfarben",
-    tags: ["Maxi", "Floral", "Fransen", "Linen"],
-    badge: "Neu",
+    description: "Flowing fabrics, fringe & earthy tones",
+    tags: ["Maxi", "Floral", "Fringe", "Linen"],
+    badge: "New",
     accent: "bg-[#e8f5e9]",
     accentText: "text-[#2e7d32]",
     image: "/outfits/sfold.png",
@@ -148,9 +148,9 @@ const stilCollections = [
   {
     slug: "minimalist",
     label: "Minimalist",
-    description: "Clean, schlicht und zeitlos elegant",
+    description: "Clean, simple and timelessly elegant",
     tags: ["Neutral", "Monochrome", "Basics", "Clean"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-gray-100",
     accentText: "text-gray-700",
     image: "/outfits/sfold.png",
@@ -159,9 +159,9 @@ const stilCollections = [
   {
     slug: "streetstyle",
     label: "Street Style",
-    description: "Urban, bold und immer im Trend",
+    description: "Urban, bold and always on trend",
     tags: ["Denim", "Oversized", "Graphic", "Sneaker"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-gray-900",
     accentText: "text-white",
     image: "/outfits/sfold.png",
@@ -170,9 +170,9 @@ const stilCollections = [
   {
     slug: "classic",
     label: "Classic",
-    description: "Zeitlose Basics mit modernem Twist",
+    description: "Timeless basics with a modern twist",
     tags: ["Blazer", "Trench", "Tailoring", "Neutral"],
-    badge: "Neu",
+    badge: "New",
     accent: "bg-[#fafafa]",
     accentText: "text-gray-900",
     image: "/outfits/sfold.png",
@@ -183,8 +183,8 @@ const stilCollections = [
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 const badgeColors: Record<string, string> = {
-  Neu:  "bg-black text-white",
-  Bald: "bg-gray-100 text-gray-500",
+  New:  "bg-black text-white",
+  Soon: "bg-gray-100 text-gray-500",
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -198,15 +198,15 @@ export default function OutfitsPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-14 md:py-20">
           <div className="flex flex-col items-center text-center gap-5 max-w-2xl mx-auto">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Outfit-Kollektionen
+              Outfit Collections
             </span>
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-black leading-tight tracking-tight">
-              Finde deinen <br />
-              <span className="italic font-light">perfekten Look.</span>
+              Find your <br />
+              <span className="italic font-light">perfect look.</span>
             </h1>
             <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-lg">
-              Stöbere durch kuratierte Outfit-Kollektionen – sortiert nach Saison,
-              Anlass und Stil. Neue Kollektionen erscheinen regelmäßig.
+              Browse curated outfit collections – sorted by season,
+              occasion and style. New collections added regularly.
             </p>
           </div>
         </div>
@@ -218,13 +218,13 @@ export default function OutfitsPage() {
 
           <div className="flex items-center gap-4 mb-8">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Nach Saison
+              By Season
             </span>
             <div className="flex-1 h-px bg-gray-100" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
-            {saisonCollections.map((col) =>
+            {seasonCollections.map((col) =>
               col.active ? (
                 <a
                   key={col.slug}
@@ -263,7 +263,7 @@ export default function OutfitsPage() {
                       ))}
                     </div>
                     <span className={`self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase ${col.accentText} group-hover:gap-3 transition-all duration-200`}>
-                      Entdecken
+                      Discover
                       <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2.5}>
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
@@ -302,7 +302,7 @@ export default function OutfitsPage() {
                       ))}
                     </div>
                     <span className="self-start text-xs font-semibold tracking-widest uppercase text-gray-400">
-                      Demnächst verfügbar
+                      Coming Soon
                     </span>
                   </div>
                 </div>
@@ -318,13 +318,13 @@ export default function OutfitsPage() {
 
           <div className="flex items-center gap-4 mb-8">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Nach Anlass
+              By Occasion
             </span>
             <div className="flex-1 h-px bg-gray-100" />
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4 md:gap-5">
-            {anlassCollections.map((col) =>
+            {occasionCollections.map((col) =>
               col.active ? (
                 <a
                   key={col.slug}
@@ -361,7 +361,7 @@ export default function OutfitsPage() {
                       ))}
                     </div>
                     <span className={`self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase ${col.accentText === "text-white" ? "text-gray-300" : col.accentText} group-hover:gap-3 transition-all duration-200`}>
-                      Entdecken
+                      Discover
                       <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2.5}>
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
@@ -395,7 +395,7 @@ export default function OutfitsPage() {
                       ))}
                     </div>
                     <span className="self-start text-xs font-semibold tracking-widest uppercase text-gray-400">
-                      Demnächst verfügbar
+                      Coming Soon
                     </span>
                   </div>
                 </div>
@@ -411,13 +411,13 @@ export default function OutfitsPage() {
 
           <div className="flex items-center gap-4 mb-8">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Nach Stil
+              By Style
             </span>
             <div className="flex-1 h-px bg-gray-100" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
-            {stilCollections.map((col) =>
+            {styleCollections.map((col) =>
               col.active ? (
                 <a
                   key={col.slug}
@@ -454,7 +454,7 @@ export default function OutfitsPage() {
                       ))}
                     </div>
                     <span className={`self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase ${col.accentText === "text-white" ? "text-gray-300" : col.accentText} group-hover:gap-3 transition-all duration-200`}>
-                      Entdecken
+                      Discover
                       <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2.5}>
                         <path d="M5 12h14M13 6l6 6-6 6" />
                       </svg>
@@ -488,7 +488,7 @@ export default function OutfitsPage() {
                       ))}
                     </div>
                     <span className="self-start text-xs font-semibold tracking-widest uppercase text-gray-400">
-                      Demnächst verfügbar
+                      Coming Soon
                     </span>
                   </div>
                 </div>

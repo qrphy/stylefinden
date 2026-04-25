@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/blog/occasion-guides`,          lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/blog/seasonal-guides`,          lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/style-guide`,                   lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/impressum`,                     lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
+    { url: `${base}/legal`,                          lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
     { url: `${base}/privacy`,                       lastModified: new Date(), changeFrequency: "yearly",  priority: 0.3 },
     { url: `${base}/contact`,                       lastModified: new Date(), changeFrequency: "yearly",  priority: 0.4 },
   ];

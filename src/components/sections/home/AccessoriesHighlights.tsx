@@ -1,29 +1,29 @@
 const categories = [
-  { label: "Schmuck",       href: "/accessories?typ=schmuck",       icon: "◈" },
-  { label: "Taschen",       href: "/accessories?typ=taschen",       icon: "◻" },
-  { label: "Sonnenbrillen", href: "/accessories?typ=sonnenbrillen", icon: "◉" },
+  { label: "Jewelry",     href: "/accessories?type=jewelry",     icon: "◈" },
+  { label: "Bags",        href: "/accessories?type=bags",        icon: "◻" },
+  { label: "Sunglasses",  href: "/accessories?type=sunglasses",  icon: "◉" },
 ];
 
 const accessories = [
-  { id: 1, name: "Goldene Hoop-Ohrringe",         category: "Schmuck",       badge: "Klassiker",    pairsWith: "Passt zu jedem Look",  tip: "Zu Casual wie auch Abend-Outfits",  image: "/accessories/hoop-ohrringe.jpg",   featured: true  },
-  { id: 2, name: "Minimalistische Kettenhalskette",category: "Schmuck",       badge: "Trending",     pairsWith: "Layering-Look",        tip: "Mehrere Ketten kombinieren",        image: "/accessories/kettenhalskette.jpg", featured: false },
-  { id: 3, name: "Breiter Statement Ring",         category: "Schmuck",       badge: "Statement",    pairsWith: "Minimalist Outfits",   tip: "Ein Ring, der alles sagt",          image: "/accessories/statement-ring.jpg", featured: false },
-  { id: 4, name: "Canvas Tote Bag",               category: "Taschen",       badge: "Alltags-Must", pairsWith: "Casual & Business",    tip: "Geräumig & stilvoll",               image: "/accessories/tote-bag.jpg",       featured: true  },
-  { id: 5, name: "Mini Crossbody Bag",             category: "Taschen",       badge: "Trending",     pairsWith: "Abend & Freizeit",     tip: "Kompakt, aber wirkungsvoll",        image: "/accessories/crossbody-bag.jpg",  featured: false },
-  { id: 6, name: "Strukturierte Bucket Bag",       category: "Taschen",       badge: "Klassiker",    pairsWith: "Business & Casual",    tip: "Zeitloser Begleiter",               image: "/accessories/bucket-bag.jpg",     featured: false },
-  { id: 7, name: "Cat-Eye Sonnenbrille",           category: "Sonnenbrillen", badge: "Ikonisch",     pairsWith: "Feminine Looks",       tip: "Sofortiger Glamour-Faktor",         image: "/accessories/cat-eye-brille.jpg", featured: true  },
-  { id: 8, name: "Oversized Square Brille",        category: "Sonnenbrillen", badge: "90s Revival",  pairsWith: "Street Style",         tip: "Bold & Modern",                     image: "/accessories/oversized-brille.jpg",featured: false },
-  { id: 9, name: "Runde Vintage-Fassung",          category: "Sonnenbrillen", badge: "Zeitlos",      pairsWith: "Boho & Minimal",       tip: "Weiche Züge, starker Auftritt",     image: "/accessories/vintage-brille.jpg", featured: false },
+  { id: 1, name: "Gold Hoop Earrings",        category: "Jewelry",    badge: "Classic",         pairsWith: "Works with any look",       tip: "For casual and evening outfits",      image: "/accessories/hoop-ohrringe.jpg",    featured: true  },
+  { id: 2, name: "Minimalist Chain Necklace", category: "Jewelry",    badge: "Trending",        pairsWith: "Layering look",             tip: "Layer multiple chains together",      image: "/accessories/kettenhalskette.jpg",  featured: false },
+  { id: 3, name: "Wide Statement Ring",       category: "Jewelry",    badge: "Statement",       pairsWith: "Minimalist outfits",        tip: "One ring that says it all",           image: "/accessories/statement-ring.jpg",  featured: false },
+  { id: 4, name: "Canvas Tote Bag",           category: "Bags",       badge: "Daily Essential", pairsWith: "Casual & business",         tip: "Spacious & stylish",                  image: "/accessories/tote-bag.jpg",        featured: true  },
+  { id: 5, name: "Mini Crossbody Bag",        category: "Bags",       badge: "Trending",        pairsWith: "Evening & leisure",         tip: "Compact but impactful",               image: "/accessories/crossbody-bag.jpg",   featured: false },
+  { id: 6, name: "Structured Bucket Bag",     category: "Bags",       badge: "Classic",         pairsWith: "Business & casual",         tip: "A timeless companion",                image: "/accessories/bucket-bag.jpg",      featured: false },
+  { id: 7, name: "Cat-Eye Sunglasses",        category: "Sunglasses", badge: "Iconic",          pairsWith: "Feminine looks",            tip: "Instant glamour factor",              image: "/accessories/cat-eye-brille.jpg",  featured: true  },
+  { id: 8, name: "Oversized Square Frames",   category: "Sunglasses", badge: "90s Revival",     pairsWith: "Street style",              tip: "Bold & modern",                       image: "/accessories/oversized-brille.jpg",featured: false },
+  { id: 9, name: "Round Vintage Frames",      category: "Sunglasses", badge: "Timeless",        pairsWith: "Boho & minimal",            tip: "Soft lines, strong presence",         image: "/accessories/vintage-brille.jpg",  featured: false },
 ];
 
 const badgeStyle: Record<string, string> = {
-  "Klassiker":    "bg-black text-white",
-  "Trending":     "bg-white text-black border border-black",
-  "Statement":    "bg-gray-900 text-white",
-  "Alltags-Must": "bg-black text-white",
-  "Ikonisch":     "bg-gray-900 text-white",
-  "90s Revival":  "bg-white text-black border border-black",
-  "Zeitlos":      "bg-gray-100 text-gray-700",
+  "Classic":          "bg-black text-white",
+  "Trending":         "bg-white text-black border border-black",
+  "Statement":        "bg-gray-900 text-white",
+  "Daily Essential":  "bg-black text-white",
+  "Iconic":           "bg-gray-900 text-white",
+  "90s Revival":      "bg-white text-black border border-black",
+  "Timeless":         "bg-gray-100 text-gray-700",
 };
 
 const grouped = categories.map((cat) => ({
@@ -39,16 +39,16 @@ export default function AccessoriesHighlights() {
 
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Accessoires</span>
+            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Accessories</span>
             <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
-              Details, die <span className="italic font-light">alles verändern.</span>
+              Details that <span className="italic font-light">change everything.</span>
             </h2>
             <p className="text-sm text-gray-500 leading-relaxed mt-1 max-w-lg">
-              Zeitlose Klassiker und aktuelle Trends – Schmuck, Taschen und Sonnenbrillen, die zu jedem Outfit passen.
+              Timeless classics and current trends — jewelry, bags and sunglasses that complement every outfit.
             </p>
           </div>
           <a href="/accessories" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group shrink-0">
-            Alle Accessoires
+            All Accessories
             <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
@@ -70,7 +70,7 @@ export default function AccessoriesHighlights() {
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">{cat.label}</span>
                 <div className="flex-1 h-px bg-gray-100" />
-                <a href={cat.href} className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200">Alle →</a>
+                <a href={cat.href} className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200">All →</a>
               </div>
 
               <div className={`flex flex-col md:flex-row gap-4 md:gap-5 ${ci % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
@@ -127,7 +127,7 @@ export default function AccessoriesHighlights() {
 
         <div className="flex justify-center mt-14">
           <a href="/accessories" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-            Alle Accessoires entdecken
+            Discover All Accessories
           </a>
         </div>
 

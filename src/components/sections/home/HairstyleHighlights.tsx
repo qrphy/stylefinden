@@ -1,19 +1,19 @@
 const filters = [
-  { label: "Alle Frisuren",   href: "/hairstyles" },
-  { label: "Kurzhaar",        href: "/hairstyles?typ=kurz" },
-  { label: "Bob & Lob",       href: "/hairstyles?typ=bob" },
-  { label: "Langhaar",        href: "/hairstyles?typ=lang" },
-  { label: "Locken",          href: "/hairstyles?typ=locken" },
-  { label: "Hochsteckfrisur", href: "/hairstyles?typ=hochsteck" },
+  { label: "All Hairstyles", href: "/hairstyles" },
+  { label: "Short Hair",     href: "/hairstyles?type=short" },
+  { label: "Bob & Lob",      href: "/hairstyles?type=bob" },
+  { label: "Long Hair",      href: "/hairstyles?type=long" },
+  { label: "Curls",          href: "/hairstyles?type=curls" },
+  { label: "Updo",           href: "/hairstyles?type=updo" },
 ];
 
 const hairstyles = [
-  { id: 1, name: "Klassischer Bob",  type: "Bob",            length: "Kurz–Mittel",  mood: "Elegant & Zeitlos",         image: "seasons/sfold.png", featured: true  },
-  { id: 2, name: "Beachy Waves",     type: "Langhaar",       length: "Lang",         mood: "Lässig & Romantisch",       image: "seasons/sfold.png", featured: false },
-  { id: 3, name: "Pixie Cut",        type: "Kurzhaar",       length: "Kurz",         mood: "Modern & Mutig",            image: "seasons/sfold.png", featured: false },
-  { id: 4, name: "Sleek Ponytail",   type: "Hochsteckfrisur",length: "Mittel–Lang",  mood: "Clean & Stylish",           image: "seasons/sfold.png", featured: false },
-  { id: 5, name: "Lockige Mähne",    type: "Locken",         length: "Lang",         mood: "Verspielt & Natürlich",     image: "seasons/sfold.png", featured: false },
-  { id: 6, name: "French Braid",     type: "Hochsteckfrisur",length: "Mittel–Lang",  mood: "Feminin & Alltagstauglich", image: "seasons/sfold.png", featured: false },
+  { id: 1, name: "Classic Bob",     type: "Bob",      length: "Short–Medium", mood: "Elegant & Timeless",    image: "seasons/sfold.png", featured: true  },
+  { id: 2, name: "Beachy Waves",    type: "Long Hair", length: "Long",        mood: "Casual & Romantic",     image: "seasons/sfold.png", featured: false },
+  { id: 3, name: "Pixie Cut",       type: "Short Hair",length: "Short",       mood: "Modern & Bold",         image: "seasons/sfold.png", featured: false },
+  { id: 4, name: "Sleek Ponytail",  type: "Updo",      length: "Medium–Long", mood: "Clean & Stylish",       image: "seasons/sfold.png", featured: false },
+  { id: 5, name: "Curly Mane",      type: "Curls",     length: "Long",        mood: "Playful & Natural",     image: "seasons/sfold.png", featured: false },
+  { id: 6, name: "French Braid",    type: "Updo",      length: "Medium–Long", mood: "Feminine & Everyday",   image: "seasons/sfold.png", featured: false },
 ];
 
 const featured = hairstyles.filter((h) => h.featured);
@@ -27,15 +27,15 @@ export default function HairstyleHighlights() {
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
           <div className="flex flex-col gap-2">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Frisuren Inspiration
+              Hairstyle Inspiration
             </span>
             <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
-              Finde deinen perfekten <br className="hidden md:block" />
-              <span className="italic font-light">Haarschnitt.</span>
+              Find your perfect <br className="hidden md:block" />
+              <span className="italic font-light">haircut.</span>
             </h2>
           </div>
           <a href="/hairstyles" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group">
-            Alle Frisuren
+            All Hairstyles
             <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
@@ -67,7 +67,7 @@ export default function HairstyleHighlights() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-black/50 -z-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/50 transition-all duration-300" />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase bg-white text-black">Tipp der Woche</span>
+                <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase bg-white text-black">Tip of the Week</span>
               </div>
               <div className="relative z-10 p-6 md:p-8 flex flex-col gap-2">
                 <span className="text-xs tracking-widest uppercase text-white/60">{h.mood}</span>
@@ -102,7 +102,7 @@ export default function HairstyleHighlights() {
 
         <div className="flex justify-center mt-12">
           <a href="/hairstyles" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-            Alle Frisuren entdecken
+            Discover All Hairstyles
           </a>
         </div>
 

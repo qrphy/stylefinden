@@ -7,7 +7,7 @@ type OutfitItem = {
   id: number;
   title: string;
   subtitle: string;
-  tag: "Trending" | "Neu" | "Beliebt";
+  tag: "Trending" | "New" | "Popular";
   style: string;
   image: string;
   href: string;
@@ -43,232 +43,230 @@ type SeasonData = {
 
 const seasons: Record<string, SeasonData> = {
   "summer": {
-    label: "Sommerkleider",
-    subtitle: "Sommer 2025",
+    label: "Summer Dresses",
+    subtitle: "Summer 2025",
     description:
-      "Von verspielten Blumenkleidern über elegante Maxi-Roben bis hin zu lässigen Mini-Dresses – entdecke kuratierte Sommerkleid-Outfits für jeden Stil, jeden Tag und jeden Anlass.",
+      "From playful floral dresses to elegant maxi gowns and casual mini dresses – discover curated summer outfit looks for every style, every day and every occasion.",
     accent: "bg-[#EDCFA9]",
     accentText: "text-[#f57f17]",
-    tipTitle: "Leichte Stoffe, mutige Prints,",
+    tipTitle: "Light fabrics, bold prints,",
     tipBody:
-      "Das perfekte Sommerkleid kombiniert Leichtigkeit mit Stil – für Beach, City und Beyond.",
+      "The perfect summer dress combines lightness with style – for beach, city and beyond.",
     tipTags: ["Linen", "Floral", "Maxi", "Boho"],
-    filters: ["Alle", "Maxi", "Midi", "Mini", "Floral", "Linen", "Boho"],
-    outfitGridLabel: "Aktuelle Sommerkleid-Looks",
-    styleGuideHref: "/blog/seasonal-guides/sommer-style-guide",
+    filters: ["All", "Maxi", "Midi", "Mini", "Floral", "Linen", "Boho"],
+    outfitGridLabel: "Latest Summer Dress Looks",
+    styleGuideHref: "/blog/seasonal-guides/summer-style-guide",
     stats: [
       { value: "80+", label: "Looks" },
-      { value: "3", label: "Schnitte" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "3", label: "Cuts" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Floral Maxi Dress",   subtitle: "Strand & Urlaub",    tag: "Trending", style: "Maxi", image: "/outfits/sfold.png", href: "/outfits/floral-maxi-dress"   },
-      { id: 2, title: "Linen Slip Dress",    subtitle: "Casual & City",      tag: "Neu",      style: "Midi", image: "/outfits/sfold.png", href: "/outfits/linen-slip-dress"    },
-      { id: 3, title: "Boho Wrap Dress",     subtitle: "Festival & Natur",   tag: "Beliebt",  style: "Maxi", image: "/outfits/sfold.png", href: "/outfits/boho-wrap-dress"     },
-      { id: 4, title: "Mini Sun Dress",      subtitle: "Sommer & Freizeit",  tag: "Trending", style: "Mini", image: "/outfits/sfold.png", href: "/outfits/mini-sun-dress"      },
-      { id: 5, title: "Stripe Midi Dress",   subtitle: "Chic & Modern",      tag: "Neu",      style: "Midi", image: "/outfits/sfold.png", href: "/outfits/stripe-midi-dress"   },
-      { id: 6, title: "Off-Shoulder Dress",  subtitle: "Abend & Event",      tag: "Beliebt",  style: "Midi", image: "/outfits/sfold.png", href: "/outfits/off-shoulder-dress"  },
-      { id: 7, title: "Cotton Sundress",     subtitle: "Alltag & Picknick",  tag: "Trending", style: "Mini", image: "/outfits/sfold.png", href: "/outfits/cotton-sundress"     },
-      { id: 8, title: "Flowy Chiffon Dress", subtitle: "Elegant & Leicht",   tag: "Neu",      style: "Maxi", image: "/outfits/sfold.png", href: "/outfits/flowy-chiffon-dress" },
+      { id: 1, title: "Floral Maxi Dress",   subtitle: "Beach & Vacation",   tag: "Trending", style: "Maxi", image: "/outfits/sfold.png", href: "/outfits/floral-maxi-dress"   },
+      { id: 2, title: "Linen Slip Dress",    subtitle: "Casual & City",      tag: "New",      style: "Midi", image: "/outfits/sfold.png", href: "/outfits/linen-slip-dress"    },
+      { id: 3, title: "Boho Wrap Dress",     subtitle: "Festival & Nature",  tag: "Popular",  style: "Maxi", image: "/outfits/sfold.png", href: "/outfits/boho-wrap-dress"     },
+      { id: 4, title: "Mini Sun Dress",      subtitle: "Summer & Leisure",   tag: "Trending", style: "Mini", image: "/outfits/sfold.png", href: "/outfits/mini-sun-dress"      },
+      { id: 5, title: "Stripe Midi Dress",   subtitle: "Chic & Modern",      tag: "New",      style: "Midi", image: "/outfits/sfold.png", href: "/outfits/stripe-midi-dress"   },
+      { id: 6, title: "Off-Shoulder Dress",  subtitle: "Evening & Event",    tag: "Popular",  style: "Midi", image: "/outfits/sfold.png", href: "/outfits/off-shoulder-dress"  },
+      { id: 7, title: "Cotton Sundress",     subtitle: "Everyday & Picnic",  tag: "Trending", style: "Mini", image: "/outfits/sfold.png", href: "/outfits/cotton-sundress"     },
+      { id: 8, title: "Flowy Chiffon Dress", subtitle: "Elegant & Light",    tag: "New",      style: "Maxi", image: "/outfits/sfold.png", href: "/outfits/flowy-chiffon-dress" },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Beach Looks",    href: "/outfits/occasion/strand",  accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Festival Style", href: "/outfits/occasion/festival",accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Herbstlooks",    href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Boho Style",    href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Beach Looks",   href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Festival Style",href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Autumn Looks",  href: "/outfits/season/autumn",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
     ],
     faqs: [
       {
-        q: "Wie kombiniert man ein Sommerkleid stilvoll?",
-        a: "Ein Sommerkleid lässt sich vielseitig stylen: Mit Sandalen und Strohhut für den Strand, mit weißen Sneakers für den Stadtbummel oder mit Mules und Clutch für Abendanlässe. Ein leichter Leinenoversize-Blazer macht daraus auch einen Business-casual-Look.",
+        q: "How do you style a summer dress elegantly?",
+        a: "A summer dress is versatile: with sandals and a straw hat for the beach, with white sneakers for a city stroll, or with mules and a clutch for evening occasions. A light linen oversized blazer transforms it into a business-casual look.",
       },
       {
-        q: "Welche Sommerkleid-Schnitte passen zu welchem Körpertyp?",
-        a: "Maxi-Kleider betonen die Taille und eignen sich für alle Figuren. Midi-Kleider strecken optisch die Beine. A-Linien-Schnitte harmonieren mit Birnenformen, während Empire-Schnitte den Bauchbereich elegant kaschieren.",
-      }, 
-     {
-        q: "Welche Accessoires passen zum Sommerkleid?",
-        a: "Strohhüte, Rattan-Taschen, goldene Schmuckstücke und flache Sandalen ergänzen Sommerkleider perfekt. Für den Abend empfehlen sich Riemchensandalen mit kleinem Absatz und eine minimalistische Clutch.",
+        q: "Which summer dress cuts suit which body type?",
+        a: "Maxi dresses emphasize the waist and suit all figures. Midi dresses visually elongate the legs. A-line cuts work well for pear shapes, while empire cuts elegantly conceal the midsection.",
+      },
+      {
+        q: "Which accessories pair well with summer dresses?",
+        a: "Straw hats, rattan bags, gold jewelry and flat sandals complement summer dresses perfectly. For evening, strappy sandals with a small heel and a minimalist clutch are ideal.",
       },
     ],
     seo: {
-      title: "Sommerkleider Outfits – Leichte Looks für heiße Tage",
+      title: "Summer Dress Outfits – Light Looks for Hot Days",
       description:
-        "Entdecke die schönsten Sommerkleider-Outfits 2025: Maxi-Kleider, Midi-Kleider, florale Prints und leichte Leinenkleider für jeden Anlass – von Strand bis Stadtbummel.",
-      keywords: ["Sommerkleider", "Sommerkleid Outfit", "Maxikleid", "Midikleid", "Sommerkleid 2025", "Blumenkleid", "Leinenkleid", "Strandkleid"],
+        "Discover the most beautiful summer dress outfits 2025: maxi dresses, midi dresses, floral prints and light linen dresses for every occasion – from beach to city.",
+      keywords: ["Summer Dresses", "Summer Dress Outfit", "Maxi Dress", "Midi Dress", "Summer Dress 2025", "Floral Dress", "Linen Dress", "Beach Dress"],
     },
   },
 
   "winter": {
-    label: "Winteroutfits",
+    label: "Winter Outfits",
     subtitle: "Winter 2025 / 2026",
     description:
-      "Warme Layering-Looks, elegante Mäntel und kuschelige Kombis – entdecke kuratierte Winteroutfits für jeden Stil, jeden Tag und jeden Anlass.",
+      "Warm layering looks, elegant coats and cozy combinations – discover curated winter outfits for every style, every day and every occasion.",
     accent: "bg-[#e3f2fd]",
     accentText: "text-[#1565c0]",
-    tipTitle: "Wärme trifft Eleganz,",
+    tipTitle: "Warmth meets elegance,",
     tipBody:
-      "Der perfekte Winterlook kombiniert Funktionalität mit Stil – für City, Office und Wochenende.",
-    tipTags: ["Mantel", "Layering", "Strick", "Boots"],
-    filters: ["Alle", "Mantel", "Strick", "Layering", "Casual", "Elegant", "Business"],
-    outfitGridLabel: "Aktuelle Winter-Looks",
+      "The perfect winter look combines functionality with style – for city, office and weekend.",
+    tipTags: ["Coat", "Layering", "Knitwear", "Boots"],
+    filters: ["All", "Coat", "Knitwear", "Layering", "Casual", "Elegant", "Business"],
+    outfitGridLabel: "Latest Winter Looks",
     styleGuideHref: "/blog/seasonal-guides/winter-style-guide",
     stats: [
       { value: "60+", label: "Looks" },
       { value: "4", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Classic Wool Coat",      subtitle: "City & Business",    tag: "Trending", style: "Mantel",  image: "/outfits/sfold.png", href: "/outfits/classic-wool-coat"      },
-      { id: 2, title: "Chunky Knit Combo",      subtitle: "Casual & Cozy",      tag: "Beliebt",  style: "Strick",  image: "/outfits/sfold.png", href: "/outfits/chunky-knit-combo"      },
-      { id: 3, title: "Monochrome Layer Look",  subtitle: "Minimal & Modern",   tag: "Neu",      style: "Layering",image: "/outfits/sfold.png", href: "/outfits/monochrome-layer-look"  },
-      { id: 4, title: "Teddy Coat Outfit",      subtitle: "Weekend & Freizeit", tag: "Trending", style: "Mantel",  image: "/outfits/sfold.png", href: "/outfits/teddy-coat-outfit"      },
-      { id: 5, title: "Turtleneck & Trousers",  subtitle: "Office & Business",  tag: "Beliebt",  style: "Business",image: "/outfits/sfold.png", href: "/outfits/turtleneck-trousers"    },
-      { id: 6, title: "Plaid Scarf Look",       subtitle: "Casual & Alltag",    tag: "Neu",      style: "Casual",  image: "/outfits/sfold.png", href: "/outfits/plaid-scarf-look"       },
-      { id: 7, title: "Velvet Evening Look",    subtitle: "Abend & Event",      tag: "Trending", style: "Elegant", image: "/outfits/sfold.png", href: "/outfits/velvet-evening-look"    },
-      { id: 8, title: "Oversized Puffer Coat",  subtitle: "Street & Urban",     tag: "Neu",      style: "Mantel",  image: "/outfits/sfold.png", href: "/outfits/oversized-puffer-coat"  },
+      { id: 1, title: "Classic Wool Coat",      subtitle: "City & Business",    tag: "Trending", style: "Coat",     image: "/outfits/sfold.png", href: "/outfits/classic-wool-coat"      },
+      { id: 2, title: "Chunky Knit Combo",      subtitle: "Casual & Cozy",      tag: "Popular",  style: "Knitwear", image: "/outfits/sfold.png", href: "/outfits/chunky-knit-combo"      },
+      { id: 3, title: "Monochrome Layer Look",  subtitle: "Minimal & Modern",   tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/monochrome-layer-look"  },
+      { id: 4, title: "Teddy Coat Outfit",      subtitle: "Weekend & Leisure",  tag: "Trending", style: "Coat",     image: "/outfits/sfold.png", href: "/outfits/teddy-coat-outfit"      },
+      { id: 5, title: "Turtleneck & Trousers",  subtitle: "Office & Business",  tag: "Popular",  style: "Business", image: "/outfits/sfold.png", href: "/outfits/turtleneck-trousers"    },
+      { id: 6, title: "Plaid Scarf Look",       subtitle: "Casual & Everyday",  tag: "New",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/plaid-scarf-look"       },
+      { id: 7, title: "Velvet Evening Look",    subtitle: "Evening & Event",    tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/velvet-evening-look"    },
+      { id: 8, title: "Oversized Puffer Coat",  subtitle: "Street & Urban",     tag: "New",      style: "Coat",     image: "/outfits/sfold.png", href: "/outfits/oversized-puffer-coat"  },
     ],
     relatedCategories: [
-      { label: "Sommerkleider",  href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Herbstlooks",    href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
-      { label: "Büro & Business",href: "/outfits/occasion/buero",   accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Classic Style",  href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Summer Dresses",   href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Autumn Looks",     href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Office & Business",href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Classic Style",    href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
     faqs: [
       {
-        q: "Wie layert man Winteroutfits richtig?",
-        a: "Beginne mit einer dünnen Basisschicht (Turtleneck, Thermoshirt), füge eine wärmende Mittelschicht (Strickpullover, Wollweste) hinzu und schließe mit einem Mantel oder einer Jacke ab. So bleibt der Look stilvoll und du kannst Schichten je nach Temperatur anpassen.",
+        q: "How do you layer winter outfits correctly?",
+        a: "Start with a thin base layer (turtleneck, thermal shirt), add a warming middle layer (knit sweater, wool vest) and finish with a coat or jacket. This keeps the look stylish and you can adjust layers depending on the temperature.",
       },
       {
-        q: "Welche Mäntel sind im Winter 2025/2026 im Trend?",
-        a: "Oversized Wollmäntel in Camel und Dunkelgrün, strukturierte Teddy-Coats und taillierte Midi-Mäntel sind die großen Wintertrends. Auch Puffer-Coats in gedeckten Tönen wie Navy, Schwarz und Olivgrün bleiben ein sicherer Alltagsbegleiter.",
+        q: "Which coats are trending in winter 2025/2026?",
+        a: "Oversized wool coats in camel and dark green, structured teddy coats and fitted midi coats are the big winter trends. Puffer coats in muted tones like navy, black and olive also remain a reliable everyday companion.",
       },
       {
-        q: "Welche Schuhe passen zu Winteroutfits?",
-        a: "Chelsea Boots und Kniehohe Stiefel sind die vielseitigsten Winterbegleiter. Chunky Loafer mit dicken Socken verleihen dem Look einen modernen Touch. Für elegante Anlässe sind schwarze Stiefeletten mit Absatz eine zeitlose Wahl.",
+        q: "Which shoes pair with winter outfits?",
+        a: "Chelsea boots and knee-high boots are the most versatile winter companions. Chunky loafers with thick socks give the look a modern touch. For elegant occasions, black ankle boots with a heel are a timeless choice.",
       },
     ],
     seo: {
-      title: "Winteroutfits 2025 – Warme Looks für kalte Tage",
+      title: "Winter Outfits 2025 – Warm Looks for Cold Days",
       description:
-        "Entdecke kuratierte Winteroutfits 2025: Elegante Mäntel, cozy Strick-Kombis und stylische Layering-Looks für jeden Anlass – von Alltag bis Abend.",
-      keywords: ["Winteroutfits", "Winter Look 2025", "Wintermantel Outfit", "Layering Look", "Strick Outfit", "Wintermode", "cozy Outfit", "Winterstyle"],
+        "Discover curated winter outfits 2025: elegant coats, cozy knitwear combinations and stylish layering looks for every occasion – from everyday to evening.",
+      keywords: ["Winter Outfits", "Winter Look 2025", "Winter Coat Outfit", "Layering Look", "Knitwear Outfit", "Winter Fashion", "Cozy Outfit", "Winter Style"],
     },
   },
 
   "autumn": {
-    label: "Herbstlooks",
-    subtitle: "Herbst 2025",
+    label: "Autumn Looks",
+    subtitle: "Autumn 2025",
     description:
-      "Erdtöne, knackige Übergangslooks und elegante Trench Coats – entdecke kuratierte Herbstoutfits für jeden Stil und jeden Tag.",
+      "Earth tones, crisp transition looks and elegant trench coats – discover curated autumn outfits for every style and every day.",
     accent: "bg-[#efebe9]",
     accentText: "text-[#4e342e]",
-    tipTitle: "Erdtöne, warme Texturen,",
+    tipTitle: "Earth tones, warm textures,",
     tipBody:
-      "Der perfekte Herbstlook lebt von Schichtungen, satter Farbpalette und dem richtigen Mantel.",
-    tipTags: ["Trench", "Erdtöne", "Stiefel", "Layering"],
-    filters: ["Alle", "Trench", "Strick", "Denim", "Casual", "Elegant", "Layering"],
-    outfitGridLabel: "Aktuelle Herbst-Looks",
+      "The perfect autumn look lives through layering, a rich color palette and the right coat.",
+    tipTags: ["Trench", "Earth Tones", "Boots", "Layering"],
+    filters: ["All", "Trench", "Knitwear", "Denim", "Casual", "Elegant", "Layering"],
+    outfitGridLabel: "Latest Autumn Looks",
     styleGuideHref: "/blog/seasonal-guides/autumn-style-guide",
     stats: [
       { value: "70+", label: "Looks" },
       { value: "4", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Camel Trench Coat",      subtitle: "City & Alltag",      tag: "Trending", style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/camel-trench-coat"      },
-      { id: 2, title: "Rust Knit & Jeans",      subtitle: "Casual & Weekend",   tag: "Beliebt",  style: "Strick",   image: "/outfits/sfold.png", href: "/outfits/rust-knit-jeans"        },
-      { id: 3, title: "Olive Cargo Look",        subtitle: "Street & Urban",     tag: "Neu",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/olive-cargo-look"       },
+      { id: 1, title: "Camel Trench Coat",      subtitle: "City & Everyday",    tag: "Trending", style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/camel-trench-coat"      },
+      { id: 2, title: "Rust Knit & Jeans",      subtitle: "Casual & Weekend",   tag: "Popular",  style: "Knitwear", image: "/outfits/sfold.png", href: "/outfits/rust-knit-jeans"        },
+      { id: 3, title: "Olive Cargo Look",        subtitle: "Street & Urban",     tag: "New",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/olive-cargo-look"       },
       { id: 4, title: "Plaid Blazer Outfit",     subtitle: "Office & Business",  tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/plaid-blazer-outfit"    },
-      { id: 5, title: "Denim Layer Look",        subtitle: "Casual & Modern",    tag: "Beliebt",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-layer-look"       },
-      { id: 6, title: "Brown Leather Jacket",    subtitle: "Street & Freizeit",  tag: "Neu",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/brown-leather-jacket"   },
+      { id: 5, title: "Denim Layer Look",        subtitle: "Casual & Modern",    tag: "Popular",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-layer-look"       },
+      { id: 6, title: "Brown Leather Jacket",    subtitle: "Street & Leisure",   tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/brown-leather-jacket"   },
       { id: 7, title: "Midi Skirt & Boots",      subtitle: "Elegant & Chic",     tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/midi-skirt-boots"       },
-      { id: 8, title: "Oversized Blazer Look",   subtitle: "Business Casual",    tag: "Neu",      style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/oversized-blazer-look"  },
+      { id: 8, title: "Oversized Blazer Look",   subtitle: "Business Casual",    tag: "New",      style: "Trench",   image: "/outfits/sfold.png", href: "/outfits/oversized-blazer-look"  },
     ],
     relatedCategories: [
-      { label: "Winteroutfits",  href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Frühlingslooks", href: "/outfits/season/spring", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Winter Outfits", href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Spring Looks",   href: "/outfits/season/spring",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Classic Style",  href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
     faqs: [
       {
-        q: "Welche Farben sind im Herbst 2025 angesagt?",
-        a: "Erdtöne wie Camel, Rostbraun, Olivgrün und Dunkelrot dominieren die Herbstpalette 2025. Dazu kommen gedeckte Neutraltöne wie Greige und Dunkelgrau als vielseitige Basisfarben.",
+        q: "What colors are trending in autumn 2025?",
+        a: "Earth tones like camel, rust brown, olive green and dark red dominate the autumn 2025 palette. Muted neutrals like greige and dark grey serve as versatile base colors.",
       },
       {
-        q: "Wie kombiniert man einen Trench Coat im Herbst?",
-        a: "Ein Camel Trench Coat passt zu fast allem: über einem schlichten weißen Hemd und Straight-Leg-Jeans für den Alltag, über einem Midi-Kleid für elegante Anlässe oder über einem kräftigen Rollkragenpullover für kühlere Tage.",
+        q: "How do you style a trench coat in autumn?",
+        a: "A camel trench coat pairs with almost everything: over a simple white shirt and straight-leg jeans for everyday, over a midi dress for elegant occasions, or over a chunky turtleneck sweater for cooler days.",
       },
       {
-        q: "Welche Schuhe passen zu Herbstoutfits?",
-        a: "Kniehohe Stiefel in Braun oder Schwarz sind der klassische Herbstbegleiter. Ankle Boots mit Blockabsatz verleihen dem Look einen modernen Touch, während Chelsea Boots eine vielseitige Alltagsoption sind.",
+        q: "Which shoes pair with autumn outfits?",
+        a: "Knee-high boots in brown or black are the classic autumn companion. Ankle boots with a block heel give the look a modern touch, while Chelsea boots are a versatile everyday option.",
       },
     ],
     seo: {
-      title: "Herbstoutfits 2025 – Looks für die goldene Jahreszeit",
+      title: "Autumn Outfits 2025 – Looks for the Golden Season",
       description:
-        "Entdecke kuratierte Herbstoutfits 2025: Trench Coats, Erdton-Kombis, Layering-Looks und elegante Stiefeloutfits für jeden Anlass – von Alltag bis Abend.",
-      keywords: ["Herbstoutfits", "Herbst Look 2025", "Trench Coat Outfit", "Herbstmode", "Erdtöne Outfit", "Layering Herbst", "Herbststyle", "Übergangsoutfit"],
+        "Discover curated autumn outfits 2025: trench coats, earth tone combinations, layering looks and elegant boot outfits for every occasion – from everyday to evening.",
+      keywords: ["Autumn Outfits", "Autumn Look 2025", "Trench Coat Outfit", "Autumn Fashion", "Earth Tones Outfit", "Layering Autumn", "Autumn Style", "Transitional Outfit"],
     },
   },
 
   "spring": {
-    label: "Frühlingslooks",
-    subtitle: "Frühling 2026",
+    label: "Spring Looks",
+    subtitle: "Spring 2026",
     description:
-      "Pastelltöne, leichte Blazer und frische Kombinationen – entdecke kuratierte Frühlingsoutfits für helle Tage voller Energie.",
+      "Pastel tones, light blazers and fresh combinations – discover curated spring outfits for bright days full of energy.",
     accent: "bg-[#e8f5e9]",
     accentText: "text-[#2e7d32]",
-    tipTitle: "Frische Farben, leichte Stoffe,",
+    tipTitle: "Fresh colors, light fabrics,",
     tipBody:
-      "Der perfekte Frühlingslook bringt neue Energie in den Kleiderschrank – mit Pastell, Leinen und Floral.",
-    tipTags: ["Pastell", "Leinen", "Blazer", "Floral"],
-    filters: ["Alle", "Pastell", "Floral", "Blazer", "Leinen", "Casual", "Elegant"],
-    outfitGridLabel: "Aktuelle Frühlings-Looks",
+      "The perfect spring look brings new energy to your wardrobe – with pastels, linen and floral.",
+    tipTags: ["Pastels", "Linen", "Blazer", "Floral"],
+    filters: ["All", "Pastels", "Floral", "Blazer", "Linen", "Casual", "Elegant"],
+    outfitGridLabel: "Latest Spring Looks",
     styleGuideHref: "/blog/seasonal-guides/spring-style-guide",
     stats: [
       { value: "65+", label: "Looks" },
       { value: "4", label: "Styles" },
-      { value: "Täglich", label: "Aktualisiert" },
+      { value: "Daily", label: "Updated" },
     ],
     outfits: [
-      { id: 1, title: "Pastel Blazer Set",       subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",  image: "/outfits/sfold.png", href: "/outfits/pastel-blazer-set"      },
-      { id: 2, title: "Floral Midi Dress",        subtitle: "Alltag & Freizeit",  tag: "Beliebt",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/floral-midi-dress"      },
-      { id: 3, title: "Linen Wide-Leg Pants",     subtitle: "Casual & Modern",    tag: "Neu",      style: "Leinen",  image: "/outfits/sfold.png", href: "/outfits/linen-wide-leg-pants"   },
-      { id: 4, title: "White & Sage Combo",       subtitle: "Minimal & Fresh",    tag: "Trending", style: "Pastell", image: "/outfits/sfold.png", href: "/outfits/white-sage-combo"       },
-      { id: 5, title: "Denim & Floral Top",       subtitle: "Street & Casual",    tag: "Beliebt",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/denim-floral-top"       },
-      { id: 6, title: "Mint Trench Look",         subtitle: "City & Business",    tag: "Neu",      style: "Blazer",  image: "/outfits/sfold.png", href: "/outfits/mint-trench-look"       },
-      { id: 7, title: "Lilac Knit Dress",         subtitle: "Elegant & Soft",     tag: "Trending", style: "Pastell", image: "/outfits/sfold.png", href: "/outfits/lilac-knit-dress"       },
-      { id: 8, title: "Striped Linen Shirt Look", subtitle: "Weekend & Outdoor",  tag: "Neu",      style: "Leinen",  image: "/outfits/sfold.png", href: "/outfits/striped-linen-shirt"    },
+      { id: 1, title: "Pastel Blazer Set",       subtitle: "Office & Chic",       tag: "Trending", style: "Blazer",  image: "/outfits/sfold.png", href: "/outfits/pastel-blazer-set"      },
+      { id: 2, title: "Floral Midi Dress",        subtitle: "Everyday & Leisure",  tag: "Popular",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/floral-midi-dress"      },
+      { id: 3, title: "Linen Wide-Leg Pants",     subtitle: "Casual & Modern",     tag: "New",      style: "Linen",   image: "/outfits/sfold.png", href: "/outfits/linen-wide-leg-pants"   },
+      { id: 4, title: "White & Sage Combo",       subtitle: "Minimal & Fresh",     tag: "Trending", style: "Pastels", image: "/outfits/sfold.png", href: "/outfits/white-sage-combo"       },
+      { id: 5, title: "Denim & Floral Top",       subtitle: "Street & Casual",     tag: "Popular",  style: "Floral",  image: "/outfits/sfold.png", href: "/outfits/denim-floral-top"       },
+      { id: 6, title: "Mint Trench Look",         subtitle: "City & Business",     tag: "New",      style: "Blazer",  image: "/outfits/sfold.png", href: "/outfits/mint-trench-look"       },
+      { id: 7, title: "Lilac Knit Dress",         subtitle: "Elegant & Soft",      tag: "Trending", style: "Pastels", image: "/outfits/sfold.png", href: "/outfits/lilac-knit-dress"       },
+      { id: 8, title: "Striped Linen Shirt Look", subtitle: "Weekend & Outdoor",   tag: "New",      style: "Linen",   image: "/outfits/sfold.png", href: "/outfits/striped-linen-shirt"    },
     ],
     relatedCategories: [
-      { label: "Sommerkleider",  href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Herbstlooks",    href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Summer Dresses", href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Autumn Looks",   href: "/outfits/season/autumn",    accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
       { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Beach Looks",    href: "/outfits/occasion/strand",  accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Beach Looks",    href: "/outfits/occasion/beach",   accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
-        q: "Welche Farben sind im Frühling 2026 angesagt?",
-        a: "Weiche Pastelltöne wie Mintgrün, Flieder, Babyblau und zartes Rosa dominieren den Frühling 2026. Dazu kommen frische Neutraltöne wie Off-White und Hellbeige als elegante Basis.",
+        q: "What colors are trending in spring 2026?",
+        a: "Soft pastels like mint green, lilac, baby blue and pale pink dominate spring 2026. Fresh neutrals like off-white and light beige serve as an elegant base.",
       },
       {
-        q: "Wie stylt man einen Frühlingsblazor?",
-        a: "Ein Pastellblazer funktioniert over einer einfarbigen Hose für den Office-Look, über einem leichten Blumenkleid für einen femininen Touch oder mit Jeans und weißem T-Shirt für einen casual-chic Alltagslook.",
+        q: "How do you style a spring blazer?",
+        a: "A pastel blazer works over solid-color trousers for an office look, over a light floral dress for a feminine touch, or with jeans and a white tee for a casual-chic everyday look.",
       },
       {
-        q: "Welche Schuhe passen zu Frühlingsoutfits?",
-        a: "Weiße Sneakers sind der vielseitigste Frühlingsbegleiter. Loafer in Nude oder Pastell verleihen dem Look einen eleganten Touch, während flache Sandalen an wärmeren Frühlingstagen die erste Wahl sind.",
+        q: "Which shoes pair with spring outfits?",
+        a: "White sneakers are the most versatile spring companion. Loafers in nude or pastel add an elegant touch, while flat sandals are the first choice on warmer spring days.",
       },
     ],
-    
-    // SEO TAGS
     seo: {
-      title: "Frühlingsoutfits 2026 – Frische Looks für helle Tage",
+      title: "Spring Outfits 2026 – Fresh Looks for Bright Days",
       description:
-        "Entdecke kuratierte Frühlingsoutfits 2026: Pastell-Blazer, Blumenkleider, Leinenkombi und leichte Layering-Looks für jeden Anlass – von Alltag bis Abend.",
-      keywords: ["Frühlingsoutfits", "Frühling Look 2026", "Pastell Outfit", "Frühlingsmode", "Leinenoutfit", "Blazer Outfit Frühling", "Frühlingstyle", "Blumenkleid"],
+        "Discover curated spring outfits 2026: pastel blazers, floral dresses, linen combinations and light layering looks for every occasion – from everyday to evening.",
+      keywords: ["Spring Outfits", "Spring Look 2026", "Pastel Outfit", "Spring Fashion", "Linen Outfit", "Blazer Outfit Spring", "Spring Style", "Floral Dress"],
     },
   },
 };
@@ -298,7 +296,7 @@ export async function generateMetadata(
       description: season.seo.description,
       url: `https://stylefinden.com/outfits/season/${slug}`,
       type: "website",
-      locale: "de_DE",
+      locale: "en_US",
       siteName: "STYLEFINDEN",
     },
   };
@@ -308,8 +306,8 @@ export async function generateMetadata(
 
 const tagColors: Record<string, string> = {
   Trending: "bg-black text-white",
-  Neu:      "bg-white text-black border border-black",
-  Beliebt:  "bg-gray-100 text-gray-700",
+  New:      "bg-white text-black border border-black",
+  Popular:  "bg-gray-100 text-gray-700",
 };
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -328,11 +326,11 @@ export default async function SeasonPage(
       {/* ── Breadcrumb ── */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-6 pb-0">
         <nav className="flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors duration-200">Start</a>
+          <a href="/" className="hover:text-black transition-colors duration-200">Home</a>
           <span>/</span>
           <a href="/outfits" className="hover:text-black transition-colors duration-200">Outfits</a>
           <span>/</span>
-          <a href="/outfits/season" className="hover:text-black transition-colors duration-200">Saison</a>
+          <a href="/outfits/season" className="hover:text-black transition-colors duration-200">Season</a>
           <span>/</span>
           <span className="text-black">{season.label}</span>
         </nav>
@@ -371,11 +369,11 @@ export default async function SeasonPage(
             {/* Accent Card */}
             <div className={`hidden md:flex flex-col gap-3 ${season.accent} p-8 xl:p-10 w-full md:w-80 xl:w-96 flex-shrink-0`}>
               <span className={`text-xs font-semibold tracking-widest uppercase ${season.accentText}`}>
-                Style Tipp
+                Style Tip
               </span>
               <p className="text-sm md:text-base font-black text-black leading-snug tracking-tight">
                 {season.tipTitle}<br />
-                <span className="italic font-light">zeitlose Eleganz.</span>
+                <span className="italic font-light">timeless elegance.</span>
               </p>
               <p className="text-xs text-gray-600 leading-relaxed">{season.tipBody}</p>
               <div className="flex flex-wrap gap-2 mt-2">
@@ -425,7 +423,7 @@ export default async function SeasonPage(
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div className="flex flex-col gap-2">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                Kuratierte Auswahl
+                Curated Selection
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
                 {season.outfitGridLabel}
@@ -435,7 +433,7 @@ export default async function SeasonPage(
               href="/outfits"
               className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group"
             >
-              Alle Outfits
+              All Outfits
               <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
@@ -477,10 +475,10 @@ export default async function SeasonPage(
 
           <div className="flex justify-center mt-12">
             <a
-              href={`/outfits?saison=${slug}`}
+              href={`/outfits?season=${slug}`}
               className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200"
             >
-              Mehr {season.label} laden
+              Load More {season.label}
             </a>
           </div>
 
@@ -493,10 +491,10 @@ export default async function SeasonPage(
 
           <div className="flex flex-col items-center text-center gap-3 mb-10">
             <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Passend dazu
+              You Might Also Like
             </span>
             <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-              Ähnliche Kategorien
+              Similar Categories
             </h2>
           </div>
 
@@ -508,7 +506,7 @@ export default async function SeasonPage(
                 className={`group flex flex-col justify-between gap-6 p-6 md:p-8 ${cat.accent} hover:opacity-90 transition-opacity duration-200`}
               >
                 <span className={`text-xs font-semibold tracking-widest uppercase ${cat.accentText}`}>
-                  Entdecken
+                  Discover
                 </span>
                 <div className="flex items-end justify-between">
                   <h3 className="text-sm md:text-base font-black text-black tracking-tight leading-tight">
@@ -540,14 +538,14 @@ export default async function SeasonPage(
                 Style Guide
               </span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-                {season.label} <span className="italic font-light">finden & stylen</span>
+                {season.label} <span className="italic font-light">find & style</span>
               </h2>
               <p className="text-sm text-gray-600 leading-relaxed">{season.description}</p>
               <a
                 href={season.styleGuideHref}
                 className="self-start flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-600 transition-colors duration-200 group"
               >
-                Zum Style Guide
+                View Style Guide
                 <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
@@ -556,7 +554,7 @@ export default async function SeasonPage(
 
             <div className="flex flex-col gap-6">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                Häufige Fragen
+                Frequently Asked Questions
               </span>
               {season.faqs.map((faq, i) => (
                 <div key={i} className="flex flex-col gap-2 pb-6 border-b border-gray-200 last:border-0 last:pb-0">

@@ -2,42 +2,42 @@ const categories = [
   {
     slug: "outfits",
     label: "Outfits",
-    description: "Komplette Looks für jeden Anlass",
+    description: "Complete looks for every occasion",
     image: "/categories/outfits.jpg",
     size: "large",
   },
   {
-    slug: "frisuren",
-    label: "Frisuren",
-    description: "Aktuelle Styles & Schnitte",
+    slug: "hairstyles",
+    label: "Hairstyles",
+    description: "Current styles & cuts",
     image: "/categories/hairstyles.jpg",
     size: "normal",
   },
   {
-    slug: "accessoires",
-    label: "Accessoires",
-    description: "Taschen, Schmuck & mehr",
+    slug: "accessories",
+    label: "Accessories",
+    description: "Bags, jewelry & more",
     image: "/categories/accessories.jpg",
     size: "normal",
   },
   {
     slug: "trends",
     label: "Trends",
-    description: "Was jetzt angesagt ist",
+    description: "What's trending now",
     image: "/categories/trends.jpg",
     size: "normal",
   },
   {
     slug: "blog",
     label: "Blog",
-    description: "Tipps, Guides & Inspirationen",
+    description: "Tips, guides & inspiration",
     image: "/categories/blog.jpg",
     size: "normal",
   },
   {
-    slug: "stylingleitfaden",
-    label: "Styling Leitfaden",
-    description: "Dein persönlicher Stil-Guide",
+    slug: "style-guide",
+    label: "Style Guide",
+    description: "Your personal style guide",
     image: "/categories/style-guide.jpg",
     size: "large",
   },
@@ -50,10 +50,10 @@ export default function FeaturedCategories() {
 
         <div className="flex flex-col items-center text-center gap-3 mb-12">
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-            Kategorien
+            Categories
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
-            Was interessiert dich?
+            What interests you?
           </h2>
         </div>
 
