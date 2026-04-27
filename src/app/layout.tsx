@@ -6,6 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics"
 import CookieBanner from "@/components/analytics/CookieBanner"
 import Header from "@/components/layout/Header"
+import NewsletterForm from "@/components/shared/NewsletterForm"
 import Footer from "@/components/layout/Footer"
 
 const geistSans = Geist({
@@ -78,6 +79,7 @@ export default function RootLayout({
         <SpeedInsights />
         <GoogleAnalytics />
         <CookieBanner />
+        <NewsletterForm />
         <Footer />
       </body>
     </html>

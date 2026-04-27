@@ -7,7 +7,6 @@ const SeasonalHighlights    = dynamic(() => import("@/components/sections/home/S
 const HairstyleHighlights   = dynamic(() => import("@/components/sections/home/HairstyleHighlights"))
 const AccessoriesHighlights = dynamic(() => import("@/components/sections/home/AccessoriesHighlights"))
 const LatestArticles        = dynamic(() => import("@/components/sections/home/LatestArticles"))
-const NewsletterForm        = dynamic(() => import("@/components/shared/NewsletterForm"))
 
 
 export default function Home() {
@@ -20,7 +19,6 @@ export default function Home() {
     <HairstyleHighlights />
     <AccessoriesHighlights />
     <LatestArticles />
-    <NewsletterForm />
   </main>
   );
 }
