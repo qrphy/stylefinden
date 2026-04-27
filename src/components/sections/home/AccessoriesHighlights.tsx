@@ -17,13 +17,13 @@ const accessories = [
 ];
 
 const badgeStyle: Record<string, string> = {
-  "Classic":          "bg-black text-white",
-  "Trending":         "bg-white text-black border border-black",
-  "Statement":        "bg-gray-900 text-white",
-  "Daily Essential":  "bg-black text-white",
-  "Iconic":           "bg-gray-900 text-white",
-  "90s Revival":      "bg-white text-black border border-black",
-  "Timeless":         "bg-gray-100 text-gray-700",
+  Classic:           "bg-black text-white",
+  Trending:          "bg-white text-black border border-black",
+  Statement:         "bg-gray-900 text-white",
+  "Daily Essential": "bg-black text-white",
+  Iconic:            "bg-gray-900 text-white",
+  "90s Revival":     "bg-white text-black border border-black",
+  Timeless:          "bg-gray-100 text-gray-700",
 };
 
 const grouped = categories.map((cat) => ({

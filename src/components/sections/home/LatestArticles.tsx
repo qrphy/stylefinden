@@ -5,12 +5,7 @@ const posts = [
   { id: 4, slug: "business-casual-guide",    category: "Outfit Guide",  title: "Business Casual: The Golden Middle",              excerpt: "Between too formal and too casual — how to find the perfect look for modern work environments.",                    date: "March 28, 2025", readTime: "6 min", image: "/blog/business-casual.jpg",   featured: false },
 ];
 
-const categoryColor: Record<string, string> = {
-  "Styling Tips": "bg-black text-white",
-  "Trends":       "bg-white text-black border border-black",
-  "Accessories":  "bg-gray-100 text-gray-700",
-  "Outfit Guide": "bg-gray-900 text-white",
-};
+import { categoryColor } from "@/constants/site";
 
 const featuredPost = posts.find((p) => p.featured)!;
 const regularPosts = posts.filter((p) => !p.featured);
