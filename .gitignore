@@ -3,6 +3,8 @@
 # Claude Code agent instructions (local only)
 AGENTS.md
 CLAUDE.md
+.agents/
+.claude/
 
 # dependencies
 /node_modules
