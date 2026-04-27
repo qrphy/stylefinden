@@ -9,11 +9,7 @@ const outfits = [
   { id: 8, title: "Classic Noir",      subtitle: "Timeless & Bold",       tag: "Trending", image: "/outfits/sfold.png" },
 ];
 
-const tagColors: Record<string, string> = {
-  Trending: "bg-black text-white",
-  New:      "bg-white text-black border border-black",
-  Popular:  "bg-gray-100 text-gray-700",
-};
+import { tagColors } from "@/constants/site";
 
 export default function FeaturedOutfits() {
   return (
@@ -48,6 +44,7 @@ export default function FeaturedOutfits() {
                   src={outfit.image}
                   alt={outfit.title}
                   loading={index < 4 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
                   decoding="async"
                   className="absolute inset-0 w-full h-full object-cover object-top
                              transition-transform duration-500 ease-out group-hover:scale-105"

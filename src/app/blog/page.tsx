@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { categoryColor } from "@/constants/site"
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -81,12 +82,6 @@ const posts = [
   },
 ]
 
-const categoryColor: Record<string, string> = {
-  "Styling Tips": "bg-black text-white",
-  "Trends":        "bg-white text-black border border-black",
-  "Accessories":   "bg-gray-100 text-gray-700",
-  "Outfit Guide":  "bg-gray-900 text-white",
-}
 
 const featuredPost = posts.find((p) => p.featured)!
 const regularPosts = posts.filter((p) => !p.featured)
@@ -175,7 +170,8 @@ export default function BlogPage() {
                 <img
                   src={featuredPost.image}
                   alt={featuredPost.title}
-                  loading="lazy"
+                  loading="eager"
+                  fetchPriority="high"
                   decoding="async"
                   className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                 />
