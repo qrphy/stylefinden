@@ -16,6 +16,8 @@ const accessories = [
   { id: 9, name: "Round Vintage Frames",      category: "Sunglasses", badge: "Timeless",        pairsWith: "Boho & minimal",            tip: "Soft lines, strong presence",         image: "/accessories/vintage-brille.jpg",  featured: false },
 ];
 
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+
 const badgeStyle: Record<string, string> = {
   Classic:           "bg-black text-white",
   Trending:          "bg-white text-black border border-black",
@@ -76,7 +78,7 @@ export default function AccessoriesHighlights() {
               <div className={`flex flex-col md:flex-row gap-4 md:gap-5 ${ci % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
                 {cat.featured && (
                   <a href={`/accessories/${cat.featured.id}`} className="group relative overflow-hidden bg-gray-100 flex-shrink-0 w-full md:w-2/5 aspect-[4/5]">
-                    <img src={cat.featured.image} alt={cat.featured.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105" />
+                    <ImgPlaceholder />
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-all duration-300" />
                     <div className="absolute top-4 left-4">
@@ -101,7 +103,7 @@ export default function AccessoriesHighlights() {
                   {cat.items.map((item) => (
                     <a key={item.id} href={`/accessories/${item.id}`} className="group flex items-stretch gap-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 overflow-hidden">
                       <div className="relative w-28 md:w-36 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
-                        <img src={item.image} alt={item.name} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+                        <ImgPlaceholder />
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                       </div>
                       <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1">

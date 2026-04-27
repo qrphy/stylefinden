@@ -1,3 +1,5 @@
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+
 export default function HeroSection() {
   return (
     <section className="w-full bg-white">
@@ -58,14 +60,7 @@ export default function HeroSection() {
           <div className="relative w-full md:w-1/2 xl:w-5/12 flex-shrink-0">
 
             <div className="relative overflow-hidden bg-gray-100 aspect-[3/4] w-full max-w-sm mx-auto md:max-w-none">
-              <img
-                src="seasons/sfold.png"
-                alt="Stylish woman in a modern outfit"
-                loading="eager"
-                fetchPriority="high"
-                decoding="sync"
-                className="w-full h-full object-cover object-top"
-              />
+              <ImgPlaceholder className="w-full h-full" />
               <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
             </div>
 

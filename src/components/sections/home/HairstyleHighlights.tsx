@@ -1,3 +1,5 @@
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+
 const filters = [
   { label: "All Hairstyles", href: "/hairstyles" },
   { label: "Short Hair",     href: "/hairstyles?type=short" },
@@ -63,7 +65,7 @@ export default function HairstyleHighlights() {
               href={`/hairstyles/${h.id}`}
               className="group relative md:col-span-1 xl:col-span-2 overflow-hidden bg-gray-100 aspect-[3/4] md:aspect-auto md:row-span-2 flex flex-col justify-end"
             >
-              <img src={h.image} alt={h.name} loading="eager" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105" />
+              <ImgPlaceholder />
               <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-black/50 -z-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/50 transition-all duration-300" />
               <div className="absolute top-4 left-4">

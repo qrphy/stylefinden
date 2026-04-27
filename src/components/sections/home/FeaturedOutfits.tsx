@@ -10,6 +10,7 @@ const outfits = [
 ];
 
 import { tagColors } from "@/constants/site";
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 export default function FeaturedOutfits() {
   return (
@@ -40,15 +41,7 @@ export default function FeaturedOutfits() {
           {outfits.map((outfit, index) => (
             <a key={outfit.id} href={`/outfits/${outfit.id}`} className="group flex flex-col gap-3">
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-                <img
-                  src={outfit.image}
-                  alt={outfit.title}
-                  loading={index < 4 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-top
-                             transition-transform duration-500 ease-out group-hover:scale-105"
-                />
+                <ImgPlaceholder />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                 <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${tagColors[outfit.tag] ?? "bg-gray-100 text-gray-700"}`}>
                   {outfit.tag}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { categoryColor } from "@/constants/site"
 
 export const metadata: Metadata = {
@@ -167,14 +168,7 @@ export default function BlogPage() {
               className="group xl:col-span-2 flex flex-col overflow-hidden border border-gray-100 hover:border-gray-300 transition-colors duration-200"
             >
               <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-                <img
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
-                />
+                <ImgPlaceholder />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                 <span className={`absolute top-4 left-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase ${categoryColor[featuredPost.category] ?? "bg-gray-100 text-gray-700"}`}>
                   {featuredPost.category}
@@ -208,13 +202,7 @@ export default function BlogPage() {
                   className="group flex gap-4 border border-gray-100 hover:border-gray-300 transition-colors duration-200 overflow-hidden"
                 >
                   <div className="relative w-28 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                    />
+                    <ImgPlaceholder />
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                   </div>
                   <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1 min-w-0">

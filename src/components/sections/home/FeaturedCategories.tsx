@@ -1,3 +1,5 @@
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+
 const categories = [
   {
     slug: "outfits",
@@ -70,15 +72,7 @@ export default function FeaturedCategories() {
                   : "aspect-square",
               ].join(" ")}
             >
-              <img
-                src={cat.image}
-                alt={cat.label}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-center
-                           transition-transform duration-500 ease-out
-                           group-hover:scale-105"
-              />
+              <ImgPlaceholder />
               <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 -z-10" />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
 
