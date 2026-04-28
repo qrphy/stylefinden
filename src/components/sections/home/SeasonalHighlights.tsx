@@ -1,4 +1,5 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+import { TEST_IMG } from "@/constants/site";
 
 const seasons = [
   {
@@ -50,7 +51,7 @@ export default function SeasonalHighlights() {
               className={["flex flex-col md:flex-row overflow-hidden", i % 2 !== 0 ? "md:flex-row-reverse" : ""].join(" ")}
             >
               <div className="relative w-full md:w-1/2 aspect-[4/3] md:aspect-auto overflow-hidden bg-gray-100 flex-shrink-0">
-                <ImgPlaceholder />
+                <ImgPlaceholder src={TEST_IMG} />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                 <div className="absolute top-4 left-4">
                   <span className={`px-3 py-1 text-xs font-semibold tracking-widest uppercase ${s.accent} ${s.accentText}`}>

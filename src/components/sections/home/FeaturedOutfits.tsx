@@ -1,15 +1,15 @@
 const outfits = [
-  { id: 1, title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending", image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777395763/WhatsApp_Image_2026-04-28_at_17.40.57_erxabq.jpg" },
-  { id: 2, title: "Business Elegance", subtitle: "Office & Meeting",      tag: "New",      image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777395763/WhatsApp_Image_2026-04-28_at_17.40.57_erxabq.jpg" },
-  { id: 3, title: "Weekend Vibes",     subtitle: "Weekend & Day Trip",    tag: "Trending", image: "/outfits/sfold.png" },
-  { id: 4, title: "Evening Glam",      subtitle: "Evening & Event",       tag: "Popular",  image: "/outfits/sfold.png" },
-  { id: 5, title: "Street Style",      subtitle: "Urban & Modern",        tag: "New",      image: "/outfits/sfold.png" },
-  { id: 6, title: "Minimalist Look",   subtitle: "Clean & Elegant",       tag: "Trending", image: "/outfits/sfold.png" },
-  { id: 7, title: "Boho Dreams",       subtitle: "Festival & Nature",     tag: "Popular",  image: "/outfits/sfold.png" },
-  { id: 8, title: "Classic Noir",      subtitle: "Timeless & Bold",       tag: "Trending", image: "/outfits/sfold.png" },
+  { id: 1, title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending", image: TEST_IMG },
+  { id: 2, title: "Business Elegance", subtitle: "Office & Meeting",      tag: "New",      image: TEST_IMG },
+  { id: 3, title: "Weekend Vibes",     subtitle: "Weekend & Day Trip",    tag: "Trending", image: TEST_IMG },
+  { id: 4, title: "Evening Glam",      subtitle: "Evening & Event",       tag: "Popular",  image: TEST_IMG },
+  { id: 5, title: "Street Style",      subtitle: "Urban & Modern",        tag: "New",      image: TEST_IMG },
+  { id: 6, title: "Minimalist Look",   subtitle: "Clean & Elegant",       tag: "Trending", image: TEST_IMG },
+  { id: 7, title: "Boho Dreams",       subtitle: "Festival & Nature",     tag: "Popular",  image: TEST_IMG },
+  { id: 8, title: "Classic Noir",      subtitle: "Timeless & Bold",       tag: "Trending", image: TEST_IMG },
 ];
 
-import { tagColors } from "@/constants/site";
+import { tagColors, TEST_IMG } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 export default function FeaturedOutfits() {
@@ -41,7 +41,7 @@ export default function FeaturedOutfits() {
           {outfits.map((outfit, index) => (
             <a key={outfit.id} href={`/outfits/${outfit.id}`} className="group flex flex-col gap-3">
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-                <ImgPlaceholder />
+                <ImgPlaceholder src={outfit.image} alt={outfit.title} />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                 <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${tagColors[outfit.tag] ?? "bg-gray-100 text-gray-700"}`}>
                   {outfit.tag}
