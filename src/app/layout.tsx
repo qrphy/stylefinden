@@ -8,6 +8,7 @@ import CookieBanner from "@/components/analytics/CookieBanner"
 import Header from "@/components/layout/Header"
 import NewsletterForm from "@/components/shared/NewsletterForm"
 import Footer from "@/components/layout/Footer"
+import ScrollToTop from "@/components/shared/ScrollToTop"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -80,6 +81,7 @@ export default function RootLayout({
         <GoogleAnalytics />
         <CookieBanner />
         <NewsletterForm />
+        <ScrollToTop />
         <Footer />
       </body>
     </html>
