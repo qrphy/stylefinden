@@ -1,5 +1,5 @@
 // Temporary Cloudinary test image — replace per-item when real content is ready.
-export const TEST_IMG = "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777395763/WhatsApp_Image_2026-04-28_at_17.40.57_erxabq.jpg";
+export const TEST_IMG = "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777395763/Firefly_Flux_Realistic_fashion_photoshoot_soft_natural_window_light_clean_minimal_studio_interio_665354_tevm5m.jpg ";
 
 export const tagColors: Record<string, string> = {
   Trending: "bg-black text-white",
