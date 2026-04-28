@@ -8,7 +8,7 @@ type Props = {
   styleGuideSuffix?: string;
 };
 
-export default function FaqSection({
+export default function StyleGuideSection({
   faqs,
   label,
   description,

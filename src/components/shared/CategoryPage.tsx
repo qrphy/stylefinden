@@ -2,7 +2,7 @@ import type { CategoryData } from "@/types/outfit-category";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import FilterBar from "@/components/shared/FilterBar";
 import RelatedGrid from "@/components/shared/RelatedGrid";
-import FaqSection from "@/components/shared/FaqSection";
+import StyleGuideSection from "@/components/shared/StyleGuideSection";
 import { tagColors } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
@@ -158,7 +158,7 @@ export default function CategoryPage({
 
       <RelatedGrid items={data.relatedCategories} />
 
-      <FaqSection
+      <StyleGuideSection
         faqs={data.faqs}
         label={data.label}
         description={data.description}
