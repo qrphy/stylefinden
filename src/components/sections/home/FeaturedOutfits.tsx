@@ -1,6 +1,6 @@
 const outfits = [
-  { id: 1, title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending", image: "/outfits/sfold.png" },
-  { id: 2, title: "Business Elegance", subtitle: "Office & Meeting",      tag: "New",      image: "/outfits/sfold.png" },
+  { id: 1, title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending", image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777395763/WhatsApp_Image_2026-04-28_at_17.40.57_erxabq.jpg" },
+  { id: 2, title: "Business Elegance", subtitle: "Office & Meeting",      tag: "New",      image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777395763/WhatsApp_Image_2026-04-28_at_17.40.57_erxabq.jpg" },
   { id: 3, title: "Weekend Vibes",     subtitle: "Weekend & Day Trip",    tag: "Trending", image: "/outfits/sfold.png" },
   { id: 4, title: "Evening Glam",      subtitle: "Evening & Event",       tag: "Popular",  image: "/outfits/sfold.png" },
   { id: 5, title: "Street Style",      subtitle: "Urban & Modern",        tag: "New",      image: "/outfits/sfold.png" },
