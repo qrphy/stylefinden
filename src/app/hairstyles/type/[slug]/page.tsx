@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData } from "@/types/outfit-category";
-import OutfitCategoryPage from "@/components/sections/outfits/OutfitCategoryPage";
+import CategoryPage from "@/components/shared/CategoryPage";
 
 const hairstyleTypes: Record<string, CategoryData> = {
   "braids": {
@@ -258,7 +258,7 @@ export default async function HairstyleTypePage(
   const data = hairstyleTypes[slug];
   if (!data) notFound();
   return (
-    <OutfitCategoryPage
+    <CategoryPage
       data={data}
       slug={slug}
       basePath="/hairstyles/type"

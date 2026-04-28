@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData } from "@/types/outfit-category";
-import OutfitCategoryPage from "@/components/sections/outfits/OutfitCategoryPage";
+import CategoryPage from "@/components/shared/CategoryPage";
 
 const accessoryTypes: Record<string, CategoryData> = {
   "bags": {
@@ -258,7 +258,7 @@ export default async function AccessoryTypePage(
   const data = accessoryTypes[slug];
   if (!data) notFound();
   return (
-    <OutfitCategoryPage
+    <CategoryPage
       data={data}
       slug={slug}
       basePath="/accessories/type"

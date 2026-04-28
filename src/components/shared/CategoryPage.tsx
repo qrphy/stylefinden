@@ -16,7 +16,7 @@ type Props = {
   styleGuideSuffix?: string;
 };
 
-export default function OutfitCategoryPage({
+export default function CategoryPage({
   data,
   slug,
   basePath,
@@ -119,7 +119,7 @@ export default function OutfitCategoryPage({
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
-            {data.outfits.map((item, index) => (
+            {data.outfits.map((item) => (
               <a key={item.id} href={item.href} className="group flex flex-col gap-3">
                 <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                   <ImgPlaceholder />

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData } from "@/types/outfit-category";
-import OutfitCategoryPage from "@/components/sections/outfits/OutfitCategoryPage";
+import CategoryPage from "@/components/shared/CategoryPage";
 
 const styles: Record<string, CategoryData> = {
   "boho": {
@@ -266,7 +266,7 @@ export default async function StylePage(
   const data = styles[slug];
   if (!data) notFound();
   return (
-    <OutfitCategoryPage
+    <CategoryPage
       data={data}
       slug={slug}
       basePath="/outfits/style"
