@@ -5,7 +5,7 @@ const posts = [
   { id: 4, slug: "business-casual-guide",    category: "Outfit Guide",  title: "Business Casual: The Golden Middle",              excerpt: "Between too formal and too casual — how to find the perfect look for modern work environments.",                    date: "March 28, 2025", readTime: "6 min", image: "/blog/business-casual.jpg",   featured: false },
 ];
 
-import { categoryColor, TEST_IMG } from "@/constants/site";
+import { categoryColor } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 const featuredPost = posts.find((p) => p.featured)!;
@@ -35,7 +35,7 @@ export default function LatestArticles() {
 
           <a href={`/blog/${featuredPost.slug}`} className="group xl:col-span-2 flex flex-col overflow-hidden border border-gray-100 hover:border-gray-300 transition-colors duration-200">
             <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-              <ImgPlaceholder src={TEST_IMG} />
+              <ImgPlaceholder />
               <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
               <span className={`absolute top-4 left-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase ${categoryColor[featuredPost.category] ?? "bg-gray-100 text-gray-700"}`}>
                 {featuredPost.category}
@@ -64,7 +64,7 @@ export default function LatestArticles() {
             {regularPosts.map((post) => (
               <a key={post.id} href={`/blog/${post.slug}`} className="group flex gap-4 border border-gray-100 hover:border-gray-300 transition-colors duration-200 overflow-hidden">
                 <div className="relative w-28 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
-                  <ImgPlaceholder src={TEST_IMG} />
+                  <ImgPlaceholder />
                   <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                 </div>
                 <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1 min-w-0">

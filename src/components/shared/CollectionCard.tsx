@@ -1,5 +1,4 @@
 import ImgPlaceholder from "./ImgPlaceholder";
-import { TEST_IMG } from "@/constants/site";
 
 export type CollectionItem = {
   slug: string;
@@ -26,7 +25,7 @@ export default function CollectionCard({ item, href }: Props) {
     return (
       <div className="relative flex flex-col opacity-60 cursor-not-allowed">
         <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-          <ImgPlaceholder src={TEST_IMG} />
+          <ImgPlaceholder />
           <div className="absolute inset-0 bg-white/40" />
           <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
           <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[item.badge] ?? "bg-gray-100 text-gray-500"}`}>
@@ -56,7 +55,7 @@ export default function CollectionCard({ item, href }: Props) {
   return (
     <a href={href} className="group relative overflow-hidden flex flex-col">
       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-        <ImgPlaceholder src={TEST_IMG} />
+        <ImgPlaceholder />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
         <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[item.badge] ?? "bg-black text-white"}`}>

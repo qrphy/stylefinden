@@ -1,5 +1,4 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
-import { TEST_IMG } from "@/constants/site";
 
 const categories = [
   {
@@ -73,7 +72,7 @@ export default function FeaturedCategories() {
                   : "aspect-square",
               ].join(" ")}
             >
-              <ImgPlaceholder src={TEST_IMG} />
+              <ImgPlaceholder />
               <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 -z-10" />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-300" />
 
