@@ -122,7 +122,7 @@ export default function CategoryPage({
             {data.outfits.map((item) => (
               <a key={item.id} href={item.href} className="group flex flex-col gap-3">
                 <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-                  <ImgPlaceholder />
+                  <ImgPlaceholder src={item.image || undefined} alt={item.title} />
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                   <div className="absolute top-3 left-3 flex flex-col gap-1.5">
                     <span className={`px-2 py-1 text-xs font-semibold tracking-widest uppercase ${tagColors[item.tag]}`}>
