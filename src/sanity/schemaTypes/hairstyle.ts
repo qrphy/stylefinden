@@ -31,10 +31,12 @@ export const hairstyle = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Straight', value: 'straight' },
-          { title: 'Wavy', value: 'wavy' },
-          { title: 'Curly', value: 'curly' },
-          { title: 'Coily', value: 'coily' },
+          { title: 'Braids', value: 'braids' },
+          { title: 'Buns', value: 'buns' },
+          { title: 'Waves', value: 'waves' },
+          { title: 'Curls', value: 'curls' },
+          { title: 'Cuts', value: 'cuts' },
+          { title: 'Updos', value: 'updos' },
         ],
         layout: 'radio',
       },
@@ -57,10 +59,11 @@ export const hairstyle = defineType({
       options: {
         list: [
           { title: 'Everyday', value: 'everyday' },
-          { title: 'Work', value: 'work' },
+          { title: 'Office', value: 'office' },
           { title: 'Evening', value: 'evening' },
+          { title: 'Wedding', value: 'wedding' },
+          { title: 'Party', value: 'party' },
           { title: 'Special Occasion', value: 'special' },
-          { title: 'Bridal', value: 'bridal' },
         ],
       },
     }),
@@ -81,6 +84,7 @@ export const hairstyle = defineType({
       type: 'array',
       of: [defineArrayMember({ type: 'string' })],
     }),
+    defineField({ name: 'featured', type: 'boolean', initialValue: false }),
   ],
   preview: {
     select: { title: 'title', media: 'image', type: 'type', length: 'length' },
