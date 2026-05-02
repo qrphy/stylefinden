@@ -15,19 +15,19 @@ export const OUTFIT_QUERY = defineQuery(`
 
 export const OUTFITS_BY_STYLE_QUERY = defineQuery(`
   *[_type == "outfit" && style == $style && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
   }
 `)
 
 export const OUTFITS_BY_SEASON_QUERY = defineQuery(`
   *[_type == "outfit" && season == $season && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
   }
 `)
 
 export const OUTFITS_BY_OCCASION_QUERY = defineQuery(`
   *[_type == "outfit" && occasion == $occasion && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
   }
 `)
 
@@ -40,7 +40,7 @@ export const FEATURED_OUTFITS_QUERY = defineQuery(`
 // Accessories
 export const ACCESSORIES_QUERY = defineQuery(`
   *[_type == "accessory" && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, type, occasion, pairingTip, tags
+    _id, title, "slug": slug.current, image, type, occasion, pairingTip, tags, featured
   }
 `)
 
@@ -52,14 +52,14 @@ export const ACCESSORY_QUERY = defineQuery(`
 
 export const ACCESSORIES_BY_TYPE_QUERY = defineQuery(`
   *[_type == "accessory" && type == $type && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, type, occasion, pairingTip, tags
+    _id, title, "slug": slug.current, image, type, occasion, pairingTip, tags, featured
   }
 `)
 
 // Hairstyles
 export const HAIRSTYLES_QUERY = defineQuery(`
   *[_type == "hairstyle" && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, type, length, occasion, mood, tags
+    _id, title, "slug": slug.current, image, type, length, occasion, mood, tags, featured
   }
 `)
 
@@ -71,13 +71,13 @@ export const HAIRSTYLE_QUERY = defineQuery(`
 
 export const HAIRSTYLES_BY_TYPE_QUERY = defineQuery(`
   *[_type == "hairstyle" && type == $type && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, type, length, occasion, mood, tags
+    _id, title, "slug": slug.current, image, type, length, occasion, mood, tags, featured
   }
 `)
 
 export const HAIRSTYLES_BY_OCCASION_QUERY = defineQuery(`
   *[_type == "hairstyle" && occasion == $occasion && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, type, length, occasion, mood, tags
+    _id, title, "slug": slug.current, image, type, length, occasion, mood, tags, featured
   }
 `)
 
@@ -119,5 +119,23 @@ export const POST_QUERY = defineQuery(`
 export const POSTS_BY_CATEGORY_QUERY = defineQuery(`
   *[_type == "post" && category == $category && defined(slug.current)] | order(publishedAt desc) {
     _id, title, "slug": slug.current, excerpt, heroImage, category, publishedAt, tags
+  }
+`)
+
+export const HOME_OUTFITS_QUERY = defineQuery(`
+  *[_type == "outfit" && defined(slug.current)] | order(_createdAt desc) [0...8] {
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
+  }
+`)
+
+export const HOME_ACCESSORIES_QUERY = defineQuery(`
+  *[_type == "accessory" && defined(slug.current)] | order(_createdAt desc) [0...12] {
+    _id, title, "slug": slug.current, image, type, occasion, pairingTip, tags, featured
+  }
+`)
+
+export const HOME_HAIRSTYLES_QUERY = defineQuery(`
+  *[_type == "hairstyle" && defined(slug.current)] | order(_createdAt desc) [0...7] {
+    _id, title, "slug": slug.current, image, type, length, mood, occasion, tags, featured
   }
 `)
