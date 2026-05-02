@@ -12,7 +12,7 @@ const accessories = [
   { id: 5, name: "Mini Crossbody Bag",        category: "Bags",       badge: "Trending",        pairsWith: "Evening & leisure",         tip: "Compact but impactful",               image: "/accessories/crossbody-bag.jpg",   featured: false },
   { id: 6, name: "Structured Bucket Bag",     category: "Bags",       badge: "Classic",         pairsWith: "Business & casual",         tip: "A timeless companion",                image: "/accessories/bucket-bag.jpg",      featured: false },
   { id: 7, name: "Cat-Eye Sunglasses",        category: "Sunglasses", badge: "Iconic",          pairsWith: "Feminine looks",            tip: "Instant glamour factor",              image: "/accessories/cat-eye-brille.jpg",  featured: true  },
-  { id: 8, name: "Oversized Square Frames",   category: "Sunglasses", badge: "90s Revival",     pairsWith: "Street style",              tip: "Bold & modern",                       image: "/accessories/oversized-brille.jpg",featured: false },
+  { id: 8, name: "Oversized Square Frames",   category: "Sunglasses", badge: "90s Revival",     pairsWith: "Street style",              tip: "Bold & modern",                       image: "/accessories/oversized-brille.jpg", featured: false },
   { id: 9, name: "Round Vintage Frames",      category: "Sunglasses", badge: "Timeless",        pairsWith: "Boho & minimal",            tip: "Soft lines, strong presence",         image: "/accessories/vintage-brille.jpg",  featured: false },
 ];
 
