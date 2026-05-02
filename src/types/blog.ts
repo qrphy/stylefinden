@@ -1,2 +1,28 @@
-// TypeScript types for blog posts — to be used when blog/[slug] detail pages and the blog CMS are built.
-export type BlogPost = {};
+import type { PortableTextBlock } from '@portabletext/react'
+import type { SanityImage } from './common'
+import type { Accessory } from './accessory'
+import type { Hairstyle } from './hairstyle'
+import type { Outfit } from './outfit'
+
+export type BlogCategory =
+  | 'accessories-guides'
+  | 'hairstyle-guides'
+  | 'occasion-guides'
+  | 'seasonal-guides'
+  | 'trend-reports'
+
+export type BlogPost = {
+  _id: string
+  _type: 'post'
+  title: string
+  slug: string
+  excerpt?: string
+  heroImage?: SanityImage
+  category: BlogCategory
+  publishedAt?: string
+  body?: PortableTextBlock[]
+  tags?: string[]
+  relatedOutfits?: Pick<Outfit, '_id' | 'title' | 'slug' | 'image' | 'style' | 'occasion'>[]
+  relatedAccessories?: Pick<Accessory, '_id' | 'title' | 'slug' | 'image' | 'type'>[]
+  relatedHairstyles?: Pick<Hairstyle, '_id' | 'title' | 'slug' | 'image' | 'type' | 'length'>[]
+}
