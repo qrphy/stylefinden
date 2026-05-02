@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { CategoryData } from "@/types/outfit-category";
+import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import CategoryPage from "@/components/shared/CategoryPage";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { OUTFITS_BY_STYLE_QUERY } from "@/lib/queries";
 
-const styles: Record<string, CategoryData> = {
+function toItem(o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }): OutfitItem {
+  return {
+    id: o._id,
+    title: o.title,
+    subtitle: [o.style, o.season ?? o.occasion].filter(Boolean).join(' · '),
+    tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
+    style: o.style ?? '',
+    image: o.image ? urlFor(o.image).width(400).height(533).url() : undefined,
+    href: `/outfits/${o.slug}`,
+  }
+}
+
+const styles: Record<string, Omit<CategoryData, 'outfits'>> = {
   "boho": {
     label: "Boho Style",
     subtitle: "Free & Playful",
@@ -22,16 +37,6 @@ const styles: Record<string, CategoryData> = {
       { value: "55+", label: "Looks" },
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "Floral Wrap Maxi",     subtitle: "Festival & Nature",    tag: "Trending", style: "Maxi",   image: "/outfits/sfold.png", href: "/outfits/floral-wrap-maxi"      },
-      { id: 2, title: "Fringe Vest & Jeans",  subtitle: "Street & Casual",      tag: "Popular",  style: "Fringe", image: "/outfits/sfold.png", href: "/outfits/fringe-vest-jeans"     },
-      { id: 3, title: "Linen Boho Dress",     subtitle: "Beach & Vacation",     tag: "New",      style: "Linen",  image: "/outfits/sfold.png", href: "/outfits/linen-boho-dress"      },
-      { id: 4, title: "Embroidered Midi",     subtitle: "Romantic & Soft",      tag: "Trending", style: "Midi",   image: "/outfits/sfold.png", href: "/outfits/embroidered-midi"      },
-      { id: 5, title: "Crochet Top & Skirt",  subtitle: "Summer & Festival",    tag: "Popular",  style: "Floral", image: "/outfits/sfold.png", href: "/outfits/crochet-top-skirt"     },
-      { id: 6, title: "Boho Layer Look",      subtitle: "Autumn & Nature",      tag: "New",      style: "Fringe", image: "/outfits/sfold.png", href: "/outfits/boho-layer-look"       },
-      { id: 7, title: "Paisley Print Dress",  subtitle: "Casual & Playful",     tag: "Trending", style: "Maxi",   image: "/outfits/sfold.png", href: "/outfits/paisley-print-dress"   },
-      { id: 8, title: "Earthy Boho Set",      subtitle: "Earth Tones & Nature", tag: "New",      style: "Casual", image: "/outfits/sfold.png", href: "/outfits/earthy-boho-set"       },
     ],
     relatedCategories: [
       { label: "Summer Dresses", href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
@@ -80,16 +85,6 @@ const styles: Record<string, CategoryData> = {
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "All White Look",           subtitle: "Clean & Modern",    tag: "Trending", style: "Monochrome", image: "/outfits/sfold.png", href: "/outfits/all-white-look"          },
-      { id: 2, title: "Beige Linen Set",           subtitle: "Casual & Elegant",  tag: "Popular",  style: "Neutral",    image: "/outfits/sfold.png", href: "/outfits/beige-linen-set"         },
-      { id: 3, title: "Black Straight Trousers",   subtitle: "Office & Business", tag: "New",      style: "Business",   image: "/outfits/sfold.png", href: "/outfits/black-straight-trousers" },
-      { id: 4, title: "Grey Oversized Blazer",     subtitle: "Smart Casual",      tag: "Trending", style: "Business",   image: "/outfits/sfold.png", href: "/outfits/grey-oversized-blazer"   },
-      { id: 5, title: "Cream Knit & Trousers",     subtitle: "Cozy & Minimal",    tag: "Popular",  style: "Neutral",    image: "/outfits/sfold.png", href: "/outfits/cream-knit-trousers"     },
-      { id: 6, title: "Minimal Slip Dress",        subtitle: "Evening & Event",   tag: "New",      style: "Elegant",    image: "/outfits/sfold.png", href: "/outfits/minimal-slip-dress"      },
-      { id: 7, title: "White Shirt & Denim",       subtitle: "Everyday Basics",   tag: "Trending", style: "Basics",     image: "/outfits/sfold.png", href: "/outfits/white-shirt-denim"       },
-      { id: 8, title: "Monochrome Brown Set",      subtitle: "Warm & Simple",     tag: "New",      style: "Monochrome", image: "/outfits/sfold.png", href: "/outfits/monochrome-brown-set"    },
-    ],
     relatedCategories: [
       { label: "Classic Style",     href: "/outfits/style/classic",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Office & Business", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
@@ -137,16 +132,6 @@ const styles: Record<string, CategoryData> = {
       { value: "4", label: "Styles" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "Baggy Denim & Crop Top",  subtitle: "Urban & Casual",    tag: "Trending", style: "Denim",     image: "/outfits/sfold.png", href: "/outfits/baggy-denim-crop-top"   },
-      { id: 2, title: "Oversized Hoodie Look",   subtitle: "Cozy & Street",     tag: "Popular",  style: "Oversized", image: "/outfits/sfold.png", href: "/outfits/oversized-hoodie-look"  },
-      { id: 3, title: "Graphic Tee & Blazer",    subtitle: "Smart Street",      tag: "New",      style: "Graphic",   image: "/outfits/sfold.png", href: "/outfits/graphic-tee-blazer"     },
-      { id: 4, title: "Cargo Pants Outfit",      subtitle: "Utility & Urban",   tag: "Trending", style: "Bold",      image: "/outfits/sfold.png", href: "/outfits/cargo-pants-outfit"     },
-      { id: 5, title: "Leather Jacket & Jeans",  subtitle: "Classic Street",    tag: "Popular",  style: "Denim",     image: "/outfits/sfold.png", href: "/outfits/leather-jacket-jeans"   },
-      { id: 6, title: "Sporty Layered Set",      subtitle: "Athleisure & City", tag: "New",      style: "Sporty",    image: "/outfits/sfold.png", href: "/outfits/sporty-layered-set"     },
-      { id: 7, title: "Wide Leg & Tank",         subtitle: "Minimal Street",    tag: "Trending", style: "Oversized", image: "/outfits/sfold.png", href: "/outfits/wide-leg-tank"          },
-      { id: 8, title: "Denim-on-Denim",          subtitle: "Bold & Modern",     tag: "New",      style: "Denim",     image: "/outfits/sfold.png", href: "/outfits/denim-on-denim"         },
-    ],
     relatedCategories: [
       { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
@@ -193,16 +178,6 @@ const styles: Record<string, CategoryData> = {
       { value: "70+", label: "Looks" },
       { value: "4", label: "Styles" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "Camel Blazer & Trousers", subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",    image: "/outfits/sfold.png", href: "/outfits/camel-blazer-trousers"  },
-      { id: 2, title: "Navy & White Stripes",    subtitle: "Smart Casual",       tag: "Popular",  style: "Casual",    image: "/outfits/sfold.png", href: "/outfits/navy-white-stripes"     },
-      { id: 3, title: "Wrap Coat Outfit",        subtitle: "City & Business",    tag: "New",      style: "Trench",    image: "/outfits/sfold.png", href: "/outfits/wrap-coat-outfit"       },
-      { id: 4, title: "Little Black Dress",      subtitle: "Evening & Event",    tag: "Trending", style: "Evening",   image: "/outfits/sfold.png", href: "/outfits/little-black-dress"     },
-      { id: 5, title: "Pencil Skirt & Blouse",   subtitle: "Office & Elegant",   tag: "Popular",  style: "Business",  image: "/outfits/sfold.png", href: "/outfits/pencil-skirt-blouse"    },
-      { id: 6, title: "Trench & Straight Jeans", subtitle: "Weekend & City",     tag: "New",      style: "Trench",    image: "/outfits/sfold.png", href: "/outfits/trench-straight-jeans"  },
-      { id: 7, title: "Pearl & Silk Blouse",     subtitle: "Elegant & Feminine", tag: "Trending", style: "Evening",   image: "/outfits/sfold.png", href: "/outfits/pearl-silk-blouse"      },
-      { id: 8, title: "Grey Suit Set",           subtitle: "Power & Profession", tag: "New",      style: "Tailoring", image: "/outfits/sfold.png", href: "/outfits/grey-suit-set"          },
     ],
     relatedCategories: [
       { label: "Minimalist",        href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
@@ -265,9 +240,11 @@ export default async function StylePage(
   const { slug } = await params;
   const data = styles[slug];
   if (!data) notFound();
+  const outfits = await client.fetch(OUTFITS_BY_STYLE_QUERY, { style: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
+  const items = outfits.map(toItem);
   return (
     <CategoryPage
-      data={data}
+      data={{ ...data, outfits: items }}
       slug={slug}
       basePath="/outfits/style"
       categoryLink={{ label: "Style", href: "/outfits/style" }}
