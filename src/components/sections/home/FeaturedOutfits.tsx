@@ -1,3 +1,6 @@
+// Ana sayfadaki "Trending Outfits" bölümü — 8 outfit kartı 4'lü grid'de gösterir.
+// Sanity'de yayınlanmış outfit varsa oradan çeker; yoksa STATIC_OUTFITS fallback'i kullanır.
+// featured=true olan outfitler "Trending" etiketiyle öne çıkar.
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_OUTFITS_QUERY } from "@/lib/queries";

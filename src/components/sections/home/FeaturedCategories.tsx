@@ -1,3 +1,6 @@
+// Ana sayfadaki kategori ızgarası — sitenin 6 ana bölümüne (Outfits, Hairstyles,
+// Accessories, Trends, Blog, Style Guide) görsel kartlarla yönlendirme yapar.
+// "large" boyutlu kartlar 2 sütun kaplar. Tamamen statik.
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 const categories = [

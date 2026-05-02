@@ -1,2 +1,2 @@
-// Trends highlights section on the homepage — shows 3-4 current trend cards linking to the trends section.
+// Trends bölümü — henüz tamamlanmadı, ilerleyen aşamada eklenecek.
 export default function TrendsHighlights() { return null; }

@@ -1,3 +1,6 @@
+// Ana sayfadaki blog bölümü — en son 4 blog yazısını gösterir.
+// İlk yazı büyük öne çıkan kart (2 sütun), geri 3'ü sağ sütunda küçük liste.
+// Sanity'de yayınlanmış post varsa oradan çeker; yoksa STATIC_POSTS fallback'i kullanır.
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"

@@ -1,3 +1,6 @@
+// Ana sayfadaki saç stili bölümü — featured olan 1 büyük kart ("Tip of the Week") +
+// geri kalanlar küçük grid olarak gösterilir. Üstte tür filtreleri vardır.
+// Sanity'de veri varsa oradan çeker; yoksa STATIC_HAIRSTYLES fallback'i kullanır.
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_HAIRSTYLES_QUERY } from "@/lib/queries";

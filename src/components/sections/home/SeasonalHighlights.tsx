@@ -1,3 +1,6 @@
+// Mevsimsel kombin rehberleri — her mevsim için görsel + açıklama + etiketler
+// içeren yan yana kartlar. Tek sayılı kartlar sağa hizalanır (alternatif layout).
+// Tamamen statik, CTA'lar /outfits?season= filtrelerine yönlendirir.
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 const seasons = [

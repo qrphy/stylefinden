@@ -1,3 +1,7 @@
+// Ana sayfadaki aksesuar bölümü — Jewelry / Bags / Sunglasses kategorilerine göre gruplandırılır.
+// Her kategori: 1 büyük featured kart (sol) + 2 küçük liste kartı (sağ) olarak görünür.
+// Tek sayılı kategoriler sağa-sola pozisyon değiştirir (ci % 2 !== 0).
+// Sanity'de veri varsa oradan çeker; yoksa STATIC_ACCESSORIES fallback'i kullanır.
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_ACCESSORIES_QUERY } from "@/lib/queries";

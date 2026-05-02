@@ -1,3 +1,5 @@
+// Ana sayfa hero bölümü — sol tarafta başlık/slogan/CTA butonları/istatistikler,
+// sağ tarafta ana görsel. Tamamen statik, veri kaynağı yok.
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 export default function HeroSection() {
