@@ -61,6 +61,7 @@ export const accessory = defineType({
       type: 'array',
       of: [defineArrayMember({ type: 'string' })],
     }),
+    defineField({ name: 'featured', type: 'boolean', initialValue: false }),
   ],
   preview: {
     select: { title: 'title', media: 'image', type: 'type' },
