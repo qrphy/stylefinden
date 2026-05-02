@@ -10,12 +10,12 @@ const filters = [
 ];
 
 const hairstyles = [
-  { id: 1, name: "Classic Bob",     type: "Bob",      length: "Short–Medium", mood: "Elegant & Timeless",    image: "seasons/sfold.png", featured: true  },
-  { id: 2, name: "Beachy Waves",    type: "Long Hair", length: "Long",        mood: "Casual & Romantic",     image: "seasons/sfold.png", featured: false },
-  { id: 3, name: "Pixie Cut",       type: "Short Hair",length: "Short",       mood: "Modern & Bold",         image: "seasons/sfold.png", featured: false },
-  { id: 4, name: "Sleek Ponytail",  type: "Updo",      length: "Medium–Long", mood: "Clean & Stylish",       image: "seasons/sfold.png", featured: false },
-  { id: 5, name: "Curly Mane",      type: "Curls",     length: "Long",        mood: "Playful & Natural",     image: "seasons/sfold.png", featured: false },
-  { id: 6, name: "French Braid",    type: "Updo",      length: "Medium–Long", mood: "Feminine & Everyday",   image: "seasons/sfold.png", featured: false },
+  { id: 1, name: "Classic Bob",     type: "Bob",       length: "Short–Medium", mood: "Elegant & Timeless",  image: "seasons/sfold.png", featured: true  },
+  { id: 2, name: "Beachy Waves",    type: "Long Hair",  length: "Long",        mood: "Casual & Romantic",   image: "seasons/sfold.png", featured: false },
+  { id: 3, name: "Pixie Cut",       type: "Short Hair", length: "Short",       mood: "Modern & Bold",       image: "seasons/sfold.png", featured: false },
+  { id: 4, name: "Sleek Ponytail",  type: "Updo",       length: "Medium–Long", mood: "Clean & Stylish",     image: "seasons/sfold.png", featured: false },
+  { id: 5, name: "Curly Mane",      type: "Curls",      length: "Long",        mood: "Playful & Natural",   image: "seasons/sfold.png", featured: false },
+  { id: 6, name: "French Braid",    type: "Updo",       length: "Medium–Long", mood: "Feminine & Everyday", image: "seasons/sfold.png", featured: false },
 ];
 
 const featured = hairstyles.filter((h) => h.featured);
