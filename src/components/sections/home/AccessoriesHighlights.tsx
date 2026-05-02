@@ -17,27 +17,55 @@ const badgeStyle: Record<string, string> = {
   Iconic:            "bg-gray-900 text-white",
   "90s Revival":     "bg-white text-black border border-black",
   Timeless:          "bg-gray-100 text-gray-700",
+  New:               "bg-white text-black border border-black",
 };
 
+const STATIC_ACCESSORIES = [
+  { id: "1",  title: "Gold Hoop Earrings",        category: "Jewelry",    badge: "Classic",         pairingTip: "Works with any look",    occasion: "For casual and evening outfits", featured: true  },
+  { id: "2",  title: "Minimalist Chain Necklace", category: "Jewelry",    badge: "Trending",        pairingTip: "Layering look",          occasion: "Layer multiple chains together", featured: false },
+  { id: "3",  title: "Wide Statement Ring",       category: "Jewelry",    badge: "Statement",       pairingTip: "Minimalist outfits",     occasion: "One ring that says it all",      featured: false },
+  { id: "4",  title: "Canvas Tote Bag",           category: "Bags",       badge: "Daily Essential", pairingTip: "Casual & business",      occasion: "Spacious & stylish",             featured: true  },
+  { id: "5",  title: "Mini Crossbody Bag",        category: "Bags",       badge: "Trending",        pairingTip: "Evening & leisure",      occasion: "Compact but impactful",          featured: false },
+  { id: "6",  title: "Structured Bucket Bag",     category: "Bags",       badge: "Classic",         pairingTip: "Business & casual",      occasion: "A timeless companion",           featured: false },
+  { id: "7",  title: "Cat-Eye Sunglasses",        category: "Sunglasses", badge: "Iconic",          pairingTip: "Feminine looks",         occasion: "Instant glamour factor",         featured: true  },
+  { id: "8",  title: "Oversized Square Frames",   category: "Sunglasses", badge: "90s Revival",     pairingTip: "Street style",           occasion: "Bold & modern",                  featured: false },
+  { id: "9",  title: "Round Vintage Frames",      category: "Sunglasses", badge: "Timeless",        pairingTip: "Boho & minimal",         occasion: "Soft lines, strong presence",    featured: false },
+];
+
 type AccessoryItem = {
-  _id: string;
+  id: string;
   title: string;
-  slug: string;
-  image?: object;
-  type?: string;
-  occasion?: string;
+  slug?: string;
+  image?: string;
+  category: string;
+  badge: string;
   pairingTip?: string;
-  tags?: string[];
-  featured?: boolean;
+  occasion?: string;
+  featured: boolean;
 };
 
 export default async function AccessoriesHighlights() {
-  const allAccessories: AccessoryItem[] = await client.fetch(HOME_ACCESSORIES_QUERY, {}, { next: { revalidate: 3600, tags: ['accessory'] } });
+  const sanityData = await client.fetch(HOME_ACCESSORIES_QUERY, {}, { next: { revalidate: 3600, tags: ['accessory'] } });
+
+  const accessories: AccessoryItem[] = sanityData.length > 0
+    ? sanityData.map((a: { _id: string; title: string; slug: string; image?: object; type?: string; occasion?: string; pairingTip?: string; tags?: string[]; featured?: boolean }) => ({
+        id: a._id,
+        title: a.title,
+        slug: a.slug,
+        image: a.image ? urlFor(a.image).width(600).height(750).url() : undefined,
+        category: a.type ?? "",
+        badge: a.featured ? "Trending" : "New",
+        pairingTip: a.pairingTip,
+        occasion: a.occasion,
+        featured: !!a.featured,
+      }))
+    : STATIC_ACCESSORIES;
 
   const grouped = categories.map((cat) => ({
     ...cat,
-    featured: allAccessories.find((a) => a.type === cat.value && a.featured) ?? allAccessories.find((a) => a.type === cat.value),
-    items: allAccessories.filter((a) => a.type === cat.value && !a.featured).slice(0, 2),
+    featured: accessories.find((a) => a.category === (sanityData.length > 0 ? cat.value : cat.label) && a.featured)
+      ?? accessories.find((a) => a.category === (sanityData.length > 0 ? cat.value : cat.label)),
+    items: accessories.filter((a) => a.category === (sanityData.length > 0 ? cat.value : cat.label) && !a.featured).slice(0, 2),
   }));
 
   return (
@@ -82,13 +110,13 @@ export default async function AccessoriesHighlights() {
 
               <div className={`flex flex-col md:flex-row gap-4 md:gap-5 ${ci % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
                 {cat.featured && (
-                  <a href={`/accessories/${cat.featured.slug}`} className="group relative overflow-hidden bg-gray-100 flex-shrink-0 w-full md:w-2/5 aspect-[4/5]">
-                    <ImgPlaceholder src={cat.featured.image ? urlFor(cat.featured.image).width(600).height(750).url() : undefined} alt={cat.featured.title} />
+                  <a href={`/accessories/${cat.featured.slug ?? cat.featured.id}`} className="group relative overflow-hidden bg-gray-100 flex-shrink-0 w-full md:w-2/5 aspect-[4/5]">
+                    <ImgPlaceholder src={cat.featured.image} alt={cat.featured.title} />
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-all duration-300" />
                     <div className="absolute top-4 left-4">
-                      <span className={`px-3 py-1 text-xs font-semibold tracking-widest uppercase ${cat.featured.featured ? badgeStyle["Trending"] : badgeStyle["Classic"]}`}>
-                        {cat.featured.featured ? "Trending" : "New"}
+                      <span className={`px-3 py-1 text-xs font-semibold tracking-widest uppercase ${badgeStyle[cat.featured.badge] ?? "bg-gray-100 text-gray-700"}`}>
+                        {cat.featured.badge}
                       </span>
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-1">
@@ -106,14 +134,14 @@ export default async function AccessoriesHighlights() {
 
                 <div className="flex flex-col gap-4 flex-1">
                   {cat.items.map((item) => (
-                    <a key={item._id} href={`/accessories/${item.slug}`} className="group flex items-stretch gap-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 overflow-hidden">
+                    <a key={item.id} href={`/accessories/${item.slug ?? item.id}`} className="group flex items-stretch gap-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 overflow-hidden">
                       <div className="relative w-28 md:w-36 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
-                        <ImgPlaceholder src={item.image ? urlFor(item.image).width(200).height(200).url() : undefined} alt={item.title} />
+                        <ImgPlaceholder src={item.image} alt={item.title} />
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                       </div>
                       <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1">
-                        <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeStyle["Trending"]}`}>
-                          New
+                        <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeStyle[item.badge] ?? "bg-gray-100 text-gray-700"}`}>
+                          {item.badge}
                         </span>
                         <h3 className="text-sm font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200">{item.title}</h3>
                         <p className="text-xs tracking-widest uppercase text-gray-400">{item.pairingTip}</p>
