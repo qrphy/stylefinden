@@ -14,13 +14,19 @@ export default function NewsletterForm() {
     setStatus("loading");
 
     try {
-      await new Promise((r) => setTimeout(r, 800));
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
       setStatus("success");
       setMessage("Thank you! You're now subscribed. Check your spam folder too.");
       setEmail("");
-    } catch {
+    } catch (err) {
       setStatus("error");
-      setMessage("Something went wrong. Please try again.");
+      setMessage(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     }
   }
 
