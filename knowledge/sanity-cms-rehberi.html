@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sanity CMS — Tam Entegrasyon Rehberi | STYLEFINDEN</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 48px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 260px;
+    background: #0f0f0f;
+    color: #fff;
+    padding: 48px;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .cover .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .cover h1 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  .cover h1 em {
+    font-style: italic;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+  }
+  .cover .subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    max-width: 520px;
+    margin-top: 8px;
+  }
+
+  /* ── Typography ── */
+  h2 {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-top: 48px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0f0f0f;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-top: 28px;
+    margin-bottom: 10px;
+    color: #555;
+  }
+  h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+  p { margin-bottom: 14px; color: #333; }
+  strong { font-weight: 700; color: #0f0f0f; }
+
+  /* ── Code ── */
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    background: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #c7254e;
+  }
+  pre {
+    background: #0f0f0f;
+    color: #e8e8e8;
+    padding: 20px 24px;
+    border-radius: 0;
+    overflow: auto;
+    margin: 16px 0 20px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  pre .comment { color: #6a9955; }
+  pre .key { color: #9cdcfe; }
+  pre .string { color: #ce9178; }
+  pre .keyword { color: #569cd6; }
+  pre .fn { color: #dcdcaa; }
+
+  /* ── Boxes ── */
+  .box {
+    border: 1px solid #e5e5e5;
+    padding: 20px 24px;
+    margin: 16px 0 24px;
+  }
+  .box.dark {
+    background: #0f0f0f;
+    color: #fff;
+    border-color: #0f0f0f;
+  }
+  .box.dark p, .box.dark li { color: rgba(255,255,255,0.75); }
+  .box.accent {
+    background: #f9f9f9;
+    border-left: 3px solid #0f0f0f;
+  }
+  .box-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #999;
+  }
+  .box.dark .box-title { color: rgba(255,255,255,0.4); }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 13px;
+  }
+  th {
+    text-align: left;
+    padding: 10px 14px;
+    background: #0f0f0f;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafafa; }
+
+  /* ── Flow diagram ── */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    margin: 20px 0 28px;
+  }
+  .flow-step {
+    background: #0f0f0f;
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .flow-step.light {
+    background: #f4f4f4;
+    color: #0f0f0f;
+  }
+  .flow-arrow {
+    padding: 0 8px;
+    font-size: 16px;
+    color: #999;
+    font-weight: 300;
+  }
+
+  /* ── Lists ── */
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; color: #333; }
+  ul li::marker { color: #0f0f0f; }
+
+  /* ── Divider ── */
+  hr {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 40px 0;
+  }
+
+  /* ── Number badge ── */
+  .num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: #0f0f0f;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 24px;
+    margin-right: 10px;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .step-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .step-row .num { margin-top: 1px; }
+  .step-content h4 { margin-top: 0; }
+
+  /* ── Print ── */
+  @media print {
+    body { padding: 0; }
+    pre { white-space: pre-wrap; word-break: break-word; }
+    h2, h3 { page-break-after: avoid; }
+    .cover { page-break-after: always; }
+    pre, .box, table { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="eyebrow">STYLEFINDEN — Teknik Döküman</div>
+  <h1>Sanity CMS<br /><em>Tam Entegrasyon Rehberi</em></h1>
+  <p class="subtitle">
+    Detail sayfaları neden var, Sanity nasıl çalışır, içerik ekleme'den sayfaya render'a kadar
+    her adımın açıklaması.
+  </p>
+</div>
+
+
+<!-- ══════════════ 1. BÜYÜK RESİM ══════════════ -->
+<h2>1. Büyük Resim: Ne Nedir, Ne Yapar?</h2>
+
+<p>
+  Projenin içerik mimarisi iki katmana ayrılıyor:
+  <strong>yapısal navigasyon katmanı</strong> (sayfalardaki başlıklar, açıklamalar, filtreler, FAQ'lar)
+  ve <strong>dinamik içerik katmanı</strong> (outfitler, aksesuarlar, saç stilleri, blog yazıları).
+</p>
+
+<table>
+  <tr>
+    <th>Katman</th>
+    <th>Nerede yaşıyor?</th>
+    <th>Kim günceller?</th>
+    <th>Değişme sıklığı</th>
+  </tr>
+  <tr>
+    <td><strong>Yapısal / Navigasyon</strong><br/>Sayfa başlıkları, kategoriler, SEO metinleri, FAQ</td>
+    <td>Kod içinde (TypeScript)</td>
+    <td>Developer</td>
+    <td>Nadiren (sezonluk)</td>
+  </tr>
+  <tr>
+    <td><strong>Dinamik İçerik</strong><br/>Outfit, aksesuar, saç stili, blog yazısı</td>
+    <td>Sanity CMS (bulut)</td>
+    <td>İçerik editörü, sahibi</td>
+    <td>Sürekli (günlük/haftalık)</td>
+  </tr>
+</table>
+
+<p>
+  Sanity, bu dinamik içerik katmanını yönetmek için kullanılıyor. Kod değiştirmeden,
+  deploy etmeden, bir arayüzden (Studio) içerik ekleyip değiştirebiliyorsun.
+</p>
+
+
+<!-- ══════════════ 2. DETAIL SAYFALAR ══════════════ -->
+<h2>2. Detail Sayfaları Neden Var? ([slug] Mantığı)</h2>
+
+<p>
+  <strong>Temel soru:</strong> Outfit listesinde 50 outfit varsa, her outfit için ayrı bir sayfa dosyası
+  oluşturmak mümkün mü? Hayır. İşte bu yüzden <strong>dynamic route</strong> ve <strong>slug</strong>
+  kavramları geliyor.
+</p>
+
+<div class="box accent">
+  <div class="box-title">Slug Nedir?</div>
+  <p style="margin:0">
+    Slug, bir içeriği URL'de temsil eden benzersiz kısa metindir.
+    <code>"Classic Bob"</code> başlıklı bir saç stili için slug: <code>classic-bob</code> olur.
+    Bu slug URL'de kullanılır: <code>/hairstyles/classic-bob</code>
+  </p>
+</div>
+
+<h3>Static Route vs Dynamic Route</h3>
+
+<table>
+  <tr>
+    <th>Yaklaşım</th>
+    <th>Örnek</th>
+    <th>Sorun</th>
+  </tr>
+  <tr>
+    <td>Her sayfa için ayrı dosya</td>
+    <td><code>outfits/classic-bob.tsx</code><br/><code>outfits/boho-dress.tsx</code></td>
+    <td>100 outfit = 100 dosya. Deploy gerektirir. Sürdürülemez.</td>
+  </tr>
+  <tr>
+    <td>Dynamic route <code>[slug]</code></td>
+    <td><code>outfits/[slug]/page.tsx</code></td>
+    <td>Yok. Tek dosya, sonsuz sayıda içeriği render eder.</td>
+  </tr>
+</table>
+
+<p>
+  <code>src/app/outfits/[slug]/page.tsx</code> dosyası, URL'deki <code>[slug]</code> kısmını
+  alır, Sanity'ye sorar: <em>"Bu slug'a sahip bir outfit var mı?"</em> Varsa sayfayı oluşturur,
+  yoksa 404 döner.
+</p>
+
+<pre>
+<span class="comment">// src/app/outfits/[slug]/page.tsx</span>
+<span class="keyword">export default async function</span> <span class="fn">OutfitPage</span>({ params }) {
+  <span class="keyword">const</span> { slug } = <span class="keyword">await</span> params
+
+  <span class="comment">// Sanity'ye sor: bu slug'a sahip outfit var mı?</span>
+  <span class="keyword">const</span> outfit = <span class="keyword">await</span> client.<span class="fn">fetch</span>(OUTFIT_QUERY, { slug })
+
+  <span class="comment">// Yoksa 404</span>
+  <span class="keyword">if</span> (!outfit) <span class="fn">notFound</span>()
+
+  <span class="comment">// Varsa sayfayı render et</span>
+  <span class="keyword">return</span> &lt;main&gt;...&lt;/main&gt;
+}
+</pre>
+
+<h3>generateStaticParams — Build Zamanında Sayfa Üretimi</h3>
+
+<p>
+  Next.js, hangi slug'ların var olduğunu önceden bilmek ister — bu sayfaları
+  <strong>build sırasında statik HTML olarak üretir</strong> (Static Site Generation).
+  Bunun için <code>generateStaticParams</code> fonksiyonu kullanılır:
+</p>
+
+<pre>
+<span class="keyword">export async function</span> <span class="fn">generateStaticParams</span>() {
+  <span class="comment">// Sanity'den tüm outfit slug'larını çek</span>
+  <span class="keyword">const</span> slugs = <span class="keyword">await</span> client.fetch(
+    `*[_type == "outfit"]{"slug": slug.current}`
+  )
+  <span class="comment">// Next.js'e hangi sayfaları önceden üretmesi gerektiğini söyle</span>
+  <span class="keyword">return</span> slugs  <span class="comment">// [{ slug: "casual-chic" }, { slug: "boho-dreams" }, ...]</span>
+}
+</pre>
+
+<div class="box dark">
+  <div class="box-title">Performans Açısından Önemi</div>
+  <p>
+    Build zamanında üretilen sayfalar, kullanıcı isteğinde Sanity'ye gitmeye gerek kalmadan
+    hazır HTML olarak sunulur. Bu <strong>0ms sunucu süresi</strong> demektir — sayfa CDN'den
+    anında gelir. Yeni bir outfit eklendiğinde Next.js, sadece o yeni sayfa için
+    yeniden üretim (ISR) yapar.
+  </p>
+</div>
+
+
+<!-- ══════════════ 3. SANİTY NASIL ÇALIŞIR ══════════════ -->
+<h2>3. Sanity Nasıl Çalışır? — Uçtan Uca Akış</h2>
+
+<div class="flow">
+  <div class="flow-step">Sanity Studio</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step light">Content Lake</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step light">GROQ Sorgusu</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step light">Next.js Fetch</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Sayfa / Render</div>
+</div>
+
+<h3>Adım 1 — Sanity Studio (İçerik Yönetim Arayüzü)</h3>
+
+<p>
+  Proje içindeki <code>/studio</code> adresi, Sanity'nin tam özellikli CMS arayüzünü
+  açar. Burada:
+</p>
+<ul>
+  <li>Yeni outfit eklenebilir, mevcut outfit düzenlenebilir</li>
+  <li>Görsel yüklenebilir (Sanity kendi CDN'ine kaydeder)</li>
+  <li>İlişkiler kurulabilir: "Bu blog yazısıyla ilgili outfitler" gibi</li>
+  <li>Draft (taslak) ve Published (yayınlandı) ayrımı yapılabilir</li>
+</ul>
+
+<div class="box accent">
+  <div class="box-title">Schema Nedir?</div>
+  <p style="margin:0">
+    Schema, bir içerik türünün hangi alanları taşıyacağını tanımlar.
+    <code>src/sanity/schemaTypes/outfit.ts</code> dosyası, Studio'da outfit
+    oluştururken hangi alanların görüneceğini belirler:
+    <em>title, image, style, season, occasion, pieces, tags, featured…</em>
+  </p>
+</div>
+
+<pre>
+<span class="comment">// src/sanity/schemaTypes/outfit.ts — Schema tanımı</span>
+<span class="keyword">export const</span> outfit = <span class="fn">defineType</span>({
+  name: <span class="string">'outfit'</span>,
+  type: <span class="string">'document'</span>,
+  fields: [
+    <span class="fn">defineField</span>({ name: <span class="string">'title'</span>,    type: <span class="string">'string'</span>                    }),
+    <span class="fn">defineField</span>({ name: <span class="string">'image'</span>,    type: <span class="string">'image'</span>, options: { hotspot: true } }),
+    <span class="fn">defineField</span>({ name: <span class="string">'style'</span>,    type: <span class="string">'string'</span>, options: { list: [...] }   }),
+    <span class="fn">defineField</span>({ name: <span class="string">'season'</span>,   type: <span class="string">'string'</span>, options: { list: [...] }   }),
+    <span class="fn">defineField</span>({ name: <span class="string">'featured'</span>, type: <span class="string">'boolean'</span>                   }),
+  ]
+})
+</pre>
+
+<h3>Adım 2 — Content Lake (Sanity'nin Veri Tabanı)</h3>
+
+<p>
+  Studio'da "Publish" butonuna basıldığında içerik,
+  Sanity'nin bulut altyapısına (<strong>Content Lake</strong>) kaydedilir.
+  Bu, Sanity'nin barındırdığı bir API + veritabanı kombinasyonudur.
+</p>
+<ul>
+  <li>Proje ID: <code>29dp442n</code></li>
+  <li>Dataset: <code>production</code></li>
+  <li>Tüm içerik bu bulut deposunda JSON formatında yaşar</li>
+  <li>Görüntüler Sanity CDN'inde barındırılır: <code>cdn.sanity.io</code></li>
+</ul>
+
+<h3>Adım 3 — GROQ Sorgusu (Veriyi Çekme Dili)</h3>
+
+<p>
+  GROQ (Graph-Relational Object Queries), Sanity'ye özgü sorgulama dilidir.
+  SQL'e benzer ama JSON belgeleri için optimize edilmiştir.
+</p>
+
+<pre>
+<span class="comment">// Tüm outfit'leri en son eklenenden başlayarak çek</span>
+*[_type == <span class="string">"outfit"</span> && defined(slug.current)] | order(_createdAt desc) {
+  _id, title, <span class="string">"slug"</span>: slug.current, image, style, season, occasion, tags
+}
+
+<span class="comment">// Sadece "autumn" sezonundaki outfitler</span>
+*[_type == <span class="string">"outfit"</span> && season == <span class="string">"autumn"</span>] {
+  _id, title, <span class="string">"slug"</span>: slug.current, image, style
+}
+
+<span class="comment">// Belirli bir slug'a sahip tek outfit</span>
+*[_type == <span class="string">"outfit"</span> && slug.current == $slug][0] {
+  _id, title, description, image, style, season, pieces, tags
+}
+</pre>
+
+<p>
+  Tüm GROQ sorguları <code>src/lib/queries.ts</code> dosyasında merkezi olarak
+  tanımlanmıştır. <code>defineQuery()</code> fonksiyonu, TypeScript tip çıkarımı
+  sağlar — yani sorgu sonuçları otomatik olarak doğru TypeScript tipini alır.
+</p>
+
+<h3>Adım 4 — Next.js Server Component Fetch</h3>
+
+<p>
+  Next.js'in server component'leri, sayfa sunucuda oluşturulurken direkt olarak
+  Sanity'ye bağlanır ve veriyi çeker. Kullanıcıya ulaşan sayfa
+  <strong>zaten hazır HTML</strong>'dir — tarayıcı hiç API çağrısı yapmaz.
+</p>
+
+<pre>
+<span class="comment">// Sayfa server'da çalışır, kullanıcı görmez</span>
+<span class="keyword">export default async function</span> <span class="fn">FeaturedOutfits</span>() {
+  <span class="keyword">const</span> outfits = <span class="keyword">await</span> client.<span class="fn">fetch</span>(
+    HOME_OUTFITS_QUERY,
+    {},
+    { next: { revalidate: 3600, tags: [<span class="string">'outfit'</span>] } }
+  )
+
+  <span class="comment">// Sanity'den gelen veriyle render et</span>
+  <span class="keyword">return</span> (
+    &lt;section&gt;
+      {outfits.<span class="fn">map</span>((outfit) =&gt; (
+        &lt;a href={`/outfits/${outfit.slug}`}&gt;
+          &lt;ImgPlaceholder src={<span class="fn">urlFor</span>(outfit.image).<span class="fn">width</span>(600).<span class="fn">url</span>()} /&gt;
+          &lt;h3&gt;{outfit.title}&lt;/h3&gt;
+        &lt;/a&gt;
+      ))}
+    &lt;/section&gt;
+  )
+}
+</pre>
+
+<h3>Adım 5 — urlFor() ile Görsel Optimizasyonu</h3>
+
+<p>
+  Sanity görselleri <strong>ham format</strong>ta depolar. <code>urlFor()</code> fonksiyonu,
+  ihtiyaca göre boyut, format ve kalite parametreleriyle optimize URL üretir:
+</p>
+
+<pre>
+<span class="comment">// 600x800, WebP formatında, %80 kalitede</span>
+<span class="fn">urlFor</span>(outfit.image).<span class="fn">width</span>(600).<span class="fn">height</span>(800).<span class="fn">format</span>(<span class="string">'webp'</span>).<span class="fn">url</span>()
+<span class="comment">// → "https://cdn.sanity.io/images/29dp442n/production/abc123-600x800.webp"</span>
+
+<span class="comment">// 400x400 kare kırpma</span>
+<span class="fn">urlFor</span>(item.image).<span class="fn">width</span>(400).<span class="fn">height</span>(400).<span class="fn">fit</span>(<span class="string">'crop'</span>).<span class="fn">url</span>()
+</pre>
+
+<p>
+  Bu URL'ler <code>next/image</code>'in <code>src</code> prop'una verilir.
+  Next.js bu görüntüleri ek olarak kendi CDN'inden de sunar.
+</p>
+
+
+<!-- ══════════════ 4. CACHING VE PERFORMANS ══════════════ -->
+<h2>4. Caching Stratejisi ve Performans</h2>
+
+<p>
+  Sanity her sayfa yüklemesinde sorgulanmaz. Next.js, veriyi
+  birden fazla katmanda önbelleğe alır:
+</p>
+
+<table>
+  <tr>
+    <th>Katman</th>
+    <th>Ne yapar?</th>
+    <th>Ne zaman geçersiz olur?</th>
+  </tr>
+  <tr>
+    <td><strong>Build Cache</strong></td>
+    <td>Build sırasında tüm bilinen sayfalar statik HTML olarak üretilir</td>
+    <td>Yeni deploy</td>
+  </tr>
+  <tr>
+    <td><strong>ISR (Incremental Static Regeneration)</strong></td>
+    <td><code>revalidate: 3600</code> — sayfa en fazla 1 saatte bir yenilenir</td>
+    <td>Her saat başı veya tag ile tetikleme</td>
+  </tr>
+  <tr>
+    <td><strong>Tag-Based Revalidation</strong></td>
+    <td><code>tags: ['outfit']</code> — Sanity webhook'u tetiklediğinde sadece ilgili sayfalar yenilenir</td>
+    <td>Sanity'de içerik publish edildiğinde</td>
+  </tr>
+  <tr>
+    <td><strong>CDN Cache</strong></td>
+    <td>Vercel Edge Network, statik varlıkları dünya genelinde dağıtır</td>
+    <td>Revalidation sonrası</td>
+  </tr>
+</table>
+
+<div class="box dark">
+  <div class="box-title">Kullanıcı Deneyimi Açısından</div>
+  <p>
+    Kullanıcı <code>/outfits/casual-chic</code> sayfasına girdiğinde, Sanity'ye
+    hiçbir istek gönderilmez. Sayfa zaten build'de üretilmiş ve CDN'de hazır
+    bekliyor. <strong>Yanıt süresi: ~50ms.</strong> Sanity olmayan bir durumda
+    server-side render yapılsaydı bu 200–500ms olurdu.
+  </p>
+</div>
+
+
+<!-- ══════════════ 5. İÇERİK EKLEME AKIŞI ══════════════ -->
+<h2>5. İçerik Ekleme — Adım Adım Akış</h2>
+
+<p>
+  Bir outfit eklemek için ne gerekiyor, hiç kod yazmadan nasıl yapılıyor:
+</p>
+
+<div class="step-row">
+  <div class="num">01</div>
+  <div class="step-content">
+    <h4>Studio'ya git</h4>
+    <p><code>https://stylefinden.com/studio</code> adresine git. Sanity hesabınla giriş yap.</p>
+  </div>
+</div>
+
+<div class="step-row">
+  <div class="num">02</div>
+  <div class="step-content">
+    <h4>Yeni Outfit oluştur</h4>
+    <p>Sol menüden "Outfit" → "New Outfit" tıkla. Başlık, görsel, stil, sezon, occasion alanlarını doldur.</p>
+  </div>
+</div>
+
+<div class="step-row">
+  <div class="num">03</div>
+  <div class="step-content">
+    <h4>Slug otomatik oluşur</h4>
+    <p>Başlığı yazdığında slug otomatik üretilir: <code>"Elegant Black Dress"</code> → <code>elegant-black-dress</code></p>
+  </div>
+</div>
+
+<div class="step-row">
+  <div class="num">04</div>
+  <div class="step-content">
+    <h4>Publish et</h4>
+    <p>"Publish" butonuna bas. İçerik anında Content Lake'e kaydedilir.</p>
+  </div>
+</div>
+
+<div class="step-row">
+  <div class="num">05</div>
+  <div class="step-content">
+    <h4>Sayfa otomatik oluşur</h4>
+    <p>
+      Next.js ISR devreye girer. En geç 1 saat içinde (veya webhook ayarlandıysa anında)
+      <code>/outfits/elegant-black-dress</code> sayfası hazır olur.
+      Aynı zamanda ana sayfadaki Featured Outfits bölümünde de görünür.
+    </p>
+  </div>
+</div>
+
+<div class="step-row">
+  <div class="num">06</div>
+  <div class="step-content">
+    <h4>Güncelleme de aynı şekilde</h4>
+    <p>
+      Studio'da herhangi bir alanı değiştir, tekrar Publish et.
+      Sayfa bir sonraki revalidation'da yeni içerikle güncellenir.
+    </p>
+  </div>
+</div>
+
+
+<!-- ══════════════ 6. PROJE YAPISINDA NE NEREDE ══════════════ -->
+<h2>6. Projede Ne Nerede?</h2>
+
+<table>
+  <tr>
+    <th>Dosya / Dizin</th>
+    <th>Ne İşe Yarar?</th>
+  </tr>
+  <tr>
+    <td><code>sanity.config.ts</code></td>
+    <td>Sanity Studio konfigürasyonu. Hangi schema'ların Studio'da görüneceğini belirler.</td>
+  </tr>
+  <tr>
+    <td><code>src/sanity/schemaTypes/</code></td>
+    <td>Her içerik türünün alan tanımları (outfit, accessory, hairstyle, trend, post).</td>
+  </tr>
+  <tr>
+    <td><code>src/sanity/lib/client.ts</code></td>
+    <td>Sanity API bağlantısı. Project ID ve dataset tanımı burada.</td>
+  </tr>
+  <tr>
+    <td><code>src/sanity/lib/image.ts</code></td>
+    <td><code>urlFor()</code> fonksiyonu. Sanity görsellerini optimize URL'lere dönüştürür.</td>
+  </tr>
+  <tr>
+    <td><code>src/sanity/lib/live.ts</code></td>
+    <td><code>SanityLive</code> bileşeni. Studio'da preview için gerçek zamanlı güncelleme sağlar.</td>
+  </tr>
+  <tr>
+    <td><code>src/lib/queries.ts</code></td>
+    <td>Tüm GROQ sorguları tek yerden yönetilir. Her içerik türü için liste, detay ve filtreli sorgular.</td>
+  </tr>
+  <tr>
+    <td><code>src/app/studio/[[...tool]]/page.tsx</code></td>
+    <td>Sanity Studio'yu Next.js uygulaması içinde <code>/studio</code> adresinde çalıştıran route.</td>
+  </tr>
+  <tr>
+    <td><code>src/app/outfits/[slug]/page.tsx</code></td>
+    <td>Her outfit için dinamik detay sayfası. Sanity'den veri çeker, render eder.</td>
+  </tr>
+  <tr>
+    <td><code>src/components/sections/home/FeaturedOutfits.tsx</code></td>
+    <td>Ana sayfa featured outfits bölümü. Sanity'den en son 8 outfit çeker.</td>
+  </tr>
+  <tr>
+    <td><code>src/app/outfits/season/[slug]/page.tsx</code></td>
+    <td>Sezona göre outfit listeleme. Slug'a göre filtreli GROQ sorgusu yapar.</td>
+  </tr>
+</table>
+
+
+<!-- ══════════════ 7. SANİTY OLMADAN VS SANİTY İLE ══════════════ -->
+<h2>7. Sanity Olmadan vs Sanity İle — Karşılaştırma</h2>
+
+<table>
+  <tr>
+    <th>Senaryo</th>
+    <th>Sanity Olmadan</th>
+    <th>Sanity İle</th>
+  </tr>
+  <tr>
+    <td>Yeni outfit ekle</td>
+    <td>Kodu düzenle → commit → push → deploy (15–30 dk)</td>
+    <td>Studio'dan ekle → Publish (30 saniye)</td>
+  </tr>
+  <tr>
+    <td>Görsel değiştir</td>
+    <td>Görseli server'a yükle, koda yaz, deploy et</td>
+    <td>Studio'da görsel değiştir, kaydet</td>
+  </tr>
+  <tr>
+    <td>Blog yazısı yayınla</td>
+    <td>MDX dosyası yaz, commit, deploy</td>
+    <td>Studio'da rich-text editörde yaz, Publish</td>
+  </tr>
+  <tr>
+    <td>İçeriği güncelle</td>
+    <td>Developer gerekli</td>
+    <td>Developer gerekmez</td>
+  </tr>
+  <tr>
+    <td>İçerik ilişkileri</td>
+    <td>Yok veya manuel</td>
+    <td>Reference field ile otomatik (blog → related outfits)</td>
+  </tr>
+  <tr>
+    <td>Görsel optimizasyon</td>
+    <td>Manuel</td>
+    <td>urlFor() ile otomatik (boyut, format, kalite)</td>
+  </tr>
+  <tr>
+    <td>Draft / Preview</td>
+    <td>Yok</td>
+    <td>Yayınlamadan önce önizleme (SanityLive)</td>
+  </tr>
+</table>
+
+
+<!-- ══════════════ 8. SANIYTYE ÖZGÜ KAVRAMLAR ══════════════ -->
+<h2>8. Sanity'ye Özgü Kavramlar — Sözlük</h2>
+
+<table>
+  <tr>
+    <th>Kavram</th>
+    <th>Açıklama</th>
+  </tr>
+  <tr>
+    <td><strong>Content Lake</strong></td>
+    <td>Sanity'nin bulut veritabanı. Tüm içerik JSON olarak burada saklanır.</td>
+  </tr>
+  <tr>
+    <td><strong>Studio</strong></td>
+    <td>Sanity'nin açık kaynak CMS arayüzü. <code>/studio</code> adresinde çalışır.</td>
+  </tr>
+  <tr>
+    <td><strong>Schema</strong></td>
+    <td>İçerik türünün alan yapısını tanımlayan TypeScript kodu.</td>
+  </tr>
+  <tr>
+    <td><strong>GROQ</strong></td>
+    <td>Sanity'nin sorgu dili (Graph-Relational Object Queries). Sanity'ye özgü, SQL benzeri.</td>
+  </tr>
+  <tr>
+    <td><strong>Document</strong></td>
+    <td>Sanity'de bir içerik birimi. Her outfit, her blog yazısı bir "document"tır.</td>
+  </tr>
+  <tr>
+    <td><strong>Draft / Published</strong></td>
+    <td>Her document'ın iki hali olabilir: taslak (draft) ve yayınlandı (published).</td>
+  </tr>
+  <tr>
+    <td><strong>Reference</strong></td>
+    <td>İki document'ı birbirine bağlayan alan. Blog yazısı → ilgili outfitler gibi.</td>
+  </tr>
+  <tr>
+    <td><strong>Portable Text</strong></td>
+    <td>Sanity'nin rich-text formatı. Blog yazısı gövdesi bu formatla saklanır.</td>
+  </tr>
+  <tr>
+    <td><strong>Hotspot</strong></td>
+    <td>Görsel kırpma için odak noktası tanımlama. Farklı aspect ratio'larda görsel güzel görünür.</td>
+  </tr>
+  <tr>
+    <td><strong>defineQuery</strong></td>
+    <td>next-sanity'nin GROQ sorgusuna TypeScript tipi ekleyen sarmalayıcısı.</td>
+  </tr>
+  <tr>
+    <td><strong>ISR</strong></td>
+    <td>Incremental Static Regeneration. Sayfaları build'de üretip periyodik yenileme.</td>
+  </tr>
+  <tr>
+    <td><strong>Tag Revalidation</strong></td>
+    <td>Next.js cache etiketlerine göre seçici sayfa yenileme. Sadece değişen içerik yenilenir.</td>
+  </tr>
+</table>
+
+
+<!-- ══════════════ 9. AKIŞ DİYAGRAMI ══════════════ -->
+<h2>9. Tam Akış — Görsel Özet</h2>
+
+<div class="box" style="padding: 28px; font-size: 13px; line-height: 2;">
+  <strong>İçerik Ekleme Akışı:</strong><br/>
+  <span style="color:#999">Studio (tarayıcı)</span>
+  &nbsp;→&nbsp; <strong>Sanity Content Lake</strong> (bulut)
+  &nbsp;→&nbsp; <span style="color:#999">Webhook tetiklenir (opsiyonel)</span>
+  &nbsp;→&nbsp; <strong>Next.js ISR</strong>
+  &nbsp;→&nbsp; <strong>Yeni statik sayfa üretilir</strong>
+  &nbsp;→&nbsp; <span style="color:#999">Vercel CDN dağıtır</span>
+  &nbsp;→&nbsp; <strong>Kullanıcı görür</strong>
+  <br/><br/>
+  <strong>Sayfa Yükleme Akışı:</strong><br/>
+  <span style="color:#999">Kullanıcı /outfits/casual-chic girer</span>
+  &nbsp;→&nbsp; <strong>Vercel CDN</strong> (önbellekte var mı?)
+  &nbsp;→&nbsp; <em>Evet:</em> Hazır HTML anında döner (~50ms)
+  &nbsp;→&nbsp; <em>Hayır:</em> Next.js server oluşturur &amp; Sanity'den çeker (~300ms)
+  &nbsp;→&nbsp; <strong>Sonraki istek için önbelleğe alınır</strong>
+  <br/><br/>
+  <strong>Görsel Akışı:</strong><br/>
+  <span style="color:#999">Sanity'de görsel upload edilir</span>
+  &nbsp;→&nbsp; <strong>cdn.sanity.io'da saklanır</strong>
+  &nbsp;→&nbsp; <code>urlFor(image).width(600).url()</code> çağrılır
+  &nbsp;→&nbsp; <strong>Optimize URL üretilir</strong>
+  &nbsp;→&nbsp; next/image boyutlar &amp; WebP'e çevirir
+  &nbsp;→&nbsp; <strong>Kullanıcıya optimize görsel gider</strong>
+</div>
+
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<hr/>
+<p style="font-size: 11px; color: #999; text-align: center; letter-spacing: 0.05em;">
+  STYLEFINDEN — Teknik Döküman &nbsp;·&nbsp; Sanity CMS Entegrasyon Rehberi &nbsp;·&nbsp; 2026
+</p>
+
+</body>
+</html>

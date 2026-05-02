@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STYLEFINDEN — Proje Mimarisi Rehberi</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 48px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 280px;
+    background: #0f0f0f;
+    color: #fff;
+    padding: 48px;
+    margin-bottom: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  .cover .eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .cover h1 {
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+  .cover h1 em { font-style: italic; font-weight: 300; color: rgba(255,255,255,0.55); }
+  .cover .subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    max-width: 560px;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  /* ── Section headings ── */
+  h2 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+    margin-top: 56px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2.5px solid #0f0f0f;
+  }
+  h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 32px;
+    margin-bottom: 12px;
+    color: #666;
+  }
+  h4 { font-size: 14px; font-weight: 700; margin-top: 18px; margin-bottom: 6px; }
+  p { margin-bottom: 12px; color: #3a3a3a; }
+  strong { font-weight: 700; color: #0f0f0f; }
+
+  /* ── Code ── */
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11.5px;
+    background: #f3f3f3;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #c7254e;
+  }
+  pre {
+    background: #111;
+    color: #ddd;
+    padding: 18px 22px;
+    overflow: auto;
+    margin: 12px 0 20px;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 11.5px;
+    line-height: 1.65;
+  }
+  pre .c { color: #6a9955; }
+  pre .s { color: #ce9178; }
+  pre .k { color: #569cd6; }
+  pre .p { color: #9cdcfe; }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0 24px;
+    font-size: 12.5px;
+  }
+  th {
+    text-align: left;
+    padding: 9px 13px;
+    background: #0f0f0f;
+    color: #fff;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  td { padding: 9px 13px; border-bottom: 1px solid #efefef; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) td { background: #fafafa; }
+  td code { font-size: 11px; }
+
+  /* ── Boxes ── */
+  .box { border: 1px solid #e5e5e5; padding: 18px 22px; margin: 14px 0 22px; }
+  .box.dark { background: #0f0f0f; color: #fff; border-color: #0f0f0f; }
+  .box.dark p, .box.dark li { color: rgba(255,255,255,0.7); }
+  .box.dark strong { color: #fff; }
+  .box.accent { background: #f8f8f8; border-left: 3px solid #0f0f0f; padding-left: 20px; }
+  .box-label {
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 10px; color: #aaa;
+  }
+  .box.dark .box-label { color: rgba(255,255,255,0.35); }
+
+  /* ── Page cards ── */
+  .page-card {
+    border: 1px solid #e5e5e5;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .page-card .url {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0f0f0f;
+    background: #f3f3f3;
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .page-card .url.dynamic { background: #0f0f0f; color: #fff; }
+  .page-card h4 { margin-top: 0; font-size: 15px; }
+  .page-card .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .tag {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid #ddd;
+    color: #666;
+  }
+  .tag.sanity { border-color: #0f0f0f; color: #0f0f0f; background: #f3f3f3; }
+  .tag.static { background: #f9f9f9; }
+  .tag.isr { border-color: #2d6a4f; color: #2d6a4f; }
+
+  /* ── Section layout card ── */
+  .section-stack { display: flex; flex-direction: column; gap: 6px; margin: 16px 0; }
+  .section-row {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+    font-size: 12.5px;
+  }
+  .section-row .order {
+    width: 36px;
+    background: #0f0f0f;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+  .section-row .name {
+    padding: 10px 14px;
+    font-weight: 700;
+    min-width: 200px;
+    border-right: 1px solid #e5e5e5;
+    flex-shrink: 0;
+  }
+  .section-row .desc {
+    padding: 10px 14px;
+    color: #555;
+    flex: 1;
+  }
+  .section-row .source {
+    padding: 10px 14px;
+    font-size: 11px;
+    color: #888;
+    border-left: 1px solid #e5e5e5;
+    min-width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .source .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 7px;
+    flex-shrink: 0;
+  }
+  .dot.sanity { background: #0f0f0f; }
+  .dot.static-dot { background: #ccc; }
+
+  /* ── Flow ── */
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0;
+    margin: 16px 0 24px;
+    font-size: 11.5px;
+  }
+  .flow-step {
+    background: #0f0f0f; color: #fff;
+    padding: 9px 16px;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .flow-step.light { background: #f3f3f3; color: #0f0f0f; }
+  .flow-arrow { padding: 0 8px; color: #bbb; font-size: 14px; }
+
+  /* ── Lists ── */
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; color: #3a3a3a; }
+
+  /* ── Divider ── */
+  hr { border: none; border-top: 1px solid #e8e8e8; margin: 44px 0; }
+
+  /* ── Two-col ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+
+  @media print {
+    body { padding: 0; font-size: 12px; }
+    h2 { page-break-after: avoid; }
+    .cover { page-break-after: always; min-height: 200px; }
+    .page-card, table, pre { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="eyebrow">STYLEFINDEN — Teknik Döküman v1.0</div>
+  <h1>Proje Mimarisi<br /><em>Tam Sayfa & Bileşen Rehberi</em></h1>
+  <p class="subtitle">
+    Her sayfanın ne gösterdiği, hangi bileşenleri kullandığı, Sanity'ye nasıl bağlı olduğu
+    ve sayfalar arası ilişkilerin eksiksiz açıklaması.
+  </p>
+</div>
+
+
+<!-- ══ 1. GENEL YAPI ══ -->
+<h2>1. Genel Proje Yapısı</h2>
+
+<p>
+  STYLEFINDEN, <strong>Next.js 15 App Router</strong> üzerine kurulu bir moda platformudur.
+  Tüm sayfalar <strong>Server Component</strong>'tir — içerik sunucuda hazırlanır,
+  kullanıcıya hazır HTML gelir. İçerik yönetimi <strong>Sanity CMS</strong> ile yapılır.
+</p>
+
+<table>
+  <tr><th>Teknoloji</th><th>Kullanım amacı</th><th>Nerede?</th></tr>
+  <tr><td><strong>Next.js 15 App Router</strong></td><td>Routing, SSG, ISR, Server Components</td><td><code>src/app/</code></td></tr>
+  <tr><td><strong>Sanity CMS</strong></td><td>İçerik yönetimi (outfit, blog, vb.)</td><td><code>src/sanity/</code></td></tr>
+  <tr><td><strong>Tailwind CSS v4</strong></td><td>Stil</td><td>tüm bileşenler</td></tr>
+  <tr><td><strong>next/image</strong></td><td>Optimize görsel sunumu</td><td><code>ImgPlaceholder</code></td></tr>
+  <tr><td><strong>Resend</strong></td><td>Newsletter abonelik e-postası</td><td><code>src/app/api/subscribe/</code></td></tr>
+  <tr><td><strong>Vercel Analytics</strong></td><td>Ziyaretçi analizi</td><td><code>layout.tsx</code></td></tr>
+</table>
+
+<h3>Sayfa Türleri</h3>
+<table>
+  <tr><th>Tür</th><th>Örnek</th><th>Açıklama</th></tr>
+  <tr>
+    <td><strong>Static</strong></td>
+    <td><code>/contact</code>, <code>/privacy</code></td>
+    <td>Build'de bir kez üretilir, hiç değişmez</td>
+  </tr>
+  <tr>
+    <td><strong>Static + ISR</strong></td>
+    <td><code>/outfits/season/summer</code></td>
+    <td>Build'de üretilir, saatte bir Sanity'den yenilenir</td>
+  </tr>
+  <tr>
+    <td><strong>Dynamic [slug]</strong></td>
+    <td><code>/outfits/casual-chic</code></td>
+    <td>Her içerik için ayrı sayfa; generateStaticParams ile build'de üretilir</td>
+  </tr>
+  <tr>
+    <td><strong>Navigation</strong></td>
+    <td><code>/outfits</code>, <code>/hairstyles</code></td>
+    <td>Kategori kartlarını gösteren navigasyon sayfaları; tamamen statik</td>
+  </tr>
+</table>
+
+
+<!-- ══ 2. ANA SAYFA ══ -->
+<h2>2. Ana Sayfa — <code>/</code></h2>
+
+<p>
+  Ana sayfa (<code>src/app/page.tsx</code>) 7 bölümden oluşur. Her bölüm ayrı bir
+  Server Component dosyasıdır. Performans için lazy-load edilir
+  (<code>dynamic()</code> ile) — sadece HeroSection ve FeaturedOutfits hemen yüklenir.
+</p>
+
+<div class="section-stack">
+  <div class="section-row">
+    <div class="order">01</div>
+    <div class="name">HeroSection</div>
+    <div class="desc">Büyük başlık, "Discover your perfect style" metni, Outfits ve Style Guide CTA butonları. İki görsel placeholder alanı.</div>
+    <div class="source"><span class="dot static-dot"></span>Statik</div>
+  </div>
+  <div class="section-row">
+    <div class="order">02</div>
+    <div class="name">FeaturedOutfits</div>
+    <div class="desc">En son 8 outfit. 2×4 grid. Her kart: görsel, başlık, subtitle (occasion/season), tag (Trending/New/Popular). <code>/outfits/[slug]</code>'a link.</div>
+    <div class="source"><span class="dot sanity"></span>Sanity · ISR 1s</div>
+  </div>
+  <div class="section-row">
+    <div class="order">03</div>
+    <div class="name">FeaturedCategories</div>
+    <div class="desc">Outfits, Hairstyles, Accessories, Trends, Blog — kategori kartları. Büyük görsel + etiket. Ana kategori sayfalarına link.</div>
+    <div class="source"><span class="dot static-dot"></span>Statik</div>
+  </div>
+  <div class="section-row">
+    <div class="order">04</div>
+    <div class="name">SeasonalHighlights</div>
+    <div class="desc">Sezonluk öne çıkan görünümler (Spring, Summer, Autumn, Winter). Büyük carousel/panel. <code>/outfits?season=...</code>'a link.</div>
+    <div class="source"><span class="dot static-dot"></span>Statik</div>
+  </div>
+  <div class="section-row">
+    <div class="order">05</div>
+    <div class="name">HairstyleHighlights</div>
+    <div class="desc">1 featured (hero kart) + 6 küçük kart. Tip filtreleri (All, Short, Bob, Long, Curls, Updo). Her kart <code>/hairstyles/[slug]</code>'a bağlı.</div>
+    <div class="source"><span class="dot sanity"></span>Sanity · ISR 1s</div>
+  </div>
+  <div class="section-row">
+    <div class="order">06</div>
+    <div class="name">AccessoriesHighlights</div>
+    <div class="desc">3 kategori grubu: Jewelry, Bags, Sunglasses. Her grupta 1 featured (büyük kart) + 2 liste satırı. <code>/accessories/[slug]</code>'a link.</div>
+    <div class="source"><span class="dot sanity"></span>Sanity · ISR 1s</div>
+  </div>
+  <div class="section-row">
+    <div class="order">07</div>
+    <div class="name">LatestArticles</div>
+    <div class="desc">Son 4 blog yazısı. 1 büyük featured + 3 küçük kart. Kategori badge'i, tarih, excerpt. <code>/blog/[slug]</code>'a link.</div>
+    <div class="source"><span class="dot sanity"></span>Sanity · ISR 1s</div>
+  </div>
+</div>
+
+<div class="box accent">
+  <div class="box-label">Layout — Her Sayfada Görünür</div>
+  <p style="margin:0">
+    <strong>Header</strong> (logo + navigasyon linkleri) →
+    <strong>Sayfa içeriği</strong> →
+    <strong>NewsletterForm</strong> (siyah arka plan, Resend ile email aboneliği) →
+    <strong>Footer</strong> (linkler, logo, copyright) →
+    <strong>ScrollToTop</strong> butonu →
+    <strong>SanityLive</strong> (studio preview için)
+  </p>
+</div>
+
+
+<!-- ══ 3. OUTFITS ══ -->
+<h2>3. Outfits Sayfaları</h2>
+
+<!-- Ana sayfa -->
+<div class="page-card">
+  <div class="url">/outfits</div>
+  <h4>Outfits Ana Sayfası</h4>
+  <p>
+    Navigasyon sayfası. <strong>SectionMainPage</strong> bileşenini kullanır.
+    İçerik: Hero + 3 koleksiyon grubu.
+  </p>
+  <ul>
+    <li><strong>By Season:</strong> Summer, Winter, Autumn, Spring — her biri <code>/outfits/season/[slug]</code>'a link</li>
+    <li><strong>By Occasion:</strong> Office, Evening, Casual, Beach, Festival, Date Night — <code>/outfits/occasion/[slug]</code>'a link</li>
+    <li><strong>By Style:</strong> Boho, Minimalist, Street Style, Classic — <code>/outfits/style/[slug]</code>'a link</li>
+  </ul>
+  <div class="meta">
+    <span class="tag static">Tamamen Statik</span>
+    <span class="tag">SectionMainPage bileşeni</span>
+    <span class="tag">Navigasyon amaçlı</span>
+  </div>
+</div>
+
+<!-- Season category -->
+<div class="page-card">
+  <div class="url dynamic">/outfits/season/[slug]</div>
+  <h4>Sezon Kategori Sayfası</h4>
+  <p>
+    Slug değerleri: <code>summer</code>, <code>winter</code>, <code>autumn</code>, <code>spring</code>.
+    <strong>CategoryPage</strong> bileşenini kullanır.
+  </p>
+  <p>
+    <strong>Statik kısım (kodda):</strong> Sayfa başlığı, açıklama, stil ipuçları, filtre etiketleri, FAQ'lar, SEO metinleri, ilgili kategoriler.
+    <br />
+    <strong>Dinamik kısım (Sanity):</strong> O sezona ait outfit grid'i.
+    Sanity sorgusu: <code>*[_type == "outfit" && season == $slug]</code>
+  </p>
+  <div class="meta">
+    <span class="tag sanity">Sanity — outfit grid</span>
+    <span class="tag isr">ISR · revalidate 3600s</span>
+    <span class="tag">tags: ['outfit']</span>
+    <span class="tag">CategoryPage bileşeni</span>
+  </div>
+</div>
+
+<!-- Occasion category -->
+<div class="page-card">
+  <div class="url dynamic">/outfits/occasion/[slug]</div>
+  <h4>Occasion Kategori Sayfası</h4>
+  <p>
+    Slug değerleri: <code>office</code>, <code>evening</code>, <code>casual</code>,
+    <code>beach</code>, <code>festival</code>, <code>date-night</code>.
+    Aynı CategoryPage yapısı.
+    Sanity sorgusu: <code>*[_type == "outfit" && occasion == $slug]</code>
+  </p>
+  <div class="meta">
+    <span class="tag sanity">Sanity — outfit grid</span>
+    <span class="tag isr">ISR · revalidate 3600s</span>
+    <span class="tag">tags: ['outfit']</span>
+  </div>
+</div>
+
+<!-- Style category -->
+<div class="page-card">
+  <div class="url dynamic">/outfits/style/[slug]</div>
+  <h4>Stil Kategori Sayfası</h4>
+  <p>
+    Slug değerleri: <code>boho</code>, <code>minimalist</code>, <code>streetstyle</code>, <code>classic</code>.
+    Sanity sorgusu: <code>*[_type == "outfit" && style == $slug]</code>
+  </p>
+  <div class="meta">
+    <span class="tag sanity">Sanity — outfit grid</span>
+    <span class="tag isr">ISR · revalidate 3600s</span>
+    <span class="tag">tags: ['outfit']</span>
+  </div>
+</div>
+
+<!-- Outfit detail -->
+<div class="page-card">
+  <div class="url dynamic">/outfits/[slug]</div>
+  <h4>Outfit Detay Sayfası ⭑</h4>
+  <p>
+    Her outfit için ayrı sayfa. Sanity'de hangi outfitler varsa her biri için
+    bu template render edilir.
+  </p>
+  <p><strong>Gösterilenler:</strong></p>
+  <ul>
+    <li>Breadcrumb: Home → Outfits → [başlık]</li>
+    <li>Büyük outfit görseli (3:4 oranı) + sağda detaylar</li>
+    <li>Stil, sezon, occasion badge'leri</li>
+    <li>Başlık ve açıklama</li>
+    <li>Etiketler (tags)</li>
+    <li>Outfit Pieces bölümü — hangi parçalardan oluştuğu</li>
+    <li>CTA: All Outfits ve Accessories linkleri</li>
+  </ul>
+  <div class="meta">
+    <span class="tag sanity">Sanity — OUTFIT_QUERY</span>
+    <span class="tag">generateStaticParams</span>
+    <span class="tag">generateMetadata</span>
+    <span class="tag">canonical URL</span>
+  </div>
+</div>
+
+
+<!-- ══ 4. ACCESSORIES ══ -->
+<h2>4. Accessories Sayfaları</h2>
+
+<div class="page-card">
+  <div class="url">/accessories</div>
+  <h4>Accessories Ana Sayfası</h4>
+  <p>
+    Navigasyon sayfası. SectionMainPage bileşeni.
+    Koleksiyon: <strong>By Type</strong> — Bags, Jewelry, Shoes, Scarves.
+    Her kart <code>/accessories/type/[slug]</code>'a link.
+  </p>
+  <div class="meta">
+    <span class="tag static">Tamamen Statik</span>
+    <span class="tag">Navigasyon amaçlı</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/accessories/type/[slug]</div>
+  <h4>Aksesuar Tip Kategori Sayfası</h4>
+  <p>
+    Slug değerleri: <code>bags</code>, <code>jewelry</code>, <code>shoes</code>, <code>scarves</code>.
+    Sanity sorgusu: <code>*[_type == "accessory" && type == $slug]</code>
+  </p>
+  <p>
+    CategoryPage bileşeni. Statik kısım: başlık, açıklama, stil ipuçları.
+    Dinamik kısım: o tipe ait aksesuar grid'i.
+  </p>
+  <div class="meta">
+    <span class="tag sanity">Sanity — ACCESSORIES_BY_TYPE_QUERY</span>
+    <span class="tag isr">ISR · revalidate 3600s</span>
+    <span class="tag">tags: ['accessory']</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/accessories/[slug]</div>
+  <h4>Aksesuar Detay Sayfası ⭑</h4>
+  <p>Her aksesuar için ayrı sayfa.</p>
+  <p><strong>Gösterilenler:</strong></p>
+  <ul>
+    <li>Breadcrumb: Home → Accessories → [başlık]</li>
+    <li>Büyük görsel (4:5 oranı) + sağda detaylar</li>
+    <li>Tip ve occasion badge'leri</li>
+    <li>Başlık ve açıklama</li>
+    <li>Styling Tip kartı (<code>pairingTip</code> alanından — "✦ Layer multiple chains together")</li>
+    <li>Etiketler</li>
+    <li>CTA: Browse Outfits ve All Accessories</li>
+  </ul>
+  <div class="meta">
+    <span class="tag sanity">Sanity — ACCESSORY_QUERY</span>
+    <span class="tag">generateStaticParams</span>
+    <span class="tag">generateMetadata</span>
+  </div>
+</div>
+
+
+<!-- ══ 5. HAIRSTYLES ══ -->
+<h2>5. Hairstyles Sayfaları</h2>
+
+<div class="page-card">
+  <div class="url">/hairstyles</div>
+  <h4>Hairstyles Ana Sayfası</h4>
+  <p>
+    Navigasyon sayfası. SectionMainPage bileşeni.
+    İki koleksiyon grubu:
+  </p>
+  <ul>
+    <li><strong>By Hair Type:</strong> Braids, Buns, Waves, Curls — <code>/hairstyles/type/[slug]</code>'a link</li>
+    <li><strong>By Occasion:</strong> Everyday, Wedding, Party, Office — <code>/hairstyles/occasion/[slug]</code>'a link</li>
+  </ul>
+  <div class="meta">
+    <span class="tag static">Tamamen Statik</span>
+    <span class="tag">Navigasyon amaçlı</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/hairstyles/type/[slug]</div>
+  <h4>Saç Tipi Kategori Sayfası</h4>
+  <p>
+    Slug değerleri: <code>braids</code>, <code>buns</code>, <code>waves</code>, <code>curls</code>.
+    Sanity sorgusu: <code>*[_type == "hairstyle" && type == $slug]</code>
+  </p>
+  <div class="meta">
+    <span class="tag sanity">Sanity — HAIRSTYLES_BY_TYPE_QUERY</span>
+    <span class="tag isr">ISR · revalidate 3600s</span>
+    <span class="tag">tags: ['hairstyle']</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/hairstyles/occasion/[slug]</div>
+  <h4>Saç Stili Occasion Kategori Sayfası</h4>
+  <p>
+    Slug değerleri: <code>everyday</code>, <code>wedding</code>, <code>party</code>, <code>office</code>.
+    Sanity sorgusu: <code>*[_type == "hairstyle" && occasion == $slug]</code>
+  </p>
+  <div class="meta">
+    <span class="tag sanity">Sanity — HAIRSTYLES_BY_OCCASION_QUERY</span>
+    <span class="tag isr">ISR · revalidate 3600s</span>
+    <span class="tag">tags: ['hairstyle']</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/hairstyles/[slug]</div>
+  <h4>Saç Stili Detay Sayfası ⭑</h4>
+  <p>Her saç stili için ayrı sayfa.</p>
+  <p><strong>Gösterilenler:</strong></p>
+  <ul>
+    <li>Breadcrumb: Home → Hairstyles → [başlık]</li>
+    <li>Büyük görsel (3:4 oranı) + sağda detaylar</li>
+    <li>Tip, uzunluk, mood, occasion badge'leri</li>
+    <li>Başlık ve açıklama</li>
+    <li>Etiketler</li>
+    <li>CTA: Browse Outfits ve All Hairstyles</li>
+  </ul>
+  <div class="meta">
+    <span class="tag sanity">Sanity — HAIRSTYLE_QUERY</span>
+    <span class="tag">generateStaticParams</span>
+    <span class="tag">generateMetadata</span>
+  </div>
+</div>
+
+
+<!-- ══ 6. TRENDS ══ -->
+<h2>6. Trends Sayfaları</h2>
+
+<div class="page-card">
+  <div class="url">/trends</div>
+  <h4>Trends Ana Sayfası</h4>
+  <p>
+    Navigasyon sayfası. SectionMainPage bileşeni.
+    İki koleksiyon grubu:
+  </p>
+  <ul>
+    <li><strong>By Season:</strong> Spring/Summer, Autumn/Winter, Resort, Pre-Fall</li>
+    <li><strong>By Category:</strong> Fashion, Accessories, Hairstyle, Beauty, Colour Trends, Prints & Patterns</li>
+  </ul>
+  <div class="meta">
+    <span class="tag static">Tamamen Statik</span>
+    <span class="tag">Navigasyon amaçlı</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/trends/[slug]</div>
+  <h4>Trend Detay Sayfası ⭑</h4>
+  <p>Her trend için ayrı sayfa.</p>
+  <p><strong>Gösterilenler:</strong></p>
+  <ul>
+    <li>Büyük hero görsel (21:9 oranı) üzerine başlık ve badge'ler</li>
+    <li>Breadcrumb: Home → Trends → [başlık]</li>
+    <li>Sol kolon: Açıklama ve etiketler</li>
+    <li>Sağ kolon: Key Items listesi (trend için olmazsa olmaz parçalar)</li>
+    <li>CTA: Browse Outfits ve All Trends</li>
+  </ul>
+  <div class="meta">
+    <span class="tag sanity">Sanity — TREND_QUERY</span>
+    <span class="tag">generateStaticParams</span>
+    <span class="tag">generateMetadata</span>
+  </div>
+</div>
+
+
+<!-- ══ 7. BLOG ══ -->
+<h2>7. Blog Sayfaları</h2>
+
+<div class="page-card">
+  <div class="url">/blog</div>
+  <h4>Blog Ana Sayfası</h4>
+  <p>
+    5 kategori kartını listeler: Trend Reports, Hairstyle Guides, Accessories Guides,
+    Occasion Guides, Seasonal Guides. Her kart ilgili kategori sayfasına link.
+  </p>
+  <div class="meta">
+    <span class="tag static">Statik navigasyon</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url">/blog/trend-reports &nbsp; /blog/hairstyle-guides &nbsp; vb.</div>
+  <h4>Blog Kategori Sayfaları <span style="font-weight:400;font-size:12px;color:#999">(5 adet)</span></h4>
+  <p>
+    Her kategorinin listeleme sayfası. <strong>Şu an boş</strong> (<code>return null</code>).
+    Gelecekte bu sayfalar Sanity'deki <code>POSTS_BY_CATEGORY_QUERY</code> ile doldurulacak.
+    Kategoriler: <code>trend-reports</code>, <code>hairstyle-guides</code>,
+    <code>accessories-guides</code>, <code>occasion-guides</code>, <code>seasonal-guides</code>.
+  </p>
+  <div class="meta">
+    <span class="tag">Şu an boş — geliştirilecek</span>
+    <span class="tag sanity">Query hazır: POSTS_BY_CATEGORY_QUERY</span>
+  </div>
+</div>
+
+<div class="page-card">
+  <div class="url dynamic">/blog/[slug]</div>
+  <h4>Blog Yazısı Detay Sayfası ⭑</h4>
+  <p>Her blog yazısı için tam sayfa. Proje içindeki en kapsamlı detay sayfası.</p>
+  <p><strong>Gösterilenler:</strong></p>
+  <ul>
+    <li>Hero görsel (16:7 oranı, max 520px yükseklik)</li>
+    <li>Breadcrumb: Home → Blog → [başlık]</li>
+    <li>Kategori badge'i ve tarih</li>
+    <li>Başlık ve excerpt (sol kenarlıklı alıntı stili)</li>
+    <li><strong>Portable Text gövde</strong> — Sanity'nin rich-text formatı; h2, h3, paragraf, link, strong hepsi destekli</li>
+    <li>Etiketler</li>
+    <li><strong>İlgili İçerik:</strong> Related Outfits, Related Accessories, Related Hairstyles — Sanity reference alanlarından çekilir</li>
+    <li>Back to Blog linki</li>
+  </ul>
+  <div class="meta">
+    <span class="tag sanity">Sanity — POST_QUERY (referanslarla)</span>
+    <span class="tag">generateStaticParams</span>
+    <span class="tag">generateMetadata</span>
+    <span class="tag">PortableText</span>
+  </div>
+</div>
+
+
+<!-- ══ 8. DİĞER SAYFALAR ══ -->
+<h2>8. Diğer Sayfalar</h2>
+
+<div class="two-col">
+  <div class="page-card" style="margin-bottom:0">
+    <div class="url">/style-guide</div>
+    <h4>Style Guide</h4>
+    <p>
+      Vücut tipi, renk teorisi, kapsül gardırop, sezonluk giyim,
+      occasion styling — 6 konu kartı. Her kart ilgili blog rehberine link.
+    </p>
+    <div class="meta"><span class="tag static">Statik</span></div>
+  </div>
+  <div class="page-card" style="margin-bottom:0">
+    <div class="url">/studio</div>
+    <h4>Sanity Studio</h4>
+    <p>
+      Sanity'nin CMS arayüzü. Tüm içerik buradan yönetilir.
+      Sadece yetkilendirilmiş kullanıcılar görebilir.
+    </p>
+    <div class="meta"><span class="tag">Sadece editörler</span></div>
+  </div>
+</div>
+<br/>
+<div class="two-col">
+  <div class="page-card" style="margin-bottom:0">
+    <div class="url">/contact</div>
+    <h4>Contact</h4>
+    <p>İletişim sayfası. Statik içerik.</p>
+    <div class="meta"><span class="tag static">Statik</span></div>
+  </div>
+  <div class="page-card" style="margin-bottom:0">
+    <div class="url">/privacy &nbsp; /legal</div>
+    <h4>Privacy Policy / Legal</h4>
+    <p>Gizlilik politikası ve yasal bilgiler. Statik içerik.</p>
+    <div class="meta"><span class="tag static">Statik</span></div>
+  </div>
+</div>
+
+
+<!-- ══ 9. SANİTY İÇERİK TÜRLERİ VE BAĞLANTILARI ══ -->
+<h2>9. Sanity İçerik Türleri ve Sayfa Bağlantıları</h2>
+
+<table>
+  <tr>
+    <th>Sanity Tipi</th>
+    <th>Alanlar</th>
+    <th>Listede göründüğü yer</th>
+    <th>Detay sayfası</th>
+  </tr>
+  <tr>
+    <td><strong>outfit</strong></td>
+    <td>title, slug, image, style, season, occasion, pieces[], tags, featured</td>
+    <td>Ana sayfa FeaturedOutfits · <br/>Season/Occasion/Style kategori sayfaları</td>
+    <td><code>/outfits/[slug]</code></td>
+  </tr>
+  <tr>
+    <td><strong>accessory</strong></td>
+    <td>title, slug, image, type, occasion, pairingTip, tags, featured</td>
+    <td>Ana sayfa AccessoriesHighlights · <br/>Type kategori sayfaları</td>
+    <td><code>/accessories/[slug]</code></td>
+  </tr>
+  <tr>
+    <td><strong>hairstyle</strong></td>
+    <td>title, slug, image, type, length, occasion, mood, tags, featured</td>
+    <td>Ana sayfa HairstyleHighlights · <br/>Type/Occasion kategori sayfaları</td>
+    <td><code>/hairstyles/[slug]</code></td>
+  </tr>
+  <tr>
+    <td><strong>trend</strong></td>
+    <td>title, slug, image, season, category, description, keyItems[], tags, featured</td>
+    <td>—</td>
+    <td><code>/trends/[slug]</code></td>
+  </tr>
+  <tr>
+    <td><strong>post</strong></td>
+    <td>title, slug, heroImage, excerpt, category, publishedAt, body (PT), tags, relatedOutfits, relatedAccessories, relatedHairstyles</td>
+    <td>Ana sayfa LatestArticles (son 4)</td>
+    <td><code>/blog/[slug]</code></td>
+  </tr>
+</table>
+
+<div class="box dark">
+  <div class="box-label">İçerik İlişkileri (References)</div>
+  <p>
+    Blog yazısı (<code>post</code>) içinde üç adet referans alanı var:
+    <strong>relatedOutfits</strong>, <strong>relatedAccessories</strong>, <strong>relatedHairstyles</strong>.
+    Studio'da bir blog yazısı oluştururken ilgili outfit, aksesuar veya saç stillerini seçebilirsin.
+    Bu içerikler blog detay sayfasının altında "Related Outfits" vb. bölümlerinde otomatik olarak görünür.
+  </p>
+</div>
+
+
+<!-- ══ 10. ORTAK BİLEŞENLER ══ -->
+<h2>10. Ortak (Shared) Bileşenler</h2>
+
+<table>
+  <tr>
+    <th>Bileşen</th>
+    <th>Dosya</th>
+    <th>Ne yapar?</th>
+  </tr>
+  <tr>
+    <td><strong>ImgPlaceholder</strong></td>
+    <td><code>shared/ImgPlaceholder.tsx</code></td>
+    <td>Sanity görseli varsa <code>next/image</code> ile göster, yoksa "Soon" placeholder. <code>src</code> prop opsiyonel.</td>
+  </tr>
+  <tr>
+    <td><strong>CategoryPage</strong></td>
+    <td><code>shared/CategoryPage.tsx</code></td>
+    <td>Hero + filtreler + item grid + ilgili kategoriler + FAQ — tüm kategori sayfaları bu şablonu kullanır.</td>
+  </tr>
+  <tr>
+    <td><strong>SectionMainPage</strong></td>
+    <td><code>shared/SectionMainPage.tsx</code></td>
+    <td>Ana navigasyon sayfaları için hero + koleksiyon kartları şablonu (Outfits, Hairstyles, vb.).</td>
+  </tr>
+  <tr>
+    <td><strong>NewsletterForm</strong></td>
+    <td><code>shared/NewsletterForm.tsx</code></td>
+    <td>Siyah arka plan, e-posta input, Resend API ile abone kaydı. Layout'ta her sayfada görünür.</td>
+  </tr>
+  <tr>
+    <td><strong>NewsletterInput</strong></td>
+    <td><code>shared/NewsletterInput.tsx</code></td>
+    <td>Footer için kompakt versiyon. Aynı <code>/api/subscribe</code> route'unu kullanır.</td>
+  </tr>
+  <tr>
+    <td><strong>Breadcrumb</strong></td>
+    <td><code>shared/Breadcrumb.tsx</code></td>
+    <td>Home / Kategori / Başlık formatında navigasyon. Detay ve kategori sayfalarında kullanılır.</td>
+  </tr>
+  <tr>
+    <td><strong>FilterBar</strong></td>
+    <td><code>shared/FilterBar.tsx</code></td>
+    <td>CategoryPage içindeki yatay filtre buton satırı.</td>
+  </tr>
+  <tr>
+    <td><strong>ScrollToTop</strong></td>
+    <td><code>shared/ScrollToTop.tsx</code></td>
+    <td>Sağ alt köşede sabit "yukarı çık" butonu. Layout'ta her sayfada var.</td>
+  </tr>
+</table>
+
+
+<!-- ══ 11. YÖNLENDIRMELER (REDIRECTS) ══ -->
+<h2>11. Yönlendirmeler (SEO Redirects)</h2>
+
+<p>
+  <code>next.config.ts</code> içinde Almanca URL'lerden İngilizce'ye ve eski URL yapılarından
+  yenilerine 301 yönlendirme tanımlanmıştır:
+</p>
+
+<table>
+  <tr><th>Eski URL</th><th>Yeni URL</th></tr>
+  <tr><td><code>/frisuren</code></td><td><code>/hairstyles</code></td></tr>
+  <tr><td><code>/accessoires</code></td><td><code>/accessories</code></td></tr>
+  <tr><td><code>/datenschutz</code></td><td><code>/privacy</code></td></tr>
+  <tr><td><code>/impressum</code></td><td><code>/legal</code></td></tr>
+  <tr><td><code>/outfits/season/herbst</code></td><td><code>/outfits/season/autumn</code></td></tr>
+  <tr><td><code>/outfits/occasion/buero</code></td><td><code>/outfits/occasion/office</code></td></tr>
+  <tr><td><code>/blog/frisuren-guides/*</code></td><td><code>/blog/hairstyle-guides/*</code></td></tr>
+</table>
+
+
+<!-- ══ 12. API ROUTE ══ -->
+<h2>12. API Route</h2>
+
+<div class="page-card">
+  <div class="url">POST /api/subscribe</div>
+  <h4>Newsletter Abonelik</h4>
+  <p>
+    E-posta doğrulama → Resend API → Audience listesine ekle.
+    <br />Env değişkenleri: <code>RESEND_API_KEY</code>, <code>RESEND_AUDIENCE_ID</code>
+  </p>
+  <pre>
+<span class="c">// Başarılı yanıt</span>
+{ success: true }
+
+<span class="c">// Hata yanıtları</span>
+{ error: "Invalid email address." }         <span class="c">// 400</span>
+{ error: "Subscription failed." }           <span class="c">// 500</span></pre>
+  <div class="meta">
+    <span class="tag">POST only</span>
+    <span class="tag">Resend SDK</span>
+    <span class="tag">E-posta validasyonu dahili</span>
+  </div>
+</div>
+
+
+<!-- ══ 13. SAYFA İLİŞKİ HARİTASI ══ -->
+<h2>13. Sayfa İlişki Haritası</h2>
+
+<div class="box" style="padding: 24px; font-size: 12.5px; line-height: 2.2;">
+  <strong>Ana Sayfa</strong> (<code>/</code>)<br/>
+  &nbsp;&nbsp;├─ FeaturedOutfits → <code>/outfits/[slug]</code><br/>
+  &nbsp;&nbsp;├─ HairstyleHighlights → <code>/hairstyles/[slug]</code><br/>
+  &nbsp;&nbsp;├─ AccessoriesHighlights → <code>/accessories/[slug]</code><br/>
+  &nbsp;&nbsp;└─ LatestArticles → <code>/blog/[slug]</code><br/>
+  <br/>
+  <strong>Outfits</strong> (<code>/outfits</code>)<br/>
+  &nbsp;&nbsp;├─ <code>/outfits/season/summer</code> → outfit grid → <code>/outfits/[slug]</code><br/>
+  &nbsp;&nbsp;├─ <code>/outfits/occasion/office</code> → outfit grid → <code>/outfits/[slug]</code><br/>
+  &nbsp;&nbsp;└─ <code>/outfits/style/boho</code> → outfit grid → <code>/outfits/[slug]</code><br/>
+  <br/>
+  <strong>Accessories</strong> (<code>/accessories</code>)<br/>
+  &nbsp;&nbsp;└─ <code>/accessories/type/bags</code> → aksesuar grid → <code>/accessories/[slug]</code><br/>
+  <br/>
+  <strong>Hairstyles</strong> (<code>/hairstyles</code>)<br/>
+  &nbsp;&nbsp;├─ <code>/hairstyles/type/braids</code> → saç stili grid → <code>/hairstyles/[slug]</code><br/>
+  &nbsp;&nbsp;└─ <code>/hairstyles/occasion/wedding</code> → saç stili grid → <code>/hairstyles/[slug]</code><br/>
+  <br/>
+  <strong>Blog</strong> (<code>/blog</code>)<br/>
+  &nbsp;&nbsp;├─ <code>/blog/trend-reports</code> → yazı listesi (geliştirilecek)<br/>
+  &nbsp;&nbsp;└─ <code>/blog/[slug]</code> → tam yazı + ilgili outfits/accessories/hairstyles<br/>
+  <br/>
+  <strong>Trends</strong> (<code>/trends</code>)<br/>
+  &nbsp;&nbsp;└─ <code>/trends/[slug]</code> → trend detay + key items<br/>
+  <br/>
+  <strong>Studio</strong> (<code>/studio</code>)<br/>
+  &nbsp;&nbsp;└─ Tüm içerikleri yönetir → tüm sayfaları besler
+</div>
+
+<hr/>
+<p style="font-size: 11px; color: #aaa; text-align: center; letter-spacing: 0.05em;">
+  STYLEFINDEN — Proje Mimarisi Rehberi &nbsp;·&nbsp; Next.js 15 + Sanity CMS &nbsp;·&nbsp; 2026
+</p>
+
+</body>
+</html>
