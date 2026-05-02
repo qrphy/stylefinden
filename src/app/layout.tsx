@@ -9,6 +9,7 @@ import Header from "@/components/layout/Header"
 import NewsletterForm from "@/components/shared/NewsletterForm"
 import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/shared/ScrollToTop"
+import { SanityLive } from "@/sanity/lib/live"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -83,6 +84,7 @@ export default function RootLayout({
         <NewsletterForm />
         <ScrollToTop />
         <Footer />
+        <SanityLive />
       </body>
     </html>
   );
