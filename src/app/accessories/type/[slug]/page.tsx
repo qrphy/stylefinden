@@ -18,6 +18,49 @@ function toItem(a: { _id: string; title: string; slug: string; image?: object; t
   }
 }
 
+const STATIC_ACCESSORIES: Record<string, OutfitItem[]> = {
+  "bags": [
+    { id: 1, title: "Classic Leather Tote",      subtitle: "Office & Everyday",    tag: "Trending", style: "Tote",      href: "/accessories/classic-leather-tote"   },
+    { id: 2, title: "Mini Crossbody",             subtitle: "Casual & Weekend",     tag: "Popular",  style: "Crossbody", href: "/accessories/mini-crossbody"         },
+    { id: 3, title: "Satin Evening Clutch",       subtitle: "Elegant & Evening",    tag: "New",      style: "Clutch",    href: "/accessories/satin-evening-clutch"   },
+    { id: 4, title: "Canvas Shopper",             subtitle: "Everyday & Market",    tag: "Trending", style: "Tote",      href: "/accessories/canvas-shopper"         },
+    { id: 5, title: "Chain Shoulder Bag",         subtitle: "Chic & Versatile",     tag: "Popular",  style: "Shoulder",  href: "/accessories/chain-shoulder-bag"     },
+    { id: 6, title: "Bucket Bag",                 subtitle: "Boho & Casual",        tag: "New",      style: "Bucket",    href: "/accessories/bucket-bag"             },
+    { id: 7, title: "Structured Top Handle",      subtitle: "Classic & Polished",   tag: "Trending", style: "Shoulder",  href: "/accessories/structured-top-handle"  },
+    { id: 8, title: "Micro Mini Bag",             subtitle: "Statement & Bold",     tag: "New",      style: "Mini Bag",  href: "/accessories/micro-mini-bag"         },
+  ],
+  "jewelry": [
+    { id: 1, title: "Gold Chain Layering",       subtitle: "Trendy & Versatile",   tag: "Trending", style: "Necklace",  href: "/accessories/gold-chain-layering"    },
+    { id: 2, title: "Statement Hoops",            subtitle: "Bold & Chic",          tag: "Popular",  style: "Earrings",  href: "/accessories/statement-hoops"        },
+    { id: 3, title: "Stacking Rings",             subtitle: "Minimal & Modern",     tag: "New",      style: "Rings",     href: "/accessories/stacking-rings"         },
+    { id: 4, title: "Pearl Necklace",             subtitle: "Classic & Timeless",   tag: "Trending", style: "Necklace",  href: "/accessories/pearl-necklace"         },
+    { id: 5, title: "Cuff Bracelet",              subtitle: "Bold & Statement",     tag: "Popular",  style: "Bracelets", href: "/accessories/cuff-bracelet"          },
+    { id: 6, title: "Delicate Ear Cuff",          subtitle: "Edgy & Subtle",        tag: "New",      style: "Earrings",  href: "/accessories/delicate-ear-cuff"      },
+    { id: 7, title: "Tennis Bracelet",            subtitle: "Elegant & Evening",    tag: "Trending", style: "Bracelets", href: "/accessories/tennis-bracelet"        },
+    { id: 8, title: "Layered Necklace Set",       subtitle: "Effortless & Chic",    tag: "New",      style: "Necklace",  href: "/accessories/layered-necklace-set"   },
+  ],
+  "shoes": [
+    { id: 1, title: "Chunky Loafers",            subtitle: "Casual & Chic",        tag: "Trending", style: "Loafers",      href: "/accessories/chunky-loafers"        },
+    { id: 2, title: "Strappy Heeled Sandals",    subtitle: "Evening & Summer",     tag: "Popular",  style: "Sandals",      href: "/accessories/strappy-heeled-sandals" },
+    { id: 3, title: "White Sneakers",             subtitle: "Everyday Essential",   tag: "New",      style: "Sneakers",     href: "/accessories/white-sneakers"        },
+    { id: 4, title: "Knee-High Boots",            subtitle: "Autumn & Statement",   tag: "Trending", style: "Boots",        href: "/accessories/knee-high-boots"       },
+    { id: 5, title: "Ballet Flats",               subtitle: "Elegant & Wearable",   tag: "Popular",  style: "Ballet Flats", href: "/accessories/ballet-flats"          },
+    { id: 6, title: "Block Heel Mules",           subtitle: "Comfortable & Stylish",tag: "New",      style: "Heels",        href: "/accessories/block-heel-mules"      },
+    { id: 7, title: "Chelsea Boots",              subtitle: "Year-Round Classic",   tag: "Trending", style: "Boots",        href: "/accessories/chelsea-boots"         },
+    { id: 8, title: "Platform Sandals",           subtitle: "Bold & Summer",        tag: "New",      style: "Sandals",      href: "/accessories/platform-sandals"      },
+  ],
+  "scarves": [
+    { id: 1, title: "Silk Neck Scarf",           subtitle: "Chic & French Girl",   tag: "Trending", style: "Silk",      href: "/accessories/silk-neck-scarf"       },
+    { id: 2, title: "Oversized Knit Wrap",        subtitle: "Cozy & Autumn",        tag: "Popular",  style: "Knit",      href: "/accessories/oversized-knit-wrap"   },
+    { id: 3, title: "Bandana Head Wrap",          subtitle: "Boho & Festival",      tag: "New",      style: "Head Wrap", href: "/accessories/bandana-head-wrap"     },
+    { id: 4, title: "Silk Bag Charm Scarf",       subtitle: "Accessory Detail",     tag: "Trending", style: "Silk",      href: "/accessories/silk-bag-charm"        },
+    { id: 5, title: "Wool Blanket Scarf",         subtitle: "Winter & Cozy",        tag: "Popular",  style: "Knit",      href: "/accessories/wool-blanket-scarf"    },
+    { id: 6, title: "Printed Silk Square",        subtitle: "Evening & Classic",    tag: "New",      style: "Silk",      href: "/accessories/printed-silk-square"   },
+    { id: 7, title: "Linen Neck Scarf",           subtitle: "Summer & Minimal",     tag: "Trending", style: "Linen",     href: "/accessories/linen-neck-scarf"      },
+    { id: 8, title: "Hair Ribbon Scarf",          subtitle: "Cute & Trendy",        tag: "New",      style: "Head Wrap", href: "/accessories/hair-ribbon-scarf"     },
+  ],
+};
+
 const accessoryTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
   "bags": {
     label: "Bags & Handbags",
@@ -233,7 +276,7 @@ export default async function AccessoryTypePage(
   const data = accessoryTypes[slug];
   if (!data) notFound();
   const accessories = await client.fetch(ACCESSORIES_BY_TYPE_QUERY, { type: slug }, { next: { revalidate: 3600, tags: ['accessory'] } });
-  const items = accessories.map(toItem);
+  const items = accessories.length > 0 ? accessories.map(toItem) : (STATIC_ACCESSORIES[slug] ?? []);
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}

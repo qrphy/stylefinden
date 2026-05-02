@@ -18,6 +18,69 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
   }
 }
 
+const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
+  "office": [
+    { id: 1, title: "Power Blazer Set",       subtitle: "Meeting & Presentation", tag: "Trending", style: "Blazer",        href: "/outfits/power-blazer-set"       },
+    { id: 2, title: "Tailored Wide-Leg Look", subtitle: "Office & Everyday",      tag: "Popular",  style: "Tailoring",     href: "/outfits/tailored-wide-leg"      },
+    { id: 3, title: "Minimal Shirt Dress",    subtitle: "Smart Casual",           tag: "New",      style: "Smart Casual",  href: "/outfits/minimal-shirt-dress"    },
+    { id: 4, title: "Monochrome Office Look", subtitle: "Clean & Professional",   tag: "Trending", style: "Neutral",       href: "/outfits/monochrome-office"      },
+    { id: 5, title: "Pencil Skirt Combo",     subtitle: "Classic Business",       tag: "Popular",  style: "Tailoring",     href: "/outfits/pencil-skirt-combo"     },
+    { id: 6, title: "Casual Friday Look",     subtitle: "Relaxed & Stylish",      tag: "New",      style: "Casual Friday", href: "/outfits/casual-friday-look"     },
+    { id: 7, title: "Structured Midi Dress",  subtitle: "Conference & Event",     tag: "Trending", style: "Elegant",       href: "/outfits/structured-midi-dress"  },
+    { id: 8, title: "Linen Blazer Outfit",    subtitle: "Summer Business",        tag: "New",      style: "Blazer",        href: "/outfits/linen-blazer-outfit"    },
+  ],
+  "evening": [
+    { id: 1, title: "Silk Slip Dress",        subtitle: "Dinner & Cocktail",    tag: "Trending", style: "Midi",     href: "/outfits/silk-slip-dress"        },
+    { id: 2, title: "Velvet Midi Dress",       subtitle: "Gala & Event",         tag: "Popular",  style: "Midi",     href: "/outfits/velvet-midi-dress"      },
+    { id: 3, title: "Sequin Mini Look",        subtitle: "Party & Club",         tag: "New",      style: "Mini",     href: "/outfits/sequin-mini-look"       },
+    { id: 4, title: "Black Tie Maxi",          subtitle: "Gala & Wedding",       tag: "Trending", style: "Maxi",     href: "/outfits/black-tie-maxi"         },
+    { id: 5, title: "Blazer & Satin Pants",    subtitle: "Cocktail & Dinner",    tag: "Popular",  style: "Cocktail", href: "/outfits/blazer-satin-pants"     },
+    { id: 6, title: "Wrap Evening Dress",      subtitle: "Restaurant & Theatre", tag: "New",      style: "Midi",     href: "/outfits/wrap-evening-dress"     },
+    { id: 7, title: "Feather Trim Look",       subtitle: "Statement & Bold",     tag: "Trending", style: "Gala",     href: "/outfits/feather-trim-look"      },
+    { id: 8, title: "Classic LBD Elevated",   subtitle: "Timeless & Elegant",   tag: "New",      style: "Elegant",  href: "/outfits/classic-lbd-elevated"   },
+  ],
+  "casual": [
+    { id: 1, title: "White Tee & Straight Jeans",  subtitle: "Everyday Essential",  tag: "Trending", style: "Basics",   href: "/outfits/white-tee-straight-jeans" },
+    { id: 2, title: "Cozy Knit & Wide Leg",        subtitle: "Weekend & Relax",     tag: "Popular",  style: "Cozy",     href: "/outfits/cozy-knit-wide-leg"       },
+    { id: 3, title: "Denim Jacket Layer",           subtitle: "Street & Casual",     tag: "New",      style: "Layering", href: "/outfits/denim-jacket-layer"       },
+    { id: 4, title: "Linen Shirt Outfit",           subtitle: "Summer Everyday",     tag: "Trending", style: "Basics",   href: "/outfits/linen-shirt-outfit"       },
+    { id: 5, title: "Sweatshirt & Midi Skirt",      subtitle: "Casual Chic",         tag: "Popular",  style: "Denim",    href: "/outfits/sweatshirt-midi-skirt"    },
+    { id: 6, title: "Oversized Blazer & Jeans",    subtitle: "Smart Casual",        tag: "New",      style: "Layering", href: "/outfits/oversized-blazer-jeans"   },
+    { id: 7, title: "Sporty Chic Look",             subtitle: "Athleisure & City",   tag: "Trending", style: "Sporty",   href: "/outfits/sporty-chic-look"         },
+    { id: 8, title: "Flowy Midi & Sneakers",        subtitle: "Feminine Casual",     tag: "New",      style: "Basics",   href: "/outfits/flowy-midi-sneakers"      },
+  ],
+  "beach": [
+    { id: 1, title: "Linen Cover-up Dress",   subtitle: "Beach & Pool",           tag: "Trending", style: "Cover-up", href: "/outfits/linen-cover-up-dress"   },
+    { id: 2, title: "Boho Beach Maxi",         subtitle: "Vacation & Relaxation",  tag: "Popular",  style: "Maxi",     href: "/outfits/boho-beach-maxi"        },
+    { id: 3, title: "Crochet Mini & Shorts",  subtitle: "Beach & Casual",          tag: "New",      style: "Mini",     href: "/outfits/crochet-mini-shorts"    },
+    { id: 4, title: "Stripe Linen Set",        subtitle: "Promenade & Café",        tag: "Trending", style: "Linen",    href: "/outfits/stripe-linen-set"       },
+    { id: 5, title: "Kaftan Look",             subtitle: "Pool & Sundowner",        tag: "Popular",  style: "Kaftan",   href: "/outfits/kaftan-look"            },
+    { id: 6, title: "Denim Cut-off & Blouse", subtitle: "Beach Stroll",            tag: "New",      style: "Casual",   href: "/outfits/denim-cutoff-blouse"    },
+    { id: 7, title: "White Maxi Beach Dress", subtitle: "Elegant by the Sea",      tag: "Trending", style: "Maxi",     href: "/outfits/white-maxi-beach-dress" },
+    { id: 8, title: "Resort Coord Set",       subtitle: "Luxury & Vacation",       tag: "New",      style: "Cover-up", href: "/outfits/resort-coord-set"       },
+  ],
+  "festival": [
+    { id: 1, title: "Boho Fringe Dress",       subtitle: "Festival & Open Air", tag: "Trending", style: "Boho",     href: "/outfits/boho-fringe-dress"      },
+    { id: 2, title: "Denim & Crop Top",         subtitle: "Concert & Outdoor",   tag: "Popular",  style: "Denim",    href: "/outfits/denim-crop-top"         },
+    { id: 3, title: "Floral Maxi & Boots",      subtitle: "Boho & Wild",         tag: "New",      style: "Floral",   href: "/outfits/floral-maxi-boots"      },
+    { id: 4, title: "Crochet & Denim Shorts",  subtitle: "Summer Festival",     tag: "Trending", style: "Boho",     href: "/outfits/crochet-denim-shorts"   },
+    { id: 5, title: "Embroidered Midi Look",    subtitle: "Playful & Feminine",  tag: "Popular",  style: "Floral",   href: "/outfits/embroidered-midi-look"  },
+    { id: 6, title: "Layered Boho Set",         subtitle: "Layering & Style",    tag: "New",      style: "Layering", href: "/outfits/layered-boho-set"       },
+    { id: 7, title: "Tie-Dye & Wide Leg",       subtitle: "Retro & Bold",        tag: "Trending", style: "Bold",     href: "/outfits/tie-dye-wide-leg"       },
+    { id: 8, title: "Western Fringe Jacket",    subtitle: "Statement Look",      tag: "New",      style: "Fringe",   href: "/outfits/western-fringe-jacket"  },
+  ],
+  "date-night": [
+    { id: 1, title: "Wrap Satin Midi",         subtitle: "Dinner & Romance",    tag: "Trending", style: "Midi",     href: "/outfits/wrap-satin-midi"        },
+    { id: 2, title: "Floral Midi Dress",        subtitle: "Café & Stroll",       tag: "Popular",  style: "Romantic", href: "/outfits/floral-date-midi"       },
+    { id: 3, title: "Leather Mini Skirt Look", subtitle: "Bold & Confident",    tag: "New",      style: "Bold",     href: "/outfits/leather-mini-skirt"     },
+    { id: 4, title: "Slip Dress & Blazer",      subtitle: "Casual Chic Date",    tag: "Trending", style: "Elegant",  href: "/outfits/slip-dress-blazer"      },
+    { id: 5, title: "Off-Shoulder Mini",        subtitle: "Feminine & Flirty",   tag: "Popular",  style: "Mini",     href: "/outfits/off-shoulder-mini"      },
+    { id: 6, title: "Wide Leg & Silk Top",      subtitle: "Sophisticated Date",  tag: "New",      style: "Elegant",  href: "/outfits/wide-leg-silk-top"      },
+    { id: 7, title: "Lace Detail Dress",        subtitle: "Romantic & Delicate", tag: "Trending", style: "Romantic", href: "/outfits/lace-detail-dress"      },
+    { id: 8, title: "Monochrome Bold Set",      subtitle: "Statement & Strong",  tag: "New",      style: "Bold",     href: "/outfits/monochrome-bold-set"    },
+  ],
+};
+
 const occasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   "office": {
     label: "Office & Business",
@@ -335,7 +398,7 @@ export default async function OccasionPage(
   const data = occasions[slug];
   if (!data) notFound();
   const outfits = await client.fetch(OUTFITS_BY_OCCASION_QUERY, { occasion: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
-  const items = outfits.map(toItem);
+  const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}

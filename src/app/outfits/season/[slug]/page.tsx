@@ -18,6 +18,49 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
   }
 }
 
+const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
+  "summer": [
+    { id: 1, title: "Floral Maxi Dress",   subtitle: "Beach & Vacation",   tag: "Trending", style: "Maxi",     href: "/outfits/floral-maxi-dress"   },
+    { id: 2, title: "Linen Slip Dress",    subtitle: "Casual & City",      tag: "New",      style: "Midi",     href: "/outfits/linen-slip-dress"    },
+    { id: 3, title: "Boho Wrap Dress",     subtitle: "Festival & Nature",  tag: "Popular",  style: "Maxi",     href: "/outfits/boho-wrap-dress"     },
+    { id: 4, title: "Mini Sun Dress",      subtitle: "Summer & Leisure",   tag: "Trending", style: "Mini",     href: "/outfits/mini-sun-dress"      },
+    { id: 5, title: "Stripe Midi Dress",   subtitle: "Chic & Modern",      tag: "New",      style: "Midi",     href: "/outfits/stripe-midi-dress"   },
+    { id: 6, title: "Off-Shoulder Dress",  subtitle: "Evening & Event",    tag: "Popular",  style: "Midi",     href: "/outfits/off-shoulder-dress"  },
+    { id: 7, title: "Cotton Sundress",     subtitle: "Everyday & Picnic",  tag: "Trending", style: "Mini",     href: "/outfits/cotton-sundress"     },
+    { id: 8, title: "Flowy Chiffon Dress", subtitle: "Elegant & Light",    tag: "New",      style: "Maxi",     href: "/outfits/flowy-chiffon-dress" },
+  ],
+  "winter": [
+    { id: 1, title: "Classic Wool Coat",      subtitle: "City & Business",   tag: "Trending", style: "Coat",     href: "/outfits/classic-wool-coat"      },
+    { id: 2, title: "Chunky Knit Combo",      subtitle: "Casual & Cozy",     tag: "Popular",  style: "Knitwear", href: "/outfits/chunky-knit-combo"      },
+    { id: 3, title: "Monochrome Layer Look",  subtitle: "Minimal & Modern",  tag: "New",      style: "Layering", href: "/outfits/monochrome-layer-look"  },
+    { id: 4, title: "Teddy Coat Outfit",      subtitle: "Weekend & Leisure", tag: "Trending", style: "Coat",     href: "/outfits/teddy-coat-outfit"      },
+    { id: 5, title: "Turtleneck & Trousers",  subtitle: "Office & Business", tag: "Popular",  style: "Business", href: "/outfits/turtleneck-trousers"    },
+    { id: 6, title: "Plaid Scarf Look",       subtitle: "Casual & Everyday", tag: "New",      style: "Casual",   href: "/outfits/plaid-scarf-look"       },
+    { id: 7, title: "Velvet Evening Look",    subtitle: "Evening & Event",   tag: "Trending", style: "Elegant",  href: "/outfits/velvet-evening-look"    },
+    { id: 8, title: "Oversized Puffer Coat",  subtitle: "Street & Urban",    tag: "New",      style: "Coat",     href: "/outfits/oversized-puffer-coat"  },
+  ],
+  "autumn": [
+    { id: 1, title: "Camel Trench Coat",     subtitle: "City & Everyday",   tag: "Trending", style: "Trench",   href: "/outfits/camel-trench-coat"      },
+    { id: 2, title: "Rust Knit & Jeans",     subtitle: "Casual & Weekend",  tag: "Popular",  style: "Knitwear", href: "/outfits/rust-knit-jeans"        },
+    { id: 3, title: "Olive Cargo Look",      subtitle: "Street & Urban",    tag: "New",      style: "Casual",   href: "/outfits/olive-cargo-look"       },
+    { id: 4, title: "Plaid Blazer Outfit",   subtitle: "Office & Business", tag: "Trending", style: "Elegant",  href: "/outfits/plaid-blazer-outfit"    },
+    { id: 5, title: "Denim Layer Look",      subtitle: "Casual & Modern",   tag: "Popular",  style: "Denim",    href: "/outfits/denim-layer-look"       },
+    { id: 6, title: "Brown Leather Jacket",  subtitle: "Street & Leisure",  tag: "New",      style: "Layering", href: "/outfits/brown-leather-jacket"   },
+    { id: 7, title: "Midi Skirt & Boots",    subtitle: "Elegant & Chic",    tag: "Trending", style: "Elegant",  href: "/outfits/midi-skirt-boots"       },
+    { id: 8, title: "Oversized Blazer Look", subtitle: "Business Casual",   tag: "New",      style: "Trench",   href: "/outfits/oversized-blazer-look"  },
+  ],
+  "spring": [
+    { id: 1, title: "Pastel Blazer Set",         subtitle: "Office & Chic",        tag: "Trending", style: "Blazer",  href: "/outfits/pastel-blazer-set"         },
+    { id: 2, title: "Floral Midi Dress",          subtitle: "Casual & Feminine",    tag: "Popular",  style: "Floral",  href: "/outfits/floral-midi-dress"          },
+    { id: 3, title: "Linen Wide-Leg Pants",       subtitle: "Relaxed & Elegant",    tag: "New",      style: "Linen",   href: "/outfits/linen-wide-leg-pants"       },
+    { id: 4, title: "White & Sage Combo",         subtitle: "Minimal & Fresh",      tag: "Trending", style: "Pastels", href: "/outfits/white-sage-combo"           },
+    { id: 5, title: "Denim & Floral Top",         subtitle: "Casual & Spring",      tag: "Popular",  style: "Floral",  href: "/outfits/denim-floral-top"           },
+    { id: 6, title: "Mint Trench Look",           subtitle: "City & Modern",        tag: "New",      style: "Blazer",  href: "/outfits/mint-trench-look"           },
+    { id: 7, title: "Lilac Knit Dress",           subtitle: "Soft & Romantic",      tag: "Trending", style: "Pastels", href: "/outfits/lilac-knit-dress"           },
+    { id: 8, title: "Striped Linen Shirt Look",   subtitle: "Weekend & Casual",     tag: "New",      style: "Linen",   href: "/outfits/striped-linen-shirt-look"   },
+  ],
+};
+
 const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
   "summer": {
     label: "Summer Dresses",
@@ -241,7 +284,7 @@ export default async function SeasonPage(
   const data = seasons[slug];
   if (!data) notFound();
   const outfits = await client.fetch(OUTFITS_BY_SEASON_QUERY, { season: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
-  const items = outfits.map(toItem);
+  const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}

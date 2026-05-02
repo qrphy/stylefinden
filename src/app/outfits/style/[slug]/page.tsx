@@ -18,6 +18,49 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
   }
 }
 
+const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
+  "boho": [
+    { id: 1, title: "Floral Wrap Maxi",     subtitle: "Festival & Nature",    tag: "Trending", style: "Maxi",   href: "/outfits/floral-wrap-maxi"      },
+    { id: 2, title: "Fringe Vest & Jeans",  subtitle: "Street & Casual",      tag: "Popular",  style: "Fringe", href: "/outfits/fringe-vest-jeans"     },
+    { id: 3, title: "Linen Boho Dress",     subtitle: "Beach & Vacation",     tag: "New",      style: "Linen",  href: "/outfits/linen-boho-dress"      },
+    { id: 4, title: "Embroidered Midi",     subtitle: "Romantic & Soft",      tag: "Trending", style: "Midi",   href: "/outfits/embroidered-midi"      },
+    { id: 5, title: "Crochet Top & Skirt",  subtitle: "Summer & Festival",    tag: "Popular",  style: "Floral", href: "/outfits/crochet-top-skirt"     },
+    { id: 6, title: "Boho Layer Look",      subtitle: "Autumn & Nature",      tag: "New",      style: "Fringe", href: "/outfits/boho-layer-look"       },
+    { id: 7, title: "Paisley Print Dress",  subtitle: "Casual & Playful",     tag: "Trending", style: "Maxi",   href: "/outfits/paisley-print-dress"   },
+    { id: 8, title: "Earthy Boho Set",      subtitle: "Earth Tones & Nature", tag: "New",      style: "Casual", href: "/outfits/earthy-boho-set"       },
+  ],
+  "minimalist": [
+    { id: 1, title: "All White Look",           subtitle: "Clean & Modern",    tag: "Trending", style: "Monochrome", href: "/outfits/all-white-look"          },
+    { id: 2, title: "Beige Linen Set",           subtitle: "Casual & Elegant",  tag: "Popular",  style: "Neutral",    href: "/outfits/beige-linen-set"         },
+    { id: 3, title: "Black Straight Trousers",   subtitle: "Office & Business", tag: "New",      style: "Business",   href: "/outfits/black-straight-trousers" },
+    { id: 4, title: "Grey Oversized Blazer",     subtitle: "Smart Casual",      tag: "Trending", style: "Business",   href: "/outfits/grey-oversized-blazer"   },
+    { id: 5, title: "Cream Knit & Trousers",     subtitle: "Cozy & Minimal",    tag: "Popular",  style: "Neutral",    href: "/outfits/cream-knit-trousers"     },
+    { id: 6, title: "Minimal Slip Dress",        subtitle: "Evening & Event",   tag: "New",      style: "Elegant",    href: "/outfits/minimal-slip-dress"      },
+    { id: 7, title: "White Shirt & Denim",       subtitle: "Everyday Basics",   tag: "Trending", style: "Basics",     href: "/outfits/white-shirt-denim"       },
+    { id: 8, title: "Monochrome Brown Set",      subtitle: "Warm & Simple",     tag: "New",      style: "Monochrome", href: "/outfits/monochrome-brown-set"    },
+  ],
+  "streetstyle": [
+    { id: 1, title: "Baggy Denim & Crop Top",  subtitle: "Urban & Casual",    tag: "Trending", style: "Denim",     href: "/outfits/baggy-denim-crop-top"   },
+    { id: 2, title: "Oversized Hoodie Look",   subtitle: "Cozy & Street",     tag: "Popular",  style: "Oversized", href: "/outfits/oversized-hoodie-look"  },
+    { id: 3, title: "Graphic Tee & Blazer",    subtitle: "Smart Street",      tag: "New",      style: "Graphic",   href: "/outfits/graphic-tee-blazer"     },
+    { id: 4, title: "Cargo Pants Outfit",      subtitle: "Utility & Urban",   tag: "Trending", style: "Bold",      href: "/outfits/cargo-pants-outfit"     },
+    { id: 5, title: "Leather Jacket & Jeans",  subtitle: "Classic Street",    tag: "Popular",  style: "Denim",     href: "/outfits/leather-jacket-jeans"   },
+    { id: 6, title: "Sporty Layered Set",      subtitle: "Athleisure & City", tag: "New",      style: "Sporty",    href: "/outfits/sporty-layered-set"     },
+    { id: 7, title: "Wide Leg & Tank",         subtitle: "Minimal Street",    tag: "Trending", style: "Oversized", href: "/outfits/wide-leg-tank"          },
+    { id: 8, title: "Denim-on-Denim",          subtitle: "Bold & Modern",     tag: "New",      style: "Denim",     href: "/outfits/denim-on-denim"         },
+  ],
+  "classic": [
+    { id: 1, title: "Camel Blazer & Trousers", subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",    href: "/outfits/camel-blazer-trousers"  },
+    { id: 2, title: "Navy & White Stripes",    subtitle: "Smart Casual",       tag: "Popular",  style: "Casual",    href: "/outfits/navy-white-stripes"     },
+    { id: 3, title: "Wrap Coat Outfit",        subtitle: "City & Business",    tag: "New",      style: "Trench",    href: "/outfits/wrap-coat-outfit"       },
+    { id: 4, title: "Little Black Dress",      subtitle: "Evening & Event",    tag: "Trending", style: "Evening",   href: "/outfits/little-black-dress"     },
+    { id: 5, title: "Pencil Skirt & Blouse",   subtitle: "Office & Elegant",   tag: "Popular",  style: "Business",  href: "/outfits/pencil-skirt-blouse"    },
+    { id: 6, title: "Trench & Straight Jeans", subtitle: "Weekend & City",     tag: "New",      style: "Trench",    href: "/outfits/trench-straight-jeans"  },
+    { id: 7, title: "Pearl & Silk Blouse",     subtitle: "Elegant & Feminine", tag: "Trending", style: "Evening",   href: "/outfits/pearl-silk-blouse"      },
+    { id: 8, title: "Grey Suit Set",           subtitle: "Power & Profession", tag: "New",      style: "Tailoring", href: "/outfits/grey-suit-set"          },
+  ],
+};
+
 const styles: Record<string, Omit<CategoryData, 'outfits'>> = {
   "boho": {
     label: "Boho Style",
@@ -241,7 +284,7 @@ export default async function StylePage(
   const data = styles[slug];
   if (!data) notFound();
   const outfits = await client.fetch(OUTFITS_BY_STYLE_QUERY, { style: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
-  const items = outfits.map(toItem);
+  const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}

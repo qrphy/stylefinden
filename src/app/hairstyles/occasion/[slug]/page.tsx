@@ -18,6 +18,49 @@ function toItem(h: { _id: string; title: string; slug: string; image?: object; t
   }
 }
 
+const STATIC_HAIRSTYLES: Record<string, OutfitItem[]> = {
+  "everyday": [
+    { id: 1, title: "Sleek Low Ponytail",       subtitle: "5 min & Polished",    tag: "Trending", style: "Ponytail",  href: "/hairstyles/sleek-low-ponytail"     },
+    { id: 2, title: "Messy Bun",                subtitle: "2 min & Effortless",  tag: "Popular",  style: "Bun",       href: "/hairstyles/messy-bun-everyday"     },
+    { id: 3, title: "Half-Up Half-Down",        subtitle: "Simple & Versatile",  tag: "New",      style: "Half-Up",   href: "/hairstyles/half-up-half-down"      },
+    { id: 4, title: "Air Dry Natural",          subtitle: "No Heat & Healthy",   tag: "Trending", style: "No Heat",   href: "/hairstyles/air-dry-natural"        },
+    { id: 5, title: "Blowout & Down",           subtitle: "Classic & Smooth",    tag: "Popular",  style: "Blowout",   href: "/hairstyles/blowout-down"           },
+    { id: 6, title: "French Tuck Braid",        subtitle: "Casual & Boho",       tag: "New",      style: "Half-Up",   href: "/hairstyles/french-tuck-braid"      },
+    { id: 7, title: "High Ponytail",            subtitle: "Energetic & Clean",   tag: "Trending", style: "Ponytail",  href: "/hairstyles/high-ponytail-everyday"  },
+    { id: 8, title: "Curtain Bang Style",       subtitle: "Trendy & Easy",       tag: "New",      style: "No Heat",   href: "/hairstyles/curtain-bang-style"     },
+  ],
+  "wedding": [
+    { id: 1, title: "Romantic Low Chignon",     subtitle: "Bride & Classic",      tag: "Trending", style: "Updo",     href: "/hairstyles/romantic-low-chignon"   },
+    { id: 2, title: "Soft Bridal Waves",         subtitle: "Flowing & Feminine",   tag: "Popular",  style: "Down",     href: "/hairstyles/soft-bridal-waves"      },
+    { id: 3, title: "Braided Bridal Crown",      subtitle: "Boho & Garden Wedding",tag: "New",      style: "Braided",  href: "/hairstyles/braided-bridal-crown"   },
+    { id: 4, title: "French Twist Updo",         subtitle: "Elegant & Timeless",   tag: "Trending", style: "Updo",     href: "/hairstyles/french-twist-updo"      },
+    { id: 5, title: "Half-Up Floral Style",      subtitle: "Romantic & Fresh",     tag: "Popular",  style: "Half-Up",  href: "/hairstyles/half-up-floral"         },
+    { id: 6, title: "Sleek Ballerina Bun",       subtitle: "Modern Bride",         tag: "New",      style: "Updo",     href: "/hairstyles/sleek-ballerina-bun"    },
+    { id: 7, title: "Bridesmaid Braid",          subtitle: "Coordinated & Pretty", tag: "Trending", style: "Braided",  href: "/hairstyles/bridesmaid-braid"       },
+    { id: 8, title: "Guest Blow-Dry Waves",      subtitle: "Wedding Guest Look",   tag: "New",      style: "Down",     href: "/hairstyles/guest-blowdry-waves"    },
+  ],
+  "party": [
+    { id: 1, title: "Old Hollywood Waves",      subtitle: "Glam & Classic",       tag: "Trending", style: "Down & Glam",  href: "/hairstyles/old-hollywood-waves"    },
+    { id: 2, title: "High Glam Ponytail",        subtitle: "Sleek & Chic",         tag: "Popular",  style: "Sleek",        href: "/hairstyles/high-glam-ponytail"     },
+    { id: 3, title: "Braided Crown Updo",        subtitle: "Boho Party",           tag: "New",      style: "Updo",         href: "/hairstyles/braided-crown-updo"     },
+    { id: 4, title: "Big Volume Blowout",        subtitle: "Dramatic & Bold",      tag: "Trending", style: "Volume",       href: "/hairstyles/big-volume-blowout"     },
+    { id: 5, title: "Embellished Half-Up",       subtitle: "Accessorized & Chic",  tag: "Popular",  style: "Accessorized", href: "/hairstyles/embellished-half-up"    },
+    { id: 6, title: "Sleek Low Bun + Pin",       subtitle: "Modern & Elegant",     tag: "New",      style: "Updo",         href: "/hairstyles/sleek-low-bun-pin"      },
+    { id: 7, title: "Curly Volume Out",          subtitle: "Natural & Glam",       tag: "Trending", style: "Volume",       href: "/hairstyles/curly-volume-out"       },
+    { id: 8, title: "Disco-Inspired Waves",      subtitle: "Retro & Fun",          tag: "New",      style: "Down & Glam",  href: "/hairstyles/disco-waves"            },
+  ],
+  "office": [
+    { id: 1, title: "Sleek Blowout",            subtitle: "Classic & Professional",tag: "Trending", style: "Down",      href: "/hairstyles/sleek-blowout-office"   },
+    { id: 2, title: "Polished Low Bun",          subtitle: "Neat & Timeless",       tag: "Popular",  style: "Bun",       href: "/hairstyles/polished-low-bun"       },
+    { id: 3, title: "Structured Ponytail",       subtitle: "Clean & Sharp",         tag: "New",      style: "Ponytail",  href: "/hairstyles/structured-ponytail"    },
+    { id: 4, title: "French Twist",              subtitle: "Elegant & Secure",      tag: "Trending", style: "Updo",      href: "/hairstyles/french-twist-office"    },
+    { id: 5, title: "Chic Half-Up",             subtitle: "Versatile & Modern",    tag: "Popular",  style: "Half-Up",   href: "/hairstyles/chic-half-up-office"    },
+    { id: 6, title: "Short Bob Blowout",         subtitle: "Sharp & Modern",        tag: "New",      style: "Short Hair",href: "/hairstyles/short-bob-blowout"      },
+    { id: 7, title: "Twisted Crown",             subtitle: "Elegant & Secure",      tag: "Trending", style: "Updo",      href: "/hairstyles/twisted-crown-office"   },
+    { id: 8, title: "Smooth Side Part",          subtitle: "Classic & Minimal",     tag: "New",      style: "Down",      href: "/hairstyles/smooth-side-part"       },
+  ],
+};
+
 const hairstyleOccasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   "everyday": {
     label: "Everyday Hairstyles",
@@ -233,7 +276,7 @@ export default async function HairstyleOccasionPage(
   const data = hairstyleOccasions[slug];
   if (!data) notFound();
   const hairstyles = await client.fetch(HAIRSTYLES_BY_OCCASION_QUERY, { occasion: slug }, { next: { revalidate: 3600, tags: ['hairstyle'] } });
-  const items = hairstyles.map(toItem);
+  const items = hairstyles.length > 0 ? hairstyles.map(toItem) : (STATIC_HAIRSTYLES[slug] ?? []);
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}

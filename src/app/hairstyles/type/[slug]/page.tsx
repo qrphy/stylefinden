@@ -18,6 +18,49 @@ function toItem(h: { _id: string; title: string; slug: string; image?: object; t
   }
 }
 
+const STATIC_HAIRSTYLES: Record<string, OutfitItem[]> = {
+  "braids": [
+    { id: 1, title: "Classic French Braid",    subtitle: "Everyday & Casual",   tag: "Trending", style: "French",    href: "/hairstyles/classic-french-braid"   },
+    { id: 2, title: "Fishtail Side Braid",      subtitle: "Romantic & Elegant",  tag: "Popular",  style: "Fishtail",  href: "/hairstyles/fishtail-side-braid"    },
+    { id: 3, title: "Dutch Crown Braid",        subtitle: "Boho & Festival",     tag: "New",      style: "Crown",     href: "/hairstyles/dutch-crown-braid"      },
+    { id: 4, title: "Boho Loose Braid",         subtitle: "Casual & Free",       tag: "Trending", style: "Boho",      href: "/hairstyles/boho-loose-braid"       },
+    { id: 5, title: "Box Braids",               subtitle: "Bold & Protective",   tag: "Popular",  style: "Box Braids",href: "/hairstyles/box-braids"             },
+    { id: 6, title: "Waterfall Braid",          subtitle: "Soft & Feminine",     tag: "New",      style: "French",    href: "/hairstyles/waterfall-braid"        },
+    { id: 7, title: "Half-Up Braid",            subtitle: "Versatile & Modern",  tag: "Trending", style: "Dutch",     href: "/hairstyles/half-up-braid"          },
+    { id: 8, title: "Micro Braids Updo",        subtitle: "Evening & Glam",      tag: "New",      style: "Crown",     href: "/hairstyles/micro-braids-updo"      },
+  ],
+  "buns": [
+    { id: 1, title: "Sleek Ballet Bun",        subtitle: "Polished & Classic",   tag: "Trending", style: "Ballet",   href: "/hairstyles/sleek-ballet-bun"       },
+    { id: 2, title: "Messy Topknot",            subtitle: "Casual & Effortless",  tag: "Popular",  style: "Topknot",  href: "/hairstyles/messy-topknot"          },
+    { id: 3, title: "Low French Twist",         subtitle: "Elegant & Evening",    tag: "New",      style: "Chignon",  href: "/hairstyles/low-french-twist"       },
+    { id: 4, title: "Textured Low Bun",         subtitle: "Modern & Relaxed",     tag: "Trending", style: "Low Bun",  href: "/hairstyles/textured-low-bun"       },
+    { id: 5, title: "Braided Bun Updo",         subtitle: "Boho & Romantic",      tag: "Popular",  style: "Chignon",  href: "/hairstyles/braided-bun-updo"       },
+    { id: 6, title: "Half-Up Top Knot",         subtitle: "Casual & Trendy",      tag: "New",      style: "Half-Up",  href: "/hairstyles/half-up-top-knot"       },
+    { id: 7, title: "Sleek Chignon",            subtitle: "Office & Event",       tag: "Trending", style: "Chignon",  href: "/hairstyles/sleek-chignon"          },
+    { id: 8, title: "Bubble Ponytail Bun",      subtitle: "Fun & Modern",         tag: "New",      style: "Topknot",  href: "/hairstyles/bubble-ponytail-bun"    },
+  ],
+  "waves": [
+    { id: 1, title: "Beach Waves",              subtitle: "Casual & Summer",     tag: "Trending", style: "Beach Waves", href: "/hairstyles/beach-waves"            },
+    { id: 2, title: "Soft Romantic Waves",      subtitle: "Elegant & Feminine",  tag: "Popular",  style: "S-Waves",    href: "/hairstyles/soft-romantic-waves"    },
+    { id: 3, title: "Textured Waves",           subtitle: "Edgy & Modern",       tag: "New",      style: "Textured",   href: "/hairstyles/textured-waves"         },
+    { id: 4, title: "Long Boho Waves",          subtitle: "Boho & Free",         tag: "Trending", style: "Beach Waves", href: "/hairstyles/long-boho-waves"        },
+    { id: 5, title: "Heat-Free Waves",          subtitle: "Natural & Healthy",   tag: "Popular",  style: "Heat-Free",  href: "/hairstyles/heat-free-waves"        },
+    { id: 6, title: "Crimped Waves",            subtitle: "Bold & Retro",        tag: "New",      style: "Crimped",    href: "/hairstyles/crimped-waves"          },
+    { id: 7, title: "Half-Up Waves",            subtitle: "Romantic & Versatile",tag: "Trending", style: "Soft Curls", href: "/hairstyles/half-up-waves"          },
+    { id: 8, title: "Voluminous Waves",         subtitle: "Glam & Full",         tag: "New",      style: "S-Waves",    href: "/hairstyles/voluminous-waves"       },
+  ],
+  "curls": [
+    { id: 1, title: "Defined Ringlets",         subtitle: "Natural & Beautiful",  tag: "Trending", style: "Ringlets", href: "/hairstyles/defined-ringlets"       },
+    { id: 2, title: "Big Voluminous Curls",      subtitle: "Glam & Bold",          tag: "Popular",  style: "Volume",   href: "/hairstyles/big-voluminous-curls"   },
+    { id: 3, title: "Curly Half-Up",             subtitle: "Casual & Versatile",   tag: "New",      style: "Ringlets", href: "/hairstyles/curly-half-up"          },
+    { id: 4, title: "Natural Afro",              subtitle: "Bold & Statement",     tag: "Trending", style: "Afro",     href: "/hairstyles/natural-afro"           },
+    { id: 5, title: "Curly Bob",                 subtitle: "Short & Chic",         tag: "Popular",  style: "Defined",  href: "/hairstyles/curly-bob"              },
+    { id: 6, title: "Coily Updo",               subtitle: "Elegant & Protective", tag: "New",      style: "Coils",    href: "/hairstyles/coily-updo"             },
+    { id: 7, title: "Wash and Go",              subtitle: "Effortless & Natural",  tag: "Trending", style: "Defined",  href: "/hairstyles/wash-and-go"            },
+    { id: 8, title: "Curly Ponytail",           subtitle: "High & Bouncy",         tag: "New",      style: "Volume",   href: "/hairstyles/curly-ponytail"         },
+  ],
+};
+
 const hairstyleTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
   "braids": {
     label: "Braided Hairstyles",
@@ -233,7 +276,7 @@ export default async function HairstyleTypePage(
   const data = hairstyleTypes[slug];
   if (!data) notFound();
   const hairstyles = await client.fetch(HAIRSTYLES_BY_TYPE_QUERY, { type: slug }, { next: { revalidate: 3600, tags: ['hairstyle'] } });
-  const items = hairstyles.map(toItem);
+  const items = hairstyles.length > 0 ? hairstyles.map(toItem) : (STATIC_HAIRSTYLES[slug] ?? []);
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}
