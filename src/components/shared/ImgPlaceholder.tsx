@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Props = {
   src?: string;
   alt?: string;
@@ -11,11 +13,11 @@ export default function ImgPlaceholder({
 }: Props) {
   if (src) {
     return (
-      <img
+      <Image
         src={src}
         alt={alt}
-        loading="lazy"
-        decoding="async"
+        fill
+        sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
         className={`${className} object-cover object-top`}
       />
     );
