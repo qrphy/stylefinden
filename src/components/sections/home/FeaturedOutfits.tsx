@@ -7,17 +7,18 @@ import { HOME_OUTFITS_QUERY } from "@/lib/queries";
 import { tagColors } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
-const STATIC_OUTFITS = [
-  { id: "1", title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending", image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638991/outfit-casual_spk6ou.png"          },
-  { id: "2", title: "Business Elegance", subtitle: "Office & Meeting",      tag: "New",      image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638953/outfit-business_gjyczh.png"         },
-  { id: "3", title: "Weekend Vibes",     subtitle: "Weekend & Day Trip",    tag: "Trending", image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638989/outfit-weekend_ujwial.png"           },
-  { id: "4", title: "Evening Glam",      subtitle: "Evening & Event",       tag: "Popular",  image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638986/outfit-evening-glam_akyrud.png"     },
-  { id: "5", title: "Street Style",      subtitle: "Urban & Modern",        tag: "New",      image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638990/outfit-street-urban_e6udta.png"     },
-  { id: "6", title: "Minimalist Look",   subtitle: "Clean & Elegant",       tag: "Trending", image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638985/outfit-minimalist_imwac9.png"       },
-  { id: "7", title: "Boho Dreams",       subtitle: "Festival & Nature",     tag: "Popular",  image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638990/outfit-boho-festival_qnr3vw.png"   },
-  { id: "8", title: "Classic Noir",      subtitle: "Timeless & Bold",       tag: "Trending", image: "https://res.cloudinary.com/dnfepyqbw/image/upload/v1777638989/outfit-classic-timeless_hnufg2.png" },
+const STATIC_OUTFITS: StaticOutfit[] = [
+  { id: "1", title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending" },
+  { id: "2", title: "Business Elegance", subtitle: "Office & Meeting",      tag: "New"      },
+  { id: "3", title: "Weekend Vibes",     subtitle: "Weekend & Day Trip",    tag: "Trending" },
+  { id: "4", title: "Evening Glam",      subtitle: "Evening & Event",       tag: "Popular"  },
+  { id: "5", title: "Street Style",      subtitle: "Urban & Modern",        tag: "New"      },
+  { id: "6", title: "Minimalist Look",   subtitle: "Clean & Elegant",       tag: "Trending" },
+  { id: "7", title: "Boho Dreams",       subtitle: "Festival & Nature",     tag: "Popular"  },
+  { id: "8", title: "Classic Noir",      subtitle: "Timeless & Bold",       tag: "Trending" },
 ];
 
+type StaticOutfit = { id: string; title: string; subtitle: string; tag: string }
 type OutfitCard = { id: string; title: string; subtitle: string; tag: string; slug: string; image?: string }
 
 export default async function FeaturedOutfits() {
@@ -34,7 +35,7 @@ export default async function FeaturedOutfits() {
         slug: o.slug,
         image: o.image ? urlFor(o.image).width(600).height(800).url() : undefined,
       }))
-    : STATIC_OUTFITS.map((o) => ({ ...o, slug: o.id, image: o.image }));
+    : STATIC_OUTFITS.map((o) => ({ ...o, slug: o.id, image: undefined }));
 
   return (
     <section className="w-full bg-white border-t border-gray-100">
