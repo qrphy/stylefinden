@@ -7,16 +7,34 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
 
+// Değerler outfit schema'daki value alanlarıyla birebir eşleşmeli
 const styleLabel: Record<string, string> = {
-  casual: "Casual", formal: "Formal", streetwear: "Streetwear",
-  elegant: "Elegant", boho: "Boho", sporty: "Sporty", vintage: "Vintage",
+  casual:      "Casual",
+  streetstyle: "Street Style",
+  elegant:     "Elegant",
+  boho:        "Boho",
+  sporty:      "Sporty",
+  minimalist:  "Minimalist",
+  classic:     "Classic",
+  vintage:     "Vintage",
+  formal:      "Formal",
 }
 const seasonLabel: Record<string, string> = {
-  spring: "Spring", summer: "Summer", fall: "Fall", winter: "Winter", "all-season": "All Season",
+  spring:      "Spring",
+  summer:      "Summer",
+  autumn:      "Autumn",
+  winter:      "Winter",
+  "all-season": "All Season",
 }
 const occasionLabel: Record<string, string> = {
-  everyday: "Everyday", work: "Work", evening: "Evening",
-  casual: "Casual", special: "Special Occasion", outdoor: "Outdoor",
+  casual:      "Casual",
+  office:      "Office",
+  evening:     "Evening",
+  wedding:     "Wedding",
+  sport:       "Sport & Outdoor",
+  beach:       "Beach",
+  festival:    "Festival",
+  "date-night": "Date Night",
 }
 
 export async function generateStaticParams() {
@@ -118,12 +136,15 @@ export default async function OutfitPage({ params }: Props) {
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">Outfit Pieces</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {outfit.pieces.map((piece: { _key?: string; name: string; description?: string }, i: number) => (
+              {outfit.pieces.map((piece: { _key?: string; type?: string; name: string; description?: string }, i: number) => (
                 <div key={piece._key ?? i} className="flex items-start gap-4 p-5 bg-gray-50 border border-gray-100">
                   <span className="text-xs font-black text-gray-300 tracking-widest mt-0.5 shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <div className="flex flex-col gap-1">
+                    {piece.type && (
+                      <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">{piece.type}</span>
+                    )}
                     <span className="text-sm font-black text-black tracking-tight">{piece.name}</span>
                     {piece.description && <span className="text-xs text-gray-500 leading-relaxed">{piece.description}</span>}
                   </div>

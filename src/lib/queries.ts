@@ -9,7 +9,9 @@ export const OUTFITS_QUERY = defineQuery(`
 
 export const OUTFIT_QUERY = defineQuery(`
   *[_type == "outfit" && slug.current == $slug][0] {
-    _id, title, "slug": slug.current, description, image, style, season, occasion, pieces, tags
+    _id, title, "slug": slug.current, description, image, style, season, occasion,
+    pieces[]{ _key, type, name, description },
+    tags, publishedAt
   }
 `)
 
