@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { CategoryData } from "@/types/outfit-category";
+import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import CategoryPage from "@/components/shared/CategoryPage";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { HAIRSTYLES_BY_OCCASION_QUERY } from "@/lib/queries";
 
-const hairstyleOccasions: Record<string, CategoryData> = {
+function toItem(h: { _id: string; title: string; slug: string; image?: object; type?: string; length?: string; mood?: string; tags?: string[]; featured?: boolean }): OutfitItem {
+  return {
+    id: h._id,
+    title: h.title,
+    subtitle: [h.length, h.mood].filter(Boolean).join(' · '),
+    tag: h.featured ? "Trending" : "New",
+    style: h.type ?? '',
+    image: h.image ? urlFor(h.image).width(400).height(533).url() : undefined,
+    href: `/hairstyles/${h.slug}`,
+  }
+}
+
+const hairstyleOccasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   "everyday": {
     label: "Everyday Hairstyles",
     subtitle: "Quick & Effortless",
@@ -21,16 +36,6 @@ const hairstyleOccasions: Record<string, CategoryData> = {
       { value: "50+", label: "Styles" },
       { value: "3", label: "Lengths" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "Sleek Low Ponytail",       subtitle: "5 min & Polished",    tag: "Trending", style: "Ponytail",  image: "/outfits/sfold.png", href: "/hairstyles/sleek-low-ponytail"     },
-      { id: 2, title: "Messy Bun",                subtitle: "2 min & Effortless",  tag: "Popular",  style: "Bun",       image: "/outfits/sfold.png", href: "/hairstyles/messy-bun-everyday"     },
-      { id: 3, title: "Half-Up Half-Down",        subtitle: "Simple & Versatile",  tag: "New",      style: "Half-Up",   image: "/outfits/sfold.png", href: "/hairstyles/half-up-half-down"      },
-      { id: 4, title: "Air Dry Natural",          subtitle: "No Heat & Healthy",   tag: "Trending", style: "No Heat",   image: "/outfits/sfold.png", href: "/hairstyles/air-dry-natural"        },
-      { id: 5, title: "Blowout & Down",           subtitle: "Classic & Smooth",    tag: "Popular",  style: "Blowout",   image: "/outfits/sfold.png", href: "/hairstyles/blowout-down"           },
-      { id: 6, title: "French Tuck Braid",        subtitle: "Casual & Boho",       tag: "New",      style: "Half-Up",   image: "/outfits/sfold.png", href: "/hairstyles/french-tuck-braid"      },
-      { id: 7, title: "High Ponytail",            subtitle: "Energetic & Clean",   tag: "Trending", style: "Ponytail",  image: "/outfits/sfold.png", href: "/hairstyles/high-ponytail-everyday"  },
-      { id: 8, title: "Curtain Bang Style",       subtitle: "Trendy & Easy",       tag: "New",      style: "No Heat",   image: "/outfits/sfold.png", href: "/hairstyles/curtain-bang-style"     },
     ],
     relatedCategories: [
       { label: "Office Hairstyles", href: "/hairstyles/occasion/office",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
@@ -77,16 +82,6 @@ const hairstyleOccasions: Record<string, CategoryData> = {
       { value: "3", label: "Occasions" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "Romantic Low Chignon",     subtitle: "Bride & Classic",      tag: "Trending", style: "Updo",     image: "/outfits/sfold.png", href: "/hairstyles/romantic-low-chignon"   },
-      { id: 2, title: "Soft Bridal Waves",         subtitle: "Flowing & Feminine",   tag: "Popular",  style: "Down",     image: "/outfits/sfold.png", href: "/hairstyles/soft-bridal-waves"      },
-      { id: 3, title: "Braided Bridal Crown",      subtitle: "Boho & Garden Wedding",tag: "New",      style: "Braided",  image: "/outfits/sfold.png", href: "/hairstyles/braided-bridal-crown"   },
-      { id: 4, title: "French Twist Updo",         subtitle: "Elegant & Timeless",   tag: "Trending", style: "Updo",     image: "/outfits/sfold.png", href: "/hairstyles/french-twist-updo"      },
-      { id: 5, title: "Half-Up Floral Style",      subtitle: "Romantic & Fresh",     tag: "Popular",  style: "Half-Up",  image: "/outfits/sfold.png", href: "/hairstyles/half-up-floral"         },
-      { id: 6, title: "Sleek Ballerina Bun",       subtitle: "Modern Bride",         tag: "New",      style: "Updo",     image: "/outfits/sfold.png", href: "/hairstyles/sleek-ballerina-bun"    },
-      { id: 7, title: "Bridesmaid Braid",          subtitle: "Coordinated & Pretty", tag: "Trending", style: "Braided",  image: "/outfits/sfold.png", href: "/hairstyles/bridesmaid-braid"       },
-      { id: 8, title: "Guest Blow-Dry Waves",      subtitle: "Wedding Guest Look",   tag: "New",      style: "Down",     image: "/outfits/sfold.png", href: "/hairstyles/guest-blowdry-waves"    },
-    ],
     relatedCategories: [
       { label: "Party Hair",       href: "/hairstyles/occasion/party",   accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
       { label: "Bun Hairstyles",   href: "/hairstyles/type/buns",        accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
@@ -132,16 +127,6 @@ const hairstyleOccasions: Record<string, CategoryData> = {
       { value: "2", label: "Formality" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "Old Hollywood Waves",      subtitle: "Glam & Classic",       tag: "Trending", style: "Down & Glam", image: "/outfits/sfold.png", href: "/hairstyles/old-hollywood-waves"    },
-      { id: 2, title: "High Glam Ponytail",        subtitle: "Sleek & Chic",         tag: "Popular",  style: "Sleek",      image: "/outfits/sfold.png", href: "/hairstyles/high-glam-ponytail"     },
-      { id: 3, title: "Braided Crown Updo",        subtitle: "Boho Party",           tag: "New",      style: "Updo",       image: "/outfits/sfold.png", href: "/hairstyles/braided-crown-updo"     },
-      { id: 4, title: "Big Volume Blowout",        subtitle: "Dramatic & Bold",      tag: "Trending", style: "Volume",     image: "/outfits/sfold.png", href: "/hairstyles/big-volume-blowout"     },
-      { id: 5, title: "Embellished Half-Up",       subtitle: "Accessorized & Chic",  tag: "Popular",  style: "Accessorized",image: "/outfits/sfold.png", href: "/hairstyles/embellished-half-up"  },
-      { id: 6, title: "Sleek Low Bun + Pin",       subtitle: "Modern & Elegant",     tag: "New",      style: "Updo",       image: "/outfits/sfold.png", href: "/hairstyles/sleek-low-bun-pin"      },
-      { id: 7, title: "Curly Volume Out",          subtitle: "Natural & Glam",       tag: "Trending", style: "Volume",     image: "/outfits/sfold.png", href: "/hairstyles/curly-volume-out"       },
-      { id: 8, title: "Disco-Inspired Waves",      subtitle: "Retro & Fun",          tag: "New",      style: "Down & Glam", image: "/outfits/sfold.png", href: "/hairstyles/disco-waves"            },
-    ],
     relatedCategories: [
       { label: "Wedding Hair",     href: "/hairstyles/occasion/wedding",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
       { label: "Bun Hairstyles",   href: "/hairstyles/type/buns",         accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
@@ -186,16 +171,6 @@ const hairstyleOccasions: Record<string, CategoryData> = {
       { value: "40+", label: "Styles" },
       { value: "3", label: "Hair Lengths" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "Sleek Blowout",            subtitle: "Classic & Professional",tag: "Trending", style: "Down",     image: "/outfits/sfold.png", href: "/hairstyles/sleek-blowout-office"   },
-      { id: 2, title: "Polished Low Bun",          subtitle: "Neat & Timeless",       tag: "Popular",  style: "Bun",      image: "/outfits/sfold.png", href: "/hairstyles/polished-low-bun"       },
-      { id: 3, title: "Structured Ponytail",       subtitle: "Clean & Sharp",         tag: "New",      style: "Ponytail", image: "/outfits/sfold.png", href: "/hairstyles/structured-ponytail"    },
-      { id: 4, title: "French Twist",              subtitle: "Elegant & Secure",      tag: "Trending", style: "Updo",     image: "/outfits/sfold.png", href: "/hairstyles/french-twist-office"    },
-      { id: 5, title: "Chic Half-Up",             subtitle: "Versatile & Modern",    tag: "Popular",  style: "Half-Up",  image: "/outfits/sfold.png", href: "/hairstyles/chic-half-up-office"    },
-      { id: 6, title: "Short Bob Blowout",         subtitle: "Sharp & Modern",        tag: "New",      style: "Short Hair",image: "/outfits/sfold.png", href: "/hairstyles/short-bob-blowout"     },
-      { id: 7, title: "Twisted Crown",             subtitle: "Elegant & Secure",      tag: "Trending", style: "Updo",     image: "/outfits/sfold.png", href: "/hairstyles/twisted-crown-office"   },
-      { id: 8, title: "Smooth Side Part",          subtitle: "Classic & Minimal",     tag: "New",      style: "Down",     image: "/outfits/sfold.png", href: "/hairstyles/smooth-side-part"       },
     ],
     relatedCategories: [
       { label: "Everyday Hair",    href: "/hairstyles/occasion/everyday", accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
@@ -257,9 +232,11 @@ export default async function HairstyleOccasionPage(
   const { slug } = await params;
   const data = hairstyleOccasions[slug];
   if (!data) notFound();
+  const hairstyles = await client.fetch(HAIRSTYLES_BY_OCCASION_QUERY, { occasion: slug }, { next: { revalidate: 3600, tags: ['hairstyle'] } });
+  const items = hairstyles.map(toItem);
   return (
     <CategoryPage
-      data={data}
+      data={{ ...data, outfits: items }}
       slug={slug}
       basePath="/hairstyles/occasion"
       categoryLink={{ label: "Occasion", href: "/hairstyles/occasion" }}
