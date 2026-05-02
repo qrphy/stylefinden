@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { CategoryData } from "@/types/outfit-category";
+import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import CategoryPage from "@/components/shared/CategoryPage";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+import { OUTFITS_BY_OCCASION_QUERY } from "@/lib/queries";
 
-const occasions: Record<string, CategoryData> = {
+function toItem(o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }): OutfitItem {
+  return {
+    id: o._id,
+    title: o.title,
+    subtitle: [o.style, o.season ?? o.occasion].filter(Boolean).join(' · '),
+    tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
+    style: o.style ?? '',
+    image: o.image ? urlFor(o.image).width(400).height(533).url() : undefined,
+    href: `/outfits/${o.slug}`,
+  }
+}
+
+const occasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   "office": {
     label: "Office & Business",
     subtitle: "Professional & Polished",
@@ -22,16 +37,6 @@ const occasions: Record<string, CategoryData> = {
       { value: "50+", label: "Looks" },
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "Power Blazer Set",       subtitle: "Meeting & Presentation", tag: "Trending", style: "Blazer",       image: "/outfits/sfold.png", href: "/outfits/power-blazer-set"       },
-      { id: 2, title: "Tailored Wide-Leg Look", subtitle: "Office & Everyday",      tag: "Popular",  style: "Tailoring",    image: "/outfits/sfold.png", href: "/outfits/tailored-wide-leg"      },
-      { id: 3, title: "Minimal Shirt Dress",    subtitle: "Smart Casual",           tag: "New",      style: "Smart Casual", image: "/outfits/sfold.png", href: "/outfits/minimal-shirt-dress"    },
-      { id: 4, title: "Monochrome Office Look", subtitle: "Clean & Professional",   tag: "Trending", style: "Neutral",      image: "/outfits/sfold.png", href: "/outfits/monochrome-office"      },
-      { id: 5, title: "Pencil Skirt Combo",     subtitle: "Classic Business",       tag: "Popular",  style: "Tailoring",    image: "/outfits/sfold.png", href: "/outfits/pencil-skirt-combo"     },
-      { id: 6, title: "Casual Friday Look",     subtitle: "Relaxed & Stylish",      tag: "New",      style: "Casual Friday",image: "/outfits/sfold.png", href: "/outfits/casual-friday-look"     },
-      { id: 7, title: "Structured Midi Dress",  subtitle: "Conference & Event",     tag: "Trending", style: "Elegant",      image: "/outfits/sfold.png", href: "/outfits/structured-midi-dress"  },
-      { id: 8, title: "Linen Blazer Outfit",    subtitle: "Summer Business",        tag: "New",      style: "Blazer",       image: "/outfits/sfold.png", href: "/outfits/linen-blazer-outfit"    },
     ],
     relatedCategories: [
       { label: "Classic Style",     href: "/outfits/style/classic",    accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
@@ -80,16 +85,6 @@ const occasions: Record<string, CategoryData> = {
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "Silk Slip Dress",        subtitle: "Dinner & Cocktail",    tag: "Trending", style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/silk-slip-dress"        },
-      { id: 2, title: "Velvet Midi Dress",       subtitle: "Gala & Event",         tag: "Popular",  style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/velvet-midi-dress"      },
-      { id: 3, title: "Sequin Mini Look",        subtitle: "Party & Club",         tag: "New",      style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/sequin-mini-look"       },
-      { id: 4, title: "Black Tie Maxi",          subtitle: "Gala & Wedding",       tag: "Trending", style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/black-tie-maxi"         },
-      { id: 5, title: "Blazer & Satin Pants",    subtitle: "Cocktail & Dinner",    tag: "Popular",  style: "Cocktail", image: "/outfits/sfold.png", href: "/outfits/blazer-satin-pants"     },
-      { id: 6, title: "Wrap Evening Dress",      subtitle: "Restaurant & Theatre", tag: "New",      style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/wrap-evening-dress"     },
-      { id: 7, title: "Feather Trim Look",       subtitle: "Statement & Bold",     tag: "Trending", style: "Gala",     image: "/outfits/sfold.png", href: "/outfits/feather-trim-look"      },
-      { id: 8, title: "Classic LBD Elevated",   subtitle: "Timeless & Elegant",   tag: "New",      style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/classic-lbd-elevated"   },
-    ],
     relatedCategories: [
       { label: "Date Night",         href: "/outfits/occasion/date-night", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
       { label: "Classic Style",      href: "/outfits/style/classic",       accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
@@ -136,16 +131,6 @@ const occasions: Record<string, CategoryData> = {
       { value: "75+", label: "Looks" },
       { value: "4", label: "Styles" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "White Tee & Straight Jeans",  subtitle: "Everyday Essential",  tag: "Trending", style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/white-tee-straight-jeans" },
-      { id: 2, title: "Cozy Knit & Wide Leg",        subtitle: "Weekend & Relax",     tag: "Popular",  style: "Cozy",     image: "/outfits/sfold.png", href: "/outfits/cozy-knit-wide-leg"       },
-      { id: 3, title: "Denim Jacket Layer",           subtitle: "Street & Casual",     tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/denim-jacket-layer"       },
-      { id: 4, title: "Linen Shirt Outfit",           subtitle: "Summer Everyday",     tag: "Trending", style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/linen-shirt-outfit"       },
-      { id: 5, title: "Sweatshirt & Midi Skirt",      subtitle: "Casual Chic",         tag: "Popular",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/sweatshirt-midi-skirt"    },
-      { id: 6, title: "Oversized Blazer & Jeans",    subtitle: "Smart Casual",        tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/oversized-blazer-jeans"   },
-      { id: 7, title: "Sporty Chic Look",             subtitle: "Athleisure & City",   tag: "Trending", style: "Sporty",   image: "/outfits/sfold.png", href: "/outfits/sporty-chic-look"         },
-      { id: 8, title: "Flowy Midi & Sneakers",        subtitle: "Feminine Casual",     tag: "New",      style: "Basics",   image: "/outfits/sfold.png", href: "/outfits/flowy-midi-sneakers"      },
     ],
     relatedCategories: [
       { label: "Street Style",   href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
@@ -194,16 +179,6 @@ const occasions: Record<string, CategoryData> = {
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "Linen Cover-up Dress",   subtitle: "Beach & Pool",           tag: "Trending", style: "Cover-up", image: "/outfits/sfold.png", href: "/outfits/linen-cover-up-dress"   },
-      { id: 2, title: "Boho Beach Maxi",         subtitle: "Vacation & Relaxation",  tag: "Popular",  style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/boho-beach-maxi"        },
-      { id: 3, title: "Crochet Mini & Shorts",  subtitle: "Beach & Casual",          tag: "New",      style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/crochet-mini-shorts"    },
-      { id: 4, title: "Stripe Linen Set",        subtitle: "Promenade & Café",        tag: "Trending", style: "Linen",    image: "/outfits/sfold.png", href: "/outfits/stripe-linen-set"       },
-      { id: 5, title: "Kaftan Look",             subtitle: "Pool & Sundowner",        tag: "Popular",  style: "Kaftan",   image: "/outfits/sfold.png", href: "/outfits/kaftan-look"            },
-      { id: 6, title: "Denim Cut-off & Blouse", subtitle: "Beach Stroll",            tag: "New",      style: "Casual",   image: "/outfits/sfold.png", href: "/outfits/denim-cutoff-blouse"    },
-      { id: 7, title: "White Maxi Beach Dress", subtitle: "Elegant by the Sea",      tag: "Trending", style: "Maxi",     image: "/outfits/sfold.png", href: "/outfits/white-maxi-beach-dress" },
-      { id: 8, title: "Resort Coord Set",       subtitle: "Luxury & Vacation",       tag: "New",      style: "Cover-up", image: "/outfits/sfold.png", href: "/outfits/resort-coord-set"       },
-    ],
     relatedCategories: [
       { label: "Summer Dresses",    href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Boho Style",        href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
@@ -251,16 +226,6 @@ const occasions: Record<string, CategoryData> = {
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
     ],
-    outfits: [
-      { id: 1, title: "Boho Fringe Dress",       subtitle: "Festival & Open Air", tag: "Trending", style: "Boho",     image: "/outfits/sfold.png", href: "/outfits/boho-fringe-dress"      },
-      { id: 2, title: "Denim & Crop Top",         subtitle: "Concert & Outdoor",   tag: "Popular",  style: "Denim",    image: "/outfits/sfold.png", href: "/outfits/denim-crop-top"         },
-      { id: 3, title: "Floral Maxi & Boots",      subtitle: "Boho & Wild",         tag: "New",      style: "Floral",   image: "/outfits/sfold.png", href: "/outfits/floral-maxi-boots"      },
-      { id: 4, title: "Crochet & Denim Shorts",  subtitle: "Summer Festival",     tag: "Trending", style: "Boho",     image: "/outfits/sfold.png", href: "/outfits/crochet-denim-shorts"   },
-      { id: 5, title: "Embroidered Midi Look",    subtitle: "Playful & Feminine",  tag: "Popular",  style: "Floral",   image: "/outfits/sfold.png", href: "/outfits/embroidered-midi-look"  },
-      { id: 6, title: "Layered Boho Set",         subtitle: "Layering & Style",    tag: "New",      style: "Layering", image: "/outfits/sfold.png", href: "/outfits/layered-boho-set"       },
-      { id: 7, title: "Tie-Dye & Wide Leg",       subtitle: "Retro & Bold",        tag: "Trending", style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/tie-dye-wide-leg"       },
-      { id: 8, title: "Western Fringe Jacket",    subtitle: "Statement Look",      tag: "New",      style: "Fringe",   image: "/outfits/sfold.png", href: "/outfits/western-fringe-jacket"  },
-    ],
     relatedCategories: [
       { label: "Boho Style",       href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Summer Dresses",   href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
@@ -307,16 +272,6 @@ const occasions: Record<string, CategoryData> = {
       { value: "40+", label: "Looks" },
       { value: "3", label: "Styles" },
       { value: "Daily", label: "Updated" },
-    ],
-    outfits: [
-      { id: 1, title: "Wrap Satin Midi",         subtitle: "Dinner & Romance",    tag: "Trending", style: "Midi",     image: "/outfits/sfold.png", href: "/outfits/wrap-satin-midi"        },
-      { id: 2, title: "Floral Midi Dress",        subtitle: "Café & Stroll",       tag: "Popular",  style: "Romantic", image: "/outfits/sfold.png", href: "/outfits/floral-date-midi"       },
-      { id: 3, title: "Leather Mini Skirt Look", subtitle: "Bold & Confident",    tag: "New",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/leather-mini-skirt"     },
-      { id: 4, title: "Slip Dress & Blazer",      subtitle: "Casual Chic Date",    tag: "Trending", style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/slip-dress-blazer"      },
-      { id: 5, title: "Off-Shoulder Mini",        subtitle: "Feminine & Flirty",   tag: "Popular",  style: "Mini",     image: "/outfits/sfold.png", href: "/outfits/off-shoulder-mini"      },
-      { id: 6, title: "Wide Leg & Silk Top",      subtitle: "Sophisticated Date",  tag: "New",      style: "Elegant",  image: "/outfits/sfold.png", href: "/outfits/wide-leg-silk-top"      },
-      { id: 7, title: "Lace Detail Dress",        subtitle: "Romantic & Delicate", tag: "Trending", style: "Romantic", image: "/outfits/sfold.png", href: "/outfits/lace-detail-dress"      },
-      { id: 8, title: "Monochrome Bold Set",      subtitle: "Statement & Strong",  tag: "New",      style: "Bold",     image: "/outfits/sfold.png", href: "/outfits/monochrome-bold-set"    },
     ],
     relatedCategories: [
       { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
@@ -379,9 +334,11 @@ export default async function OccasionPage(
   const { slug } = await params;
   const data = occasions[slug];
   if (!data) notFound();
+  const outfits = await client.fetch(OUTFITS_BY_OCCASION_QUERY, { occasion: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
+  const items = outfits.map(toItem);
   return (
     <CategoryPage
-      data={data}
+      data={{ ...data, outfits: items }}
       slug={slug}
       basePath="/outfits/occasion"
       categoryLink={{ label: "Occasion", href: "/outfits/occasion" }}
