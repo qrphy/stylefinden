@@ -1,10 +1,10 @@
 export type OutfitItem = {
-  id: number;
+  id: string | number;
   title: string;
   subtitle: string;
   tag: "Trending" | "New" | "Popular";
   style: string;
-  image: string;
+  image?: string;
   href: string;
 };
 
