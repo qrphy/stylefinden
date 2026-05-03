@@ -1,3 +1,6 @@
+// Mevsime göre outfit kategori sayfası — /outfits/season/[slug] route'u.
+// Fallback deseni: Sanity'de slug'a uyan outfit varsa onları göster,
+// yoksa STATIC_OUTFITS[slug] dizisine düş. CategoryPage paylaşılan layout'u kullanır.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
@@ -6,6 +9,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
 
+// Sanity dökümanını CategoryPage'in beklediği OutfitItem şekline dönüştürür
 function toItem(o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: o._id,
@@ -18,6 +22,7 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
   }
 }
 
+// Sanity boşken gösterilecek statik fallback verileri — mevsim slug'ına göre diziye erişilir
 const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   "summer": [
     { id: 1, title: "Floral Maxi Dress",   subtitle: "Beach & Vacation",   tag: "Trending", style: "Maxi",     href: "/outfits/floral-maxi-dress"   },
@@ -61,6 +66,7 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   ],
 };
 
+// Her mevsim için CategoryPage'e aktarılan metadata, SEO ve UI konfigürasyonu
 const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
   "summer": {
     label: "Summer Dresses",
@@ -251,10 +257,12 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
   },
 };
 
+// Build zamanında tüm mevsim slug'larını statik sayfa olarak üretir (SSG)
 export function generateStaticParams() {
   return Object.keys(seasons).map((slug) => ({ slug }));
 }
 
+// Slug'a göre SEO metadata oluşturur; bilinmeyen slug için boş obje döner
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -277,6 +285,7 @@ export async function generateMetadata(
   };
 }
 
+// Sayfa bileşeni: Sanity'den veri çeker, fallback uygular ve CategoryPage'e aktarır
 export default async function SeasonPage(
   { params }: { params: Promise<{ slug: string }> }
 ) {
@@ -284,6 +293,7 @@ export default async function SeasonPage(
   const data = seasons[slug];
   if (!data) notFound();
   const outfits = await client.fetch(OUTFITS_BY_SEASON_QUERY, { season: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
+  // Sanity'de veri varsa dönüştür, yoksa statik fallback'e geç
   const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
   return (
     <CategoryPage

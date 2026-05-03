@@ -1,2 +1,3 @@
-// Image gallery for the outfit detail page — shows multiple angles or styling variations of the same outfit.
+// Outfit detay sayfası görsel galerisi — aynı kombinin farklı açılarını veya
+// stil varyasyonlarını gösterir.
 export default function OutfitGallery() { return null; }

@@ -1,2 +1,3 @@
-// Blog post grid — displays posts in a responsive grid on the blog listing and category pages. Wraps BlogCard.
+// Blog yazısı ızgarası — blog listeleme ve kategori sayfalarında yazıları responsive bir
+// grid içinde gösterir. BlogCard bileşenini sarar.
 export default function BlogGrid() { return null; }

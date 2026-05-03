@@ -1,3 +1,5 @@
+// Tüm içerik tipleri tarafından paylaşılan Sanity görsel tipi.
+// asset._ref değeri urlFor() ile cdn.sanity.io URL'sine dönüştürülür.
 export type SanityImage = {
   _type: 'image'
   asset: { _ref: string; _type: 'reference' }

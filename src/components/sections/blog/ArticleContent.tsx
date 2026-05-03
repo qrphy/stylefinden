@@ -1,2 +1,3 @@
-// Main content renderer for a blog post — renders rich text/markdown body with headings, images and pull quotes.
+// Blog yazısı ana içerik renderer'ı — başlıklar, görseller ve alıntı blokları içeren
+// zengin metin/markdown gövdesini render eder.
 export default function ArticleContent() { return null; }

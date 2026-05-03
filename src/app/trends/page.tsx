@@ -1,3 +1,5 @@
+// Trends ana listeleme sayfası — trend koleksiyonlarını mevsim, estetik ve kategoriye
+// göre gruplandırarak SectionMainPage paylaşımlı layout'u ile gösterir.
 import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
 

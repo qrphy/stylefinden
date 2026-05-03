@@ -1,3 +1,5 @@
+// Sanity görsel URL üreteci — Sanity image referansını cdn.sanity.io URL'sine dönüştürür.
+// Kullanım: urlFor(image).width(600).height(800).url()
 import createImageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource } from '@sanity/image-url'
 import { dataset, projectId } from '../env'

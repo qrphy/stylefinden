@@ -1,3 +1,4 @@
+// Kategori sayfalarının altındaki Style Guide + SSS bölümü — sol tarafta rehber linki, sağda SSS kartları.
 import type { Faq } from "@/types/outfit-category";
 
 type Props = {

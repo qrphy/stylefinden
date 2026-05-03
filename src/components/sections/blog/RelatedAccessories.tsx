@@ -1,2 +1,3 @@
-// Related accessories section within a blog post — links to accessory pages mentioned or relevant to the article.
+// Blog yazısı içindeki ilgili aksesuar bölümü — yazıda bahsi geçen veya konuyla
+// ilgili aksesuar sayfalarına bağlantı verir.
 export default function RelatedAccessories() { return null; }

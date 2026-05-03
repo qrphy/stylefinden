@@ -1,2 +1,3 @@
-// Route path constants — all internal hrefs defined here so renaming a route only requires one change.
+// Tüm dahili route path'leri burada tanımlanır — bir route yeniden adlandırıldığında
+// tek bir yerden güncelleme yeterlidir, dağınık string tekrarı olmaz.
 export const routes = {};

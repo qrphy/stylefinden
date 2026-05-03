@@ -1,2 +1,3 @@
-// Reusable outfit card — used in grids and lists across outfit pages, homepage and search results. Shows image, title, tag badge and category.
+// Yeniden kullanılabilir outfit kartı — outfit sayfaları, ana sayfa ve arama sonuçlarındaki
+// ızgara ve listelerde kullanılır. Görsel, başlık, etiket rozeti ve kategori gösterir.
 export default function OutfitCard() { return null; }

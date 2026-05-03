@@ -1,2 +1,3 @@
-// Category metadata — labels, descriptions, slugs and accent colors for all sections (outfits, hairstyles, accessories).
+// Kategori metadata — tüm bölümlerin (outfits, hairstyles, accessories) etiket, açıklama,
+// slug ve vurgu rengi bilgilerini tek yerden sağlar.
 export const categories = [];

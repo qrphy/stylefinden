@@ -1,12 +1,17 @@
+// Tüm GROQ sorguları burada merkezi olarak tanımlanır.
+// defineQuery ile tip güvenli sorgu nesneleri oluşturulur; her sorgu sadece
+// ilgili bileşende ihtiyaç duyulan alanları seçer (over-fetch yok).
 import { defineQuery } from 'next-sanity'
 
-// Outfits
+// ── Outfit sorguları ──────────────────────────────────────────────────────────
+// OUTFITS_QUERY: Tüm outfit listesi (kart grid'leri için)
 export const OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(_createdAt desc) {
     _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
   }
 `)
 
+// OUTFIT_QUERY: Tek bir outfit detay sayfası için — pieces dahil tam veri
 export const OUTFIT_QUERY = defineQuery(`
   *[_type == "outfit" && slug.current == $slug][0] {
     _id, title, "slug": slug.current, description, image, style, season, occasion,
@@ -15,6 +20,7 @@ export const OUTFIT_QUERY = defineQuery(`
   }
 `)
 
+// Kategori slug sayfalarının Sanity fetch'leri — stil/mevsim/durum filtrelemesi için
 export const OUTFITS_BY_STYLE_QUERY = defineQuery(`
   *[_type == "outfit" && style == $style && defined(slug.current)] | order(_createdAt desc) {
     _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
@@ -33,13 +39,14 @@ export const OUTFITS_BY_OCCASION_QUERY = defineQuery(`
   }
 `)
 
+// Ana sayfadaki "Trending Outfits" bölümü için — sadece featured=true olanlar, max 6 adet
 export const FEATURED_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && featured == true && defined(slug.current)] | order(_createdAt desc) [0...6] {
     _id, title, "slug": slug.current, image, style, season, occasion, tags
   }
 `)
 
-// Accessories
+// ── Accessory sorguları ───────────────────────────────────────────────────────
 export const ACCESSORIES_QUERY = defineQuery(`
   *[_type == "accessory" && defined(slug.current)] | order(_createdAt desc) {
     _id, title, "slug": slug.current, image, type, occasion, pairingTip, tags, featured
@@ -58,7 +65,7 @@ export const ACCESSORIES_BY_TYPE_QUERY = defineQuery(`
   }
 `)
 
-// Hairstyles
+// ── Hairstyle sorguları ───────────────────────────────────────────────────────
 export const HAIRSTYLES_QUERY = defineQuery(`
   *[_type == "hairstyle" && defined(slug.current)] | order(_createdAt desc) {
     _id, title, "slug": slug.current, image, type, length, occasion, mood, tags, featured
@@ -83,7 +90,7 @@ export const HAIRSTYLES_BY_OCCASION_QUERY = defineQuery(`
   }
 `)
 
-// Trends
+// ── Trend sorguları ───────────────────────────────────────────────────────────
 export const TRENDS_QUERY = defineQuery(`
   *[_type == "trend" && defined(slug.current)] | order(_createdAt desc) {
     _id, title, "slug": slug.current, image, season, category, keyItems, tags, featured
@@ -102,7 +109,7 @@ export const FEATURED_TRENDS_QUERY = defineQuery(`
   }
 `)
 
-// Blog posts
+// ── Blog post sorguları ───────────────────────────────────────────────────────
 export const POSTS_QUERY = defineQuery(`
   *[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
     _id, title, "slug": slug.current, excerpt, heroImage, category, publishedAt, tags
@@ -124,6 +131,7 @@ export const POSTS_BY_CATEGORY_QUERY = defineQuery(`
   }
 `)
 
+// ── Ana sayfa highlight sorguları — her bölüm için sınırlı sayıda en yeni içerik ──
 export const HOME_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(_createdAt desc) [0...8] {
     _id, title, "slug": slug.current, image, style, season, occasion, tags, featured

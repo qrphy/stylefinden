@@ -1,3 +1,5 @@
+// Stile göre outfit kategori sayfası — /outfits/style/[slug] route'u.
+// Fallback deseni: Sanity'de slug'a uyan outfit varsa oradan çek, yoksa STATIC_OUTFITS[slug].
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
@@ -6,6 +8,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_STYLE_QUERY } from "@/lib/queries";
 
+// Sanity dökümanını CategoryPage OutfitItem formatına dönüştürür
 function toItem(o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: o._id,
@@ -18,6 +21,7 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
   }
 }
 
+// Sanity boşken kullanılan statik fallback — stil slug'ına göre erişilir
 const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   "boho": [
     { id: 1, title: "Floral Wrap Maxi",     subtitle: "Festival & Nature",    tag: "Trending", style: "Maxi",   href: "/outfits/floral-wrap-maxi"      },
@@ -61,6 +65,7 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   ],
 };
 
+// Her stil için CategoryPage metadata, SEO ve UI konfigürasyonu
 const styles: Record<string, Omit<CategoryData, 'outfits'>> = {
   "boho": {
     label: "Boho Style",
@@ -251,10 +256,12 @@ const styles: Record<string, Omit<CategoryData, 'outfits'>> = {
   },
 };
 
+// Build zamanında tüm stil slug'larını statik sayfa olarak üretir
 export function generateStaticParams() {
   return Object.keys(styles).map((slug) => ({ slug }));
 }
 
+// Slug'a göre SEO metadata oluşturur
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -277,6 +284,7 @@ export async function generateMetadata(
   };
 }
 
+// Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
 export default async function StylePage(
   { params }: { params: Promise<{ slug: string }> }
 ) {

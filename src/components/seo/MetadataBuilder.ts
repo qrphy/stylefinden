@@ -1,2 +1,3 @@
-// Utility to build Next.js Metadata objects — generates consistent title, description, openGraph and canonical fields from page data.
+// Next.js Metadata nesnesi oluşturucu — sayfa verilerinden tutarlı title, description,
+// openGraph ve canonical alanlarını tek bir fonksiyonla üretir.
 export function buildMetadata() { return {}; }

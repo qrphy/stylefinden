@@ -1,3 +1,5 @@
+// Blog yazısı detay sayfası — Sanity'den tek bir post'u slug ile çeker.
+// İçeriği PortableText ile render eder; ilgili outfit/aksesuar/saç stili linkleri de gösterilir.
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { PortableText } from "@portabletext/react"
@@ -8,6 +10,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
 
+// Blog kategori slug'larını okunabilir etiketlere çevirir
 const categoryLabel: Record<string, string> = {
   "accessories-guides": "Accessories",
   "hairstyle-guides":   "Hairstyle",
@@ -28,6 +31,7 @@ function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
 }
 
+// Build zamanında Sanity'deki tüm blog post slug'larını SSG ile üretir
 export async function generateStaticParams() {
   const slugs = await client.withConfig({ useCdn: false }).fetch<{ slug: string }[]>(
     `*[_type == "post" && defined(slug.current)]{"slug": slug.current}`
@@ -35,6 +39,7 @@ export async function generateStaticParams() {
   return slugs
 }
 
+// Post başlığını ve excerpt'ini SEO metadata'sına çevirir; og:article type kullanır
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await client.fetch(POST_QUERY, { slug })

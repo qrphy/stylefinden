@@ -1,2 +1,3 @@
-// Related accessories section on the outfit detail page — suggests bags, jewelry, shoes that complete the look.
+// Outfit detay sayfasındaki ilgili aksesuar bölümü — kombini tamamlayan çanta, takı
+// ve ayakkabı önerilerini gösterir.
 export default function RelatedAccessories() { return null; }

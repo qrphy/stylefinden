@@ -1,3 +1,5 @@
+// Hairstyles ana listeleme sayfası — saç tipine ve ortama göre gruplandırılmış
+// koleksiyonları SectionMainPage paylaşımlı layout'u ile gösterir.
 import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
 

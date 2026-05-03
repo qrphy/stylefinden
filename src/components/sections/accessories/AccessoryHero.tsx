@@ -1,2 +1,3 @@
-// Hero section for the individual accessory detail page — shows main product image, name, category and styling tip.
+// Aksesuar detay sayfasının hero bölümü — ana ürün görselini, adı, kategoriyi
+// ve stil ipucunu gösterir.
 export default function AccessoryHero() { return null; }

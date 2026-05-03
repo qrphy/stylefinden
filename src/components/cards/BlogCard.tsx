@@ -1,2 +1,3 @@
-// Reusable blog post card — used in blog listing, category pages and related posts sections. Shows image, category, title and read time.
+// Yeniden kullanılabilir blog yazısı kartı — blog listeleme, kategori sayfaları ve
+// ilgili yazılar bölümlerinde kullanılır. Görsel, kategori, başlık ve okuma süresi gösterir.
 export default function BlogCard() { return null; }

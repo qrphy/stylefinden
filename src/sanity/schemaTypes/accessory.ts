@@ -1,3 +1,5 @@
+// Accessory dökümanı — aksesuar detay sayfaları, kart grid'leri ve kategori filtreleri için tek kaynak.
+// type (bags, jewelry, shoes vb.) alanı URL slug'larıyla ve accessories/type/[slug] sayfalarıyla eşleşir.
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { PackageIcon } from '@sanity/icons'
 

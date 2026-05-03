@@ -1,3 +1,5 @@
+// İki modlu görsel bileşeni: src verilirse next/image ile Sanity CDN görselini render eder,
+// src yoksa "Soon" yazan gri placeholder gösterir — içerik CMS'e eklenmeden önce sayfa boş kalmaz.
 import Image from "next/image";
 
 type Props = {

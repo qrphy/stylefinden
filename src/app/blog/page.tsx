@@ -1,3 +1,5 @@
+// Blog ana sayfası — tüm kategorileri ve en son yazıları listeler.
+// Öne çıkan yazı büyük kart (2 sütun), geri kalan 3 yazı sağ sütunda küçük liste olarak görünür.
 import type { Metadata } from "next"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { categoryColor } from "@/constants/site"
@@ -7,6 +9,7 @@ export const metadata: Metadata = {
   description: "Styling tips, trend reports, hairstyle guides and seasonal inspiration — everything about fashion on Stylefinden.",
 }
 
+// Blog kategorileri — her biri kendi alt sayfasına (/blog/[category-slug]) yönlendirir
 const categories = [
   {
     slug: "trend-reports",
@@ -40,6 +43,7 @@ const categories = [
   },
 ]
 
+// Statik fallback yazılar — Sanity entegrasyonu tamamlanana kadar sayfa doluluk sağlar
 const posts = [
   {
     slug: "capsule-wardrobe-guide",

@@ -1,2 +1,3 @@
-// Shared SEO defaults — base title template, default description, og image URL and site name used across all pages.
+// Ortak SEO varsayılanları — tüm sayfalarda kullanılan temel başlık şablonu,
+// varsayılan açıklama, og:image URL'si ve site adı tek yerden yönetilir.
 export const seo = {};

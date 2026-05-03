@@ -1,2 +1,3 @@
-// Search state and logic — debounces input, filters content arrays by keyword and returns matching results.
+// Arama durumu ve mantığı — girişi debounce eder, içerik dizilerini anahtar kelimeye
+// göre filtreler ve eşleşen sonuçları döndürür.
 export function useSearch() { return {}; }

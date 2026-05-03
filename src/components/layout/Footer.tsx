@@ -1,3 +1,5 @@
+// Site alt bilgisi — logo, Discover linkleri, Legal linkleri ve sosyal medya ikonları.
+// Mobilde her bölüm <details> akordiyonu olarak açılır/kapanır (CSS-only, JavaScript gerektirmez).
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 mt-auto">

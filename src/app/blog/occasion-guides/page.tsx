@@ -1,2 +1,2 @@
-// Occasion Guides category listing — filters and lists all blog posts tagged as occasion guides.
+// Ortam/durum rehberleri kategori listeleme sayfası — "occasion-guides" etiketli tüm blog yazılarını filtreler ve listeler.
 export default function Page() { return null; }

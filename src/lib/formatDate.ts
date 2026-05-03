@@ -1,2 +1,3 @@
-// Date formatting utility — converts ISO date strings to human-readable format (e.g. 'April 28, 2026') for blog posts.
+// Tarih biçimlendirme yardımcısı — ISO tarih dizelerini blog yazılarında kullanılan
+// okunabilir formata (ör. 'April 28, 2026') dönüştürür.
 export function formatDate(d: string) { return d; }

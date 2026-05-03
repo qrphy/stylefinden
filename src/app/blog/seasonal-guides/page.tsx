@@ -1,2 +1,2 @@
-// Seasonal Guides category listing — filters and lists all blog posts tagged as seasonal guides.
+// Mevsimsel rehberler kategori listeleme sayfası — "seasonal-guides" etiketli tüm blog yazılarını filtreler ve listeler.
 export default function Page() { return null; }

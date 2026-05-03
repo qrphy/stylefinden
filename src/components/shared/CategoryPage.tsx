@@ -1,3 +1,6 @@
+// Paylaşılan kategori sayfası düzeni — tüm outfit/hairstyle/accessory kategori slug sayfaları bu bileşeni kullanır.
+// Hero, filtre çubuğu, item grid'i, ilgili kategoriler ve SSS + Style Guide bölümlerini içerir.
+// Sayfanın tüm içeriği data prop'u üzerinden gelir; bileşen tamamen "dumb" (sadece render eder).
 import type { CategoryData } from "@/types/outfit-category";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import FilterBar from "@/components/shared/FilterBar";
@@ -26,6 +29,7 @@ export default function CategoryPage({
   styleGuideSuffix = "find & style",
 }: Props) {
   const loadMoreParam = basePath.split("/").pop()!;
+  // Beyaz zemin üzerinde beyaz metin okunamaz; bu kontrol renk güvenliğini sağlar.
   const safeAccentText = data.accentText === "text-white" ? "text-gray-400" : data.accentText;
   const safeAccentTextMuted = data.accentText === "text-white" ? "text-gray-500" : data.accentText;
   const safeBadgeClasses = data.accentText === "text-white"

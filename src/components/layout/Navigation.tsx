@@ -1,2 +1,3 @@
-// Full navigation component — alternative to Header/MobileMenu if a more complex nav (mega menu, dropdowns) is needed in the future.
+// Tam navigasyon bileşeni — gelecekte mega menü veya dropdown gerektiren daha karmaşık
+// bir nav yapısına geçilirse Header/MobileMenu yerine bu bileşen devreye alınır.
 export default function Navigation() { return null; }

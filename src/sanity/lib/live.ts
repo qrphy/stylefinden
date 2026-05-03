@@ -1,3 +1,5 @@
+// Sanity Live Preview kurulumu — sanityFetch, önbellek etiketli veri çekiminde kullanılır;
+// SanityLive bileşeni Studio'dan yapılan değişiklikleri sayfaya gerçek zamanlı yansıtır.
 import { defineLive } from 'next-sanity/live'
 import { client } from './client'
 

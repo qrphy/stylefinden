@@ -1,3 +1,4 @@
+// Tüm sayfaları saran kök düzen — her sayfada tekrar eden yapıyı (Header, Footer, analytics, newsletter) tek yerden yönetir.
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -11,6 +12,7 @@ import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/shared/ScrollToTop"
 import { SanityLive } from "@/sanity/lib/live"
 
+// Geist yazı tipi ailesini CSS değişkeni olarak tanımla; tüm sayfalar bu değişkeni kullanır.
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,6 +23,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Sitenin varsayılan SEO metadata'sı — her sayfada override edilebilir, edilmezse bu değerler kullanılır.
 export const metadata: Metadata = {
   metadataBase: new URL("https://stylefinden.com"),
   alternates: {
@@ -75,15 +78,22 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Üst navigasyon çubuğu — tüm sayfalarda sabit */}
         <Header />
+        {/* Sayfanın kendi içeriği burada render edilir */}
         {children}
+        {/* Vercel Analytics ve Speed Insights — performans ve kullanım takibi */}
         <Analytics />
         <SpeedInsights />
+        {/* Google Analytics — cookie onayı alındıktan sonra aktif olur */}
         <GoogleAnalytics />
+        {/* GDPR uyumlu cookie onay bandı */}
         <CookieBanner />
+        {/* Newsletter bölümü — footer'dan önce her sayfada görünür */}
         <NewsletterForm />
         <ScrollToTop />
         <Footer />
+        {/* Sanity Live Preview — Sanity Studio'dan gerçek zamanlı içerik güncellemelerini dinler */}
         <SanityLive />
       </body>
     </html>

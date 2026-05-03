@@ -1,2 +1,2 @@
-// Accessories Guides category listing — filters and lists all blog posts tagged as accessories guides.
+// Aksesuar rehberleri kategori listeleme sayfası — "accessories-guides" etiketli tüm blog yazılarını filtreler ve listeler.
 export default function Page() { return null; }

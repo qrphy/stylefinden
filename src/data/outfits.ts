@@ -1,2 +1,3 @@
-// Outfit content data — when a CMS or database is not yet in place, outfit item arrays live here before being migrated.
+// Outfit içerik verisi — bir CMS veya veritabanı kurulmadan önce outfit öğe dizileri
+// burada tutulur; ilerleyen aşamada Sanity'ye taşınacaktır.
 export const outfits = [];

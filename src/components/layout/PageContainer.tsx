@@ -1,2 +1,3 @@
-// Consistent max-width wrapper — standardizes horizontal padding and max-width across all page sections to avoid repeating layout classes.
+// Tutarlı max-width sarmalayıcısı — her sayfa bölümünde yatay padding ve max-width
+// sınıflarının tekrarlanmasını önlemek için layout sınıflarını tek yerden standartlaştırır.
 export default function PageContainer() { return null; }

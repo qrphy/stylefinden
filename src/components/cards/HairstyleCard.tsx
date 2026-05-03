@@ -1,2 +1,3 @@
-// Reusable hairstyle card — used in grids and lists across hairstyle pages and homepage. Shows image, name, hair type and mood tag.
+// Yeniden kullanılabilir saç stili kartı — saç stili sayfaları ve ana sayfadaki ızgara
+// ve listelerde kullanılır. Görsel, ad, saç tipi ve ruh hali etiketi gösterir.
 export default function HairstyleCard() { return null; }

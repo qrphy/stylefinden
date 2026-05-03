@@ -1,3 +1,4 @@
+// "Similar Categories" bölümü — kategori sayfalarının altında benzer kategorilere yönlendiren kart grid'i.
 import type { RelatedCategory } from "@/types/outfit-category";
 
 type Props = {

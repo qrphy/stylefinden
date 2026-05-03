@@ -1,2 +1,3 @@
-// Manages outfit filter state (season, occasion, style) — reads/writes URL search params and returns filtered results.
+// Outfit filtre durumunu yönetir (mevsim, ortam, stil) — URL arama parametrelerini
+// okur/yazar ve filtrelenmiş sonuç dizisini döndürür.
 export function useOutfitFilters() { return {}; }

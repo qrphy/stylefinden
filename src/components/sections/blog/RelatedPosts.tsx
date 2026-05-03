@@ -1,2 +1,2 @@
-// Related blog posts section at the bottom of a post — shows 2-3 posts from the same category.
+// Yazı sonundaki ilgili blog yazıları bölümü — aynı kategoriden 2-3 yazıyı gösterir.
 export default function RelatedPosts() { return null; }

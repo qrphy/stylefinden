@@ -1,2 +1,3 @@
-// Featured article highlight — large card used to promote the most recent or editorially selected post at the top of listings.
+// Öne çıkan makale vurgusu — listeleme sayfalarının üstünde en son veya editoryal
+// olarak seçilmiş yazıyı tanıtmak için kullanılan büyük kart.
 export default function FeaturedArticle() { return null; }

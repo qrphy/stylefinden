@@ -1,3 +1,5 @@
+// XML sitemap — Google ve diğer arama motorlarına sitenin tüm URL yapısını bildirir.
+// Statik sayfalar burada elle tanımlanır; Sanity içerikleri için dinamik sitemap genişletme planlanabilir.
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {

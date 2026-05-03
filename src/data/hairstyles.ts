@@ -1,2 +1,3 @@
-// Hairstyle content data — hairstyle item arrays live here before being migrated to a CMS or database.
+// Saç stili içerik verisi — bir CMS veya veritabanına taşınana kadar saç stili
+// öğe dizileri burada tutulur.
 export const hairstyles = [];

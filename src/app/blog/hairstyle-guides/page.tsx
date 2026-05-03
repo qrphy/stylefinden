@@ -1,2 +1,2 @@
-// Hairstyle Guides category listing — filters and lists all blog posts tagged as hairstyle guides.
+// Saç stili rehberleri kategori listeleme sayfası — "hairstyle-guides" etiketli tüm blog yazılarını filtreler ve listeler.
 export default function Page() { return null; }

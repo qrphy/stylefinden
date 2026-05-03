@@ -1,3 +1,5 @@
+// Outfit detay sayfası — Sanity'den tek bir outfit'i slug ile çeker.
+// Sanity'de bulunamazsa notFound() ile 404 döndürür; statik fallback yoktur.
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
@@ -7,7 +9,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
 
-// Değerler outfit schema'daki value alanlarıyla birebir eşleşmeli
+// UI etiketleri — değerler outfit schema'daki value alanlarıyla birebir eşleşmeli
 const styleLabel: Record<string, string> = {
   casual:      "Casual",
   streetstyle: "Street Style",
@@ -37,6 +39,7 @@ const occasionLabel: Record<string, string> = {
   "date-night": "Date Night",
 }
 
+// Build zamanında Sanity'deki tüm outfit slug'larını SSG ile üretir
 export async function generateStaticParams() {
   const slugs = await client.withConfig({ useCdn: false }).fetch<{ slug: string }[]>(
     `*[_type == "outfit" && defined(slug.current)]{"slug": slug.current}`
@@ -44,6 +47,7 @@ export async function generateStaticParams() {
   return slugs
 }
 
+// Outfit başlığını ve açıklamasını SEO metadata'sına çevirir
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const outfit = await client.fetch(OUTFIT_QUERY, { slug })

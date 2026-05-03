@@ -1,3 +1,5 @@
+// Outfits ana listeleme sayfası — SectionMainPage paylaşımlı layout'unu kullanarak
+// outfit koleksiyonlarını mevsim, ortam ve stile göre gruplandırarak gösterir.
 import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
 
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
+// Her koleksiyon grubu SectionMainPage'de ayrı bir başlık ve grid olarak render edilir
 const collections: CollectionGroup[] = [
   {
     label: "By Season",

@@ -1,2 +1,2 @@
-// Trend detail info block — describes the trend's origin, key pieces, color palette and how to style it.
+// Trend detay bilgi bloğu — trendin kökenini, temel parçaları, renk paletini ve nasıl kombin yapılacağını açıklar.
 export default function TrendInfo() { return null; }

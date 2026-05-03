@@ -1,3 +1,5 @@
+// Kategori slug sayfalarında grid'e yerleştirilen tek bir içerik kartının tipi.
+// Outfit, hairstyle ve accessory kartları bu ortak tip üzerinden CategoryPage'e aktarılır.
 export type OutfitItem = {
   id: string | number;
   title: string;
@@ -8,6 +10,7 @@ export type OutfitItem = {
   href: string;
 };
 
+// İlgili kategori kartı — "Similar Categories" bölümünde görünür, RelatedGrid bileşeni tarafından kullanılır.
 export type RelatedCategory = {
   label: string;
   href: string;
@@ -17,6 +20,7 @@ export type RelatedCategory = {
 
 export type Faq = { q: string; a: string };
 
+// CategoryPage bileşenine aktarılan tam sayfa verisi — hero, grid, filtreler, SSS ve SEO alanlarını içerir.
 export type CategoryData = {
   label: string;
   subtitle: string;

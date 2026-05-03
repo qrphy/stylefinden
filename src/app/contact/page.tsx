@@ -1,3 +1,5 @@
+// İletişim sayfası — e-posta adresi, yanıt süresi ve yasal sayfalara bağlantılar içerir.
+// Form yoktur; doğrudan e-posta yönlendirmesi kullanılır.
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

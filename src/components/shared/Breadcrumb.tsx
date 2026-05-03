@@ -1,3 +1,5 @@
+// Navigasyon kırıntısı — Home / Bölüm / Kategori / Sayfa hiyerarşisini gösterir.
+// href olmayan son öge aktif sayfa olarak siyah yazıyla gösterilir.
 type BreadcrumbItem = { label: string; href?: string };
 
 type Props = { items: BreadcrumbItem[] };

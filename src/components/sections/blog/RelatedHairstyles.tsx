@@ -1,2 +1,3 @@
-// Related hairstyles section within a blog post — links to hairstyle pages relevant to the article topic.
+// Blog yazısı içindeki ilgili saç stili bölümü — yazı konusuyla ilgili saç stili
+// sayfalarına bağlantı verir.
 export default function RelatedHairstyles() { return null; }

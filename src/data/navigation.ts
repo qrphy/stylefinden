@@ -1,2 +1,3 @@
-// Navigation structure data — if navLinks in constants/navigation.ts grows into nested dropdowns, move the full tree here.
+// Navigasyon yapısı verisi — constants/navigation.ts'deki navLinks iç içe dropdown'lara
+// dönüştüğünde tam ağaç yapısı buraya taşınır.
 export const navigationData = [];

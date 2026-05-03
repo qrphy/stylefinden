@@ -1,2 +1,3 @@
-// Related hairstyles section on the outfit detail page — suggests hairstyles that complement the outfit's style.
+// Outfit detay sayfasındaki ilgili saç stili bölümü — kombinin stilini tamamlayan
+// saç modellerini önerir.
 export default function RelatedHairstyles() { return null; }

@@ -1,2 +1,2 @@
-// Individual accessories guide post — reuses blog post layout with accessories-specific related content.
+// Tek bir aksesuar rehberi yazısı — blog yazısı layout'unu yeniden kullanır, aksesuara özgü ilgili içerikleri gösterir.
 export default function Page() { return null; }

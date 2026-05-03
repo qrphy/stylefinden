@@ -1,3 +1,5 @@
+// Ortama göre saç stili kategori sayfası — /hairstyles/occasion/[slug] route'u.
+// Fallback deseni: Sanity'de slug'a uyan hairstyle varsa oradan çek, yoksa STATIC_HAIRSTYLES[slug].
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
@@ -6,6 +8,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HAIRSTYLES_BY_OCCASION_QUERY } from "@/lib/queries";
 
+// Sanity hairstyle dökümanını CategoryPage OutfitItem formatına dönüştürür
 function toItem(h: { _id: string; title: string; slug: string; image?: object; type?: string; length?: string; mood?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: h._id,
@@ -18,6 +21,7 @@ function toItem(h: { _id: string; title: string; slug: string; image?: object; t
   }
 }
 
+// Sanity boşken gösterilecek statik fallback — occasion slug'ına göre erişilir
 const STATIC_HAIRSTYLES: Record<string, OutfitItem[]> = {
   "everyday": [
     { id: 1, title: "Sleek Low Ponytail",       subtitle: "5 min & Polished",    tag: "Trending", style: "Ponytail",  href: "/hairstyles/sleek-low-ponytail"     },
@@ -61,6 +65,7 @@ const STATIC_HAIRSTYLES: Record<string, OutfitItem[]> = {
   ],
 };
 
+// Her occasion için CategoryPage metadata, SEO ve UI konfigürasyonu
 const hairstyleOccasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   "everyday": {
     label: "Everyday Hairstyles",
@@ -243,10 +248,12 @@ const hairstyleOccasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   },
 };
 
+// Build zamanında tüm occasion slug'larını statik sayfa olarak üretir
 export function generateStaticParams() {
   return Object.keys(hairstyleOccasions).map((slug) => ({ slug }));
 }
 
+// Slug'a göre SEO metadata oluşturur
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -269,6 +276,7 @@ export async function generateMetadata(
   };
 }
 
+// Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
 export default async function HairstyleOccasionPage(
   { params }: { params: Promise<{ slug: string }> }
 ) {

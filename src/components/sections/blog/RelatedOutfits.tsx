@@ -1,2 +1,3 @@
-// Related outfits section within a blog post — links to outfit pages mentioned or relevant to the article topic.
+// Blog yazısı içindeki ilgili outfit bölümü — yazı konusuyla ilgili veya bahsi geçen
+// outfit sayfalarına bağlantı verir.
 export default function RelatedOutfits() { return null; }

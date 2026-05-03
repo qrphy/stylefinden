@@ -1,2 +1,3 @@
-// Hero section for individual blog post — shows cover image, category badge, title, author and publish date.
+// Bireysel blog yazısı hero bölümü — kapak görseli, kategori rozeti, başlık,
+// yazar ve yayın tarihini gösterir.
 export default function ArticleHero() { return null; }

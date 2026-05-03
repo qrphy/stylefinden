@@ -1,9 +1,12 @@
+// Sanity'den çekilen blog post verilerinin TypeScript tipleri.
+// relatedOutfits/Accessories/Hairstyles, post detay sayfasının alt bölümündeki ilgili içerik grid'lerine beslenir.
 import type { PortableTextBlock } from '@portabletext/react'
 import type { SanityImage } from './common'
 import type { Accessory } from './accessory'
 import type { Hairstyle } from './hairstyle'
 import type { Outfit } from './outfit'
 
+// Sanity post şemasındaki category alan seçenekleriyle birebir eşleşmelidir.
 export type BlogCategory =
   | 'accessories-guides'
   | 'hairstyle-guides'

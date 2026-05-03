@@ -1,2 +1,3 @@
-// Accessory content data — accessory item arrays live here before being migrated to a CMS or database.
+// Aksesuar içerik verisi — bir CMS veya veritabanına taşınana kadar aksesuar
+// öğe dizileri burada tutulur.
 export const accessories = [];

@@ -1,2 +1,2 @@
-// Loading skeleton shown while hairstyle pages fetch data — prevents layout shift.
+// Saç stili sayfaları veri çekerken gösterilen loading durumu — layout kaymasını önler.
 export default function Loading() { return null; }

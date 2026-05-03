@@ -1,3 +1,5 @@
+// Trend detay sayfası — Sanity'den tek bir trend öğesini slug ile çeker.
+// Geniş hero görseli, açıklama, etiketler ve "key items" listesi içerir.
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
@@ -7,6 +9,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
 
+// UI etiketleri — schema value'larıyla eşleşmeli
 const seasonLabel: Record<string, string> = {
   "spring-summer": "Spring / Summer",
   "fall-winter": "Fall / Winter",
@@ -16,6 +19,7 @@ const categoryLabel: Record<string, string> = {
   fashion: "Fashion", accessories: "Accessories", hairstyle: "Hairstyle", beauty: "Beauty",
 }
 
+// Build zamanında Sanity'deki tüm trend slug'larını SSG ile üretir
 export async function generateStaticParams() {
   const slugs = await client.withConfig({ useCdn: false }).fetch<{ slug: string }[]>(
     `*[_type == "trend" && defined(slug.current)]{"slug": slug.current}`

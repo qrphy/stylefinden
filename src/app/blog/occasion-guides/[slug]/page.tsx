@@ -1,2 +1,2 @@
-// Individual occasion guide post — reuses blog post layout with occasion-specific related content.
+// Tek bir ortam/durum rehberi yazısı — blog yazısı layout'unu yeniden kullanır, ortama özgü ilgili içerikleri gösterir.
 export default function Page() { return null; }

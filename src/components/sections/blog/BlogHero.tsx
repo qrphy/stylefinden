@@ -1,2 +1,2 @@
-// Hero section for the blog main page — shows headline, description and featured post highlight.
+// Blog ana sayfası hero bölümü — başlığı, açıklamayı ve öne çıkan yazı vurgusunu gösterir.
 export default function BlogHero() { return null; }

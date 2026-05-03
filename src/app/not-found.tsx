@@ -1,3 +1,4 @@
+// Bulunamayan sayfa (404) — Next.js bu bileşeni geçersiz rotalar için otomatik render eder.
 export default function NotFound() {
   return (
     <div className="flex-1 flex items-center justify-center bg-white px-6 py-24 md:py-32">
@@ -23,6 +24,7 @@ export default function NotFound() {
           </p>
         </div>
 
+        {/* Ana sayfa ve Outfits'e birincil yönlendirme butonları */}
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <a
             href="/"
@@ -38,6 +40,7 @@ export default function NotFound() {
           </a>
         </div>
 
+        {/* Tüm ana kategorilere hızlı erişim linkleri */}
         <div className="flex flex-col gap-3 w-full pt-2 border-t border-gray-100">
           <span className="text-xs tracking-widest uppercase text-gray-400">
             Or go directly to

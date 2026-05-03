@@ -1,3 +1,4 @@
+// Site üst navigasyon çubuğu — masaüstünde logo + ortalanmış nav linkleri, mobilde MobileMenu bileşeni görünür.
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import { navLinks } from "@/constants/navigation";

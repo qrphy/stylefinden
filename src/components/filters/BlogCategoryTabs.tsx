@@ -1,2 +1,3 @@
-// Blog category tab navigation — switches between trend-reports, hairstyle-guides, accessories-guides, occasion-guides, seasonal-guides.
+// Blog kategori sekme navigasyonu — trend-reports, hairstyle-guides, accessories-guides,
+// occasion-guides ve seasonal-guides arasında geçiş sağlar.
 export default function BlogCategoryTabs() { return null; }

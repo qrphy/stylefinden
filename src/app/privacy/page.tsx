@@ -1,3 +1,5 @@
+// Gizlilik politikası sayfası — GDPR kapsamında veri işleme, çerezler, Google Analytics,
+// Vercel Analytics, AdSense ve kullanıcı haklarını açıklar.
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

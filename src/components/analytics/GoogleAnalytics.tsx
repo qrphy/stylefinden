@@ -1,7 +1,10 @@
+// Google Analytics 4 yükleyici — yalnızca kullanıcı çerez onayı verdiğinde script'leri enjekte eder.
+// CookieBanner'dan gelen sf_consent_granted eventi veya mevcut localStorage değeri tetikleyicidir.
 "use client"
 import Script from "next/script"
 import { useState, useEffect } from "react"
 
+// Google Analytics ölçüm kimliği
 const GA_ID = "G-RQREQ7L05B"
 const CONSENT_KEY = "sf_cookie_consent"
 
@@ -9,6 +12,7 @@ export default function GoogleAnalytics() {
   const [consented, setConsented] = useState(false)
 
   useEffect(() => {
+    // Sayfa açıldığında mevcut onayı kontrol et; CookieBanner eventini de dinle
     if (localStorage.getItem(CONSENT_KEY) === "true") setConsented(true)
 
     const handler = () => setConsented(true)

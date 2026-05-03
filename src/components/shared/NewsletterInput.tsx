@@ -1,3 +1,5 @@
+// Kompakt e-posta abonelik input'u — Footer gibi dar alanlarda kullanılmak üzere tasarlanmış mini versiyon.
+// NewsletterForm'un aksine büyük siyah bölüm yerine sadece bir input + buton satırı gösterir.
 "use client";
 
 import { useState } from "react";

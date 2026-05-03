@@ -1,2 +1,3 @@
-// Filterable hairstyle grid — used on listing pages. Wraps HairstyleCard in a responsive grid with optional type/occasion filters.
+// Filtrelenebilir saç stili ızgarası — listeleme sayfalarında kullanılır. HairstyleCard
+// bileşenlerini isteğe bağlı tip/ortam filtreleriyle responsive bir grid içinde sarar.
 export default function HairstyleGrid() { return null; }

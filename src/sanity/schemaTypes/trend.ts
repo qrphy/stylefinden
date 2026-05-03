@@ -1,3 +1,5 @@
+// Trend dökümanı — trend detay sayfaları ve trends listeleme için tek kaynak.
+// keyItems alanı trendin "must-have" ürünlerini içerir; featured=true olanlar ana sayfada öne çıkar.
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { SparklesIcon } from '@sanity/icons'
 

@@ -1,3 +1,5 @@
+// Sanity'den çekilen accessory verilerinin TypeScript tipleri.
+// Değerler sanity/schemaTypes/accessory.ts içindeki alan seçenekleriyle birebir eşleşmelidir.
 import type { SanityImage } from './common'
 
 export type AccessoryType = 'bags' | 'jewelry' | 'shoes' | 'belts' | 'scarves' | 'hats' | 'sunglasses' | 'watches'

@@ -1,3 +1,6 @@
+// Ana newsletter bölümü — siyah zemin üzerinde büyük başlık + e-posta formu.
+// Layout'ta footer öncesinde her sayfada görünür; /api/subscribe endpoint'ine POST gönderir.
+// Başarı durumunda formu gizleyip onay mesajını gösterir.
 "use client";
 
 import { useState } from "react";

@@ -1,3 +1,5 @@
+// Aksesuar tipine göre kategori sayfası — /accessories/type/[slug] route'u.
+// Fallback deseni: Sanity'de slug'a uyan aksesuar varsa oradan çek, yoksa STATIC_ACCESSORIES[slug].
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
@@ -6,6 +8,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { ACCESSORIES_BY_TYPE_QUERY } from "@/lib/queries";
 
+// Sanity aksesuar dökümanını CategoryPage OutfitItem formatına dönüştürür
 function toItem(a: { _id: string; title: string; slug: string; image?: object; type?: string; occasion?: string; pairingTip?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: a._id,
@@ -18,6 +21,7 @@ function toItem(a: { _id: string; title: string; slug: string; image?: object; t
   }
 }
 
+// Sanity boşken gösterilecek statik fallback — tip slug'ına göre erişilir
 const STATIC_ACCESSORIES: Record<string, OutfitItem[]> = {
   "bags": [
     { id: 1, title: "Classic Leather Tote",      subtitle: "Office & Everyday",    tag: "Trending", style: "Tote",      href: "/accessories/classic-leather-tote"   },
@@ -61,6 +65,7 @@ const STATIC_ACCESSORIES: Record<string, OutfitItem[]> = {
   ],
 };
 
+// Her aksesuar tipi için CategoryPage metadata, SEO ve UI konfigürasyonu
 const accessoryTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
   "bags": {
     label: "Bags & Handbags",
@@ -243,10 +248,12 @@ const accessoryTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
   },
 };
 
+// Build zamanında tüm tip slug'larını statik sayfa olarak üretir
 export function generateStaticParams() {
   return Object.keys(accessoryTypes).map((slug) => ({ slug }));
 }
 
+// Slug'a göre SEO metadata oluşturur
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -269,6 +276,7 @@ export async function generateMetadata(
   };
 }
 
+// Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
 export default async function AccessoryTypePage(
   { params }: { params: Promise<{ slug: string }> }
 ) {

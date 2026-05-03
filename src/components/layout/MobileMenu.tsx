@@ -1,3 +1,5 @@
+// Mobil navigasyon menüsü — <details> HTML elementi ile CSS-only aç/kapa.
+// details[open] durumuna göre hamburger/X ikonu değiştirilir; JavaScript state kullanılmaz.
 import { navLinks } from "@/constants/navigation";
 
 export default function MobileMenu() {

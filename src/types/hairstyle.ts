@@ -1,3 +1,5 @@
+// Sanity'den çekilen hairstyle verilerinin TypeScript tipleri.
+// Değerler sanity/schemaTypes/hairstyle.ts içindeki alan seçenekleriyle birebir eşleşmelidir.
 import type { SanityImage } from './common'
 
 export type HairType = 'straight' | 'wavy' | 'curly' | 'coily'

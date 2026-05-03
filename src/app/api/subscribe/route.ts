@@ -1,3 +1,5 @@
+// Newsletter abonelik API'si — /api/subscribe POST endpoint'i.
+// E-posta adresini doğrular ve Resend Audience'a ekler.
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 

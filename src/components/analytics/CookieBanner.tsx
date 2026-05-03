@@ -1,22 +1,28 @@
+// Çerez onay banneri — localStorage'da daha önce bir tercih kaydedilmemişse gösterilir.
+// "Kabul" butonuna basıldığında sf_consent_granted eventi yayınlanır; GoogleAnalytics bileşeni bu eventi dinler.
 "use client"
 import { useState, useEffect } from "react"
 import Link from "next/link"
 
+// localStorage anahtarı — çerez tercihini saklamak için kullanılır
 const CONSENT_KEY = "sf_cookie_consent"
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
+  // İlk yüklemede daha önce tercih yapılmamışsa banner'ı göster
   useEffect(() => {
     if (localStorage.getItem(CONSENT_KEY) === null) setVisible(true)
   }, [])
 
+  // Onay kaydedilir ve Analytics bileşenini tetiklemek için custom event fırlatılır
   function accept() {
     localStorage.setItem(CONSENT_KEY, "true")
     window.dispatchEvent(new Event("sf_consent_granted"))
     setVisible(false)
   }
 
+  // Red kaydedilir; Analytics yüklenmez
   function decline() {
     localStorage.setItem(CONSENT_KEY, "false")
     setVisible(false)

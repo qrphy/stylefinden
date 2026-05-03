@@ -1,3 +1,5 @@
+// Ortam/duruma göre outfit kategori sayfası — /outfits/occasion/[slug] route'u.
+// Fallback deseni: Sanity'de slug'a uyan outfit varsa oradan çek, yoksa STATIC_OUTFITS[slug].
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
@@ -6,6 +8,7 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_OCCASION_QUERY } from "@/lib/queries";
 
+// Sanity dökümanını CategoryPage OutfitItem formatına dönüştürür
 function toItem(o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: o._id,
@@ -18,6 +21,7 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
   }
 }
 
+// Sanity boşken kullanılan statik fallback — occasion slug'ına göre erişilir
 const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   "office": [
     { id: 1, title: "Power Blazer Set",       subtitle: "Meeting & Presentation", tag: "Trending", style: "Blazer",        href: "/outfits/power-blazer-set"       },
@@ -81,6 +85,7 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   ],
 };
 
+// Her occasion için CategoryPage metadata, SEO ve UI konfigürasyonu
 const occasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   "office": {
     label: "Office & Business",
@@ -365,10 +370,12 @@ const occasions: Record<string, Omit<CategoryData, 'outfits'>> = {
   },
 };
 
+// Build zamanında tüm occasion slug'larını statik sayfa olarak üretir
 export function generateStaticParams() {
   return Object.keys(occasions).map((slug) => ({ slug }));
 }
 
+// Slug'a göre SEO metadata oluşturur
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
@@ -391,6 +398,7 @@ export async function generateMetadata(
   };
 }
 
+// Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
 export default async function OccasionPage(
   { params }: { params: Promise<{ slug: string }> }
 ) {

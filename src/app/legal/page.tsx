@@ -1,3 +1,5 @@
+// Yasal uyarı (impressum) sayfası — site operatörü bilgileri, sorumluluk reddi
+// ve telif hakkı bildirimini içerir.
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {

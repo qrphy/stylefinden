@@ -1,2 +1,3 @@
-// Hero section for the individual hairstyle detail page — shows main image, name, hair type tags and key stats.
+// Saç stili detay sayfasının hero bölümü — ana görseli, adı, saç tipi etiketlerini
+// ve temel istatistikleri gösterir.
 export default function HairstyleHero() { return null; }

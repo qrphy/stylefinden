@@ -1,3 +1,5 @@
+// Blog post dökümanı — makale detay sayfaları ve blog listeleme için tek kaynak.
+// body alanı Portable Text blokları içerir; relatedOutfits/Accessories/Hairstyles ilgili içeriklere referans verir.
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { DocumentTextIcon } from '@sanity/icons'
 

@@ -1,2 +1,3 @@
-// Similar outfits recommendation section on the outfit detail page — shows outfits from the same style or occasion.
+// Outfit detay sayfasında benzer kombin öneri bölümü — aynı stil veya ortamdan
+// kombinleri gösterir.
 export default function SimilarOutfits() { return null; }

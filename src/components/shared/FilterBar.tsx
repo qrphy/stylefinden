@@ -1,3 +1,4 @@
+// Kategori sayfalarındaki filtre çubuğu — ilk filtre aktif (siyah), diğerleri URL query param ekleyerek filtreler.
 type Props = {
   filters: string[];
   basePath: string;

@@ -1,3 +1,5 @@
+// Saç stili detay sayfası — Sanity'den tek bir hairstyle'ı slug ile çeker.
+// Sanity'de bulunamazsa notFound() ile 404 döndürür; statik fallback yoktur.
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
@@ -7,6 +9,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
 
+// UI etiketleri — schema value'larıyla eşleşmeli
 const typeLabel: Record<string, string> = {
   straight: "Straight", wavy: "Wavy", curly: "Curly", coily: "Coily",
 }
@@ -20,6 +23,7 @@ const occasionLabel: Record<string, string> = {
   everyday: "Everyday", work: "Work", evening: "Evening", special: "Special Occasion", bridal: "Bridal",
 }
 
+// Build zamanında Sanity'deki tüm hairstyle slug'larını SSG ile üretir
 export async function generateStaticParams() {
   const slugs = await client.withConfig({ useCdn: false }).fetch<{ slug: string }[]>(
     `*[_type == "hairstyle" && defined(slug.current)]{"slug": slug.current}`

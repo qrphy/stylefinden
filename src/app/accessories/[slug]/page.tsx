@@ -1,3 +1,5 @@
+// Aksesuar detay sayfası — Sanity'den tek bir aksesuar öğesini slug ile çeker.
+// Sanity'de bulunamazsa notFound() ile 404 döndürür; statik fallback yoktur.
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
@@ -7,6 +9,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
 
+// UI etiketleri — schema value'larıyla eşleşmeli
 const typeLabel: Record<string, string> = {
   bags: "Bags", jewelry: "Jewelry", shoes: "Shoes", belts: "Belts",
   scarves: "Scarves", hats: "Hats", sunglasses: "Sunglasses", watches: "Watches",
@@ -15,6 +18,7 @@ const occasionLabel: Record<string, string> = {
   everyday: "Everyday", work: "Work", evening: "Evening", casual: "Casual", special: "Special Occasion",
 }
 
+// Build zamanında Sanity'deki tüm aksesuar slug'larını SSG ile üretir
 export async function generateStaticParams() {
   const slugs = await client.withConfig({ useCdn: false }).fetch<{ slug: string }[]>(
     `*[_type == "accessory" && defined(slug.current)]{"slug": slug.current}`

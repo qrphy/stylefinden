@@ -1,2 +1,2 @@
-// Loading skeleton shown while accessory pages fetch data — prevents layout shift.
+// Aksesuar sayfaları veri çekerken gösterilen loading durumu — layout kaymasını önler.
 export default function Loading() { return null; }

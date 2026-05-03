@@ -1,3 +1,5 @@
+// Hairstyle dökümanı — saç stili detay sayfaları, kart grid'leri ve kategori filtreleri için tek kaynak.
+// type (Braids, Buns vb.), length ve occasion alanları hem filtreleme hem URL slug'larıyla eşleşir.
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { UserIcon } from '@sanity/icons'
 

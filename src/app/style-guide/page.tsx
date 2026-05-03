@@ -1,3 +1,5 @@
+// Style Guide ana sayfası — vücut tipi rehberleri, renk teorisi, kapsül gardırop ve
+// mevsimsel stil konularını gruplandırarak gösterir. Tamamen statik içerik.
 import type { Metadata } from "next";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
@@ -16,6 +18,7 @@ export const metadata: Metadata = {
   },
 };
 
+// 6 ana stil konusu — her biri ilgili blog kategorisine veya makalesine yönlendirir
 const topics = [
   {
     slug: "body-type",
@@ -73,6 +76,7 @@ const topics = [
   },
 ];
 
+// Öne çıkan rehberler — sayfanın ortasındaki "Essential Guides" grid bölümü için veri
 const featuredGuides = [
   {
     slug: "capsule-wardrobe",
@@ -112,6 +116,7 @@ const featuredGuides = [
   },
 ];
 
+// Hızlı stil kuralları — sayfanın altında 3 sütunlu grid olarak gösterilen kısa ipuçları
 const quickTips = [
   { tip: "The 1 in, 1 out rule: for every new item you buy, donate one you no longer wear." },
   { tip: "Fit is everything — a well-fitted cheap piece beats an ill-fitted expensive one every time." },

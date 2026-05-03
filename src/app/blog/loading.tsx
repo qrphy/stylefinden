@@ -1,2 +1,2 @@
-// Loading skeleton shown while blog pages fetch data — prevents layout shift.
+// Blog sayfaları veri çekerken gösterilen loading durumu — layout kaymasını önler.
 export default function Loading() { return null; }

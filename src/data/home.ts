@@ -1,2 +1,3 @@
-// Homepage content data — featured items, hero copy and highlight section data centralized here.
+// Ana sayfa içerik verisi — öne çıkan öğeler, hero metinleri ve vurgulama bölümü verileri
+// burada merkezileştirilir.
 export const homeData = {};
