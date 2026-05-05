@@ -1,3 +1,8 @@
-// JSON-LD yapısal veri bileşeni — schema.org işaretlemesini (Article, BreadcrumbList, FAQPage)
-// script etiketiyle sayfaya enjekte eder; arama motoru görünürlüğünü artırır.
-export default function JsonLd() { return null; }
+export default function JsonLd({ data }: { data: Record<string, unknown> }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  )
+}
