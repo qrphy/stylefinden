@@ -1,8 +1,11 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import OutfitPiecesRow from "@/components/outfits/OutfitPiecesRow"
 import SimilarOutfits from "@/components/outfits/SimilarOutfits"
+import JsonLd from "@/components/seo/JsonLd"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
+
+const BASE = "https://stylefinden.com"
 
 export type OutfitPiece = {
   _key?: string
@@ -47,7 +50,35 @@ export default function OutfitDetail({ outfit, similarOutfits }: Props) {
 
   const pieces = outfit.pieces ?? []
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: outfit.title,
+    ...(outfit.description ? { description: outfit.description } : {}),
+    ...(imageUrl ? { image: imageUrl } : {}),
+    url: `${BASE}/outfits/${outfit.slug}`,
+    brand: { "@type": "Brand", name: "STYLEFINDEN" },
+  }
+
+  const breadcrumbItems: object[] = [
+    { "@type": "ListItem", position: 1, name: "Home",    item: BASE },
+    { "@type": "ListItem", position: 2, name: "Outfits", item: `${BASE}/outfits` },
+  ]
+  if (outfit.occasion) {
+    breadcrumbItems.push({ "@type": "ListItem", position: 3, name: occasionLabel[outfit.occasion] ?? outfit.occasion, item: `${BASE}/outfits/occasion/${outfit.occasion}` })
+  }
+  breadcrumbItems.push({ "@type": "ListItem", position: breadcrumbItems.length + 1, name: outfit.title })
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems,
+  }
+
   return (
+    <>
+      <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
     <main>
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
@@ -178,5 +209,6 @@ export default function OutfitDetail({ outfit, similarOutfits }: Props) {
         </div>
       </section>
     </main>
+    </>
   )
 }

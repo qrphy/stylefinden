@@ -1,6 +1,9 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import JsonLd from "@/components/seo/JsonLd"
 import { urlFor } from "@/sanity/lib/image"
 import { accessoryTypeLabel, accessoryOccasionLabel } from "@/lib/accessory-labels"
+
+const BASE = "https://stylefinden.com"
 
 export type AccessoryDetailData = {
   _id: string
@@ -23,7 +26,30 @@ export default function AccessoryDetail({ item }: Props) {
     ? urlFor(item.image).width(800).height(1000).url()
     : undefined
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: item.title,
+    ...(item.description ? { description: item.description } : {}),
+    ...(imageUrl ? { image: imageUrl } : {}),
+    url: `${BASE}/accessories/${item.slug}`,
+    brand: { "@type": "Brand", name: "STYLEFINDEN" },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home",        item: BASE },
+      { "@type": "ListItem", position: 2, name: "Accessories", item: `${BASE}/accessories` },
+      { "@type": "ListItem", position: 3, name: item.title },
+    ],
+  }
+
   return (
+    <>
+      <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
     <main>
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
@@ -120,5 +146,6 @@ export default function AccessoryDetail({ item }: Props) {
         </div>
       </section>
     </main>
+    </>
   )
 }

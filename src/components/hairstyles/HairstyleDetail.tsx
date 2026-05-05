@@ -1,4 +1,5 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import JsonLd from "@/components/seo/JsonLd"
 import { urlFor } from "@/sanity/lib/image"
 import {
   hairstyleTypeLabel,
@@ -6,6 +7,8 @@ import {
   hairstyleMoodLabel,
   hairstyleOccasionLabel,
 } from "@/lib/hairstyle-labels"
+
+const BASE = "https://stylefinden.com"
 
 export type HairstyleDetailData = {
   _id: string
@@ -29,7 +32,30 @@ export default function HairstyleDetail({ hairstyle }: Props) {
     ? urlFor(hairstyle.image).width(800).height(1067).url()
     : undefined
 
+  const creativeWorkSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: hairstyle.title,
+    ...(hairstyle.description ? { description: hairstyle.description } : {}),
+    ...(imageUrl ? { image: imageUrl } : {}),
+    url: `${BASE}/hairstyles/${hairstyle.slug}`,
+    author: { "@type": "Organization", name: "STYLEFINDEN", url: BASE },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home",       item: BASE },
+      { "@type": "ListItem", position: 2, name: "Hairstyles", item: `${BASE}/hairstyles` },
+      { "@type": "ListItem", position: 3, name: hairstyle.title },
+    ],
+  }
+
   return (
+    <>
+      <JsonLd data={creativeWorkSchema} />
+      <JsonLd data={breadcrumbSchema} />
     <main>
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
@@ -128,5 +154,6 @@ export default function HairstyleDetail({ hairstyle }: Props) {
         </div>
       </section>
     </main>
+    </>
   )
 }

@@ -1,6 +1,9 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import JsonLd from "@/components/seo/JsonLd"
 import { urlFor } from "@/sanity/lib/image"
 import { trendSeasonLabel, trendCategoryLabel } from "@/lib/trend-labels"
+
+const BASE = "https://stylefinden.com"
 
 export type TrendDetailData = {
   _id: string
@@ -23,7 +26,32 @@ export default function TrendDetail({ trend }: Props) {
     ? urlFor(trend.image).width(1200).height(700).url()
     : undefined
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: trend.title,
+    ...(trend.description ? { description: trend.description } : {}),
+    ...(imageUrl ? { image: imageUrl } : {}),
+    url: `${BASE}/trends/${trend.slug}`,
+    author: { "@type": "Organization", name: "STYLEFINDEN", url: BASE },
+    publisher: { "@type": "Organization", name: "STYLEFINDEN", url: BASE,
+      logo: { "@type": "ImageObject", url: `${BASE}/stylefinden-logo.png` } },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home",   item: BASE },
+      { "@type": "ListItem", position: 2, name: "Trends", item: `${BASE}/trends` },
+      { "@type": "ListItem", position: 3, name: trend.title },
+    ],
+  }
+
   return (
+    <>
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
     <main>
       {/* ── Hero Banner ─────────────────────────────────────────────────────── */}
       <section className="relative w-full aspect-[16/9] md:aspect-[21/9] max-h-[600px] overflow-hidden bg-gray-100">
@@ -118,5 +146,6 @@ export default function TrendDetail({ trend }: Props) {
         </div>
       </section>
     </main>
+    </>
   )
 }
