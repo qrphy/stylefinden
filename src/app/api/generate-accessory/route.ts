@@ -1,13 +1,11 @@
-// Aksesuar için açıklama, eşleştirme ipucu ve etiket üreten API endpoint'i.
-// Mevcut döküman alanlarını (başlık, tür, ortam) alır,
-// açıklama, pairingTip ve etiket seti döner.
-
-import { anthropic } from '@ai-sdk/anthropic'
-import { generateText, Output } from 'ai'
+import { generateText, Output, gateway } from 'ai'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
+import { rateLimit, getClientIp, rateLimitHeaders } from '@/lib/rate-limit'
 
-// Gelen isteği doğrulayan şema
+const LIMIT = 10
+const WINDOW_MS = 60_000
+
 const RequestSchema = z.object({
   title: z.string().min(1).max(200),
   type: z.string().optional(),
@@ -15,7 +13,6 @@ const RequestSchema = z.object({
   extraContext: z.string().max(500).optional(),
 })
 
-// Yapay zekanın döneceği veri yapısı — description + pairingTip + tags
 const OutputSchema = z.object({
   description: z.string().min(10).max(400),
   pairingTip: z.string().min(10).max(300),
@@ -23,16 +20,36 @@ const OutputSchema = z.object({
 })
 
 export async function POST(req: Request) {
-  const body = await req.json()
-  const parsed = RequestSchema.safeParse(body)
+  const ip = getClientIp(req)
+  const { allowed, remaining, resetAt } = rateLimit(`generate-accessory:${ip}`, { limit: LIMIT, windowMs: WINDOW_MS })
 
+  if (!allowed) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please wait before generating again.' },
+      {
+        status: 429,
+        headers: {
+          ...rateLimitHeaders(0, resetAt, LIMIT),
+          'Retry-After': String(Math.ceil((resetAt - Date.now()) / 1000)),
+        },
+      }
+    )
+  }
+
+  let body: unknown
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+  }
+
+  const parsed = RequestSchema.safeParse(body)
   if (!parsed.success) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 })
   }
 
   const { title, type, occasion, extraContext } = parsed.data
 
-  // Mevcut döküman alanlarını prompt'a bağlam olarak ekle
   const details = [
     type && `Type: ${type}`,
     occasion && `Occasion: ${occasion}`,
@@ -43,7 +60,7 @@ export async function POST(req: Request) {
 
   try {
     const result = await generateText({
-      model: anthropic('claude-sonnet-4-6'),
+      model: gateway('anthropic/claude-sonnet-4.6'),
       output: Output.object({ schema: OutputSchema }),
       system: `You are a concise accessories and style content writer for Stylefinden.
 Rules: No slang, no filler phrases, no Gen-Z expressions. American English. Warm but grounded tone.
@@ -55,9 +72,17 @@ ${details}
 description: 1-3 sentences describing the accessory and its appeal
 pairingTip: 1-2 sentences with specific outfit pairing advice
 tags: 3-10 relevant lowercase tags for search and filtering`,
+      providerOptions: {
+        gateway: {
+          user: ip,
+          tags: ['feature:generate-accessory'],
+        },
+      },
     })
 
-    return NextResponse.json(result.output)
+    return NextResponse.json(result.output, {
+      headers: rateLimitHeaders(remaining, resetAt, LIMIT),
+    })
   } catch (err) {
     console.error('[generate-accessory]', err)
     return NextResponse.json({ error: 'Generation failed' }, { status: 500 })
