@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
-import { ACCESSORY_QUERY } from "@/lib/queries"
+import { getAccessory } from "@/lib/sanity-fetchers"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -28,7 +28,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const item = await client.fetch(ACCESSORY_QUERY, { slug })
+  const item = await getAccessory(slug)
   if (!item) return {}
   return {
     title: item.title,
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function AccessoryPage({ params }: Props) {
   const { slug } = await params
-  const item = await client.fetch(ACCESSORY_QUERY, { slug })
+  const item = await getAccessory(slug)
   if (!item) notFound()
 
   const imageUrl = item.image ? urlFor(item.image).width(800).height(1000).url() : undefined
@@ -61,7 +61,7 @@ export default async function AccessoryPage({ params }: Props) {
       <section className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-10 md:py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 xl:gap-16">
           <div className="relative aspect-[4/5] w-full bg-gray-100 overflow-hidden">
-            <ImgPlaceholder src={imageUrl} alt={item.title} className="absolute inset-0 w-full h-full" />
+            <ImgPlaceholder src={imageUrl} alt={item.title} priority sizes="(max-width: 768px) 100vw, 50vw" />
           </div>
           <div className="flex flex-col justify-center gap-6">
             <div className="flex flex-wrap gap-2">

@@ -15,7 +15,7 @@ export const OUTFITS_QUERY = defineQuery(`
 export const OUTFIT_QUERY = defineQuery(`
   *[_type == "outfit" && slug.current == $slug][0] {
     _id, title, "slug": slug.current, description, image, style, season, occasion,
-    pieces[]{ _key, type, name, description },
+    pieces[]{ _key, type, name, description, image, affiliateUrl },
     tags, publishedAt
   }
 `)
@@ -147,5 +147,11 @@ export const HOME_ACCESSORIES_QUERY = defineQuery(`
 export const HOME_HAIRSTYLES_QUERY = defineQuery(`
   *[_type == "hairstyle" && defined(slug.current)] | order(_createdAt desc) [0...7] {
     _id, title, "slug": slug.current, image, type, length, mood, occasion, tags, featured
+  }
+`)
+
+export const HOME_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(publishedAt desc) [0...4] {
+    _id, title, "slug": slug.current, excerpt, heroImage, category, publishedAt
   }
 `)

@@ -6,12 +6,16 @@ type Props = {
   src?: string;
   alt?: string;
   className?: string;
+  priority?: boolean;
+  sizes?: string;
 };
 
 export default function ImgPlaceholder({
   src,
   alt = "",
   className = "absolute inset-0 w-full h-full",
+  priority = false,
+  sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw",
 }: Props) {
   if (src) {
     return (
@@ -19,7 +23,8 @@ export default function ImgPlaceholder({
         src={src}
         alt={alt}
         fill
-        sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
+        sizes={sizes}
+        priority={priority}
         className={`${className} object-cover object-top`}
       />
     );

@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 import { PortableText } from "@portabletext/react"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
-import { POST_QUERY } from "@/lib/queries"
+import { getPost } from "@/lib/sanity-fetchers"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -42,7 +42,7 @@ export async function generateStaticParams() {
 // Post başlığını ve excerpt'ini SEO metadata'sına çevirir; og:article type kullanır
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = await client.fetch(POST_QUERY, { slug })
+  const post = await getPost(slug)
   if (!post) return {}
   return {
     title: post.title,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = await client.fetch(POST_QUERY, { slug })
+  const post = await getPost(slug)
   if (!post) notFound()
 
   const heroUrl = post.heroImage ? urlFor(post.heroImage).width(1200).height(630).url() : undefined
@@ -69,7 +69,7 @@ export default async function BlogPostPage({ params }: Props) {
       {/* Hero */}
       <section className="w-full bg-white">
         <div className="relative overflow-hidden bg-gray-100 w-full aspect-[16/7] max-h-[520px]">
-          <ImgPlaceholder src={heroUrl} alt={post.title} className="absolute inset-0 w-full h-full" />
+          <ImgPlaceholder src={heroUrl} alt={post.title} priority sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
         </div>
       </section>

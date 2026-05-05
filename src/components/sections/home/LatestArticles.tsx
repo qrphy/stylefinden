@@ -4,15 +4,10 @@
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
-import { defineQuery } from "next-sanity"
+import { HOME_POSTS_QUERY } from "@/lib/queries"
 import { categoryColor } from "@/constants/site"
 import type { BlogPost } from "@/types/blog"
 
-const QUERY = defineQuery(`
-  *[_type == "post" && defined(slug.current)] | order(publishedAt desc) [0...4] {
-    _id, title, "slug": slug.current, excerpt, heroImage, category, publishedAt
-  }
-`)
 
 const STATIC_POSTS = [
   { id: "1", slug: "capsule-wardrobe-guide",   category: "Styling Tips",  title: "Capsule Wardrobe: 10 Pieces, 30 Outfits",        excerpt: "How to build a wardrobe with a few quality basics that works for every situation — and saves you money.",          date: "April 12, 2025", readTime: "5 min", featured: true  },
@@ -34,7 +29,7 @@ function formatDate(iso: string) {
 }
 
 export default async function LatestArticles() {
-  const sanityPosts = await client.fetch(QUERY) as Pick<BlogPost, '_id' | 'title' | 'slug' | 'excerpt' | 'heroImage' | 'category' | 'publishedAt'>[]
+  const sanityPosts = await client.fetch(HOME_POSTS_QUERY, {}, { next: { revalidate: 3600, tags: ['post'] } }) as Pick<BlogPost, '_id' | 'title' | 'slug' | 'excerpt' | 'heroImage' | 'category' | 'publishedAt'>[]
 
   const useSanity = sanityPosts.length > 0
 

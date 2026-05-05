@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
-import { TREND_QUERY } from "@/lib/queries"
+import { getTrend } from "@/lib/sanity-fetchers"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -29,7 +29,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const trend = await client.fetch(TREND_QUERY, { slug })
+  const trend = await getTrend(slug)
   if (!trend) return {}
   return {
     title: trend.title,
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TrendPage({ params }: Props) {
   const { slug } = await params
-  const trend = await client.fetch(TREND_QUERY, { slug })
+  const trend = await getTrend(slug)
   if (!trend) notFound()
 
   const imageUrl = trend.image ? urlFor(trend.image).width(1200).height(700).url() : undefined
@@ -49,7 +49,7 @@ export default async function TrendPage({ params }: Props) {
     <main>
       {/* Hero */}
       <section className="relative w-full aspect-[16/9] md:aspect-[21/9] max-h-[600px] overflow-hidden bg-gray-100">
-        <ImgPlaceholder src={imageUrl} alt={trend.title} className="absolute inset-0 w-full h-full" />
+        <ImgPlaceholder src={imageUrl} alt={trend.title} priority sizes="100vw" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pb-10 md:pb-14 flex flex-col gap-3">
           <div className="flex flex-wrap gap-2">
