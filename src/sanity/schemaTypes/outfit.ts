@@ -153,6 +153,19 @@ export const outfit = defineType({
               type: 'string',
               description: 'Marka, renk, stil notu gibi ek bilgiler.',
             }),
+            defineField({
+              name: 'image',
+              title: 'Görsel',
+              type: 'image',
+              options: { hotspot: true },
+              description: 'Parçanın fotoğrafı — "Shop the Look" bölümünde gösterilir.',
+            }),
+            defineField({
+              name: 'affiliateUrl',
+              title: 'Satın Alma Linki',
+              type: 'url',
+              description: 'Affiliate veya mağaza linki. Görsele tıklandığında yeni sekmede açılır.',
+            }),
           ],
           preview: {
             select: { title: 'name', subtitle: 'type' },
