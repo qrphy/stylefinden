@@ -1,4 +1,5 @@
-import { generateText, Output, gateway } from 'ai'
+import { anthropic } from '@ai-sdk/anthropic'
+import { generateText, Output } from 'ai'
 import { NextResponse } from 'next/server'
 import { z } from 'zod'
 import { rateLimit, getClientIp, rateLimitHeaders } from '@/lib/rate-limit'
@@ -61,7 +62,7 @@ export async function POST(req: Request) {
 
   try {
     const result = await generateText({
-      model: gateway('anthropic/claude-sonnet-4.6'),
+      model: anthropic('claude-sonnet-4-6'),
       output: Output.object({ schema: OutputSchema }),
       system: `You are a concise fashion content writer for Stylefinden.
 Rules: No slang, no filler phrases, no Gen-Z expressions. American English. Warm but grounded tone.
@@ -72,12 +73,6 @@ ${details}
 
 description: 1-3 sentences describing the outfit's look and styling appeal
 tags: 3-10 relevant lowercase tags for search and filtering`,
-      providerOptions: {
-        gateway: {
-          user: ip,
-          tags: ['feature:generate-outfit'],
-        },
-      },
     })
 
     return NextResponse.json(result.output, {

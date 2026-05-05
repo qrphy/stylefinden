@@ -1,4 +1,5 @@
-import { generateText, Output, gateway } from 'ai'
+import { anthropic } from '@ai-sdk/anthropic'
+import { generateText, Output } from 'ai'
 import { NextResponse } from 'next/server'
 import { BLOG_SYSTEM_PROMPT, buildBlogUserPrompt } from '@/lib/ai/blog-prompt'
 import { BlogAIOutputSchema, BlogGenerationRequestSchema } from '@/lib/ai/types'
@@ -42,16 +43,10 @@ export async function POST(req: Request) {
 
   try {
     const result = await generateText({
-      model: gateway('anthropic/claude-sonnet-4.6'),
+      model: anthropic('claude-sonnet-4-6'),
       output: Output.object({ schema: BlogAIOutputSchema }),
       system: BLOG_SYSTEM_PROMPT,
       prompt: buildBlogUserPrompt(parsed.data),
-      providerOptions: {
-        gateway: {
-          user: ip,
-          tags: ['feature:generate-blog'],
-        },
-      },
     })
 
     return NextResponse.json(aiOutputToPortableText(result.output), {
