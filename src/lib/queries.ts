@@ -20,6 +20,13 @@ export const OUTFIT_QUERY = defineQuery(`
   }
 `)
 
+// SIMILAR_OUTFITS_QUERY: Aynı stil veya durum ile eşleşen benzer outfitler (mevcut outfit hariç)
+export const SIMILAR_OUTFITS_QUERY = defineQuery(`
+  *[_type == "outfit" && defined(slug.current) && _id != $id && (style == $style || occasion == $occasion)] | order(_createdAt desc) [0...4] {
+    _id, title, "slug": slug.current, image, style, occasion
+  }
+`)
+
 // Kategori slug sayfalarının Sanity fetch'leri — stil/mevsim/durum filtrelemesi için
 export const OUTFITS_BY_STYLE_QUERY = defineQuery(`
   *[_type == "outfit" && style == $style && defined(slug.current)] | order(_createdAt desc) {
