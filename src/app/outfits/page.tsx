@@ -15,6 +15,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "STYLEFINDEN",
+    images: [{ url: "/stylefinden-logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Outfits – Looks for Every Occasion & Style | STYLEFINDEN",
+    description: "Curated outfit collections for every season and every occasion.",
+    images: ["/stylefinden-logo.png"],
   },
 };
 

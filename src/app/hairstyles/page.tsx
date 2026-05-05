@@ -15,6 +15,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "STYLEFINDEN",
+    images: [{ url: "/stylefinden-logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hairstyles – Cuts & Styles for Every Occasion | STYLEFINDEN",
+    description: "Curated hairstyle collections for every hair type and occasion.",
+    images: ["/stylefinden-logo.png"],
   },
 };
 

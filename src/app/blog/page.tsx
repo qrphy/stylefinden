@@ -5,8 +5,24 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { categoryColor } from "@/constants/site"
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Styling tips, trend reports, hairstyle guides and seasonal inspiration — everything about fashion on Stylefinden.",
+  title: "Blog – Style Tips, Trend Reports & Fashion Guides",
+  description: "Styling tips, trend reports, hairstyle guides and seasonal inspiration — everything about fashion on STYLEFINDEN.",
+  alternates: { canonical: "https://stylefinden.com/blog" },
+  openGraph: {
+    title: "Blog – Style Tips, Trend Reports & Fashion Guides | STYLEFINDEN",
+    description: "Styling tips, trend reports, hairstyle guides and seasonal fashion inspiration.",
+    url: "https://stylefinden.com/blog",
+    type: "website",
+    siteName: "STYLEFINDEN",
+    locale: "en_US",
+    images: [{ url: "/stylefinden-logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog – Style Tips, Trend Reports & Fashion Guides | STYLEFINDEN",
+    description: "Styling tips, trend reports, hairstyle guides and seasonal fashion inspiration.",
+    images: ["/stylefinden-logo.png"],
+  },
 }
 
 // Blog kategorileri — her biri kendi alt sayfasına (/blog/[category-slug]) yönlendirir

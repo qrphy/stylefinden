@@ -15,6 +15,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "STYLEFINDEN",
+    images: [{ url: "/stylefinden-logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trends – What's Hot in Fashion Right Now | STYLEFINDEN",
+    description: "The latest fashion trends curated by season, aesthetic and category.",
+    images: ["/stylefinden-logo.png"],
   },
 };
 

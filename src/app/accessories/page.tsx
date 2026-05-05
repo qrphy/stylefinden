@@ -15,6 +15,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "STYLEFINDEN",
+    images: [{ url: "/stylefinden-logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Accessories – Bags, Jewelry, Shoes & More | STYLEFINDEN",
+    description: "Curated accessories collections: bags, jewelry, shoes and scarves for every outfit.",
+    images: ["/stylefinden-logo.png"],
   },
 };
 
