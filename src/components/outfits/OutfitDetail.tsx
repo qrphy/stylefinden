@@ -73,7 +73,7 @@ export default function OutfitDetail({ outfit, similarOutfits }: Props) {
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section className="py-5 md:py-7">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-[40%_1fr] items-start">
 
           {/* Sol — Ana görsel */}
           <div className="pl-2 pr-3 md:pl-3 md:pr-5">
