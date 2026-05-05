@@ -53,6 +53,13 @@ export const metadata: Metadata = {
     siteName: "STYLEFINDEN",
     locale: "en_US",
     type: "website",
+    images: [{ url: "/stylefinden-logo.png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "STYLEFINDEN",
+    description: "Your fashion platform for outfits, hairstyles and style inspiration.",
+    images: ["/stylefinden-logo.png"],
   },
   icons: {
     icon: '/stylefinden-icon.ico',
