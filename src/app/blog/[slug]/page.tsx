@@ -6,7 +6,9 @@ import { PortableText } from "@portabletext/react"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { getPost } from "@/lib/sanity-fetchers"
+import { buildMetadata } from "@/components/seo/MetadataBuilder"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import JsonLd from "@/components/seo/JsonLd"
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -39,22 +41,25 @@ export async function generateStaticParams() {
   return slugs
 }
 
-// Post başlığını ve excerpt'ini SEO metadata'sına çevirir; og:article type kullanır
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const post = await getPost(slug)
   if (!post) return {}
-  return {
+
+  const ogImage = post.heroImage ? urlFor(post.heroImage).width(1200).height(630).url() : undefined
+  const description = post.excerpt
+    ? `${post.excerpt.slice(0, 155)}`
+    : `Read ${post.title} — styling tips and fashion inspiration on STYLEFINDEN.`
+
+  return buildMetadata({
     title: post.title,
-    description: post.excerpt ?? `Read ${post.title} on STYLEFINDEN.`,
-    alternates: { canonical: `https://stylefinden.com/blog/${slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt ?? "",
-      type: "article",
-      publishedTime: post.publishedAt ?? undefined,
-    },
-  }
+    description,
+    canonical: `https://stylefinden.com/blog/${slug}`,
+    ogImage,
+    type: "article",
+    publishedTime: post.publishedAt ?? undefined,
+    keywords: [post.title, ...(post.tags ?? []), "fashion", "style", "STYLEFINDEN"],
+  })
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -64,7 +69,33 @@ export default async function BlogPostPage({ params }: Props) {
 
   const heroUrl = post.heroImage ? urlFor(post.heroImage).width(1200).height(630).url() : undefined
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt ?? "",
+    ...(heroUrl ? { image: heroUrl } : {}),
+    ...(post.publishedAt ? { datePublished: post.publishedAt } : {}),
+    url: `https://stylefinden.com/blog/${slug}`,
+    author: { "@type": "Organization", name: "STYLEFINDEN", url: "https://stylefinden.com" },
+    publisher: { "@type": "Organization", name: "STYLEFINDEN", url: "https://stylefinden.com",
+      logo: { "@type": "ImageObject", url: "https://stylefinden.com/stylefinden-logo.png" } },
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home",  item: "https://stylefinden.com" },
+      { "@type": "ListItem", position: 2, name: "Blog",  item: "https://stylefinden.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title },
+    ],
+  }
+
   return (
+    <>
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
     <main>
       {/* Hero */}
       <section className="w-full bg-white">
@@ -212,5 +243,6 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
     </main>
+    </>
   )
 }
