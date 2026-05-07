@@ -1,10 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Claude Code agent instructions (local only)
-AGENTS.md
-CLAUDE.md
-.agents/
-.claude/
+# Claude Code — kişisel/local dosyalar
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/todos.json
+
+# Paylaşılan Claude yapılandırması (.claude/settings.json, skills, agents) commit edilir
 
 # dependencies
 /node_modules
