@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+      "stylefinden-knowledge": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "./knowledge",
+          "./src"
+        ]
+      }
+    }
+  }
