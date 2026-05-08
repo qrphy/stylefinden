@@ -5,7 +5,7 @@ import { navLinks } from "@/constants/navigation";
 
 export default function Header() {
   return (
-    <header>
+    <header className="relative z-30">
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center bg-white w-full border-b border-gray-200 shadow-sm relative
