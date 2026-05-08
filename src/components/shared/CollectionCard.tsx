@@ -35,8 +35,8 @@ export default function CollectionCard({ item, href }: Props) {
             <h2 className="text-lg font-black text-black tracking-tight leading-tight">{item.label}</h2>
           </div>
         </div>
-        <div className={`flex flex-col gap-3 p-5 ${item.accent}`}>
-          <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+        <div className={`flex flex-col gap-3 p-5 min-h-[7.5rem] ${item.accent}`}>
+          <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">{item.description}</p>
           <div className="flex flex-wrap gap-1.5">
             {item.tags.map((tag) => (
               <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-white/70 text-gray-500 border border-gray-200">

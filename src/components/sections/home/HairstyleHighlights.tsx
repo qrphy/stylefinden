@@ -124,8 +124,8 @@ export default async function HairstyleHighlights() {
                 <span className="absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-white/90 text-gray-700">{h.type}</span>
               </div>
               <div className="flex flex-col gap-0.5 px-0.5">
-                <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-500 transition-colors duration-200">{h.title}</h3>
-                <p className="text-xs tracking-widest uppercase text-gray-400">{h.length} · {h.mood}</p>
+                <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-500 transition-colors duration-200 line-clamp-2">{h.title}</h3>
+                <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{h.length} · {h.mood}</p>
               </div>
             </a>
           ))}

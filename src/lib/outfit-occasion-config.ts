@@ -79,6 +79,8 @@ export const OCCASION_ORDER = [
   "festival",
   "date-night",
   "sport",
+  "school",
+  "travel",
 ]
 
 // Tüm occasion config'leri
@@ -514,6 +516,128 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { id: 6, title: "Cycling Style Outfit",     subtitle: "Bike & Urban Active",  tag: "New",      style: "Activewear", href: "/outfits/cycling-style-outfit"    },
       { id: 7, title: "Beach Volleyball Look",    subtitle: "Beach & Active",       tag: "Trending", style: "Sporty",     href: "/outfits/beach-volleyball-look"   },
       { id: 8, title: "Weekend Sporty Casual",    subtitle: "Athleisure & Relax",   tag: "New",      style: "Athleisure", href: "/outfits/weekend-sporty-casual"   },
+    ],
+  },
+
+  school: {
+    label: "School & College",
+    subtitle: "Campus-Ready Everyday",
+    description:
+      "Comfortable, put-together and backpack-friendly – discover curated school and college outfits for lectures, campus days and student life without sacrificing personal style.",
+    accent: "bg-[#e3f2fd]",
+    accentText: "text-[#1565c0]",
+    tipTitle: "Look polished, stay comfortable,",
+    tipBody:
+      "The best campus outfit moves with you from morning lecture to evening study session – versatile layering and comfortable shoes are non-negotiable.",
+    tipTags: ["Casual", "Layering", "Denim", "Basics"],
+    filters: ["All", "Casual", "Layering", "Denim", "Basics", "Smart Casual", "Cozy"],
+    outfitGridLabel: "Latest School & College Looks",
+    styleGuideHref: "/blog/occasion-guides/school-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Casual & Everyday", href: "/outfits/occasion/casual",      accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
+      { label: "Street Style",      href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Minimalist",        href: "/outfits/style/minimalist",     accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Sport & Outdoor",   href: "/outfits/occasion/sport",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+    ],
+    faqs: [
+      {
+        q: "What do you wear to university on a regular day?",
+        a: "A reliable campus formula: straight-leg jeans or relaxed chinos, a clean graphic tee or simple knit, a denim or bomber jacket for layering, and comfortable sneakers or loafers. A structured tote or backpack completes the look. The goal is an outfit you can wear for eight hours without thinking about it.",
+      },
+      {
+        q: "How do you look stylish in school without trying too hard?",
+        a: "Invest in well-fitting basics in neutral tones – they combine easily and always look intentional. A quality hoodie, a good pair of jeans and clean white sneakers is a formula that never fails. Add one personal detail – a vintage tee, an interesting bag or a patterned knit – to make it yours.",
+      },
+      {
+        q: "What shoes work best for a full day on campus?",
+        a: "Comfort is paramount for a day of walking between buildings. Clean white sneakers, low-top canvas shoes and leather loafers cover most style directions while keeping your feet comfortable. Avoid heels for all-day campus use – save them for evening events. Chunky sneakers in neutral tones are a favourite as they add visual interest without sacrificing comfort.",
+      },
+    ],
+    seo: {
+      title: "School & College Outfits – Campus Style That Works",
+      description:
+        "Discover curated school and college outfits: casual campus looks, layering combinations and student-friendly style for lectures, study days and everyday university life.",
+      keywords: ["School Outfit", "College Outfit Women", "Campus Style", "University Outfit", "Student Fashion", "Back to School Outfit", "College Look", "Campus Outfit Ideas"],
+    },
+    card: {
+      description: "Campus-ready looks that are comfortable and stylish",
+      tags: ["Casual", "Layering", "Denim", "Basics"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Oversized Hoodie & Straight Jeans", subtitle: "Casual Campus",       tag: "Trending", style: "Casual",       href: "/outfits/oversized-hoodie-straight-jeans"  },
+      { id: 2, title: "Knit Cardigan & Midi Skirt",        subtitle: "Smart Campus",         tag: "Popular",  style: "Layering",     href: "/outfits/knit-cardigan-midi-skirt"          },
+      { id: 3, title: "Denim Jacket & White Tee",          subtitle: "Everyday College",     tag: "New",      style: "Denim",        href: "/outfits/denim-jacket-white-tee-campus"     },
+      { id: 4, title: "Cargo Trousers & Crop Knit",        subtitle: "Utility & Casual",     tag: "Trending", style: "Basics",       href: "/outfits/cargo-trousers-crop-knit"          },
+      { id: 5, title: "Pleated Skirt & Loafers",           subtitle: "Preppy & Polished",    tag: "Popular",  style: "Smart Casual", href: "/outfits/pleated-skirt-loafers"             },
+      { id: 6, title: "Linen Shirt & Wide-Leg Pants",      subtitle: "Relaxed Everyday",     tag: "New",      style: "Basics",       href: "/outfits/linen-shirt-wide-leg-campus"       },
+      { id: 7, title: "Sweatshirt & Biker Shorts",         subtitle: "Sporty Campus",        tag: "Trending", style: "Casual",       href: "/outfits/sweatshirt-biker-shorts"           },
+      { id: 8, title: "Blazer & Joggers Combo",            subtitle: "Smart Athleisure",     tag: "New",      style: "Smart Casual", href: "/outfits/blazer-joggers-campus"             },
+    ],
+  },
+
+  travel: {
+    label: "Travel & Vacation",
+    subtitle: "Comfortable & Versatile",
+    description:
+      "Wrinkle-resistant fabrics, versatile layering and looks that carry you from the airport to sightseeing to dinner – discover curated travel outfits built for long days and new destinations.",
+    accent: "bg-[#fff8e1]",
+    accentText: "text-[#f57f17]",
+    tipTitle: "Pack less, wear more,",
+    tipBody:
+      "The best travel outfit is one that works across multiple settings – choose pieces that layer, transition from day to evening and survive a long-haul flight without creasing.",
+    tipTags: ["Comfortable", "Versatile", "Layering", "Linen"],
+    filters: ["All", "Comfortable", "Layering", "Linen", "Casual", "City Break", "Long-Haul"],
+    outfitGridLabel: "Latest Travel & Vacation Looks",
+    styleGuideHref: "/blog/occasion-guides/travel-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Beach & Vacation",   href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Casual & Everyday",  href: "/outfits/occasion/casual",   accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
+      { label: "Boho Style",         href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Minimalist",         href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+    ],
+    faqs: [
+      {
+        q: "What do you wear on a long-haul flight?",
+        a: "Comfort and adaptability are the priorities. Wide-leg trousers or soft straight-cut trousers in a non-creasing fabric, a breathable layering top, and an oversized knit or hoodie for temperature changes work perfectly. Slip-on shoes and compression socks make the journey far more comfortable. Avoid tight waistbands and rough denim for flights over six hours.",
+      },
+      {
+        q: "How do you pack light but still look stylish while traveling?",
+        a: "Build a travel capsule around 3-4 neutral base pieces that combine with each other: a pair of dark straight jeans, a white shirt, a knit or light jacket, and a versatile dress. Add 2-3 tops in complementary tones. Everything should work with one pair of walking shoes and one pair of sandals. The fewer the items, the more intentional each combination becomes.",
+      },
+      {
+        q: "What fabrics travel best?",
+        a: "Linen is breathable and beautiful but wrinkles easily – best for destinations where a relaxed look is fine. Viscose and modal blends drape well and resist creasing. Jersey cotton is comfortable and forgiving. Avoid 100% cotton shirts for travel as they crease heavily and take long to dry. Lightweight merino wool is exceptional: it regulates temperature, resists odor and barely wrinkles.",
+      },
+    ],
+    seo: {
+      title: "Travel & Vacation Outfits – Comfortable Looks for Every Trip",
+      description:
+        "Discover curated travel outfits: versatile airport looks, wrinkle-resistant combinations and layering styles for city breaks, long-haul flights and sightseeing adventures.",
+      keywords: ["Travel Outfit Women", "Airport Outfit", "Vacation Outfit", "Travel Style", "Comfortable Travel Outfit", "City Break Outfit", "Long-Haul Flight Outfit", "Packing Light Fashion"],
+    },
+    card: {
+      description: "Versatile, wrinkle-resistant looks from airport to destination",
+      tags: ["Comfortable", "Versatile", "Layering", "Linen"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Linen Wide-Leg & Tee",          subtitle: "City Break & Stroll",   tag: "Trending", style: "Linen",      href: "/outfits/linen-wide-leg-tee-travel"       },
+      { id: 2, title: "Oversized Knit & Straight Jeans",subtitle: "Long-Haul Comfort",     tag: "Popular",  style: "Layering",   href: "/outfits/oversized-knit-straight-jeans"   },
+      { id: 3, title: "Jersey Midi Dress & Sneakers",   subtitle: "Sightseeing & Easy",    tag: "New",      style: "Comfortable",href: "/outfits/jersey-midi-dress-sneakers"      },
+      { id: 4, title: "Cargo Pants & Linen Shirt",      subtitle: "Utility Travel",        tag: "Trending", style: "Casual",     href: "/outfits/cargo-pants-linen-shirt-travel"  },
+      { id: 5, title: "Wrap Dress & Flat Sandals",      subtitle: "Resort to Dinner",      tag: "Popular",  style: "Linen",      href: "/outfits/wrap-dress-flat-sandals-travel"  },
+      { id: 6, title: "Trench Coat & Slip-Ons",         subtitle: "Airport & City",        tag: "New",      style: "Layering",   href: "/outfits/trench-coat-slip-ons-travel"     },
+      { id: 7, title: "Merino Knit & Tailored Trousers",subtitle: "Long-Haul Elevated",    tag: "Trending", style: "Comfortable",href: "/outfits/merino-knit-tailored-trousers"   },
+      { id: 8, title: "Denim Jacket & Midi Skirt",      subtitle: "City Break Versatile",  tag: "New",      style: "Casual",     href: "/outfits/denim-jacket-midi-skirt-travel"  },
     ],
   },
 }

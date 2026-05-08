@@ -139,10 +139,10 @@ export default function CategoryPage({
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
                 <div className="flex flex-col gap-0.5 px-0.5">
-                  <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200">
+                  <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
                     {item.title}
                   </h3>
-                  <p className="text-xs tracking-widest uppercase text-gray-400">{item.subtitle}</p>
+                  <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{item.subtitle}</p>
                 </div>
               </a>
             ))}
