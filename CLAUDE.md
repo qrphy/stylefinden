@@ -80,6 +80,15 @@ Tüm agent'lar `.claude/agents/`, skill'ler `.claude/skills/` altında. Aşağı
 | Frontend geliştirme (Next.js, React, Tailwind) | `frontend-developer` |
 | Test yazılacak | `/tdd` skill + `builder` |
 
+### Frontend test ve kalite
+
+| Koşul | Agent / Skill |
+|-------|--------------|
+| Frontend audit, hata tarama, deploy öncesi kontrol | `/frontend-audit` skill |
+| Sadece tespit, düzeltme yok | `/frontend-audit --detect` |
+| Tespit edilen hatalar düzeltilecek | `frontend-fixer` agent |
+| TypeScript/build/tasarım ihlalleri taranacak | `frontend-tester` agent |
+
 ### Hata ayıklama
 
 | Koşul | Agent |
