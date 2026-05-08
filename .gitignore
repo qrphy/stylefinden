@@ -51,3 +51,7 @@ next-env.d.ts
 
 # local knowledge docs
 /knowledge
+
+# Sanity CLI build output
+.sanity/
+dist/
