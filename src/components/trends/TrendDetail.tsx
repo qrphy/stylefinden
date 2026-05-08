@@ -1,5 +1,6 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import JsonLd from "@/components/seo/JsonLd"
+import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import { trendSeasonLabel, trendCategoryLabel } from "@/lib/trend-labels"
 
@@ -96,15 +97,9 @@ export default function TrendDetail({ trend }: Props) {
                 {trend.description}
               </p>
             )}
-            <a
-              href="/trends"
-              className="self-start flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group"
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current rotate-180 group-hover:-translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
+            <Button variant="ghost" href="/trends" arrow arrowDir="left" className="self-start">
               Back to Trends
-            </a>
+            </Button>
           </div>
 
           {trend.keyItems && trend.keyItems.length > 0 && (
@@ -136,12 +131,8 @@ export default function TrendDetail({ trend }: Props) {
             <span className="text-lg font-black text-black tracking-tight">Shop the trend</span>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a href="/outfits" className="px-8 py-3 bg-black text-white text-xs font-semibold tracking-widest uppercase hover:bg-gray-800 transition-colors duration-200">
-              Browse Outfits
-            </a>
-            <a href="/trends" className="px-8 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-              All Trends
-            </a>
+            <Button variant="primary" href="/outfits">Browse Outfits</Button>
+            <Button variant="outline" href="/trends">All Trends</Button>
           </div>
         </div>
       </section>

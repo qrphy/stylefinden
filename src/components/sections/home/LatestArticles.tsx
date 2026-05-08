@@ -2,6 +2,7 @@
 // İlk yazı büyük öne çıkan kart (2 sütun), geri 3'ü sağ sütunda küçük liste.
 // Sanity'de yayınlanmış post varsa oradan çeker; yoksa STATIC_POSTS fallback'i kullanır.
 import { client } from "@/sanity/lib/client"
+import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { HOME_POSTS_QUERY } from "@/lib/queries"
@@ -48,12 +49,9 @@ export default async function LatestArticles() {
                 Inspiration & <span className="italic font-light">Style Knowledge.</span>
               </h2>
             </div>
-            <a href="/blog" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group shrink-0">
+            <Button variant="ghost" href="/blog" arrow className="self-start sm:self-auto shrink-0">
               All Posts
-              <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
+            </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
@@ -108,9 +106,7 @@ export default async function LatestArticles() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <a href="/blog" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-              Read All Posts
-            </a>
+            <Button variant="outline" href="/blog" size="lg">Read All Posts</Button>
           </div>
 
         </div>
@@ -132,12 +128,9 @@ export default async function LatestArticles() {
               Inspiration & <span className="italic font-light">Style Knowledge.</span>
             </h2>
           </div>
-          <a href="/blog" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group shrink-0">
+          <Button variant="ghost" href="/blog" arrow className="self-start sm:self-auto shrink-0">
             All Posts
-            <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">

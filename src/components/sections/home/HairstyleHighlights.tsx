@@ -2,6 +2,7 @@
 // geri kalanlar küçük grid olarak gösterilir. Üstte tür filtreleri vardır.
 // Sanity'de veri varsa oradan çeker; yoksa STATIC_HAIRSTYLES fallback'i kullanır.
 import { client } from "@/sanity/lib/client";
+import Button from "@/components/shared/Button";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_HAIRSTYLES_QUERY } from "@/lib/queries";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
@@ -68,12 +69,9 @@ export default async function HairstyleHighlights() {
               <span className="italic font-light">haircut.</span>
             </h2>
           </div>
-          <a href="/hairstyles" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group">
+          <Button variant="ghost" href="/hairstyles" arrow className="self-start sm:self-auto">
             All Hairstyles
-            <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
+          </Button>
         </div>
 
         <div className="flex flex-wrap gap-2 mb-10">
@@ -134,9 +132,7 @@ export default async function HairstyleHighlights() {
         </div>
 
         <div className="flex justify-center mt-12">
-          <a href="/hairstyles" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-            Discover All Hairstyles
-          </a>
+          <Button variant="outline" href="/hairstyles" size="lg">Discover All Hairstyles</Button>
         </div>
 
       </div>

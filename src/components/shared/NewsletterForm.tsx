@@ -4,6 +4,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from "@/components/shared/Button";
 
 export default function NewsletterForm() {
   const [email, setEmail]     = useState("");
@@ -83,15 +84,15 @@ export default function NewsletterForm() {
                                text-sm tracking-wide focus:outline-none focus:border-white/60
                                disabled:opacity-50 transition-colors duration-200"
                   />
-                  <button
+                  <Button
                     type="submit"
+                    variant="primary"
+                    invert
                     disabled={status === "loading"}
-                    className="px-8 py-3 bg-white text-black text-xs font-semibold tracking-widest uppercase
-                               hover:bg-gray-100 disabled:opacity-60 disabled:cursor-not-allowed
-                               transition-colors duration-200 shrink-0"
+                    className="shrink-0"
                   >
                     {status === "loading" ? "..." : "Subscribe"}
-                  </button>
+                  </Button>
                 </div>
                 {status === "error" && (
                   <p className="text-xs text-red-400 tracking-wide">{message}</p>

@@ -3,6 +3,7 @@
 // Tek sayılı kategoriler sağa-sola pozisyon değiştirir (ci % 2 !== 0).
 // Sanity'de veri varsa oradan çeker; yoksa STATIC_ACCESSORIES fallback'i kullanır.
 import { client } from "@/sanity/lib/client";
+import Button from "@/components/shared/Button";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_ACCESSORIES_QUERY } from "@/lib/queries";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
@@ -86,12 +87,9 @@ export default async function AccessoriesHighlights() {
               Timeless classics and current trends — jewelry, bags and sunglasses that complement every outfit.
             </p>
           </div>
-          <a href="/accessories" className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group shrink-0">
+          <Button variant="ghost" href="/accessories" arrow className="self-start sm:self-auto shrink-0">
             All Accessories
-            <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
+          </Button>
         </div>
 
         <div className="flex gap-2 mb-10 overflow-x-auto pb-1">
@@ -165,9 +163,7 @@ export default async function AccessoriesHighlights() {
         </div>
 
         <div className="flex justify-center mt-14">
-          <a href="/accessories" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-            Discover All Accessories
-          </a>
+          <Button variant="outline" href="/accessories" size="lg">Discover All Accessories</Button>
         </div>
 
       </div>

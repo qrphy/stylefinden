@@ -1,5 +1,6 @@
 import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
 
@@ -158,15 +159,9 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
             )}
 
             {/* Back link */}
-            <a
-              href="/outfits"
-              className="self-start mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group"
-            >
-              <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current rotate-180 group-hover:-translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
+            <Button variant="ghost" href="/outfits" arrow arrowDir="left" className="self-start mt-2">
               Back to Outfits
-            </a>
+            </Button>
           </div>
         </div>
       </section>
@@ -382,18 +377,8 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
             </span>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            <a
-              href="/outfits"
-              className="px-8 py-3 bg-black text-white text-xs font-semibold tracking-widest uppercase hover:bg-gray-800 transition-colors duration-200"
-            >
-              All Outfits
-            </a>
-            <a
-              href="/accessories"
-              className="px-8 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200"
-            >
-              Accessories
-            </a>
+            <Button variant="primary" href="/outfits">All Outfits</Button>
+            <Button variant="outline" href="/accessories">Accessories</Button>
           </div>
         </div>
       </section>

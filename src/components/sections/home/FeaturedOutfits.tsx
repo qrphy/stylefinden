@@ -6,6 +6,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { HOME_OUTFITS_QUERY } from "@/lib/queries";
 import { tagColors } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+import Button from "@/components/shared/Button";
 
 const STATIC_OUTFITS: StaticOutfit[] = [
   { id: "1", title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending" },
@@ -50,15 +51,9 @@ export default async function FeaturedOutfits() {
               Trending Outfits
             </h2>
           </div>
-          <a
-            href="/outfits"
-            className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group"
-          >
+          <Button variant="ghost" href="/outfits" arrow className="self-start sm:self-auto">
             All Outfits
-            <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-              <path d="M5 12h14M13 6l6 6-6 6" />
-            </svg>
-          </a>
+          </Button>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
@@ -83,9 +78,7 @@ export default async function FeaturedOutfits() {
         </div>
 
         <div className="flex justify-center mt-12">
-          <a href="/outfits" className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200">
-            Discover All Outfits
-          </a>
+          <Button variant="outline" href="/outfits" size="lg">Discover All Outfits</Button>
         </div>
 
       </div>
