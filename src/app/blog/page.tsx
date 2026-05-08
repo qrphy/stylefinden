@@ -1,8 +1,12 @@
-// Blog ana sayfası — tüm kategorileri ve en son yazıları listeler.
-// Öne çıkan yazı büyük kart (2 sütun), geri kalan 3 yazı sağ sütunda küçük liste olarak görünür.
+// Blog ana sayfası — Editor's Picks (featured) + Latest Posts (Sanity) + kategori linkleri.
 import type { Metadata } from "next"
+import { client } from "@/sanity/lib/client"
+import { urlFor } from "@/sanity/lib/image"
+import { FEATURED_POSTS_QUERY, LATEST_POSTS_QUERY } from "@/lib/queries"
+import { BLOG_CATEGORY_CONFIGS } from "@/lib/blog-category-config"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
-import { categoryColor } from "@/constants/site"
+
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: "Blog – Style Tips, Trend Reports & Fashion Guides",
@@ -25,89 +29,49 @@ export const metadata: Metadata = {
   },
 }
 
-// Blog kategorileri — her biri kendi alt sayfasına (/blog/[category-slug]) yönlendirir
-const categories = [
-  {
-    slug: "trend-reports",
-    label: "Trend Reports",
-    description: "What defines the season",
-    accent: "#1a1a1a",
-  },
-  {
-    slug: "hairstyle-guides",
-    label: "Hairstyle Guides",
-    description: "Cuts, care & styling",
-    accent: "#1a1a1a",
-  },
-  {
-    slug: "accessories-guides",
-    label: "Accessories Guides",
-    description: "Bags, jewelry & details",
-    accent: "#1a1a1a",
-  },
-  {
-    slug: "occasion-guides",
-    label: "Occasion Guides",
-    description: "The right look for every occasion",
-    accent: "#1a1a1a",
-  },
-  {
-    slug: "seasonal-guides",
-    label: "Seasonal Guides",
-    description: "Summer, Autumn, Winter, Spring",
-    accent: "#1a1a1a",
-  },
-]
+const categoryColor: Record<string, string> = {
+  "accessories-guides": "bg-gray-100 text-gray-700",
+  "hairstyle-guides":   "bg-black text-white",
+  "occasion-guides":    "bg-gray-900 text-white",
+  "seasonal-guides":    "bg-white text-black border border-black",
+  "trend-reports":      "bg-white text-black border border-black",
+}
 
-// Statik fallback yazılar — Sanity entegrasyonu tamamlanana kadar sayfa doluluk sağlar
-const posts = [
-  {
-    slug: "capsule-wardrobe-guide",
-    category: "Styling Tips",
-    title: "Capsule Wardrobe: 10 Pieces, 30 Outfits",
-    excerpt: "How to build a wardrobe with a few quality basics that works for every situation — and saves you money.",
-    date: "April 12, 2025",
-    readTime: "5 min",
-    image: "/blog/capsule-wardrobe.jpg",
-    featured: true,
-  },
-  {
-    slug: "spring-trend-colors-2025",
-    category: "Trends",
-    title: "The Trend Colors of Spring 2025",
-    excerpt: "From soft mint green to bold terracotta — which colors dominate this spring and how to combine them.",
-    date: "April 8, 2025",
-    readTime: "4 min",
-    image: "/blog/fruehling-farben.jpg",
-    featured: false,
-  },
-  {
-    slug: "accessories-less-is-more",
-    category: "Accessories",
-    title: "Less Is More: Using Accessories the Right Way",
-    excerpt: "The perfect accessory can completely transform an outfit. We show you when to use less and when to use more.",
-    date: "April 3, 2025",
-    readTime: "3 min",
-    image: "/blog/accessories-guide.jpg",
-    featured: false,
-  },
-  {
-    slug: "business-casual-guide",
-    category: "Outfit Guide",
-    title: "Business Casual: The Golden Middle",
-    excerpt: "Between too formal and too casual — how to find the perfect look for modern work environments.",
-    date: "March 28, 2025",
-    readTime: "6 min",
-    image: "/blog/business-casual.jpg",
-    featured: false,
-  },
-]
+const categoryLabel: Record<string, string> = {
+  "accessories-guides": "Accessories",
+  "hairstyle-guides":   "Hairstyle",
+  "occasion-guides":    "Occasion Guide",
+  "seasonal-guides":    "Seasonal",
+  "trend-reports":      "Trends",
+}
 
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+}
 
-const featuredPost = posts.find((p) => p.featured)!
-const regularPosts = posts.filter((p) => !p.featured)
+type Post = {
+  _id: string
+  title: string
+  slug: string
+  excerpt?: string | null
+  heroImage?: object | null
+  category: string
+  publishedAt?: string | null
+  tags?: string[] | null
+}
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const [featuredPosts, latestPosts] = await Promise.all([
+    client.fetch<Post[]>(FEATURED_POSTS_QUERY, {}, { next: { revalidate: 3600, tags: ["post"] } }),
+    client.fetch<Post[]>(LATEST_POSTS_QUERY, {}, { next: { revalidate: 3600, tags: ["post"] } }),
+  ])
+
+  const categories = Object.entries(BLOG_CATEGORY_CONFIGS).map(([slug, cfg]) => ({
+    slug,
+    label: cfg.label,
+    description: cfg.description.split(" — ")[0],
+  }))
+
   return (
     <main>
 
@@ -115,9 +79,7 @@ export default function BlogPage() {
       <section className="w-full border-b border-gray-100 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
           <div className="flex flex-col gap-4 max-w-2xl">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-              Blog
-            </span>
+            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Blog</span>
             <h1 className="text-4xl md:text-5xl font-black text-black tracking-tight leading-tight">
               Inspiration &{" "}
               <span className="italic font-light">Style Knowledge.</span>
@@ -143,7 +105,7 @@ export default function BlogPage() {
                 href={`/blog/${cat.slug}`}
                 className="group flex flex-col gap-2 border border-gray-200 hover:border-black p-5 transition-colors duration-200"
               >
-                <span className="text-xs tracking-widest uppercase text-gray-400 group-hover:text-gray-600 transition-colors duration-200">
+                <span className="text-xs tracking-widest uppercase text-gray-400 group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
                   {cat.description}
                 </span>
                 <div className="flex items-center justify-between mt-auto pt-2">
@@ -165,10 +127,69 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Latest Posts */}
+      {/* Editor's Picks — sadece featured == true post varsa göster */}
+      {featuredPosts.length > 0 && (
+        <section className="w-full bg-black">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+              <div className="flex flex-col gap-2">
+                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+                  Editor&apos;s Picks
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">
+                  Selected by our editors.
+                </h2>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+              {featuredPosts.map((post, i) => {
+                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(800).height(450).url() : undefined
+                const isHero = i === 0 && featuredPosts.length >= 2
+                return (
+                  <a
+                    key={post._id}
+                    href={`/blog/${post.slug}`}
+                    className={`group flex flex-col overflow-hidden border border-gray-700 hover:border-gray-400 transition-colors duration-200 ${isHero ? "md:col-span-2" : ""}`}
+                  >
+                    <div className={`relative overflow-hidden bg-gray-800 ${isHero ? "aspect-[16/7]" : "aspect-[16/9]"}`}>
+                      <ImgPlaceholder src={imgUrl} alt={post.title} sizes={isHero ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"} />
+                    </div>
+                    <div className="flex flex-col gap-3 p-6 flex-1">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className={`px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}>
+                          {categoryLabel[post.category] ?? post.category}
+                        </span>
+                        {post.publishedAt && (
+                          <span className="text-xs tracking-widest uppercase text-gray-500">
+                            {formatDate(post.publishedAt)}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className={`font-black text-white tracking-tight leading-tight group-hover:text-gray-300 transition-colors duration-200 ${isHero ? "text-xl md:text-2xl" : "text-base md:text-lg"}`}>
+                        {post.title}
+                      </h3>
+                      {post.excerpt && (
+                        <p className="text-sm text-gray-400 leading-relaxed flex-1 line-clamp-2">{post.excerpt}</p>
+                      )}
+                      <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-400 group-hover:text-white group-hover:gap-3 transition-all duration-200 mt-auto pt-4 border-t border-gray-700">
+                        Read Article
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Latest Posts — Sanity'den en son tüm yazılar */}
       <section className="w-full bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
-
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
             <div className="flex flex-col gap-2">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
@@ -180,69 +201,50 @@ export default function BlogPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-
-            {/* Featured */}
-            <a
-              href={`/blog/${featuredPost.slug}`}
-              className="group xl:col-span-2 flex flex-col overflow-hidden border border-gray-100 hover:border-gray-300 transition-colors duration-200"
-            >
-              <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-                <ImgPlaceholder />
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
-                <span className={`absolute top-4 left-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase ${categoryColor[featuredPost.category] ?? "bg-gray-100 text-gray-700"}`}>
-                  {featuredPost.category}
-                </span>
-              </div>
-              <div className="flex flex-col gap-3 p-6 flex-1">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs tracking-widest uppercase text-gray-400">{featuredPost.date}</span>
-                  <span className="w-1 h-1 rounded-full bg-gray-300" />
-                  <span className="text-xs tracking-widest uppercase text-gray-400">{featuredPost.readTime} Lesedauer</span>
-                </div>
-                <h3 className="text-xl md:text-2xl font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200">
-                  {featuredPost.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed flex-1">{featuredPost.excerpt}</p>
-                <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-2 border-t border-gray-100">
-                  Read More
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
-              </div>
-            </a>
-
-            {/* Regular */}
-            <div className="flex flex-col gap-5">
-              {regularPosts.map((post) => (
-                <a
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group flex gap-4 border border-gray-100 hover:border-gray-300 transition-colors duration-200 overflow-hidden"
-                >
-                  <div className="relative w-28 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
-                    <ImgPlaceholder />
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
-                  </div>
-                  <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1 min-w-0">
-                    <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}>
-                      {post.category}
-                    </span>
-                    <h3 className="text-sm font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
-                      {post.title}
-                    </h3>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs tracking-widest uppercase text-gray-400">{post.readTime}</span>
-                      <span className="w-1 h-1 rounded-full bg-gray-200" />
-                      <span className="text-xs tracking-widest uppercase text-gray-400">{post.date}</span>
+          {latestPosts.length === 0 ? (
+            <p className="text-sm text-gray-400 tracking-wide">No posts published yet. Check back soon.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+              {latestPosts.map((post) => {
+                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(600).height(340).url() : undefined
+                return (
+                  <a
+                    key={post._id}
+                    href={`/blog/${post.slug}`}
+                    className="group flex flex-col overflow-hidden border border-gray-100 hover:border-gray-300 transition-colors duration-200"
+                  >
+                    <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
+                      <ImgPlaceholder src={imgUrl} alt={post.title} sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" />
                     </div>
-                  </div>
-                </a>
-              ))}
+                    <div className="flex flex-col gap-3 p-5 flex-1">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className={`px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}>
+                          {categoryLabel[post.category] ?? post.category}
+                        </span>
+                        {post.publishedAt && (
+                          <span className="text-xs tracking-widest uppercase text-gray-400">
+                            {formatDate(post.publishedAt)}
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="text-base font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
+                        {post.title}
+                      </h3>
+                      {post.excerpt && (
+                        <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 flex-1">{post.excerpt}</p>
+                      )}
+                      <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-3 border-t border-gray-100">
+                        Read More
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                )
+              })}
             </div>
-
-          </div>
+          )}
         </div>
       </section>
 

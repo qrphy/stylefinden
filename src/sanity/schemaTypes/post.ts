@@ -86,6 +86,12 @@ export const post = defineType({
       type: 'array',
       of: [defineArrayMember({ type: 'string' })],
     }),
+    defineField({
+      name: 'featured',
+      type: 'boolean',
+      initialValue: false,
+      description: "Editor's Pick — öne çıkan yazılarda gösterilir",
+    }),
   ],
   preview: {
     select: { title: 'title', media: 'heroImage', category: 'category', publishedAt: 'publishedAt' },

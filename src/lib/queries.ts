@@ -138,6 +138,18 @@ export const POSTS_BY_CATEGORY_QUERY = defineQuery(`
   }
 `)
 
+export const FEATURED_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && featured == true && defined(slug.current)] | order(publishedAt desc) [0...6] {
+    _id, title, "slug": slug.current, excerpt, heroImage, category, publishedAt, tags
+  }
+`)
+
+export const LATEST_POSTS_QUERY = defineQuery(`
+  *[_type == "post" && defined(slug.current)] | order(publishedAt desc) [0...12] {
+    _id, title, "slug": slug.current, excerpt, heroImage, category, publishedAt, tags
+  }
+`)
+
 // ── Ana sayfa highlight sorguları — her bölüm için sınırlı sayıda en yeni içerik ──
 export const HOME_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(_createdAt desc) [0...8] {
