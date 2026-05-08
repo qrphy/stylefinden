@@ -4,7 +4,7 @@ import { navLinks } from "@/constants/navigation"
 
 export default function MobileMenu() {
   return (
-    <div className="relative md:hidden flex items-center h-14 px-4 bg-white border-b border-gray-200 shadow-sm">
+    <div className="relative md:hidden flex items-center h-14 px-4 bg-white border-b border-gray-200">
       <style>{`
         details .icon-hamburger { display: block; }
         details .icon-close     { display: none;  }
@@ -24,7 +24,7 @@ export default function MobileMenu() {
         </summary>
 
         {/* Dropdown — z-50 ile sayfa içeriği üzerinde */}
-        <div className="absolute left-0 top-full z-50 w-44 border border-black/10 bg-white shadow-md">
+        <div className="absolute left-0 top-full z-50 w-44 border border-black/10 bg-white">
           {navLinks.map((link) => (
             <a
               key={link.href}

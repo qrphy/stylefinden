@@ -8,13 +8,13 @@ export default function Header() {
     <header className="relative z-30">
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center bg-white w-full border-b border-gray-200 shadow-sm relative
+      <div className="hidden md:flex items-center bg-white w-full border-b border-gray-200 relative
                       h-14 px-4
                       lg:h-20 lg:px-6
                       xl:h-20 xl:px-8">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-1 rounded-xl">
+        <Link href="/" className="flex items-center gap-1">
           <img
             src="/stylefinden-logo.png"
             alt="STYLEFINDEN"

@@ -145,7 +145,7 @@ export default async function LatestArticles() {
             <div className="flex flex-col gap-3 p-6 flex-1">
               <div className="flex items-center gap-3">
                 <span className="text-xs tracking-widest uppercase text-gray-400">{featuredPost.date}</span>
-                <span className="w-1 h-1 rounded-full bg-gray-300" />
+                <span className="w-1 h-1 bg-gray-300" />
                 <span className="text-xs tracking-widest uppercase text-gray-400">{featuredPost.readTime} read</span>
               </div>
               <h3 className="text-xl md:text-2xl font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200">
@@ -177,7 +177,7 @@ export default async function LatestArticles() {
                   </h3>
                   <div className="flex items-center gap-2">
                     <span className="text-xs tracking-widest uppercase text-gray-400">{post.readTime}</span>
-                    <span className="w-1 h-1 rounded-full bg-gray-200" />
+                    <span className="w-1 h-1 bg-gray-200" />
                     <span className="text-xs tracking-widest uppercase text-gray-400">{post.date}</span>
                   </div>
                 </div>

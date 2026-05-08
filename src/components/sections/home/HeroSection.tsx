@@ -67,7 +67,7 @@ export default function HeroSection() {
             </div>
 
             {/* Top left decorative card */}
-            <div className="absolute -top-4 -left-4 md:-left-8 bg-white border border-gray-200 shadow-sm px-4 py-3 hidden sm:flex flex-col gap-1">
+            <div className="absolute -top-4 -left-4 md:-left-8 bg-white border border-gray-200 px-4 py-3 hidden sm:flex flex-col gap-1">
               <span className="text-xs tracking-widest uppercase text-gray-400">New</span>
               <span className="text-sm font-bold text-black">Autumn Trends 2025</span>
             </div>
