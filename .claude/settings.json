@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Read(/Users/furkan/style-finden/**)"
+      "Read(/Users/furkan/style-finden/**)",
+      "Write(/Users/furkan/style-finden/**)",
+      "Edit(/Users/furkan/style-finden/**)"
     ]
   },
   "hooks": {
@@ -22,9 +24,8 @@
         "matcher": "Write|Edit",
         "hooks": [
           {
-            "type": "command",
-            "command": "{ f=$(jq -r '.tool_input.file_path // empty'); if echo \"$f\" | grep -q '/meticulhoar/stylefinden/src/'; then name=$(basename \"$f\" | sed 's/\\.[^.]*$//'); if echo \"$f\" | grep -q '/components/'; then msg=\"VAULT → entities/${name}.md var mı?\"; elif echo \"$f\" | grep -q '/app/api/'; then apiname=$(echo \"$f\" | sed 's|.*/api/\\([^/]*\\)/.*|\\1|'); msg=\"VAULT → entities/api-${apiname}.md var mı?\"; elif echo \"$f\" | grep -q '/sanity/schemaTypes/'; then msg=\"VAULT → Sanity şema değişti (${name}) — concepts/sanity-veri-katmani.md güncelle\"; elif echo \"$f\" | grep -qE '/lib/queries|/lib/sanity-fetchers'; then msg=\"VAULT → Sanity veri katmanı değişti — concepts/sanity-veri-katmani.md güncelle\"; else msg=\"VAULT → src/ değişti: ${name}\"; fi; jq -n --arg m \"$msg\" '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":$m}}'; fi; } 2>/dev/null || true",
-            "timeout": 5
+            "type": "agent",
+            "prompt": "vault-keeper agent: Projedeki en son değişen kaynak dosyayı vault'a yansıt. Talimatlar .claude/agents/vault-keeper.md dosyasında. Vault: /Users/furkan/style-finden/ — Kaynak: /Users/furkan/meticulhoar/stylefinden/src/"
           }
         ]
       }
