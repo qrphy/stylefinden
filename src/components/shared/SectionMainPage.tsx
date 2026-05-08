@@ -7,6 +7,8 @@ export type CollectionGroup = {
   items: CollectionItem[];
 };
 
+type BreadcrumbItem = { label: string; href?: string };
+
 type Props = {
   hero: {
     eyebrow: string;
@@ -14,12 +16,33 @@ type Props = {
     headingItalic: string;
     description: string;
   };
+  breadcrumb?: BreadcrumbItem[];
   collections: CollectionGroup[];
 };
 
-export default function SectionMainPage({ hero, collections }: Props) {
+export default function SectionMainPage({ hero, breadcrumb, collections }: Props) {
   return (
     <main className="flex-1 bg-white">
+
+      {/* ── Breadcrumb ── */}
+      {breadcrumb && breadcrumb.length > 0 && (
+        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-8 pb-2">
+          <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
+            {breadcrumb.map((crumb, i) => (
+              <span key={i} className="flex items-center gap-2">
+                {i > 0 && <span>/</span>}
+                {crumb.href ? (
+                  <a href={crumb.href} className="hover:text-black transition-colors">
+                    {crumb.label}
+                  </a>
+                ) : (
+                  <span className="text-black">{crumb.label}</span>
+                )}
+              </span>
+            ))}
+          </nav>
+        </div>
+      )}
 
       {/* ── Hero ── */}
       <section className="w-full border-b border-gray-100">
