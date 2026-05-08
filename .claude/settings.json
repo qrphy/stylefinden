@@ -24,6 +24,12 @@
         "matcher": "Write|Edit",
         "hooks": [
           {
+            "type": "command",
+            "command": "python3 /Users/furkan/meticulhoar/stylefinden/.claude/hooks/design-check.py 2>/dev/null || true",
+            "timeout": 5,
+            "statusMessage": "Design check..."
+          },
+          {
             "type": "agent",
             "prompt": "vault-keeper agent: Projedeki en son değişen kaynak dosyayı vault'a yansıt. Talimatlar .claude/agents/vault-keeper.md dosyasında. Vault: /Users/furkan/style-finden/ — Kaynak: /Users/furkan/meticulhoar/stylefinden/src/"
           }
@@ -33,6 +39,12 @@
     "Stop": [
       {
         "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/furkan/meticulhoar/stylefinden/.claude/hooks/session-audit.sh 2>/dev/null || true",
+            "timeout": 30,
+            "statusMessage": "Frontend audit..."
+          },
           {
             "type": "command",
             "command": "{ DATE=$(date +%Y-%m-%d); OUT=\"/Users/furkan/style-finden/raw/gelistirme/${DATE}-session.md\"; CHANGED=$(cd /Users/furkan/meticulhoar/stylefinden && git log --since=\"midnight\" --name-only --pretty=format: 2>/dev/null | grep '^src/' | sort -u | head -15); if [ -n \"$CHANGED\" ] && [ ! -f \"$OUT\" ]; then printf '---\\ntarih: %s\\nkonu: Otomatik oturum kaydı\\nstatus: draft\\n---\\n\\n# %s — Oturum Kaydı\\n\\n> Tamamlamak için bir sonraki oturumda: \"%s raw özetini tamamla\"\\n\\n## Değişen dosyalar\\n\\n' \"$DATE\" \"$DATE\" \"$DATE\" > \"$OUT\"; echo \"$CHANGED\" | while read -r line; do printf '- `%s`\\n' \"$line\"; done >> \"$OUT\"; jq -n --arg d \"$DATE\" '{\"systemMessage\": (\"📝 raw/gelistirme/\" + $d + \"-session.md oluşturuldu\")}'; fi; } 2>/dev/null || true",
