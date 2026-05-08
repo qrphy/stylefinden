@@ -73,6 +73,16 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
     { id: 7, title: "Tie-Dye & Wide Leg",       subtitle: "Retro & Bold",        tag: "Trending", style: "Bold",     href: "/outfits/tie-dye-wide-leg"       },
     { id: 8, title: "Western Fringe Jacket",    subtitle: "Statement Look",      tag: "New",      style: "Fringe",   href: "/outfits/western-fringe-jacket"  },
   ],
+  "sport": [
+    { id: 1, title: "Sportive Tennis Outfit",   subtitle: "Court & Active",        tag: "Trending", style: "Sporty",      href: "/outfits/sportive-tennis-outfit"  },
+    { id: 2, title: "Athleisure City Look",      subtitle: "Gym to Street",         tag: "Popular",  style: "Athleisure",  href: "/outfits/athleisure-city-look"    },
+    { id: 3, title: "Trail Running Set",         subtitle: "Outdoor & Trail",       tag: "New",      style: "Running",     href: "/outfits/trail-running-set"       },
+    { id: 4, title: "Yoga Studio Outfit",        subtitle: "Studio & Wellness",     tag: "Trending", style: "Sporty",      href: "/outfits/yoga-studio-outfit"      },
+    { id: 5, title: "Hiking Chic Look",          subtitle: "Mountain & Nature",     tag: "Popular",  style: "Outdoor",     href: "/outfits/hiking-chic-look"        },
+    { id: 6, title: "Cycling Style Outfit",      subtitle: "Bike & Urban Active",   tag: "New",      style: "Activewear",  href: "/outfits/cycling-style-outfit"    },
+    { id: 7, title: "Beach Volleyball Look",     subtitle: "Beach & Active",        tag: "Trending", style: "Sporty",      href: "/outfits/beach-volleyball-look"   },
+    { id: 8, title: "Weekend Sporty Casual",     subtitle: "Athleisure & Relax",   tag: "New",      style: "Athleisure",  href: "/outfits/weekend-sporty-casual"   },
+  ],
   "date-night": [
     { id: 1, title: "Wrap Satin Midi",         subtitle: "Dinner & Romance",    tag: "Trending", style: "Midi",     href: "/outfits/wrap-satin-midi"        },
     { id: 2, title: "Floral Midi Dress",        subtitle: "Café & Stroll",       tag: "Popular",  style: "Romantic", href: "/outfits/floral-date-midi"       },
@@ -319,6 +329,53 @@ const occasions: Record<string, Omit<CategoryData, 'outfits'>> = {
       description:
         "Discover curated festival outfits: boho dresses, denim looks, fringe styles and playful combinations for open air events, concerts and outdoor occasions.",
       keywords: ["Festival Outfit Women", "Open Air Outfit", "Boho Festival Look", "Concert Outfit", "Festival Fashion", "Outdoor Outfit", "Summer Festival Outfit", "Fringe Outfit"],
+    },
+  },
+
+  "sport": {
+    label: "Sport & Outdoor",
+    subtitle: "Active & Functional",
+    description:
+      "Athletic, functional and stylish – discover curated sport and outdoor outfits for the gym, trail, court and active lifestyle.",
+    accent: "bg-[#e8f5e9]",
+    accentText: "text-[#2e7d32]",
+    tipTitle: "Performance meets style,",
+    tipBody:
+      "The best sport outfit moves with you – breathable fabrics, the right fit and a touch of personal style.",
+    tipTags: ["Athleisure", "Running", "Outdoor", "Active"],
+    filters: ["All", "Athleisure", "Running", "Tennis", "Yoga", "Hiking", "Activewear"],
+    outfitGridLabel: "Latest Sport & Outdoor Looks",
+    styleGuideHref: "/blog/occasion-guides/sport-style-guide",
+    stats: [
+      { value: "40+", label: "Looks" },
+      { value: "4", label: "Styles" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Casual & Everyday", href: "/outfits/occasion/casual",      accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
+      { label: "Festival & Outdoor", href: "/outfits/occasion/festival",   accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Street Style",       href: "/outfits/style/streetstyle",   accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Summer Dresses",     href: "/outfits/season/summer",       accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+    ],
+    faqs: [
+      {
+        q: "How do you make an athleisure look stylish?",
+        a: "The key is fit and fabric quality. Well-fitting leggings or joggers paired with a structured crop or oversized hoodie, plus clean sneakers and minimal accessories, elevate athleisure from gym to street instantly.",
+      },
+      {
+        q: "What do you wear for outdoor activities like hiking?",
+        a: "Layering is essential: a moisture-wicking base layer, a lightweight mid-layer and a wind-resistant outer shell. Functional trousers or shorts in stretch fabric, trail shoes and a small backpack complete a practical yet stylish outdoor look.",
+      },
+      {
+        q: "Which fabrics work best for sport outfits?",
+        a: "Look for moisture-wicking synthetics like polyester and nylon blends for high-intensity activities. For yoga and casual gym sessions, soft cotton-elastane blends offer comfort and flexibility. Merino wool is excellent for outdoor activities – it regulates temperature and resists odor.",
+      },
+    ],
+    seo: {
+      title: "Sport & Outdoor Outfits – Athletic & Stylish Looks",
+      description:
+        "Discover curated sport and outdoor outfits: athleisure looks, tennis outfits, hiking styles and activewear combinations for every active lifestyle.",
+      keywords: ["Sport Outfit Women", "Athleisure Outfit", "Tennis Outfit", "Gym Outfit", "Outdoor Outfit Women", "Active Style", "Sport Fashion", "Activewear Look"],
     },
   },
 

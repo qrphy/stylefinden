@@ -95,6 +95,16 @@ export default function OccasionIndexPage() {
               active: true,
             },
             {
+              slug: "sport",
+              label: "Sport & Outdoor",
+              description: "Athletic, functional and stylish – for the gym, trail, court and active lifestyle",
+              tags: ["Athleisure", "Tennis", "Outdoor", "Active"],
+              badge: "New",
+              accent: "bg-[#e8f5e9]",
+              accentText: "text-[#2e7d32]",
+              active: true,
+            },
+            {
               slug: "date-night",
               label: "Date Night",
               description: "Romantic and confident looks for unforgettable evenings",

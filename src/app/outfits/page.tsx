@@ -48,6 +48,7 @@ const collections: CollectionGroup[] = [
       { slug: "casual",     label: "Casual & Everyday", description: "Comfortable, stylish everyday looks for relaxed days",                  tags: ["Denim", "Basics", "Comfort", "Layering"],      badge: "New", accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]", active: true },
       { slug: "beach",      label: "Beach & Vacation",  description: "Beach vibes, cover-ups and summery vacation looks",                     tags: ["Linen", "Cover-up", "Maxi", "Kaftan"],         badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true },
       { slug: "festival",   label: "Festival & Outdoor",description: "Boho, denim and playful layering looks for open air",                  tags: ["Boho", "Denim", "Fringe", "Floral"],           badge: "New", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]", active: true },
+      { slug: "sport",      label: "Sport & Outdoor", description: "Athletic, functional and stylish – for the gym, trail, court and active lifestyle",     tags: ["Athleisure", "Tennis", "Outdoor", "Active"],           badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true },
       { slug: "date-night", label: "Date Night",        description: "Romantic and confident looks for unforgettable evenings",               tags: ["Midi", "Romantic", "Bold", "Feminine"],        badge: "New", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]", active: true },
     ],
   },
