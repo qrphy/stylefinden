@@ -90,22 +90,22 @@ export default function HairstyleDetail({ hairstyle }: Props) {
             {/* Badges */}
             <div className="flex flex-wrap gap-1.5">
               {hairstyle.type && (
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-widest uppercase bg-black text-white">
+                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-black text-white">
                   {hairstyleTypeLabel[hairstyle.type] ?? hairstyle.type}
                 </span>
               )}
               {hairstyle.length && (
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
+                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
                   {hairstyleLengthLabel[hairstyle.length] ?? hairstyle.length}
                 </span>
               )}
               {hairstyle.mood && (
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-widest uppercase border border-gray-200 text-gray-600">
+                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase border border-gray-200 text-gray-600">
                   {hairstyleMoodLabel[hairstyle.mood] ?? hairstyle.mood}
                 </span>
               )}
               {hairstyle.occasion && (
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-widest uppercase bg-gray-50 text-gray-500 border border-gray-200">
+                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-50 text-gray-500 border border-gray-200">
                   {hairstyleOccasionLabel[hairstyle.occasion] ?? hairstyle.occasion}
                 </span>
               )}

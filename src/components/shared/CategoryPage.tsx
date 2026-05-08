@@ -3,6 +3,7 @@
 // Sayfanın tüm içeriği data prop'u üzerinden gelir; bileşen tamamen "dumb" (sadece render eder).
 import type { CategoryData } from "@/types/outfit-category";
 import Breadcrumb from "@/components/shared/Breadcrumb";
+import Button from "@/components/shared/Button";
 import FilterBar from "@/components/shared/FilterBar";
 import RelatedGrid from "@/components/shared/RelatedGrid";
 import StyleGuideSection from "@/components/shared/StyleGuideSection";
@@ -111,15 +112,14 @@ export default function CategoryPage({
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Curated Selection</span>
               <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">{data.outfitGridLabel}</h2>
             </div>
-            <a
+            <Button
+              variant="ghost"
               href={`/${categoryLink.href.split("/")[1]}`}
-              className="self-start sm:self-auto flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 group"
+              arrow
+              className="self-start sm:self-auto shrink-0"
             >
               View All
-              <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
+            </Button>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
@@ -149,12 +149,9 @@ export default function CategoryPage({
           </div>
 
           <div className="flex justify-center mt-12">
-            <a
-              href={`/${categoryLink.href.split("/")[1]}?${loadMoreParam}=${slug}`}
-              className="px-10 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200"
-            >
+            <Button variant="outline" href={`/${categoryLink.href.split("/")[1]}?${loadMoreParam}=${slug}`} size="lg">
               Load More {data.label}
-            </a>
+            </Button>
           </div>
 
         </div>

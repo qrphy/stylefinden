@@ -55,7 +55,7 @@ const INVERT_STYLES: Record<Variant, string> = {
 }
 
 const SIZE_STYLES: Record<Size, string> = {
-  sm: "px-5 py-2",
+  sm: "px-5 py-2.5",
   md: "px-8 py-3",
   lg: "px-10 py-3",
 }

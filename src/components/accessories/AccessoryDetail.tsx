@@ -84,12 +84,12 @@ export default function AccessoryDetail({ item }: Props) {
             {/* Badges */}
             <div className="flex flex-wrap gap-1.5">
               {item.type && (
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-widest uppercase bg-black text-white">
+                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-black text-white">
                   {accessoryTypeLabel[item.type] ?? item.type}
                 </span>
               )}
               {item.occasion && (
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
+                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
                   {accessoryOccasionLabel[item.occasion] ?? item.occasion}
                 </span>
               )}
@@ -110,7 +110,7 @@ export default function AccessoryDetail({ item }: Props) {
             {/* Styling tip */}
             {item.pairingTip && (
               <div className="flex flex-col gap-1.5 p-4 bg-gray-50 border border-gray-100">
-                <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">Styling tip</span>
+                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Styling tip</span>
                 <p className="text-xs text-gray-700 leading-relaxed italic">✦ {item.pairingTip}</p>
               </div>
             )}

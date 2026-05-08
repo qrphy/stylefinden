@@ -50,7 +50,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
 
       {/* ── Hero görsel ── */}
       <section className="w-full bg-white">
-        <div className="relative overflow-hidden bg-gray-100 w-full aspect-[16/7] max-h-[520px]">
+        <div className="relative overflow-hidden bg-gray-100 w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[16/7] md:max-h-[520px]">
           <ImgPlaceholder src={heroUrl} alt={post.title} priority sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
         </div>
@@ -129,7 +129,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
             {post.relatedOutfits && post.relatedOutfits.length > 0 && (
               <div>
                 <h2 className="text-xl font-black text-black tracking-tight mb-6">Related Outfits</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {post.relatedOutfits.map((outfit) => (
                     <a key={outfit._id} href={`/outfits/${outfit.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
@@ -151,7 +151,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
             {post.relatedAccessories && post.relatedAccessories.length > 0 && (
               <div>
                 <h2 className="text-xl font-black text-black tracking-tight mb-6">Related Accessories</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {post.relatedAccessories.map((item) => (
                     <a key={item._id} href={`/accessories/${item.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-square">
@@ -173,7 +173,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
             {post.relatedHairstyles && post.relatedHairstyles.length > 0 && (
               <div>
                 <h2 className="text-xl font-black text-black tracking-tight mb-6">Related Hairstyles</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {post.relatedHairstyles.map((h) => (
                     <a key={h._id} href={`/hairstyles/${h.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">

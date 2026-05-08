@@ -16,7 +16,7 @@ export default function RelatedGrid({ items, title = "Similar Categories" }: Pro
           <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">{title}</h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
           {items.map((cat) => (
             <a
               key={cat.label}

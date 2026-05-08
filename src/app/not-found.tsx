@@ -1,4 +1,6 @@
 // Bulunamayan sayfa (404) — Next.js bu bileşeni geçersiz rotalar için otomatik render eder.
+import Button from "@/components/shared/Button";
+
 export default function NotFound() {
   return (
     <div className="flex-1 flex items-center justify-center bg-white px-6 py-24 md:py-32">
@@ -26,18 +28,12 @@ export default function NotFound() {
 
         {/* Ana sayfa ve Outfits'e birincil yönlendirme butonları */}
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-          <a
-            href="/"
-            className="w-full sm:w-auto px-8 py-3 bg-black text-white text-xs font-semibold tracking-widest uppercase hover:bg-gray-800 transition-colors duration-200 text-center"
-          >
+          <Button variant="primary" href="/" className="w-full sm:w-auto justify-center">
             Go to Homepage
-          </a>
-          <a
-            href="/outfits"
-            className="w-full sm:w-auto px-8 py-3 border border-black text-black text-xs font-semibold tracking-widest uppercase hover:bg-black hover:text-white transition-colors duration-200 text-center"
-          >
+          </Button>
+          <Button variant="outline" href="/outfits" className="w-full sm:w-auto justify-center">
             Discover Outfits
-          </a>
+          </Button>
         </div>
 
         {/* Tüm ana kategorilere hızlı erişim linkleri */}
