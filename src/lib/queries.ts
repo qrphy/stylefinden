@@ -15,7 +15,7 @@ export const OUTFITS_QUERY = defineQuery(`
 export const OUTFIT_QUERY = defineQuery(`
   *[_type == "outfit" && slug.current == $slug][0] {
     _id, title, "slug": slug.current, description, image, style, season, occasion,
-    pieces[]{ _key, type, name, description, image, affiliateUrl },
+    pieces[]{ _key, type, name, colorTag, itemTag, description, image, affiliateUrl },
     tags, publishedAt
   }
 `)
@@ -24,6 +24,21 @@ export const OUTFIT_QUERY = defineQuery(`
 export const SIMILAR_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current) && _id != $id && (style == $style || occasion == $occasion)] | order(_createdAt desc) [0...4] {
     _id, title, "slug": slug.current, image, style, occasion
+  }
+`)
+
+// OUTFITS_BY_PIECE_TAGS_QUERY: Aynı renk veya öğe kategorisine sahip parçası olan outfitler
+// $colors: string[] — mevcut outfit parçalarının colorTag'leri
+// $items: string[]  — mevcut outfit parçalarının itemTag'leri
+export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
+  *[
+    _type == "outfit" &&
+    defined(slug.current) &&
+    _id != $id &&
+    count(pieces[defined(colorTag) && colorTag in $colors]) + count(pieces[defined(itemTag) && itemTag in $items]) > 0
+  ] | order(_createdAt desc) [0...8] {
+    _id, title, "slug": slug.current, image, style, occasion,
+    "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag }
   }
 `)
 

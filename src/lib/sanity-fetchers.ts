@@ -7,6 +7,7 @@ import { client } from '@/sanity/lib/client'
 import {
   OUTFIT_QUERY,
   SIMILAR_OUTFITS_QUERY,
+  OUTFITS_BY_PIECE_TAGS_QUERY,
   HAIRSTYLE_QUERY,
   ACCESSORY_QUERY,
   TREND_QUERY,
@@ -18,6 +19,10 @@ const OPTS = (tag: string) => ({ next: { revalidate: 3600, tags: [tag] } })
 export const getOutfit        = cache((slug: string) => client.fetch(OUTFIT_QUERY,    { slug }, OPTS('outfit')))
 export const getSimilarOutfits = cache((id: string, style: string, occasion: string) =>
   client.fetch(SIMILAR_OUTFITS_QUERY, { id, style: style ?? '', occasion: occasion ?? '' }, OPTS('outfit'))
+)
+
+export const getOutfitsByPieceTags = cache((id: string, colors: string[], items: string[]) =>
+  client.fetch(OUTFITS_BY_PIECE_TAGS_QUERY, { id, colors, items }, OPTS('outfit'))
 )
 export const getHairstyle = cache((slug: string) => client.fetch(HAIRSTYLE_QUERY, { slug }, OPTS('hairstyle')))
 export const getAccessory = cache((slug: string) => client.fetch(ACCESSORY_QUERY, { slug }, OPTS('accessory')))

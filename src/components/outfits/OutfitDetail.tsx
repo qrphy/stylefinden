@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
@@ -6,6 +7,8 @@ export type OutfitPiece = {
   _key?: string
   type?: string
   name: string
+  colorTag?: string
+  itemTag?: string
   description?: string
   image?: object
   affiliateUrl?: string
@@ -24,8 +27,19 @@ export type OutfitDetailData = {
   tags?: string[]
 }
 
+export type RelatedByPieceOutfit = {
+  _id: string
+  title: string
+  slug: string
+  image?: object
+  style?: string
+  occasion?: string
+  matchedPieces?: { name: string; colorTag?: string; itemTag?: string }[]
+}
+
 type Props = {
   outfit: OutfitDetailData
+  outfitsByPieces?: RelatedByPieceOutfit[]
 }
 
 const SHOP_GROUPS = [
@@ -35,7 +49,7 @@ const SHOP_GROUPS = [
   { key: "accessories", label: "Bags & Accessories", types: ["bag", "accessory", "other"] },
 ]
 
-export default function OutfitDetail({ outfit }: Props) {
+export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
   const imageUrl = outfit.image
     ? urlFor(outfit.image).width(800).height(1067).url()
     : undefined
@@ -288,6 +302,67 @@ export default function OutfitDetail({ outfit }: Props) {
                       })}
                     </div>
                   </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Complete Your Look ──────────────────────────────────────────────── */}
+      {outfitsByPieces.length > 0 && (
+        <section className="border-t border-gray-100">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+            <div className="flex flex-col gap-2 mb-8">
+              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+                You might also like
+              </span>
+              <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
+                Outfits With Similar Pieces
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+              {outfitsByPieces.map((related) => {
+                const imgUrl = related.image
+                  ? urlFor(related.image).width(600).height(800).url()
+                  : undefined
+                const matched = related.matchedPieces?.[0]
+                return (
+                  <Link
+                    key={related._id}
+                    href={`/outfits/${related.slug}`}
+                    className="group flex flex-col gap-3"
+                    aria-label={related.title}
+                  >
+                    <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden border border-gray-100 group-hover:border-gray-300 transition-colors duration-200">
+                      <ImgPlaceholder
+                        src={imgUrl}
+                        alt={related.title}
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <span className="flex items-center gap-1.5 px-4 py-1.5 bg-black text-white text-[10px] font-semibold tracking-widest uppercase whitespace-nowrap">
+                          View Look
+                          <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current" fill="none" strokeWidth={2.5}>
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5">
+                      <span className="text-xs font-black text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
+                        {related.title}
+                      </span>
+                      {matched && (
+                        <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 line-clamp-1">
+                          {matched.name}
+                        </span>
+                      )}
+                    </div>
+                  </Link>
                 )
               })}
             </div>

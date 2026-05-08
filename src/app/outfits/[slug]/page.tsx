@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
-import { getOutfit } from "@/lib/sanity-fetchers"
+import { getOutfit, getOutfitsByPieceTags } from "@/lib/sanity-fetchers"
 import OutfitDetail from "@/components/outfits/OutfitDetail"
 
 type Props = { params: Promise<{ slug: string }> }
@@ -29,5 +29,13 @@ export default async function OutfitPage({ params }: Props) {
   const outfit = await getOutfit(slug)
   if (!outfit) notFound()
 
-  return <OutfitDetail outfit={outfit} />
+  const pieces = (outfit.pieces ?? []) as Array<{ colorTag?: string; itemTag?: string }>
+  const colors = [...new Set(pieces.map((p) => p.colorTag).filter((c): c is string => Boolean(c)))]
+  const items  = [...new Set(pieces.map((p) => p.itemTag).filter((i): i is string => Boolean(i)))]
+
+  const outfitsByPieces = (colors.length > 0 || items.length > 0)
+    ? await getOutfitsByPieceTags(outfit._id, colors, items)
+    : []
+
+  return <OutfitDetail outfit={outfit} outfitsByPieces={outfitsByPieces ?? []} />
 }
