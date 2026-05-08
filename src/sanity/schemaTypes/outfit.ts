@@ -165,6 +165,7 @@ export const outfit = defineType({
               title: 'Satın Alma Linki',
               type: 'url',
               description: 'Affiliate veya mağaza linki. Görsele tıklandığında yeni sekmede açılır.',
+              validation: (r) => r.required(),
             }),
           ],
           preview: {

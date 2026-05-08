@@ -59,6 +59,13 @@ export const accessory = defineType({
     }),
     defineField({ name: 'pairingTip', title: 'Pairing Tip', type: 'text', rows: 2 }),
     defineField({
+      name: 'affiliateUrl',
+      title: 'Satın Alma Linki',
+      type: 'url',
+      description: 'Affiliate veya mağaza linki. Link olmadan yayına alınamaz.',
+      validation: (r) => r.required(),
+    }),
+    defineField({
       name: 'tags',
       type: 'array',
       of: [defineArrayMember({ type: 'string' })],
