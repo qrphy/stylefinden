@@ -61,6 +61,13 @@ Eğer sadece soru yanıtlandıysa ve hiçbir şey değişmediyse bu bölümü ek
 
 Tüm agent'lar `.claude/agents/`, skill'ler `.claude/skills/` altında. Aşağıdaki koşullar oluştuğunda ilgili agent'ı oku ve o rolü üstlen ya da skill'i çalıştır.
 
+### İçerik ve koleksiyon yönetimi
+
+| Koşul | Agent / Skill |
+|-------|--------------|
+| Yeni occasion, style, trend, blog kategorisi eklenecek | `collection-manager` agent |
+| Koleksiyon ekleme rehberi isteniyor | `/new-outfit-collection` skill |
+
 ### Geliştirme akışı
 
 | Koşul | Agent / Skill |
