@@ -5,12 +5,26 @@ import FeaturedOutfits from "@/components/sections/home/FeaturedOutfits"
 import JsonLd from "@/components/seo/JsonLd"
 
 export const metadata: Metadata = {
-  title: "STYLEFINDEN — Fashion Outfits, Hairstyles & Accessories",
-  description: "Discover curated outfits, hairstyles and accessories for every occasion and style. Your go-to fashion platform for modern women.",
+  title: "STYLEFINDEN — Outfit Ideas, Hairstyles & Fashion Trends for Women",
+  description: "Discover outfit ideas, hairstyles and accessories for every occasion and style. From casual outfits to party looks — your go-to fashion platform for modern women.",
+  keywords: [
+    "outfit ideas for women",
+    "women outfit ideas",
+    "casual outfits",
+    "cute outfits",
+    "party outfit ideas",
+    "summer outfits",
+    "aesthetic outfits",
+    "street style",
+    "fashion trends 2026",
+    "hairstyle ideas",
+    "style inspiration",
+    "women fashion",
+  ],
   alternates: { canonical: "https://stylefinden.com" },
   openGraph: {
-    title: "STYLEFINDEN — Fashion Outfits, Hairstyles & Accessories",
-    description: "Curated outfits, hairstyles and accessories for every style and occasion.",
+    title: "STYLEFINDEN — Outfit Ideas, Hairstyles & Fashion Trends for Women",
+    description: "Outfit ideas, hairstyles and accessories for every style and occasion — from casual looks to party outfits.",
     url: "https://stylefinden.com",
     type: "website",
     siteName: "STYLEFINDEN",
@@ -19,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "STYLEFINDEN — Fashion Outfits, Hairstyles & Accessories",
-    description: "Curated outfits, hairstyles and accessories for every style and occasion.",
+    title: "STYLEFINDEN — Outfit Ideas, Hairstyles & Fashion Trends for Women",
+    description: "Outfit ideas, hairstyles and accessories for every style and occasion — from casual looks to party outfits.",
     images: ["/stylefinden-logo.png"],
   },
 }

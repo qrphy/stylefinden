@@ -4,13 +4,28 @@ import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
 
 export const metadata: Metadata = {
-  title: "Hairstyles – Cuts, Styles & Looks for Every Occasion",
+  title: "Hairstyle Ideas – Braids, Buns, Waves & Hair Cuts for Women",
   description:
-    "Discover curated hairstyle collections for every hair type and occasion – from braids and buns to everyday looks and wedding styles.",
+    "Explore hairstyle ideas for every hair type and occasion — braided hairstyles, buns, soft waves, curls and trending hair cuts for women.",
+  keywords: [
+    "hairstyle ideas",
+    "hair style women",
+    "braided hairstyles",
+    "hair cut style",
+    "bun hairstyles",
+    "wave hairstyles",
+    "curly hairstyles",
+    "hair style for girls",
+    "short haircut women",
+    "long hair ideas",
+    "easy hairstyles",
+    "wedding hairstyles",
+    "hair trends 2026",
+  ],
   alternates: { canonical: "https://stylefinden.com/hairstyles" },
   openGraph: {
-    title: "Hairstyles – Cuts & Styles for Every Occasion | STYLEFINDEN",
-    description: "Curated hairstyle collections for every hair type and occasion.",
+    title: "Hairstyle Ideas – Braids, Buns, Waves & Hair Cuts for Women | STYLEFINDEN",
+    description: "Hairstyle ideas for every hair type — braids, buns, waves and hair cuts for women.",
     url: "https://stylefinden.com/hairstyles",
     type: "website",
     locale: "en_US",
@@ -19,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hairstyles – Cuts & Styles for Every Occasion | STYLEFINDEN",
-    description: "Curated hairstyle collections for every hair type and occasion.",
+    title: "Hairstyle Ideas – Braids, Buns, Waves & Hair Cuts for Women | STYLEFINDEN",
+    description: "Hairstyle ideas for every hair type — braids, buns, waves and hair cuts for women.",
     images: ["/stylefinden-logo.png"],
   },
 };

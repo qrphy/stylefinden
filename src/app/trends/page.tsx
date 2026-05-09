@@ -9,13 +9,33 @@ import {
 } from "@/lib/trend-collection-config";
 
 export const metadata: Metadata = {
-  title: "Trends – What's Hot in Fashion Right Now",
+  title: "Fashion Trends 2026 – Street Style, Aesthetic & Style Inspiration",
   description:
-    "Discover the latest fashion trends – from seasonal must-haves and style aesthetics to emerging looks in outfits, hairstyles and accessories.",
+    "Discover fashion trends for 2026 — street style, aesthetic outfits, old money looks, y2k fashion and seasonal style inspiration curated by category.",
+  keywords: [
+    "fashion trends 2026",
+    "street style",
+    "aesthetic outfits",
+    "style trends",
+    "old money outfits",
+    "old money style",
+    "y2k outfits",
+    "vintage style",
+    "retro style",
+    "90s outfits",
+    "80s outfits",
+    "clean girl style",
+    "scene outfits",
+    "chic style",
+    "grunge style",
+    "boho style",
+    "korean outfits",
+    "streetwear style",
+  ],
   alternates: { canonical: "https://stylefinden.com/trends" },
   openGraph: {
-    title: "Trends – What's Hot in Fashion Right Now | STYLEFINDEN",
-    description: "The latest fashion trends curated by season, aesthetic and category.",
+    title: "Fashion Trends 2026 – Street Style, Aesthetic & Style Inspiration | STYLEFINDEN",
+    description: "Fashion trends 2026 — street style, aesthetic outfits, old money, y2k and seasonal inspiration.",
     url: "https://stylefinden.com/trends",
     type: "website",
     locale: "en_US",
@@ -24,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trends – What's Hot in Fashion Right Now | STYLEFINDEN",
-    description: "The latest fashion trends curated by season, aesthetic and category.",
+    title: "Fashion Trends 2026 – Street Style, Aesthetic & Style Inspiration | STYLEFINDEN",
+    description: "Fashion trends 2026 — street style, aesthetic outfits, old money, y2k and seasonal inspiration.",
     images: ["/stylefinden-logo.png"],
   },
 };

@@ -9,12 +9,26 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 export const revalidate = 3600
 
 export const metadata: Metadata = {
-  title: "Blog – Style Tips, Trend Reports & Fashion Guides",
-  description: "Styling tips, trend reports, hairstyle guides and seasonal inspiration — everything about fashion on STYLEFINDEN.",
+  title: "Fashion Blog – How to Style, Trend Reports & Outfit Guides",
+  description: "Fashion tips, how-to-style guides, trend reports and hairstyle inspiration — practical outfit ideas and seasonal fashion advice for women.",
+  keywords: [
+    "how to style",
+    "fashion tips",
+    "outfit guides",
+    "trend reports",
+    "style guide women",
+    "hairstyle guides",
+    "outfit inspiration",
+    "fashion blog",
+    "what to wear",
+    "seasonal fashion",
+    "capsule wardrobe",
+    "how to dress",
+  ],
   alternates: { canonical: "https://stylefinden.com/blog" },
   openGraph: {
-    title: "Blog – Style Tips, Trend Reports & Fashion Guides | STYLEFINDEN",
-    description: "Styling tips, trend reports, hairstyle guides and seasonal fashion inspiration.",
+    title: "Fashion Blog – How to Style, Trend Reports & Outfit Guides | STYLEFINDEN",
+    description: "Fashion tips, how-to-style guides, trend reports and seasonal outfit inspiration for women.",
     url: "https://stylefinden.com/blog",
     type: "website",
     siteName: "STYLEFINDEN",
@@ -23,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog – Style Tips, Trend Reports & Fashion Guides | STYLEFINDEN",
-    description: "Styling tips, trend reports, hairstyle guides and seasonal fashion inspiration.",
+    title: "Fashion Blog – How to Style, Trend Reports & Outfit Guides | STYLEFINDEN",
+    description: "Fashion tips, how-to-style guides, trend reports and seasonal outfit inspiration for women.",
     images: ["/stylefinden-logo.png"],
   },
 }

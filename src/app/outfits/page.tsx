@@ -6,13 +6,34 @@ import { OCCASION_ORDER, getOccasionCard } from "@/lib/outfit-occasion-config"
 import { STYLE_ORDER, getStyleCard } from "@/lib/outfit-style-config"
 
 export const metadata: Metadata = {
-  title: "Outfits – Looks for Every Occasion & Style",
+  title: "Outfit Ideas for Women – Casual, Party & Summer Looks",
   description:
-    "Discover curated outfit collections for every season, every style and every occasion – from summer dresses to elegant evening looks.",
+    "Browse outfit ideas for women for every occasion and season — casual outfits, party looks, summer dresses, winter layers and more. New styles added weekly.",
+  keywords: [
+    "outfit ideas for women",
+    "women outfit ideas",
+    "casual outfits",
+    "cute outfits",
+    "party outfit ideas",
+    "summer outfits",
+    "winter outfits",
+    "spring outfits",
+    "autumn outfit ideas",
+    "date outfit ideas",
+    "concert outfit ideas",
+    "festival outfit ideas",
+    "wedding guest outfit ideas",
+    "work outfit ideas",
+    "aesthetic outfits",
+    "street style",
+    "vintage style",
+    "old money outfits",
+    "y2k outfits",
+  ],
   alternates: { canonical: "https://stylefinden.com/outfits" },
   openGraph: {
-    title: "Outfits – Looks for Every Occasion & Style | STYLEFINDEN",
-    description: "Curated outfit collections for every season and every occasion.",
+    title: "Outfit Ideas for Women – Casual, Party & Summer Looks | STYLEFINDEN",
+    description: "Outfit ideas for every season and occasion — casual, party, summer, winter and more.",
     url: "https://stylefinden.com/outfits",
     type: "website",
     locale: "en_US",
@@ -21,8 +42,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Outfits – Looks for Every Occasion & Style | STYLEFINDEN",
-    description: "Curated outfit collections for every season and every occasion.",
+    title: "Outfit Ideas for Women – Casual, Party & Summer Looks | STYLEFINDEN",
+    description: "Outfit ideas for every season and occasion — casual, party, summer, winter and more.",
     images: ["/stylefinden-logo.png"],
   },
 }

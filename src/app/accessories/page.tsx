@@ -4,13 +4,26 @@ import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
 
 export const metadata: Metadata = {
-  title: "Accessories – Bags, Jewelry, Shoes & More",
+  title: "Fashion Accessories – Jewelry Trends, Bags & Shoes for Women",
   description:
-    "Discover curated accessories for every style and occasion – from classic handbags and statement jewelry to shoes, scarves and seasonal must-haves.",
+    "Shop fashion accessories for every outfit — jewelry trends, handbags, shoes and scarves. Curated accessories ideas to complete your look.",
+  keywords: [
+    "jewelry trends 2026",
+    "accessories ideas",
+    "handbag trends",
+    "shoe trends 2026",
+    "fashion accessories women",
+    "statement jewelry",
+    "gold jewelry outfit",
+    "earring trends",
+    "bags and handbags",
+    "accessories outfit",
+    "scarves style",
+  ],
   alternates: { canonical: "https://stylefinden.com/accessories" },
   openGraph: {
-    title: "Accessories – Bags, Jewelry, Shoes & More | STYLEFINDEN",
-    description: "Curated accessories collections: bags, jewelry, shoes and scarves for every outfit.",
+    title: "Fashion Accessories – Jewelry Trends, Bags & Shoes for Women | STYLEFINDEN",
+    description: "Jewelry trends, handbags, shoes and scarves — accessories to complete every outfit.",
     url: "https://stylefinden.com/accessories",
     type: "website",
     locale: "en_US",
@@ -19,8 +32,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Accessories – Bags, Jewelry, Shoes & More | STYLEFINDEN",
-    description: "Curated accessories collections: bags, jewelry, shoes and scarves for every outfit.",
+    title: "Fashion Accessories – Jewelry Trends, Bags & Shoes for Women | STYLEFINDEN",
+    description: "Jewelry trends, handbags, shoes and scarves — accessories to complete every outfit.",
     images: ["/stylefinden-logo.png"],
   },
 };
