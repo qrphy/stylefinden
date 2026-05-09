@@ -1,5 +1,6 @@
 ---
 name: piece-enricher
+model: haiku
 description: Outfit parçalarını analiz ederek colorTag ve itemTag alanlarını otomatik doldurur. Mevcut outfit'leri toplu işler ya da tek bir outfit'i zenginleştirir. Sanity MCP araçlarını kullanarak doğrudan patch uygular.
 ---
 
