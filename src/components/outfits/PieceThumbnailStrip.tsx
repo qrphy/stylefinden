@@ -4,7 +4,6 @@ type PieceThumbnail = {
   key: string
   name: string
   image?: string
-  affiliateUrl?: string
 }
 
 type Props = {
@@ -20,31 +19,15 @@ export default function PieceThumbnailStrip({ pieces, max = 4 }: Props) {
 
   return (
     <div className="flex items-center gap-1 pt-1.5 border-t border-gray-100">
-      {visible.map((piece) =>
-        piece.affiliateUrl ? (
-          <a
-            key={piece.key}
-            href={piece.affiliateUrl}
-            target="_blank"
-            rel="noopener noreferrer sponsored"
-            aria-label={piece.name}
-            className="shrink-0"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="w-8 h-8 relative bg-gray-100 border border-gray-200 overflow-hidden hover:border-gray-400 transition-colors duration-200">
-              <ImgPlaceholder src={piece.image} alt={piece.name} sizes="32px" />
-            </div>
-          </a>
-        ) : (
-          <div
-            key={piece.key}
-            className="shrink-0 w-8 h-8 relative bg-gray-100 border border-gray-200 overflow-hidden"
-            title={piece.name}
-          >
-            <ImgPlaceholder src={piece.image} alt={piece.name} sizes="32px" />
-          </div>
-        )
-      )}
+      {visible.map((piece) => (
+        <div
+          key={piece.key}
+          className="shrink-0 w-8 h-8 relative bg-gray-100 border border-gray-200 overflow-hidden"
+          title={piece.name}
+        >
+          <ImgPlaceholder src={piece.image} alt={piece.name} sizes="32px" />
+        </div>
+      ))}
       {overflow > 0 && (
         <div className="shrink-0 w-8 h-8 bg-gray-100 border border-gray-200 flex items-center justify-center">
           <span className="text-[9px] font-semibold text-gray-400 leading-none">+{overflow}</span>
