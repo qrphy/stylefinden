@@ -22,6 +22,7 @@ function toItem(o: {
   occasion?: string
   tags?: string[]
   featured?: boolean
+  pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }>
 }): OutfitItem {
   return {
     id: o._id,
@@ -31,6 +32,12 @@ function toItem(o: {
     style: o.style ?? "",
     image: o.image ? urlFor(o.image).width(400).height(533).url() : undefined,
     href: `/outfits/${o.slug}`,
+    pieces: o.pieces?.map((p, i) => ({
+      key: p._key ?? String(i),
+      name: p.name,
+      image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
+      affiliateUrl: p.affiliateUrl,
+    })),
   }
 }
 

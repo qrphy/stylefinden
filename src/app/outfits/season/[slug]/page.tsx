@@ -10,7 +10,11 @@ import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
 
 // Sanity dökümanını CategoryPage'in beklediği OutfitItem şekline dönüştürür
-function toItem(o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }): OutfitItem {
+function toItem(o: {
+  _id: string; title: string; slug: string; image?: object; style?: string;
+  season?: string; occasion?: string; tags?: string[]; featured?: boolean;
+  pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }>
+}): OutfitItem {
   return {
     id: o._id,
     title: o.title,
@@ -19,6 +23,12 @@ function toItem(o: { _id: string; title: string; slug: string; image?: object; s
     style: o.style ?? '',
     image: o.image ? urlFor(o.image).width(400).height(533).url() : undefined,
     href: `/outfits/${o.slug}`,
+    pieces: o.pieces?.map((p, i) => ({
+      key: p._key ?? String(i),
+      name: p.name,
+      image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
+      affiliateUrl: p.affiliateUrl,
+    })),
   }
 }
 

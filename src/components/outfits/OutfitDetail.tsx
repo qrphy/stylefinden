@@ -3,6 +3,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
+import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip"
 
 export type OutfitPiece = {
   _key?: string
@@ -36,6 +37,7 @@ export type RelatedByPieceOutfit = {
   style?: string
   occasion?: string
   matchedPieces?: { name: string; colorTag?: string; itemTag?: string }[]
+  pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }>
 }
 
 type Props = {
@@ -356,6 +358,14 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                           {matched.name}
                         </span>
                       )}
+                      <PieceThumbnailStrip
+                        pieces={related.pieces?.map((p, i) => ({
+                          key: p._key ?? String(i),
+                          name: p.name,
+                          image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
+                          affiliateUrl: p.affiliateUrl,
+                        }))}
+                      />
                     </div>
                   </Link>
                 )

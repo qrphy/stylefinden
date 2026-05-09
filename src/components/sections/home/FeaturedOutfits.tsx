@@ -7,6 +7,7 @@ import { HOME_OUTFITS_QUERY } from "@/lib/queries";
 import { tagColors } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 import Button from "@/components/shared/Button";
+import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip";
 
 const STATIC_OUTFITS: StaticOutfit[] = [
   { id: "1", title: "Casual Chic",       subtitle: "Everyday & Leisure",   tag: "Trending" },
@@ -20,7 +21,8 @@ const STATIC_OUTFITS: StaticOutfit[] = [
 ];
 
 type StaticOutfit = { id: string; title: string; subtitle: string; tag: string }
-type OutfitCard = { id: string; title: string; subtitle: string; tag: string; slug: string; image?: string }
+type PieceThumb = { key: string; name: string; image?: string; affiliateUrl?: string }
+type OutfitCard = { id: string; title: string; subtitle: string; tag: string; slug: string; image?: string; pieces?: PieceThumb[] }
 
 export default async function FeaturedOutfits() {
   const sanityOutfits = await client.fetch(HOME_OUTFITS_QUERY, {}, { next: { revalidate: 3600, tags: ['outfit'] } });
@@ -28,13 +30,19 @@ export default async function FeaturedOutfits() {
   const useSanity = sanityOutfits.length > 0;
 
   const outfits: OutfitCard[] = useSanity
-    ? sanityOutfits.map((o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean }) => ({
+    ? sanityOutfits.map((o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean; pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }> }) => ({
         id: o._id,
         title: o.title,
         subtitle: o.occasion ?? o.season ?? "",
         tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
         slug: o.slug,
         image: o.image ? urlFor(o.image).width(600).height(800).url() : undefined,
+        pieces: o.pieces?.map((p, i) => ({
+          key: p._key ?? String(i),
+          name: p.name,
+          image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
+          affiliateUrl: p.affiliateUrl,
+        })),
       }))
     : STATIC_OUTFITS.map((o) => ({ ...o, slug: o.id, image: undefined }));
 
@@ -67,11 +75,12 @@ export default async function FeaturedOutfits() {
                 </span>
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
               </div>
-              <div className="flex flex-col gap-0.5 px-0.5">
+              <div className="flex flex-col gap-1.5 px-0.5">
                 <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
                   {outfit.title}
                 </h3>
                 <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{outfit.subtitle}</p>
+                <PieceThumbnailStrip pieces={outfit.pieces} />
               </div>
             </a>
           ))}

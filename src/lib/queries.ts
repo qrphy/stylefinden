@@ -38,26 +38,30 @@ export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
     count(pieces[defined(colorTag) && colorTag in $colors]) + count(pieces[defined(itemTag) && itemTag in $items]) > 0
   ] | order(_createdAt desc) [0...8] {
     _id, title, "slug": slug.current, image, style, occasion,
-    "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag }
+    "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag },
+    pieces[]{ _key, name, image, affiliateUrl }
   }
 `)
 
 // Kategori slug sayfalarının Sanity fetch'leri — stil/mevsim/durum filtrelemesi için
 export const OUTFITS_BY_STYLE_QUERY = defineQuery(`
   *[_type == "outfit" && style == $style && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured,
+    pieces[]{ _key, name, image, affiliateUrl }
   }
 `)
 
 export const OUTFITS_BY_SEASON_QUERY = defineQuery(`
   *[_type == "outfit" && season == $season && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured,
+    pieces[]{ _key, name, image, affiliateUrl }
   }
 `)
 
 export const OUTFITS_BY_OCCASION_QUERY = defineQuery(`
   *[_type == "outfit" && occasion == $occasion && defined(slug.current)] | order(_createdAt desc) {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured,
+    pieces[]{ _key, name, image, affiliateUrl }
   }
 `)
 
@@ -168,7 +172,8 @@ export const LATEST_POSTS_QUERY = defineQuery(`
 // ── Ana sayfa highlight sorguları — her bölüm için sınırlı sayıda en yeni içerik ──
 export const HOME_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(_createdAt desc) [0...8] {
-    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured
+    _id, title, "slug": slug.current, image, style, season, occasion, tags, featured,
+    pieces[]{ _key, name, image, affiliateUrl }
   }
 `)
 

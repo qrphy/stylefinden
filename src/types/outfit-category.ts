@@ -1,3 +1,10 @@
+export type PieceThumbnail = {
+  key: string
+  name: string
+  image?: string
+  affiliateUrl?: string
+}
+
 // Kategori slug sayfalarında grid'e yerleştirilen tek bir içerik kartının tipi.
 // Outfit, hairstyle ve accessory kartları bu ortak tip üzerinden CategoryPage'e aktarılır.
 export type OutfitItem = {
@@ -8,6 +15,7 @@ export type OutfitItem = {
   style: string;
   image?: string;
   href: string;
+  pieces?: PieceThumbnail[];
 };
 
 // İlgili kategori kartı — "Similar Categories" bölümünde görünür, RelatedGrid bileşeni tarafından kullanılır.
