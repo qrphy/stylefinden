@@ -55,6 +55,15 @@ export function getStyleConfig(slug: string): StyleConfig {
   return STYLE_CONFIGS[slug] ?? makeDefaultStyleConfig(slug)
 }
 
+const STYLE_IMAGES: Record<string, string> = {
+  boho:          "/categories/outfits/boho.png",
+  streetstyle:   "/categories/outfits/streetstyle.png",
+  "old-money":   "/categories/outfits/old-money.png",
+  "retro-vintage": "/categories/outfits/retro.png",
+  y2k:           "/categories/outfits/y2k.png",
+  western:       "/categories/outfits/western.png",
+}
+
 // CollectionCard için CollectionItem döndürür
 export function getStyleCard(slug: string): CollectionItem {
   const cfg = getStyleConfig(slug)
@@ -67,6 +76,7 @@ export function getStyleCard(slug: string): CollectionItem {
     accent: cfg.accent,
     accentText: cfg.accentText,
     active: true,
+    image: STYLE_IMAGES[slug],
   }
 }
 

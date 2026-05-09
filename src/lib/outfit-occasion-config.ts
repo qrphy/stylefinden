@@ -55,6 +55,15 @@ export function getOccasionConfig(slug: string): OccasionConfig {
   return OCCASION_CONFIGS[slug] ?? makeDefaultOccasionConfig(slug)
 }
 
+const OCCASION_IMAGES: Record<string, string> = {
+  office:  "/categories/outfits/office.jpeg",
+  evening: "/categories/outfits/evening.jpeg",
+  casual:  "/categories/outfits/casual.png",
+  sport:   "/categories/outfits/sport.png",
+  school:  "/categories/outfits/school.png",
+  travel:  "/categories/outfits/travel.jpeg",
+}
+
 // CollectionCard için CollectionItem döndürür
 export function getOccasionCard(slug: string): CollectionItem {
   const cfg = getOccasionConfig(slug)
@@ -67,6 +76,7 @@ export function getOccasionCard(slug: string): CollectionItem {
     accent: cfg.accent,
     accentText: cfg.accentText,
     active: true,
+    image: OCCASION_IMAGES[slug],
   }
 }
 
