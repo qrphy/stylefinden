@@ -133,7 +133,7 @@ export default function CategoryPage({
                     <span className={`px-2 py-1 text-xs font-semibold tracking-widest uppercase ${tagColors[item.tag]}`}>
                       {item.tag}
                     </span>
-                    <span className={`px-2 py-1 text-xs font-semibold tracking-widest uppercase ${safeBadgeClasses}`}>
+                    <span className={`hidden sm:inline-block px-2 py-1 text-xs font-semibold tracking-widest uppercase ${safeBadgeClasses}`}>
                       {item.style}
                     </span>
                   </div>
