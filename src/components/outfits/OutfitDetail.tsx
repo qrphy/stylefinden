@@ -52,6 +52,13 @@ const SHOP_GROUPS = [
   { key: "accessories", label: "Bags & Accessories", types: ["bag", "accessory", "other"] },
 ]
 
+const PIECE_GROUPS = [
+  { key: "tops",        label: "Similar Tops",        tags: ["top", "outerwear"]           },
+  { key: "bottoms",     label: "Similar Bottoms",      tags: ["bottom", "dress"]            },
+  { key: "shoes",       label: "Similar Shoes",        tags: ["shoes"]                      },
+  { key: "accessories", label: "Similar Accessories",  tags: ["bag", "accessory", "other"] },
+]
+
 export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
   const imageUrl = outfit.image
     ? urlFor(outfit.image).width(800).height(1067).url()
@@ -64,6 +71,15 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
     .filter((g) => g.items.length > 0)
 
   const hasShopSection = shopGroups.some((g) => g.items.some((p) => p.affiliateUrl))
+
+  const pieceGroupedOutfits = PIECE_GROUPS
+    .map((g) => ({
+      ...g,
+      outfits: outfitsByPieces.filter((o) =>
+        o.matchedPieces?.some((p) => g.tags.includes(p.itemTag ?? ""))
+      ),
+    }))
+    .filter((g) => g.outfits.length > 0)
 
   return (
     <main>
@@ -104,7 +120,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
           </div>
 
           {/* Sağ — Detaylar */}
-          <div className="flex flex-col justify-center gap-6">
+          <div className="flex flex-col justify-start gap-6">
             {/* Badges */}
             <div className="flex flex-wrap gap-2">
               {outfit.style && (
@@ -136,13 +152,52 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
               </p>
             )}
 
-            {/* Parça sayısı */}
-            {pieces.length > 0 && (
-              <div className="flex items-center gap-3 py-4 border-t border-b border-gray-100">
-                <span className="text-2xl font-black text-black">{pieces.length}</span>
+            {/* Shop the Look — yatay sıra */}
+            {hasShopSection && (
+              <div className="flex flex-col gap-3 py-4 border-t border-b border-gray-100">
                 <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                  pieces in this look
+                  Shop the Look
                 </span>
+                <div className="flex gap-3 overflow-x-auto pb-2 -mx-0.5 px-0.5 [&::-webkit-scrollbar]:h-[3px] [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+                  {shopGroups.flatMap((g) => g.items.filter((p) => p.affiliateUrl)).map((piece, i) => {
+                    const pieceImg = piece.image
+                      ? urlFor(piece.image).width(200).height(250).url()
+                      : undefined
+                    return (
+                      <a
+                        key={piece._key ?? i}
+                        href={piece.affiliateUrl}
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                        className="group flex flex-col gap-1.5 shrink-0 w-[96px]"
+                        aria-label={`Shop ${piece.name}`}
+                      >
+                        <div className="relative w-[96px] h-[120px] bg-white border border-gray-200 overflow-hidden group-hover:border-gray-400 transition-colors duration-200">
+                          <ImgPlaceholder
+                            src={pieceImg}
+                            alt={piece.name}
+                            sizes="96px"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-200" />
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span className="flex items-center gap-1 px-2.5 py-1 bg-white text-black text-[10px] font-bold tracking-widest uppercase">
+                              Shop
+                              <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 stroke-current" fill="none" strokeWidth={2.5}>
+                                <path d="M5 12h14M13 6l6 6-6 6" />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                        <span className="text-[10px] font-semibold text-black tracking-tight leading-snug line-clamp-3 group-hover:text-gray-500 transition-colors">
+                          {piece.name}
+                        </span>
+                      </a>
+                    )
+                  })}
+                </div>
+                <p className="text-[10px] text-gray-400 leading-relaxed">
+                  Affiliate links — supports STYLEFINDEN at no extra cost.
+                </p>
               </div>
             )}
 
@@ -168,149 +223,11 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
         </div>
       </section>
 
-      {/* ── Outfit Pieces ────────────────────────────────────────────────────── */}
-      {pieces.length > 0 && (
+      {/* ── Similar Pieces by Category ──────────────────────────────────────── */}
+      {pieceGroupedOutfits.length > 0 && (
         <section className="border-t border-gray-100">
           <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
-            <div className="flex flex-col gap-2 mb-8">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                What to wear
-              </span>
-              <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-                Outfit Pieces
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {pieces.map((piece, i) => (
-                <div
-                  key={piece._key ?? i}
-                  className="flex items-start gap-4 p-5 bg-gray-50 border border-gray-100"
-                >
-                  <span className="text-xs font-black text-gray-300 tracking-widest mt-0.5 shrink-0">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="flex flex-col gap-1 flex-1 min-w-0">
-                    {piece.type && (
-                      <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                        {piece.type}
-                      </span>
-                    )}
-                    <span className="text-sm font-black text-black tracking-tight">
-                      {piece.name}
-                    </span>
-                    {piece.description && (
-                      <span className="text-xs text-gray-500 leading-relaxed">
-                        {piece.description}
-                      </span>
-                    )}
-                  </div>
-                  {piece.affiliateUrl && (
-                    <a
-                      href={piece.affiliateUrl}
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                      className="shrink-0 self-center text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
-                      aria-label={`Shop ${piece.name}`}
-                    >
-                      Shop →
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── Shop the Look ────────────────────────────────────────────────────── */}
-      {hasShopSection && (
-        <section className="border-t border-gray-100 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-20">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-10">
-              <div className="flex flex-col gap-2">
-                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
-                  Affiliate Links
-                </span>
-                <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
-                  Shop the Look
-                </h2>
-              </div>
-              <p className="text-xs text-gray-400 max-w-xs leading-relaxed">
-                Links may be affiliate links. Clicking and purchasing supports STYLEFINDEN at no extra cost to you.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-12">
-              {shopGroups.map((group) => {
-                const shoppable = group.items.filter((p) => p.affiliateUrl)
-                if (shoppable.length === 0) return null
-                return (
-                  <div key={group.key}>
-                    <div className="flex items-center gap-4 mb-6">
-                      <h3 className="text-xs font-bold tracking-widest uppercase text-black">
-                        {group.label}
-                      </h3>
-                      <div className="flex-1 h-px bg-gray-200" />
-                    </div>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-                      {shoppable.map((piece, i) => {
-                        const pieceImg = piece.image
-                          ? urlFor(piece.image).width(400).height(500).url()
-                          : undefined
-                        return (
-                          <a
-                            key={piece._key ?? i}
-                            href={piece.affiliateUrl}
-                            target="_blank"
-                            rel="noopener noreferrer sponsored"
-                            className="group flex flex-col gap-3"
-                            aria-label={`Shop ${piece.name}`}
-                          >
-                            <div className="relative aspect-[4/5] w-full bg-white border border-gray-200 overflow-hidden group-hover:border-gray-400 transition-colors duration-200">
-                              <ImgPlaceholder
-                                src={pieceImg}
-                                alt={piece.name}
-                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                              />
-                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
-                              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                <span className="flex items-center gap-1.5 px-4 py-1.5 bg-black text-white text-xs font-semibold tracking-widest uppercase whitespace-nowrap">
-                                  Shop
-                                  <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current" fill="none" strokeWidth={2.5}>
-                                    <path d="M5 12h14M13 6l6 6-6 6" />
-                                  </svg>
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                              <span className="text-xs font-black text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
-                                {piece.name}
-                              </span>
-                              {piece.description && (
-                                <span className="text-xs text-gray-400 leading-snug line-clamp-1">
-                                  {piece.description}
-                                </span>
-                              )}
-                            </div>
-                          </a>
-                        )
-                      })}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── Complete Your Look ──────────────────────────────────────────────── */}
-      {outfitsByPieces.length > 0 && (
-        <section className="border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
-            <div className="flex flex-col gap-2 mb-8">
+            <div className="flex flex-col gap-2 mb-10">
               <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
                 You might also like
               </span>
@@ -319,57 +236,77 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {outfitsByPieces.map((related) => {
-                const imgUrl = related.image
-                  ? urlFor(related.image).width(600).height(800).url()
-                  : undefined
-                const matched = related.matchedPieces?.[0]
-                return (
-                  <Link
-                    key={related._id}
-                    href={`/outfits/${related.slug}`}
-                    className="group flex flex-col gap-3"
-                    aria-label={related.title}
-                  >
-                    <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden border border-gray-100 group-hover:border-gray-300 transition-colors duration-200">
-                      <ImgPlaceholder
-                        src={imgUrl}
-                        alt={related.title}
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <span className="flex items-center gap-1.5 px-4 py-1.5 bg-black text-white text-[10px] font-semibold tracking-widest uppercase whitespace-nowrap">
-                          View Look
-                          <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current" fill="none" strokeWidth={2.5}>
-                            <path d="M5 12h14M13 6l6 6-6 6" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-1.5">
-                      <span className="text-xs font-black text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
-                        {related.title}
-                      </span>
-                      {matched && (
-                        <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 line-clamp-1">
-                          {matched.name}
-                        </span>
-                      )}
-                      <PieceThumbnailStrip
-                        pieces={related.pieces?.map((p, i) => ({
-                          key: p._key ?? String(i),
-                          name: p.name,
-                          image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
-                          affiliateUrl: p.affiliateUrl,
-                        }))}
-                      />
-                    </div>
-                  </Link>
-                )
-              })}
+            <div className="flex flex-col gap-10">
+              {pieceGroupedOutfits.map((group) => (
+                <div key={group.key} className="flex flex-col gap-4">
+                  <span className="text-xs font-semibold tracking-widest uppercase text-gray-400 border-b border-gray-100 pb-3">
+                    {group.label}
+                  </span>
+                  <div className="flex gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-[3px] [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+                    {group.outfits.map((related) => {
+                      const imgUrl = related.image
+                        ? urlFor(related.image).width(400).height(533).url()
+                        : undefined
+                      const matched = related.matchedPieces?.[0]
+                      return (
+                        <Link
+                          key={related._id}
+                          href={`/outfits/${related.slug}`}
+                          className="group flex flex-col gap-2 shrink-0 w-[160px] sm:w-[180px]"
+                          aria-label={related.title}
+                        >
+                          <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden border border-gray-100 group-hover:border-gray-300 transition-colors duration-200">
+                            <ImgPlaceholder
+                              src={imgUrl}
+                              alt={related.title}
+                              sizes="180px"
+                            />
+                            <div className="absolute top-2 left-2 flex flex-col gap-1">
+                              {related.style && (
+                                <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-black text-white">
+                                  {styleLabel[related.style] ?? related.style}
+                                </span>
+                              )}
+                              {related.occasion && (
+                                <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-white text-gray-700 border border-gray-200">
+                                  {occasionLabel[related.occasion] ?? related.occasion}
+                                </span>
+                              )}
+                            </div>
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                              <span className="flex items-center gap-1 px-3 py-1 bg-black text-white text-[9px] font-semibold tracking-widest uppercase whitespace-nowrap">
+                                View Look
+                                <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 stroke-current" fill="none" strokeWidth={2.5}>
+                                  <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg>
+                              </span>
+                            </div>
+                          </div>
+                          <div className="flex flex-col gap-1">
+                            <span className="text-xs font-black text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
+                              {related.title}
+                            </span>
+                            {matched && (
+                              <span className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 line-clamp-1">
+                                {matched.name}
+                              </span>
+                            )}
+                            <PieceThumbnailStrip
+                              pieces={related.pieces?.map((p, i) => ({
+                                key: p._key ?? String(i),
+                                name: p.name,
+                                image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
+                                affiliateUrl: p.affiliateUrl,
+                              }))}
+                            />
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
