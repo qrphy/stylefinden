@@ -1,6 +1,7 @@
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import JsonLd from "@/components/seo/JsonLd"
 import Button from "@/components/shared/Button"
+import OutfitsWithAccessory from "@/components/accessories/OutfitsWithAccessory"
 import { urlFor } from "@/sanity/lib/image"
 import { accessoryTypeLabel, accessoryOccasionLabel } from "@/lib/accessory-labels"
 
@@ -18,11 +19,21 @@ export type AccessoryDetailData = {
   tags?: string[]
 }
 
-type Props = {
-  item: AccessoryDetailData
+type OutfitCard = {
+  _id: string
+  title: string
+  slug: string
+  image?: object
+  style?: string
+  occasion?: string
 }
 
-export default function AccessoryDetail({ item }: Props) {
+type Props = {
+  item: AccessoryDetailData
+  outfits?: OutfitCard[]
+}
+
+export default function AccessoryDetail({ item, outfits = [] }: Props) {
   const imageUrl = item.image
     ? urlFor(item.image).width(800).height(1000).url()
     : undefined
@@ -122,6 +133,9 @@ export default function AccessoryDetail({ item }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── Outfits featuring this accessory ────────────────────────────────── */}
+      <OutfitsWithAccessory outfits={outfits} />
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
       <section className="border-t border-gray-100">

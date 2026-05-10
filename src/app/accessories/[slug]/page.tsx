@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
-import { getAccessory } from "@/lib/sanity-fetchers"
+import { getAccessory, getOutfitsWithAccessory } from "@/lib/sanity-fetchers"
 import { buildMetadata } from "@/components/seo/MetadataBuilder"
 import { accessoryTypeLabel, accessoryOccasionLabel } from "@/lib/accessory-labels"
 import AccessoryDetail from "@/components/accessories/AccessoryDetail"
@@ -43,5 +43,7 @@ export default async function AccessoryPage({ params }: Props) {
   const item = await getAccessory(slug)
   if (!item) notFound()
 
-  return <AccessoryDetail item={item} />
+  const outfits = await getOutfitsWithAccessory(item._id)
+
+  return <AccessoryDetail item={item} outfits={outfits ?? []} />
 }

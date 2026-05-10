@@ -72,6 +72,13 @@ export const FEATURED_OUTFITS_QUERY = defineQuery(`
   }
 `)
 
+// OUTFITS_WITH_ACCESSORY_QUERY: Belirli bir aksesuar dökümanına referans veren outfitler
+export const OUTFITS_WITH_ACCESSORY_QUERY = defineQuery(`
+  *[_type == "outfit" && defined(slug.current) && $accessoryId in relatedAccessories[]._ref] | order(_createdAt desc) {
+    _id, title, "slug": slug.current, image, style, occasion
+  }
+`)
+
 // ── Accessory sorguları ───────────────────────────────────────────────────────
 export const ACCESSORIES_QUERY = defineQuery(`
   *[_type == "accessory" && defined(slug.current)] | order(_createdAt desc) {

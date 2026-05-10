@@ -10,6 +10,7 @@ import {
   OUTFITS_BY_PIECE_TAGS_QUERY,
   HAIRSTYLE_QUERY,
   ACCESSORY_QUERY,
+  OUTFITS_WITH_ACCESSORY_QUERY,
   TREND_QUERY,
   POST_QUERY,
 } from '@/lib/queries'
@@ -26,5 +27,8 @@ export const getOutfitsByPieceTags = cache((id: string, colors: string[], items:
 )
 export const getHairstyle = cache((slug: string) => client.fetch(HAIRSTYLE_QUERY, { slug }, OPTS('hairstyle')))
 export const getAccessory = cache((slug: string) => client.fetch(ACCESSORY_QUERY, { slug }, OPTS('accessory')))
+export const getOutfitsWithAccessory = cache((accessoryId: string) =>
+  client.fetch(OUTFITS_WITH_ACCESSORY_QUERY, { accessoryId }, OPTS('outfit'))
+)
 export const getTrend     = cache((slug: string) => client.fetch(TREND_QUERY,     { slug }, OPTS('trend')))
 export const getPost      = cache((slug: string) => client.fetch(POST_QUERY,      { slug }, OPTS('post')))

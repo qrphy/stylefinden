@@ -285,6 +285,15 @@ export const outfit = defineType({
       description: '💡 Boş bırakılırsa dökümanın oluşturulma tarihi otomatik kullanılır — genellikle boş bırakabilirsin.\n📍 Kullanım: İçerik sıralama ve SEO tarih bilgisinde kullanılır.',
     }),
 
+    // ── İlgili aksesuarlar ────────────────────────────────────────────────────
+    defineField({
+      name: 'relatedAccessories',
+      title: 'İlgili Aksesuarlar',
+      type: 'array',
+      description: '💡 Bu kombinde kullanılan veya kombin ile uyumlu aksesuar dökümanlarını seç. Seçilen aksesuarların detay sayfasında bu kombin "Bu Aksesuar Hangi Kombinlerde?" bölümünde görünür.\n📍 Kullanım: Aksesuar detay sayfasındaki outfit showcase bölümünde gösterilir.',
+      of: [defineArrayMember({ type: 'reference', to: [{ type: 'accessory' }] })],
+    }),
+
   ],
 
   preview: {
