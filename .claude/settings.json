@@ -1,9 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Read(/Users/furkan/style-finden/**)",
-      "Write(/Users/furkan/style-finden/**)",
-      "Edit(/Users/furkan/style-finden/**)"
+      "Read(/Users/furkan/brain/**)",
+      "Write(/Users/furkan/brain/**)",
+      "Edit(/Users/furkan/brain/**)"
     ]
   },
   "hooks": {
@@ -12,7 +12,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -Rs '{\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": (\"=== VAULT INDEX (Stylefinden) ===\\n\" + .)}}' /Users/furkan/style-finden/index.md 2>/dev/null || true",
+            "command": "jq -Rs '{\"hookSpecificOutput\": {\"hookEventName\": \"SessionStart\", \"additionalContext\": (\"=== VAULT INDEX (Stylefinden) ===\\n\" + .)}}' /Users/furkan/brain/projects/stylefinden/index.md 2>/dev/null || true",
             "timeout": 10,
             "statusMessage": "Vault yükleniyor..."
           }
@@ -31,7 +31,7 @@
           },
           {
             "type": "agent",
-            "prompt": "vault-keeper agent: Projedeki en son değişen kaynak dosyayı vault'a yansıt. Talimatlar .claude/agents/vault-keeper.md dosyasında. Vault: /Users/furkan/style-finden/ — Kaynak: /Users/furkan/meticulhoar/stylefinden/src/"
+            "prompt": "vault-keeper agent: Projedeki en son değişen kaynak dosyayı vault'a yansıt. Talimatlar .claude/agents/vault-keeper.md dosyasında. Vault: /Users/furkan/brain/projects/stylefinden/ — Kaynak: /Users/furkan/meticulhoar/stylefinden/src/"
           }
         ]
       }
@@ -47,7 +47,7 @@
           },
           {
             "type": "command",
-            "command": "{ DATE=$(date +%Y-%m-%d); OUT=\"/Users/furkan/style-finden/raw/gelistirme/${DATE}-session.md\"; CHANGED=$(cd /Users/furkan/meticulhoar/stylefinden && git log --since=\"midnight\" --name-only --pretty=format: 2>/dev/null | grep '^src/' | sort -u | head -15); if [ -n \"$CHANGED\" ] && [ ! -f \"$OUT\" ]; then printf '---\\ntarih: %s\\nkonu: Otomatik oturum kaydı\\nstatus: draft\\n---\\n\\n# %s — Oturum Kaydı\\n\\n> Tamamlamak için bir sonraki oturumda: \"%s raw özetini tamamla\"\\n\\n## Değişen dosyalar\\n\\n' \"$DATE\" \"$DATE\" \"$DATE\" > \"$OUT\"; echo \"$CHANGED\" | while read -r line; do printf '- `%s`\\n' \"$line\"; done >> \"$OUT\"; jq -n --arg d \"$DATE\" '{\"systemMessage\": (\"📝 raw/gelistirme/\" + $d + \"-session.md oluşturuldu\")}'; fi; } 2>/dev/null || true",
+            "command": "{ DATE=$(date +%Y-%m-%d); OUT=\"/Users/furkan/brain/projects/stylefinden/raw/gelistirme/${DATE}-session.md\"; CHANGED=$(cd /Users/furkan/meticulhoar/stylefinden && git log --since=\"midnight\" --name-only --pretty=format: 2>/dev/null | grep '^src/' | sort -u | head -15); if [ -n \"$CHANGED\" ] && [ ! -f \"$OUT\" ]; then printf '---\\ntarih: %s\\nkonu: Otomatik oturum kaydı\\nstatus: draft\\n---\\n\\n# %s — Oturum Kaydı\\n\\n> Tamamlamak için bir sonraki oturumda: \"%s raw özetini tamamla\"\\n\\n## Değişen dosyalar\\n\\n' \"$DATE\" \"$DATE\" \"$DATE\" > \"$OUT\"; echo \"$CHANGED\" | while read -r line; do printf '- `%s`\\n' \"$line\"; done >> \"$OUT\"; jq -n --arg d \"$DATE\" '{\"systemMessage\": (\"📝 raw/gelistirme/\" + $d + \"-session.md oluşturuldu\")}'; fi; } 2>/dev/null || true",
             "timeout": 10,
             "statusMessage": "Oturum kaydediliyor..."
           }
