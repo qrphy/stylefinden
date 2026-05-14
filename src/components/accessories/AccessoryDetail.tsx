@@ -133,7 +133,6 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
           </div>
         </div>
       </section>
-
       {/* ── Outfits featuring this accessory ────────────────────────────────── */}
       <OutfitsWithAccessory outfits={outfits} />
 
