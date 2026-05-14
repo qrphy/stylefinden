@@ -52,6 +52,9 @@ next-env.d.ts
 # local knowledge docs
 /knowledge
 
+# research / data files
+*.csv
+
 # Sanity CLI build output
 .sanity/
 dist/
