@@ -60,8 +60,8 @@ const OCCASION_IMAGES: Record<string, string> = {
   evening: "/categories/outfits/evening.jpeg",
   casual:  "/categories/outfits/casual.png",
   sport:   "/categories/outfits/sport.png",
-  school:  "/categories/outfits/school.png",
-  travel:  "/categories/outfits/travel.jpeg",
+  school:  "/categories/outfits/school.webp",
+  travel:  "/categories/outfits/travel.png",
 }
 
 // CollectionCard için CollectionItem döndürür
