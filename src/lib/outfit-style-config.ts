@@ -81,7 +81,7 @@ export function getStyleCard(slug: string): CollectionItem {
 }
 
 // Koleksiyon sayfalarında görüntülenme sırası
-export const STYLE_ORDER = ["boho", "minimalist", "streetstyle", "classic", "old-money", "retro-vintage", "y2k", "western"]
+export const STYLE_ORDER = ["boho", "minimalist", "streetstyle", "classic", "old-money", "retro-vintage", "y2k", "western", "sienna-vibe", "korean-fashion", "clean-girl", "cute-coquette", "black-dark"]
 
 // Tüm style config'leri
 export const STYLE_CONFIGS: Record<string, StyleConfig> = {
@@ -574,6 +574,311 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { id: 6, title: "Suede Shorts & Cowboy Hat",     subtitle: "Boho Western",         tag: "New",      style: "Earthy",       href: "/outfits/suede-shorts-cowboy-hat"       },
       { id: 7, title: "Embroidered Western Blouse",    subtitle: "Detail & Craft",       tag: "Trending", style: "Plaid",        href: "/outfits/embroidered-western-blouse"    },
       { id: 8, title: "Bolo Tie & Tailored Look",      subtitle: "Modern Western",       tag: "New",      style: "Cowboy Boots", href: "/outfits/bolo-tie-tailored-look"        },
+    ],
+  },
+
+  "sienna-vibe": {
+    label: "Sienna Vibe",
+    subtitle: "Boho-Chic & Effortless",
+    description:
+      "Sun-kissed boho-chic layers, earthy tones and effortlessly undone elegance – discover curated Sienna vibe outfits inspired by the iconic free-spirited look that never goes out of fashion.",
+    accent: "bg-[#fdf6ec]",
+    accentText: "text-[#8b5e3c]",
+    tipTitle: "Effortless is the new perfect,",
+    tipBody:
+      "Sienna vibe is about looking like you didn't try too hard – layer a vintage crochet top with wide-leg denim and let one piece (a scarf, a bag, a boot) do all the talking.",
+    tipTags: ["Crochet", "Wide-Leg", "Earthy", "Layered"],
+    filters: ["All", "Crochet", "Wide-Leg", "Floral", "Layered", "Boho", "Vintage"],
+    outfitGridLabel: "Latest Sienna Vibe Looks",
+    styleGuideHref: "/blog/occasion-guides/sienna-vibe-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Boho Style",        href: "/outfits/style/boho",           accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Retro & Vintage",   href: "/outfits/style/retro-vintage",  accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Festival & Outdoor",href: "/outfits/occasion/festival",    accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Beach & Vacation",  href: "/outfits/occasion/beach",       accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+    ],
+    faqs: [
+      {
+        q: "What is the Sienna vibe aesthetic?",
+        a: "The Sienna vibe aesthetic draws from the iconic boho-chic style of early 2000s and 2010s fashion – think floaty peasant blouses, wide-leg trousers, crochet layers, suede boots and an effortlessly undone feel. The palette runs through sandy beige, chocolate brown, rust and warm ivory, often anchored with vintage denim.",
+      },
+      {
+        q: "How do you style a Sienna vibe outfit for everyday?",
+        a: "Start with a floaty linen or cotton blouse – peasant neck or smocked – tucked loosely into wide-leg jeans or a tiered midi skirt. Add suede ankle boots or flat sandals, a raffia bag and a long pendant necklace. Finish with an oversized shearling jacket for cooler days. The key is relaxed confidence – nothing should look too precise.",
+      },
+      {
+        q: "Which accessories complete the Sienna vibe look?",
+        a: "Raffia and woven bags, suede fringe bags, round or oversized tinted sunglasses, layered gold and coin jewelry, silk or printed headscarves and wide-brim hats are the signature accessories. Suede ankle boots and flat sandals in tan or cognac complete every look. The more personal and eclectic, the better.",
+      },
+    ],
+    seo: {
+      title: "Sienna Vibe Outfits – Boho-Chic & Effortlessly Undone",
+      description:
+        "Discover curated Sienna vibe outfits: crochet tops, wide-leg denim, suede boots and earthy boho-chic combinations for a free-spirited and effortlessly stylish look.",
+      keywords: ["Sienna Vibe Outfit", "Sienna Vibe Aesthetic", "Boho Chic Outfit", "70s Boho Style", "Crochet Outfit", "Wide Leg Boho", "Sienna Miller Style", "Effortless Boho Look"],
+    },
+    card: {
+      description: "Earthy boho-chic layers with effortless undone elegance",
+      tags: ["Crochet", "Wide-Leg", "Earthy", "Boho"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Crochet Top & Wide-Leg Denim",    subtitle: "Boho & Effortless",     tag: "Trending", style: "Crochet",   href: "/outfits/crochet-top-wide-leg-denim"      },
+      { id: 2, title: "Floaty Peasant Blouse Look",       subtitle: "Free-Spirited & Soft",  tag: "Popular",  style: "Boho",     href: "/outfits/floaty-peasant-blouse"           },
+      { id: 3, title: "Suede Boots & Midi Skirt",         subtitle: "Earthy & Vintage",      tag: "New",      style: "Vintage",  href: "/outfits/suede-boots-midi-skirt-sienna"   },
+      { id: 4, title: "Shearling Jacket & Flares",        subtitle: "Layered & Warm",        tag: "Trending", style: "Layered",  href: "/outfits/shearling-jacket-flares"         },
+      { id: 5, title: "Tiered Floral Midi & Sandals",     subtitle: "Festival & Romantic",   tag: "Popular",  style: "Floral",   href: "/outfits/tiered-floral-midi-sandals"      },
+      { id: 6, title: "Vintage Knit & Denim Shorts",      subtitle: "Casual & Retro",        tag: "New",      style: "Vintage",  href: "/outfits/vintage-knit-denim-shorts"       },
+      { id: 7, title: "Raffia Bag & Linen Co-ord",        subtitle: "Beach & Boho",          tag: "Trending", style: "Boho",     href: "/outfits/raffia-bag-linen-coord"          },
+      { id: 8, title: "Smocked Dress & Suede Bag",        subtitle: "Romantic & Earthy",     tag: "New",      style: "Floral",   href: "/outfits/smocked-dress-suede-bag"         },
+    ],
+  },
+
+  "korean-fashion": {
+    label: "Korean Fashion",
+    subtitle: "K-Style & Seoul Vibes",
+    description:
+      "Oversized blazers, pastel knits, clean co-ords and the playful precision of Seoul street style – discover curated Korean fashion outfits for those who love effortless cool with a polished edge.",
+    accent: "bg-[#f8f0fb]",
+    accentText: "text-[#7b1fa2]",
+    tipTitle: "Seoul-approved and effortlessly cool,",
+    tipBody:
+      "K-style lives in the details: a perfectly oversized blazer, a carefully chosen color palette and the discipline to never overdo it.",
+    tipTags: ["Oversized", "Pastel", "Co-ord", "Minimal"],
+    filters: ["All", "Oversized", "Pastel", "Co-ord", "Streetwear", "Preppy", "Minimal"],
+    outfitGridLabel: "Latest Korean Fashion Looks",
+    styleGuideHref: "/blog/occasion-guides/korean-fashion-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Clean Girl",     href: "/outfits/style/clean-girl",    accent: "bg-[#f5f5f5]",  accentText: "text-gray-700"  },
+      { label: "Minimalist",     href: "/outfits/style/minimalist",    accent: "bg-gray-100",   accentText: "text-gray-700"  },
+      { label: "Street Style",   href: "/outfits/style/streetstyle",   accent: "bg-gray-900",   accentText: "text-white"     },
+      { label: "Y2K Style",      href: "/outfits/style/y2k",           accent: "bg-[#f3e5f5]",  accentText: "text-[#7b1fa2]" },
+    ],
+    faqs: [
+      {
+        q: "What defines Korean fashion style?",
+        a: "Korean fashion — often called K-fashion — is known for its blend of oversized silhouettes, pastel and muted color palettes, preppy co-ord sets, structured blazers and meticulous styling. It draws from both minimalist and playful aesthetics, often mixing streetwear elements with feminine details. The result is polished yet effortless, editorial without being inaccessible.",
+      },
+      {
+        q: "How do you style a Korean fashion outfit?",
+        a: "A classic K-fashion approach: oversized blazer in a muted tone over a simple tee, wide-leg or straight-cut trousers and loafers or clean white sneakers. Pastel knit co-ord sets are a K-fashion staple. Accessories tend to be understated – a small structured bag, minimal jewelry and a simple hair tie. Proportions are everything.",
+      },
+      {
+        q: "Where can you shop for Korean fashion pieces?",
+        a: "Korean fashion brands like Musinsa, Stylenanda, Ader Error, Gentle Monster (accessories) and Sandro-inspired Korean labels produce K-fashion staples. For accessible options, ZARA and COS regularly carry K-fashion-adjacent pieces. Online platforms like YesStyle and W Concept ship internationally.",
+      },
+    ],
+    seo: {
+      title: "Korean Fashion Outfits – K-Style, Seoul Street & Co-ord Looks",
+      description:
+        "Discover curated Korean fashion outfits: oversized blazers, pastel co-ords, Seoul street style and K-fashion inspired looks for a polished and effortlessly cool wardrobe.",
+      keywords: ["Korean Fashion Outfit", "K-Fashion Style", "Korean Outfit Women", "Seoul Street Style", "K-Style Outfit", "Korean Co-ord Set", "Oversized Blazer Korean", "K-Fashion Aesthetic"],
+    },
+    card: {
+      description: "Oversized silhouettes, pastel co-ords and Seoul street polish",
+      tags: ["Oversized", "Pastel", "Co-ord", "K-Style"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Oversized Blazer & Wide-Leg",      subtitle: "K-Style Classic",       tag: "Trending", style: "Oversized",  href: "/outfits/oversized-blazer-wide-leg-korean"  },
+      { id: 2, title: "Pastel Knit Co-ord Set",            subtitle: "Sweet & Polished",      tag: "Popular",  style: "Pastel",     href: "/outfits/pastel-knit-coord-korean"           },
+      { id: 3, title: "Pleated Mini & Cardigan",           subtitle: "Preppy & Playful",      tag: "New",      style: "Preppy",     href: "/outfits/pleated-mini-cardigan-korean"       },
+      { id: 4, title: "Monochrome Seoul Look",             subtitle: "Minimal & Sharp",       tag: "Trending", style: "Minimal",    href: "/outfits/monochrome-seoul-look"              },
+      { id: 5, title: "Puffer Vest & Midi Skirt",          subtitle: "Street & Feminine",     tag: "Popular",  style: "Streetwear", href: "/outfits/puffer-vest-midi-skirt-korean"      },
+      { id: 6, title: "Cream Trench & Loafers",            subtitle: "Clean & Chic",          tag: "New",      style: "Minimal",    href: "/outfits/cream-trench-loafers-korean"        },
+      { id: 7, title: "Graphic Tee & Tailored Trousers",   subtitle: "Urban & Smart",         tag: "Trending", style: "Streetwear", href: "/outfits/graphic-tee-tailored-trousers-k"   },
+      { id: 8, title: "Knit Vest & Shirt Combo",           subtitle: "Layered & Preppy",      tag: "New",      style: "Preppy",     href: "/outfits/knit-vest-shirt-combo-korean"       },
+    ],
+  },
+
+  "clean-girl": {
+    label: "Clean Girl",
+    subtitle: "Minimal, Polished & Effortless",
+    description:
+      "Slick buns, gold hoops, dewy skin and effortlessly put-together basics – discover curated clean girl outfits built on quality neutrals and understated polish that looks like no effort at all.",
+    accent: "bg-[#f5f5f5]",
+    accentText: "text-gray-700",
+    tipTitle: "Polished is the new effortless,",
+    tipBody:
+      "Clean girl dressing is about investment: one great neutral piece, perfect tailoring and accessories that feel personal, not purchased.",
+    tipTags: ["Neutral", "Minimal", "Basics", "Gold"],
+    filters: ["All", "Neutral", "Minimal", "Tailored", "Basics", "Monochrome", "Linen"],
+    outfitGridLabel: "Latest Clean Girl Looks",
+    styleGuideHref: "/blog/occasion-guides/clean-girl-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Minimalist",      href: "/outfits/style/minimalist",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Old Money Style", href: "/outfits/style/old-money",     accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
+      { label: "Korean Fashion",  href: "/outfits/style/korean-fashion",accent: "bg-[#f8f0fb]", accentText: "text-[#7b1fa2]" },
+      { label: "Office & Business",href: "/outfits/occasion/office",    accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+    ],
+    faqs: [
+      {
+        q: "What is the clean girl aesthetic?",
+        a: "The clean girl aesthetic is a TikTok and Pinterest-born trend defined by effortlessly put-together simplicity: slicked-back buns, gold hoop earrings, minimal makeup, high-quality basics in neutral tones and a calm, collected energy. It's the visual language of someone who looks great without appearing to try.",
+      },
+      {
+        q: "What are the key pieces for a clean girl wardrobe?",
+        a: "Quality neutral basics are everything: a white or cream fitted tank, a well-cut beige or white linen shirt, straight-leg trousers in black or camel, a simple midi dress, clean white sneakers and a structured leather tote. Every piece should feel high-quality and versatile. Minimal gold jewelry – hoops, a chain necklace – completes the look.",
+      },
+      {
+        q: "How is clean girl different from minimalist style?",
+        a: "Both share a pared-back philosophy, but clean girl is more about lifestyle aspiration and personal grooming as part of the outfit. Minimalist style focuses on intentional reduction and architecture. Clean girl is warmer – more skin, softer shapes, personal touches like a scrunchie or specific bag. It feels more approachable and everyday.",
+      },
+    ],
+    seo: {
+      title: "Clean Girl Outfits – Minimal, Polished & Effortlessly Chic",
+      description:
+        "Discover curated clean girl outfits: neutral basics, gold accessories, slicked-back styling and minimal looks built on quality and understated polish for every day.",
+      keywords: ["Clean Girl Outfit", "Clean Girl Aesthetic", "Minimal Outfit Women", "Neutral Outfit", "Clean Girl Style", "Effortless Chic Outfit", "Basics Outfit", "Clean Aesthetic Fashion"],
+    },
+    card: {
+      description: "Neutral basics, gold hoops and understated everyday polish",
+      tags: ["Neutral", "Minimal", "Basics", "Gold"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Cream Linen Set",                  subtitle: "Clean & Polished",      tag: "Trending", style: "Linen",      href: "/outfits/cream-linen-set-clean"             },
+      { id: 2, title: "White Tank & Straight Jeans",      subtitle: "Everyday Essential",    tag: "Popular",  style: "Basics",     href: "/outfits/white-tank-straight-jeans-clean"  },
+      { id: 3, title: "Beige Midi & Gold Hoops",          subtitle: "Effortless & Feminine", tag: "New",      style: "Minimal",    href: "/outfits/beige-midi-gold-hoops"             },
+      { id: 4, title: "Monochrome Neutral Set",           subtitle: "Quiet & Polished",      tag: "Trending", style: "Monochrome", href: "/outfits/monochrome-neutral-set-clean"      },
+      { id: 5, title: "Structured Tote & Basics",         subtitle: "Office & Everyday",     tag: "Popular",  style: "Tailored",   href: "/outfits/structured-tote-basics"            },
+      { id: 6, title: "White Shirt & Tailored Trousers",  subtitle: "Clean & Sharp",         tag: "New",      style: "Basics",     href: "/outfits/white-shirt-tailored-trousers-cg"  },
+      { id: 7, title: "Camel Knit & Dark Denim",          subtitle: "Cozy Clean",            tag: "Trending", style: "Neutral",    href: "/outfits/camel-knit-dark-denim-clean"       },
+      { id: 8, title: "Slip Skirt & Simple Tee",          subtitle: "Soft & Minimal",        tag: "New",      style: "Minimal",    href: "/outfits/slip-skirt-simple-tee-clean"       },
+    ],
+  },
+
+  "cute-coquette": {
+    label: "Cute & Coquette",
+    subtitle: "Soft, Feminine & Playfully Flirty",
+    description:
+      "Bows, lace, baby pink, ballet flats and ribbons – discover curated cute and coquette outfits for the ultra-feminine aesthetic that celebrates softness and playful femininity without apology.",
+    accent: "bg-[#fce4ec]",
+    accentText: "text-[#c62828]",
+    tipTitle: "Soft is a superpower,",
+    tipBody:
+      "Coquette dressing is intentional femininity – let one signature piece (a bow headband, a lace top, a ribbon belt) set the tone for the entire outfit.",
+    tipTags: ["Bow", "Lace", "Pink", "Ribbon"],
+    filters: ["All", "Bow", "Lace", "Pink", "Ribbon", "Mini", "Floral", "Ballet"],
+    outfitGridLabel: "Latest Cute & Coquette Looks",
+    styleGuideHref: "/blog/occasion-guides/cute-coquette-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Y2K Style",      href: "/outfits/style/y2k",             accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
+      { label: "Boho Style",     href: "/outfits/style/boho",            accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Date Night",     href: "/outfits/occasion/date-night",   accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Spring Looks",   href: "/outfits/season/spring",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+    ],
+    faqs: [
+      {
+        q: "What is the coquette aesthetic?",
+        a: "The coquette aesthetic is a hyper-feminine, intentionally soft and flirtatious style rooted in old Hollywood romanticism and ballet culture. It centers on bows, lace, ribbons, pastel pinks, sheer fabrics, ballet flats and a dreamy, doll-like quality. Popularized on TikTok and Tumblr, it reclaims girliness as a deliberate style choice.",
+      },
+      {
+        q: "How do you style a coquette outfit without going overboard?",
+        a: "The key is to let one coquette signature lead. A lace-trimmed white top with simple straight jeans and ballet flats reads coquette without feeling costume-like. A bow headband with a clean midi dress is a similarly understated approach. Build from one detail outward – add a ribbon belt or pearl jewelry if you want more, but resist stacking every element at once.",
+      },
+      {
+        q: "What are the must-have pieces for a coquette wardrobe?",
+        a: "Ballet flats in black or white, a lace-trimmed slip dress or camisole, a baby pink or white blouse with ruffled or bow details, a pleated mini skirt, a ribbon or bow headband and pearl jewelry form the coquette core wardrobe. A simple blazer or cropped cardigan in ivory adds a subtle contrast that keeps the look fresh.",
+      },
+    ],
+    seo: {
+      title: "Cute & Coquette Outfits – Soft, Feminine & Flirtatiously Chic",
+      description:
+        "Discover curated cute and coquette outfits: bows, lace, ballet flats, baby pink combinations and soft feminine looks for those who embrace playful femininity.",
+      keywords: ["Coquette Outfit", "Cute Coquette Aesthetic", "Coquette Style", "Bow Outfit Women", "Lace Outfit", "Ballet Core Outfit", "Soft Feminine Style", "Pink Coquette Look"],
+    },
+    card: {
+      description: "Bows, lace, pink ribbons and intentional soft femininity",
+      tags: ["Bow", "Lace", "Pink", "Ballet"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Bow Blouse & Pleated Skirt",        subtitle: "Sweet & Feminine",      tag: "Trending", style: "Bow",     href: "/outfits/bow-blouse-pleated-skirt"           },
+      { id: 2, title: "Lace Slip Dress & Ballerina Flats", subtitle: "Soft & Romantic",       tag: "Popular",  style: "Lace",   href: "/outfits/lace-slip-dress-ballerina"          },
+      { id: 3, title: "Baby Pink Co-ord Set",              subtitle: "Pastel & Playful",      tag: "New",      style: "Pink",   href: "/outfits/baby-pink-coord-set"                },
+      { id: 4, title: "Ribbon Detail Midi Dress",          subtitle: "Romantic & Dainty",     tag: "Trending", style: "Ribbon", href: "/outfits/ribbon-detail-midi-dress"           },
+      { id: 5, title: "Crochet Top & Mini Skirt",          subtitle: "Flirty & Sweet",        tag: "Popular",  style: "Lace",   href: "/outfits/crochet-top-mini-skirt-coquette"   },
+      { id: 6, title: "Tulle Midi & Simple Knit",          subtitle: "Ballet & Dreamy",       tag: "New",      style: "Ballet", href: "/outfits/tulle-midi-simple-knit"             },
+      { id: 7, title: "Pearl Earrings & White Dress",      subtitle: "Dainty & Elegant",      tag: "Trending", style: "Pink",   href: "/outfits/pearl-earrings-white-dress-coq"    },
+      { id: 8, title: "Ruffle Blouse & Denim Look",        subtitle: "Casual Coquette",       tag: "New",      style: "Floral", href: "/outfits/ruffle-blouse-denim-coquette"       },
+    ],
+  },
+
+  "black-dark": {
+    label: "Black & Dark",
+    subtitle: "All-Black & Dark Aesthetic",
+    description:
+      "All-black looks, monochrome dark palettes and bold power dressing – discover curated black and dark outfits for those who find strength and sophistication in the deepest end of the color spectrum.",
+    accent: "bg-gray-900",
+    accentText: "text-white",
+    tipTitle: "Black is not a color — it's a statement,",
+    tipBody:
+      "An all-black outfit lives through texture contrast and silhouette: leather against silk, matte against shine, oversized against fitted.",
+    tipTags: ["All-Black", "Leather", "Monochrome", "Edge"],
+    filters: ["All", "All-Black", "Leather", "Monochrome", "Layered", "Evening", "Street"],
+    outfitGridLabel: "Latest Black & Dark Looks",
+    styleGuideHref: "/blog/occasion-guides/black-dark-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Minimalist",      href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Street Style",    href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Classic Style",   href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
+    ],
+    faqs: [
+      {
+        q: "How do you make an all-black outfit interesting?",
+        a: "The secret to an elevated all-black look is texture contrast: pair a matte wool coat with a shiny satin blouse underneath, or combine leather trousers with a soft cashmere knit. Silhouette contrast also adds depth – an oversized blazer over slim leather trousers creates visual tension without introducing color. Finish with black accessories in different materials (suede bag, silver jewelry, patent shoes).",
+      },
+      {
+        q: "What are the best black outfit combinations for everyday?",
+        a: "A black turtleneck with straight-leg jeans and white sneakers is the perfect everyday anchor. For a more polished look: black tailored trousers, a black silk blouse and pointed loafers. For weekend: black cargo pants, a black oversized hoodie and chunky black sneakers. Each reads entirely differently despite being the same palette.",
+      },
+      {
+        q: "Can you wear all-black to formal occasions?",
+        a: "Absolutely – black is the most sophisticated evening option. A long black satin slip dress or a structured black blazer over wide-leg trousers with heels is always appropriate. For black-tie, add metallic jewelry and a sleek clutch. The key is fabric quality: velvet, satin and silk elevate black from everyday to formal instantly.",
+      },
+    ],
+    seo: {
+      title: "Black & Dark Outfits – All-Black Looks & Dark Aesthetic Styles",
+      description:
+        "Discover curated black and dark outfits: all-black combinations, leather looks, monochrome dark aesthetics and bold power dressing for every occasion.",
+      keywords: ["All Black Outfit Women", "Black Outfit Style", "Dark Aesthetic Outfit", "Black Fashion Look", "Monochrome Black Outfit", "Leather Outfit Women", "Black Street Style", "Dark Outfit Ideas"],
+    },
+    card: {
+      description: "All-black looks, leather and monochrome dark power dressing",
+      tags: ["All-Black", "Leather", "Monochrome", "Edge"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "All-Black Street Look",           subtitle: "Urban & Edgy",          tag: "Trending", style: "All-Black",   href: "/outfits/all-black-street-look"              },
+      { id: 2, title: "Leather Jacket & Black Jeans",    subtitle: "Classic Dark Edge",     tag: "Popular",  style: "Leather",    href: "/outfits/leather-jacket-black-jeans"         },
+      { id: 3, title: "Black Blazer Power Suit",         subtitle: "Office & Bold",         tag: "New",      style: "Evening",    href: "/outfits/black-blazer-power-suit"            },
+      { id: 4, title: "Satin Slip & Leather Coat",       subtitle: "Evening & Dramatic",    tag: "Trending", style: "Evening",    href: "/outfits/satin-slip-leather-coat"            },
+      { id: 5, title: "Black Turtleneck & Wide-Leg",     subtitle: "Minimal & Sharp",       tag: "Popular",  style: "Monochrome", href: "/outfits/black-turtleneck-wide-leg"          },
+      { id: 6, title: "Oversized Black Hoodie & Cargo",  subtitle: "Street & Dark",         tag: "New",      style: "Street",     href: "/outfits/oversized-black-hoodie-cargo"       },
+      { id: 7, title: "Black Midi Dress & Boots",        subtitle: "Everyday Dark",         tag: "Trending", style: "Layered",    href: "/outfits/black-midi-dress-boots"             },
+      { id: 8, title: "Velvet Blazer & Trousers",        subtitle: "Dark & Luxurious",      tag: "New",      style: "Evening",    href: "/outfits/velvet-blazer-trousers-black"       },
     ],
   },
 }

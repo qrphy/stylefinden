@@ -88,6 +88,7 @@ export const OCCASION_ORDER = [
   "beach",
   "festival",
   "date-night",
+  "party-night-out",
   "sport",
   "school",
   "travel",
@@ -587,6 +588,67 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { id: 6, title: "Linen Shirt & Wide-Leg Pants",      subtitle: "Relaxed Everyday",     tag: "New",      style: "Basics",       href: "/outfits/linen-shirt-wide-leg-campus"       },
       { id: 7, title: "Sweatshirt & Biker Shorts",         subtitle: "Sporty Campus",        tag: "Trending", style: "Casual",       href: "/outfits/sweatshirt-biker-shorts"           },
       { id: 8, title: "Blazer & Joggers Combo",            subtitle: "Smart Athleisure",     tag: "New",      style: "Smart Casual", href: "/outfits/blazer-joggers-campus"             },
+    ],
+  },
+
+  "party-night-out": {
+    label: "Party & Night Out",
+    subtitle: "Bold, Glam & After-Dark",
+    description:
+      "Sequins, mini dresses, bold statement looks and outfits built for the night – discover curated party and night out outfits for club nights, birthdays, bar crawls and every occasion that calls for your best.",
+    accent: "bg-gray-900",
+    accentText: "text-white",
+    tipTitle: "Dress like the night belongs to you,",
+    tipBody:
+      "A great party outfit balances one statement element with everything else kept simple – let the dress, the sequins or the bold shoe lead, not compete.",
+    tipTags: ["Sequin", "Mini", "Bold", "Glam"],
+    filters: ["All", "Sequin", "Mini", "Maxi", "Bold", "Club", "Birthday", "Glam"],
+    outfitGridLabel: "Latest Party & Night Out Looks",
+    styleGuideHref: "/blog/occasion-guides/party-night-out-style-guide",
+    stats: [
+      { value: "New", label: "Collection" },
+      { value: "Daily", label: "Updated" },
+    ],
+    relatedCategories: [
+      { label: "Evening & Event",href: "/outfits/occasion/evening",   accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Date Night",     href: "/outfits/occasion/date-night",accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Y2K Style",      href: "/outfits/style/y2k",          accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
+      { label: "Black & Dark",   href: "/outfits/style/black-dark",   accent: "bg-gray-900",  accentText: "text-white"     },
+    ],
+    faqs: [
+      {
+        q: "What do you wear to a night out at a club?",
+        a: "A bodycon or mini dress in a statement fabric (sequin, metallic, velvet) is the classic club choice. Alternatively, a crop top with high-waisted leather or satin trousers offers a more versatile option. Heels or chunky block-heel boots elevate the look. Keep jewelry bold but not bulky – a statement earring paired with a simple chain works best.",
+      },
+      {
+        q: "What is the perfect birthday night out outfit?",
+        a: "For a birthday, you want to feel like the main character: a sequin mini dress, a bold cutout gown or a statement two-piece set in a rich jewel tone – emerald, cobalt, deep red. Satin and metallic fabrics photograph beautifully. Add heeled sandals or knee-high boots and a small evening bag. Don't forget: wear something you actually feel amazing in.",
+      },
+      {
+        q: "How do you style a night out outfit that transitions from dinner to dancing?",
+        a: "A midi or mini wrap dress in satin or jersey moves from dinner elegantly and dances just as well. A blazer over a bodysuit with tailored trousers is smart enough for dinner and bold enough for after. Swap flat sandals for heeled mules between venues. A small crossbody or chain bag keeps your hands free on the dance floor.",
+      },
+    ],
+    seo: {
+      title: "Party & Night Out Outfits – Glam Looks for Every Night",
+      description:
+        "Discover curated party and night out outfits: sequin dresses, bold minis, glam looks and statement combinations for club nights, birthdays and after-dark occasions.",
+      keywords: ["Party Outfit Women", "Night Out Outfit", "Club Outfit Women", "Birthday Outfit", "Glam Outfit", "Sequin Dress Outfit", "Going Out Look", "Party Night Outfit Ideas"],
+    },
+    card: {
+      description: "Sequins, bold minis and glam looks built for the night",
+      tags: ["Sequin", "Mini", "Bold", "Glam"],
+      badge: "New",
+    },
+    staticFallback: [
+      { id: 1, title: "Sequin Mini Dress Look",          subtitle: "Club & Birthday",       tag: "Trending", style: "Sequin", href: "/outfits/sequin-mini-dress-party"            },
+      { id: 2, title: "Metallic Crop & Trousers",        subtitle: "Bar & After-Dark",      tag: "Popular",  style: "Bold",   href: "/outfits/metallic-crop-trousers-party"      },
+      { id: 3, title: "Velvet Mini Dress",               subtitle: "Dinner to Dancing",     tag: "New",      style: "Mini",   href: "/outfits/velvet-mini-dress-night-out"       },
+      { id: 4, title: "Bold Cutout Gown",                subtitle: "Statement & Glam",      tag: "Trending", style: "Maxi",   href: "/outfits/bold-cutout-gown-party"            },
+      { id: 5, title: "Leather Mini & Thigh Boots",      subtitle: "Edge & Night",          tag: "Popular",  style: "Bold",   href: "/outfits/leather-mini-thigh-boots"          },
+      { id: 6, title: "Blazer & Bodysuit Party Look",    subtitle: "Smart & Sexy",          tag: "New",      style: "Glam",   href: "/outfits/blazer-bodysuit-party"             },
+      { id: 7, title: "Slip Dress & Chain Bag",          subtitle: "Effortless Night Out",  tag: "Trending", style: "Glam",   href: "/outfits/slip-dress-chain-bag-night"        },
+      { id: 8, title: "Rhinestone & Satin Co-ord",       subtitle: "Birthday & Club",       tag: "New",      style: "Sequin", href: "/outfits/rhinestone-satin-coord-party"       },
     ],
   },
 
