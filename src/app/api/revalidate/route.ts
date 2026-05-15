@@ -10,6 +10,7 @@
 import { revalidateTag } from 'next/cache'
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { buildBlogNotificationEmail } from '@/lib/email-templates'
 
 const TAG_MAP: Record<string, string> = {
   outfit:    'outfit',
@@ -54,23 +55,22 @@ async function sendPostNotification(body: WebhookBody) {
   const slug = getPostSlug(body.slug)
   const postUrl = `${siteUrl.replace(/\/$/, '')}/blog/${slug}`
   const title = body.title ?? 'New post'
-  const category = body.category ? `Category: ${body.category}` : 'New style update'
-  const previewText = `New blog post: ${title}`
+
+  const { html, text, subject, previewText } = buildBlogNotificationEmail({
+    title,
+    postUrl,
+    category: body.category,
+  })
 
   const resend = new Resend(apiKey)
   return resend.broadcasts.create({
     audienceId,
     from: fromEmail,
-    subject: `New on Stylefinden: ${title}`,
+    subject,
     name: `post-${body._id ?? slug}-${Date.now()}`,
     previewText,
-    html: `
-      <h2>${title}</h2>
-      <p>${category}</p>
-      <p>A new article is live on Stylefinden.</p>
-      <p><a href="${postUrl}">Read the post</a></p>
-    `,
-    text: `${title}\n${category}\nA new article is live on Stylefinden.\n${postUrl}`,
+    html,
+    text,
     send: true,
   })
 }
@@ -78,7 +78,7 @@ async function sendPostNotification(body: WebhookBody) {
 export async function POST(req: Request) {
   const secret = req.headers.get('x-webhook-secret')
 
-  if (secret !== process.env.SANITY_WEBHOOK_SECRET) {
+  if (secret !== process.env.SANITY_WEBHOOK_SECRET?.trim()) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
