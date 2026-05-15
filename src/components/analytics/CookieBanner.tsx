@@ -4,25 +4,21 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 
-// localStorage anahtarı — çerez tercihini saklamak için kullanılır
 const CONSENT_KEY = "sf_cookie_consent"
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
-  // İlk yüklemede daha önce tercih yapılmamışsa banner'ı göster
   useEffect(() => {
     if (localStorage.getItem(CONSENT_KEY) === null) setVisible(true)
   }, [])
 
-  // Onay kaydedilir ve Analytics bileşenini tetiklemek için custom event fırlatılır
   function accept() {
     localStorage.setItem(CONSENT_KEY, "true")
     window.dispatchEvent(new Event("sf_consent_granted"))
     setVisible(false)
   }
 
-  // Red kaydedilir; Analytics yüklenmez
   function decline() {
     localStorage.setItem(CONSENT_KEY, "false")
     setVisible(false)
@@ -31,31 +27,32 @@ export default function CookieBanner() {
   if (!visible) return null
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 px-6 py-5 md:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-        <p className="text-xs text-gray-500 leading-relaxed max-w-2xl">
-          We use cookies to analyze the use of our website and improve your experience.{" "}
+    <div className="fixed bottom-6 left-6 z-50 w-80 bg-black text-white p-6 flex flex-col gap-4">
+      <div>
+        <p className="text-sm font-black tracking-wide uppercase mb-2">We use cookies</p>
+        <p className="text-xs text-gray-300 leading-relaxed">
+          Cookies enhance your experience, tailor your ads and improve our website.{" "}
           <Link
             href="/privacy"
-            className="underline underline-offset-2 hover:text-black transition-colors duration-200"
+            className="underline underline-offset-2 text-white hover:text-gray-300 transition-colors duration-200"
           >
             Privacy Policy
           </Link>
         </p>
-        <div className="flex items-center gap-4 shrink-0">
-          <button
-            onClick={decline}
-            className="text-xs tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200 py-2.5 px-4"
-          >
-            Decline
-          </button>
-          <button
-            onClick={accept}
-            className="text-xs tracking-widest uppercase bg-black text-white px-6 py-2.5 hover:bg-gray-800 transition-colors duration-200"
-          >
-            Accept
-          </button>
-        </div>
+      </div>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={decline}
+          className="flex-1 text-xs tracking-widest uppercase border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-colors duration-200 py-2.5 px-3"
+        >
+          Decline
+        </button>
+        <button
+          onClick={accept}
+          className="flex-1 text-xs tracking-widest uppercase bg-white text-black hover:bg-gray-100 transition-colors duration-200 py-2.5 px-3"
+        >
+          Accept All
+        </button>
       </div>
     </div>
   )
