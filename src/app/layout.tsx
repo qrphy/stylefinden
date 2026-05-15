@@ -10,6 +10,7 @@ import Header from "@/components/layout/Header"
 import NewsletterForm from "@/components/shared/NewsletterForm"
 import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/shared/ScrollToTop"
+import NewsletterPopup from "@/components/shared/NewsletterPopup"
 import { SanityLive } from "@/sanity/lib/live"
 
 // Geist yazı tipi ailesini CSS değişkeni olarak tanımla; tüm sayfalar bu değişkeni kullanır.
@@ -130,6 +131,8 @@ export default function RootLayout({
         {/* Newsletter bölümü — footer'dan önce her sayfada görünür */}
         <NewsletterForm />
         <ScrollToTop />
+        {/* Newsletter popup — 8 sn sonra açılır, localStorage ile tekrar rahatsız etmez */}
+        <NewsletterPopup />
         <Footer />
         {/* Sanity Live Preview — Sanity Studio'dan gerçek zamanlı içerik güncellemelerini dinler */}
         <SanityLive />
