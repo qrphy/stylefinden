@@ -1,5 +1,11 @@
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stylefinden.com'
 
+const SOCIAL_LINKS = {
+  instagram: 'https://instagram.com/stylefinden',
+  pinterest: 'https://pinterest.com/stylefinden',
+  tiktok: 'https://tiktok.com/@stylefinden',
+}
+
 type EmailOptions = {
   previewText?: string
   body: string
@@ -13,14 +19,7 @@ export function buildEmailHtml({ previewText, body, unsubscribeEmail }: EmailOpt
 
   const unsubscribeUrl = unsubscribeEmail
     ? `${SITE_URL}/api/unsubscribe?email=${encodeURIComponent(unsubscribeEmail)}`
-    : null
-
-  const footer = unsubscribeUrl
-    ? `<p style="margin:0;font-size:11px;color:#aaa;text-align:center;">
-         Don&apos;t want these emails?
-         <a href="${unsubscribeUrl}" style="color:#aaa;text-decoration:underline;">Unsubscribe</a>
-       </p>`
-    : ''
+    : `${SITE_URL}/unsubscribed`
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -28,30 +27,86 @@ export function buildEmailHtml({ previewText, body, unsubscribeEmail }: EmailOpt
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 </head>
-<body style="margin:0;padding:0;background:#f0f0f0;font-family:Georgia,'Times New Roman',serif;">
+<body style="margin:0;padding:0;background:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
   ${preview}
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#f0f0f0;padding:40px 20px;">
     <tr><td align="center">
       <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;">
+
+        <!-- Header: Brand name only -->
         <tr>
-          <td style="background:#000;padding:28px 40px;">
+          <td style="background:#ffffff;padding:28px 40px;border-bottom:1px solid #eeeeee;">
             <a href="${SITE_URL}" style="text-decoration:none;">
-              <span style="font-family:Georgia,serif;font-size:18px;font-weight:900;color:#fff;letter-spacing:5px;text-transform:uppercase;">STYLEFINDEN</span>
+              <span style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:20px;font-weight:900;color:#000000;letter-spacing:4px;text-transform:uppercase;">STYLEFINDEN</span>
             </a>
           </td>
         </tr>
+
+        <!-- Body -->
         <tr>
           <td style="padding:40px 40px 32px;">
             ${body}
           </td>
         </tr>
+
+        <!-- Footer -->
         <tr>
-          <td style="padding:0 40px 32px;border-top:1px solid #eee;">
-            <div style="padding-top:24px;">
-              ${footer}
-            </div>
+          <td style="padding:0;background:#ffffff;border-top:1px solid #eeeeee;">
+
+            <table width="100%" cellpadding="0" cellspacing="0">
+
+              <!-- Footer brand: logo + name + tagline -->
+              <tr>
+                <td style="padding:32px 40px 24px;text-align:center;border-bottom:1px solid #f0f0f0;">
+                  <a href="${SITE_URL}" style="text-decoration:none;display:inline-block;">
+                    <img src="${SITE_URL}/stylefinden-logo.png" width="64" height="64" alt="Stylefinden" style="display:block;margin:0 auto 12px;" />
+                    <span style="display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;font-weight:900;color:#000000;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">STYLEFINDEN</span>
+                    <span style="display:block;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:9px;font-weight:400;color:#aaaaaa;letter-spacing:5px;text-transform:uppercase;">YOUR STYLE. YOUR IDENTITY.</span>
+                  </a>
+                </td>
+              </tr>
+
+              <!-- Social: Follow Us! -->
+              <tr>
+                <td style="padding:28px 40px 20px;text-align:center;">
+                  <p style="margin:0 0 14px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#000000;">Follow Us!</p>
+                  <table cellpadding="0" cellspacing="0" style="margin:0 auto;">
+                    <tr>
+                      <td style="padding:0 5px;">
+                        <a href="${SOCIAL_LINKS.instagram}" style="display:inline-block;border:1px solid #000000;color:#000000;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:7px 13px;">Instagram</a>
+                      </td>
+                      <td style="padding:0 5px;">
+                        <a href="${SOCIAL_LINKS.pinterest}" style="display:inline-block;border:1px solid #000000;color:#000000;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:7px 13px;">Pinterest</a>
+                      </td>
+                      <td style="padding:0 5px;">
+                        <a href="${SOCIAL_LINKS.tiktok}" style="display:inline-block;border:1px solid #000000;color:#000000;text-decoration:none;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:7px 13px;">TikTok</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+
+              <!-- Copyright + Legal + Unsubscribe -->
+              <tr>
+                <td style="padding:16px 40px 28px;text-align:center;border-top:1px solid #f0f0f0;">
+                  <p style="margin:0 0 6px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:10px;color:#999999;letter-spacing:0;">
+                    &copy; 2026 Stylefinden. All rights reserved.
+                  </p>
+                  <p style="margin:0;font-size:10px;color:#bbbbbb;">
+                    <a href="${SITE_URL}/legal" style="color:#bbbbbb;text-decoration:none;">Legal Notice</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="${SITE_URL}/privacy" style="color:#bbbbbb;text-decoration:none;">Privacy Policy</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="${unsubscribeUrl}" style="color:#bbbbbb;text-decoration:underline;">Unsubscribe</a>
+                  </p>
+                </td>
+              </tr>
+
+            </table>
+
           </td>
         </tr>
+
       </table>
     </td></tr>
   </table>
@@ -65,7 +120,7 @@ export function buildWelcomeEmail(unsubscribeEmail: string): { html: string; tex
     unsubscribeEmail,
     body: `
       <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#999;margin:0 0 20px;">You&apos;re in.</p>
-      <h1 style="font-family:Georgia,serif;font-size:28px;font-weight:900;color:#000;margin:0 0 20px;line-height:1.2;">
+      <h1 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#000;margin:0 0 20px;line-height:1.2;">
         Welcome to Stylefinden ✦
       </h1>
       <p style="font-size:14px;color:#444;line-height:1.8;margin:0 0 16px;">
@@ -114,7 +169,7 @@ export function buildBlogNotificationEmail(options: {
     previewText: `New on Stylefinden: ${title}`,
     body: `
       ${categoryLine}
-      <h1 style="font-family:Georgia,serif;font-size:28px;font-weight:900;color:#000;margin:0 0 20px;line-height:1.25;">
+      <h1 style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:28px;font-weight:900;color:#000;margin:0 0 20px;line-height:1.25;">
         ${title}
       </h1>
       <p style="font-size:14px;color:#555;line-height:1.8;margin:0 0 36px;">
