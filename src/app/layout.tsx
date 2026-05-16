@@ -1,6 +1,6 @@
 // Tüm sayfaları saran kök düzen — her sayfada tekrar eden yapıyı (Header, Footer, analytics, newsletter) tek yerden yönetir.
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
@@ -35,12 +35,6 @@ const poppins = localFont({
   src: "./fonts/Poppins-Variable.woff2",
   variable: "--font-poppins",
   weight: "100 900",
-});
-
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
 });
 
 // Sitenin varsayılan SEO metadata'sı — her sayfada override edilebilir, edilmezse bu değerler kullanılır.
@@ -133,7 +127,7 @@ export default function RootLayout({
     <html
 
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${clashDisplay.variable} ${poppins.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${clashDisplay.variable} ${poppins.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {/* Üst navigasyon çubuğu — tüm sayfalarda sabit */}

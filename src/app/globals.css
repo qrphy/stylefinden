@@ -10,8 +10,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-syne: var(--font-syne);
-  --font-clash: var(--font-clash-display);
+--font-clash: var(--font-clash-display);
   --font-poppins: var(--font-poppins);
 }
 
