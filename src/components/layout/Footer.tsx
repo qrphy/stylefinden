@@ -33,71 +33,67 @@ export default function Footer() {
               loading="lazy"
               decoding="async"
             />
-            <p className="text-xl font-black text-black uppercase">stylefinden</p>
+            <p className="font-clash text-xl font-semibold text-black uppercase tracking-wider">stylefinden</p>
             <p className="text-xs tracking-widest uppercase text-gray-400">
               Your Style. Your Identity.
             </p>
           </div>
 
           {/* Desktop — Discover */}
-          <div className="hidden md:flex flex-col gap-3">
-            <span className="text-xs tracking-widest uppercase text-gray-400 font-semibold mb-1">
-              Discover
-            </span>
-            <a href="/outfits"     className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Outfits</a>
-            <a href="/hairstyles"  className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Hairstyles</a>
-            <a href="/accessories" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Accessories</a>
-            <a href="/trends"      className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Trends</a>
-            <a href="/blog"        className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Blog</a>
-            <a href="/style-guide" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Style Guide</a>
+          <div className="hidden md:flex flex-col gap-3 font-clash">
+            <span className="footer-heading mb-1">Discover</span>
+            <a href="/outfits"     className="footer-link">Outfits</a>
+            <a href="/hairstyles"  className="footer-link">Hairstyles</a>
+            <a href="/accessories" className="footer-link">Accessories</a>
+            <a href="/trends"      className="footer-link">Trends</a>
+            <a href="/blog"        className="footer-link">Blog</a>
+            <a href="/style-guide" className="footer-link">Style Guide</a>
           </div>
 
           {/* Mobile accordion — Discover */}
           <details className="footer-accordion md:hidden">
             <summary className="list-none flex items-center justify-between cursor-pointer py-3 border-b border-gray-100">
-              <span className="text-xs tracking-widest uppercase text-gray-400 font-semibold">Discover</span>
+              <span className="footer-heading font-bold">Discover</span>
               <svg viewBox="0 0 24 24" className="chevron h-4 w-4 stroke-gray-400" fill="none" strokeWidth={2}>
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </summary>
-            <div className="accordion-content flex-col gap-3">
-              <a href="/outfits"     className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Outfits</a>
-              <a href="/hairstyles"  className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Hairstyles</a>
-              <a href="/accessories" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Accessories</a>
-              <a href="/trends"      className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Trends</a>
-              <a href="/blog"        className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Blog</a>
-              <a href="/style-guide" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Style Guide</a>
+            <div className="accordion-content flex-col gap-3 font-clash">
+              <a href="/outfits"     className="footer-link">Outfits</a>
+              <a href="/hairstyles"  className="footer-link">Hairstyles</a>
+              <a href="/accessories" className="footer-link">Accessories</a>
+              <a href="/trends"      className="footer-link">Trends</a>
+              <a href="/blog"        className="footer-link">Blog</a>
+              <a href="/style-guide" className="footer-link">Style Guide</a>
             </div>
           </details>
 
           {/* Desktop — Legal */}
-          <div className="hidden md:flex flex-col gap-3">
-            <span className="text-xs tracking-widest uppercase text-gray-400 font-semibold mb-1">
-              Legal
-            </span>
-            <a href="/legal"   className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Legal Notice</a>
-            <a href="/privacy" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Privacy Policy</a>
-            <a href="/contact" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Contact</a>
+          <div className="hidden md:flex flex-col gap-3 font-clash">
+            <span className="footer-heading mb-1">Legal</span>
+            <a href="/legal"   className="footer-link">Legal Notice</a>
+            <a href="/privacy" className="footer-link">Privacy Policy</a>
+            <a href="/contact" className="footer-link">Contact</a>
           </div>
 
           {/* Mobile accordion — Legal */}
           <details className="footer-accordion md:hidden">
             <summary className="list-none flex items-center justify-between cursor-pointer py-3 border-b border-gray-100">
-              <span className="text-xs tracking-widest uppercase text-gray-400 font-semibold">Legal</span>
+              <span className="footer-heading font-bold">Legal</span>
               <svg viewBox="0 0 24 24" className="chevron h-4 w-4 stroke-gray-400" fill="none" strokeWidth={2}>
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </summary>
-            <div className="accordion-content flex-col gap-3">
-              <a href="/legal"   className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Legal Notice</a>
-              <a href="/privacy" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Privacy Policy</a>
-              <a href="/contact" className="text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200">Contact</a>
+            <div className="accordion-content flex-col gap-3 font-clash">
+              <a href="/legal"   className="footer-link">Legal Notice</a>
+              <a href="/privacy" className="footer-link">Privacy Policy</a>
+              <a href="/contact" className="footer-link">Contact</a>
             </div>
           </details>
 
           {/* Social Media */}
           <div className="flex flex-col items-center md:items-start gap-3">
-            <span className="text-xs tracking-widest uppercase text-gray-400 font-semibold">
+            <span className="font-clash text-xs tracking-widest uppercase text-gray-400 font-bold">
               Follow Us
             </span>
             <div className="flex items-center gap-4">

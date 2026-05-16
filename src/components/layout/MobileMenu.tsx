@@ -29,7 +29,7 @@ export default function MobileMenu() {
             <a
               key={link.href}
               href={link.href}
-              className="block px-4 py-3 text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black transition-colors duration-200 border-b border-gray-50 last:border-0"
+              className="nav-link block px-4 py-3 border-b border-gray-50 last:border-0"
             >
               {link.label}
             </a>
@@ -40,7 +40,7 @@ export default function MobileMenu() {
       {/* Logo — <details> dışında, <a> olarak ana sayfaya yönlendirir */}
       <a
         href="/"
-        className="absolute inset-x-0 flex justify-center items-center h-14 text-2xl font-black text-black tracking-tight hover:text-gray-700 transition-colors duration-200"
+        className="absolute inset-x-0 flex justify-center items-center h-14 font-clash text-2xl font-semibold text-black tracking-wider hover:text-gray-700 transition-colors duration-200"
       >
         STYLEFINDEN
       </a>
