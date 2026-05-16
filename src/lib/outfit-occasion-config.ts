@@ -56,12 +56,12 @@ export function getOccasionConfig(slug: string): OccasionConfig {
 }
 
 const OCCASION_IMAGES: Record<string, string> = {
-  office:  "/categories/outfits/office.jpeg",
-  evening: "/categories/outfits/evening.jpeg",
-  casual:  "/categories/outfits/casual.png",
-  sport:   "/categories/outfits/sport.png",
-  school:  "/categories/outfits/school.webp",
-  travel:  "/categories/outfits/travel.png",
+  office:           "/categories/outfits/office-business.jpeg",
+  evening:          "/categories/outfits/evening-event.jpeg",
+  sport:            "/categories/outfits/sport-outdoor.png",
+  school:           "/categories/outfits/school-college.webp",
+  travel:           "/categories/outfits/travel-vacation.png",
+  "party-night-out":"/categories/outfits/party-night.webp",
 }
 
 // CollectionCard için CollectionItem döndürür
