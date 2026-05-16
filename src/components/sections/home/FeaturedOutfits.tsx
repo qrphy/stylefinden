@@ -64,7 +64,7 @@ export default async function FeaturedOutfits() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
           {outfits.map((outfit) => (
             <a key={outfit.id} href={`/outfits/${outfit.slug}`} className="group flex flex-col gap-3">
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">

@@ -44,7 +44,7 @@ export default function TrendAestheticIndexPage() {
         {
           label: "All Aesthetics",
           basePath: "/trends/aesthetic",
-          gridCols: "grid-cols-2 md:grid-cols-3",
+          gridCols: "grid-cols-1 md:grid-cols-3",
           items: TREND_AESTHETIC_ORDER.map(getTrendAestheticCard),
         },
       ]}

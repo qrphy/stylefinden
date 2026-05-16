@@ -42,7 +42,7 @@ export default function HairstyleOccasionIndexPage() {
         {
           label: "All Occasions",
           basePath: "/hairstyles/occasion",
-          gridCols: "grid-cols-2 md:grid-cols-4",
+          gridCols: "grid-cols-1 md:grid-cols-4",
           items: [
             {
               slug: "everyday",

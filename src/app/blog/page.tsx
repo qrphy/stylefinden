@@ -112,7 +112,7 @@ export default async function BlogPage() {
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400 block mb-6">
             Categories
           </span>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {categories.map((cat) => (
               <a
                 key={cat.slug}

@@ -159,7 +159,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
           </div>
 
           {trends.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
               {trends.map((trend) => {
                 const imgSrc = trend.image
                   ? urlFor(trend.image).width(400).height(533).url()

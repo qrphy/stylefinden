@@ -55,7 +55,7 @@ const collections: CollectionGroup[] = [
   {
     label: "By Occasion",
     basePath: "/hairstyles/occasion",
-    gridCols: "grid-cols-2 md:grid-cols-4",
+    gridCols: "grid-cols-1 md:grid-cols-4",
     items: [
       { slug: "everyday", label: "Everyday", description: "Quick and effortless looks for busy mornings and casual days",       tags: ["5 Min", "No-Heat", "Practical", "Casual"],  badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true },
       { slug: "wedding",  label: "Wedding",  description: "Romantic updos, soft waves and elegant styles for the big day",     tags: ["Updo", "Bridal", "Romantic", "Floral"],     badge: "New", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]", active: true },
