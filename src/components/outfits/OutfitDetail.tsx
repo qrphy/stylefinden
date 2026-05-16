@@ -147,7 +147,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
 
             {/* Açıklama */}
             {outfit.description && (
-              <p className="text-sm md:text-base text-gray-500 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed font-[family-name:var(--font-poppins)]">
                 {outfit.description}
               </p>
             )}

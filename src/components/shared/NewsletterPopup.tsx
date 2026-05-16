@@ -110,6 +110,12 @@ export default function NewsletterPopup() {
               <p className="text-xs text-gray-500 leading-relaxed">
                 Thank you! Check your inbox (and spam folder too).
               </p>
+              <button
+                onClick={close}
+                className="mt-2 px-6 py-2.5 border border-black text-xs font-semibold tracking-widest uppercase text-black hover:bg-black hover:text-white transition-colors duration-200"
+              >
+                Close
+              </button>
             </div>
           ) : (
             <>
