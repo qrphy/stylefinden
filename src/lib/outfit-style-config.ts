@@ -89,7 +89,7 @@ export function getStyleCard(slug: string): CollectionItem {
 }
 
 // Koleksiyon sayfalarında görüntülenme sırası
-export const STYLE_ORDER = ["boho", "minimalist", "streetstyle", "classic", "old-money", "retro-vintage", "y2k", "western", "sienna-vibe", "korean-fashion", "clean-girl", "cute-coquette", "black-dark"]
+export const STYLE_ORDER = ["boho", "minimalist", "streetstyle", "old-money", "retro-vintage", "y2k", "western", "sienna-vibe", "korean-fashion", "clean-girl", "cute-coquette", "black-dark"]
 
 // Tüm style config'leri
 export const STYLE_CONFIGS: Record<string, StyleConfig> = {
@@ -114,9 +114,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
     ],
     relatedCategories: [
       { label: "Summer Dresses", href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Festival Style", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
       { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Beach Looks",    href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe", accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
+      { label: "Travel & Vacation", href: "/outfits/occasion/travel",accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
@@ -175,10 +175,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Classic Style",     href: "/outfits/style/classic",   accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Old Money Style",   href: "/outfits/style/old-money",  accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
       { label: "Office & Business", href: "/outfits/occasion/office", accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
       { label: "Boho Style",        href: "/outfits/style/boho",      accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Autumn Looks",      href: "/outfits/season/autumn",   accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Winter Outfits",    href: "/outfits/season/winter",   accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
@@ -237,10 +237,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Festival Style", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Autumn Looks",   href: "/outfits/season/autumn",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Minimalist",     href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Sport & Outdoor",href: "/outfits/occasion/sport",   accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Winter Outfits", href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
       {
@@ -279,68 +279,6 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
     ],
   },
 
-  classic: {
-    label: "Classic Style",
-    subtitle: "Timeless & Elegant",
-    description:
-      "Tailoring, high-quality basics and looks that never go out of fashion – discover curated classic style outfits for women who embrace timeless elegance.",
-    accent: "bg-[#fafafa]",
-    accentText: "text-gray-900",
-    tipTitle: "Timeless elegance, perfect tailoring,",
-    tipBody:
-      "Classic style invests in quality, not quantity – every piece is a long-term companion.",
-    tipTags: ["Blazer", "Trench", "Tailoring", "Neutral"],
-    filters: ["All", "Blazer", "Trench", "Tailoring", "Business", "Evening", "Casual"],
-    outfitGridLabel: "Latest Classic Looks",
-    styleGuideHref: "/blog/occasion-guides/classic-style-guide",
-    stats: [
-      { value: "70+", label: "Looks" },
-      { value: "4", label: "Styles" },
-      { value: "Daily", label: "Updated" },
-    ],
-    relatedCategories: [
-      { label: "Minimalist",        href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Office & Business", href: "/outfits/occasion/office",   accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Winter Outfits",    href: "/outfits/season/winter",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Evening & Event",   href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
-    ],
-    faqs: [
-      {
-        q: "What are the core pieces of a classic wardrobe?",
-        a: "A well-cut blazer in black or camel, a white shirt, a tailored black trouser, a trench coat, a simple black dress and high-quality pumps or loafers form the unshakeable foundation of classic style.",
-      },
-      {
-        q: "How do you modernize classic outfits?",
-        a: "Classic pieces can be refreshed with contemporary details: chunky loafers instead of pointed pumps, an oversized blazer instead of a fitted cut, or the classic black dress paired with white sneakers. Subtle updates keep the look fresh.",
-      },
-      {
-        q: "What colors belong to classic style?",
-        a: "Black, white, navy, camel, grey and cream are the timeless classics. Add occasional accents in bordeaux, dark green or cobalt blue. The strength lies in the neutral base – it allows endless combinations.",
-      },
-    ],
-    seo: {
-      title: "Classic Style Outfits – Timeless, Elegant & Distinctive",
-      description:
-        "Discover curated classic style outfits: blazer looks, trench coats, evening outfits and timeless combinations for women who embrace lasting elegance.",
-      keywords: ["Classic Style Outfit", "Classic Elegant Outfit", "Timeless Outfit", "Blazer Outfit", "Trench Coat Look", "Business Outfit Women", "Classic Fashion", "Elegant Outfit"],
-    },
-    card: {
-      description: "Timeless basics with a modern twist",
-      tags: ["Blazer", "Trench", "Tailoring", "Neutral"],
-      badge: "New",
-    },
-    staticFallback: [
-      { id: 1, title: "Camel Blazer & Trousers",subtitle: "Office & Chic",      tag: "Trending", style: "Blazer",    href: "/outfits/camel-blazer-trousers"  },
-      { id: 2, title: "Navy & White Stripes",   subtitle: "Smart Casual",       tag: "Popular",  style: "Casual",    href: "/outfits/navy-white-stripes"     },
-      { id: 3, title: "Wrap Coat Outfit",       subtitle: "City & Business",    tag: "New",      style: "Trench",    href: "/outfits/wrap-coat-outfit"       },
-      { id: 4, title: "Little Black Dress",     subtitle: "Evening & Event",    tag: "Trending", style: "Evening",   href: "/outfits/little-black-dress"     },
-      { id: 5, title: "Pencil Skirt & Blouse",  subtitle: "Office & Elegant",   tag: "Popular",  style: "Business",  href: "/outfits/pencil-skirt-blouse"    },
-      { id: 6, title: "Trench & Straight Jeans",subtitle: "Weekend & City",     tag: "New",      style: "Trench",    href: "/outfits/trench-straight-jeans"  },
-      { id: 7, title: "Pearl & Silk Blouse",    subtitle: "Elegant & Feminine", tag: "Trending", style: "Evening",   href: "/outfits/pearl-silk-blouse"      },
-      { id: 8, title: "Grey Suit Set",          subtitle: "Power & Profession", tag: "New",      style: "Tailoring", href: "/outfits/grey-suit-set"          },
-    ],
-  },
-
   "old-money": {
     label: "Old Money Style",
     subtitle: "Quietly Luxurious",
@@ -360,7 +298,6 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Classic Style",     href: "/outfits/style/classic",    accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
       { label: "Minimalist",        href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Office & Business", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
       { label: "Evening & Event",   href: "/outfits/occasion/evening", accent: "bg-gray-900",  accentText: "text-white"     },
@@ -424,7 +361,6 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { label: "Boho Style",   href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Y2K Style",    href: "/outfits/style/y2k",         accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
       { label: "Street Style", href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Festival & Outdoor", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
     ],
     faqs: [
       {
@@ -482,10 +418,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Retro & Vintage",  href: "/outfits/style/retro-vintage", accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
-      { label: "Street Style",     href: "/outfits/style/streetstyle",   accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Festival & Outdoor",href: "/outfits/occasion/festival",  accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Date Night",       href: "/outfits/occasion/date-night", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Retro & Vintage",  href: "/outfits/style/retro-vintage",  accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Street Style",     href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Evening & Event",  href: "/outfits/occasion/evening",     accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Party & Night Out",href: "/outfits/occasion/party-night-out",accent: "bg-gray-900",accentText: "text-white"   },
     ],
     faqs: [
       {
@@ -543,10 +479,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",         href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Festival & Outdoor", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Casual & Everyday",  href: "/outfits/occasion/casual",   accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
-      { label: "Retro & Vintage",    href: "/outfits/style/retro-vintage", accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Boho Style",      href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe",  accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
+      { label: "Street Style",   href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Retro & Vintage",href: "/outfits/style/retro-vintage",accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
     ],
     faqs: [
       {
@@ -604,10 +540,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",        href: "/outfits/style/boho",           accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Retro & Vintage",   href: "/outfits/style/retro-vintage",  accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
-      { label: "Festival & Outdoor",href: "/outfits/occasion/festival",    accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Beach & Vacation",  href: "/outfits/occasion/beach",       accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Boho Style",       href: "/outfits/style/boho",          accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Retro & Vintage",  href: "/outfits/style/retro-vintage", accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Summer Dresses",   href: "/outfits/season/summer",       accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Travel & Vacation",href: "/outfits/occasion/travel",     accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
@@ -787,9 +723,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Y2K Style",      href: "/outfits/style/y2k",             accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
+      { label: "Y2K Style",       href: "/outfits/style/y2k",            accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
       { label: "Boho Style",     href: "/outfits/style/boho",            accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Date Night",     href: "/outfits/occasion/date-night",   accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
+      { label: "Evening & Event",href: "/outfits/occasion/evening",      accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Spring Looks",   href: "/outfits/season/spring",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
     ],
     faqs: [
@@ -851,7 +787,7 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { label: "Minimalist",      href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Street Style",    href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Classic Style",   href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
+      { label: "Old Money Style", href: "/outfits/style/old-money",   accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
     ],
     faqs: [
       {

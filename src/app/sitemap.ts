@@ -39,18 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // ── Outfit categories ────────────────────────────────────────────────────
     { url: `${base}/outfits/season/summer`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/outfits/season/winter`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
-    { url: `${base}/outfits/season/autumn`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/outfits/season/spring`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/outfits/style/boho`,            lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
     { url: `${base}/outfits/style/minimalist`,      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
     { url: `${base}/outfits/style/streetstyle`,     lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
-    { url: `${base}/outfits/style/classic`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
     { url: `${base}/outfits/occasion/office`,       lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
     { url: `${base}/outfits/occasion/evening`,      lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
-    { url: `${base}/outfits/occasion/casual`,       lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
-    { url: `${base}/outfits/occasion/beach`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
-    { url: `${base}/outfits/occasion/festival`,     lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
-    { url: `${base}/outfits/occasion/date-night`,   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
     // ── Hairstyle categories ─────────────────────────────────────────────────
     { url: `${base}/hairstyles/type/braids`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
     { url: `${base}/hairstyles/type/buns`,          lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },

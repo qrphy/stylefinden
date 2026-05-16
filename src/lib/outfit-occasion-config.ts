@@ -84,10 +84,6 @@ export function getOccasionCard(slug: string): CollectionItem {
 export const OCCASION_ORDER = [
   "office",
   "evening",
-  "casual",
-  "beach",
-  "festival",
-  "date-night",
   "party-night-out",
   "sport",
   "school",
@@ -116,7 +112,6 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Classic Style",   href: "/outfits/style/classic",    accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
       { label: "Minimalist",      href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Evening & Event", href: "/outfits/occasion/evening", accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Winter Outfits",  href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
@@ -178,10 +173,10 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Date Night",        href: "/outfits/occasion/date-night", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Classic Style",     href: "/outfits/style/classic",       accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
-      { label: "Winter Outfits",    href: "/outfits/season/winter",       accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Office & Business", href: "/outfits/occasion/office",     accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Party & Night Out",  href: "/outfits/occasion/party-night-out", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Minimalist",        href: "/outfits/style/minimalist",        accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Winter Outfits",    href: "/outfits/season/winter",           accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Office & Business", href: "/outfits/occasion/office",         accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
     ],
     faqs: [
       {
@@ -220,254 +215,6 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
     ],
   },
 
-  casual: {
-    label: "Casual & Everyday",
-    subtitle: "Comfortable & Stylish",
-    description:
-      "Comfortable basics, relaxed combinations and everyday looks that feel effortlessly stylish – for every day without compromise.",
-    accent: "bg-[#fff8e1]",
-    accentText: "text-[#f57f17]",
-    tipTitle: "Effortless style every day,",
-    tipBody:
-      "Casual doesn't mean boring – the right basics and a good fit make all the difference.",
-    tipTags: ["Denim", "Basics", "Comfort", "Layering"],
-    filters: ["All", "Denim", "Basics", "Layering", "Weekend", "Sporty", "Cozy"],
-    outfitGridLabel: "Latest Casual Looks",
-    styleGuideHref: "/blog/occasion-guides/casual-style-guide",
-    stats: [
-      { value: "75+", label: "Looks" },
-      { value: "4", label: "Styles" },
-      { value: "Daily", label: "Updated" },
-    ],
-    relatedCategories: [
-      { label: "Street Style",  href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Minimalist",    href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Weekend Looks", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Spring Looks",  href: "/outfits/season/spring",     accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-    ],
-    faqs: [
-      {
-        q: "How do you make a simple casual look stand out?",
-        a: "Details make the difference: a white tee looks instantly polished with well-fitting straight-leg jeans and white sneakers. Add a structured blazer or leather jacket for an immediate upgrade. High-quality basics and a good fit are everything.",
-      },
-      {
-        q: "What are the must-have basics for a casual wardrobe?",
-        a: "White tee, grey sweatshirt, well-fitting straight jeans, linen trousers in beige or black, a simple midi dress, classic sneakers and a denim or leather jacket form the perfect casual foundation for endless combinations.",
-      },
-      {
-        q: "How do you style sneakers elegantly?",
-        a: "Clean white sneakers go with almost everything – from midi skirts to blazer outfits. Chunky sneakers give feminine looks a modern contrast. The key: sneakers should be clean and in good condition. A simple, sporty shoe elevates the entire outfit.",
-      },
-    ],
-    seo: {
-      title: "Casual & Everyday Outfits – Comfortable, Stylish & Effortless",
-      description:
-        "Discover curated casual outfits: denim looks, relaxed basics, layering combinations and everyday looks for every day without compromise.",
-      keywords: ["Casual Outfit Women", "Everyday Outfit", "Relaxed Outfits", "Casual Look", "Basic Outfit", "Weekend Outfit", "Casual Chic", "Everyday Style"],
-    },
-    card: {
-      description: "Comfortable, stylish everyday looks for relaxed days",
-      tags: ["Denim", "Basics", "Comfort", "Layering"],
-      badge: "New",
-    },
-    staticFallback: [
-      { id: 1, title: "White Tee & Straight Jeans", subtitle: "Everyday Essential", tag: "Trending", style: "Basics",   href: "/outfits/white-tee-straight-jeans" },
-      { id: 2, title: "Cozy Knit & Wide Leg",       subtitle: "Weekend & Relax",    tag: "Popular",  style: "Cozy",     href: "/outfits/cozy-knit-wide-leg"       },
-      { id: 3, title: "Denim Jacket Layer",          subtitle: "Street & Casual",    tag: "New",      style: "Layering", href: "/outfits/denim-jacket-layer"       },
-      { id: 4, title: "Linen Shirt Outfit",          subtitle: "Summer Everyday",    tag: "Trending", style: "Basics",   href: "/outfits/linen-shirt-outfit"       },
-      { id: 5, title: "Sweatshirt & Midi Skirt",     subtitle: "Casual Chic",        tag: "Popular",  style: "Denim",    href: "/outfits/sweatshirt-midi-skirt"    },
-      { id: 6, title: "Oversized Blazer & Jeans",   subtitle: "Smart Casual",       tag: "New",      style: "Layering", href: "/outfits/oversized-blazer-jeans"   },
-      { id: 7, title: "Sporty Chic Look",            subtitle: "Athleisure & City",  tag: "Trending", style: "Sporty",   href: "/outfits/sporty-chic-look"         },
-      { id: 8, title: "Flowy Midi & Sneakers",       subtitle: "Feminine Casual",    tag: "New",      style: "Basics",   href: "/outfits/flowy-midi-sneakers"      },
-    ],
-  },
-
-  beach: {
-    label: "Beach & Vacation",
-    subtitle: "Beach & Vacation Vibes",
-    description:
-      "Light cover-ups, summery dresses and vacation looks – discover curated beach outfits for the sea, pool and summer holidays.",
-    accent: "bg-[#e3f2fd]",
-    accentText: "text-[#1565c0]",
-    tipTitle: "Sun, sea & style,",
-    tipBody:
-      "The perfect beach look is light, breezy and still stylish – from morning by the sea to sunset.",
-    tipTags: ["Linen", "Cover-up", "Maxi", "Kaftan"],
-    filters: ["All", "Cover-up", "Maxi", "Mini", "Kaftan", "Linen", "Boho"],
-    outfitGridLabel: "Latest Beach Looks",
-    styleGuideHref: "/blog/occasion-guides/beach-style-guide",
-    stats: [
-      { value: "55+", label: "Looks" },
-      { value: "3", label: "Styles" },
-      { value: "Daily", label: "Updated" },
-    ],
-    relatedCategories: [
-      { label: "Summer Dresses",   href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Boho Style",       href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Festival Style",   href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Casual & Everyday",href: "/outfits/occasion/casual",   accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
-    ],
-    faqs: [
-      {
-        q: "What do you wear over a bikini at the beach?",
-        a: "A light linen cover-up dress is the most versatile option – it works from the beach to a beach restaurant. Alternatively, kaftans in colorful prints or simple tones are an elegant companion. Denim shorts with an open linen blouse create a relaxed look.",
-      },
-      {
-        q: "What do you wear in the evening at your vacation destination?",
-        a: "A flowing maxi dress in vibrant summer colors or a boho print is perfect for sundowners and dinner at your vacation spot. With flat sandals and gold jewelry, the look becomes effortlessly glamorous without being formal.",
-      },
-      {
-        q: "What materials are ideal for beach outfits?",
-        a: "Linen is the ultimate beach material – breathable, dries quickly and looks chic even crumpled. Cotton jersey and viscose are also great options. Avoid synthetic materials that can become uncomfortable in the heat.",
-      },
-    ],
-    seo: {
-      title: "Beach & Vacation Outfits – Beach Looks for Summer",
-      description:
-        "Discover curated beach outfits: cover-ups, maxi dresses, kaftans and vacation looks for beach, pool and summer evenings.",
-      keywords: ["Beach Outfit", "Beach Look", "Vacation Outfit", "Cover-up Dress", "Beach Fashion", "Beach Style", "Summer Holiday Outfit", "Kaftan Outfit"],
-    },
-    card: {
-      description: "Beach vibes, cover-ups and summery vacation looks",
-      tags: ["Linen", "Cover-up", "Maxi", "Kaftan"],
-      badge: "New",
-    },
-    staticFallback: [
-      { id: 1, title: "Linen Cover-up Dress",  subtitle: "Beach & Pool",           tag: "Trending", style: "Cover-up", href: "/outfits/linen-cover-up-dress"   },
-      { id: 2, title: "Boho Beach Maxi",        subtitle: "Vacation & Relaxation",  tag: "Popular",  style: "Maxi",     href: "/outfits/boho-beach-maxi"        },
-      { id: 3, title: "Crochet Mini & Shorts", subtitle: "Beach & Casual",          tag: "New",      style: "Mini",     href: "/outfits/crochet-mini-shorts"    },
-      { id: 4, title: "Stripe Linen Set",       subtitle: "Promenade & Café",        tag: "Trending", style: "Linen",    href: "/outfits/stripe-linen-set"       },
-      { id: 5, title: "Kaftan Look",            subtitle: "Pool & Sundowner",        tag: "Popular",  style: "Kaftan",   href: "/outfits/kaftan-look"            },
-      { id: 6, title: "Denim Cut-off & Blouse",subtitle: "Beach Stroll",            tag: "New",      style: "Casual",   href: "/outfits/denim-cutoff-blouse"    },
-      { id: 7, title: "White Maxi Beach Dress",subtitle: "Elegant by the Sea",      tag: "Trending", style: "Maxi",     href: "/outfits/white-maxi-beach-dress" },
-      { id: 8, title: "Resort Coord Set",      subtitle: "Luxury & Vacation",       tag: "New",      style: "Cover-up", href: "/outfits/resort-coord-set"       },
-    ],
-  },
-
-  festival: {
-    label: "Festival & Outdoor",
-    subtitle: "Boho, Bold & Free",
-    description:
-      "Fringe, denim, floral prints and playful layering looks – discover curated festival outfits for open air events, concerts and outdoor occasions.",
-    accent: "bg-[#fce4ec]",
-    accentText: "text-[#c62828]",
-    tipTitle: "Dance like nobody's watching,",
-    tipBody:
-      "The perfect festival outfit is comfortable, expressive and survives a long day in the sun.",
-    tipTags: ["Boho", "Denim", "Fringe", "Floral"],
-    filters: ["All", "Boho", "Denim", "Floral", "Fringe", "Layering", "Bold"],
-    outfitGridLabel: "Latest Festival Looks",
-    styleGuideHref: "/blog/occasion-guides/festival-style-guide",
-    stats: [
-      { value: "50+", label: "Looks" },
-      { value: "3", label: "Styles" },
-      { value: "Daily", label: "Updated" },
-    ],
-    relatedCategories: [
-      { label: "Boho Style",      href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Summer Dresses",  href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Street Style",    href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Beach & Vacation",href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-    ],
-    faqs: [
-      {
-        q: "What do you wear to an outdoor festival?",
-        a: "Priority is comfort and practicality: comfortable shoes (boots or sneakers), breathable fabrics and layerable pieces. A floral boho dress with cowboy boots, or denim shorts with an embroidered top and fringe vest are classic festival looks.",
-      },
-      {
-        q: "How do you protect yourself from the weather at a festival?",
-        a: "A light kimono or denim jacket for cooler evenings, a hat for sun protection and a small backpack instead of a handbag are practical festival essentials. Choose fabrics that still look good after a long day – linen and jersey are ideal.",
-      },
-      {
-        q: "Which shoes do you wear at festivals?",
-        a: "Cowboy boots are the classic festival shoe – they look great, are sturdy and provide support. Chunky sandals with a platform sole or robust sneakers also work well. Avoid heels on uneven festival grounds.",
-      },
-    ],
-    seo: {
-      title: "Festival & Outdoor Outfits – Boho, Bold & Unforgettable",
-      description:
-        "Discover curated festival outfits: boho dresses, denim looks, fringe styles and playful combinations for open air events, concerts and outdoor occasions.",
-      keywords: ["Festival Outfit Women", "Open Air Outfit", "Boho Festival Look", "Concert Outfit", "Festival Fashion", "Outdoor Outfit", "Summer Festival Outfit", "Fringe Outfit"],
-    },
-    card: {
-      description: "Boho, denim and playful layering looks for open air",
-      tags: ["Boho", "Denim", "Fringe", "Floral"],
-      badge: "New",
-    },
-    staticFallback: [
-      { id: 1, title: "Boho Fringe Dress",      subtitle: "Festival & Open Air", tag: "Trending", style: "Boho",     href: "/outfits/boho-fringe-dress"      },
-      { id: 2, title: "Denim & Crop Top",        subtitle: "Concert & Outdoor",   tag: "Popular",  style: "Denim",    href: "/outfits/denim-crop-top"         },
-      { id: 3, title: "Floral Maxi & Boots",     subtitle: "Boho & Wild",         tag: "New",      style: "Floral",   href: "/outfits/floral-maxi-boots"      },
-      { id: 4, title: "Crochet & Denim Shorts", subtitle: "Summer Festival",     tag: "Trending", style: "Boho",     href: "/outfits/crochet-denim-shorts"   },
-      { id: 5, title: "Embroidered Midi Look",   subtitle: "Playful & Feminine",  tag: "Popular",  style: "Floral",   href: "/outfits/embroidered-midi-look"  },
-      { id: 6, title: "Layered Boho Set",        subtitle: "Layering & Style",    tag: "New",      style: "Layering", href: "/outfits/layered-boho-set"       },
-      { id: 7, title: "Tie-Dye & Wide Leg",      subtitle: "Retro & Bold",        tag: "Trending", style: "Bold",     href: "/outfits/tie-dye-wide-leg"       },
-      { id: 8, title: "Western Fringe Jacket",   subtitle: "Statement Look",      tag: "New",      style: "Fringe",   href: "/outfits/western-fringe-jacket"  },
-    ],
-  },
-
-  "date-night": {
-    label: "Date Night",
-    subtitle: "Romantic & Confident",
-    description:
-      "Romantic dresses, confident combinations and looks that leave a lasting impression – for an unforgettable evening.",
-    accent: "bg-[#fce4ec]",
-    accentText: "text-[#c62828]",
-    tipTitle: "Dress for the moment,",
-    tipBody:
-      "A good date night outfit radiates confidence – choose something you truly feel good in.",
-    tipTags: ["Midi", "Romantic", "Bold", "Feminine"],
-    filters: ["All", "Midi", "Mini", "Maxi", "Romantic", "Bold", "Elegant"],
-    outfitGridLabel: "Latest Date Night Looks",
-    styleGuideHref: "/blog/occasion-guides/date-night-style-guide",
-    stats: [
-      { value: "40+", label: "Looks" },
-      { value: "3", label: "Styles" },
-      { value: "Daily", label: "Updated" },
-    ],
-    relatedCategories: [
-      { label: "Evening & Event",href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Classic Style",  href: "/outfits/style/classic",     accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
-      { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Summer Dresses", href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-    ],
-    faqs: [
-      {
-        q: "What do you wear on a first date?",
-        a: "Choose something you truly feel comfortable and confident in. A well-fitting midi dress or an elegant casual outfit is usually the best choice – it shows effort without looking overdressed. Avoid completely new, unworn pieces since you won't know how they feel.",
-      },
-      {
-        q: "What is the perfect date night outfit for a restaurant date?",
-        a: "A wrap midi in satin or viscose is the classic and safe choice. Alternatively: a silky blouse with well-fitting trousers or a midi skirt. Complete the look with subtle heels or elegant sandals and minimal, high-quality jewelry.",
-      },
-      {
-        q: "How do you transform an everyday outfit into a date night look?",
-        a: "Simple upgrades: swap sneakers for heels or elegant sandals, add a satin clutch, replace the everyday top with something silkier or featuring a special detail (neckline, open back). A red lipstick transforms any look.",
-      },
-    ],
-    seo: {
-      title: "Date Night Outfits – Romantic & Confident Looks",
-      description:
-        "Discover curated date night outfits: romantic dresses, elegant combinations and confident looks for unforgettable evenings.",
-      keywords: ["Date Night Outfit", "Date Outfit Women", "Romantic Outfit", "First Date Outfit", "Evening Look Date", "Date Look", "Romantic Fashion", "Dinner Date Outfit"],
-    },
-    card: {
-      description: "Romantic and confident looks for unforgettable evenings",
-      tags: ["Midi", "Romantic", "Bold", "Feminine"],
-      badge: "New",
-    },
-    staticFallback: [
-      { id: 1, title: "Wrap Satin Midi",        subtitle: "Dinner & Romance",    tag: "Trending", style: "Midi",     href: "/outfits/wrap-satin-midi"        },
-      { id: 2, title: "Floral Midi Dress",       subtitle: "Café & Stroll",       tag: "Popular",  style: "Romantic", href: "/outfits/floral-date-midi"       },
-      { id: 3, title: "Leather Mini Skirt Look",subtitle: "Bold & Confident",    tag: "New",      style: "Bold",     href: "/outfits/leather-mini-skirt"     },
-      { id: 4, title: "Slip Dress & Blazer",     subtitle: "Casual Chic Date",    tag: "Trending", style: "Elegant",  href: "/outfits/slip-dress-blazer"      },
-      { id: 5, title: "Off-Shoulder Mini",       subtitle: "Feminine & Flirty",   tag: "Popular",  style: "Mini",     href: "/outfits/off-shoulder-mini"      },
-      { id: 6, title: "Wide Leg & Silk Top",     subtitle: "Sophisticated Date",  tag: "New",      style: "Elegant",  href: "/outfits/wide-leg-silk-top"      },
-      { id: 7, title: "Lace Detail Dress",       subtitle: "Romantic & Delicate", tag: "Trending", style: "Romantic", href: "/outfits/lace-detail-dress"      },
-      { id: 8, title: "Monochrome Bold Set",     subtitle: "Statement & Strong",  tag: "New",      style: "Bold",     href: "/outfits/monochrome-bold-set"    },
-    ],
-  },
-
   sport: {
     label: "Sport & Outdoor",
     subtitle: "Active & Functional",
@@ -488,10 +235,9 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Casual & Everyday",  href: "/outfits/occasion/casual",    accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
-      { label: "Festival & Outdoor", href: "/outfits/occasion/festival",  accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Street Style",       href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Summer Dresses",     href: "/outfits/season/summer",      accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Boho Style",         href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Street Style",      href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Summer Dresses",    href: "/outfits/season/summer",      accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
@@ -549,7 +295,6 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Casual & Everyday", href: "/outfits/occasion/casual",      accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
       { label: "Street Style",      href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Minimalist",        href: "/outfits/style/minimalist",     accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Sport & Outdoor",   href: "/outfits/occasion/sport",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
@@ -611,7 +356,6 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
     ],
     relatedCategories: [
       { label: "Evening & Event",href: "/outfits/occasion/evening",   accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Date Night",     href: "/outfits/occasion/date-night",accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
       { label: "Y2K Style",      href: "/outfits/style/y2k",          accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
       { label: "Black & Dark",   href: "/outfits/style/black-dark",   accent: "bg-gray-900",  accentText: "text-white"     },
     ],
@@ -671,8 +415,6 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Beach & Vacation",   href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Casual & Everyday",  href: "/outfits/occasion/casual",   accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
       { label: "Boho Style",         href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Minimalist",         href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],

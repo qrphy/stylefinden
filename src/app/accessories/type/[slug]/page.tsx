@@ -134,7 +134,7 @@ const accessoryTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
       { label: "Bags & Handbags",   href: "/accessories/type/bags",      accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
       { label: "Shoes",             href: "/accessories/type/shoes",     accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
       { label: "Evening Outfits",   href: "/outfits/occasion/evening",   accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Classic Style",     href: "/outfits/style/classic",      accent: "bg-[#fafafa]", accentText: "text-gray-900"  },
+      { label: "Minimalist",        href: "/outfits/style/minimalist",   accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
     faqs: [
       {
@@ -178,7 +178,7 @@ const accessoryTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
     relatedCategories: [
       { label: "Bags & Handbags",   href: "/accessories/type/bags",      accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
       { label: "Jewelry",           href: "/accessories/type/jewelry",   accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Autumn Outfits",    href: "/outfits/season/autumn",      accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Winter Outfits",    href: "/outfits/season/winter",      accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
       { label: "Street Style",      href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
@@ -224,7 +224,7 @@ const accessoryTypes: Record<string, Omit<CategoryData, 'outfits'>> = {
       { label: "Jewelry",           href: "/accessories/type/jewelry",   accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Bags & Handbags",   href: "/accessories/type/bags",      accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
       { label: "Boho Style",        href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Autumn Outfits",    href: "/outfits/season/autumn",      accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Spring Looks",      href: "/outfits/season/spring",      accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
     ],
     faqs: [
       {

@@ -54,16 +54,6 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
     { id: 7, title: "Velvet Evening Look",    subtitle: "Evening & Event",   tag: "Trending", style: "Elegant",  href: "/outfits/velvet-evening-look"    },
     { id: 8, title: "Oversized Puffer Coat",  subtitle: "Street & Urban",    tag: "New",      style: "Coat",     href: "/outfits/oversized-puffer-coat"  },
   ],
-  "autumn": [
-    { id: 1, title: "Camel Trench Coat",     subtitle: "City & Everyday",   tag: "Trending", style: "Trench",   href: "/outfits/camel-trench-coat"      },
-    { id: 2, title: "Rust Knit & Jeans",     subtitle: "Casual & Weekend",  tag: "Popular",  style: "Knitwear", href: "/outfits/rust-knit-jeans"        },
-    { id: 3, title: "Olive Cargo Look",      subtitle: "Street & Urban",    tag: "New",      style: "Casual",   href: "/outfits/olive-cargo-look"       },
-    { id: 4, title: "Plaid Blazer Outfit",   subtitle: "Office & Business", tag: "Trending", style: "Elegant",  href: "/outfits/plaid-blazer-outfit"    },
-    { id: 5, title: "Denim Layer Look",      subtitle: "Casual & Modern",   tag: "Popular",  style: "Denim",    href: "/outfits/denim-layer-look"       },
-    { id: 6, title: "Brown Leather Jacket",  subtitle: "Street & Leisure",  tag: "New",      style: "Layering", href: "/outfits/brown-leather-jacket"   },
-    { id: 7, title: "Midi Skirt & Boots",    subtitle: "Elegant & Chic",    tag: "Trending", style: "Elegant",  href: "/outfits/midi-skirt-boots"       },
-    { id: 8, title: "Oversized Blazer Look", subtitle: "Business Casual",   tag: "New",      style: "Trench",   href: "/outfits/oversized-blazer-look"  },
-  ],
   "spring": [
     { id: 1, title: "Pastel Blazer Set",         subtitle: "Office & Chic",        tag: "Trending", style: "Blazer",  href: "/outfits/pastel-blazer-set"         },
     { id: 2, title: "Floral Midi Dress",          subtitle: "Casual & Feminine",    tag: "Popular",  style: "Floral",  href: "/outfits/floral-midi-dress"          },
@@ -98,10 +88,10 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Beach Looks",    href: "/outfits/occasion/beach",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Festival Style", href: "/outfits/occasion/festival", accent: "bg-[#fce4ec]", accentText: "text-[#c62828]" },
-      { label: "Autumn Looks",   href: "/outfits/season/autumn",     accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
+      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Spring Looks",   href: "/outfits/season/spring",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe",accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
+      { label: "Street Style",   href: "/outfits/style/streetstyle",accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
       {
@@ -145,10 +135,10 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Summer Dresses",    href: "/outfits/season/summer",   accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Autumn Looks",      href: "/outfits/season/autumn",   accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
-      { label: "Office & Business", href: "/outfits/occasion/office", accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Classic Style",     href: "/outfits/style/classic",   accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Summer Dresses",    href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Spring Looks",      href: "/outfits/season/spring",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Office & Business", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Minimalist",        href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
     faqs: [
       {
@@ -172,53 +162,6 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
     },
   },
 
-  "autumn": {
-    label: "Autumn Looks",
-    subtitle: "Autumn 2025",
-    description:
-      "Earth tones, crisp transition looks and elegant trench coats – discover curated autumn outfits for every style and every day.",
-    accent: "bg-[#efebe9]",
-    accentText: "text-[#4e342e]",
-    tipTitle: "Earth tones, warm textures,",
-    tipBody:
-      "The perfect autumn look lives through layering, a rich color palette and the right coat.",
-    tipTags: ["Trench", "Earth Tones", "Boots", "Layering"],
-    filters: ["All", "Trench", "Knitwear", "Denim", "Casual", "Elegant", "Layering"],
-    outfitGridLabel: "Latest Autumn Looks",
-    styleGuideHref: "/blog/seasonal-guides/autumn-style-guide",
-    stats: [
-      { value: "70+", label: "Looks" },
-      { value: "4", label: "Styles" },
-      { value: "Daily", label: "Updated" },
-    ],
-    relatedCategories: [
-      { label: "Winter Outfits", href: "/outfits/season/winter", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Spring Looks",   href: "/outfits/season/spring", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Boho Style",     href: "/outfits/style/boho",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Classic Style",  href: "/outfits/style/classic", accent: "bg-gray-100",  accentText: "text-gray-700"  },
-    ],
-    faqs: [
-      {
-        q: "What colors are trending in autumn 2025?",
-        a: "Earth tones like camel, rust brown, olive green and dark red dominate the autumn 2025 palette. Muted neutrals like greige and dark grey serve as versatile base colors.",
-      },
-      {
-        q: "How do you style a trench coat in autumn?",
-        a: "A camel trench coat pairs with almost everything: over a simple white shirt and straight-leg jeans for everyday, over a midi dress for elegant occasions, or over a chunky turtleneck sweater for cooler days.",
-      },
-      {
-        q: "Which shoes pair with autumn outfits?",
-        a: "Knee-high boots in brown or black are the classic autumn companion. Ankle boots with a block heel give the look a modern touch, while Chelsea boots are a versatile everyday option.",
-      },
-    ],
-    seo: {
-      title: "Autumn Outfits 2025 – Looks for the Golden Season",
-      description:
-        "Discover curated autumn outfits 2025: trench coats, earth tone combinations, layering looks and elegant boot outfits for every occasion – from everyday to evening.",
-      keywords: ["Autumn Outfits", "Autumn Look 2025", "Trench Coat Outfit", "Autumn Fashion", "Earth Tones Outfit", "Layering Autumn", "Autumn Style", "Transitional Outfit"],
-    },
-  },
-
   "spring": {
     label: "Spring Looks",
     subtitle: "Spring 2026",
@@ -239,10 +182,10 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Summer Dresses", href: "/outfits/season/summer",  accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Autumn Looks",   href: "/outfits/season/autumn",  accent: "bg-[#efebe9]", accentText: "text-[#4e342e]" },
-      { label: "Boho Style",     href: "/outfits/style/boho",     accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Beach Looks",    href: "/outfits/occasion/beach", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Summer Dresses", href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Winter Outfits", href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
+      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe",accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
     ],
     faqs: [
       {
