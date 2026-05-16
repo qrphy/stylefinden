@@ -14,8 +14,12 @@ export const OUTFITS_QUERY = defineQuery(`
 // OUTFIT_QUERY: Tek bir outfit detay sayfası için — pieces dahil tam veri
 export const OUTFIT_QUERY = defineQuery(`
   *[_type == "outfit" && slug.current == $slug][0] {
-    _id, title, "slug": slug.current, description, image, style, season, occasion,
-    pieces[]{ _key, type, name, colorTag, itemTag, description, image, affiliateUrl },
+    _id, title, "slug": slug.current, description,
+    image { asset, hotspot, crop, "lqip": asset->metadata.lqip },
+    style, season, occasion,
+    pieces[]{ _key, type, name, colorTag, itemTag, description,
+      image { asset, hotspot, crop, "lqip": asset->metadata.lqip },
+      affiliateUrl },
     tags, publishedAt
   }
 `)
@@ -37,9 +41,11 @@ export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
     _id != $id &&
     count(pieces[defined(colorTag) && colorTag in $colors]) + count(pieces[defined(itemTag) && itemTag in $items]) > 0
   ] | order(_createdAt desc) [0...8] {
-    _id, title, "slug": slug.current, image, style, occasion,
+    _id, title, "slug": slug.current,
+    image { asset, hotspot, crop, "lqip": asset->metadata.lqip },
+    style, occasion,
     "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag },
-    pieces[]{ _key, name, image, affiliateUrl }
+    pieces[]{ _key, name, image { asset, hotspot, crop, "lqip": asset->metadata.lqip }, affiliateUrl }
   }
 `)
 

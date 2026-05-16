@@ -5,6 +5,13 @@ import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
 import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip"
 
+type SanityImage = {
+  asset?: object
+  hotspot?: object
+  crop?: object
+  lqip?: string
+}
+
 export type OutfitPiece = {
   _key?: string
   type?: string
@@ -12,7 +19,7 @@ export type OutfitPiece = {
   colorTag?: string
   itemTag?: string
   description?: string
-  image?: object
+  image?: SanityImage
   affiliateUrl?: string
 }
 
@@ -21,7 +28,7 @@ export type OutfitDetailData = {
   title: string
   slug: string
   description?: string
-  image?: object
+  image?: SanityImage
   style?: string
   season?: string
   occasion?: string
@@ -33,11 +40,11 @@ export type RelatedByPieceOutfit = {
   _id: string
   title: string
   slug: string
-  image?: object
+  image?: SanityImage
   style?: string
   occasion?: string
   matchedPieces?: { name: string; colorTag?: string; itemTag?: string }[]
-  pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }>
+  pieces?: Array<{ _key?: string; name: string; image?: SanityImage; affiliateUrl?: string }>
 }
 
 type Props = {
@@ -63,6 +70,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
   const imageUrl = outfit.image
     ? urlFor(outfit.image).width(800).height(1067).url()
     : undefined
+  const imageLqip = outfit.image?.lqip
 
   const pieces = outfit.pieces ?? []
 
@@ -116,6 +124,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
               alt={outfit.title}
               priority
               sizes="(max-width: 768px) 100vw, 50vw"
+              blurDataURL={imageLqip}
             />
           </div>
 
@@ -177,6 +186,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                             src={pieceImg}
                             alt={piece.name}
                             sizes="96px"
+                            blurDataURL={piece.image?.lqip}
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-200" />
                           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
@@ -260,6 +270,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                               src={imgUrl}
                               alt={related.title}
                               sizes="180px"
+                              blurDataURL={related.image?.lqip}
                             />
                             <div className="absolute top-2 left-2 flex flex-col gap-1">
                               {related.style && (
