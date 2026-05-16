@@ -1,49 +1,116 @@
-// Mobil navigasyon — logo <details> dışında <a> olarak ana sayfaya yönlendirir.
-// CSS-only hamburger toggle; dropdown z-50 ile sayfa içeriğinin üzerinde görünür.
-import { navLinks } from "@/constants/navigation"
+"use client";
+
+import { useState } from "react";
+import { navLinks } from "@/constants/navigation";
 
 export default function MobileMenu() {
-  return (
-    <div className="relative md:hidden flex items-center h-14 px-4 bg-white border-b border-gray-200">
-      <style>{`
-        details .icon-hamburger { display: block; }
-        details .icon-close     { display: none;  }
-        details[open] .icon-hamburger { display: none;  }
-        details[open] .icon-close     { display: block; }
-      `}</style>
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
-      {/* Hamburger — z-10 ile logonun tıklama alanının üstünde */}
-      <details className="relative z-10">
-        <summary className="list-none flex items-center p-1 cursor-pointer">
-          <svg viewBox="0 0 24 24" className="icon-hamburger h-6 w-6 stroke-black/70 shrink-0" fill="none" strokeWidth={1.5}>
+  async function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setEmail("");
+    } catch {
+      setStatus("idle");
+    }
+  }
+
+  return (
+    <div className="md:hidden">
+      {/* Header bar */}
+      <div className="relative flex items-center h-14 px-4 bg-white border-b border-gray-200">
+        <button
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+          className="relative z-10 p-1"
+        >
+          <svg viewBox="0 0 24 24" className="h-6 w-6 stroke-black" fill="none" strokeWidth={1.5}>
             <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
-          <svg viewBox="0 0 24 24" className="icon-close h-6 w-6 stroke-black/70 shrink-0" fill="none" strokeWidth={1.5}>
-            <path d="M6 6l12 12M6 18L18 6" />
-          </svg>
-        </summary>
+        </button>
 
-        {/* Dropdown — z-50 ile sayfa içeriği üzerinde */}
-        <div className="absolute left-0 top-full z-50 w-44 border border-black/10 bg-white">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="nav-link block px-4 py-3 border-b border-gray-50 last:border-0"
-            >
-              {link.label}
-            </a>
-          ))}
+        <a
+          href="/"
+          className="absolute inset-x-0 flex justify-center items-center h-14 font-clash text-2xl font-semibold text-black tracking-wider"
+        >
+          STYLEFINDEN
+        </a>
+      </div>
+
+      {/* Full-screen overlay */}
+      {open && (
+        <div className="fixed inset-0 z-50 bg-white flex flex-col">
+          {/* Close */}
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="absolute top-5 right-5 text-black text-lg leading-none hover:opacity-50 transition-opacity duration-200"
+          >
+            ✕
+          </button>
+
+          {/* Nav links */}
+          <nav className="flex-1 flex flex-col justify-center px-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-2xl font-light text-black py-4 border-b border-gray-100 last:border-0 hover:opacity-50 transition-opacity duration-200"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Bottom — email subscribe + copyright */}
+          <div className="px-8 pb-10">
+            {status === "success" ? (
+              <p className="text-xs text-gray-500 pb-2">Thank you for subscribing!</p>
+            ) : (
+              <form onSubmit={handleSubscribe}>
+                <div className="flex items-center border-b border-black pb-2 mb-3">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    disabled={status === "loading"}
+                    className="flex-1 text-sm text-black placeholder-gray-400 focus:outline-none bg-transparent disabled:opacity-50"
+                  />
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="text-xs font-semibold tracking-widest uppercase text-black ml-4 disabled:opacity-50"
+                  >
+                    {status === "loading" ? "..." : "Subscribe"}
+                  </button>
+                </div>
+                <p className="text-[11px] text-gray-400 leading-relaxed">
+                  By providing your email address, you agree to our{" "}
+                  <a href="/privacy" className="underline underline-offset-2">
+                    Privacy Policy
+                  </a>
+                  .
+                </p>
+              </form>
+            )}
+            <p className="text-[11px] text-gray-400 mt-6">© 2026 STYLEFINDEN</p>
+          </div>
         </div>
-      </details>
-
-      {/* Logo — <details> dışında, <a> olarak ana sayfaya yönlendirir */}
-      <a
-        href="/"
-        className="absolute inset-x-0 flex justify-center items-center h-14 font-clash text-2xl font-semibold text-black tracking-wider hover:text-gray-700 transition-colors duration-200"
-      >
-        STYLEFINDEN
-      </a>
+      )}
     </div>
-  )
+  );
 }
