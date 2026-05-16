@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
 
           {/* Desktop — Discover */}
-          <div className="hidden md:flex flex-col gap-3 font-clash">
+          <div className="hidden md:flex flex-col gap-3">
             <span className="footer-heading mb-1">Discover</span>
             <a href="/outfits"     className="footer-link">Outfits</a>
             <a href="/hairstyles"  className="footer-link">Hairstyles</a>
@@ -58,7 +58,7 @@ export default function Footer() {
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </summary>
-            <div className="accordion-content flex-col gap-3 font-clash">
+            <div className="accordion-content flex-col gap-3">
               <a href="/outfits"     className="footer-link">Outfits</a>
               <a href="/hairstyles"  className="footer-link">Hairstyles</a>
               <a href="/accessories" className="footer-link">Accessories</a>
@@ -69,7 +69,7 @@ export default function Footer() {
           </details>
 
           {/* Desktop — Legal */}
-          <div className="hidden md:flex flex-col gap-3 font-clash">
+          <div className="hidden md:flex flex-col gap-3">
             <span className="footer-heading mb-1">Legal</span>
             <a href="/legal"   className="footer-link">Legal Notice</a>
             <a href="/privacy" className="footer-link">Privacy Policy</a>
@@ -84,7 +84,7 @@ export default function Footer() {
                 <path d="M6 9l6 6 6-6" />
               </svg>
             </summary>
-            <div className="accordion-content flex-col gap-3 font-clash">
+            <div className="accordion-content flex-col gap-3">
               <a href="/legal"   className="footer-link">Legal Notice</a>
               <a href="/privacy" className="footer-link">Privacy Policy</a>
               <a href="/contact" className="footer-link">Contact</a>
