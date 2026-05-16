@@ -76,31 +76,31 @@ export default function NewsletterPopup() {
       className="fixed inset-0 z-[70] flex items-center justify-center px-4 bg-black/60"
       onClick={(e) => { if (e.target === e.currentTarget) close(); }}
     >
-      <div className="relative flex w-full max-w-3xl bg-white overflow-hidden"
-           style={{ height: "min(520px, 90vh)" }}>
+      <div className="relative flex flex-col sm:flex-row w-full max-w-sm sm:max-w-3xl bg-white overflow-hidden sm:h-[min(520px,90vh)]">
 
-        {/* Left — fashion image */}
-        <div className="hidden sm:block relative w-[55%] shrink-0">
+        {/* Close — card seviyesinde, mobilde görsel üzerinde (beyaz), desktopda form üzerinde (siyah) */}
+        <button
+          onClick={close}
+          aria-label="Close newsletter popup"
+          className="absolute top-4 right-4 z-10 text-white sm:text-black hover:opacity-60 transition-opacity duration-200 leading-none text-lg"
+        >
+          ✕
+        </button>
+
+        {/* Görsel — mobilde üst (h-48), desktopda sol (%55) */}
+        <div className="relative h-64 sm:h-auto sm:w-[55%] sm:shrink-0">
           <Image
             src="/categories/outfits/evening-event.jpeg"
             alt="Evening event style"
             fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 0px, 480px"
+            className="object-cover"
+            style={{ objectPosition: "center 15%" }}
+            sizes="(max-width: 640px) 384px, 480px"
           />
         </div>
 
-        {/* Right — form panel */}
-        <div className="relative flex flex-col justify-center w-full sm:w-[45%] px-8 md:px-12 py-10 bg-white">
-
-          {/* Close */}
-          <button
-            onClick={close}
-            aria-label="Close newsletter popup"
-            className="absolute top-5 right-5 text-black hover:opacity-50 transition-opacity duration-200 leading-none text-lg"
-          >
-            ✕
-          </button>
+        {/* Form paneli — mobilde alt, desktopda sağ (%45) */}
+        <div className="flex flex-col justify-center w-full sm:w-[45%] px-6 py-8 sm:px-8 sm:py-10 md:px-12 bg-white">
 
           {submitStatus === "success" ? (
             <div className="flex flex-col items-center gap-4 text-center">

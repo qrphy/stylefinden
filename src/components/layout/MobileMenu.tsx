@@ -33,9 +33,9 @@ export default function MobileMenu() {
         <button
           onClick={() => setOpen(true)}
           aria-label="Open menu"
-          className="relative z-10 p-1"
+          className="relative z-10 self-center"
         >
-          <svg viewBox="0 0 24 24" className="h-6 w-6 stroke-black" fill="none" strokeWidth={1.5}>
+          <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-black" fill="none" strokeWidth={2}>
             <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
@@ -67,7 +67,7 @@ export default function MobileMenu() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-2xl font-light text-black py-4 border-b border-gray-100 last:border-0 hover:opacity-50 transition-opacity duration-200"
+                className="font-clash text-2xl font-light text-black py-4 border-b border-gray-100 last:border-0 hover:opacity-50 transition-opacity duration-200"
               >
                 {link.label}
               </a>
