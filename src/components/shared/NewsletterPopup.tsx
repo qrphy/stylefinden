@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "newsletter_popup";
@@ -73,93 +74,90 @@ export default function NewsletterPopup() {
       aria-modal="true"
       aria-labelledby="popup-title"
       className="fixed inset-0 z-[70] flex items-center justify-center px-4 bg-black/60"
+      onClick={(e) => { if (e.target === e.currentTarget) close(); }}
     >
-      <div className="relative w-full max-w-sm bg-black text-white p-6 flex flex-col gap-4">
+      <div className="relative flex w-full max-w-3xl bg-white overflow-hidden"
+           style={{ height: "min(520px, 90vh)" }}>
 
-        {/* Close button */}
-        <button
-          onClick={close}
-          aria-label="Close newsletter popup"
-          className="absolute top-4 right-4 text-white/40 hover:text-white transition-colors duration-200 text-sm leading-none"
-        >
-          ✕
-        </button>
-
-        {/* Header */}
-        <div className="flex flex-col gap-2 pr-6">
-          <span className="text-xs font-semibold tracking-widest uppercase text-white/40">
-            Newsletter
-          </span>
-          <h2
-            id="popup-title"
-            className="text-sm font-black tracking-wide uppercase"
-          >
-            Never miss a trend, never miss a look.
-          </h2>
-          <p className="text-xs text-gray-300 leading-relaxed">
-            Weekly curated outfits, hairstyle inspiration and exclusive style
-            tips — straight to your inbox.
-          </p>
+        {/* Left — fashion image */}
+        <div className="hidden sm:block relative w-[55%] shrink-0">
+          <Image
+            src="/categories/outfits/evening-event.jpeg"
+            alt="Evening event style"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 0px, 480px"
+          />
         </div>
 
-        {/* Body */}
-        {submitStatus === "success" ? (
-          <div className="flex flex-col items-center gap-3 py-6 border border-white/10 text-center px-4">
-            <span className="text-xl font-black text-white">✦</span>
-            <p className="text-xs font-semibold tracking-widest uppercase text-white">
-              Successfully subscribed!
-            </p>
-            <p className="text-xs text-gray-300 leading-relaxed">
-              Thank you! Check your inbox (and spam folder too).
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              disabled={submitStatus === "loading"}
-              className="w-full px-4 py-2.5 bg-white/5 border border-white/20 text-white
-                         placeholder-white/30 text-xs tracking-wide focus:outline-none
-                         focus:border-white/60 disabled:opacity-50 transition-colors duration-200"
-            />
+        {/* Right — form panel */}
+        <div className="relative flex flex-col justify-center w-full sm:w-[45%] px-8 md:px-12 py-10 bg-white">
 
-            {submitStatus === "error" && (
-              <p className="text-xs text-red-400 tracking-wide">{errorMsg}</p>
-            )}
+          {/* Close */}
+          <button
+            onClick={close}
+            aria-label="Close newsletter popup"
+            className="absolute top-5 right-5 text-black hover:opacity-50 transition-opacity duration-200 leading-none text-lg"
+          >
+            ✕
+          </button>
 
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={close}
-                className="flex-1 text-xs tracking-widest uppercase border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-colors duration-200 py-2.5 px-3"
-              >
-                No thanks
-              </button>
-              <button
-                type="submit"
-                disabled={submitStatus === "loading"}
-                className="flex-1 text-xs tracking-widest uppercase bg-white text-black hover:bg-gray-100 transition-colors duration-200 py-2.5 px-3 disabled:opacity-50"
-              >
-                {submitStatus === "loading" ? "..." : "Subscribe"}
-              </button>
+          {submitStatus === "success" ? (
+            <div className="flex flex-col items-center gap-4 text-center">
+              <p className="text-xs font-semibold tracking-widest uppercase text-black">
+                Successfully subscribed!
+              </p>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Thank you! Check your inbox (and spam folder too).
+              </p>
             </div>
-
-            <p className="text-xs text-white/30 leading-relaxed">
-              No spam. Cancel anytime.{" "}
-              <a
-                href="/privacy"
-                className="underline underline-offset-2 hover:text-white/60 transition-colors duration-200"
+          ) : (
+            <>
+              <h2
+                id="popup-title"
+                className="text-xl font-black tracking-wide uppercase text-black mb-7 text-center"
               >
-                Privacy Policy
-              </a>
-              .
-            </p>
-          </form>
-        )}
+                Join the Community
+              </h2>
+
+              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  disabled={submitStatus === "loading"}
+                  className="w-full px-4 py-3 border border-gray-300 text-black
+                             placeholder-gray-400 text-sm focus:outline-none
+                             focus:border-black disabled:opacity-50 transition-colors duration-200"
+                />
+
+                {submitStatus === "error" && (
+                  <p className="text-xs text-red-500 tracking-wide">{errorMsg}</p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitStatus === "loading"}
+                  className="w-full py-3.5 bg-black text-white text-xs font-semibold
+                             tracking-widest uppercase hover:bg-gray-900 transition-colors
+                             duration-200 disabled:opacity-50"
+                >
+                  {submitStatus === "loading" ? "..." : "Subscribe"}
+                </button>
+              </form>
+
+              <p className="mt-5 text-xs text-gray-400 leading-relaxed text-center">
+                By clicking &quot;SUBSCRIBE&quot; you confirm that you have read and accepted our{" "}
+                <a href="/privacy" className="underline underline-offset-2 hover:text-gray-600 transition-colors duration-200">
+                  Privacy Policy
+                </a>{" "}
+                and Terms of Use.
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
