@@ -52,14 +52,14 @@ export default function CategoryPage({
 
       {/* ── Hero ── */}
       <section className="w-full bg-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16 xl:py-20">
+        <div className="container-page py-12 md:py-16 xl:py-20">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-16">
 
             <div className="flex flex-col gap-5 md:max-w-xl xl:max-w-2xl">
               <span className={`text-xs font-semibold tracking-widest uppercase ${safeAccentText}`}>
                 {data.subtitle}
               </span>
-              <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-black leading-tight tracking-tight">
+              <h1 className="hero-heading">
                 {data.label} <br />
                 <span className="italic font-light">{heroSuffix}</span>
               </h1>
@@ -91,7 +91,7 @@ export default function CategoryPage({
               <p className="text-xs text-gray-600 leading-relaxed">{data.tipBody}</p>
               <div className="flex flex-wrap gap-2 mt-2">
                 {data.tipTags.map((tag) => (
-                  <span key={tag} className="px-3 py-1 text-xs font-medium tracking-widest uppercase bg-white text-gray-700 border border-gray-200">
+                  <span key={tag} className="tag">
                     {tag}
                   </span>
                 ))}
@@ -105,13 +105,13 @@ export default function CategoryPage({
       <FilterBar filters={data.filters} basePath={basePath} slug={slug} />
 
       {/* ── Item Grid ── */}
-      <section className="w-full border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+      <section className="w-full section-divider">
+        <div className="container-page py-12 md:py-16">
 
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+          <div className="section-header mb-10">
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Curated Selection</span>
-              <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">{data.outfitGridLabel}</h2>
+              <span className="eyebrow">Curated Selection</span>
+              <h2 className="section-title">{data.outfitGridLabel}</h2>
             </div>
             <Button
               variant="ghost"
@@ -137,10 +137,10 @@ export default function CategoryPage({
                       {item.style}
                     </span>
                   </div>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                  <div className="card-overlay" />
                 </div>
                 <div className="flex flex-col gap-1.5 px-0.5">
-                  <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
+                  <h3 className="card-title line-clamp-2">
                     {item.title}
                   </h3>
                   <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{item.subtitle}</p>

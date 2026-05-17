@@ -20,7 +20,7 @@ export default function SimilarOutfits({ outfits }: Props) {
 
   return (
     <section className="border-t border-gray-100 px-3 md:px-5 py-8">
-      <span className="text-xs font-semibold tracking-widest uppercase text-gray-400 block mb-4">
+      <span className="eyebrow block mb-4">
         Benzer Ürünler
       </span>
       <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none">

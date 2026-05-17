@@ -6,13 +6,13 @@ type Props = { items: BreadcrumbItem[] };
 
 export default function Breadcrumb({ items }: Props) {
   return (
-    <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-6 pb-0">
-      <nav className="flex items-center gap-2 text-xs font-medium tracking-widest uppercase text-gray-400">
+    <div className="container-page pt-6 pb-0">
+      <nav className="breadcrumb-nav font-medium">
         {items.map((item, i) => (
           <span key={i} className="flex items-center gap-2">
             {i > 0 && <span>/</span>}
             {item.href ? (
-              <a href={item.href} className="hover:text-black transition-colors duration-200">
+              <a href={item.href} className="breadcrumb-link">
                 {item.label}
               </a>
             ) : (

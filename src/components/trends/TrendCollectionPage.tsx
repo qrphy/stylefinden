@@ -48,8 +48,8 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
     <main className="flex-1 bg-white">
 
       {/* ── Breadcrumb ── */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-8 pb-2">
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
+      <div className="container-page pt-8 pb-2">
+        <nav className="breadcrumb-nav">
           {[
             { label: "Home", href: "/" },
             { label: "Trends", href: "/trends" },
@@ -59,7 +59,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span>/</span>}
               {crumb.href ? (
-                <a href={crumb.href} className="hover:text-black transition-colors">
+                <a href={crumb.href} className="breadcrumb-link">
                   {crumb.label}
                 </a>
               ) : (
@@ -72,7 +72,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
 
       {/* ── Hero ── */}
       <section className="w-full border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16 xl:py-20">
+        <div className="container-page py-12 md:py-16 xl:py-20">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-16">
 
             <div className="flex flex-col gap-5 md:max-w-xl xl:max-w-2xl">
@@ -126,9 +126,9 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
       {/* ── Highlights ── */}
       {config.highlights && config.highlights.length > 0 && (
         <section className="w-full border-b border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+          <div className="container-page py-12 md:py-16">
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+              <span className="eyebrow">
                 What to Know
               </span>
               <div className="flex-1 h-px bg-gray-100" />
@@ -149,10 +149,10 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
 
       {/* ── Trends Grid ── */}
       <section className="w-full border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+        <div className="container-page py-12 md:py-16">
 
           <div className="flex items-center gap-4 mb-8">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Latest {config.label}
             </span>
             <div className="flex-1 h-px bg-gray-100" />
@@ -177,11 +177,11 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" />
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                       {badge && (
-                        <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${safeBadgeClasses}`}>
+                        <span className={`absolute top-3 left-3 badge ${safeBadgeClasses}`}>
                           {badge}
                         </span>
                       )}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                      <div className="card-overlay" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-200">
                         <svg
                           viewBox="0 0 24 24"

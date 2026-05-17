@@ -35,13 +35,13 @@ const seasons = [
 export default function SeasonalHighlights() {
   return (
     <section className="w-full bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+      <div className="container-page py-16 md:py-20">
 
         <div className="flex flex-col items-center text-center gap-3 mb-12">
-          <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+          <span className="eyebrow">
             Seasonal Guides
           </span>
-          <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+          <h2 className="section-title-lg">
             Style for the Season
           </h2>
         </div>
@@ -74,7 +74,7 @@ export default function SeasonalHighlights() {
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {s.tags.map((tag) => (
-                    <span key={tag} className="px-3 py-1 text-xs font-medium tracking-widest uppercase bg-white text-gray-700 border border-gray-200">
+                    <span key={tag} className="tag">
                       {tag}
                     </span>
                   ))}

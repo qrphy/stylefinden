@@ -75,12 +75,12 @@ export default async function AccessoriesHighlights() {
 
   return (
     <section className="w-full bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+      <div className="container-page py-16 md:py-20">
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div className="section-header mb-10">
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Accessories</span>
-            <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+            <span className="eyebrow">Accessories</span>
+            <h2 className="section-title-lg">
               Details that <span className="italic font-light">change everything.</span>
             </h2>
             <p className="text-sm text-gray-500 leading-relaxed mt-1 max-w-lg">
@@ -105,7 +105,7 @@ export default async function AccessoriesHighlights() {
           {grouped.map((cat, ci) => (
             <div key={cat.label}>
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">{cat.label}</span>
+                <span className="eyebrow">{cat.label}</span>
                 <div className="flex-1 h-px bg-gray-100" />
                 <a href={cat.href} className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200">All →</a>
               </div>
@@ -117,7 +117,7 @@ export default async function AccessoriesHighlights() {
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-all duration-300" />
                     <div className="absolute top-4 left-4">
-                      <span className={`px-3 py-1 text-xs font-semibold tracking-widest uppercase ${badgeStyle[cat.featured.badge] ?? "bg-gray-100 text-gray-700"}`}>
+                      <span className={`badge-md ${badgeStyle[cat.featured.badge] ?? "bg-gray-100 text-gray-700"}`}>
                         {cat.featured.badge}
                       </span>
                     </div>

@@ -27,13 +27,13 @@ export default function SectionMainPage({ hero, breadcrumb, collections }: Props
 
       {/* ── Breadcrumb ── */}
       {breadcrumb && breadcrumb.length > 0 && (
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-8 pb-2">
-          <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
+        <div className="container-page pt-8 pb-2">
+          <nav className="breadcrumb-nav">
             {breadcrumb.map((crumb, i) => (
               <span key={i} className="flex items-center gap-2">
                 {i > 0 && <span>/</span>}
                 {crumb.href ? (
-                  <a href={crumb.href} className="hover:text-black transition-colors">
+                  <a href={crumb.href} className="breadcrumb-link">
                     {crumb.label}
                   </a>
                 ) : (
@@ -47,12 +47,12 @@ export default function SectionMainPage({ hero, breadcrumb, collections }: Props
 
       {/* ── Hero ── */}
       <section className="w-full border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-14 md:py-20">
+        <div className="container-page py-14 md:py-20">
           <div className="flex flex-col items-center text-center gap-5 max-w-2xl mx-auto">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               {hero.eyebrow}
             </span>
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-black leading-tight tracking-tight">
+            <h1 className="hero-heading">
               {hero.heading} <br />
               <span className="italic font-light">{hero.headingItalic}</span>
             </h1>
@@ -66,10 +66,10 @@ export default function SectionMainPage({ hero, breadcrumb, collections }: Props
       {/* ── Collection Groups ── */}
       {collections.map((group, i) => (
         <section key={group.label} className={`w-full ${i > 0 ? "border-t border-gray-100" : ""}`}>
-          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+          <div className="container-page py-12 md:py-16">
 
             <div className="flex items-center gap-4 mb-8">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+              <span className="eyebrow">
                 {group.label}
               </span>
               <div className="flex-1 h-px bg-gray-100" />

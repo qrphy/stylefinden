@@ -65,10 +65,10 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
     <main>
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors">Home</a>
+        <nav className="breadcrumb-nav">
+          <a href="/" className="breadcrumb-link">Home</a>
           <span>/</span>
-          <a href="/accessories" className="hover:text-black transition-colors">Accessories</a>
+          <a href="/accessories" className="breadcrumb-link">Accessories</a>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{item.title}</span>
         </nav>
@@ -95,12 +95,12 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
             {/* Badges */}
             <div className="flex flex-wrap gap-1.5">
               {item.type && (
-                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-black text-white">
+                <span className="badge bg-black text-white">
                   {accessoryTypeLabel[item.type] ?? item.type}
                 </span>
               )}
               {item.occasion && (
-                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
+                <span className="badge bg-gray-100 text-gray-700">
                   {accessoryOccasionLabel[item.occasion] ?? item.occasion}
                 </span>
               )}
@@ -121,7 +121,7 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
             {/* Styling tip */}
             {item.pairingTip && (
               <div className="flex flex-col gap-1.5 p-4 bg-gray-50 border border-gray-100">
-                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Styling tip</span>
+                <span className="eyebrow">Styling tip</span>
                 <p className="text-xs text-gray-700 leading-relaxed italic">✦ {item.pairingTip}</p>
               </div>
             )}
@@ -137,10 +137,10 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
       <OutfitsWithAccessory outfits={outfits} />
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100">
-        <div className="px-3 md:px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="section-divider">
+        <div className="px-3 md:px-5 py-10 cta-row">
           <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Complete your look</span>
+            <span className="eyebrow">Complete your look</span>
             <span className="text-lg font-black text-black tracking-tight">Find matching outfits</span>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">

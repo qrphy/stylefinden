@@ -8,12 +8,12 @@ type Props = {
 
 export default function RelatedGrid({ items, title = "Similar Categories" }: Props) {
   return (
-    <section className="w-full border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+    <section className="w-full section-divider">
+      <div className="container-page py-12 md:py-16">
 
         <div className="flex flex-col items-center text-center gap-3 mb-10">
-          <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">You Might Also Like</span>
-          <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">{title}</h2>
+          <span className="eyebrow">You Might Also Like</span>
+          <h2 className="section-title">{title}</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">

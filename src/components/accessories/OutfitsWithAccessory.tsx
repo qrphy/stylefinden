@@ -35,12 +35,12 @@ export default function OutfitsWithAccessory({ outfits }: Props) {
   if (outfits.length === 0) return null
 
   return (
-    <section className="border-t border-gray-100">
+    <section className="section-divider">
       <div className="px-3 md:px-5 py-10">
         {/* Başlık */}
         <div className="flex items-baseline justify-between mb-6">
           <div className="flex flex-col gap-1">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Styled With This
             </span>
             <h2 className="text-lg font-black text-black tracking-tight">
@@ -75,7 +75,7 @@ export default function OutfitsWithAccessory({ outfits }: Props) {
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                  <div className="card-overlay" />
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                     <span className="px-3 py-1.5 bg-black text-white text-[10px] font-semibold tracking-widest uppercase">
                       View Outfit

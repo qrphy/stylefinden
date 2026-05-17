@@ -5,17 +5,17 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 export default function HeroSection() {
   return (
     <section className="w-full bg-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20 xl:py-28">
+      <div className="container-page py-16 md:py-20 xl:py-28">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12 md:gap-8 xl:gap-16">
 
           {/* Left: Text Content */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-6 md:max-w-lg xl:max-w-xl">
 
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Your Style Platform
             </span>
 
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-black leading-tight tracking-tight">
+            <h1 className="hero-heading">
               Discover your <br />
               <span className="italic font-light">perfect</span> style.
             </h1>

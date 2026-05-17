@@ -92,17 +92,17 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
   return (
     <main>
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-8 pb-2">
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors">Home</a>
+      <div className="container-page pt-8 pb-2">
+        <nav className="breadcrumb-nav">
+          <a href="/" className="breadcrumb-link">Home</a>
           <span>/</span>
-          <a href="/outfits" className="hover:text-black transition-colors">Outfits</a>
+          <a href="/outfits" className="breadcrumb-link">Outfits</a>
           {outfit.occasion && (
             <>
               <span>/</span>
               <a
                 href={`/outfits/occasion/${outfit.occasion}`}
-                className="hover:text-black transition-colors"
+                className="breadcrumb-link"
               >
                 {occasionLabel[outfit.occasion] ?? outfit.occasion}
               </a>
@@ -114,7 +114,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
       </div>
 
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-10 md:py-14">
+      <section className="container-page py-10 md:py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 xl:gap-16">
 
           {/* Sol — Ana görsel */}
@@ -133,24 +133,24 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
             {/* Badges */}
             <div className="flex flex-wrap gap-2">
               {outfit.style && (
-                <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase bg-black text-white">
+                <span className="badge-md bg-black text-white">
                   {styleLabel[outfit.style] ?? outfit.style}
                 </span>
               )}
               {outfit.season && (
-                <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
+                <span className="badge-md bg-gray-100 text-gray-700">
                   {seasonLabel[outfit.season] ?? outfit.season}
                 </span>
               )}
               {outfit.occasion && (
-                <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase border border-gray-200 text-gray-600">
+                <span className="badge-md border border-gray-200 text-gray-600">
                   {occasionLabel[outfit.occasion] ?? outfit.occasion}
                 </span>
               )}
             </div>
 
             {/* Başlık */}
-            <h1 className="text-3xl md:text-4xl xl:text-5xl font-black text-black tracking-tight leading-tight">
+            <h1 className="page-heading">
               {outfit.title}
             </h1>
 
@@ -164,7 +164,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
             {/* Shop the Look — yatay sıra */}
             {hasShopSection && (
               <div className="flex flex-col gap-3 py-4 border-t border-b border-gray-100">
-                <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+                <span className="eyebrow">
                   Shop the Look
                 </span>
                 <div className="flex gap-3 overflow-x-auto pb-2 -mx-0.5 px-0.5 [&::-webkit-scrollbar]:h-[3px] [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
@@ -217,7 +217,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                 {outfit.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-xs font-medium tracking-widest uppercase bg-white text-gray-700 border border-gray-200"
+                    className="tag"
                   >
                     {tag}
                   </span>
@@ -235,13 +235,13 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
 
       {/* ── Similar Pieces by Category ──────────────────────────────────────── */}
       {pieceGroupedOutfits.length > 0 && (
-        <section className="border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+        <section className="section-divider">
+          <div className="container-page py-12 md:py-16">
             <div className="flex flex-col gap-2 mb-10">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+              <span className="eyebrow">
                 You might also like
               </span>
-              <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
+              <h2 className="section-title">
                 Outfits With Similar Pieces
               </h2>
             </div>
@@ -249,7 +249,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
             <div className="flex flex-col gap-10">
               {pieceGroupedOutfits.map((group) => (
                 <div key={group.key} className="flex flex-col gap-4">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-gray-400 border-b border-gray-100 pb-3">
+                  <span className="eyebrow border-b border-gray-100 pb-3">
                     {group.label}
                   </span>
                   <div className="flex gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-[3px] [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
@@ -284,7 +284,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                                 </span>
                               )}
                             </div>
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                            <div className="card-overlay" />
                             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                               <span className="flex items-center gap-1 px-3 py-1 bg-black text-white text-[9px] font-semibold tracking-widest uppercase whitespace-nowrap">
                                 View Look
@@ -324,10 +324,10 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
       )}
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="section-divider">
+        <div className="container-page py-12 cta-row">
           <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Discover more
             </span>
             <span className="text-lg font-black text-black tracking-tight">

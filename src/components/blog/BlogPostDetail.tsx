@@ -60,12 +60,12 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
       <article className="max-w-3xl mx-auto px-6 md:px-8 py-10 md:py-14">
 
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400 mb-8">
-          <a href="/" className="hover:text-black transition-colors duration-200">Home</a>
+        <nav className="breadcrumb-nav mb-8">
+          <a href="/" className="breadcrumb-link">Home</a>
           <span>/</span>
-          <a href="/blog" className="hover:text-black transition-colors duration-200">Blog</a>
+          <a href="/blog" className="breadcrumb-link">Blog</a>
           <span>/</span>
-          <a href={categoryHref} className="hover:text-black transition-colors duration-200">
+          <a href={categoryHref} className="breadcrumb-link">
             {categoryLabel[post.category] ?? post.category}
           </a>
           <span>/</span>
@@ -77,7 +77,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
           <div className="flex items-center gap-3 flex-wrap">
             <a
               href={categoryHref}
-              className={`px-3 py-1 text-xs font-semibold tracking-widest uppercase hover:opacity-80 transition-opacity duration-200 ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}
+              className={`badge-md hover:opacity-80 transition-opacity duration-200 ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}
             >
               {categoryLabel[post.category] ?? post.category}
             </a>
@@ -87,7 +87,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
               </span>
             )}
           </div>
-          <h1 className="text-3xl md:text-4xl xl:text-5xl font-black text-black tracking-tight leading-tight">
+          <h1 className="page-heading">
             {post.title}
           </h1>
           {post.excerpt && (
@@ -110,7 +110,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-medium tracking-widest uppercase bg-white text-gray-700 border border-gray-200"
+                className="tag"
               >
                 {tag}
               </span>
@@ -123,8 +123,8 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
       {((post.relatedOutfits?.length ?? 0) > 0 ||
         (post.relatedAccessories?.length ?? 0) > 0 ||
         (post.relatedHairstyles?.length ?? 0) > 0) && (
-        <section className="border-t border-gray-100">
-          <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16 flex flex-col gap-12">
+        <section className="section-divider">
+          <div className="container-page py-12 md:py-16 flex flex-col gap-12">
 
             {post.relatedOutfits && post.relatedOutfits.length > 0 && (
               <div>
@@ -137,9 +137,9 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                           src={outfit.image ? urlFor(outfit.image).width(300).height(400).url() : undefined}
                           alt={outfit.title}
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                        <div className="card-overlay" />
                       </div>
-                      <span className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 px-0.5">
+                      <span className="card-title px-0.5">
                         {outfit.title}
                       </span>
                     </a>
@@ -159,9 +159,9 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                           src={item.image ? urlFor(item.image).width(300).height(300).url() : undefined}
                           alt={item.title}
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                        <div className="card-overlay" />
                       </div>
-                      <span className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 px-0.5">
+                      <span className="card-title px-0.5">
                         {item.title}
                       </span>
                     </a>
@@ -181,9 +181,9 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                           src={h.image ? urlFor(h.image).width(300).height(400).url() : undefined}
                           alt={h.title}
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                        <div className="card-overlay" />
                       </div>
-                      <span className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 px-0.5">
+                      <span className="card-title px-0.5">
                         {h.title}
                       </span>
                     </a>
@@ -197,8 +197,8 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
       )}
 
       {/* ── Geri dön ── */}
-      <div className="border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-8 flex items-center justify-between">
+      <div className="section-divider">
+        <div className="container-page py-8 flex items-center justify-between">
           <a
             href="/blog"
             className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group w-fit"

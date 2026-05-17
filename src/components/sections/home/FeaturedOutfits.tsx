@@ -48,14 +48,14 @@ export default async function FeaturedOutfits() {
 
   return (
     <section className="w-full bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+      <div className="container-page py-16 md:py-20">
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div className="section-header mb-10">
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Trending this week
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+            <h2 className="section-title-lg">
               Trending Outfits
             </h2>
           </div>
@@ -70,13 +70,13 @@ export default async function FeaturedOutfits() {
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                 <ImgPlaceholder src={outfit.image} alt={outfit.title} />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
-                <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${tagColors[outfit.tag] ?? "bg-gray-100 text-gray-700"}`}>
+                <span className={`absolute top-3 left-3 badge ${tagColors[outfit.tag] ?? "bg-gray-100 text-gray-700"}`}>
                   {outfit.tag}
                 </span>
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                <div className="card-overlay" />
               </div>
               <div className="flex flex-col gap-1.5 px-0.5">
-                <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
+                <h3 className="card-title line-clamp-2">
                   {outfit.title}
                 </h3>
                 <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{outfit.subtitle}</p>

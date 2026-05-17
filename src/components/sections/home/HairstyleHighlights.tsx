@@ -57,14 +57,14 @@ export default async function HairstyleHighlights() {
 
   return (
     <section className="w-full bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+      <div className="container-page py-16 md:py-20">
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+        <div className="section-header mb-8">
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Hairstyle Inspiration
             </span>
-            <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+            <h2 className="section-title-lg">
               Find your perfect <br className="hidden md:block" />
               <span className="italic font-light">haircut.</span>
             </h2>
@@ -98,7 +98,7 @@ export default async function HairstyleHighlights() {
               <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-black/50 -z-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/50 transition-all duration-300" />
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 text-xs font-semibold tracking-widest uppercase bg-white text-black">Tip of the Week</span>
+                <span className="badge-md bg-white text-black">Tip of the Week</span>
               </div>
               <div className="relative z-10 p-6 md:p-8 flex flex-col gap-2">
                 <span className="text-xs tracking-widest uppercase text-white/60">{h.mood}</span>
@@ -120,8 +120,8 @@ export default async function HairstyleHighlights() {
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                 <ImgPlaceholder src={h.image} alt={h.title} />
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                <span className="absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-white/90 text-gray-700">{h.type}</span>
+                <div className="card-overlay" />
+                <span className="absolute top-3 left-3 badge bg-white/90 text-gray-700">{h.type}</span>
               </div>
               <div className="flex flex-col gap-0.5 px-0.5">
                 <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-500 transition-colors duration-200 line-clamp-2">{h.title}</h3>

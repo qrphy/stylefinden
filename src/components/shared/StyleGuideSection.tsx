@@ -17,13 +17,13 @@ export default function StyleGuideSection({
   styleGuideSuffix = "find & style",
 }: Props) {
   return (
-    <section className="w-full border-t border-gray-100 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+    <section className="w-full section-divider bg-gray-50">
+      <div className="container-page py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-16">
 
           <div className="flex flex-col gap-5">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Style Guide</span>
-            <h2 className="text-2xl md:text-3xl font-black text-black tracking-tight">
+            <span className="eyebrow">Style Guide</span>
+            <h2 className="section-title">
               {label} <span className="italic font-light">{styleGuideSuffix}</span>
             </h2>
             <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
@@ -39,7 +39,7 @@ export default function StyleGuideSection({
           </div>
 
           <div className="flex flex-col gap-6">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Frequently Asked Questions</span>
+            <span className="eyebrow">Frequently Asked Questions</span>
             {faqs.map((faq, i) => (
               <div key={i} className="flex flex-col gap-2 pb-6 border-b border-gray-200 last:border-0 last:pb-0">
                 <h3 className="text-sm font-black text-black tracking-tight">{faq.q}</h3>

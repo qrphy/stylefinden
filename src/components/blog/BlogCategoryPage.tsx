@@ -30,8 +30,8 @@ export default async function BlogCategoryPage({ category, config }: Props) {
     <main className="flex-1 bg-white">
 
       {/* ── Breadcrumb ── */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pt-8 pb-2">
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
+      <div className="container-page pt-8 pb-2">
+        <nav className="breadcrumb-nav">
           {[
             { label: "Home", href: "/" },
             { label: "Blog", href: "/blog" },
@@ -40,7 +40,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span>/</span>}
               {crumb.href ? (
-                <a href={crumb.href} className="hover:text-black transition-colors">
+                <a href={crumb.href} className="breadcrumb-link">
                   {crumb.label}
                 </a>
               ) : (
@@ -53,12 +53,12 @@ export default async function BlogCategoryPage({ category, config }: Props) {
 
       {/* ── Hero ── */}
       <section className="w-full border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16 xl:py-20">
+        <div className="container-page py-12 md:py-16 xl:py-20">
           <div className="flex flex-col gap-5 max-w-2xl">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               Blog
             </span>
-            <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-black leading-tight tracking-tight">
+            <h1 className="hero-heading">
               {config.label}
             </h1>
             <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-lg">
@@ -70,10 +70,10 @@ export default async function BlogCategoryPage({ category, config }: Props) {
 
       {/* ── Posts Grid ── */}
       <section className="w-full">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-12 md:py-16">
+        <div className="container-page py-12 md:py-16">
 
           <div className="flex items-center gap-4 mb-8">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
+            <span className="eyebrow">
               {posts.length > 0 ? `${posts.length} Article${posts.length !== 1 ? "s" : ""}` : "Articles"}
             </span>
             <div className="flex-1 h-px bg-gray-100" />

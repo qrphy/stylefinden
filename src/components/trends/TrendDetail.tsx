@@ -79,10 +79,10 @@ export default function TrendDetail({ trend }: Props) {
 
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors">Home</a>
+        <nav className="breadcrumb-nav">
+          <a href="/" className="breadcrumb-link">Home</a>
           <span>/</span>
-          <a href="/trends" className="hover:text-black transition-colors">Trends</a>
+          <a href="/trends" className="breadcrumb-link">Trends</a>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{trend.title}</span>
         </nav>
@@ -105,7 +105,7 @@ export default function TrendDetail({ trend }: Props) {
           {trend.keyItems && trend.keyItems.length > 0 && (
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">Must-haves</span>
+                <span className="eyebrow">Must-haves</span>
                 <h2 className="text-lg font-black text-black tracking-tight">Key Items</h2>
               </div>
               <ul className="flex flex-col gap-2">
@@ -124,10 +124,10 @@ export default function TrendDetail({ trend }: Props) {
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100">
-        <div className="px-3 md:px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="section-divider">
+        <div className="px-3 md:px-5 py-10 cta-row">
           <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Get inspired</span>
+            <span className="eyebrow">Get inspired</span>
             <span className="text-lg font-black text-black tracking-tight">Shop the trend</span>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">

@@ -60,10 +60,10 @@ export default function HairstyleDetail({ hairstyle }: Props) {
     <main>
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
-        <nav className="flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400">
-          <a href="/" className="hover:text-black transition-colors">Home</a>
+        <nav className="breadcrumb-nav">
+          <a href="/" className="breadcrumb-link">Home</a>
           <span>/</span>
-          <a href="/hairstyles" className="hover:text-black transition-colors">Hairstyles</a>
+          <a href="/hairstyles" className="breadcrumb-link">Hairstyles</a>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{hairstyle.title}</span>
         </nav>
@@ -90,22 +90,22 @@ export default function HairstyleDetail({ hairstyle }: Props) {
             {/* Badges */}
             <div className="flex flex-wrap gap-1.5">
               {hairstyle.type && (
-                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-black text-white">
+                <span className="badge bg-black text-white">
                   {hairstyleTypeLabel[hairstyle.type] ?? hairstyle.type}
                 </span>
               )}
               {hairstyle.length && (
-                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-700">
+                <span className="badge bg-gray-100 text-gray-700">
                   {hairstyleLengthLabel[hairstyle.length] ?? hairstyle.length}
                 </span>
               )}
               {hairstyle.mood && (
-                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase border border-gray-200 text-gray-600">
+                <span className="badge border border-gray-200 text-gray-600">
                   {hairstyleMoodLabel[hairstyle.mood] ?? hairstyle.mood}
                 </span>
               )}
               {hairstyle.occasion && (
-                <span className="px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-gray-50 text-gray-500 border border-gray-200">
+                <span className="badge bg-gray-50 text-gray-500 border border-gray-200">
                   {hairstyleOccasionLabel[hairstyle.occasion] ?? hairstyle.occasion}
                 </span>
               )}
@@ -132,10 +132,10 @@ export default function HairstyleDetail({ hairstyle }: Props) {
       </section>
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
-      <section className="border-t border-gray-100">
-        <div className="px-3 md:px-5 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <section className="section-divider">
+        <div className="px-3 md:px-5 py-10 cta-row">
           <div className="flex flex-col gap-1 text-center sm:text-left">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Style your look</span>
+            <span className="eyebrow">Style your look</span>
             <span className="text-lg font-black text-black tracking-tight">Find matching outfits</span>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">

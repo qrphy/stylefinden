@@ -21,13 +21,142 @@ body {
 }
 
 @layer components {
+
+  /* ── Navigasyon / Footer linkleri ──────────────────────────────────────────
+     .nav-link    → Header (desktop nav, Header.tsx)
+     .footer-link → Footer accordion ve desktop linkleri (Footer.tsx)
+     Not: İkisi aynı stile sahip — ileride tek sınıfta birleştirilebilir.    */
   .nav-link {
     @apply font-clash text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black hover:underline underline-offset-3 transition-colors duration-200;
   }
   .footer-link {
     @apply font-clash text-sm font-medium tracking-widest uppercase text-gray-600 hover:text-black hover:underline underline-offset-3 transition-colors duration-200;
   }
+
+  /* ── Footer bölüm başlığı ───────────────────────────────────────────────────
+     .footer-heading → Footer.tsx (Discover, Legal, Follow Us başlıkları)    */
   .footer-heading {
     @apply font-clash text-xs tracking-widest uppercase text-gray-400 font-semibold;
+  }
+
+  /* ── Layout — Sayfa konteyneri ──────────────────────────────────────────────
+     .container-page → HeroSection, OutfitDetail, BlogPostDetail, CategoryPage,
+       RelatedGrid, StyleGuideSection, FilterBar, SectionMainPage, NewsletterForm,
+       FeaturedOutfits, AccessoriesHighlights, HairstyleHighlights, LatestArticles,
+       SeasonalHighlights, FeaturedCategories, Breadcrumb                     */
+  .container-page {
+    @apply max-w-7xl mx-auto px-6 md:px-8 xl:px-12;
+  }
+
+  /* ── Tipografi — Eyebrow / Label metni ─────────────────────────────────────
+     .eyebrow → HeroSection, OutfitDetail, AccessoryDetail, HairstyleDetail,
+       TrendDetail, BlogPostDetail, CategoryPage, RelatedGrid, StyleGuideSection,
+       SectionMainPage, FilterBar, OutfitPiecesRow, SimilarOutfits, FeaturedOutfits,
+       AccessoriesHighlights, HairstyleHighlights, LatestArticles, SeasonalHighlights,
+       FeaturedCategories — 20+ bileşende kullanılır                          */
+  .eyebrow {
+    @apply text-xs font-semibold tracking-widest uppercase text-gray-400;
+  }
+
+  /* ── Tipografi — Hero başlık (en büyük, ana sayfa ve kategori hero'ları) ──
+     .hero-heading → HeroSection h1, CategoryPage h1, SectionMainPage h1    */
+  .hero-heading {
+    @apply text-4xl md:text-5xl xl:text-6xl font-black text-black leading-tight tracking-tight;
+  }
+
+  /* ── Tipografi — Sayfa başlığı (detay sayfası h1'leri) ──────────────────────
+     .page-heading → OutfitDetail h1, BlogPostDetail h1                      */
+  .page-heading {
+    @apply text-3xl md:text-4xl xl:text-5xl font-black text-black tracking-tight leading-tight;
+  }
+
+  /* ── Tipografi — Bölüm başlığı (orta boyut) ─────────────────────────────────
+     .section-title → RelatedGrid h2, CategoryPage h2, StyleGuideSection h2,
+       OutfitDetail h2 (Similar Pieces)                                       */
+  .section-title {
+    @apply text-2xl md:text-3xl font-black text-black tracking-tight;
+  }
+
+  /* ── Tipografi — Bölüm başlığı (büyük boyut, ana sayfa bölümleri) ───────────
+     .section-title-lg → FeaturedOutfits h2, AccessoriesHighlights h2,
+       HairstyleHighlights h2, LatestArticles h2, SeasonalHighlights h2,
+       FeaturedCategories h2                                                   */
+  .section-title-lg {
+    @apply text-3xl md:text-4xl font-black text-black tracking-tight;
+  }
+
+  /* ── Tipografi — Kart başlığı (grid kartlarının hover-değişen başlığı) ────────
+     .card-title → BlogPostDetail related items (x3), FeaturedOutfits cards,
+       LatestArticles cards, CategoryPage grid items                           */
+  .card-title {
+    @apply text-sm font-black text-black tracking-tight group-hover:text-gray-600 transition-colors duration-200;
+  }
+
+  /* ── Rozetler — Küçük (px-2) ────────────────────────────────────────────────
+     .badge → Renk sınıfı ekle: badge bg-black text-white / badge bg-gray-100 text-gray-700
+     Kullanım: AccessoryDetail, HairstyleDetail, FeaturedOutfits (template literal),
+       HairstyleHighlights, AccessoriesHighlights                              */
+  .badge {
+    @apply px-2 py-1 text-xs font-semibold tracking-widest uppercase;
+  }
+
+  /* ── Rozetler — Orta (px-3) ─────────────────────────────────────────────────
+     .badge-md → Renk sınıfı ekle: badge-md bg-black text-white / badge-md bg-gray-100 text-gray-700
+     Kullanım: OutfitDetail (style, season, occasion), HairstyleHighlights featured,
+       SeasonalHighlights label, LatestArticles category (template literal)    */
+  .badge-md {
+    @apply px-3 py-1 text-xs font-semibold tracking-widest uppercase;
+  }
+
+  /* ── Etiket — Tag rozeti (beyaz zemin, çerçeveli) ───────────────────────────
+     .tag → OutfitDetail (outfit tags), BlogPostDetail (post tags),
+       CategoryPage (tip tags), SeasonalHighlights (season tags)               */
+  .tag {
+    @apply px-3 py-1 text-xs font-medium tracking-widest uppercase bg-white text-gray-700 border border-gray-200;
+  }
+
+  /* ── Breadcrumb — Nav satırı ─────────────────────────────────────────────────
+     .breadcrumb-nav → OutfitDetail, AccessoryDetail, HairstyleDetail,
+       TrendDetail, BlogPostDetail, SectionMainPage, Breadcrumb               */
+  .breadcrumb-nav {
+    @apply flex items-center gap-2 text-xs tracking-widest uppercase text-gray-400;
+  }
+
+  /* ── Breadcrumb — Link ───────────────────────────────────────────────────────
+     .breadcrumb-link → OutfitDetail, AccessoryDetail, HairstyleDetail,
+       TrendDetail, BlogPostDetail, SectionMainPage, Breadcrumb               */
+  .breadcrumb-link {
+    @apply hover:text-black transition-colors duration-200;
+  }
+
+  /* ── Kart — Hover karartma katmanı ──────────────────────────────────────────
+     .card-overlay → OutfitDetail (similar pieces), BlogPostDetail (related x3),
+       SimilarOutfits, OutfitPiecesRow, CategoryPage, FeaturedOutfits,
+       HairstyleHighlights                                                     */
+  .card-overlay {
+    @apply absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300;
+  }
+
+  /* ── Bölüm — Ayırıcı çizgi ──────────────────────────────────────────────────
+     .section-divider → OutfitDetail (x3), AccessoryDetail (x2), HairstyleDetail,
+       TrendDetail, BlogPostDetail (x2), RelatedGrid, StyleGuideSection, FilterBar,
+       SectionMainPage, NewsletterInput                                        */
+  .section-divider {
+    @apply border-t border-gray-100;
+  }
+
+  /* ── Bölüm — Ana sayfa bölüm başlık satırı (eyebrow+h2 + sağda CTA) ─────────
+     .section-header → mb değeri çağıran bileşen ekler (mb-8 veya mb-10)
+     Kullanım: FeaturedOutfits, AccessoriesHighlights, HairstyleHighlights,
+       LatestArticles (x2 — statik ve Sanity blokları)                        */
+  .section-header {
+    @apply flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4;
+  }
+
+  /* ── Bölüm — CTA satırı (sol: metin, sağ: butonlar) ─────────────────────────
+     .cta-row → OutfitDetail CTA, AccessoryDetail CTA, HairstyleDetail CTA,
+       TrendDetail CTA                                                         */
+  .cta-row {
+    @apply flex flex-col sm:flex-row items-center justify-between gap-6;
   }
 }

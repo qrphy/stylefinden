@@ -40,12 +40,12 @@ export default async function LatestArticles() {
 
     return (
       <section className="w-full bg-white border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+        <div className="container-page py-16 md:py-20">
 
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+          <div className="section-header mb-10">
             <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">From the Blog</span>
-              <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+              <span className="eyebrow">From the Blog</span>
+              <h2 className="section-title-lg">
                 Inspiration & <span className="italic font-light">Style Knowledge.</span>
               </h2>
             </div>
@@ -59,7 +59,7 @@ export default async function LatestArticles() {
               <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
                 <ImgPlaceholder src={featured.heroImage ? urlFor(featured.heroImage).width(900).height(506).url() : undefined} alt={featured.title} />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
-                <span className={`absolute top-4 left-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase ${categoryColor[featured.category] ?? "bg-gray-100 text-gray-700"}`}>
+                <span className={`absolute top-4 left-4 badge-md ${categoryColor[featured.category] ?? "bg-gray-100 text-gray-700"}`}>
                   {categoryLabel[featured.category] ?? featured.category}
                 </span>
               </div>
@@ -90,10 +90,10 @@ export default async function LatestArticles() {
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                   </div>
                   <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1 min-w-0">
-                    <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}>
+                    <span className={`self-start badge py-0.5 ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}>
                       {categoryLabel[post.category] ?? post.category}
                     </span>
-                    <h3 className="text-sm font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200 line-clamp-2">
+                    <h3 className="card-title leading-tight line-clamp-2">
                       {post.title}
                     </h3>
                     {post.publishedAt && (
@@ -119,12 +119,12 @@ export default async function LatestArticles() {
 
   return (
     <section className="w-full bg-white border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-16 md:py-20">
+      <div className="container-page py-16 md:py-20">
 
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div className="section-header mb-10">
           <div className="flex flex-col gap-2">
-            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">From the Blog</span>
-            <h2 className="text-3xl md:text-4xl font-black text-black tracking-tight">
+            <span className="eyebrow">From the Blog</span>
+            <h2 className="section-title-lg">
               Inspiration & <span className="italic font-light">Style Knowledge.</span>
             </h2>
           </div>
