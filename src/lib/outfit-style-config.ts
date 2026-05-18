@@ -94,7 +94,7 @@ export const STYLE_ORDER = ["boho", "minimalist", "streetstyle", "old-money", "r
 // Tüm style config'leri
 export const STYLE_CONFIGS: Record<string, StyleConfig> = {
   boho: {
-    label: "Boho Style",
+    label: "Boho Outfits",
     subtitle: "Free & Playful",
     description:
       "Flowing fabrics, fringe, earthy tones and feminine details – discover curated boho outfits for those who live by their own rhythm.",
@@ -113,10 +113,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Summer Dresses", href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Summer Outfits", href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Minimalist",     href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe", accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
-      { label: "Travel & Vacation", href: "/outfits/occasion/travel",accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
+      { label: "Vocation & Travel Outfits", href: "/outfits/occasion/travel",accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
@@ -175,9 +175,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Old Money Style",   href: "/outfits/style/old-money",  accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
-      { label: "Office & Business", href: "/outfits/occasion/office", accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Boho Style",        href: "/outfits/style/boho",      accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Old Money Outfits",   href: "/outfits/style/old-money",  accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
+      { label: "Workwear & Office Outfits", href: "/outfits/occasion/office", accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Boho Outfits",        href: "/outfits/style/boho",      accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Winter Outfits",    href: "/outfits/season/winter",   accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
@@ -218,7 +218,7 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
   },
 
   streetstyle: {
-    label: "Street Style",
+    label: "Streetwear Outfits",
     subtitle: "Urban & Bold",
     description:
       "Bold combinations, denim, oversized pieces and urban energy – discover curated street style outfits for those who want to stand out.",
@@ -237,9 +237,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Boho Outfits",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Minimalist",     href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Sport & Outdoor",href: "/outfits/occasion/sport",   accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Sportive & Athleisure Outfits",href: "/outfits/occasion/sport",   accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Winter Outfits", href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
@@ -280,7 +280,7 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
   },
 
   "old-money": {
-    label: "Old Money Style",
+    label: "Old Money Outfits",
     subtitle: "Quietly Luxurious",
     description:
       "Tailored polo shirts, heritage knitwear, loafers and a muted navy-camel-cream palette – discover curated old money outfits for those who wear wealth with effortless restraint.",
@@ -299,8 +299,8 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
     ],
     relatedCategories: [
       { label: "Minimalist",        href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Office & Business", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Evening & Event",   href: "/outfits/occasion/evening", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Workwear & Office Outfits", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Elegant Evening Outfits",   href: "/outfits/occasion/evening", accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
       {
@@ -340,7 +340,7 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
   },
 
   "retro-vintage": {
-    label: "Retro & Vintage Style",
+    label: "Retro & Vintage Outfits",
     subtitle: "Nostalgic & Timeless",
     description:
       "High-waisted silhouettes, bold prints, thrifted gems and the nostalgic energy of past decades – discover curated retro and vintage outfits for those who find inspiration in fashion history.",
@@ -358,9 +358,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",   href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Y2K Style",    href: "/outfits/style/y2k",         accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
-      { label: "Street Style", href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Boho Outfits",   href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Y2K Outfits",    href: "/outfits/style/y2k",         accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
+      { label: "Streetwear Outfits", href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
       {
@@ -400,7 +400,7 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
   },
 
   y2k: {
-    label: "Y2K Style",
+    label: "Y2K Outfits",
     subtitle: "Early 2000s Revival",
     description:
       "Low-rise denim, butterfly clips, metallic accents, mini skirts and crop tops – discover curated Y2K outfits channeling the playful, maximalist energy of early 2000s fashion.",
@@ -418,9 +418,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Retro & Vintage",  href: "/outfits/style/retro-vintage",  accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
-      { label: "Street Style",     href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Evening & Event",  href: "/outfits/occasion/evening",     accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Retro & Vintage Outfits",  href: "/outfits/style/retro-vintage",  accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Streetwear Outfits",     href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Elegant Evening Outfits",  href: "/outfits/occasion/evening",     accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Party & Night Out",href: "/outfits/occasion/party-night-out",accent: "bg-gray-900",accentText: "text-white"   },
     ],
     faqs: [
@@ -461,7 +461,7 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
   },
 
   western: {
-    label: "Western Style",
+    label: "Western & Cowgirl Outfits",
     subtitle: "Cowgirl & Ranch Vibes",
     description:
       "Cowboy boots, denim, plaid shirts, fringe jackets and earthy rodeo-inspired tones – discover curated western outfits that bring frontier spirit to modern everyday dressing.",
@@ -479,10 +479,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",      href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Boho Outfits",      href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe",  accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
-      { label: "Street Style",   href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Retro & Vintage",href: "/outfits/style/retro-vintage",accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Streetwear Outfits",   href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Retro & Vintage Outfits",href: "/outfits/style/retro-vintage",accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
     ],
     faqs: [
       {
@@ -540,10 +540,10 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",       href: "/outfits/style/boho",          accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Retro & Vintage",  href: "/outfits/style/retro-vintage", accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
-      { label: "Summer Dresses",   href: "/outfits/season/summer",       accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Travel & Vacation",href: "/outfits/occasion/travel",     accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
+      { label: "Boho Outfits",       href: "/outfits/style/boho",          accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Retro & Vintage Outfits",  href: "/outfits/style/retro-vintage", accent: "bg-[#fce4ec]", accentText: "text-[#880e4f]" },
+      { label: "Summer Outfits",   href: "/outfits/season/summer",       accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Vocation & Travel Outfits",href: "/outfits/occasion/travel",     accent: "bg-[#fff8e1]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
@@ -603,8 +603,8 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
     relatedCategories: [
       { label: "Clean Girl",     href: "/outfits/style/clean-girl",    accent: "bg-[#f5f5f5]",  accentText: "text-gray-700"  },
       { label: "Minimalist",     href: "/outfits/style/minimalist",    accent: "bg-gray-100",   accentText: "text-gray-700"  },
-      { label: "Street Style",   href: "/outfits/style/streetstyle",   accent: "bg-gray-900",   accentText: "text-white"     },
-      { label: "Y2K Style",      href: "/outfits/style/y2k",           accent: "bg-[#f3e5f5]",  accentText: "text-[#7b1fa2]" },
+      { label: "Streetwear Outfits",   href: "/outfits/style/streetstyle",   accent: "bg-gray-900",   accentText: "text-white"     },
+      { label: "Y2K Outfits",      href: "/outfits/style/y2k",           accent: "bg-[#f3e5f5]",  accentText: "text-[#7b1fa2]" },
     ],
     faqs: [
       {
@@ -663,9 +663,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
     ],
     relatedCategories: [
       { label: "Minimalist",      href: "/outfits/style/minimalist",    accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Old Money Style", href: "/outfits/style/old-money",     accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
+      { label: "Old Money Outfits", href: "/outfits/style/old-money",     accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
       { label: "Korean Fashion",  href: "/outfits/style/korean-fashion",accent: "bg-[#f8f0fb]", accentText: "text-[#7b1fa2]" },
-      { label: "Office & Business",href: "/outfits/occasion/office",    accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Workwear & Office Outfits",href: "/outfits/occasion/office",    accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
     ],
     faqs: [
       {
@@ -723,9 +723,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Y2K Style",       href: "/outfits/style/y2k",            accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
-      { label: "Boho Style",     href: "/outfits/style/boho",            accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Evening & Event",href: "/outfits/occasion/evening",      accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Y2K Outfits",       href: "/outfits/style/y2k",            accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
+      { label: "Boho Outfits",     href: "/outfits/style/boho",            accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Elegant Evening Outfits",href: "/outfits/occasion/evening",      accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Spring Looks",   href: "/outfits/season/spring",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
     ],
     faqs: [
@@ -785,9 +785,9 @@ export const STYLE_CONFIGS: Record<string, StyleConfig> = {
     ],
     relatedCategories: [
       { label: "Minimalist",      href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Street Style",    href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Evening & Event", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Old Money Style", href: "/outfits/style/old-money",   accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
+      { label: "Streetwear Outfits",    href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Elegant Evening Outfits", href: "/outfits/occasion/evening",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Old Money Outfits", href: "/outfits/style/old-money",   accent: "bg-[#f5f0e8]", accentText: "text-[#5c4a1e]" },
     ],
     faqs: [
       {

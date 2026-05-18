@@ -93,7 +93,7 @@ export const OCCASION_ORDER = [
 // Tüm occasion config'leri
 export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
   office: {
-    label: "Office & Business",
+    label: "Workwear & Office Outfits",
     subtitle: "Professional & Polished",
     description:
       "Tailored blazers, elegant trousers and clever combinations – discover curated business outfits for meetings, the office and all professional occasions.",
@@ -113,7 +113,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
     ],
     relatedCategories: [
       { label: "Minimalist",      href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Evening & Event", href: "/outfits/occasion/evening", accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Elegant Evening Outfits", href: "/outfits/occasion/evening", accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Winter Outfits",  href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
     ],
     faqs: [
@@ -154,7 +154,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
   },
 
   evening: {
-    label: "Evening & Event",
+    label: "Elegant Evening Outfits",
     subtitle: "Glamorous & Unforgettable",
     description:
       "Elegant dresses, statement looks and evening outfits for dinners, parties and special occasions – so you leave a lasting impression.",
@@ -176,7 +176,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { label: "Party & Night Out",  href: "/outfits/occasion/party-night-out", accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Minimalist",        href: "/outfits/style/minimalist",        accent: "bg-gray-100",  accentText: "text-gray-700"  },
       { label: "Winter Outfits",    href: "/outfits/season/winter",           accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Office & Business", href: "/outfits/occasion/office",         accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Workwear & Office Outfits", href: "/outfits/occasion/office",         accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
     ],
     faqs: [
       {
@@ -216,7 +216,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
   },
 
   sport: {
-    label: "Sport & Outdoor",
+    label: "Sportive & Athleisure Outfits",
     subtitle: "Active & Functional",
     description:
       "Athletic, functional and stylish – discover curated sport and outdoor outfits for the gym, trail, court and active lifestyle.",
@@ -235,9 +235,9 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",         href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Street Style",      href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Summer Dresses",    href: "/outfits/season/summer",      accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Boho Outfits",         href: "/outfits/style/boho",         accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Streetwear Outfits",      href: "/outfits/style/streetstyle",  accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Summer Outfits",    href: "/outfits/season/summer",      accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
     ],
     faqs: [
       {
@@ -277,7 +277,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
   },
 
   school: {
-    label: "School & College",
+    label: "School & College Outfits",
     subtitle: "Campus-Ready Everyday",
     description:
       "Comfortable, put-together and backpack-friendly – discover curated school and college outfits for lectures, campus days and student life without sacrificing personal style.",
@@ -295,9 +295,9 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Street Style",      href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Streetwear Outfits",      href: "/outfits/style/streetstyle",    accent: "bg-gray-900",  accentText: "text-white"     },
       { label: "Minimalist",        href: "/outfits/style/minimalist",     accent: "bg-gray-100",  accentText: "text-gray-700"  },
-      { label: "Sport & Outdoor",   href: "/outfits/occasion/sport",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Sportive & Athleisure Outfits",   href: "/outfits/occasion/sport",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
     ],
     faqs: [
       {
@@ -355,8 +355,8 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Evening & Event",href: "/outfits/occasion/evening",   accent: "bg-gray-900",  accentText: "text-white"     },
-      { label: "Y2K Style",      href: "/outfits/style/y2k",          accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
+      { label: "Elegant Evening Outfits",href: "/outfits/occasion/evening",   accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Y2K Outfits",      href: "/outfits/style/y2k",          accent: "bg-[#f3e5f5]", accentText: "text-[#7b1fa2]" },
       { label: "Black & Dark",   href: "/outfits/style/black-dark",   accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
@@ -397,7 +397,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
   },
 
   travel: {
-    label: "Travel & Vacation",
+    label: "Vocation & Travel Outfits",
     subtitle: "Comfortable & Versatile",
     description:
       "Wrinkle-resistant fabrics, versatile layering and looks that carry you from the airport to sightseeing to dinner – discover curated travel outfits built for long days and new destinations.",
@@ -415,7 +415,7 @@ export const OCCASION_CONFIGS: Record<string, OccasionConfig> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",         href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Boho Outfits",         href: "/outfits/style/boho",        accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Minimalist",         href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
     faqs: [

@@ -69,7 +69,7 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
 // Her mevsim için CategoryPage'e aktarılan metadata, SEO ve UI konfigürasyonu
 const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
   "summer": {
-    label: "Summer Dresses",
+    label: "Summer Outfits",
     subtitle: "Summer 2025",
     description:
       "From playful floral dresses to elegant maxi gowns and casual mini dresses – discover curated summer outfit looks for every style, every day and every occasion.",
@@ -88,10 +88,10 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Boho Outfits",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Spring Looks",   href: "/outfits/season/spring",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe",accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
-      { label: "Street Style",   href: "/outfits/style/streetstyle",accent: "bg-gray-900",  accentText: "text-white"     },
+      { label: "Streetwear Outfits",   href: "/outfits/style/streetstyle",accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
       {
@@ -116,7 +116,7 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
   },
 
   "winter": {
-    label: "Winter Outfits",
+    label: "Cozy Winter Outfits",
     subtitle: "Winter 2025 / 2026",
     description:
       "Warm layering looks, elegant coats and cozy combinations – discover curated winter outfits for every style, every day and every occasion.",
@@ -135,9 +135,9 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Summer Dresses",    href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Summer Outfits",    href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Spring Looks",      href: "/outfits/season/spring",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Office & Business", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Workwear & Office Outfits", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
       { label: "Minimalist",        href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
     ],
     faqs: [
@@ -182,9 +182,9 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Summer Dresses", href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Summer Outfits", href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
       { label: "Winter Outfits", href: "/outfits/season/winter",    accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]" },
-      { label: "Boho Style",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Boho Outfits",     href: "/outfits/style/boho",       accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
       { label: "Sienna Vibe",    href: "/outfits/style/sienna-vibe",accent: "bg-[#fdf6ec]", accentText: "text-[#8b5e3c]" },
     ],
     faqs: [
