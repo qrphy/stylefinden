@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import CategoryPage from "@/components/shared/CategoryPage";
+import EditorialCategoryPage from "@/components/shared/EditorialCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
@@ -26,7 +27,7 @@ function toItem(o: {
     pieces: o.pieces?.map((p, i) => ({
       key: p._key ?? String(i),
       name: p.name,
-      image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
+      image: p.image ? urlFor(p.image).width(300).height(300).url() : undefined,
       affiliateUrl: p.affiliateUrl,
     })),
   }
@@ -63,6 +64,24 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
     { id: 6, title: "Mint Trench Look",           subtitle: "City & Modern",        tag: "New",      style: "Blazer",  href: "/outfits/mint-trench-look"           },
     { id: 7, title: "Lilac Knit Dress",           subtitle: "Soft & Romantic",      tag: "Trending", style: "Pastels", href: "/outfits/lilac-knit-dress"           },
     { id: 8, title: "Striped Linen Shirt Look",   subtitle: "Weekend & Casual",     tag: "New",      style: "Linen",   href: "/outfits/striped-linen-shirt-look"   },
+  ],
+};
+
+// Kategori kapak görselleri — editorial format hero image olarak kullanılır
+const HERO_IMAGES: Record<string, string> = {
+  "summer": "/categories/outfits/summer.webp",
+  "winter": "/categories/outfits/winter.png",
+  "spring": "/categories/outfits/spring.png",
+};
+
+// Summer için editorial formatı tetikleyen paragraf metinleri
+const EDITORIAL_TEXT: Record<string, string[]> = {
+  "summer": [
+    "Summer has a way of demanding presence. The season doesn't negotiate — it arrives with full light, open air, and an unspoken invitation to dress accordingly.",
+    "What makes a summer outfit memorable isn't excess — it's the quality of lightness. A linen midi that moves with you on a slow afternoon. A floral maxi that carries its own quiet authority. The off-shoulder piece that needs nothing added to it.",
+    "This season's most compelling looks share a kind of effortless restraint. Clean silhouettes in breathable fabrics. Prints that feel organic rather than printed. Proportions that respect the heat — loose where it matters, defined where it counts.",
+    "We've curated these looks around how summer actually unfolds: morning markets and café terraces, afternoon heat that turns everything amber, evenings that deserve dressing for. Each outfit here holds its own across contexts — styled differently, but sourced from the same wardrobe logic.",
+    "On fabrication: seek linen, cotton voile, and light crepe above all else. These aren't just comfort choices — they photograph better, drape better, and age better in summer heat. On color: white genuinely earns its status in summer. Bright linen, ivory cotton, cream chiffon — all function as neutrals and pair with warm skin in a way nothing else does.",
   ],
 };
 
@@ -248,6 +267,23 @@ export default async function SeasonPage(
   const outfits = await client.fetch(OUTFITS_BY_SEASON_QUERY, { season: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
   // Sanity'de veri varsa dönüştür, yoksa statik fallback'e geç
   const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
+  const editorialText = EDITORIAL_TEXT[slug];
+
+  if (editorialText) {
+    return (
+      <EditorialCategoryPage
+        data={{ ...data, outfits: items }}
+        editorialText={editorialText}
+        heroImage={HERO_IMAGES[slug]}
+        slug={slug}
+        basePath="/outfits/season"
+        categoryLink={{ label: "Season", href: "/outfits/season" }}
+        readingTime="4 min read"
+        styleGuideSuffix="find & style"
+      />
+    );
+  }
+
   return (
     <CategoryPage
       data={{ ...data, outfits: items }}
