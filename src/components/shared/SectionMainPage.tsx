@@ -2,9 +2,9 @@ import CollectionCard, { type CollectionItem } from "./CollectionCard";
 
 export type CollectionGroup = {
   label: string;
+  description?: string;
   basePath: string;
   gridCols?: string;
-
   items: CollectionItem[];
 };
 
@@ -68,11 +68,14 @@ export default function SectionMainPage({ hero, breadcrumb, collections }: Props
         <section key={group.label} className={`w-full ${i > 0 ? "border-t border-gray-100" : ""}`}>
           <div className="container-page py-12 md:py-16">
 
-            <div className="flex items-center gap-4 mb-8">
-              <span className="eyebrow">
-                {group.label}
-              </span>
-              <div className="flex-1 h-px bg-gray-100" />
+            <div className="mb-8">
+              <div className="flex items-center gap-4 mb-3">
+                <span className="eyebrow">{group.label}</span>
+                <div className="flex-1 h-px bg-gray-100" />
+              </div>
+              {group.description && (
+                <p className="text-sm text-gray-500 leading-relaxed max-w-xl">{group.description}</p>
+              )}
             </div>
 
             <div className={`grid gap-5 md:gap-7 ${group.gridCols ?? "grid-cols-1 md:grid-cols-2 xl:grid-cols-4"}`}>

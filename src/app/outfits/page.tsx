@@ -52,6 +52,8 @@ export const metadata: Metadata = {
 const collections: CollectionGroup[] = [
   {
     label: "By Season",
+    description:
+      "Each season has its own visual language. Summer calls for linen and light; autumn for layers and texture; winter for structure and warmth. Browse outfits organized by what the weather demands of you — and what your wardrobe can offer back.",
     basePath: "/outfits/season",
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
     items: [
@@ -62,12 +64,16 @@ const collections: CollectionGroup[] = [
   },
   {
     label: "By Occasion",
+    description:
+      "Dressed for the moment. From everyday casual to wedding guest, office, and concert nights — find outfits built around where you're actually going. Each collection is curated to work in real life, not just styled for a photo.",
     basePath: "/outfits/occasion",
     gridCols: "grid-cols-1 md:grid-cols-3",
     items: OCCASION_ORDER.map(getOccasionCard),
   },
   {
     label: "By Style",
+    description:
+      "Your aesthetic is a decision, not an accident. Whether you're drawn to minimalist clean lines, old-money elegance, boho layering, or nostalgic y2k — explore collections that commit to a point of view and build a wardrobe that stays consistent.",
     basePath: "/outfits/style",
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
     items: STYLE_ORDER.map(getStyleCard),
@@ -82,7 +88,7 @@ export default function OutfitsPage() {
         heading: "Find your",
         headingItalic: "perfect look.",
         description:
-          "Browse curated outfit collections – sorted by season, occasion and style. New collections added regularly.",
+          "Style doesn't look the same twice. Different seasons demand different choices — summer calls for linen and lightness, winter for structure and warmth. Different occasions shape what you reach for. Different aesthetics define how you carry yourself. Browse to find outfits that fit where you are: in the year, in the week, in your own sense of style.",
       }}
       collections={collections}
     />
