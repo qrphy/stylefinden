@@ -4,7 +4,6 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_OUTFITS_QUERY } from "@/lib/queries";
-import { tagColors } from "@/constants/site";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 import Button from "@/components/shared/Button";
 import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip";
@@ -47,48 +46,73 @@ export default async function FeaturedOutfits() {
     : STATIC_OUTFITS.map((o) => ({ ...o, slug: o.id, image: undefined }));
 
   return (
-    <section className="w-full bg-white border-t border-gray-100">
+    <section className="w-full bg-white border-t border-gray-100 scroll-reveal">
       <div className="container-page py-16 md:py-20">
 
         <div className="section-header mb-10">
           <div className="flex flex-col gap-2">
             <span className="eyebrow">
-              Trending this week
+              The Edit
             </span>
             <h2 className="section-title-lg">
               Trending Outfits
             </h2>
           </div>
           <Button variant="ghost" href="/outfits" arrow className="self-start sm:self-auto">
-            All Outfits
+            View the Edit
           </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
-          {outfits.map((outfit) => (
-            <a key={outfit.id} href={`/outfits/${outfit.slug}`} className="group flex flex-col gap-3">
-              <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-                <ImgPlaceholder src={outfit.image} alt={outfit.title} />
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
-                <span className={`absolute top-3 left-3 badge ${tagColors[outfit.tag] ?? "bg-gray-100 text-gray-700"}`}>
-                  {outfit.tag}
-                </span>
-                <div className="card-overlay" />
-              </div>
-              <div className="flex flex-col gap-1.5 px-0.5">
-                <h3 className="card-title line-clamp-2">
-                  {outfit.title}
-                </h3>
-                <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{outfit.subtitle}</p>
-                <PieceThumbnailStrip pieces={outfit.pieces} />
-              </div>
-            </a>
-          ))}
+          {outfits.map((outfit, index) => {
+            const isHero = index === 0
+            return (
+              <a
+                key={outfit.id}
+                href={`/outfits/${outfit.slug}`}
+                className={`group flex flex-col gap-3 ${isHero ? "md:col-span-2 xl:col-span-2" : ""}`}
+              >
+                <div className={`relative overflow-hidden bg-gray-100 ${isHero ? "aspect-[3/4] md:aspect-[4/5]" : "aspect-[3/4]"}`}>
+                  <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                    <ImgPlaceholder
+                      src={outfit.image}
+                      alt={outfit.title}
+                      sizes={isHero ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
+                  {isHero ? (
+                    <>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8 flex flex-col gap-2">
+                        <p className="text-[10px] tracking-widest uppercase text-white/60">{outfit.subtitle}</p>
+                        <h3 className="font-display text-2xl md:text-4xl font-light text-white leading-tight">
+                          {outfit.title}
+                        </h3>
+                        <span className="flex items-center gap-1.5 text-[10px] font-semibold tracking-widest uppercase text-white/70 group-hover:text-white transition-colors duration-200 mt-1">
+                          View Look
+                          <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2.5}>
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                          </svg>
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="card-overlay" />
+                  )}
+                </div>
+                {!isHero && (
+                  <div className="flex flex-col gap-1.5 px-0.5">
+                    <h3 className="card-title line-clamp-2">{outfit.title}</h3>
+                    <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{outfit.subtitle}</p>
+                    <PieceThumbnailStrip pieces={outfit.pieces} />
+                  </div>
+                )}
+              </a>
+            )
+          })}
         </div>
 
-        <div className="flex justify-center mt-12">
-          <Button variant="outline" href="/outfits" size="lg">Discover All Outfits</Button>
-        </div>
 
       </div>
     </section>

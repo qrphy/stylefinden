@@ -41,8 +41,8 @@ export default function NewsletterForm() {
 
           <div className="flex flex-col gap-4 xl:max-w-lg">
             <span className="text-xs font-semibold tracking-widest uppercase text-white/40">Newsletter</span>
-            <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
-              Never miss a trend, <span className="italic font-light">never miss a look.</span>
+            <h2 className="font-display text-3xl md:text-4xl font-light text-white tracking-tight leading-tight">
+              Never miss a trend, <span className="italic">never miss a look.</span>
             </h2>
             <p className="text-sm text-white/60 leading-relaxed">
               Weekly curated outfits, hairstyle inspiration and exclusive style tips — delivered straight to your inbox. No spam, unsubscribe anytime.

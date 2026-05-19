@@ -33,9 +33,9 @@ export default function Footer() {
               loading="lazy"
               decoding="async"
             />
-            <p className="font-clash text-xl font-semibold text-black uppercase tracking-wider">stylefinden</p>
-            <p className="text-xs tracking-widest uppercase text-gray-400">
-              Your Style. Your Identity.
+            <p className="brand-logo text-xl">stylefinden</p>
+            <p className="meta-label">
+              The Style Platform
             </p>
           </div>
 
@@ -93,7 +93,7 @@ export default function Footer() {
 
           {/* Social Media */}
           <div className="flex flex-col items-center md:items-start gap-3">
-            <span className="font-clash text-xs tracking-widest uppercase text-gray-400 font-bold">
+            <span className="footer-heading">
               Follow Us
             </span>
             <div className="flex items-center gap-4">
@@ -124,10 +124,9 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-gray-100 px-8 py-4">
-        <p className="text-center text-xs tracking-widest uppercase text-gray-400">
-          © {new Date().getFullYear()} Stylefinden. All rights reserved.
-        </p>
+      <div className="border-t border-gray-100 px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span className="meta-label">The Style Platform</span>
+        <span className="meta-label">© {new Date().getFullYear()} Stylefinden</span>
       </div>
 
     </footer>

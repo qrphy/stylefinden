@@ -28,6 +28,16 @@ export default function MobileMenu() {
 
   return (
     <div className="md:hidden">
+      {/* Announcement Bar */}
+      <div className="w-full bg-black py-2 px-4 flex items-center justify-center">
+        <a
+          href="/trends"
+          className="text-[10px] tracking-widest uppercase text-gray-400 hover:text-white transition-colors duration-200"
+        >
+          Summer 2026 — <span className="italic normal-case tracking-normal">The Season&apos;s Edit</span>
+        </a>
+      </div>
+
       {/* Header bar */}
       <div className="relative flex items-center h-14 px-4 bg-white border-b border-gray-200">
         <button
@@ -42,15 +52,14 @@ export default function MobileMenu() {
 
         <a
           href="/"
-          className="absolute inset-x-0 flex justify-center items-center h-14 font-clash text-2xl font-semibold text-black tracking-wider"
+          className="absolute inset-x-0 flex justify-center items-center h-14 brand-logo text-2xl"
         >
           STYLEFINDEN
         </a>
       </div>
 
       {/* Full-screen overlay */}
-      {open && (
-        <div className="fixed inset-0 z-50 bg-white flex flex-col">
+      <div className={`fixed inset-0 z-50 bg-white flex flex-col transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           {/* Close */}
           <button
             onClick={() => setOpen(false)}
@@ -67,7 +76,7 @@ export default function MobileMenu() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-clash text-2xl font-light text-black py-4 border-b border-gray-100 last:border-0 hover:opacity-50 transition-opacity duration-200"
+                className="mobile-nav-link"
               >
                 {link.label}
               </a>
@@ -109,8 +118,7 @@ export default function MobileMenu() {
             )}
             <p className="text-[11px] text-gray-400 mt-6">© 2026 STYLEFINDEN</p>
           </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

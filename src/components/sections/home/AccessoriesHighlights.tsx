@@ -9,9 +9,9 @@ import { HOME_ACCESSORIES_QUERY } from "@/lib/queries";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 const categories = [
-  { label: "Jewelry",    value: "jewelry",    href: "/accessories?type=jewelry",    icon: "◈" },
-  { label: "Bags",       value: "bags",       href: "/accessories?type=bags",       icon: "◻" },
-  { label: "Sunglasses", value: "sunglasses", href: "/accessories?type=sunglasses", icon: "◉" },
+  { label: "Jewelry",    value: "jewelry",    href: "/accessories?type=jewelry" },
+  { label: "Bags",       value: "bags",       href: "/accessories?type=bags" },
+  { label: "Sunglasses", value: "sunglasses", href: "/accessories?type=sunglasses" },
 ];
 
 const badgeStyle: Record<string, string> = {
@@ -74,7 +74,7 @@ export default async function AccessoriesHighlights() {
   }));
 
   return (
-    <section className="w-full bg-white border-t border-gray-100">
+    <section className="w-full bg-white border-t border-gray-100 scroll-reveal">
       <div className="container-page py-16 md:py-20">
 
         <div className="section-header mb-10">
@@ -92,10 +92,18 @@ export default async function AccessoriesHighlights() {
           </Button>
         </div>
 
-        <div className="flex gap-2 mb-10 overflow-x-auto pb-1">
-          {categories.map((cat) => (
-            <a key={cat.label} href={cat.href} className="flex items-center gap-2 px-5 py-2 text-xs font-semibold tracking-widest uppercase bg-gray-100 text-gray-600 hover:bg-black hover:text-white transition-colors duration-200 shrink-0">
-              <span>{cat.icon}</span>
+        <div className="flex items-center gap-0 mb-10 border-b border-gray-100 overflow-x-auto">
+          {categories.map((cat, i) => (
+            <a
+              key={cat.label}
+              href={cat.href}
+              className={[
+                "shrink-0 px-5 py-3 text-[11px] font-semibold tracking-widest uppercase transition-colors duration-200 border-b-2 -mb-px",
+                i === 0
+                  ? "border-black text-black"
+                  : "border-transparent text-gray-400 hover:text-black hover:border-gray-300"
+              ].join(" ")}
+            >
               {cat.label}
             </a>
           ))}
@@ -113,7 +121,9 @@ export default async function AccessoriesHighlights() {
               <div className={`flex flex-col md:flex-row gap-4 md:gap-5 ${ci % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
                 {cat.featured && (
                   <a href={`/accessories/${cat.featured.slug ?? cat.featured.id}`} className="group relative overflow-hidden bg-gray-100 flex-shrink-0 w-full md:w-2/5 aspect-[4/5]">
-                    <ImgPlaceholder src={cat.featured.image} alt={cat.featured.title} />
+                    <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                      <ImgPlaceholder src={cat.featured.image} alt={cat.featured.title} />
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-all duration-300" />
                     <div className="absolute top-4 left-4">
@@ -124,7 +134,7 @@ export default async function AccessoriesHighlights() {
                     <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col gap-1">
                       <span className="text-xs tracking-widest uppercase text-white/60">{cat.featured.pairingTip}</span>
                       <div className="flex items-end justify-between gap-2">
-                        <h3 className="text-xl font-black text-white leading-tight">{cat.featured.title}</h3>
+                        <h3 className="font-display text-xl md:text-2xl font-normal text-white leading-tight">{cat.featured.title}</h3>
                         <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" strokeWidth={2}>
                           <path d="M5 12h14M13 6l6 6-6 6" />
                         </svg>
@@ -134,25 +144,19 @@ export default async function AccessoriesHighlights() {
                   </a>
                 )}
 
-                <div className="flex flex-col gap-4 flex-1">
+                <div className="flex flex-col flex-1">
                   {cat.items.map((item) => (
-                    <a key={item.id} href={`/accessories/${item.slug ?? item.id}`} className="group flex items-stretch gap-4 bg-gray-50 hover:bg-gray-100 transition-colors duration-200 overflow-hidden">
-                      <div className="relative w-28 md:w-36 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
+                    <a key={item.id} href={`/accessories/${item.slug ?? item.id}`} className="group flex items-center gap-4 py-5 border-b border-gray-100 last:border-0 hover:opacity-60 transition-opacity duration-200">
+                      <div className="relative w-20 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
                         <ImgPlaceholder src={item.image} alt={item.title} />
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                       </div>
-                      <div className="flex flex-col justify-center gap-2 py-4 pr-4 flex-1">
-                        <span className={`self-start px-2 py-0.5 text-xs font-semibold tracking-widest uppercase ${badgeStyle[item.badge] ?? "bg-gray-100 text-gray-700"}`}>
+                      <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+                        <span className={`self-start badge py-0.5 ${badgeStyle[item.badge] ?? "bg-gray-100 text-gray-700"}`}>
                           {item.badge}
                         </span>
-                        <h3 className="text-sm font-black text-black tracking-tight leading-tight group-hover:text-gray-600 transition-colors duration-200">{item.title}</h3>
-                        <p className="text-xs tracking-widest uppercase text-gray-400">{item.pairingTip}</p>
-                        <span className="text-xs text-gray-500 italic mt-0.5">✦ {item.occasion}</span>
-                      </div>
-                      <div className="flex items-center pr-5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-gray-400" fill="none" strokeWidth={2}>
-                          <path d="M5 12h14M13 6l6 6-6 6" />
-                        </svg>
+                        <h3 className="card-title leading-tight line-clamp-2">{item.title}</h3>
+                        <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{item.pairingTip}</p>
                       </div>
                     </a>
                   ))}
@@ -162,9 +166,6 @@ export default async function AccessoriesHighlights() {
           ))}
         </div>
 
-        <div className="flex justify-center mt-14">
-          <Button variant="outline" href="/accessories" size="lg">Discover All Accessories</Button>
-        </div>
 
       </div>
     </section>

@@ -112,7 +112,7 @@ export default function HairstyleDetail({ hairstyle }: Props) {
             </div>
 
             {/* Başlık */}
-            <h1 className="text-xl md:text-2xl font-black text-black tracking-tight leading-tight">
+            <h1 className="font-display text-xl md:text-2xl font-light text-black tracking-tight leading-tight">
               {hairstyle.title}
             </h1>
 
@@ -136,7 +136,7 @@ export default function HairstyleDetail({ hairstyle }: Props) {
         <div className="px-3 md:px-5 py-10 cta-row">
           <div className="flex flex-col gap-1 text-center sm:text-left">
             <span className="eyebrow">Style your look</span>
-            <span className="text-lg font-black text-black tracking-tight">Find matching outfits</span>
+            <span className="text-lg font-semibold text-black tracking-tight">Find matching outfits</span>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
             <Button variant="primary" href="/outfits">Browse Outfits</Button>

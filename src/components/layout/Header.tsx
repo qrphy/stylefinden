@@ -7,6 +7,16 @@ export default function Header() {
   return (
     <header className="relative z-30">
 
+      {/* Announcement Bar */}
+      <div className="w-full bg-black py-2 px-4 flex items-center justify-center">
+        <a
+          href="/trends"
+          className="text-[10px] tracking-widest uppercase text-gray-400 hover:text-white transition-colors duration-200"
+        >
+          Summer 2026 — <span className="italic normal-case tracking-normal">The Season&apos;s Edit</span>
+        </a>
+      </div>
+
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center bg-white w-full border-b border-gray-200 relative
                       h-14 px-4
@@ -40,6 +50,7 @@ export default function Header() {
             </a>
           ))}
         </div>
+
       </div>
 
       {/* Mobile Navigation */}

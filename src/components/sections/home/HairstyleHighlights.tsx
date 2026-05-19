@@ -56,7 +56,7 @@ export default async function HairstyleHighlights() {
   const rest     = hairstyles.filter((h) => !h.featured);
 
   return (
-    <section className="w-full bg-white border-t border-gray-100">
+    <section className="w-full bg-white border-t border-gray-100 scroll-reveal">
       <div className="container-page py-16 md:py-20">
 
         <div className="section-header mb-8">
@@ -74,13 +74,15 @@ export default async function HairstyleHighlights() {
           </Button>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-10">
+        <div className="flex items-center gap-0 mb-10 border-b border-gray-100 overflow-x-auto">
           {filters.map((f, i) => (
             <a
               key={f.label}
               href={f.href}
-              className={["px-4 py-2 text-xs font-semibold tracking-widest uppercase transition-colors duration-200",
-                i === 0 ? "bg-black text-white" : "bg-gray-100 text-gray-600 hover:bg-black hover:text-white"].join(" ")}
+              className={["shrink-0 px-5 py-3 text-[11px] font-semibold tracking-widest uppercase transition-colors duration-200 border-b-2 -mb-px",
+                i === 0
+                  ? "border-black text-black"
+                  : "border-transparent text-gray-400 hover:text-black hover:border-gray-300"].join(" ")}
             >
               {f.label}
             </a>
@@ -94,7 +96,9 @@ export default async function HairstyleHighlights() {
               href={`/hairstyles/${h.slug ?? h.id}`}
               className="group relative md:col-span-1 xl:col-span-2 overflow-hidden bg-gray-100 aspect-[3/4] md:aspect-auto md:row-span-2 flex flex-col justify-end"
             >
-              <ImgPlaceholder src={h.image} alt={h.title} />
+              <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                <ImgPlaceholder src={h.image} alt={h.title} />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-black/50 -z-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/50 transition-all duration-300" />
               <div className="absolute top-4 left-4">
@@ -104,7 +108,7 @@ export default async function HairstyleHighlights() {
                 <span className="text-xs tracking-widest uppercase text-white/60">{h.mood}</span>
                 <div className="flex items-end justify-between gap-4">
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight">{h.title}</h3>
+                    <h3 className="font-display text-2xl md:text-3xl font-light text-white leading-tight">{h.title}</h3>
                     <p className="text-xs tracking-widest uppercase text-white/70 mt-1">{h.type} · {h.length}</p>
                   </div>
                   <svg viewBox="0 0 24 24" className="h-6 w-6 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" strokeWidth={2}>
@@ -118,22 +122,20 @@ export default async function HairstyleHighlights() {
           {rest.map((h) => (
             <a key={h.id} href={`/hairstyles/${h.slug ?? h.id}`} className="group flex flex-col gap-3">
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-                <ImgPlaceholder src={h.image} alt={h.title} />
+                <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                  <ImgPlaceholder src={h.image} alt={h.title} />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                 <div className="card-overlay" />
-                <span className="absolute top-3 left-3 badge bg-white/90 text-gray-700">{h.type}</span>
               </div>
               <div className="flex flex-col gap-0.5 px-0.5">
-                <h3 className="text-sm font-black text-black tracking-tight group-hover:text-gray-500 transition-colors duration-200 line-clamp-2">{h.title}</h3>
+                <h3 className="card-title line-clamp-2">{h.title}</h3>
                 <p className="text-xs tracking-widest uppercase text-gray-400 line-clamp-1">{h.length} · {h.mood}</p>
               </div>
             </a>
           ))}
         </div>
 
-        <div className="flex justify-center mt-12">
-          <Button variant="outline" href="/hairstyles" size="lg">Discover All Hairstyles</Button>
-        </div>
 
       </div>
     </section>

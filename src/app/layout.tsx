@@ -1,6 +1,5 @@
 // Tüm sayfaları saran kök düzen — her sayfada tekrar eden yapıyı (Header, Footer, analytics, newsletter) tek yerden yönetir.
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
@@ -14,27 +13,10 @@ import ScrollToTop from "@/components/shared/ScrollToTop"
 import NewsletterPopup from "@/components/shared/NewsletterPopup"
 import { SanityLive } from "@/sanity/lib/live"
 
-// Geist yazı tipi ailesini CSS değişkeni olarak tanımla; tüm sayfalar bu değişkeni kullanır.
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const clashDisplay = localFont({
-  src: "./fonts/ClashDisplay-Variable.woff2",
-  variable: "--font-clash-display",
+const generalSans = localFont({
+  src: "./fonts/GeneralSans-Variable.woff2",
+  variable: "--font-sans",
   weight: "200 700",
-});
-
-const poppins = localFont({
-  src: "./fonts/Poppins-Variable.woff2",
-  variable: "--font-poppins",
-  weight: "100 900",
 });
 
 // Sitenin varsayılan SEO metadata'sı — her sayfada override edilebilir, edilmezse bu değerler kullanılır.
@@ -127,7 +109,7 @@ export default function RootLayout({
     <html
 
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${clashDisplay.variable} ${poppins.variable} h-full antialiased`}
+      className={`${generalSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {/* Üst navigasyon çubuğu — tüm sayfalarda sabit */}

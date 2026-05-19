@@ -156,7 +156,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
 
             {/* Açıklama */}
             {outfit.description && (
-              <p className="text-sm md:text-base text-gray-500 font-light leading-relaxed font-[family-name:var(--font-poppins)]">
+              <p className="body-text font-light">
                 {outfit.description}
               </p>
             )}
@@ -266,12 +266,14 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                           aria-label={related.title}
                         >
                           <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden border border-gray-100 group-hover:border-gray-300 transition-colors duration-200">
-                            <ImgPlaceholder
-                              src={imgUrl}
-                              alt={related.title}
-                              sizes="180px"
-                              blurDataURL={related.image?.lqip}
-                            />
+                            <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                              <ImgPlaceholder
+                                src={imgUrl}
+                                alt={related.title}
+                                sizes="180px"
+                                blurDataURL={related.image?.lqip}
+                              />
+                            </div>
                             <div className="absolute top-2 left-2 flex flex-col gap-1">
                               {related.style && (
                                 <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-black text-white">
@@ -295,7 +297,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                             </div>
                           </div>
                           <div className="flex flex-col gap-1">
-                            <span className="text-xs font-black text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
+                            <span className="text-xs font-semibold text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
                               {related.title}
                             </span>
                             {matched && (
@@ -330,7 +332,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
             <span className="eyebrow">
               Discover more
             </span>
-            <span className="text-lg font-black text-black tracking-tight">
+            <span className="text-lg font-semibold text-black tracking-tight">
               Find your next look
             </span>
           </div>
