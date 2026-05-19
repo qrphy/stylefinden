@@ -21,14 +21,14 @@ export default function RelatedGrid({ items, title = "Similar Categories" }: Pro
             <a
               key={cat.label}
               href={cat.href}
-              className={`group flex flex-col justify-between gap-6 p-6 md:p-8 ${cat.accent} hover:opacity-90 transition-opacity duration-200`}
+              className={`group flex flex-col justify-between gap-6 p-5 md:p-8 ${cat.accent} hover:opacity-90 transition-opacity duration-200`}
             >
               <span className={`text-xs font-semibold tracking-widest uppercase ${cat.accentText}`}>Discover</span>
               <div className="flex items-end justify-between">
                 <h3 className="text-sm md:text-base font-semibold text-black tracking-tight leading-tight">{cat.label}</h3>
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-4 w-4 stroke-current text-black opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0 ml-2"
+                  className="h-4 w-4 stroke-current text-black opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300 flex-shrink-0 ml-2"
                   fill="none"
                   strokeWidth={2}
                 >

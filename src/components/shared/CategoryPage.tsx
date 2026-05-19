@@ -52,7 +52,7 @@ export default function CategoryPage({
 
       {/* ── Hero ── */}
       <section className="w-full bg-white">
-        <div className="container-page py-12 md:py-16 xl:py-20">
+        <div className="container-page py-8 md:py-16 xl:py-20">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 md:gap-16">
 
             <div className="flex flex-col gap-5 md:max-w-xl xl:max-w-2xl">
@@ -66,10 +66,10 @@ export default function CategoryPage({
               <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-lg">
                 {data.description}
               </p>
-              <div className="flex items-center gap-8 pt-4 border-t border-gray-100">
+              <div className="flex items-center gap-4 sm:gap-8 pt-4 border-t border-gray-100">
                 {data.stats.map((stat, i) => (
-                  <div key={stat.label} className="flex items-center gap-8">
-                    {i > 0 && <div className="w-px h-8 bg-gray-200" />}
+                  <div key={stat.label} className="flex items-center gap-4 sm:gap-8">
+                    {i > 0 && <div className="w-px h-5 sm:h-8 bg-gray-200" />}
                     <div className="flex flex-col">
                       <span className="font-display text-2xl font-light text-black">{stat.value}</span>
                       <span className="text-xs tracking-widest uppercase text-gray-400">{stat.label}</span>

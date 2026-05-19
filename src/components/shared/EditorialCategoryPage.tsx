@@ -38,12 +38,12 @@ export default function EditorialCategoryPage({
       <div className="max-w-2xl mx-auto px-6 pt-8 pb-0 text-center">
 
         {/* Breadcrumb */}
-        <nav aria-label="breadcrumb" className="flex justify-center flex-wrap gap-x-2 gap-y-1 text-[10px] tracking-widest uppercase text-gray-400 mb-7">
+        <nav aria-label="breadcrumb" className="flex justify-center flex-wrap gap-x-2 gap-y-1 text-xs tracking-widest uppercase text-gray-400 mb-7">
           {breadcrumbs.map((crumb, i) => (
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span aria-hidden>›</span>}
               {crumb.href ? (
-                <a href={crumb.href} className="hover:text-black transition-colors">{crumb.label}</a>
+                <a href={crumb.href} className="py-1 hover:text-black transition-colors">{crumb.label}</a>
               ) : (
                 <span className="text-black">{crumb.label}</span>
               )}
@@ -68,7 +68,7 @@ export default function EditorialCategoryPage({
           <span className="font-semibold tracking-widest uppercase">{data.subtitle}</span>
         </div>
 
-        <p className="mt-4 text-[10px] text-gray-400 leading-relaxed">
+        <p className="mt-4 text-xs text-gray-400 leading-relaxed">
           When you purchase through links on our site, we may earn an affiliate commission.
         </p>
       </div>
@@ -118,7 +118,7 @@ export default function EditorialCategoryPage({
 
             {/* Outfit meta */}
             <div className="text-center mt-6 mb-8">
-              <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-2">
+              <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">
                 {String(index + 1).padStart(2, "0")} — {data.subtitle}
               </p>
               <h2 className="font-display font-light text-2xl md:text-3xl text-black mb-4 leading-tight">
@@ -133,7 +133,7 @@ export default function EditorialCategoryPage({
             {/* Pieces grid */}
             {outfit.pieces && outfit.pieces.length > 0 && (
               <div>
-                <p className="text-[10px] font-semibold tracking-widest uppercase border-b border-black pb-2 inline-block mb-5">
+                <p className="text-xs font-semibold tracking-widest uppercase border-b border-black pb-2 inline-block mb-5">
                   Shop the Look
                 </p>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -147,11 +147,11 @@ export default function EditorialCategoryPage({
                             sizes="(max-width: 640px) 45vw, (max-width: 1024px) 200px, 160px"
                           />
                         </div>
-                        <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-600 text-center leading-snug line-clamp-2">
+                        <p className="text-xs font-semibold tracking-widest uppercase text-gray-600 text-center leading-snug line-clamp-2">
                           {piece.name}
                         </p>
                         {piece.affiliateUrl && (
-                          <span className="block text-center text-[10px] font-semibold tracking-widest uppercase bg-black text-white py-2.5 hover:bg-gray-800 transition-colors">
+                          <span className="block text-center text-xs font-semibold tracking-widest uppercase bg-black text-white py-2.5 hover:bg-gray-800 transition-colors">
                             Shop Now
                           </span>
                         )}
@@ -179,7 +179,7 @@ export default function EditorialCategoryPage({
             <div className="text-center mt-8">
               <a
                 href={outfit.href}
-                className="text-[10px] font-semibold tracking-widest uppercase border-b border-black pb-0.5 hover:text-gray-500 transition-colors"
+                className="text-xs font-semibold tracking-widest uppercase border-b border-black pb-0.5 hover:text-gray-500 transition-colors"
               >
                 View Full Outfit →
               </a>
