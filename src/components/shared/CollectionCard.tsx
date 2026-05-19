@@ -30,7 +30,7 @@ function EditorialCard({ item, href }: { item: CollectionItem; href: string }) {
           <div className="absolute inset-0 bg-white/30" />
         </div>
         <div className="flex flex-col gap-2 pt-4">
-          <h2 className="text-sm font-black tracking-wide uppercase text-black leading-snug">{item.label}</h2>
+          <h2 className="text-sm font-semibold tracking-wide uppercase text-black leading-snug">{item.label}</h2>
           <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">{item.description}</p>
           {item.tags.length > 0 && (
             <p className="text-xs text-gray-300 tracking-widest uppercase">{item.tags.slice(0, 4).join(" · ")}</p>
@@ -60,7 +60,7 @@ function EditorialCard({ item, href }: { item: CollectionItem; href: string }) {
       </div>
       <div className="flex flex-col gap-2 pt-4">
         <div className="flex items-start justify-between gap-2">
-          <h2 className="text-sm font-black tracking-wide uppercase text-black leading-snug flex-1">{item.label}</h2>
+          <h2 className="text-sm font-semibold tracking-wide uppercase text-black leading-snug flex-1">{item.label}</h2>
           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 mt-0.5 shrink-0 stroke-current text-gray-300 group-hover:text-black group-hover:translate-x-1 transition-all duration-200" fill="none" strokeWidth={2.5}>
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
@@ -87,7 +87,7 @@ export default function CollectionCard({ item, href, variant = "default" }: Prop
             {item.badge}
           </span>
           <div className="absolute bottom-0 left-0 right-0 p-5">
-            <h2 className="text-lg font-black text-black tracking-tight leading-tight">{item.label}</h2>
+            <h2 className="font-display text-lg font-light text-black tracking-tight leading-tight">{item.label}</h2>
           </div>
         </div>
         <div className="flex flex-col flex-1 gap-3 p-5 bg-white">
@@ -122,7 +122,7 @@ export default function CollectionCard({ item, href, variant = "default" }: Prop
           {item.badge}
         </span>
         <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h2 className="text-lg font-black text-white tracking-tight leading-tight">{item.label}</h2>
+          <h2 className="font-display text-lg font-light text-white tracking-tight leading-tight">{item.label}</h2>
         </div>
       </div>
       <div className="flex flex-col flex-1 gap-3 p-5 bg-white">

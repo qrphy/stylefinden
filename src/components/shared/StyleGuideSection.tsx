@@ -42,7 +42,7 @@ export default function StyleGuideSection({
             <span className="eyebrow">Frequently Asked Questions</span>
             {faqs.map((faq, i) => (
               <div key={i} className="flex flex-col gap-2 pb-6 border-b border-gray-200 last:border-0 last:pb-0">
-                <h3 className="text-sm font-black text-black tracking-tight">{faq.q}</h3>
+                <h3 className="text-sm font-semibold text-black tracking-tight">{faq.q}</h3>
                 <p className="text-xs text-gray-600 leading-relaxed">{faq.a}</p>
               </div>
             ))}

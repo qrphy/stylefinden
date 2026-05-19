@@ -71,7 +71,7 @@ export default function CategoryPage({
                   <div key={stat.label} className="flex items-center gap-8">
                     {i > 0 && <div className="w-px h-8 bg-gray-200" />}
                     <div className="flex flex-col">
-                      <span className="text-xl font-black text-black">{stat.value}</span>
+                      <span className="font-display text-2xl font-light text-black">{stat.value}</span>
                       <span className="text-xs tracking-widest uppercase text-gray-400">{stat.label}</span>
                     </div>
                   </div>
@@ -84,7 +84,7 @@ export default function CategoryPage({
               <span className={`text-xs font-semibold tracking-widest uppercase ${safeAccentTextMuted}`}>
                 Style Tip
               </span>
-              <p className="text-sm md:text-base font-black text-black leading-snug tracking-tight">
+              <p className="text-sm md:text-base font-semibold text-black leading-snug tracking-tight">
                 {data.tipTitle}<br />
                 <span className="italic font-light">{tipSuffix}</span>
               </p>
@@ -127,7 +127,9 @@ export default function CategoryPage({
             {data.outfits.map((item) => (
               <a key={item.id} href={item.href} className="group flex flex-col gap-3">
                 <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
-                  <ImgPlaceholder src={item.image || undefined} alt={item.title} />
+                  <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+                    <ImgPlaceholder src={item.image || undefined} alt={item.title} />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                   <div className="absolute bottom-3 left-3 sm:bottom-auto sm:top-3 flex flex-col gap-1.5">
                     <span className={`px-2 py-1 text-xs font-semibold tracking-widest uppercase ${tagColors[item.tag]}`}>
