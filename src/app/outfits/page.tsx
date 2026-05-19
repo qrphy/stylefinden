@@ -70,7 +70,6 @@ const collections: CollectionGroup[] = [
     label: "By Style",
     basePath: "/outfits/style",
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
-    cardVariant: "editorial",
     items: STYLE_ORDER.map(getStyleCard),
   },
 ]

@@ -85,6 +85,7 @@ export function getStyleCard(slug: string): CollectionItem {
     accentText: cfg.accentText,
     active: true,
     image: STYLE_IMAGES[slug],
+    sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw",
   }
 }
 

@@ -4,7 +4,7 @@ export type CollectionGroup = {
   label: string;
   basePath: string;
   gridCols?: string;
-  cardVariant?: "default" | "editorial";
+
   items: CollectionItem[];
 };
 
@@ -75,13 +75,12 @@ export default function SectionMainPage({ hero, breadcrumb, collections }: Props
               <div className="flex-1 h-px bg-gray-100" />
             </div>
 
-            <div className={`grid ${group.cardVariant === "editorial" ? "gap-x-8 gap-y-16 md:gap-x-10 md:gap-y-20" : "gap-5 md:gap-7"} ${group.gridCols ?? "grid-cols-1 md:grid-cols-2 xl:grid-cols-4"}`}>
+            <div className={`grid gap-5 md:gap-7 ${group.gridCols ?? "grid-cols-1 md:grid-cols-2 xl:grid-cols-4"}`}>
               {group.items.map((item) => (
                 <CollectionCard
                   key={item.slug}
                   item={item}
                   href={`${group.basePath}/${item.slug}`}
-                  variant={group.cardVariant}
                 />
               ))}
             </div>
