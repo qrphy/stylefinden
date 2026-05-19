@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Summer Outfits That Will Define Your 2026 Wardrobe — Stylefinden</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray-50: #f9f9f9;
+    --gray-100: #f0f0f0;
+    --gray-200: #e0e0e0;
+    --gray-400: #9a9a9a;
+    --gray-600: #555555;
+    --gray-800: #222222;
+  }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: var(--white);
+    color: var(--black);
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    z-index: 10;
+  }
+  .nav-logo {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+  }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gray-600);
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    max-width: 900px;
+    margin: 24px auto 0;
+    padding: 0 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+  .breadcrumb a { color: var(--gray-400); text-decoration: none; }
+  .breadcrumb span { color: var(--gray-200); }
+
+  /* ── ARTICLE HEADER ── */
+  .article-header {
+    max-width: 900px;
+    margin: 32px auto 0;
+    padding: 0 24px;
+  }
+  .article-category {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 16px;
+  }
+  .article-title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 20px;
+    max-width: 780px;
+  }
+  .article-subtitle {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    max-width: 640px;
+    margin-bottom: 24px;
+  }
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: var(--gray-400);
+    letter-spacing: 0.03em;
+  }
+  .article-meta .dot { width: 3px; height: 3px; background: var(--gray-200); border-radius: 50%; }
+  .reading-time { color: var(--gray-600); }
+
+  /* ── HERO IMAGE ── */
+  .hero-image-wrap {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 24px;
+  }
+  .hero-image {
+    width: 100%;
+    aspect-ratio: 16/7;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8e4e0 0%, #d4cfc9 50%, #c8c2bb 100%);
+  }
+  .hero-image-label {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+  .img-placeholder-text {
+    position: relative;
+    z-index: 1;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.25);
+  }
+
+  /* ── ARTICLE BODY ── */
+  .article-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .intro-text {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--gray-800);
+    margin: 40px 0 16px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .intro-text p + p { margin-top: 20px; }
+
+  /* ── OUTFIT SECTION ── */
+  .outfit-section {
+    margin: 64px 0;
+    padding-bottom: 64px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .outfit-section:last-of-type { border-bottom: none; }
+
+  .outfit-number {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 8px;
+  }
+  .outfit-title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: normal;
+    line-height: 1.25;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+
+  /* Layout: image left + text right */
+  .outfit-layout {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .outfit-layout.reverse {
+    grid-template-columns: 1fr 340px;
+  }
+  .outfit-layout.reverse .outfit-image-col { order: 2; }
+  .outfit-layout.reverse .outfit-text-col  { order: 1; }
+
+  .outfit-image-col {}
+  .outfit-image {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--gray-100);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .outfit-image.warm::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #e8e0d8 0%, #d4c8bc 60%, #c4b8aa 100%);
+  }
+  .outfit-image.cool::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #dde2e8 0%, #c8d0d8 60%, #b8c4cc 100%);
+  }
+  .outfit-image.neutral::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #e8e8e4 0%, #d8d8d2 60%, #c8c8c0 100%);
+  }
+  .outfit-image-placeholder {
+    position: relative;
+    z-index: 1;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.2);
+    text-align: center;
+  }
+  .image-caption {
+    margin-top: 10px;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: var(--gray-400);
+    letter-spacing: 0.05em;
+  }
+
+  .outfit-text-col {}
+  .outfit-editorial {
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: var(--gray-800);
+    margin-bottom: 32px;
+  }
+  .outfit-editorial p + p { margin-top: 16px; }
+
+  /* Tags */
+  .outfit-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 32px;
+  }
+  .outfit-tag {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border: 1px solid var(--gray-200);
+    color: var(--gray-600);
+  }
+
+  /* Shop the Look */
+  .shop-heading {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--black);
+    display: inline-block;
+  }
+  .shop-pieces {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .shop-piece {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--gray-100);
+    text-decoration: none;
+    color: var(--black);
+    transition: background 0.15s;
+  }
+  .shop-piece:hover { background: var(--gray-50); padding-left: 4px; }
+  .shop-piece-image {
+    width: 52px;
+    height: 52px;
+    background: var(--gray-100);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .shop-piece-image.w1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #e0dbd4;
+  }
+  .shop-piece-img-placeholder {
+    font-size: 8px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.2);
+    font-family: -apple-system, sans-serif;
+  }
+  .shop-piece-info { flex: 1; min-width: 0; }
+  .shop-piece-name {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .shop-piece-brand {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: var(--gray-400);
+    margin-top: 2px;
+  }
+  .shop-piece-price {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  .shop-piece-arrow {
+    font-size: 12px;
+    color: var(--gray-400);
+    flex-shrink: 0;
+  }
+
+  /* Full-width outfit variant */
+  .outfit-layout-full {
+    display: block;
+  }
+  .outfit-layout-full .outfit-image {
+    width: 100%;
+    aspect-ratio: 4/2.2;
+    margin-bottom: 28px;
+  }
+  .outfit-layout-full .outfit-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #e2e0da 0%, #d0ccC4 100%);
+  }
+  .outfit-pieces-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--gray-200);
+    border: 1px solid var(--gray-200);
+    margin-top: 24px;
+  }
+  .outfit-piece-card {
+    background: var(--white);
+    padding: 16px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s;
+  }
+  .outfit-piece-card:hover { background: var(--gray-50); }
+  .outfit-piece-img {
+    width: 72px;
+    height: 72px;
+    background: var(--gray-100);
+    flex-shrink: 0;
+  }
+  .outfit-piece-label {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    color: var(--gray-600);
+    text-align: center;
+    line-height: 1.4;
+  }
+  .outfit-piece-price-small {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 48px 0;
+    padding: 32px 40px;
+    border-left: 2px solid var(--black);
+    background: var(--gray-50);
+  }
+  .pull-quote p {
+    font-family: 'Georgia', serif;
+    font-size: 20px;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--gray-800);
+  }
+
+  /* Section divider */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 40px;
+  }
+  .section-label-text {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    white-space: nowrap;
+  }
+  .section-label-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gray-200);
+  }
+
+  /* ── RELATED ARTICLES ── */
+  .related-section {
+    background: var(--gray-50);
+    padding: 64px 24px;
+    margin-top: 80px;
+  }
+  .related-inner { max-width: 900px; margin: 0 auto; }
+  .related-heading {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 32px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .related-card { text-decoration: none; color: var(--black); }
+  .related-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--gray-200);
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+  .related-card-img.r1::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #ddd8d0, #ccc4ba); }
+  .related-card-img.r2::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #d8dde0, #c8cdd4); }
+  .related-card-img.r3::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #e0ddd8, #d0ccc4); }
+  .related-card-category {
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+  }
+  .related-card-title {
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: var(--black);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 12px;
+    color: var(--gray-400);
+  }
+
+  /* ── PROGRESS BAR ── */
+  .reading-progress {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 42%;
+    height: 2px;
+    background: var(--black);
+    z-index: 20;
+    transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div class="reading-progress"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Stylefinden</a>
+  <div class="nav-links">
+    <a href="#">Outfits</a>
+    <a href="#">Hairstyles</a>
+    <a href="#">Accessories</a>
+    <a href="#">Trends</a>
+    <a href="#">Blog</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">Home</a>
+  <span>›</span>
+  <a href="#">Style Guides</a>
+  <span>›</span>
+  Summer Outfits 2026
+</div>
+
+<!-- ARTICLE HEADER -->
+<header class="article-header">
+  <div class="article-category">Style Guide · Summer 2026</div>
+  <h1 class="article-title">10 Summer Outfits That Will Define Your 2026 Wardrobe</h1>
+  <p class="article-subtitle">From effortless linen sets to bold printed dresses — the ten looks you'll reach for all season long, styled with everything you need to shop them.</p>
+  <div class="article-meta">
+    <span>May 19, 2026</span>
+    <span class="dot"></span>
+    <span class="reading-time">8 min read</span>
+    <span class="dot"></span>
+    <span>10 outfits</span>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="hero-image-wrap">
+  <div class="hero-image">
+    <span class="img-placeholder-text">Hero Image — Summer Campaign</span>
+    <span class="hero-image-label">Summer / SS26</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <!-- INTRO -->
+  <div class="intro-text">
+    <p>
+      Summer dressing is less about trends and more about intention. This season, the best-dressed women aren't chasing the latest viral moment — they're building a small, considered summer wardrobe that actually works. Think linen that breathes, cotton that travels well, and silhouettes that move with you rather than against you.
+    </p>
+    <p>
+      We've put together ten outfits that cover every occasion summer throws at you: rooftop dinners, long beach weekends, city errands in the heat, and the kind of effortless gatherings where you'd rather be talking than thinking about what to wear. Each look includes exactly what you need to shop it — no guesswork.
+    </p>
+  </div>
+
+  <div class="section-label">
+    <span class="section-label-text">The Outfits</span>
+    <span class="section-label-line"></span>
+  </div>
+
+  <!-- ── OUTFIT 01 ── -->
+  <div class="outfit-section">
+    <div class="outfit-number">01 of 10</div>
+    <h2 class="outfit-title">The Linen Co-ord — Effortless from Morning to Evening</h2>
+
+    <div class="outfit-layout">
+      <div class="outfit-image-col">
+        <div class="outfit-image warm">
+          <span class="outfit-image-placeholder">Outfit Photo<br>3:4</span>
+        </div>
+        <div class="image-caption">Linen Set in Sand, worn with minimal sandals</div>
+      </div>
+      <div class="outfit-text-col">
+        <div class="outfit-tags">
+          <span class="outfit-tag">Casual</span>
+          <span class="outfit-tag">Minimalist</span>
+          <span class="outfit-tag">Summer</span>
+          <span class="outfit-tag">Day to Night</span>
+        </div>
+        <div class="outfit-editorial">
+          <p>
+            A matching linen set is arguably the most useful thing you can put in a summer suitcase. It reads as an outfit without any effort — the matching fabric does all the coordination work for you. This sand-toned version hits that sweet spot between relaxed and polished: too put-together for a lazy beach day, but not trying too hard for lunch either.
+          </p>
+          <p>
+            The key to wearing a co-ord without looking like you've just rolled off a hotel sunbed is the break points. A slight tuck on the shirt, a structured bag, sandals with some substance. Three small decisions that lift the whole look into something deliberate.
+          </p>
+          <p>
+            If you run warm, linen is non-negotiable. It wrinkles — accept that upfront — but it breathes in a way nothing synthetic can replicate. This set is worth every slightly-crumpled moment.
+          </p>
+        </div>
+
+        <div class="shop-heading">Shop the Look</div>
+        <div class="shop-pieces">
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#e8e0d4,#d8cec4);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Linen Relaxed Shirt</div>
+              <div class="shop-piece-brand">& Other Stories</div>
+            </div>
+            <div class="shop-piece-price">£65</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#e4dcd0,#d4ccc0);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Wide-Leg Linen Trousers</div>
+              <div class="shop-piece-brand">Arket</div>
+            </div>
+            <div class="shop-piece-price">£75</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#d8d0c8,#c8c0b8);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Leather Flat Sandal</div>
+              <div class="shop-piece-brand">Mango</div>
+            </div>
+            <div class="shop-piece-price">£49</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#e0dcd4,#d0ccc4);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Mini Leather Tote</div>
+              <div class="shop-piece-brand">COS</div>
+            </div>
+            <div class="shop-piece-price">£85</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OUTFIT 02 ── -->
+  <div class="outfit-section">
+    <div class="outfit-number">02 of 10</div>
+    <h2 class="outfit-title">The Printed Midi Dress — One Piece, No Decisions</h2>
+
+    <div class="outfit-layout reverse">
+      <div class="outfit-image-col">
+        <div class="outfit-image cool">
+          <span class="outfit-image-placeholder">Outfit Photo<br>3:4</span>
+        </div>
+        <div class="image-caption">Floral midi dress worn with block-heel mules</div>
+      </div>
+      <div class="outfit-text-col">
+        <div class="outfit-tags">
+          <span class="outfit-tag">Feminine</span>
+          <span class="outfit-tag">Dinner</span>
+          <span class="outfit-tag">Easy Dressing</span>
+        </div>
+        <div class="outfit-editorial">
+          <p>
+            There's a reason the printed midi dress has become the unofficial uniform of summer — it requires almost no decision-making. You're not choosing a top and a bottom, not thinking about proportions, not worrying whether the colours work. You put it on and you're done.
+          </p>
+          <p>
+            This season's strongest prints are moving away from the safe florals of recent years towards something with a bit more geometry — abstract brushstrokes, oversized botanicals, colour-blocked patterns that feel considered without being safe. If you're buying one dress for summer, buy one you have to think about for a second. The safe choice always gets left in the wardrobe.
+          </p>
+        </div>
+
+        <div class="shop-heading">Shop the Look</div>
+        <div class="shop-pieces">
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#d8dde8,#c8cdd8);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Botanical Print Midi Dress</div>
+              <div class="shop-piece-brand">Reformation</div>
+            </div>
+            <div class="shop-piece-price">£198</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#d4d0cc,#c4c0bc);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Block Heel Mule</div>
+              <div class="shop-piece-brand">Zara</div>
+            </div>
+            <div class="shop-piece-price">£39</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+          <a href="#" class="shop-piece">
+            <div class="shop-piece-image" style="position:relative;overflow:hidden;background:linear-gradient(135deg,#e4e0d8,#d4d0c8);"></div>
+            <div class="shop-piece-info">
+              <div class="shop-piece-name">Woven Crossbody</div>
+              <div class="shop-piece-brand">Sézane</div>
+            </div>
+            <div class="shop-piece-price">£72</div>
+            <div class="shop-piece-arrow">↗</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    <p>"The best summer wardrobe is the one you don't have to think about. That's not laziness — it's the whole point."</p>
+  </div>
+
+  <!-- ── OUTFIT 03 — Full Width Variant ── -->
+  <div class="outfit-section">
+    <div class="outfit-number">03 of 10</div>
+    <h2 class="outfit-title">The White Shirt Moment — Borrowed from the Boys, Made Your Own</h2>
+
+    <div class="outfit-layout-full">
+      <div class="outfit-image neutral">
+        <span class="outfit-image-placeholder">Wide Outfit Photo — 16:9 or 4:2</span>
+      </div>
+      <div class="outfit-editorial" style="max-width:680px;">
+        <p>
+          The oversized white shirt is one of those items that works across every possible summer context — thrown over a swimsuit at the beach, half-tucked into wide-leg trousers for dinner, belted over a slip skirt for the kind of event where you're not quite sure about the dress code. It's the summer Swiss Army knife.
+        </p>
+        <p>
+          What makes it work is how you break the proportions. Too neat and it reads corporate. Too undone and it starts to look like you forgot your actual outfit. The sweet spot is asymmetric — tuck one side, leave the other; undo one more button than feels comfortable; roll the sleeves twice.
+        </p>
+      </div>
+      <div style="margin-top: 20px;">
+        <div class="shop-heading">Shop the Look</div>
+        <div class="outfit-pieces-row">
+          <a href="#" class="outfit-piece-card">
+            <div class="outfit-piece-img" style="background:linear-gradient(135deg,#f0ecE8,#e0dcd8);"></div>
+            <div class="outfit-piece-label">Oversized Cotton Shirt</div>
+            <div class="outfit-piece-price-small">£55 · COS</div>
+          </a>
+          <a href="#" class="outfit-piece-card">
+            <div class="outfit-piece-img" style="background:linear-gradient(135deg,#e8e4e0,#d8d4d0);"></div>
+            <div class="outfit-piece-label">Straight-Leg Denim</div>
+            <div class="outfit-piece-price-small">£69 · Weekday</div>
+          </a>
+          <a href="#" class="outfit-piece-card">
+            <div class="outfit-piece-img" style="background:linear-gradient(135deg,#e0dcd4,#d0ccc4);"></div>
+            <div class="outfit-piece-label">Leather Loafer</div>
+            <div class="outfit-piece-price-small">£95 · Mango</div>
+          </a>
+          <a href="#" class="outfit-piece-card">
+            <div class="outfit-piece-img" style="background:linear-gradient(135deg,#dcd8d0,#ccc8c0);"></div>
+            <div class="outfit-piece-label">Leather Belt</div>
+            <div class="outfit-piece-price-small">£35 · Arket</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OUTFITS 04–10 PLACEHOLDER ── -->
+  <div style="background: var(--gray-50); padding: 48px 40px; text-align: center; border: 1px dashed var(--gray-200); margin: 48px 0;">
+    <div style="font-family: -apple-system, sans-serif; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px;">Mockup</div>
+    <div style="font-family: 'Georgia', serif; font-size: 18px; color: var(--gray-600);">Outfits 04–10 continue in the same format</div>
+    <div style="font-family: -apple-system, sans-serif; font-size: 13px; color: var(--gray-400); margin-top: 8px;">Alternating image-left / image-right layouts + full-width variants</div>
+  </div>
+
+</div><!-- /article-body -->
+
+<!-- RELATED ARTICLES -->
+<div class="related-section">
+  <div class="related-inner">
+    <div class="related-heading">Continue Reading</div>
+    <div class="related-grid">
+      <a href="#" class="related-card">
+        <div class="related-card-img r1"></div>
+        <div class="related-card-category">Style Guide</div>
+        <div class="related-card-title">The 8 Pieces Your Autumn Wardrobe Actually Needs</div>
+      </a>
+      <a href="#" class="related-card">
+        <div class="related-card-img r2"></div>
+        <div class="related-card-category">Accessories</div>
+        <div class="related-card-title">How to Build a Minimal Accessories Edit That Works Year-Round</div>
+      </a>
+      <a href="#" class="related-card">
+        <div class="related-card-img r3"></div>
+        <div class="related-card-category">Trends</div>
+        <div class="related-card-title">SS26 Colour Report: The Five Shades Dominating the Season</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Stylefinden</span>
+  <span>The Style Platform</span>
+</footer>
+
+</body>
+</html>
