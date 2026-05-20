@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import CategoryPage from "@/components/shared/CategoryPage";
 import EditorialCategoryPage from "@/components/shared/EditorialCategoryPage";
+import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
@@ -74,7 +75,25 @@ const HERO_IMAGES: Record<string, string> = {
   "spring": "/categories/outfits/spring.png",
 };
 
-// Summer için editorial formatı tetikleyen paragraf metinleri
+// E-commerce conversion format — outfits-first, short copy, variations list
+const CONVERSION_PAGES: Record<string, ConversionConfig> = {
+  "winter": {
+    introText:
+      "Shop curated cozy winter outfits for women — warm coats, chunky knit combos, layered looks and more. Each outfit below comes with a full shop-the-look section so you can buy the exact pieces. Updated weekly with the latest winter styles.",
+    variations: [
+      "Wool coat + turtleneck + slim trousers + Chelsea boots",
+      "Chunky knit sweater + straight-leg jeans + ankle boots",
+      "Teddy coat + ribbed dress + knee-high boots",
+      "Oversized puffer + hoodie + joggers + chunky sneakers",
+      "Cashmere sweater + tailored trousers + loafers",
+      "Turtleneck + leather skirt + tights + ankle boots",
+      "Plaid blazer + thermal top + wide-leg denim + mules",
+      "Shearling coat + knit top + wide-leg cords + flat boots",
+    ],
+  },
+};
+
+// Editorial format — magazine-style intro paragraphs per slug
 const EDITORIAL_TEXT: Record<string, string[]> = {
   "summer": [
     "Summer has a way of demanding presence. The season doesn't negotiate — it arrives with full light, open air, and an unspoken invitation to dress accordingly.",
@@ -82,13 +101,6 @@ const EDITORIAL_TEXT: Record<string, string[]> = {
     "This season's most compelling looks share a kind of effortless restraint. Clean silhouettes in breathable fabrics. Prints that feel organic rather than printed. Proportions that respect the heat — loose where it matters, defined where it counts.",
     "We've curated these looks around how summer actually unfolds: morning markets and café terraces, afternoon heat that turns everything amber, evenings that deserve dressing for. Each outfit here holds its own across contexts — styled differently, but sourced from the same wardrobe logic.",
     "On fabrication: seek linen, cotton voile, and light crepe above all else. These aren't just comfort choices — they photograph better, drape better, and age better in summer heat. On color: white genuinely earns its status in summer. Bright linen, ivory cotton, cream chiffon — all function as neutrals and pair with warm skin in a way nothing else does.",
-  ],
-  "winter": [
-    "Winter dressing is a study in intention. Unlike other seasons, cold weather doesn't allow for accidental outfits — every layer is a decision. That constraint, counterintuitively, is what makes winter fashion so compelling. The season rewards people who think in systems rather than individual pieces.",
-    "The most enduring cozy winter outfits aren't built around warmth alone — they're built around proportion. An oversized wool coat over slim trousers. A chunky knit tucked loosely into tailored pants. A turtleneck beneath a structured blazer. The interplay between volume and restraint is where winter style lives. When one layer is generous, everything else earns from being precise.",
-    "Layering is the real skill of winter fashion. The difference between a layered outfit that looks deliberate and one that looks accidental is almost always texture contrast. Smooth knit under a nubby tweed. Matte wool against a leather belt. Fine-gauge cashmere beneath a heavy canvas coat. Each pairing should feel considered — and it reads that way on the body. Beyond texture, the base layer deserves more credit than it typically gets. A fine merino turtleneck can anchor an entire winter look, providing both warmth and a clean visual foundation for whatever goes over it.",
-    "On color: winter's most wearable palette runs from deep charcoal and navy through camel and warm ivory, with occasional interruptions in forest green or burgundy. The seasonal impulse toward all-black is understandable — it's reliable — but a single tonal variation can elevate the whole. Camel and cream together. Charcoal layered over slate grey. These aren't bold choices; they're refined ones. On footwear: Chelsea boots remain the season's most versatile foundation. Knee-high boots in smooth leather extend the length of the leg under midi hemlines. Chunky loafers worn with textured socks give casual looks an unexpected modernity.",
-    "The cozy winter outfits that hold up across the whole season share a kind of quiet authority. A city winter look anchored by a long wool coat and clean trousers. A weekend morning outfit built around an oversized knit and straight-leg denim. A snow-day combination of a puffer vest, turtleneck, and lined trousers. A travel outfit layered for airport transitions — something warm enough to land in, refined enough to head directly to a meeting. These are not complicated outfits. They're considered ones — and in winter, that distinction is everything.",
   ],
 };
 
@@ -275,7 +287,21 @@ export default async function SeasonPage(
   const outfits = await client.fetch(OUTFITS_BY_SEASON_QUERY, { season: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
   // Sanity'de veri varsa dönüştür, yoksa statik fallback'e geç
   const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
+  const conversionConfig = CONVERSION_PAGES[slug];
   const editorialText = EDITORIAL_TEXT[slug];
+
+  if (conversionConfig) {
+    return (
+      <ConversionCategoryPage
+        data={{ ...data, outfits: items }}
+        config={conversionConfig}
+        slug={slug}
+        basePath="/outfits/season"
+        categoryLink={{ label: "Season", href: "/outfits/season" }}
+        styleGuideSuffix="find & style"
+      />
+    );
+  }
 
   if (editorialText) {
     return (
