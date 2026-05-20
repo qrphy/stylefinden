@@ -83,6 +83,13 @@ const EDITORIAL_TEXT: Record<string, string[]> = {
     "We've curated these looks around how summer actually unfolds: morning markets and café terraces, afternoon heat that turns everything amber, evenings that deserve dressing for. Each outfit here holds its own across contexts — styled differently, but sourced from the same wardrobe logic.",
     "On fabrication: seek linen, cotton voile, and light crepe above all else. These aren't just comfort choices — they photograph better, drape better, and age better in summer heat. On color: white genuinely earns its status in summer. Bright linen, ivory cotton, cream chiffon — all function as neutrals and pair with warm skin in a way nothing else does.",
   ],
+  "winter": [
+    "Winter dressing is a study in intention. Unlike other seasons, cold weather doesn't allow for accidental outfits — every layer is a decision. That constraint, counterintuitively, is what makes winter fashion so compelling. The season rewards people who think in systems rather than individual pieces.",
+    "The most enduring cozy winter outfits aren't built around warmth alone — they're built around proportion. An oversized wool coat over slim trousers. A chunky knit tucked loosely into tailored pants. A turtleneck beneath a structured blazer. The interplay between volume and restraint is where winter style lives. When one layer is generous, everything else earns from being precise.",
+    "Layering is the real skill of winter fashion. The difference between a layered outfit that looks deliberate and one that looks accidental is almost always texture contrast. Smooth knit under a nubby tweed. Matte wool against a leather belt. Fine-gauge cashmere beneath a heavy canvas coat. Each pairing should feel considered — and it reads that way on the body. Beyond texture, the base layer deserves more credit than it typically gets. A fine merino turtleneck can anchor an entire winter look, providing both warmth and a clean visual foundation for whatever goes over it.",
+    "On color: winter's most wearable palette runs from deep charcoal and navy through camel and warm ivory, with occasional interruptions in forest green or burgundy. The seasonal impulse toward all-black is understandable — it's reliable — but a single tonal variation can elevate the whole. Camel and cream together. Charcoal layered over slate grey. These aren't bold choices; they're refined ones. On footwear: Chelsea boots remain the season's most versatile foundation. Knee-high boots in smooth leather extend the length of the leg under midi hemlines. Chunky loafers worn with textured socks give casual looks an unexpected modernity.",
+    "The cozy winter outfits that hold up across the whole season share a kind of quiet authority. A city winter look anchored by a long wool coat and clean trousers. A weekend morning outfit built around an oversized knit and straight-leg denim. A snow-day combination of a puffer vest, turtleneck, and lined trousers. A travel outfit layered for airport transitions — something warm enough to land in, refined enough to head directly to a meeting. These are not complicated outfits. They're considered ones — and in winter, that distinction is everything.",
+  ],
 };
 
 // Her mevsim için CategoryPage'e aktarılan metadata, SEO ve UI konfigürasyonu
@@ -154,10 +161,11 @@ const seasons: Record<string, Omit<CategoryData, 'outfits'>> = {
       { value: "Daily", label: "Updated" },
     ],
     relatedCategories: [
-      { label: "Summer Outfits",    href: "/outfits/season/summer",    accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
-      { label: "Spring Looks",      href: "/outfits/season/spring",    accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
-      { label: "Workwear & Office Outfits", href: "/outfits/occasion/office",  accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
-      { label: "Minimalist",        href: "/outfits/style/minimalist", accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Summer Outfits",    href: "/outfits/season/summer",     accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]" },
+      { label: "Spring Looks",      href: "/outfits/season/spring",     accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]" },
+      { label: "Workwear & Office Outfits", href: "/outfits/occasion/office", accent: "bg-[#f3e5f5]", accentText: "text-[#6a1b9a]" },
+      { label: "Minimalist",        href: "/outfits/style/minimalist",  accent: "bg-gray-100",  accentText: "text-gray-700"  },
+      { label: "Streetwear Outfits", href: "/outfits/style/streetstyle", accent: "bg-gray-900",  accentText: "text-white"     },
     ],
     faqs: [
       {
