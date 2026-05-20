@@ -48,35 +48,55 @@ export const metadata: Metadata = {
   },
 }
 
+const STYLE_SLUGS     = ["boho", "minimalist", "streetstyle", "old-money", "retro-vintage", "y2k", "western"]
+const TREND_SLUGS     = ["sienna-vibe", "korean-fashion", "clean-girl", "cute-coquette"]
+const COLOR_MOOD_SLUGS = ["black-dark"]
+
 // Her koleksiyon grubu SectionMainPage'de ayrı bir başlık ve grid olarak render edilir
 const collections: CollectionGroup[] = [
   {
-    label: "By Season",
+    label: "Seasonal Outfits",
     description:
-      "Each season has its own visual language. Summer calls for linen and light; autumn for layers and texture; winter for structure and warmth. Browse outfits organized by what the weather demands of you — and what your wardrobe can offer back.",
+      "Each season has its own visual language. Summer calls for linen and lightness; winter for structure and warmth; spring for fresh layers and pastel energy. Browse outfits organized by what the weather demands — and what your wardrobe can offer back.",
     basePath: "/outfits/season",
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
     items: [
-      { slug: "summer", label: "Summer Outfits", description: "Light dresses, floral prints & linen robes for hot days",         tags: ["Maxi", "Midi", "Mini", "Floral"],        badge: "New", accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]", active: true, image: "/categories/outfits/summer.webp", priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
-      { slug: "winter", label: "Cozy Winter Outfits", description: "Warm layering looks, coats and cozy combinations for cold days",   tags: ["Coat", "Layering", "Knitwear", "Boots"], badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true, image: "/categories/outfits/winter.png", priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
-      { slug: "spring", label: "Spring Looks",   description: "Pastel tones, light blazers and fresh combinations",              tags: ["Pastels", "Blazer", "Linen", "Floral"],  badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true, image: "/categories/outfits/spring.png", sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
+      { slug: "summer", label: "Summer Outfits",      description: "Light dresses, floral prints & linen looks for hot days",       tags: ["Maxi", "Midi", "Mini", "Floral"],        badge: "New", accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]", active: true, image: "/categories/outfits/summer.webp", priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
+      { slug: "winter", label: "Cozy Winter Outfits", description: "Warm layering looks, coats and cozy combinations for cold days", tags: ["Coat", "Layering", "Knitwear", "Boots"], badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true, image: "/categories/outfits/winter.png",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
+      { slug: "spring", label: "Spring Looks",        description: "Pastel tones, light blazers and fresh combinations",             tags: ["Pastels", "Blazer", "Linen", "Floral"],  badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true, image: "/categories/outfits/spring.png",  sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
     ],
   },
   {
-    label: "By Occasion",
+    label: "Occasion Outfits",
     description:
-      "Dressed for the moment. From everyday casual to wedding guest, office, and concert nights — find outfits built around where you're actually going. Each collection is curated to work in real life, not just styled for a photo.",
+      "Dressed for the moment. From workwear and elegant evenings to party nights, school days and travel looks — find outfits built around where you're actually going. Each collection is curated for real life, not just the photo.",
     basePath: "/outfits/occasion",
     gridCols: "grid-cols-1 md:grid-cols-3",
     items: OCCASION_ORDER.map(getOccasionCard),
   },
   {
-    label: "By Style",
+    label: "Style Outfits",
     description:
-      "Your aesthetic is a decision, not an accident. Whether you're drawn to minimalist clean lines, old-money elegance, boho layering, or nostalgic y2k — explore collections that commit to a point of view and build a wardrobe that stays consistent.",
+      "Your aesthetic is a decision, not an accident. Whether you're drawn to boho layering, minimalist clean lines, old-money elegance, retro prints or western frontier energy — explore collections that commit to a point of view.",
     basePath: "/outfits/style",
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
-    items: STYLE_ORDER.map(getStyleCard),
+    items: STYLE_SLUGS.map(getStyleCard),
+  },
+  {
+    label: "Trend & Aesthetic",
+    description:
+      "Beyond classic styles, these collections track the aesthetics shaping fashion right now. From the effortless Sienna vibe and Seoul-inspired K-fashion to the clean girl polish and soft coquette femininity — find the look that defines your moment.",
+    basePath: "/outfits/style",
+    gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
+    items: TREND_SLUGS.map(getStyleCard),
+  },
+  {
+    label: "Color & Mood",
+    description:
+      "Some aesthetics are built around a single color — and black is the most powerful of them all. All-black looks, leather, monochrome dark palettes and bold power dressing for those who find sophistication at the deepest end of the spectrum.",
+    basePath: "/outfits/style",
+    gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
+    items: COLOR_MOOD_SLUGS.map(getStyleCard),
   },
 ]
 
