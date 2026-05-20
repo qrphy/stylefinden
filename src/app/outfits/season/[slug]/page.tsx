@@ -47,14 +47,78 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
     { id: 8, title: "Flowy Chiffon Dress", subtitle: "Elegant & Light",    tag: "New",      style: "Maxi",     href: "/outfits/flowy-chiffon-dress" },
   ],
   "winter": [
-    { id: 1, title: "Classic Wool Coat",      subtitle: "City & Business",   tag: "Trending", style: "Coat",     href: "/outfits/classic-wool-coat"      },
-    { id: 2, title: "Chunky Knit Combo",      subtitle: "Casual & Cozy",     tag: "Popular",  style: "Knitwear", href: "/outfits/chunky-knit-combo"      },
-    { id: 3, title: "Monochrome Layer Look",  subtitle: "Minimal & Modern",  tag: "New",      style: "Layering", href: "/outfits/monochrome-layer-look"  },
-    { id: 4, title: "Teddy Coat Outfit",      subtitle: "Weekend & Leisure", tag: "Trending", style: "Coat",     href: "/outfits/teddy-coat-outfit"      },
-    { id: 5, title: "Turtleneck & Trousers",  subtitle: "Office & Business", tag: "Popular",  style: "Business", href: "/outfits/turtleneck-trousers"    },
-    { id: 6, title: "Plaid Scarf Look",       subtitle: "Casual & Everyday", tag: "New",      style: "Casual",   href: "/outfits/plaid-scarf-look"       },
-    { id: 7, title: "Velvet Evening Look",    subtitle: "Evening & Event",   tag: "Trending", style: "Elegant",  href: "/outfits/velvet-evening-look"    },
-    { id: 8, title: "Oversized Puffer Coat",  subtitle: "Street & Urban",    tag: "New",      style: "Coat",     href: "/outfits/oversized-puffer-coat"  },
+    {
+      id: 1, title: "Classic Wool Coat", subtitle: "City & Business", tag: "Trending", style: "Coat", href: "/outfits/classic-wool-coat",
+      pieces: [
+        { key: "p1", name: "Classic Wool Coat" },
+        { key: "p2", name: "Ribbed Turtleneck" },
+        { key: "p3", name: "Slim Trousers" },
+        { key: "p4", name: "Chelsea Boots" },
+      ],
+    },
+    {
+      id: 2, title: "Chunky Knit Combo", subtitle: "Casual & Cozy", tag: "Popular", style: "Knitwear", href: "/outfits/chunky-knit-combo",
+      pieces: [
+        { key: "p1", name: "Chunky Knit Sweater" },
+        { key: "p2", name: "Straight-Leg Jeans" },
+        { key: "p3", name: "Ankle Boots" },
+        { key: "p4", name: "Wool Scarf" },
+      ],
+    },
+    {
+      id: 3, title: "Monochrome Layer Look", subtitle: "Minimal & Modern", tag: "New", style: "Layering", href: "/outfits/monochrome-layer-look",
+      pieces: [
+        { key: "p1", name: "Long Black Coat" },
+        { key: "p2", name: "Black Ribbed Top" },
+        { key: "p3", name: "Wide-Leg Trousers" },
+        { key: "p4", name: "Black Ankle Boots" },
+      ],
+    },
+    {
+      id: 4, title: "Teddy Coat Outfit", subtitle: "Weekend & Leisure", tag: "Trending", style: "Coat", href: "/outfits/teddy-coat-outfit",
+      pieces: [
+        { key: "p1", name: "Teddy Coat" },
+        { key: "p2", name: "Ribbed Midi Dress" },
+        { key: "p3", name: "Knee-High Boots" },
+        { key: "p4", name: "Mini Bag" },
+      ],
+    },
+    {
+      id: 5, title: "Turtleneck & Trousers", subtitle: "Office & Business", tag: "Popular", style: "Business", href: "/outfits/turtleneck-trousers",
+      pieces: [
+        { key: "p1", name: "Cashmere Turtleneck" },
+        { key: "p2", name: "Tailored Trousers" },
+        { key: "p3", name: "Pointed Loafers" },
+        { key: "p4", name: "Leather Belt" },
+      ],
+    },
+    {
+      id: 6, title: "Plaid Scarf Look", subtitle: "Casual & Everyday", tag: "New", style: "Casual", href: "/outfits/plaid-scarf-look",
+      pieces: [
+        { key: "p1", name: "Plaid Oversized Scarf" },
+        { key: "p2", name: "Wool Blazer" },
+        { key: "p3", name: "Wide-Leg Denim" },
+        { key: "p4", name: "Flat Lug Boots" },
+      ],
+    },
+    {
+      id: 7, title: "Velvet Evening Look", subtitle: "Evening & Event", tag: "Trending", style: "Elegant", href: "/outfits/velvet-evening-look",
+      pieces: [
+        { key: "p1", name: "Velvet Slip Dress" },
+        { key: "p2", name: "Pointed-Toe Heels" },
+        { key: "p3", name: "Satin Evening Bag" },
+        { key: "p4", name: "Drop Earrings" },
+      ],
+    },
+    {
+      id: 8, title: "Oversized Puffer Coat", subtitle: "Street & Urban", tag: "New", style: "Coat", href: "/outfits/oversized-puffer-coat",
+      pieces: [
+        { key: "p1", name: "Oversized Puffer Coat" },
+        { key: "p2", name: "Fleece Hoodie" },
+        { key: "p3", name: "Straight-Leg Joggers" },
+        { key: "p4", name: "Chunky Sneakers" },
+      ],
+    },
   ],
   "spring": [
     { id: 1, title: "Pastel Blazer Set",         subtitle: "Office & Chic",        tag: "Trending", style: "Blazer",  href: "/outfits/pastel-blazer-set"         },
