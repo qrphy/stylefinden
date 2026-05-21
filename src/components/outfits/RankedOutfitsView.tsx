@@ -3,6 +3,7 @@ import { urlFor } from "@/sanity/lib/image"
 import { ALL_OUTFITS_RANKED_QUERY } from "@/lib/queries"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import Button from "@/components/shared/Button"
+import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip"
 
 type Props = {
   occasion?: string
@@ -19,6 +20,7 @@ type OutfitDoc = {
   season?: string
   occasion?: string
   featured?: boolean
+  pieces?: { _key: string; name: string; image?: object }[]
 }
 
 function calcScore(outfit: OutfitDoc, filters: Props): number {
@@ -130,6 +132,14 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
               outfit.occasion ? (OCCASION_LABELS[outfit.occasion] ?? outfit.occasion) : null,
             ].filter(Boolean).join(' · ')
 
+            const pieceThumbnails = outfit.pieces
+              ?.filter((p) => p.image)
+              .map((p) => ({
+                key: p._key,
+                name: p.name,
+                image: urlFor(p.image!).width(64).height(64).url(),
+              }))
+
             return (
               <a
                 key={outfit._id}
@@ -160,6 +170,7 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
                       {subtitle}
                     </p>
                   )}
+                  <PieceThumbnailStrip pieces={pieceThumbnails} />
                 </div>
               </a>
             )
