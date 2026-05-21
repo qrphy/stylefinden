@@ -28,16 +28,6 @@ export default function MobileMenu() {
 
   return (
     <div className="md:hidden">
-      {/* Announcement Bar */}
-      <div className="w-full bg-black py-2 px-4 flex items-center justify-center">
-        <a
-          href="/trends"
-          className="text-[10px] tracking-widest uppercase text-gray-400 hover:text-white transition-colors duration-200"
-        >
-          Summer 2026 — <span className="italic normal-case tracking-normal">The Season&apos;s Edit</span>
-        </a>
-      </div>
-
       {/* Header bar */}
       <div className="relative flex items-center h-14 px-4 bg-white border-b border-gray-200">
         <button
