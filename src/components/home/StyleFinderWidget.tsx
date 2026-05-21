@@ -25,18 +25,39 @@ const SEASONS = [
   { value: 'any',    label: 'Any'    },
 ]
 
-const STYLES = [
-  { value: 'minimalist',    label: 'Minimal'    },
-  { value: 'boho',          label: 'Boho'        },
-  { value: 'streetstyle',   label: 'Street'      },
-  { value: 'old-money',     label: 'Old Money'   },
-  { value: 'elegant',       label: 'Elegant'     },
-  { value: 'y2k',           label: 'Y2K'         },
-  { value: 'retro-vintage', label: 'Vintage'     },
-  { value: 'casual',        label: 'Casual'      },
-  { value: 'clean-girl',    label: 'Clean Girl'  },
-  { value: 'any',           label: 'Any'         },
+const ALL_STYLES = [
+  { value: 'minimalist',     label: 'Minimal'     },
+  { value: 'boho',           label: 'Boho'         },
+  { value: 'streetstyle',    label: 'Street'       },
+  { value: 'old-money',      label: 'Old Money'    },
+  { value: 'elegant',        label: 'Elegant'      },
+  { value: 'y2k',            label: 'Y2K'          },
+  { value: 'retro-vintage',  label: 'Vintage'      },
+  { value: 'casual',         label: 'Casual'       },
+  { value: 'clean-girl',     label: 'Clean Girl'   },
+  { value: 'cute-coquette',  label: 'Coquette'     },
+  { value: 'korean-fashion', label: 'Korean'       },
+  { value: 'black-dark',     label: 'Dark'         },
+  { value: 'sienna-vibe',    label: 'Sienna Vibe'  },
+  { value: 'formal',         label: 'Formal'       },
+  { value: 'classic',        label: 'Classic'      },
+  { value: 'sporty',         label: 'Sporty'       },
+  { value: 'western',        label: 'Western'      },
 ]
+
+const OCCASION_STYLES: Record<string, string[]> = {
+  casual:            ['minimalist', 'boho', 'streetstyle', 'casual', 'clean-girl', 'retro-vintage', 'y2k', 'old-money', 'korean-fashion', 'sienna-vibe'],
+  office:            ['minimalist', 'old-money', 'elegant', 'clean-girl', 'formal', 'classic'],
+  evening:           ['elegant', 'old-money', 'formal', 'classic', 'y2k', 'cute-coquette', 'black-dark'],
+  'date-night':      ['elegant', 'old-money', 'y2k', 'cute-coquette', 'clean-girl', 'minimalist', 'retro-vintage', 'sienna-vibe'],
+  'party-night-out': ['y2k', 'streetstyle', 'old-money', 'elegant', 'cute-coquette', 'retro-vintage', 'black-dark'],
+  school:            ['casual', 'clean-girl', 'minimalist', 'streetstyle', 'y2k', 'cute-coquette', 'korean-fashion'],
+  travel:            ['casual', 'minimalist', 'boho', 'streetstyle', 'clean-girl', 'old-money'],
+  sport:             ['sporty', 'casual', 'streetstyle'],
+  beach:             ['boho', 'casual', 'y2k', 'cute-coquette', 'retro-vintage'],
+  festival:          ['boho', 'y2k', 'retro-vintage', 'streetstyle', 'cute-coquette', 'western'],
+  wedding:           ['elegant', 'formal', 'classic', 'old-money', 'minimalist', 'cute-coquette'],
+}
 
 export default function StyleFinderWidget() {
   const router = useRouter()
@@ -46,6 +67,13 @@ export default function StyleFinderWidget() {
 
   const showSeason = occasion !== null
   const showStyle  = showSeason && season !== null
+
+  const filteredStyles = [
+    ...(occasion && OCCASION_STYLES[occasion]
+      ? ALL_STYLES.filter((s) => OCCASION_STYLES[occasion].includes(s.value))
+      : ALL_STYLES),
+    { value: 'any', label: 'Any' },
+  ]
 
   function handleFind() {
     const params = new URLSearchParams()
@@ -101,7 +129,7 @@ export default function StyleFinderWidget() {
           {showStyle && (
             <FinderStep number={3} question="What's your vibe?">
               <PillGroup
-                options={STYLES}
+                options={filteredStyles}
                 selected={style}
                 onSelect={(v) => setStyle(v)}
                 allowDeselect
