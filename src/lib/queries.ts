@@ -79,6 +79,13 @@ export const OUTFITS_BY_OCCASION_QUERY = defineQuery(`
   }
 `)
 
+// OUTFITS_OCCASION_COUNTS_QUERY: StyleFinderWidget occasion sayımı için minimal veri
+export const OUTFITS_OCCASION_COUNTS_QUERY = defineQuery(`
+  *[_type == "outfit" && defined(slug.current)] {
+    occasion, occasions
+  }
+`)
+
 // Ana sayfadaki "Trending Outfits" bölümü için — sadece featured=true olanlar, max 6 adet
 export const FEATURED_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && featured == true && defined(slug.current)] | order(_createdAt desc) [0...6] {

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { detectSeason } from '@/lib/detect-season'
 
 // Q1 — What is your main goal when getting dressed?
 const GOAL_OPTIONS = [
@@ -69,13 +70,6 @@ const SEASON_OPTIONS = [
   { value: 'any',     label: 'Any',     description: 'No preference' },
 ]
 
-function detectSeason(): string {
-  const m = new Date().getMonth()
-  if (m >= 2 && m <= 4) return 'spring'
-  if (m >= 5 && m <= 7) return 'summer'
-  if (m >= 8 && m <= 10) return 'autumn'
-  return 'winter'
-}
 
 type Step = 1 | 2 | 3
 

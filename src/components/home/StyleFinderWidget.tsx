@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import ImgPlaceholder from '@/components/shared/ImgPlaceholder'
+import { detectSeason } from '@/lib/detect-season'
 
 const LS_FINDER_KEY = 'sf_finder'
 const LS_HISTORY_KEY = 'sf_history'
@@ -101,14 +102,6 @@ const OCCASION_STYLES: Record<string, string[]> = {
   wedding:           ['elegant', 'formal', 'classic', 'old-money', 'minimalist', 'cute-coquette'],
 }
 
-// Item 2: Detect current season from device date
-function detectSeason(): string {
-  const m = new Date().getMonth() // 0–11
-  if (m >= 2 && m <= 4) return 'spring'
-  if (m >= 5 && m <= 7) return 'summer'
-  if (m >= 8 && m <= 10) return 'autumn'
-  return 'winter'
-}
 
 type HistoryEntry = { occasion?: string; style?: string; ts: number }
 
@@ -280,26 +273,27 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
             </FinderStep>
           )}
 
-          <div className="flex items-center flex-wrap gap-x-6 gap-y-3 pt-4 border-t border-gray-100">
-            {occasion && (
+          <div className="pt-4 border-t border-gray-100 flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
+            <div className="flex items-center gap-6">
+              {occasion && (
+                <button
+                  onClick={handleFind}
+                  className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
+                >
+                  Find Outfits
+                  <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </button>
+              )}
               <button
-                onClick={handleFind}
-                className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
+                onClick={handleSurprise}
+                className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
               >
-                Find Outfits
-                <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
+                Surprise me
               </button>
-            )}
-            {/* Item 5: Surprise me button */}
-            <button
-              onClick={handleSurprise}
-              className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
-            >
-              Surprise me
-            </button>
-            <div className="ml-auto flex items-center gap-6">
+            </div>
+            <div className="flex items-center gap-6 sm:ml-auto">
               <a
                 href="/style-quiz"
                 className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
@@ -375,7 +369,7 @@ function OccasionGrid({ options, selected, onSelect, counts }: {
             />
             {/* Item 6: Outfit count */}
             <div className="absolute bottom-2 left-2.5 right-2 flex items-end justify-between gap-1">
-              <span className="text-[9px] font-semibold tracking-widest uppercase text-white leading-none">
+              <span className="text-[10px] font-semibold tracking-widest uppercase text-white leading-none">
                 {opt.label}
               </span>
               {count !== undefined && count > 0 && (
@@ -415,7 +409,7 @@ function PillGroup({ options, selected, onSelect, allowDeselect = false }: {
               if (active && allowDeselect) onSelect(null)
               else onSelect(opt.value)
             }}
-            className={`px-4 py-2 text-[10px] font-semibold tracking-widest uppercase border transition-colors duration-150
+            className={`px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase border transition-colors duration-150
               ${active
                 ? 'bg-black text-white border-black'
                 : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'

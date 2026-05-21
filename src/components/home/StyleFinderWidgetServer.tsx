@@ -1,5 +1,5 @@
 import { client } from '@/sanity/lib/client'
-import { ALL_OUTFITS_RANKED_QUERY } from '@/lib/queries'
+import { OUTFITS_OCCASION_COUNTS_QUERY } from '@/lib/queries'
 import StyleFinderWidget from './StyleFinderWidget'
 
 // Server wrapper that injects live outfit counts per occasion into the client widget.
@@ -8,7 +8,7 @@ export default async function StyleFinderWidgetServer() {
 
   try {
     const outfits = await client.fetch(
-      ALL_OUTFITS_RANKED_QUERY,
+      OUTFITS_OCCASION_COUNTS_QUERY,
       {},
       { next: { revalidate: 3600, tags: ['outfit'] } }
     )
