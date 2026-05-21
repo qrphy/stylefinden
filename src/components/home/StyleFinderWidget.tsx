@@ -1,8 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import ImgPlaceholder from '@/components/shared/ImgPlaceholder'
+
+const LS_FINDER_KEY = 'sf_finder'
+const LS_HISTORY_KEY = 'sf_history'
 
 const OCCASIONS = [
   {
@@ -98,11 +101,66 @@ const OCCASION_STYLES: Record<string, string[]> = {
   wedding:           ['elegant', 'formal', 'classic', 'old-money', 'minimalist', 'cute-coquette'],
 }
 
-export default function StyleFinderWidget() {
+// Item 2: Detect current season from device date
+function detectSeason(): string {
+  const m = new Date().getMonth() // 0–11
+  if (m >= 2 && m <= 4) return 'spring'
+  if (m >= 5 && m <= 7) return 'summer'
+  if (m >= 8 && m <= 10) return 'autumn'
+  return 'winter'
+}
+
+type HistoryEntry = { occasion?: string; style?: string; ts: number }
+
+type Props = {
+  occasionCounts?: Record<string, number>
+}
+
+export default function StyleFinderWidget({ occasionCounts }: Props) {
   const router = useRouter()
   const [occasion, setOccasion] = useState<string | null>(null)
   const [season, setSeason]     = useState<string | null>(null)
   const [style, setStyle]       = useState<string | null>(null)
+  const [hasRestored, setHasRestored] = useState(false)
+  const [historyHint, setHistoryHint] = useState<{ occasion: string; label: string } | null>(null)
+
+  // Item 3 + 7: Restore last selection & read browsing history on mount
+  useEffect(() => {
+    // Restore saved selection
+    try {
+      const saved = JSON.parse(localStorage.getItem(LS_FINDER_KEY) ?? 'null') as {
+        occasion?: string; season?: string; style?: string
+      } | null
+      if (saved?.occasion) {
+        setOccasion(saved.occasion)
+        setSeason(saved.season ?? null)
+        setStyle(saved.style ?? null)
+        setHasRestored(true)
+      }
+    } catch {}
+
+    // Item 7: Suggest based on browsing history (needs ≥3 entries)
+    try {
+      const history = JSON.parse(localStorage.getItem(LS_HISTORY_KEY) ?? '[]') as HistoryEntry[]
+      if (history.length >= 3) {
+        const occCount: Record<string, number> = {}
+        history.forEach(h => { if (h.occasion) occCount[h.occasion] = (occCount[h.occasion] || 0) + 1 })
+        const topOcc = Object.entries(occCount).sort((a, b) => b[1] - a[1])[0]?.[0]
+        if (topOcc) {
+          const label = OCCASIONS.find(o => o.value === topOcc)?.label ?? topOcc
+          setHistoryHint({ occasion: topOcc, label })
+        }
+      }
+    } catch {}
+  }, [])
+
+  // Item 3: Persist selections to localStorage whenever they change
+  useEffect(() => {
+    if (occasion === null && season === null && style === null) return
+    try {
+      localStorage.setItem(LS_FINDER_KEY, JSON.stringify({ occasion, season, style }))
+    } catch {}
+  }, [occasion, season, style])
 
   const showSeason = occasion !== null
   const showStyle  = showSeason && season !== null
@@ -116,16 +174,29 @@ export default function StyleFinderWidget() {
 
   function handleFind() {
     const params = new URLSearchParams()
-    if (occasion)              params.set('occasion', occasion)
-    if (season && season !== 'any') params.set('season', season)
-    if (style  && style  !== 'any') params.set('style',  style)
+    if (occasion)                    params.set('occasion', occasion)
+    if (season && season !== 'any')  params.set('season', season)
+    if (style  && style  !== 'any')  params.set('style',  style)
     router.push(`/outfits?${params.toString()}`)
+  }
+
+  // Item 5: Navigate to a random occasion+style combination
+  function handleSurprise() {
+    const randomOcc   = OCCASIONS[Math.floor(Math.random() * OCCASIONS.length)]
+    const compatible  = OCCASION_STYLES[randomOcc.value] ?? ALL_STYLES.map(s => s.value)
+    const randomStyle = compatible[Math.floor(Math.random() * compatible.length)]
+    router.push(`/outfits?occasion=${randomOcc.value}&style=${randomStyle}`)
   }
 
   function selectOccasion(v: string | null) {
     setOccasion(v)
-    setSeason(null)
     setStyle(null)
+    if (v !== null) {
+      // Item 2: Auto-detect season, but keep if user already chose one
+      setSeason(prev => prev ?? detectSeason())
+    } else {
+      setSeason(null)
+    }
   }
 
   function selectSeason(v: string | null) {
@@ -133,16 +204,48 @@ export default function StyleFinderWidget() {
     setStyle(null)
   }
 
+  function clearAll() {
+    setOccasion(null)
+    setSeason(null)
+    setStyle(null)
+    setHasRestored(false)
+    try { localStorage.removeItem(LS_FINDER_KEY) } catch {}
+  }
+
   return (
     <section className="w-full bg-white border-t border-gray-100 scroll-reveal">
       <div className="container-page py-14 md:py-16">
 
-        <div className="section-header mb-10">
+        <div className="section-header mb-8">
           <div className="flex flex-col gap-2">
             <span className="eyebrow">Style Finder</span>
             <h2 className="section-title-lg">Find your look.</h2>
           </div>
+          {/* Item 7: Browsing history hint — shown only when no active selection */}
+          {historyHint && !occasion && (
+            <button
+              onClick={() => selectOccasion(historyHint.occasion)}
+              className="self-start mt-1 text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+            >
+              Based on your browsing: <span className="text-black">{historyHint.label}</span> &rarr;
+            </button>
+          )}
         </div>
+
+        {/* Item 3: Restored session banner */}
+        {hasRestored && (
+          <div className="flex items-center gap-4 mb-8 py-2.5 px-3 border border-gray-100 bg-gray-50">
+            <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">
+              Continuing from your last visit
+            </span>
+            <button
+              onClick={clearAll}
+              className="ml-auto text-[10px] font-semibold tracking-widest uppercase text-gray-300 hover:text-black transition-colors duration-200"
+            >
+              Clear &times;
+            </button>
+          </div>
+        )}
 
         <div className="flex flex-col gap-8">
 
@@ -151,6 +254,7 @@ export default function StyleFinderWidget() {
               options={OCCASIONS}
               selected={occasion}
               onSelect={(v) => selectOccasion(occasion === v ? null : v)}
+              counts={occasionCounts}
             />
           </FinderStep>
 
@@ -176,7 +280,7 @@ export default function StyleFinderWidget() {
             </FinderStep>
           )}
 
-          <div className="flex items-center gap-6 pt-4 border-t border-gray-100">
+          <div className="flex items-center flex-wrap gap-x-6 gap-y-3 pt-4 border-t border-gray-100">
             {occasion && (
               <button
                 onClick={handleFind}
@@ -188,12 +292,27 @@ export default function StyleFinderWidget() {
                 </svg>
               </button>
             )}
-            <a
-              href="/outfits"
+            {/* Item 5: Surprise me button */}
+            <button
+              onClick={handleSurprise}
               className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
             >
-              {occasion ? 'Skip' : 'Show me everything'}
-            </a>
+              Surprise me
+            </button>
+            <div className="ml-auto flex items-center gap-6">
+              <a
+                href="/style-quiz"
+                className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+              >
+                Take the quiz
+              </a>
+              <a
+                href="/outfits"
+                className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+              >
+                {occasion ? 'Skip' : 'Show me everything'}
+              </a>
+            </div>
           </div>
 
         </div>
@@ -218,15 +337,17 @@ function FinderStep({ number, question, children }: {
   )
 }
 
-function OccasionGrid({ options, selected, onSelect }: {
+function OccasionGrid({ options, selected, onSelect, counts }: {
   options: { value: string; label: string; image: string }[]
   selected: string | null
   onSelect: (v: string) => void
+  counts?: Record<string, number>
 }) {
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 md:gap-2.5">
       {options.map((opt) => {
         const active = selected === opt.value
+        const count  = counts?.[opt.value]
         return (
           <button
             key={opt.value}
@@ -252,9 +373,17 @@ function OccasionGrid({ options, selected, onSelect }: {
                   : 'opacity-55 group-hover:opacity-40'
               }`}
             />
-            <span className="absolute bottom-2 left-2.5 text-[9px] font-semibold tracking-widest uppercase text-white leading-none">
-              {opt.label}
-            </span>
+            {/* Item 6: Outfit count */}
+            <div className="absolute bottom-2 left-2.5 right-2 flex items-end justify-between gap-1">
+              <span className="text-[9px] font-semibold tracking-widest uppercase text-white leading-none">
+                {opt.label}
+              </span>
+              {count !== undefined && count > 0 && (
+                <span className="text-[8px] font-semibold text-white/60 leading-none shrink-0">
+                  {count}
+                </span>
+              )}
+            </div>
             {active && (
               <div className="absolute top-2 right-2 w-4 h-4 bg-white flex items-center justify-center">
                 <svg viewBox="0 0 12 12" className="w-2.5 h-2.5" fill="none" strokeWidth={2.5} stroke="currentColor">

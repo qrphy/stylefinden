@@ -4,6 +4,7 @@ import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
 import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip"
+import OutfitTracker from "@/components/outfits/OutfitTracker"
 
 type SanityImage = {
   asset?: object
@@ -91,6 +92,8 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
 
   return (
     <main>
+      {/* Item 7: Track this outfit view for Style Finder history hints */}
+      <OutfitTracker occasion={outfit.occasion} style={outfit.style} />
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="container-page pt-8 pb-2">
         <nav className="breadcrumb-nav">

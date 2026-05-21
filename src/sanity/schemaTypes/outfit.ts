@@ -127,6 +127,32 @@ export const outfit = defineType({
       validation: (r) => r.required().error('Durum / ortam seçimi zorunlu.'),
     }),
 
+    // ── Çoklu ortam (multi-occasion) ─────────────────────────────────────────
+    defineField({
+      name: 'occasions',
+      title: 'Ek Ortamlar',
+      type: 'array',
+      description: '💡 Bu kombin birden fazla ortama uyuyorsa buradan ekle. Örnek: hem "Akşam" hem "Düğün" için uygun bir kombin.\n📍 Kullanım: Style Finder scoring\'inde çoklu eşleşme sağlar — daha zengin öneri sistemi.',
+      of: [defineArrayMember({ type: 'string' })],
+      options: {
+        list: [
+          { title: 'Günlük — Sıradan günler, alışveriş, gezinti', value: 'casual'     },
+          { title: 'Ofis — İş toplantısı, çalışma ortamı',        value: 'office'     },
+          { title: 'Akşam / Gece — Restoran, tiyatro, gala',      value: 'evening'    },
+          { title: 'Düğün — Davet, nikah, kına',                  value: 'wedding'    },
+          { title: 'Spor / Outdoor — Yürüyüş, egzersiz, doğa',   value: 'sport'      },
+          { title: 'Plaj — Sahil, tatil, yaz aktiviteleri',       value: 'beach'      },
+          { title: 'Festival — Müzik festivali, açık hava etkinliği', value: 'festival' },
+          { title: 'Romantik Akşam — Date night, özel buluşma',   value: 'date-night' },
+          { title: 'Okul & Kampüs — School & College',           value: 'school'     },
+          { title: 'Seyahat & Tatil — Travel',                   value: 'travel'     },
+          { title: 'Parti & Gece Çıkışı — Party & Night Out',   value: 'party-night-out' },
+          { title: 'Date / Evening — Akşam + Buluşma (yeni)',   value: 'date-evening' },
+        ],
+        layout: 'tags',
+      },
+    }),
+
     // ── Ana sayfa öne çıkarma ─────────────────────────────────────────────────
     defineField({
       name: 'featured',

@@ -19,22 +19,38 @@ type OutfitDoc = {
   style?: string
   season?: string
   occasion?: string
+  occasions?: string[]
   featured?: boolean
   pieces?: { _key: string; name: string; image?: object }[]
 }
 
-function occasionMatches(outfitOccasion: string | undefined, filterOccasion: string): boolean {
-  if (filterOccasion === 'date-evening') {
-    return outfitOccasion === 'date-night' || outfitOccasion === 'evening' || outfitOccasion === 'date-evening'
-  }
-  return outfitOccasion === filterOccasion
+// Collects all occasion values an outfit covers (single + multi-occasion array)
+function getOccasionSet(outfit: OutfitDoc): string[] {
+  return [outfit.occasion, ...(outfit.occasions ?? [])].filter((o): o is string => Boolean(o))
+}
+
+// Maps filter value to all matching Sanity values (backward compat for legacy data)
+function filterToCandidates(filterOccasion: string): string[] {
+  if (filterOccasion === 'date-evening') return ['date-night', 'evening', 'date-evening']
+  return [filterOccasion]
+}
+
+function occasionMatches(outfit: OutfitDoc, filterOccasion: string): boolean {
+  const candidates = filterToCandidates(filterOccasion)
+  return getOccasionSet(outfit).some(o => candidates.includes(o))
 }
 
 function calcScore(outfit: OutfitDoc, filters: Props): number {
+  const occMatch = filters.occasion ? occasionMatches(outfit, filters.occasion) : false
+  // Bonus point if occasion is covered by multiple occasions array (more relevant match)
+  const multiOccBonus = filters.occasion && Array.isArray(outfit.occasions) && outfit.occasions.length > 0
+    ? (occasionMatches(outfit, filters.occasion) ? 1 : 0)
+    : 0
   return (
-    (filters.occasion && occasionMatches(outfit.occasion, filters.occasion) ? 3 : 0) +
-    (filters.season   && outfit.season === filters.season   ? 2 : 0) +
-    (filters.style    && outfit.style  === filters.style    ? 2 : 0) +
+    (occMatch ? 3 : 0) +
+    multiOccBonus +
+    (filters.season && outfit.season === filters.season ? 2 : 0) +
+    (filters.style  && outfit.style  === filters.style  ? 2 : 0) +
     (outfit.featured ? 1 : 0)
   )
 }
