@@ -23,11 +23,18 @@ type OutfitDoc = {
   pieces?: { _key: string; name: string; image?: object }[]
 }
 
+function occasionMatches(outfitOccasion: string | undefined, filterOccasion: string): boolean {
+  if (filterOccasion === 'date-evening') {
+    return outfitOccasion === 'date-night' || outfitOccasion === 'evening' || outfitOccasion === 'date-evening'
+  }
+  return outfitOccasion === filterOccasion
+}
+
 function calcScore(outfit: OutfitDoc, filters: Props): number {
   return (
-    (filters.occasion && outfit.occasion === filters.occasion ? 3 : 0) +
-    (filters.season   && outfit.season   === filters.season   ? 2 : 0) +
-    (filters.style    && outfit.style    === filters.style    ? 2 : 0) +
+    (filters.occasion && occasionMatches(outfit.occasion, filters.occasion) ? 3 : 0) +
+    (filters.season   && outfit.season === filters.season   ? 2 : 0) +
+    (filters.style    && outfit.style  === filters.style    ? 2 : 0) +
     (outfit.featured ? 1 : 0)
   )
 }
@@ -42,9 +49,9 @@ function matchBadge(score: number, maxPossible: number): string | null {
 
 const OCCASION_LABELS: Record<string, string> = {
   casual: 'Everyday', office: 'Office', evening: 'Evening',
-  'date-night': 'Date Night', 'party-night-out': 'Party',
-  school: 'School', travel: 'Travel', sport: 'Sport',
-  beach: 'Beach', festival: 'Festival', wedding: 'Wedding',
+  'date-night': 'Date Night', 'date-evening': 'Date / Evening',
+  'party-night-out': 'Party', school: 'School', travel: 'Travel',
+  sport: 'Sport', beach: 'Beach', festival: 'Festival', wedding: 'Wedding',
 }
 
 const SEASON_LABELS: Record<string, string> = {

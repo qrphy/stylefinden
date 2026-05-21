@@ -2,19 +2,59 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import ImgPlaceholder from '@/components/shared/ImgPlaceholder'
 
 const OCCASIONS = [
-  { value: 'casual',          label: 'Everyday'  },
-  { value: 'office',          label: 'Office'    },
-  { value: 'evening',         label: 'Evening'   },
-  { value: 'date-night',      label: 'Date Night'},
-  { value: 'party-night-out', label: 'Party'     },
-  { value: 'school',          label: 'School'    },
-  { value: 'travel',          label: 'Travel'    },
-  { value: 'sport',           label: 'Sport'     },
-  { value: 'beach',           label: 'Beach'     },
-  { value: 'festival',        label: 'Festival'  },
-  { value: 'wedding',         label: 'Wedding'   },
+  {
+    value: 'casual',
+    label: 'Everyday',
+    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'office',
+    label: 'Office',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'date-evening',
+    label: 'Date / Evening',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'party-night-out',
+    label: 'Party',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'school',
+    label: 'School',
+    image: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'travel',
+    label: 'Travel',
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'sport',
+    label: 'Sport',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'beach',
+    label: 'Beach',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'festival',
+    label: 'Festival',
+    image: 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&q=75&fit=crop&auto=format',
+  },
+  {
+    value: 'wedding',
+    label: 'Wedding',
+    image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400&q=75&fit=crop&auto=format',
+  },
 ]
 
 const SEASONS = [
@@ -48,8 +88,7 @@ const ALL_STYLES = [
 const OCCASION_STYLES: Record<string, string[]> = {
   casual:            ['minimalist', 'boho', 'streetstyle', 'casual', 'clean-girl', 'retro-vintage', 'y2k', 'old-money', 'korean-fashion', 'sienna-vibe'],
   office:            ['minimalist', 'old-money', 'elegant', 'clean-girl', 'formal', 'classic'],
-  evening:           ['elegant', 'old-money', 'formal', 'classic', 'y2k', 'cute-coquette', 'black-dark'],
-  'date-night':      ['elegant', 'old-money', 'y2k', 'cute-coquette', 'clean-girl', 'minimalist', 'retro-vintage', 'sienna-vibe'],
+  'date-evening':    ['elegant', 'old-money', 'y2k', 'cute-coquette', 'clean-girl', 'minimalist', 'retro-vintage', 'sienna-vibe', 'formal', 'classic', 'black-dark'],
   'party-night-out': ['y2k', 'streetstyle', 'old-money', 'elegant', 'cute-coquette', 'retro-vintage', 'black-dark'],
   school:            ['casual', 'clean-girl', 'minimalist', 'streetstyle', 'y2k', 'cute-coquette', 'korean-fashion'],
   travel:            ['casual', 'minimalist', 'boho', 'streetstyle', 'clean-girl', 'old-money'],
@@ -108,10 +147,10 @@ export default function StyleFinderWidget() {
         <div className="flex flex-col gap-8">
 
           <FinderStep number={1} question="What are you getting dressed for?">
-            <PillGroup
+            <OccasionGrid
               options={OCCASIONS}
               selected={occasion}
-              onSelect={selectOccasion}
+              onSelect={(v) => selectOccasion(occasion === v ? null : v)}
             />
           </FinderStep>
 
@@ -175,6 +214,57 @@ function FinderStep({ number, question, children }: {
         <p className="text-sm font-semibold tracking-tight text-black">{question}</p>
       </div>
       {children}
+    </div>
+  )
+}
+
+function OccasionGrid({ options, selected, onSelect }: {
+  options: { value: string; label: string; image: string }[]
+  selected: string | null
+  onSelect: (v: string) => void
+}) {
+  return (
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 md:gap-2.5">
+      {options.map((opt) => {
+        const active = selected === opt.value
+        return (
+          <button
+            key={opt.value}
+            onClick={() => onSelect(opt.value)}
+            className={`relative overflow-hidden aspect-[3/2] group border-2 transition-all duration-200 ${
+              active
+                ? 'border-black'
+                : 'border-transparent hover:border-gray-300'
+            }`}
+          >
+            <div className="absolute inset-0">
+              <ImgPlaceholder
+                src={opt.image}
+                alt={opt.label}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 20vw"
+              />
+            </div>
+            <div
+              className={`absolute inset-0 bg-black transition-opacity duration-200 ${
+                active
+                  ? 'opacity-25'
+                  : 'opacity-55 group-hover:opacity-40'
+              }`}
+            />
+            <span className="absolute bottom-2 left-2.5 text-[9px] font-semibold tracking-widest uppercase text-white leading-none">
+              {opt.label}
+            </span>
+            {active && (
+              <div className="absolute top-2 right-2 w-4 h-4 bg-white flex items-center justify-center">
+                <svg viewBox="0 0 12 12" className="w-2.5 h-2.5" fill="none" strokeWidth={2.5} stroke="currentColor">
+                  <path d="M2 6l3 3 5-5" />
+                </svg>
+              </div>
+            )}
+          </button>
+        )
+      })}
     </div>
   )
 }
