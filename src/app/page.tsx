@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import dynamic from "next/dynamic"
 import HeroSection from "@/components/sections/home/HeroSection"
 import FeaturedOutfits from "@/components/sections/home/FeaturedOutfits"
+import StyleFinderWidget from "@/components/home/StyleFinderWidget"
 import JsonLd from "@/components/seo/JsonLd"
 
 export const metadata: Metadata = {
@@ -65,6 +66,7 @@ export default function Home() {
       <JsonLd data={websiteSchema} />
       <main>
         <HeroSection />
+        <StyleFinderWidget />
         <FeaturedOutfits />
         <FeaturedCategories />
         <SeasonalHighlights />

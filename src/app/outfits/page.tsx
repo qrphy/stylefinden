@@ -1,7 +1,9 @@
 // Outfits ana listeleme sayfası — SectionMainPage paylaşımlı layout'unu kullanarak
 // outfit koleksiyonlarını mevsim, ortam ve stile göre gruplandırarak gösterir.
 import type { Metadata } from "next"
+import { Suspense } from "react"
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage"
+import RankedOutfitsView from "@/components/outfits/RankedOutfitsView"
 import { OCCASION_ORDER, getOccasionCard } from "@/lib/outfit-occasion-config"
 import { STYLE_ORDER, getStyleCard } from "@/lib/outfit-style-config"
 
@@ -100,7 +102,44 @@ const collections: CollectionGroup[] = [
   },
 ]
 
-export default function OutfitsPage() {
+type SearchParams = Promise<{ occasion?: string; season?: string; style?: string }>
+
+export default async function OutfitsPage({ searchParams }: { searchParams: SearchParams }) {
+  const params = await searchParams
+  const hasFilters = !!(params.occasion || params.season || params.style)
+
+  if (hasFilters) {
+    return (
+      <main>
+        <div className="container-page py-16 md:py-20">
+          <div className="section-header mb-10">
+            <div className="flex flex-col gap-2">
+              <span className="eyebrow">Outfit Results</span>
+              <h1 className="section-title-lg">Your matches.</h1>
+            </div>
+            <a
+              href="/outfits"
+              className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200 self-start sm:self-auto"
+            >
+              ← All Collections
+            </a>
+          </div>
+          <Suspense fallback={
+            <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">
+              Loading...
+            </p>
+          }>
+            <RankedOutfitsView
+              occasion={params.occasion}
+              season={params.season}
+              style={params.style}
+            />
+          </Suspense>
+        </div>
+      </main>
+    )
+  }
+
   return (
     <SectionMainPage
       hero={{

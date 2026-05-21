@@ -4,6 +4,13 @@
 import { defineQuery } from 'next-sanity'
 
 // ── Outfit sorguları ──────────────────────────────────────────────────────────
+// ALL_OUTFITS_RANKED_QUERY: Ranking sistemi için tüm outfitler — sadece skor alanları
+export const ALL_OUTFITS_RANKED_QUERY = defineQuery(`
+  *[_type == "outfit" && defined(slug.current)] | order(featured desc, _createdAt desc) {
+    _id, title, "slug": slug.current, image, style, season, occasion, featured
+  }
+`)
+
 // OUTFITS_QUERY: Tüm outfit listesi (kart grid'leri için)
 export const OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(_createdAt desc) {
