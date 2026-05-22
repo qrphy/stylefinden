@@ -4,9 +4,16 @@ import type { Metadata } from "next"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { OUTFITS_BY_STYLE_QUERY } from "@/lib/queries"
-import CategoryPage from "@/components/shared/CategoryPage"
+import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage"
 import { getStyleConfig, STYLE_CONFIGS } from "@/lib/outfit-style-config"
 import type { OutfitItem } from "@/types/outfit-category"
+
+function buildConversionConfig(config: ReturnType<typeof getStyleConfig>, items: OutfitItem[]): ConversionConfig {
+  return {
+    introText: config.description,
+    variations: items.slice(0, 8).map((o) => o.title),
+  }
+}
 
 // Sanity sayfalarını dinamik olarak da render eder — config'de olmayan yeni stiller için
 export const dynamicParams = true
@@ -90,12 +97,12 @@ export default async function StylePage({
   const items: OutfitItem[] =
     outfits.length > 0 ? outfits.map(toItem) : (config.staticFallback ?? [])
   return (
-    <CategoryPage
+    <ConversionCategoryPage
       data={{ ...config, outfits: items }}
+      config={buildConversionConfig(config, items)}
       slug={slug}
       basePath="/outfits/style"
       categoryLink={{ label: "Style", href: "/outfits/style" }}
-      tipSuffix="for every day."
       styleGuideSuffix="understand & style"
     />
   )

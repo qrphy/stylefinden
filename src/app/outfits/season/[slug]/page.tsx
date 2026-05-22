@@ -4,8 +4,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
-import CategoryPage from "@/components/shared/CategoryPage";
-import EditorialCategoryPage from "@/components/shared/EditorialCategoryPage";
 import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -132,15 +130,22 @@ const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   ],
 };
 
-// Kategori kapak görselleri — editorial format hero image olarak kullanılır
-const HERO_IMAGES: Record<string, string> = {
-  "summer": "/categories/outfits/summer.webp",
-  "winter": "/categories/outfits/winter.png",
-  "spring": "/categories/outfits/spring.png",
-};
-
 // E-commerce conversion format — outfits-first, short copy, variations list
 const CONVERSION_PAGES: Record<string, ConversionConfig> = {
+  "summer": {
+    introText:
+      "Shop curated summer outfits for women — floral maxis, linen midis, off-shoulder looks and more. Each outfit below comes with a full shop-the-look section so you can buy the exact pieces. Updated weekly with the latest summer styles.",
+    variations: [
+      "Floral maxi dress + flat sandals + straw hat",
+      "Linen slip dress + white sneakers + rattan bag",
+      "Off-shoulder midi + block heel mules + gold jewelry",
+      "Cotton sundress + flat slides + woven tote",
+      "Boho wrap dress + leather sandals + layered necklaces",
+      "Mini sundress + sneakers + baseball cap",
+      "Stripe midi dress + espadrilles + crossbody bag",
+      "Chiffon maxi + strappy sandals + clutch",
+    ],
+  },
   "winter": {
     introText:
       "Shop curated cozy winter outfits for women — warm coats, chunky knit combos, layered looks and more. Each outfit below comes with a full shop-the-look section so you can buy the exact pieces. Updated weekly with the latest winter styles.",
@@ -155,17 +160,20 @@ const CONVERSION_PAGES: Record<string, ConversionConfig> = {
       "Shearling coat + knit top + wide-leg cords + flat boots",
     ],
   },
-};
-
-// Editorial format — magazine-style intro paragraphs per slug
-const EDITORIAL_TEXT: Record<string, string[]> = {
-  "summer": [
-    "Summer has a way of demanding presence. The season doesn't negotiate — it arrives with full light, open air, and an unspoken invitation to dress accordingly.",
-    "What makes a summer outfit memorable isn't excess — it's the quality of lightness. A linen midi that moves with you on a slow afternoon. A floral maxi that carries its own quiet authority. The off-shoulder piece that needs nothing added to it.",
-    "This season's most compelling looks share a kind of effortless restraint. Clean silhouettes in breathable fabrics. Prints that feel organic rather than printed. Proportions that respect the heat — loose where it matters, defined where it counts.",
-    "We've curated these looks around how summer actually unfolds: morning markets and café terraces, afternoon heat that turns everything amber, evenings that deserve dressing for. Each outfit here holds its own across contexts — styled differently, but sourced from the same wardrobe logic.",
-    "On fabrication: seek linen, cotton voile, and light crepe above all else. These aren't just comfort choices — they photograph better, drape better, and age better in summer heat. On color: white genuinely earns its status in summer. Bright linen, ivory cotton, cream chiffon — all function as neutrals and pair with warm skin in a way nothing else does.",
-  ],
+  "spring": {
+    introText:
+      "Shop curated spring outfits for women — pastel blazers, floral dresses, linen sets and fresh layering looks. Each outfit below comes with a full shop-the-look section so you can buy the exact pieces. Updated weekly with the latest spring styles.",
+    variations: [
+      "Pastel blazer + white tee + straight jeans + loafers",
+      "Floral midi dress + white sneakers + mini bag",
+      "Linen wide-leg pants + fitted knit + mules",
+      "White & sage co-ord + flat sandals + gold hoops",
+      "Denim jacket + floral top + straight jeans",
+      "Mint trench + slip dress + ankle boots",
+      "Lilac knit dress + knee-high boots",
+      "Striped linen shirt + wide-leg trousers + espadrilles",
+    ],
+  },
 };
 
 // Her mevsim için CategoryPage'e aktarılan metadata, SEO ve UI konfigürasyonu
@@ -351,44 +359,18 @@ export default async function SeasonPage(
   const outfits = await client.fetch(OUTFITS_BY_SEASON_QUERY, { season: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
   // Sanity'de veri varsa dönüştür, yoksa statik fallback'e geç
   const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
-  const conversionConfig = CONVERSION_PAGES[slug];
-  const editorialText = EDITORIAL_TEXT[slug];
-
-  if (conversionConfig) {
-    return (
-      <ConversionCategoryPage
-        data={{ ...data, outfits: items }}
-        config={conversionConfig}
-        slug={slug}
-        basePath="/outfits/season"
-        categoryLink={{ label: "Season", href: "/outfits/season" }}
-        styleGuideSuffix="find & style"
-      />
-    );
-  }
-
-  if (editorialText) {
-    return (
-      <EditorialCategoryPage
-        data={{ ...data, outfits: items }}
-        editorialText={editorialText}
-        heroImage={HERO_IMAGES[slug]}
-        slug={slug}
-        basePath="/outfits/season"
-        categoryLink={{ label: "Season", href: "/outfits/season" }}
-        readingTime="4 min read"
-        styleGuideSuffix="find & style"
-      />
-    );
-  }
+  const conversionConfig = CONVERSION_PAGES[slug] ?? {
+    introText: data.description,
+    variations: items.slice(0, 8).map((o: OutfitItem) => o.title),
+  };
 
   return (
-    <CategoryPage
+    <ConversionCategoryPage
       data={{ ...data, outfits: items }}
+      config={conversionConfig}
       slug={slug}
       basePath="/outfits/season"
       categoryLink={{ label: "Season", href: "/outfits/season" }}
-      tipSuffix="timeless elegance."
       styleGuideSuffix="find & style"
     />
   );

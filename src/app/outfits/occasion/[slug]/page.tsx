@@ -4,9 +4,16 @@ import type { Metadata } from "next"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { OUTFITS_BY_OCCASION_QUERY } from "@/lib/queries"
-import CategoryPage from "@/components/shared/CategoryPage"
+import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage"
 import { getOccasionConfig, OCCASION_CONFIGS } from "@/lib/outfit-occasion-config"
 import type { OutfitItem } from "@/types/outfit-category"
+
+function buildConversionConfig(config: ReturnType<typeof getOccasionConfig>, items: OutfitItem[]): ConversionConfig {
+  return {
+    introText: config.description,
+    variations: items.slice(0, 8).map((o) => o.title),
+  }
+}
 
 // Sanity sayfalarını dinamik olarak da render eder — config'de olmayan yeni occasion'lar için
 export const dynamicParams = true
@@ -90,12 +97,12 @@ export default async function OccasionPage({
   const items: OutfitItem[] =
     outfits.length > 0 ? outfits.map(toItem) : (config.staticFallback ?? [])
   return (
-    <CategoryPage
+    <ConversionCategoryPage
       data={{ ...config, outfits: items }}
+      config={buildConversionConfig(config, items)}
       slug={slug}
       basePath="/outfits/occasion"
       categoryLink={{ label: "Occasion", href: "/outfits/occasion" }}
-      tipSuffix="for this occasion."
       styleGuideSuffix="style it right"
     />
   )
