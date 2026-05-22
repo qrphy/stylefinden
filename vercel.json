@@ -1,5 +1,11 @@
 {
   "git": {
     "deploymentEnabled": false
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/cron/sync-awin-feed",
+      "schedule": "0 3 * * *"
+    }
+  ]
 }

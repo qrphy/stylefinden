@@ -8,9 +8,70 @@
 //   Trigger: create, update, publish, unpublish, delete
 //   Header:  x-webhook-secret: <SANITY_WEBHOOK_SECRET değeri>
 import { revalidateTag } from 'next/cache'
+import { after } from 'next/server'
 import { NextResponse } from 'next/server'
+import { createClient } from 'next-sanity'
 import { Resend } from 'resend'
 import { buildBlogNotificationEmail } from '@/lib/email-templates'
+import { createAdminClient } from '@/lib/supabase'
+import { apiVersion, dataset, projectId } from '@/sanity/env'
+
+// CDN'siz client — webhook tetiklemesinden sonra taze veri çekmek için
+const sanityServer = createClient({ projectId, dataset, apiVersion, useCdn: false })
+
+// Sanity colorTag → Supabase color_family
+const COLOR_MAP: Record<string, string> = {
+  black: 'black', white: 'white', grey: 'neutral', beige: 'neutral',
+  navy: 'blue', blue: 'blue', red: 'red', burgundy: 'red',
+  pink: 'pink', purple: 'pink', orange: 'brown', yellow: 'neutral',
+  green: 'green', khaki: 'neutral', brown: 'brown', multicolor: 'neutral',
+}
+
+type SanityOutfit = {
+  _id: string
+  slug: string
+  style: string | null
+  season: string | null
+  occasion: string | null
+  occasions?: string[]
+  colorTags?: (string | null)[]
+}
+
+async function syncOutfitToSupabase(sanityId: string) {
+  const outfit = await sanityServer.fetch<SanityOutfit | null>(
+    `*[_type == "outfit" && _id == $id][0]{
+      _id,
+      "slug": slug.current,
+      style,
+      season,
+      occasion,
+      occasions,
+      "colorTags": pieces[].colorTag
+    }`,
+    { id: sanityId }
+  )
+
+  if (!outfit?.slug) return
+
+  const occasions = [...new Set(
+    [outfit.occasion, ...(outfit.occasions ?? [])].filter(Boolean) as string[]
+  )]
+
+  const colorPalette = [...new Set(
+    (outfit.colorTags ?? [])
+      .map(t => t ? COLOR_MAP[t] : null)
+      .filter(Boolean) as string[]
+  )]
+
+  await createAdminClient().from('outfits').upsert({
+    sanity_id: outfit._id,
+    slug: outfit.slug,
+    style:         outfit.style   ? [outfit.style]   : [],
+    season:        outfit.season  ? [outfit.season]  : [],
+    occasion:      occasions,
+    color_palette: colorPalette,
+  }, { onConflict: 'sanity_id' })
+}
 
 const TAG_MAP: Record<string, string> = {
   outfit:    'outfit',
@@ -107,6 +168,18 @@ export async function POST(req: Request) {
   }
 
   revalidateTag(tag, {})
+
+  // Outfit publish → Supabase outfits tablosuna sync (yanıtı bloklamaz)
+  if (body._type === 'outfit' && body._id) {
+    const cleanId = body._id.replace(/^drafts\./, '')
+    after(async () => {
+      try {
+        await syncOutfitToSupabase(cleanId)
+      } catch (err) {
+        console.error('[revalidate] outfit supabase sync error:', err)
+      }
+    })
+  }
 
   return NextResponse.json({ revalidated: true, tag, mailStatus })
 }
