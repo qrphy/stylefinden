@@ -125,7 +125,7 @@ export default async function AccessoriesHighlights() {
                       <ImgPlaceholder src={cat.featured.image} alt={cat.featured.title} />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-all duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-colors duration-300" />
                     <div className="absolute top-4 left-4">
                       <span className={`badge-md ${badgeStyle[cat.featured.badge] ?? "bg-gray-100 text-gray-700"}`}>
                         {cat.featured.badge}
@@ -135,7 +135,7 @@ export default async function AccessoriesHighlights() {
                       <span className="text-xs tracking-widest uppercase text-white/60">{cat.featured.pairingTip}</span>
                       <div className="flex items-end justify-between gap-2">
                         <h3 className="font-display text-xl md:text-2xl font-normal text-white leading-tight">{cat.featured.title}</h3>
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" strokeWidth={2}>
+                        <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" fill="none" strokeWidth={2}>
                           <path d="M5 12h14M13 6l6 6-6 6" />
                         </svg>
                       </div>

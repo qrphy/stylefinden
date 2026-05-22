@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "newsletter_popup";
@@ -89,12 +89,9 @@ export default function NewsletterPopup() {
 
         {/* Görsel — mobilde üst (h-48), desktopda sol (%55) */}
         <div className="relative h-64 sm:h-auto sm:w-[55%] sm:shrink-0">
-          <Image
+          <ImgPlaceholder
             src="/categories/outfits/evening-event.jpeg"
             alt="Evening event style"
-            fill
-            className="object-cover"
-            style={{ objectPosition: "center 15%" }}
             sizes="(max-width: 640px) 384px, 480px"
           />
         </div>

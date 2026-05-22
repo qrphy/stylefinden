@@ -73,7 +73,7 @@ export default async function LatestArticles() {
                 {featured.excerpt && (
                   <p className="text-sm text-gray-500 leading-relaxed flex-1">{featured.excerpt}</p>
                 )}
-                <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-2 border-t border-gray-100">
+                <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-2 border-t border-gray-100">
                   Read More
                   <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
@@ -149,7 +149,7 @@ export default async function LatestArticles() {
                 {featuredPost.title}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed flex-1">{featuredPost.excerpt}</p>
-              <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-2 border-t border-gray-100">
+              <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-2 border-t border-gray-100">
                 Read More
                 <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />

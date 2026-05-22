@@ -128,7 +128,7 @@ export default async function BlogPage() {
                   </span>
                   <svg
                     viewBox="0 0 24 24"
-                    className="h-4 w-4 stroke-black opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 shrink-0"
+                    className="h-4 w-4 stroke-black opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-200 shrink-0"
                     fill="none"
                     strokeWidth={2}
                   >
@@ -186,7 +186,7 @@ export default async function BlogPage() {
                       {post.excerpt && (
                         <p className="text-sm text-gray-400 leading-relaxed flex-1 line-clamp-2">{post.excerpt}</p>
                       )}
-                      <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-400 group-hover:text-white group-hover:gap-3 transition-all duration-200 mt-auto pt-4 border-t border-gray-700">
+                      <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-400 group-hover:text-white group-hover:gap-3 transition-[gap,color] duration-200 mt-auto pt-4 border-t border-gray-700">
                         Read Article
                         <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
                           <path d="M5 12h14M13 6l6 6-6 6" />
@@ -247,7 +247,7 @@ export default async function BlogPage() {
                       {post.excerpt && (
                         <p className="text-sm text-gray-500 leading-relaxed line-clamp-2 flex-1">{post.excerpt}</p>
                       )}
-                      <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-3 border-t border-gray-100">
+                      <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-3 border-t border-gray-100">
                         Read More
                         <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
                           <path d="M5 12h14M13 6l6 6-6 6" />

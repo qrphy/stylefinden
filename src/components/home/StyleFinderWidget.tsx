@@ -346,7 +346,7 @@ function OccasionGrid({ options, selected, onSelect, counts }: {
           <button
             key={opt.value}
             onClick={() => onSelect(opt.value)}
-            className={`relative overflow-hidden aspect-[3/2] group border-2 transition-all duration-200 ${
+            className={`relative overflow-hidden aspect-[3/2] group border-2 transition-colors duration-200 ${
               active
                 ? 'border-black'
                 : 'border-transparent hover:border-gray-300'

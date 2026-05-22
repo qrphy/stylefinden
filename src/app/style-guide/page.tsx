@@ -81,7 +81,7 @@ export default function StyleGuidePage() {
                   <span className="text-sm font-black text-black tracking-tight leading-tight">{topic.label}</span>
                   <span className="text-xs text-gray-500 leading-snug">{topic.description}</span>
                 </div>
-                <span className={`flex items-center gap-1 text-xs font-semibold tracking-widest uppercase ${topic.accentText} group-hover:gap-2 transition-all duration-200`}>
+                <span className={`flex items-center gap-1 text-xs font-semibold tracking-widest uppercase ${topic.accentText} group-hover:gap-2 transition-[gap] duration-200`}>
                   Read
                   <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current" fill="none" strokeWidth={2.5}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
@@ -120,7 +120,7 @@ export default function StyleGuidePage() {
                     {guide.title}
                   </h2>
                   <p className="text-xs text-gray-500 leading-relaxed flex-1">{guide.excerpt}</p>
-                  <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-all duration-200 mt-auto pt-4 border-t border-gray-100">
+                  <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-4 border-t border-gray-100">
                     Read Guide
                     <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2}>
                       <path d="M5 12h14M13 6l6 6-6 6" />

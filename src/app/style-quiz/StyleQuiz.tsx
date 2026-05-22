@@ -119,7 +119,7 @@ export default function StyleQuiz() {
       {/* Progress bar */}
       <div className="h-px bg-gray-100 mb-10 relative">
         <div
-          className="absolute inset-y-0 left-0 bg-black transition-all duration-500"
+          className="absolute inset-y-0 left-0 bg-black transition-[width] duration-500"
           style={{ width: `${progress}%` }}
         />
       </div>
