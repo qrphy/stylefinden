@@ -56,22 +56,6 @@ export default function OutfitGridCategoryPage({
         </div>
       </section>
 
-      {/* ── Variations ── */}
-      <section className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-10 border-t border-gray-100">
-        <p className="text-xs font-semibold tracking-widest uppercase mb-5">
-          More {data.label} Ideas
-        </p>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-0">
-          {config.variations.map((v, i) => (
-            <li key={i} className="flex items-start gap-3 py-3 border-b border-gray-100 text-sm text-gray-700">
-              <span className="text-gray-300 text-xs shrink-0 mt-0.5 font-mono tabular-nums">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {v}
-            </li>
-          ))}
-        </ul>
-      </section>
 
       <RelatedGrid items={data.relatedCategories} />
 
