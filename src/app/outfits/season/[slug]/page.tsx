@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage";
+import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
@@ -35,14 +36,78 @@ function toItem(o: {
 // Sanity boşken gösterilecek statik fallback verileri — mevsim slug'ına göre diziye erişilir
 const STATIC_OUTFITS: Record<string, OutfitItem[]> = {
   "summer": [
-    { id: 1, title: "Floral Maxi Dress",   subtitle: "Beach & Vacation",   tag: "Trending", style: "Maxi",     href: "/outfits/floral-maxi-dress"   },
-    { id: 2, title: "Linen Slip Dress",    subtitle: "Casual & City",      tag: "New",      style: "Midi",     href: "/outfits/linen-slip-dress"    },
-    { id: 3, title: "Boho Wrap Dress",     subtitle: "Festival & Nature",  tag: "Popular",  style: "Maxi",     href: "/outfits/boho-wrap-dress"     },
-    { id: 4, title: "Mini Sun Dress",      subtitle: "Summer & Leisure",   tag: "Trending", style: "Mini",     href: "/outfits/mini-sun-dress"      },
-    { id: 5, title: "Stripe Midi Dress",   subtitle: "Chic & Modern",      tag: "New",      style: "Midi",     href: "/outfits/stripe-midi-dress"   },
-    { id: 6, title: "Off-Shoulder Dress",  subtitle: "Evening & Event",    tag: "Popular",  style: "Midi",     href: "/outfits/off-shoulder-dress"  },
-    { id: 7, title: "Cotton Sundress",     subtitle: "Everyday & Picnic",  tag: "Trending", style: "Mini",     href: "/outfits/cotton-sundress"     },
-    { id: 8, title: "Flowy Chiffon Dress", subtitle: "Elegant & Light",    tag: "New",      style: "Maxi",     href: "/outfits/flowy-chiffon-dress" },
+    {
+      id: 1, title: "Floral Maxi Dress", subtitle: "Beach & Vacation", tag: "Trending", style: "Maxi", href: "/outfits/floral-maxi-dress",
+      pieces: [
+        { key: "p1", name: "Floral Maxi Dress" },
+        { key: "p2", name: "Flat Sandals" },
+        { key: "p3", name: "Straw Hat" },
+        { key: "p4", name: "Rattan Bag" },
+      ],
+    },
+    {
+      id: 2, title: "Linen Slip Dress", subtitle: "Casual & City", tag: "New", style: "Midi", href: "/outfits/linen-slip-dress",
+      pieces: [
+        { key: "p1", name: "Linen Slip Dress" },
+        { key: "p2", name: "White Sneakers" },
+        { key: "p3", name: "Rattan Bag" },
+        { key: "p4", name: "Gold Hoops" },
+      ],
+    },
+    {
+      id: 3, title: "Boho Wrap Dress", subtitle: "Festival & Nature", tag: "Popular", style: "Maxi", href: "/outfits/boho-wrap-dress",
+      pieces: [
+        { key: "p1", name: "Boho Wrap Dress" },
+        { key: "p2", name: "Leather Sandals" },
+        { key: "p3", name: "Layered Necklaces" },
+        { key: "p4", name: "Crossbody Bag" },
+      ],
+    },
+    {
+      id: 4, title: "Mini Sun Dress", subtitle: "Summer & Leisure", tag: "Trending", style: "Mini", href: "/outfits/mini-sun-dress",
+      pieces: [
+        { key: "p1", name: "Mini Sun Dress" },
+        { key: "p2", name: "Flat Slides" },
+        { key: "p3", name: "Woven Tote" },
+        { key: "p4", name: "Baseball Cap" },
+      ],
+    },
+    {
+      id: 5, title: "Stripe Midi Dress", subtitle: "Chic & Modern", tag: "New", style: "Midi", href: "/outfits/stripe-midi-dress",
+      pieces: [
+        { key: "p1", name: "Stripe Midi Dress" },
+        { key: "p2", name: "Espadrilles" },
+        { key: "p3", name: "Crossbody Bag" },
+        { key: "p4", name: "Sunglasses" },
+      ],
+    },
+    {
+      id: 6, title: "Off-Shoulder Dress", subtitle: "Evening & Event", tag: "Popular", style: "Midi", href: "/outfits/off-shoulder-dress",
+      pieces: [
+        { key: "p1", name: "Off-Shoulder Dress" },
+        { key: "p2", name: "Block Heel Mules" },
+        { key: "p3", name: "Gold Jewelry" },
+        { key: "p4", name: "Clutch Bag" },
+      ],
+    },
+    {
+      id: 7, title: "Cotton Sundress", subtitle: "Everyday & Picnic", tag: "Trending", style: "Mini", href: "/outfits/cotton-sundress",
+      pieces: [
+        { key: "p1", name: "Cotton Sundress" },
+        { key: "p2", name: "Flat Sandals" },
+        { key: "p3", name: "Woven Tote" },
+        { key: "p4", name: "Dainty Bracelet" },
+      ],
+    },
+    {
+      id: 8, title: "Flowy Chiffon Dress", subtitle: "Elegant & Light", tag: "New", style: "Maxi", href: "/outfits/flowy-chiffon-dress",
+      pieces: [
+        { key: "p1", name: "Flowy Chiffon Dress" },
+        { key: "p2", name: "Strappy Sandals" },
+        { key: "p3", name: "Clutch" },
+        { key: "p4", name: "Drop Earrings" },
+      ],
+    },
   ],
   "winter": [
     {
@@ -364,8 +429,10 @@ export default async function SeasonPage(
     variations: items.slice(0, 8).map((o: OutfitItem) => o.title),
   };
 
+  const PageComponent = slug === "summer" ? OutfitGridCategoryPage : ConversionCategoryPage;
+
   return (
-    <ConversionCategoryPage
+    <PageComponent
       data={{ ...data, outfits: items }}
       config={conversionConfig}
       slug={slug}
