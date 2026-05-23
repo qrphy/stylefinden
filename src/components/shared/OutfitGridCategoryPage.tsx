@@ -39,8 +39,11 @@ export default function OutfitGridCategoryPage({
         <h1 className="font-display font-light text-4xl md:text-5xl leading-tight tracking-tight text-black mb-3">
           {data.label}
         </h1>
-        <p className="text-sm text-gray-500 leading-relaxed max-w-2xl">
-          {data.description}
+        <p className="text-sm text-gray-500 leading-relaxed max-w-2xl mb-3">
+          {config.introText}
+        </p>
+        <p className="text-xs text-gray-400">
+          When you purchase through links on our site, we may earn an affiliate commission.
         </p>
       </section>
 
@@ -52,16 +55,6 @@ export default function OutfitGridCategoryPage({
           ))}
         </div>
       </section>
-
-      {/* ── Short intro ── */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-7 border-t border-gray-100">
-        <p className="text-sm text-gray-600 leading-relaxed max-w-2xl">
-          {config.introText}
-        </p>
-        <p className="mt-3 text-xs text-gray-400">
-          When you purchase through links on our site, we may earn an affiliate commission.
-        </p>
-      </div>
 
       {/* ── Variations ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-10 border-t border-gray-100">
