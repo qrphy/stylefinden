@@ -4,8 +4,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
-import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage";
 import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage";
+import { type ConversionConfig } from "@/components/shared/ConversionCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
@@ -429,15 +429,13 @@ export default async function SeasonPage(
     variations: items.slice(0, 8).map((o: OutfitItem) => o.title),
   };
 
-  const PageComponent = slug === "summer" ? OutfitGridCategoryPage : ConversionCategoryPage;
-
   return (
-    <PageComponent
+    <OutfitGridCategoryPage
       data={{ ...data, outfits: items }}
       config={conversionConfig}
       slug={slug}
       basePath="/outfits/season"
-      categoryLink={{ label: "Season", href: "/outfits/season" }}
+      categoryLink={{ label: "Outfits", href: "/outfits" }}
       styleGuideSuffix="find & style"
     />
   );

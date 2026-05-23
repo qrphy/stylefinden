@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
-import CategoryPage from "@/components/shared/CategoryPage";
+import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HAIRSTYLES_BY_TYPE_QUERY } from "@/lib/queries";
@@ -286,14 +286,15 @@ export default async function HairstyleTypePage(
   const hairstyles = await client.fetch(HAIRSTYLES_BY_TYPE_QUERY, { type: slug }, { next: { revalidate: 3600, tags: ['hairstyle'] } });
   const items = hairstyles.length > 0 ? hairstyles.map(toItem) : (STATIC_HAIRSTYLES[slug] ?? []);
   return (
-    <CategoryPage
+    <OutfitGridCategoryPage
       data={{ ...data, outfits: items }}
+      config={{ introText: data.description, variations: [] }}
       slug={slug}
       basePath="/hairstyles/type"
-      categoryLink={{ label: "Type", href: "/hairstyles/type" }}
-      heroSuffix="Hairstyles & Looks"
-      tipSuffix="for every hair type."
+      categoryLink={{ label: "Hairstyles", href: "/hairstyles" }}
       styleGuideSuffix="find & style"
+      showShopTheLook={false}
+      affiliateDisclaimer={false}
     />
   );
 }

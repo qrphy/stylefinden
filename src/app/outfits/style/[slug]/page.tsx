@@ -4,7 +4,8 @@ import type { Metadata } from "next"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { OUTFITS_BY_STYLE_QUERY } from "@/lib/queries"
-import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage"
+import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage"
+import { type ConversionConfig } from "@/components/shared/ConversionCategoryPage"
 import { getStyleConfig, STYLE_CONFIGS } from "@/lib/outfit-style-config"
 import type { OutfitItem } from "@/types/outfit-category"
 
@@ -268,12 +269,12 @@ export default async function StylePage({
   const items: OutfitItem[] =
     outfits.length > 0 ? outfits.map(toItem) : (config.staticFallback ?? [])
   return (
-    <ConversionCategoryPage
+    <OutfitGridCategoryPage
       data={{ ...config, outfits: items }}
       config={buildConversionConfig(config, slug, items)}
       slug={slug}
       basePath="/outfits/style"
-      categoryLink={{ label: "Style", href: "/outfits/style" }}
+      categoryLink={{ label: "Outfits", href: "/outfits" }}
       styleGuideSuffix="understand & style"
     />
   )

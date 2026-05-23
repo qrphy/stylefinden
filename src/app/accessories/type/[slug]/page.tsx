@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
-import CategoryPage from "@/components/shared/CategoryPage";
+import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { ACCESSORIES_BY_TYPE_QUERY } from "@/lib/queries";
@@ -286,14 +286,15 @@ export default async function AccessoryTypePage(
   const accessories = await client.fetch(ACCESSORIES_BY_TYPE_QUERY, { type: slug }, { next: { revalidate: 3600, tags: ['accessory'] } });
   const items = accessories.length > 0 ? accessories.map(toItem) : (STATIC_ACCESSORIES[slug] ?? []);
   return (
-    <CategoryPage
+    <OutfitGridCategoryPage
       data={{ ...data, outfits: items }}
+      config={{ introText: data.description, variations: [] }}
       slug={slug}
       basePath="/accessories/type"
-      categoryLink={{ label: "Type", href: "/accessories/type" }}
-      heroSuffix="Accessories & Styles"
-      tipSuffix="for every outfit."
+      categoryLink={{ label: "Accessories", href: "/accessories" }}
       styleGuideSuffix="find & style"
+      showShopTheLook={false}
+      affiliateDisclaimer={false}
     />
   );
 }

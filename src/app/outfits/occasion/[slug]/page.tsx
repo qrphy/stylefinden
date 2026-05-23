@@ -4,7 +4,8 @@ import type { Metadata } from "next"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { OUTFITS_BY_OCCASION_QUERY } from "@/lib/queries"
-import ConversionCategoryPage, { type ConversionConfig } from "@/components/shared/ConversionCategoryPage"
+import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage"
+import { type ConversionConfig } from "@/components/shared/ConversionCategoryPage"
 import { getOccasionConfig, OCCASION_CONFIGS } from "@/lib/outfit-occasion-config"
 import type { OutfitItem } from "@/types/outfit-category"
 
@@ -97,12 +98,12 @@ export default async function OccasionPage({
   const items: OutfitItem[] =
     outfits.length > 0 ? outfits.map(toItem) : (config.staticFallback ?? [])
   return (
-    <ConversionCategoryPage
+    <OutfitGridCategoryPage
       data={{ ...config, outfits: items }}
       config={buildConversionConfig(config, items)}
       slug={slug}
       basePath="/outfits/occasion"
-      categoryLink={{ label: "Occasion", href: "/outfits/occasion" }}
+      categoryLink={{ label: "Outfits", href: "/outfits" }}
       styleGuideSuffix="style it right"
     />
   )

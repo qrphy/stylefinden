@@ -12,6 +12,8 @@ type Props = {
   basePath: string;
   categoryLink: { label: string; href: string };
   styleGuideSuffix?: string;
+  showShopTheLook?: boolean;
+  affiliateDisclaimer?: boolean;
 };
 
 export default function OutfitGridCategoryPage({
@@ -21,10 +23,11 @@ export default function OutfitGridCategoryPage({
   basePath: _basePath,
   categoryLink,
   styleGuideSuffix = "find & style",
+  showShopTheLook = true,
+  affiliateDisclaimer = true,
 }: Props) {
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Outfits", href: "/outfits" },
     { label: categoryLink.label, href: categoryLink.href },
     { label: data.label },
   ];
@@ -42,20 +45,21 @@ export default function OutfitGridCategoryPage({
         <p className="text-sm text-gray-500 leading-relaxed max-w-2xl mb-3">
           {config.introText}
         </p>
-        <p className="text-xs text-gray-400">
-          When you purchase through links on our site, we may earn an affiliate commission.
-        </p>
+        {affiliateDisclaimer && (
+          <p className="text-xs text-gray-400">
+            When you purchase through links on our site, we may earn an affiliate commission.
+          </p>
+        )}
       </section>
 
-      {/* ── Outfit grid — 3 columns ── */}
+      {/* ── Grid — 3 columns ── */}
       <section className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12">
           {data.outfits.map((outfit) => (
-            <OutfitCard key={outfit.id} outfit={outfit} />
+            <OutfitCard key={outfit.id} outfit={outfit} showShopTheLook={showShopTheLook} />
           ))}
         </div>
       </section>
-
 
       <RelatedGrid items={data.relatedCategories} />
 
@@ -71,10 +75,10 @@ export default function OutfitGridCategoryPage({
   );
 }
 
-function OutfitCard({ outfit }: { outfit: OutfitItem }) {
+function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopTheLook: boolean }) {
   return (
     <article>
-      {/* Outfit image */}
+      {/* Image */}
       <a
         href={outfit.href}
         className="group block relative aspect-[3/4] w-full overflow-hidden bg-gray-100"
@@ -89,7 +93,7 @@ function OutfitCard({ outfit }: { outfit: OutfitItem }) {
         </div>
       </a>
 
-      {/* Outfit name */}
+      {/* Title */}
       <div className="mt-4">
         <a
           href={outfit.href}
@@ -100,49 +104,51 @@ function OutfitCard({ outfit }: { outfit: OutfitItem }) {
       </div>
 
       {/* Shop the look */}
-      <div className="mt-3">
-        <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-2">
-          Shop the Look
-        </p>
-        <div className="flex items-center gap-2">
-          {outfit.pieces && outfit.pieces.length > 0 ? (
-            <>
-              {outfit.pieces.slice(0, 4).map((piece) =>
-                piece.affiliateUrl ? (
-                  <a
-                    key={piece.key}
-                    href={piece.affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer sponsored"
-                    aria-label={`Shop ${piece.name}`}
-                    className="shrink-0 w-12 h-12 relative bg-gray-100 overflow-hidden hover:opacity-75 transition-opacity"
-                    title={piece.name}
-                  >
-                    <ImgPlaceholder src={piece.image} alt={piece.name} sizes="48px" />
-                  </a>
-                ) : (
-                  <div
-                    key={piece.key}
-                    className="shrink-0 w-12 h-12 relative bg-gray-100 overflow-hidden"
-                    title={piece.name}
-                  >
-                    <ImgPlaceholder src={piece.image} alt={piece.name} sizes="48px" />
+      {showShopTheLook && (
+        <div className="mt-3">
+          <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-2">
+            Shop the Look
+          </p>
+          <div className="flex items-center gap-2">
+            {outfit.pieces && outfit.pieces.length > 0 ? (
+              <>
+                {outfit.pieces.slice(0, 4).map((piece) =>
+                  piece.affiliateUrl ? (
+                    <a
+                      key={piece.key}
+                      href={piece.affiliateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer sponsored"
+                      aria-label={`Shop ${piece.name}`}
+                      className="shrink-0 w-12 h-12 relative bg-gray-100 overflow-hidden hover:opacity-75 transition-opacity"
+                      title={piece.name}
+                    >
+                      <ImgPlaceholder src={piece.image} alt={piece.name} sizes="48px" />
+                    </a>
+                  ) : (
+                    <div
+                      key={piece.key}
+                      className="shrink-0 w-12 h-12 relative bg-gray-100 overflow-hidden"
+                      title={piece.name}
+                    >
+                      <ImgPlaceholder src={piece.image} alt={piece.name} sizes="48px" />
+                    </div>
+                  )
+                )}
+                {outfit.pieces.length > 4 && (
+                  <div className="shrink-0 w-12 h-12 bg-gray-100 flex items-center justify-center">
+                    <span className="text-[10px] font-semibold text-gray-400">+{outfit.pieces.length - 4}</span>
                   </div>
-                )
-              )}
-              {outfit.pieces.length > 4 && (
-                <div className="shrink-0 w-12 h-12 bg-gray-100 flex items-center justify-center">
-                  <span className="text-[10px] font-semibold text-gray-400">+{outfit.pieces.length - 4}</span>
-                </div>
-              )}
-            </>
-          ) : (
-            Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="shrink-0 w-12 h-12 bg-gray-100" />
-            ))
-          )}
+                )}
+              </>
+            ) : (
+              Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="shrink-0 w-12 h-12 bg-gray-100" />
+              ))
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </article>
   );
 }
