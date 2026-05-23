@@ -48,7 +48,9 @@ export default function CategoryPage({
   return (
     <main className="flex-1 bg-white">
 
-      <Breadcrumb items={breadcrumbItems} />
+      <div className="container-page pt-6 pb-0">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>
 
       {/* ── Hero ── */}
       <section className="w-full bg-white">

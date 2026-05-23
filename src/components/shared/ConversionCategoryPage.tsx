@@ -1,5 +1,6 @@
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
+import Breadcrumb from "@/components/shared/Breadcrumb";
 import RelatedGrid from "@/components/shared/RelatedGrid";
 import StyleGuideSection from "@/components/shared/StyleGuideSection";
 
@@ -40,18 +41,7 @@ export default function ConversionCategoryPage({
 
       {/* ── 1. Hero — H1 + 1 sentence ── */}
       <section className="max-w-2xl mx-auto px-6 pt-8 pb-6">
-        <nav aria-label="breadcrumb" className="flex flex-wrap gap-x-2 gap-y-1 text-xs tracking-widest uppercase text-gray-400 mb-6">
-          {breadcrumbs.map((crumb, i) => (
-            <span key={i} className="flex items-center gap-2">
-              {i > 0 && <span aria-hidden>›</span>}
-              {crumb.href ? (
-                <a href={crumb.href} className="py-1 hover:text-black transition-colors">{crumb.label}</a>
-              ) : (
-                <span className="text-black">{crumb.label}</span>
-              )}
-            </span>
-          ))}
-        </nav>
+        <Breadcrumb items={breadcrumbs} className="mb-6" />
 
         <h1 className="font-display font-light text-4xl md:text-5xl leading-tight tracking-tight text-black mb-3">
           {data.label}
