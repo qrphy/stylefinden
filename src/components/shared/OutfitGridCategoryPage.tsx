@@ -48,7 +48,7 @@ export default function OutfitGridCategoryPage({
       <section className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12">
           {data.outfits.map((outfit) => (
-            <OutfitCard key={outfit.id} outfit={outfit} subtitle={data.subtitle} />
+            <OutfitCard key={outfit.id} outfit={outfit} />
           ))}
         </div>
       </section>
@@ -94,7 +94,7 @@ export default function OutfitGridCategoryPage({
   );
 }
 
-function OutfitCard({ outfit, subtitle }: { outfit: OutfitItem; subtitle: string }) {
+function OutfitCard({ outfit }: { outfit: OutfitItem }) {
   return (
     <article>
       {/* Outfit image */}
@@ -114,9 +114,6 @@ function OutfitCard({ outfit, subtitle }: { outfit: OutfitItem; subtitle: string
 
       {/* Outfit name */}
       <div className="mt-4">
-        <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-1">
-          {subtitle}
-        </p>
         <a
           href={outfit.href}
           className="block font-black text-sm uppercase tracking-wide text-black hover:text-gray-500 transition-colors leading-snug"
@@ -126,7 +123,7 @@ function OutfitCard({ outfit, subtitle }: { outfit: OutfitItem; subtitle: string
       </div>
 
       {/* Shop the look */}
-      <div className="mt-3 pt-3 border-t border-gray-100">
+      <div className="mt-3">
         <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 mb-2">
           Shop the Look
         </p>
