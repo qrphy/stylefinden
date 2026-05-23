@@ -1,5 +1,6 @@
 // Kategori sayfalarının altındaki Style Guide + SSS bölümü — sol tarafta rehber linki, sağda SSS kartları.
 import type { Faq } from "@/types/outfit-category";
+import JsonLd from "@/components/seo/JsonLd";
 
 type Props = {
   faqs: Faq[];
@@ -16,8 +17,22 @@ export default function StyleGuideSection({
   styleGuideHref,
   styleGuideSuffix = "find & style",
 }: Props) {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a,
+      },
+    })),
+  };
+
   return (
     <section className="w-full section-divider bg-gray-50">
+      <JsonLd data={faqSchema} />
       <div className="container-page py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-16">
 
