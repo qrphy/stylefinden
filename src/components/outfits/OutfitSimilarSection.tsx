@@ -126,18 +126,6 @@ export default function OutfitSimilarSection({ outfitsByPieces }: Props) {
                         blurDataURL={related.image?.lqip}
                       />
                     </div>
-                    <div className="absolute top-2 left-2 flex flex-col gap-1">
-                      {related.style && (
-                        <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-black text-white">
-                          {styleLabel[related.style] ?? related.style}
-                        </span>
-                      )}
-                      {related.occasion && (
-                        <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-white text-gray-700 border border-gray-200">
-                          {occasionLabel[related.occasion] ?? related.occasion}
-                        </span>
-                      )}
-                    </div>
                     <div className="card-overlay" />
                     <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                       <span className="flex items-center gap-1 px-3 py-1 bg-black text-white text-[9px] font-semibold tracking-widest uppercase whitespace-nowrap">
@@ -151,6 +139,20 @@ export default function OutfitSimilarSection({ outfitsByPieces }: Props) {
                   <span className="text-xs font-semibold text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
                     {related.title}
                   </span>
+                  {(related.style || related.occasion) && (
+                    <div className="flex flex-wrap gap-1">
+                      {related.style && (
+                        <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-black text-white">
+                          {styleLabel[related.style] ?? related.style}
+                        </span>
+                      )}
+                      {related.occasion && (
+                        <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-white text-gray-700 border border-gray-200">
+                          {occasionLabel[related.occasion] ?? related.occasion}
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </Link>
               )
             })}
