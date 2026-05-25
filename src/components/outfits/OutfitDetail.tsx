@@ -1,10 +1,9 @@
-import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
-import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip"
 import OutfitTracker from "@/components/outfits/OutfitTracker"
+import OutfitSimilarSection from "@/components/outfits/OutfitSimilarSection"
 
 type SanityImage = {
   asset?: object
@@ -45,7 +44,7 @@ export type RelatedByPieceOutfit = {
   style?: string
   occasion?: string
   matchedPieces?: { name: string; colorTag?: string; itemTag?: string }[]
-  pieces?: Array<{ _key?: string; name: string; image?: SanityImage; affiliateUrl?: string }>
+  pieces?: Array<{ _key?: string; type?: string; name: string; image?: SanityImage; affiliateUrl?: string }>
 }
 
 type Props = {
@@ -60,12 +59,6 @@ const SHOP_GROUPS = [
   { key: "accessories", label: "Bags & Accessories", types: ["bag", "accessory", "other"] },
 ]
 
-const PIECE_GROUPS = [
-  { key: "tops",        label: "Similar Tops",        tags: ["top", "outerwear"]           },
-  { key: "bottoms",     label: "Similar Bottoms",      tags: ["bottom", "dress"]            },
-  { key: "shoes",       label: "Similar Shoes",        tags: ["shoes"]                      },
-  { key: "accessories", label: "Similar Accessories",  tags: ["bag", "accessory", "other"] },
-]
 
 export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
   const imageUrl = outfit.image
@@ -80,15 +73,6 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
     .filter((g) => g.items.length > 0)
 
   const hasShopSection = shopGroups.some((g) => g.items.some((p) => p.affiliateUrl))
-
-  const pieceGroupedOutfits = PIECE_GROUPS
-    .map((g) => ({
-      ...g,
-      outfits: outfitsByPieces.filter((o) =>
-        o.matchedPieces?.some((p) => g.tags.includes(p.itemTag ?? ""))
-      ),
-    }))
-    .filter((g) => g.outfits.length > 0)
 
   return (
     <main>
@@ -236,97 +220,8 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
         </div>
       </section>
 
-      {/* ── Similar Pieces by Category ──────────────────────────────────────── */}
-      {pieceGroupedOutfits.length > 0 && (
-        <section className="section-divider">
-          <div className="container-page py-12 md:py-16">
-            <div className="flex flex-col gap-2 mb-10">
-              <span className="eyebrow">
-                You might also like
-              </span>
-              <h2 className="section-title">
-                Outfits With Similar Pieces
-              </h2>
-            </div>
-
-            <div className="flex flex-col gap-10">
-              {pieceGroupedOutfits.map((group) => (
-                <div key={group.key} className="flex flex-col gap-4">
-                  <span className="eyebrow border-b border-gray-100 pb-3">
-                    {group.label}
-                  </span>
-                  <div className="flex gap-4 overflow-x-auto pb-2 [&::-webkit-scrollbar]:h-[3px] [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
-                    {group.outfits.map((related) => {
-                      const imgUrl = related.image
-                        ? urlFor(related.image).width(400).height(533).url()
-                        : undefined
-                      const matched = related.matchedPieces?.[0]
-                      return (
-                        <Link
-                          key={related._id}
-                          href={`/outfits/${related.slug}`}
-                          className="group flex flex-col gap-2 shrink-0 w-[160px] sm:w-[180px]"
-                          aria-label={related.title}
-                        >
-                          <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden border border-gray-100 group-hover:border-gray-300 transition-colors duration-200">
-                            <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
-                              <ImgPlaceholder
-                                src={imgUrl}
-                                alt={related.title}
-                                sizes="180px"
-                                blurDataURL={related.image?.lqip}
-                              />
-                            </div>
-                            <div className="absolute top-2 left-2 flex flex-col gap-1">
-                              {related.style && (
-                                <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-black text-white">
-                                  {styleLabel[related.style] ?? related.style}
-                                </span>
-                              )}
-                              {related.occasion && (
-                                <span className="px-1.5 py-0.5 text-[9px] font-bold tracking-widest uppercase bg-white text-gray-700 border border-gray-200">
-                                  {occasionLabel[related.occasion] ?? related.occasion}
-                                </span>
-                              )}
-                            </div>
-                            <div className="card-overlay" />
-                            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                              <span className="flex items-center gap-1 px-3 py-1 bg-black text-white text-[9px] font-semibold tracking-widest uppercase whitespace-nowrap">
-                                View Look
-                                <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 stroke-current" fill="none" strokeWidth={2.5}>
-                                  <path d="M5 12h14M13 6l6 6-6 6" />
-                                </svg>
-                              </span>
-                            </div>
-                          </div>
-                          <div className="flex flex-col gap-1">
-                            <span className="text-xs font-semibold text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-600 transition-colors duration-200">
-                              {related.title}
-                            </span>
-                            {matched && (
-                              <span className="text-[9px] font-semibold tracking-widest uppercase text-gray-400 line-clamp-1">
-                                {matched.name}
-                              </span>
-                            )}
-                            <PieceThumbnailStrip
-                              pieces={related.pieces?.map((p, i) => ({
-                                key: p._key ?? String(i),
-                                name: p.name,
-                                image: p.image ? urlFor(p.image).width(80).height(80).url() : undefined,
-                                affiliateUrl: p.affiliateUrl,
-                              }))}
-                            />
-                          </div>
-                        </Link>
-                      )
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* ── Similar Pieces + Similar Outfits ────────────────────────────────── */}
+      <OutfitSimilarSection outfitsByPieces={outfitsByPieces} />
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
       <section className="section-divider">

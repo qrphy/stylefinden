@@ -32,12 +32,6 @@ export const OUTFIT_QUERY = defineQuery(`
   }
 `)
 
-// SIMILAR_OUTFITS_QUERY: Aynı stil veya durum ile eşleşen benzer outfitler (mevcut outfit hariç)
-export const SIMILAR_OUTFITS_QUERY = defineQuery(`
-  *[_type == "outfit" && defined(slug.current) && _id != $id && (style == $style || occasion == $occasion)] | order(_createdAt desc) [0...4] {
-    _id, title, "slug": slug.current, image, style, occasion
-  }
-`)
 
 // OUTFITS_BY_PIECE_TAGS_QUERY: Aynı renk veya öğe kategorisine sahip parçası olan outfitler
 // $colors: string[] — mevcut outfit parçalarının colorTag'leri
@@ -53,7 +47,7 @@ export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
     image { asset, hotspot, crop, "lqip": asset->metadata.lqip },
     style, occasion,
     "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag },
-    pieces[]{ _key, name, image { asset, hotspot, crop, "lqip": asset->metadata.lqip }, affiliateUrl }
+    pieces[]{ _key, type, name, image { asset, hotspot, crop, "lqip": asset->metadata.lqip }, affiliateUrl }
   }
 `)
 
