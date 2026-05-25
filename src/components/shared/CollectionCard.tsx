@@ -25,7 +25,7 @@ export default function CollectionCard({ item, href }: Props) {
 
   if (!item.active) {
     return (
-      <div className="flex flex-col opacity-60 cursor-not-allowed border border-gray-100">
+      <div className="flex flex-col opacity-60 cursor-not-allowed">
         <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
           <ImgPlaceholder src={item.image} alt={item.label} priority={item.priority} sizes={item.sizes} />
           <div className="absolute inset-0 bg-white/40" />
@@ -36,16 +36,9 @@ export default function CollectionCard({ item, href }: Props) {
             <h2 className="font-display text-lg font-light text-black tracking-tight leading-tight">{item.label}</h2>
           </div>
         </div>
-        <div className="flex flex-col flex-1 gap-3 p-5 bg-white">
+        <div className="flex flex-col gap-3 p-5 bg-white">
           <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">{item.description}</p>
-          <div className="flex flex-wrap gap-1.5">
-            {item.tags.map((tag) => (
-              <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-gray-50 text-gray-400 border border-gray-200">
-                {tag}
-              </span>
-            ))}
-          </div>
-          <span className="mt-auto self-start text-xs font-semibold tracking-widest uppercase text-gray-400">
+          <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
             Coming Soon
           </span>
         </div>
@@ -54,7 +47,7 @@ export default function CollectionCard({ item, href }: Props) {
   }
 
   return (
-    <a href={href} className="group flex flex-col border border-gray-100 hover:border-gray-300 transition-colors duration-200">
+    <a href={href} className="group flex flex-col">
       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
         <ImgPlaceholder
           src={item.image}
@@ -71,16 +64,9 @@ export default function CollectionCard({ item, href }: Props) {
           <h2 className="font-display text-lg font-light text-white tracking-tight leading-tight">{item.label}</h2>
         </div>
       </div>
-      <div className="flex flex-col flex-1 gap-3 p-5 bg-white">
+      <div className="flex flex-col gap-3 p-5 bg-white">
         <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{item.description}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {item.tags.map((tag) => (
-            <span key={tag} className="px-2 py-0.5 text-xs font-medium tracking-widest uppercase bg-gray-50 text-gray-600 border border-gray-200">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <span className="mt-auto self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-black transition-colors duration-200">
+        <span className="self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-black transition-colors duration-200">
           Discover
           <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2.5}>
             <path d="M5 12h14M13 6l6 6-6 6" />
