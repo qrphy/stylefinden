@@ -32,11 +32,9 @@ export default function CollectionCard({ item, href }: Props) {
           <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[item.badge] ?? "bg-gray-100 text-gray-500"}`}>
             {item.badge}
           </span>
-          <div className="absolute bottom-0 left-0 right-0 p-5">
-            <h2 className="font-display text-lg font-light text-black tracking-tight leading-tight">{item.label}</h2>
-          </div>
         </div>
-        <div className="flex flex-col gap-3 p-5 bg-white">
+        <div className="flex flex-col gap-3 pt-4 bg-white">
+          <h2 className="text-sm font-black uppercase tracking-wide text-black leading-tight">{item.label}</h2>
           <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">{item.description}</p>
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
             Coming Soon
@@ -56,15 +54,12 @@ export default function CollectionCard({ item, href }: Props) {
           sizes={item.sizes}
           className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50" />
         <span className={`absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase ${badgeColors[item.badge] ?? "bg-black text-white"}`}>
           {item.badge}
         </span>
-        <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h2 className="font-display text-lg font-light text-white tracking-tight leading-tight">{item.label}</h2>
-        </div>
       </div>
-      <div className="flex flex-col gap-3 p-5 bg-white">
+      <div className="flex flex-col gap-3 pt-4 bg-white">
+        <h2 className="text-sm font-black uppercase tracking-wide text-black leading-tight">{item.label}</h2>
         <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{item.description}</p>
         <span className="self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-black transition-colors duration-200">
           Discover
