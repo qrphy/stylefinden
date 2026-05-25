@@ -41,6 +41,7 @@ export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
     _type == "outfit" &&
     defined(slug.current) &&
     _id != $id &&
+    style == $style &&
     count(pieces[defined(colorTag) && colorTag in $colors]) + count(pieces[defined(itemTag) && itemTag in $items]) > 0
   ] | order(_createdAt desc) [0...8] {
     _id, title, "slug": slug.current,
@@ -49,6 +50,26 @@ export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
     "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag },
     pieces[]{ _key, type, name, image { asset, hotspot, crop, "lqip": asset->metadata.lqip }, affiliateUrl }
   }
+`)
+
+// SIMILAR_PIECES_QUERY: Piece-level eşleşme — aynı renk + tür + itemTag'e sahip parçaları doğrudan getirir
+// $topColors/$topItems: mevcut outfit'in top/outerwear parçalarından; diğer kategoriler benzer şekilde
+// Boş array parametresi → o kategoride hiç eşleşme olmaz (GROQ: value in [] = false)
+export const SIMILAR_PIECES_QUERY = defineQuery(`
+  *[_type == "outfit" && _id != $id && defined(slug.current)]{
+    "tops": pieces[type in ["top","outerwear"] && colorTag in $topColors && itemTag in $topItems]{
+      _key, type, name, affiliateUrl, image{ asset, hotspot, crop, "lqip": asset->metadata.lqip }
+    },
+    "bottoms": pieces[type in ["bottom","dress"] && colorTag in $bottomColors && itemTag in $bottomItems]{
+      _key, type, name, affiliateUrl, image{ asset, hotspot, crop, "lqip": asset->metadata.lqip }
+    },
+    "shoes": pieces[type == "shoes" && colorTag in $shoeColors && itemTag in $shoeItems]{
+      _key, type, name, affiliateUrl, image{ asset, hotspot, crop, "lqip": asset->metadata.lqip }
+    },
+    "accessories": pieces[type in ["bag","accessory","other"] && colorTag in $accessColors && itemTag in $accessItems]{
+      _key, type, name, affiliateUrl, image{ asset, hotspot, crop, "lqip": asset->metadata.lqip }
+    }
+  }[count(tops) + count(bottoms) + count(shoes) + count(accessories) > 0]
 `)
 
 // Kategori slug sayfalarının Sanity fetch'leri — stil/mevsim/durum filtrelemesi için

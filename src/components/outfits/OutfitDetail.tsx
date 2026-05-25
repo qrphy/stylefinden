@@ -47,9 +47,25 @@ export type RelatedByPieceOutfit = {
   pieces?: Array<{ _key?: string; type?: string; name: string; image?: SanityImage; affiliateUrl?: string }>
 }
 
+export type SimilarPieceEntry = {
+  _key?: string
+  type?: string
+  name: string
+  image?: SanityImage
+  affiliateUrl?: string
+}
+
+export type SimilarPiecesResult = {
+  tops:        SimilarPieceEntry[]
+  bottoms:     SimilarPieceEntry[]
+  shoes:       SimilarPieceEntry[]
+  accessories: SimilarPieceEntry[]
+}
+
 type Props = {
   outfit: OutfitDetailData
   outfitsByPieces?: RelatedByPieceOutfit[]
+  similarPiecesRaw?: SimilarPiecesResult[]
 }
 
 const SHOP_GROUPS = [
@@ -60,7 +76,7 @@ const SHOP_GROUPS = [
 ]
 
 
-export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
+export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiecesRaw = [] }: Props) {
   const imageUrl = outfit.image
     ? urlFor(outfit.image).width(800).height(1067).url()
     : undefined
@@ -222,7 +238,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
       </section>
 
       {/* ── Similar Pieces + Similar Outfits ────────────────────────────────── */}
-      <OutfitSimilarSection outfitsByPieces={outfitsByPieces} />
+      <OutfitSimilarSection outfitsByPieces={outfitsByPieces} similarPiecesRaw={similarPiecesRaw} />
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
       <section className="section-divider">
