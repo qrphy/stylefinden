@@ -43,8 +43,6 @@ export type RelatedByPieceOutfit = {
   image?: SanityImage
   style?: string
   occasion?: string
-  matchedPieces?: { name: string; colorTag?: string; itemTag?: string }[]
-  pieces?: Array<{ _key?: string; type?: string; name: string; image?: SanityImage; affiliateUrl?: string }>
 }
 
 export type SimilarPieceEntry = {

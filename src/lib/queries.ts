@@ -33,22 +33,19 @@ export const OUTFIT_QUERY = defineQuery(`
 `)
 
 
-// OUTFITS_BY_PIECE_TAGS_QUERY: Aynı renk veya öğe kategorisine sahip parçası olan outfitler
-// $colors: string[] — mevcut outfit parçalarının colorTag'leri
-// $items: string[]  — mevcut outfit parçalarının itemTag'leri
+// OUTFITS_BY_PIECE_TAGS_QUERY: En az bir parça aynı tür + aynı renk eşleşmesi olan outfitler
+// Kategoriler arasında OR mantığı — herhangi bir kategoride eşleşme yeterlid
+// Boş array → o kategoride eşleşme olmaz (GROQ: value in [] = false)
 export const OUTFITS_BY_PIECE_TAGS_QUERY = defineQuery(`
-  *[
-    _type == "outfit" &&
-    defined(slug.current) &&
-    _id != $id &&
-    style == $style &&
-    count(pieces[defined(colorTag) && colorTag in $colors]) + count(pieces[defined(itemTag) && itemTag in $items]) > 0
-  ] | order(_createdAt desc) [0...8] {
+  *[_type == "outfit" && _id != $id && defined(slug.current) && (
+    count(pieces[type in ["top","outerwear"] && colorTag in $topColors]) > 0 ||
+    count(pieces[type in ["bottom","dress"] && colorTag in $bottomColors]) > 0 ||
+    count(pieces[type == "shoes" && colorTag in $shoeColors]) > 0 ||
+    count(pieces[type in ["bag","accessory","other"] && colorTag in $accessColors]) > 0
+  )] | order(_createdAt desc) [0...8] {
     _id, title, "slug": slug.current,
     image { asset, hotspot, crop, "lqip": asset->metadata.lqip },
-    style, occasion,
-    "matchedPieces": pieces[colorTag in $colors || itemTag in $items]{ name, colorTag, itemTag },
-    pieces[]{ _key, type, name, image { asset, hotspot, crop, "lqip": asset->metadata.lqip }, affiliateUrl }
+    style, occasion
   }
 `)
 

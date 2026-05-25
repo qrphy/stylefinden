@@ -29,13 +29,11 @@ export default async function OutfitPage({ params }: Props) {
   const outfit = await getOutfit(slug)
   if (!outfit) notFound()
 
-  const pieces = (outfit.pieces ?? []) as Array<{ colorTag?: string; itemTag?: string }>
-  const colors = [...new Set(pieces.map((p) => p.colorTag).filter((c): c is string => Boolean(c)))]
-  const items  = [...new Set(pieces.map((p) => p.itemTag).filter((i): i is string => Boolean(i)))]
+  const pieces = (outfit.pieces ?? []) as Array<{ type?: string; colorTag?: string; itemTag?: string }>
 
   const [outfitsByPieces, similarPiecesRaw] = await Promise.all([
-    (colors.length > 0 || items.length > 0) && outfit.style
-      ? getOutfitsByPieceTags(outfit._id, outfit.style, colors, items)
+    pieces.length > 0
+      ? getOutfitsByPieceTags(outfit._id, pieces)
       : Promise.resolve([]),
     pieces.length > 0
       ? getSimilarPieces(outfit._id, pieces)
