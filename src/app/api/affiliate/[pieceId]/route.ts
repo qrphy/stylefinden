@@ -25,7 +25,9 @@ export async function GET(
   const { searchParams } = new URL(req.url)
   const outfitSanityId = searchParams.get('outfit')
 
-  // Piece'i Supabase'den al
+  const fallbackUrl = searchParams.get('url')
+
+  // Piece'i Supabase'den al (Awin feed sync aktif olduğunda dolar)
   const { data: piece } = await supabase
     .from('pieces')
     .select('id, affiliate_url')
@@ -34,7 +36,9 @@ export async function GET(
     .single()
 
   if (!piece) {
-    return NextResponse.redirect(new URL('/', req.url), { status: 302 })
+    // Supabase'de henüz yoksa fallback URL'e yönlendir
+    if (!fallbackUrl) return NextResponse.redirect(new URL('/', req.url), { status: 302 })
+    return NextResponse.redirect(fallbackUrl, { status: 302 })
   }
 
   // Outfit UUID'si (opsiyonel — tıklama context'i için)

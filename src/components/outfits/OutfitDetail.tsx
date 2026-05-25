@@ -162,7 +162,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                     return (
                       <a
                         key={piece._key ?? i}
-                        href={piece.affiliateUrl}
+                        href={`/api/affiliate/${piece._key}?url=${encodeURIComponent(piece.affiliateUrl!)}&outfit=${outfit._id}`}
                         target="_blank"
                         rel="noopener noreferrer sponsored"
                         className="group flex flex-col gap-1.5 shrink-0 w-[96px]"

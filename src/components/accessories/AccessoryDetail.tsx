@@ -17,6 +17,7 @@ export type AccessoryDetailData = {
   occasion?: string
   pairingTip?: string
   tags?: string[]
+  affiliateUrl?: string
 }
 
 type OutfitCard = {
@@ -80,14 +81,39 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
 
           {/* Sol — Ana görsel */}
           <div className="pl-2 pr-3 md:pl-3 md:pr-5">
-            <div className="relative aspect-[4/5] w-full bg-gray-100 overflow-hidden md:sticky md:top-6">
-              <ImgPlaceholder
-                src={imageUrl}
-                alt={item.title}
-                priority
-                sizes="(max-width: 768px) 100vw, 40vw"
-              />
-            </div>
+            {item.affiliateUrl ? (
+              <a
+                href={`/api/affiliate/${item._id}?url=${encodeURIComponent(item.affiliateUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                className="group block relative aspect-[4/5] w-full bg-gray-100 overflow-hidden md:sticky md:top-6"
+                aria-label={`Shop ${item.title}`}
+              >
+                <ImgPlaceholder
+                  src={imageUrl}
+                  alt={item.title}
+                  priority
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+                <div className="piece-shop-overlay">
+                  <span className="piece-shop-label">
+                    Shop
+                    <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ) : (
+              <div className="relative aspect-[4/5] w-full bg-gray-100 overflow-hidden md:sticky md:top-6">
+                <ImgPlaceholder
+                  src={imageUrl}
+                  alt={item.title}
+                  priority
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
+            )}
           </div>
 
           {/* Sağ — Detaylar */}

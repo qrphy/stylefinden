@@ -103,7 +103,7 @@ export const ACCESSORIES_QUERY = defineQuery(`
 
 export const ACCESSORY_QUERY = defineQuery(`
   *[_type == "accessory" && slug.current == $slug][0] {
-    _id, title, "slug": slug.current, description, image, type, occasion, pairingTip, tags
+    _id, title, "slug": slug.current, description, image, type, occasion, pairingTip, tags, affiliateUrl
   }
 `)
 

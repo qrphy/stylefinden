@@ -55,7 +55,7 @@ export default function OutfitSimilarSection({ outfitsByPieces }: Props) {
                         : undefined
                       const Tag = piece.affiliateUrl ? "a" : "div"
                       const linkProps = piece.affiliateUrl
-                        ? { href: piece.affiliateUrl, target: "_blank", rel: "noopener noreferrer sponsored" }
+                        ? { href: `/api/affiliate/${piece._key}?url=${encodeURIComponent(piece.affiliateUrl)}`, target: "_blank", rel: "noopener noreferrer sponsored" }
                         : {}
                       return (
                         <Tag
