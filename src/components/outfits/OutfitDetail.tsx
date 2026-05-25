@@ -168,18 +168,19 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [] }: Props) {
                         className="group flex flex-col gap-1.5 shrink-0 w-[96px]"
                         aria-label={`Shop ${piece.name}`}
                       >
-                        <div className="relative w-[96px] h-[120px] bg-white border border-gray-200 overflow-hidden group-hover:border-gray-400 transition-colors duration-200">
-                          <ImgPlaceholder
-                            src={pieceImg}
-                            alt={piece.name}
-                            sizes="96px"
-                            blurDataURL={piece.image?.lqip}
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-200" />
-                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                            <span className="flex items-center gap-1 px-2.5 py-1 bg-white text-black text-[10px] font-bold tracking-widest uppercase">
+                        <div className="relative w-[96px] h-[120px] bg-gray-50 overflow-hidden">
+                          <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.06]">
+                            <ImgPlaceholder
+                              src={pieceImg}
+                              alt={piece.name}
+                              sizes="96px"
+                              blurDataURL={piece.image?.lqip}
+                            />
+                          </div>
+                          <div className="piece-shop-overlay">
+                            <span className="piece-shop-label">
                               Shop
-                              <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 stroke-current" fill="none" strokeWidth={2.5}>
+                              <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
                                 <path d="M5 12h14M13 6l6 6-6 6" />
                               </svg>
                             </span>

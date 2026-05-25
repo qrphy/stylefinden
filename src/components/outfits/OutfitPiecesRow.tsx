@@ -31,16 +31,20 @@ export default function OutfitPiecesRow({ pieces, title = "Shop the Look" }: Pro
 
           const content = (
             <div className="group flex flex-col gap-2 shrink-0 w-[100px] sm:w-[120px]">
-              <div className="relative aspect-[4/5] w-full bg-gray-100 border border-gray-200 overflow-hidden group-hover:border-gray-400 transition-colors duration-200">
-                <ImgPlaceholder
-                  src={pieceImg}
-                  alt={piece.name}
-                  sizes="120px"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <span className="px-2 py-1 bg-black text-white text-[10px] font-semibold tracking-widest uppercase">
+              <div className="relative aspect-[4/5] w-full bg-gray-50 overflow-hidden">
+                <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.06]">
+                  <ImgPlaceholder
+                    src={pieceImg}
+                    alt={piece.name}
+                    sizes="120px"
+                  />
+                </div>
+                <div className="piece-shop-overlay">
+                  <span className="piece-shop-label">
                     Shop
+                    <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
+                      <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
                   </span>
                 </div>
               </div>

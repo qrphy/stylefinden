@@ -170,6 +170,36 @@ body {
     @apply absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300;
   }
 
+  /* ── Parça kartı — Shop hover overlay ───────────────────────────────────────
+     .piece-shop-overlay + .piece-shop-label → OutfitDetail, OutfitPiecesRow,
+       OutfitSimilarSection                                                   */
+  .piece-shop-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+  .group:hover .piece-shop-overlay {
+    opacity: 1;
+  }
+  .piece-shop-label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    background-color: black;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+
   /* ── Bölüm — Ayırıcı çizgi ──────────────────────────────────────────────────
      .section-divider → tüm detay ve section sayfaları                      */
   .section-divider {
