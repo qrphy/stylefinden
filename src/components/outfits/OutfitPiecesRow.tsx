@@ -12,15 +12,16 @@ type Piece = {
 
 type Props = {
   pieces: Piece[]
+  title?: string
 }
 
-export default function OutfitPiecesRow({ pieces }: Props) {
+export default function OutfitPiecesRow({ pieces, title = "Shop the Look" }: Props) {
   if (pieces.length === 0) return null
 
   return (
     <div className="mt-2 pt-4 border-t border-gray-100">
       <span className="eyebrow block mb-4">
-        Shop the Look
+        {title}
       </span>
       <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-none">
         {pieces.map((piece, i) => {

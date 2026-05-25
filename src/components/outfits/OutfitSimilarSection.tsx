@@ -72,16 +72,14 @@ export default function OutfitSimilarSection({ outfitsByPieces }: Props) {
                                 sizes="(max-width: 640px) 25vw, (max-width: 1024px) 16vw, 10vw"
                               />
                             </div>
-                            {piece.affiliateUrl && (
-                              <div className="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                <span className="flex items-center gap-1 px-2 py-0.5 bg-black text-white text-[9px] font-bold tracking-widest uppercase">
-                                  Shop
-                                  <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
-                                    <path d="M5 12h14M13 6l6 6-6 6" />
-                                  </svg>
-                                </span>
-                              </div>
-                            )}
+                            <div className="absolute inset-0 flex items-end justify-center pb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                              <span className="flex items-center gap-1 px-2 py-0.5 bg-black text-white text-[9px] font-bold tracking-widest uppercase">
+                                Shop
+                                <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
+                                  <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg>
+                              </span>
+                            </div>
                           </div>
                           <span className="text-[10px] font-semibold text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-500 transition-colors duration-200">
                             {piece.name}
