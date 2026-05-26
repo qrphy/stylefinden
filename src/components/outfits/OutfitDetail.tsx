@@ -64,6 +64,7 @@ type Props = {
   outfit: OutfitDetailData
   outfitsByPieces?: RelatedByPieceOutfit[]
   similarPiecesRaw?: SimilarPiecesResult[]
+  breadcrumbContext?: { href: string; label: string }
 }
 
 const SHOP_GROUPS = [
@@ -74,7 +75,7 @@ const SHOP_GROUPS = [
 ]
 
 
-export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiecesRaw = [] }: Props) {
+export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiecesRaw = [], breadcrumbContext }: Props) {
   const imageUrl = outfit.image
     ? urlFor(outfit.image).width(800).height(1067).url()
     : undefined
@@ -98,17 +99,21 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiec
           <a href="/" className="breadcrumb-link">Home</a>
           <span>/</span>
           <a href="/outfits" className="breadcrumb-link">Outfits</a>
-          {outfit.occasion && (
+          {breadcrumbContext ? (
             <>
               <span>/</span>
-              <a
-                href={`/outfits/occasion/${outfit.occasion}`}
-                className="breadcrumb-link"
-              >
-                {occasionLabel[outfit.occasion] ?? outfit.occasion}
+              <a href={breadcrumbContext.href} className="breadcrumb-link">
+                {breadcrumbContext.label}
               </a>
             </>
-          )}
+          ) : outfit.style ? (
+            <>
+              <span>/</span>
+              <a href={`/outfits/style/${outfit.style}`} className="breadcrumb-link">
+                {styleLabel[outfit.style] ?? outfit.style}
+              </a>
+            </>
+          ) : null}
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{outfit.title}</span>
         </nav>

@@ -267,7 +267,9 @@ export default async function StylePage({
     { next: { revalidate: 3600, tags: ["outfit"] } },
   )
   const items: OutfitItem[] =
-    outfits.length > 0 ? outfits.map(toItem) : (config.staticFallback ?? [])
+    outfits.length > 0
+      ? outfits.map(toItem).map((item: OutfitItem) => ({ ...item, href: `${item.href}?from=style/${slug}` }))
+      : (config.staticFallback ?? [])
   return (
     <OutfitGridCategoryPage
       data={{ ...config, outfits: items }}

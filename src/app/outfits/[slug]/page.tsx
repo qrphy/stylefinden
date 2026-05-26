@@ -3,8 +3,12 @@ import { notFound } from "next/navigation"
 import { client } from "@/sanity/lib/client"
 import { getOutfit, getOutfitsByPieceTags, getSimilarPieces } from "@/lib/sanity-fetchers"
 import OutfitDetail from "@/components/outfits/OutfitDetail"
+import { styleLabel, occasionLabel, seasonLabel } from "@/lib/outfit-labels"
 
-type Props = { params: Promise<{ slug: string }> }
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ from?: string }>
+}
 
 export async function generateStaticParams() {
   const slugs = await client.withConfig({ useCdn: false }).fetch<{ slug: string }[]>(
@@ -24,8 +28,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function OutfitPage({ params }: Props) {
+function resolveBreadcrumbContext(from: string | undefined): { href: string; label: string } | undefined {
+  if (!from) return undefined
+  const [type, ...rest] = from.split("/")
+  const categorySlug = rest.join("/")
+  if (!categorySlug || !["style", "occasion", "season"].includes(type)) return undefined
+  const labelMap = type === "style" ? styleLabel : type === "occasion" ? occasionLabel : seasonLabel
+  const label = labelMap[categorySlug]
+    ?? categorySlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+  return { href: `/outfits/${type}/${categorySlug}`, label }
+}
+
+export default async function OutfitPage({ params, searchParams }: Props) {
   const { slug } = await params
+  const { from } = await searchParams
   const outfit = await getOutfit(slug)
   if (!outfit) notFound()
 
@@ -45,6 +61,7 @@ export default async function OutfitPage({ params }: Props) {
       outfit={outfit}
       outfitsByPieces={outfitsByPieces ?? []}
       similarPiecesRaw={similarPiecesRaw ?? []}
+      breadcrumbContext={resolveBreadcrumbContext(from)}
     />
   )
 }

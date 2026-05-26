@@ -423,7 +423,9 @@ export default async function SeasonPage(
   if (!data) notFound();
   const outfits = await client.fetch(OUTFITS_BY_SEASON_QUERY, { season: slug }, { next: { revalidate: 3600, tags: ['outfit'] } });
   // Sanity'de veri varsa dönüştür, yoksa statik fallback'e geç
-  const items = outfits.length > 0 ? outfits.map(toItem) : (STATIC_OUTFITS[slug] ?? []);
+  const items = outfits.length > 0
+    ? outfits.map(toItem).map((item: OutfitItem) => ({ ...item, href: `${item.href}?from=season/${slug}` }))
+    : (STATIC_OUTFITS[slug] ?? []);
   const conversionConfig = CONVERSION_PAGES[slug] ?? {
     introText: data.description,
     variations: items.slice(0, 8).map((o: OutfitItem) => o.title),

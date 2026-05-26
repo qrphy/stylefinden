@@ -96,7 +96,9 @@ export default async function OccasionPage({
     { next: { revalidate: 3600, tags: ["outfit"] } },
   )
   const items: OutfitItem[] =
-    outfits.length > 0 ? outfits.map(toItem) : (config.staticFallback ?? [])
+    outfits.length > 0
+      ? outfits.map(toItem).map((item: OutfitItem) => ({ ...item, href: `${item.href}?from=occasion/${slug}` }))
+      : (config.staticFallback ?? [])
   return (
     <OutfitGridCategoryPage
       data={{ ...config, outfits: items }}
