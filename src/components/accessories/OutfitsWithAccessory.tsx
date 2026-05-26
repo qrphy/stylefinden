@@ -56,7 +56,7 @@ export default function OutfitsWithAccessory({ outfits }: Props) {
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           {outfits.map((outfit) => {
             const imgUrl = outfit.image
-              ? urlFor(outfit.image).width(480).height(640).url()
+              ? urlFor(outfit.image).width(800).height(1067).url()
               : undefined
             const styleLabel = outfit.style ? (STYLE_LABELS[outfit.style] ?? outfit.style) : null
 

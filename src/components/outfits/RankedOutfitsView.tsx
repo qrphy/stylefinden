@@ -148,7 +148,7 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
           {ranked.map((outfit) => {
             const badge = matchBadge(outfit.score, maxPossible)
             const imageUrl = outfit.image
-              ? urlFor(outfit.image).width(600).height(800).url()
+              ? urlFor(outfit.image).width(800).height(1067).url()
               : undefined
             const subtitle = [
               outfit.style    ? (STYLE_LABELS[outfit.style]       ?? outfit.style)    : null,

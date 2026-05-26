@@ -35,7 +35,7 @@ export default async function FeaturedOutfits() {
         subtitle: o.occasion ?? o.season ?? "",
         tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
         slug: o.slug,
-        image: o.image ? urlFor(o.image).width(600).height(800).url() : undefined,
+        image: o.image ? urlFor(o.image).width(800).height(1067).url() : undefined,
         pieces: o.pieces?.map((p, i) => ({
           key: p._key ?? String(i),
           name: p.name,

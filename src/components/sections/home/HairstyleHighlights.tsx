@@ -44,7 +44,7 @@ export default async function HairstyleHighlights() {
         id: h._id,
         title: h.title,
         slug: h.slug,
-        image: h.image ? urlFor(h.image).width(600).height(800).url() : undefined,
+        image: h.image ? urlFor(h.image).width(800).height(1067).url() : undefined,
         type: h.type,
         length: h.length,
         mood: h.mood,

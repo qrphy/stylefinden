@@ -57,7 +57,7 @@ export default async function AccessoriesHighlights() {
         id: a._id,
         title: a.title,
         slug: a.slug,
-        image: a.image ? urlFor(a.image).width(600).height(750).url() : undefined,
+        image: a.image ? urlFor(a.image).width(800).height(1000).url() : undefined,
         category: a.type ?? "",
         badge: a.featured ? "Trending" : "New",
         pairingTip: a.pairingTip,

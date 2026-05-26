@@ -24,7 +24,7 @@ type Props = {
 
 export default function TrendDetail({ trend }: Props) {
   const imageUrl = trend.image
-    ? urlFor(trend.image).width(1200).height(700).url()
+    ? urlFor(trend.image).url()
     : undefined
 
   const articleSchema = {

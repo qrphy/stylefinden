@@ -220,7 +220,7 @@ export default async function BlogPage() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
               {latestPosts.map((post) => {
-                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(600).height(340).url() : undefined
+                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(800).height(450).url() : undefined
                 return (
                   <a
                     key={post._id}
