@@ -41,8 +41,7 @@ function resolveBreadcrumbContext(from: string | undefined): { href: string; lab
 
 export default async function OutfitPage({ params, searchParams }: Props) {
   const { slug } = await params
-  const { from } = await searchParams
-  const outfit = await getOutfit(slug)
+  const [outfit, { from }] = await Promise.all([getOutfit(slug), searchParams])
   if (!outfit) notFound()
 
   const pieces = (outfit.pieces ?? []) as Array<{ type?: string; colorTag?: string; itemTag?: string }>

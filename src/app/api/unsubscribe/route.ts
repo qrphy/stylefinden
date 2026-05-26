@@ -4,6 +4,12 @@ import { NextResponse } from 'next/server'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stylefinden.com'
 
 export async function GET(req: Request) {
+  // Skip side effect on browser prefetch — only process real user clicks
+  const isPrefetch =
+    req.headers.get('sec-purpose') === 'prefetch' ||
+    req.headers.get('purpose') === 'prefetch'
+  if (isPrefetch) return NextResponse.redirect(new URL('/', SITE_URL))
+
   const { searchParams } = new URL(req.url)
   const email = searchParams.get('email')
 

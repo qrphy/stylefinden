@@ -21,6 +21,11 @@ export async function GET(
   req: Request,
   { params }: { params: Promise<{ pieceId: string }> }
 ) {
+  // Skip DB insert on browser prefetch — only record real user clicks
+  const isPrefetch =
+    req.headers.get('sec-purpose') === 'prefetch' ||
+    req.headers.get('purpose') === 'prefetch'
+
   const { pieceId } = await params
   const { searchParams } = new URL(req.url)
   const outfitSanityId = searchParams.get('outfit')
@@ -57,17 +62,19 @@ export async function GET(
     ? `outfit_${outfitSanityId}__piece_${piece.id}`
     : `piece_${piece.id}`
 
-  try {
-    await createAdminClient().from('affiliate_clicks').insert({
-      piece_id: piece.id,
-      outfit_id: outfitId,
-      awin_clickref: clickref,
-      ip_hash: hashIp(getIp(req)),
-      user_agent: req.headers.get('user-agent')?.slice(0, 500) ?? null,
-      referrer: req.headers.get('referer')?.slice(0, 500) ?? null,
-    })
-  } catch {
-    // Tıklama kaydı başarısız olsa da redirect devam eder
+  if (!isPrefetch) {
+    try {
+      await createAdminClient().from('affiliate_clicks').insert({
+        piece_id: piece.id,
+        outfit_id: outfitId,
+        awin_clickref: clickref,
+        ip_hash: hashIp(getIp(req)),
+        user_agent: req.headers.get('user-agent')?.slice(0, 500) ?? null,
+        referrer: req.headers.get('referer')?.slice(0, 500) ?? null,
+      })
+    } catch {
+      // Tıklama kaydı başarısız olsa da redirect devam eder
+    }
   }
 
   return NextResponse.redirect(piece.affiliate_url, { status: 302 })

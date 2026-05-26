@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import ImgPlaceholder from '@/components/shared/ImgPlaceholder'
 import { detectSeason } from '@/lib/detect-season'
@@ -116,6 +116,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
   const [style, setStyle]       = useState<string | null>(null)
   const [hasRestored, setHasRestored] = useState(false)
   const [historyHint, setHistoryHint] = useState<{ occasion: string; label: string } | null>(null)
+  const skipNextPersistRef = useRef(false)
 
   // Item 3 + 7: Restore last selection & read browsing history on mount
   useEffect(() => {
@@ -125,6 +126,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
         occasion?: string; season?: string; style?: string
       } | null
       if (saved?.occasion) {
+        skipNextPersistRef.current = true
         setOccasion(saved.occasion)
         setSeason(saved.season ?? null)
         setStyle(saved.style ?? null)
@@ -138,7 +140,9 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
       if (history.length >= 3) {
         const occCount: Record<string, number> = {}
         history.forEach(h => { if (h.occasion) occCount[h.occasion] = (occCount[h.occasion] || 0) + 1 })
-        const topOcc = Object.entries(occCount).sort((a, b) => b[1] - a[1])[0]?.[0]
+        const topOcc = Object.entries(occCount).reduce<[string, number] | null>(
+          (max, cur) => !max || cur[1] > max[1] ? cur : max, null
+        )?.[0]
         if (topOcc) {
           const label = OCCASIONS.find(o => o.value === topOcc)?.label ?? topOcc
           setHistoryHint({ occasion: topOcc, label })
@@ -149,6 +153,10 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
 
   // Item 3: Persist selections to localStorage whenever they change
   useEffect(() => {
+    if (skipNextPersistRef.current) {
+      skipNextPersistRef.current = false
+      return
+    }
     if (occasion === null && season === null && style === null) return
     try {
       localStorage.setItem(LS_FINDER_KEY, JSON.stringify({ occasion, season, style }))
@@ -281,7 +289,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
                   className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
                 >
                   Find Outfits
-                  <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
+                  <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </button>
@@ -379,8 +387,8 @@ function OccasionGrid({ options, selected, onSelect, counts }: {
               )}
             </div>
             {active && (
-              <div className="absolute top-2 right-2 w-4 h-4 bg-white flex items-center justify-center">
-                <svg viewBox="0 0 12 12" className="w-2.5 h-2.5" fill="none" strokeWidth={2.5} stroke="currentColor">
+              <div className="absolute top-2 right-2 size-4 bg-white flex items-center justify-center">
+                <svg viewBox="0 0 12 12" className="size-2.5" fill="none" strokeWidth={2.5} stroke="currentColor">
                   <path d="M2 6l3 3 5-5" />
                 </svg>
               </div>
