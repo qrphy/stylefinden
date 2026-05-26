@@ -36,7 +36,7 @@ type Props = {
 
 export default function AccessoryDetail({ item, outfits = [] }: Props) {
   const imageUrl = item.image
-    ? urlFor(item.image).width(800).height(1000).url()
+    ? urlFor(item.image).url()
     : undefined
 
   const productSchema = {

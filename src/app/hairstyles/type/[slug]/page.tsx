@@ -16,7 +16,7 @@ function toItem(h: { _id: string; title: string; slug: string; image?: object; t
     subtitle: [h.length, h.mood].filter(Boolean).join(' · '),
     tag: h.featured ? "Trending" : "New",
     style: h.type ?? '',
-    image: h.image ? urlFor(h.image).width(400).height(533).url() : undefined,
+    image: h.image ? urlFor(h.image).width(800).height(1067).url() : undefined,
     href: `/hairstyles/${h.slug}`,
   }
 }

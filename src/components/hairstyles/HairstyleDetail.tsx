@@ -30,7 +30,7 @@ type Props = {
 
 export default function HairstyleDetail({ hairstyle }: Props) {
   const imageUrl = hairstyle.image
-    ? urlFor(hairstyle.image).width(800).height(1067).url()
+    ? urlFor(hairstyle.image).url()
     : undefined
 
   const creativeWorkSchema = {

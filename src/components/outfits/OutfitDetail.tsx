@@ -77,7 +77,7 @@ const SHOP_GROUPS = [
 
 export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiecesRaw = [], breadcrumbContext }: Props) {
   const imageUrl = outfit.image
-    ? urlFor(outfit.image).width(800).height(1067).url()
+    ? urlFor(outfit.image).url()
     : undefined
   const imageLqip = outfit.image?.lqip
 

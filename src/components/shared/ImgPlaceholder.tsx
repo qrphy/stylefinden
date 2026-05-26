@@ -10,6 +10,7 @@ type Props = {
   priority?: boolean;
   sizes?: string;
   blurDataURL?: string;
+  quality?: number;
 };
 
 export default function ImgPlaceholder({
@@ -19,6 +20,7 @@ export default function ImgPlaceholder({
   priority = false,
   sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw",
   blurDataURL,
+  quality = 85,
 }: Props) {
   if (src) {
     return (
@@ -28,6 +30,7 @@ export default function ImgPlaceholder({
         fill
         sizes={sizes}
         priority={priority}
+        quality={quality}
         className={`${className} object-cover object-top`}
         placeholder={blurDataURL ? "blur" : "empty"}
         blurDataURL={blurDataURL}
