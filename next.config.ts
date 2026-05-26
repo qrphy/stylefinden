@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
       { source: "/outfits/occasion/abend",           destination: "/outfits/occasion/evening", permanent: true },
       { source: "/outfits/occasion/strand",          destination: "/outfits/occasion/beach",   permanent: true },
       { source: "/impressum",                         destination: "/legal",                    permanent: true },
+      { source: "/outfits/white-lace-crop-patchwork-tiered-ruffle-skirt", destination: "/outfits/white-lace-patchwork-mini",   permanent: true },
+      { source: "/outfits/pink-puff-sleeve-corset-fairycore-ruffle-skirt", destination: "/outfits/pink-fairycore-corset-skirt", permanent: true },
     ];
   },
   images: {
