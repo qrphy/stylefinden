@@ -46,7 +46,7 @@ export default function OutfitSimilarSection({ outfitsByPieces, similarPiecesRaw
                   <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
                     {group.pieces.map((piece, i) => {
                       const imgUrl = piece.image
-                        ? urlFor(piece.image).width(200).height(250).url()
+                        ? urlFor(piece.image).width(400).height(500).url()
                         : undefined
                       const Tag = piece.affiliateUrl ? "a" : "div"
                       const linkProps = piece.affiliateUrl

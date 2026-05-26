@@ -176,7 +176,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiec
                 <div className="flex gap-3 overflow-x-auto pb-2 -mx-0.5 px-0.5 [&::-webkit-scrollbar]:h-[3px] [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
                   {shopGroups.flatMap((g) => g.items.filter((p) => p.affiliateUrl)).map((piece, i) => {
                     const pieceImg = piece.image
-                      ? urlFor(piece.image).width(200).height(250).url()
+                      ? urlFor(piece.image).width(400).height(500).url()
                       : undefined
                     return (
                       <a
