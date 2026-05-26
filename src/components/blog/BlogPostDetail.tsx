@@ -134,7 +134,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                     <a key={outfit._id} href={`/outfits/${outfit.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                         <ImgPlaceholder
-                          src={outfit.image ? urlFor(outfit.image).width(600).height(800).url() : undefined}
+                          src={outfit.image ? urlFor(outfit.image).width(1400).height(1867).url() : undefined}
                           alt={outfit.title}
                         />
                         <div className="card-overlay" />
@@ -156,7 +156,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                     <a key={item._id} href={`/accessories/${item.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-square">
                         <ImgPlaceholder
-                          src={item.image ? urlFor(item.image).width(600).height(600).url() : undefined}
+                          src={item.image ? urlFor(item.image).width(1400).height(1400).url() : undefined}
                           alt={item.title}
                         />
                         <div className="card-overlay" />
@@ -178,7 +178,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                     <a key={h._id} href={`/hairstyles/${h.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                         <ImgPlaceholder
-                          src={h.image ? urlFor(h.image).width(600).height(800).url() : undefined}
+                          src={h.image ? urlFor(h.image).width(1400).height(1867).url() : undefined}
                           alt={h.title}
                         />
                         <div className="card-overlay" />

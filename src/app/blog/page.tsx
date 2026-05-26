@@ -158,7 +158,7 @@ export default async function BlogPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
               {featuredPosts.map((post, i) => {
-                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(800).height(450).url() : undefined
+                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(1400).height(788).url() : undefined
                 const isHero = i === 0 && featuredPosts.length >= 2
                 return (
                   <a
@@ -220,7 +220,7 @@ export default async function BlogPage() {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
               {latestPosts.map((post) => {
-                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(800).height(450).url() : undefined
+                const imgUrl = post.heroImage ? urlFor(post.heroImage).width(1400).height(788).url() : undefined
                 return (
                   <a
                     key={post._id}

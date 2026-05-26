@@ -92,7 +92,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                 tags?: string[]
               }) => {
                 const imgSrc = post.heroImage
-                  ? urlFor(post.heroImage).width(800).height(450).url()
+                  ? urlFor(post.heroImage).width(1400).height(788).url()
                   : undefined
 
                 return (

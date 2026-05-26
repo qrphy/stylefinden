@@ -22,7 +22,7 @@ function toItem(o: {
     subtitle: [o.style, o.season ?? o.occasion].filter(Boolean).join(' · '),
     tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
     style: o.style ?? '',
-    image: o.image ? urlFor(o.image).width(800).height(1067).url() : undefined,
+    image: o.image ? urlFor(o.image).width(1400).height(1867).url() : undefined,
     href: `/outfits/${o.slug}`,
     pieces: o.pieces?.map((p, i) => ({
       key: p._key ?? String(i),

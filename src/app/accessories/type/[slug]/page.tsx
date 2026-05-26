@@ -16,7 +16,7 @@ function toItem(a: { _id: string; title: string; slug: string; image?: object; t
     subtitle: [a.type, a.occasion].filter(Boolean).join(' · '),
     tag: a.featured ? "Trending" : "New",
     style: a.type ?? '',
-    image: a.image ? urlFor(a.image).width(800).height(800).url() : undefined,
+    image: a.image ? urlFor(a.image).width(1400).height(1400).url() : undefined,
     href: `/accessories/${a.slug}`,
   }
 }

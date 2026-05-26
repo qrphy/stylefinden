@@ -57,7 +57,7 @@ export default async function LatestArticles() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             <a href={`/blog/${featured.slug}`} className="group xl:col-span-2 flex flex-col overflow-hidden">
               <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-                <ImgPlaceholder src={featured.heroImage ? urlFor(featured.heroImage).width(900).height(506).url() : undefined} alt={featured.title} />
+                <ImgPlaceholder src={featured.heroImage ? urlFor(featured.heroImage).width(1400).height(788).url() : undefined} alt={featured.title} />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                 <span className={`absolute top-4 left-4 badge-md ${categoryColor[featured.category] ?? "bg-gray-100 text-gray-700"}`}>
                   {categoryLabel[featured.category] ?? featured.category}
