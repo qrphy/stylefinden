@@ -97,7 +97,7 @@ function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopT
       <div className="mt-4">
         <a
           href={outfit.href}
-          className="block font-black text-sm uppercase tracking-wide text-black hover:text-gray-500 transition-colors leading-snug"
+          className="block font-semibold text-sm uppercase tracking-wide text-black hover:text-gray-500 transition-colors leading-snug"
         >
           {outfit.title}
         </a>

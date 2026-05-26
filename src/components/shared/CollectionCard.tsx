@@ -34,7 +34,7 @@ export default function CollectionCard({ item, href }: Props) {
           </span>
         </div>
         <div className="flex flex-col gap-3 pt-4 bg-white">
-          <h2 className="text-sm font-black uppercase tracking-wide text-black leading-tight">{item.label}</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-black leading-tight">{item.label}</h2>
           <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">{item.description}</p>
           <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">
             Coming Soon
@@ -59,7 +59,7 @@ export default function CollectionCard({ item, href }: Props) {
         </span>
       </div>
       <div className="flex flex-col gap-3 pt-4 bg-white">
-        <h2 className="text-sm font-black uppercase tracking-wide text-black leading-tight">{item.label}</h2>
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-black leading-tight">{item.label}</h2>
         <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{item.description}</p>
         <span className="self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-black transition-colors duration-200">
           Discover
