@@ -70,7 +70,7 @@ export default function OutfitSimilarSection({ outfitsByPieces, similarPiecesRaw
                             <div className="piece-shop-overlay">
                               <span className="piece-shop-label">
                                 Shop
-                                <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
+                                <svg viewBox="0 0 24 24" className="size-2 stroke-current" fill="none" strokeWidth={2.5}>
                                   <path d="M5 12h14M13 6l6 6-6 6" />
                                 </svg>
                               </span>
@@ -124,7 +124,7 @@ export default function OutfitSimilarSection({ outfitsByPieces, similarPiecesRaw
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         <span className="flex items-center gap-1 px-3 py-1 bg-black text-white text-[9px] font-semibold tracking-widest uppercase whitespace-nowrap">
                           View Look
-                          <svg viewBox="0 0 24 24" className="h-2.5 w-2.5 stroke-current" fill="none" strokeWidth={2.5}>
+                          <svg viewBox="0 0 24 24" className="size-2.5 stroke-current" fill="none" strokeWidth={2.5}>
                             <path d="M5 12h14M13 6l6 6-6 6" />
                           </svg>
                         </span>

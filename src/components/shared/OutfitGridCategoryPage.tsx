@@ -120,7 +120,7 @@ function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopT
                       target="_blank"
                       rel="noopener noreferrer sponsored"
                       aria-label={`Shop ${piece.name}`}
-                      className="shrink-0 w-12 h-12 relative bg-gray-100 overflow-hidden hover:opacity-75 transition-opacity"
+                      className="shrink-0 size-12 relative bg-gray-100 overflow-hidden hover:opacity-75 transition-opacity"
                       title={piece.name}
                     >
                       <ImgPlaceholder src={piece.image} alt={piece.name} sizes="48px" />
@@ -128,7 +128,7 @@ function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopT
                   ) : (
                     <div
                       key={piece.key}
-                      className="shrink-0 w-12 h-12 relative bg-gray-100 overflow-hidden"
+                      className="shrink-0 size-12 relative bg-gray-100 overflow-hidden"
                       title={piece.name}
                     >
                       <ImgPlaceholder src={piece.image} alt={piece.name} sizes="48px" />
@@ -136,14 +136,14 @@ function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopT
                   )
                 )}
                 {outfit.pieces.length > 4 && (
-                  <div className="shrink-0 w-12 h-12 bg-gray-100 flex items-center justify-center">
+                  <div className="shrink-0 size-12 bg-gray-100 flex items-center justify-center">
                     <span className="text-[10px] font-semibold text-gray-400">+{outfit.pieces.length - 4}</span>
                   </div>
                 )}
               </>
             ) : (
               Array.from({ length: 4 }).map((_, i) => (
-                <div key={i} className="shrink-0 w-12 h-12 bg-gray-100" />
+                <div key={i} className="shrink-0 size-12 bg-gray-100" />
               ))
             )}
           </div>

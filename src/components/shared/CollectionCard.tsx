@@ -63,7 +63,7 @@ export default function CollectionCard({ item, href }: Props) {
         <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{item.description}</p>
         <span className="self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-black transition-colors duration-200">
           Discover
-          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2.5}>
+          <svg viewBox="0 0 24 24" className="size-3.5 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2.5}>
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
         </span>

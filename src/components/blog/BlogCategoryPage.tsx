@@ -131,7 +131,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                       )}
                       <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-4 border-t border-gray-100">
                         Read More
-                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2}>
+                        <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
                           <path d="M5 12h14M13 6l6 6-6 6" />
                         </svg>
                       </span>
@@ -153,7 +153,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                 className="mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-500 transition-colors duration-200"
               >
                 All Articles
-                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2}>
+                <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </Link>

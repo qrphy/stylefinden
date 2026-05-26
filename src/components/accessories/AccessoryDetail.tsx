@@ -98,7 +98,7 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
                 <div className="piece-shop-overlay">
                   <span className="piece-shop-label">
                     Shop
-                    <svg viewBox="0 0 24 24" className="h-2 w-2 stroke-current" fill="none" strokeWidth={2.5}>
+                    <svg viewBox="0 0 24 24" className="size-2 stroke-current" fill="none" strokeWidth={2.5}>
                       <path d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                   </span>

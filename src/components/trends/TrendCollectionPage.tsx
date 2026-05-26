@@ -113,7 +113,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
               </p>
               <span className={`self-start flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase ${safeAccentText} mt-auto`}>
                 Trending Now
-                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2.5}>
+                <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2.5}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </span>
@@ -185,7 +185,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
                       <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 group-hover:translate-y-0 transition-transform duration-200">
                         <svg
                           viewBox="0 0 24 24"
-                          className="h-4 w-4 stroke-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                          className="size-4 stroke-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                           fill="none"
                           strokeWidth={2}
                         >
@@ -220,7 +220,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
                 className="mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-500 transition-colors duration-200"
               >
                 All Trends
-                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2}>
+                <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </a>
@@ -239,7 +239,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
           >
             <svg
               viewBox="0 0 24 24"
-              className="h-3.5 w-3.5 stroke-current group-hover:-translate-x-1 transition-transform duration-200"
+              className="size-3.5 stroke-current group-hover:-translate-x-1 transition-transform duration-200"
               fill="none"
               strokeWidth={2}
             >

@@ -91,7 +91,7 @@ export default async function FeaturedOutfits() {
                         </h3>
                         <span className="flex items-center gap-1.5 text-[10px] font-semibold tracking-widest uppercase text-white/70 group-hover:text-white transition-colors duration-200 mt-1">
                           View Look
-                          <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2.5}>
+                          <svg viewBox="0 0 24 24" className="size-3 stroke-current translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2.5}>
                             <path d="M5 12h14M13 6l6 6-6 6" />
                           </svg>
                         </span>

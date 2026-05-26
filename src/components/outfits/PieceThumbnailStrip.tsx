@@ -22,14 +22,14 @@ export default function PieceThumbnailStrip({ pieces, max = 4 }: Props) {
       {visible.map((piece) => (
         <div
           key={piece.key}
-          className="shrink-0 w-8 h-8 relative bg-gray-100 border border-gray-200 overflow-hidden"
+          className="shrink-0 size-8 relative bg-gray-100 border border-gray-200 overflow-hidden"
           title={piece.name}
         >
           <ImgPlaceholder src={piece.image} alt={piece.name} sizes="32px" />
         </div>
       ))}
       {overflow > 0 && (
-        <div className="shrink-0 w-8 h-8 bg-gray-100 border border-gray-200 flex items-center justify-center">
+        <div className="shrink-0 size-8 bg-gray-100 border border-gray-200 flex items-center justify-center">
           <span className="text-[9px] font-semibold text-gray-400 leading-none">+{overflow}</span>
         </div>
       )}

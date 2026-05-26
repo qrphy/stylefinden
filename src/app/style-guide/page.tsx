@@ -83,7 +83,7 @@ export default function StyleGuidePage() {
                 </div>
                 <span className={`flex items-center gap-1 text-xs font-semibold tracking-widest uppercase ${topic.accentText} group-hover:gap-2 transition-[gap] duration-200`}>
                   Read
-                  <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current" fill="none" strokeWidth={2.5}>
+                  <svg viewBox="0 0 24 24" className="size-3 stroke-current" fill="none" strokeWidth={2.5}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </span>
@@ -122,7 +122,7 @@ export default function StyleGuidePage() {
                   <p className="text-xs text-gray-500 leading-relaxed flex-1">{guide.excerpt}</p>
                   <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-4 border-t border-gray-100">
                     Read Guide
-                    <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2}>
+                    <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
                       <path d="M5 12h14M13 6l6 6-6 6" />
                     </svg>
                   </span>

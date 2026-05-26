@@ -35,7 +35,7 @@ export default function MobileMenu() {
           aria-label="Open menu"
           className="relative z-10 self-center"
         >
-          <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-black" fill="none" strokeWidth={2}>
+          <svg viewBox="0 0 24 24" className="size-5 stroke-black" fill="none" strokeWidth={2}>
             <path d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>

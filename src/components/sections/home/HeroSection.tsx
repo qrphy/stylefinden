@@ -37,7 +37,7 @@ export default function HeroSection() {
               className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
             >
               Explore the Collection
-              <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
+              <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </a>

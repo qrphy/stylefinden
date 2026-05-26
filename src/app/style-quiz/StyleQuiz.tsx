@@ -163,7 +163,7 @@ export default function StyleQuiz() {
                   <span className="text-sm font-semibold tracking-tight text-black">{opt.label}</span>
                   <span className="text-xs text-gray-400">{opt.description}</span>
                 </div>
-                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-gray-300 group-hover:stroke-black transition-colors duration-150 shrink-0" fill="none" strokeWidth={2}>
+                <svg viewBox="0 0 24 24" className="size-3.5 stroke-gray-300 group-hover:stroke-black transition-colors duration-150 shrink-0" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </button>
@@ -201,7 +201,7 @@ export default function StyleQuiz() {
               className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
             >
               Show my outfits
-              <svg viewBox="0 0 24 24" className="h-3 w-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
+              <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </button>

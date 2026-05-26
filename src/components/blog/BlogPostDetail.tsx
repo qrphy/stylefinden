@@ -204,7 +204,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
             href="/blog"
             className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group w-fit"
           >
-            <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current rotate-180 group-hover:-translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
+            <svg viewBox="0 0 24 24" className="size-4 stroke-current rotate-180 group-hover:-translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
             Back to Blog
@@ -215,7 +215,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
               className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group w-fit"
             >
               More {categoryLabel[post.category] ?? post.category}
-              <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
+              <svg viewBox="0 0 24 24" className="size-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </Link>

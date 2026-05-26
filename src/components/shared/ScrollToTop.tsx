@@ -19,9 +19,9 @@ export default function ScrollToTop() {
       variant="primary"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Scroll to top"
-      className="fixed bottom-6 right-6 z-50 !p-0 w-10 h-10"
+      className="fixed bottom-6 right-6 z-50 !p-0 size-10"
     >
-      <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2.5}>
+      <svg viewBox="0 0 24 24" className="size-4 stroke-current" fill="none" strokeWidth={2.5}>
         <path d="M12 19V5M5 12l7-7 7 7" />
       </svg>
     </Button>

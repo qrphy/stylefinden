@@ -75,7 +75,7 @@ export default async function LatestArticles() {
                 )}
                 <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-2 border-t border-gray-100">
                   Read More
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
+                  <svg viewBox="0 0 24 24" className="size-4 stroke-current" fill="none" strokeWidth={2}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </span>
@@ -142,7 +142,7 @@ export default async function LatestArticles() {
             <div className="flex flex-col gap-3 pt-5 flex-1">
               <div className="flex items-center gap-3">
                 <span className="text-xs tracking-widest uppercase text-gray-400">{featuredPost.date}</span>
-                <span className="w-1 h-1 bg-gray-300" />
+                <span className="size-1 bg-gray-300" />
                 <span className="text-xs tracking-widest uppercase text-gray-400">{featuredPost.readTime} read</span>
               </div>
               <h3 className="font-display text-xl md:text-2xl font-normal text-black leading-tight group-hover:text-gray-600 transition-colors duration-200">
@@ -151,7 +151,7 @@ export default async function LatestArticles() {
               <p className="text-sm text-gray-500 leading-relaxed flex-1">{featuredPost.excerpt}</p>
               <span className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black group-hover:gap-3 transition-[gap] duration-200 mt-auto pt-2 border-t border-gray-100">
                 Read More
-                <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth={2}>
+                <svg viewBox="0 0 24 24" className="size-4 stroke-current" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </span>
@@ -174,7 +174,7 @@ export default async function LatestArticles() {
                   </h3>
                   <div className="flex items-center gap-2">
                     <span className="text-xs tracking-widest uppercase text-gray-400">{post.readTime}</span>
-                    <span className="w-1 h-1 bg-gray-200" />
+                    <span className="size-1 bg-gray-200" />
                     <span className="text-xs tracking-widest uppercase text-gray-400">{post.date}</span>
                   </div>
                 </div>

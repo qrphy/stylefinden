@@ -111,7 +111,7 @@ export default async function HairstyleHighlights() {
                     <h3 className="font-display text-2xl md:text-3xl font-light text-white leading-tight">{h.title}</h3>
                     <p className="text-xs tracking-widest uppercase text-white/70 mt-1">{h.type} · {h.length}</p>
                   </div>
-                  <svg viewBox="0 0 24 24" className="h-6 w-6 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" fill="none" strokeWidth={2}>
+                  <svg viewBox="0 0 24 24" className="size-6 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" fill="none" strokeWidth={2}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </div>

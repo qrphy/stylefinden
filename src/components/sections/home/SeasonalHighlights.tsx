@@ -78,7 +78,7 @@ export default function SeasonalHighlights() {
                   className="self-start flex items-center gap-2 px-8 py-3 bg-white text-black text-xs font-semibold tracking-widest uppercase hover:bg-gray-100 transition-colors duration-200 group"
                 >
                   {s.cta.label}
-                  <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
+                  <svg viewBox="0 0 24 24" className="size-4 stroke-current translate-x-0 group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </a>

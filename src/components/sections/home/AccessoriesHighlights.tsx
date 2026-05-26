@@ -135,7 +135,7 @@ export default async function AccessoriesHighlights() {
                       <span className="text-xs tracking-widest uppercase text-white/60">{cat.featured.pairingTip}</span>
                       <div className="flex items-end justify-between gap-2">
                         <h3 className="font-display text-xl md:text-2xl font-normal text-white leading-tight">{cat.featured.title}</h3>
-                        <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" fill="none" strokeWidth={2}>
+                        <svg viewBox="0 0 24 24" className="size-5 stroke-white shrink-0 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity,transform] duration-300" fill="none" strokeWidth={2}>
                           <path d="M5 12h14M13 6l6 6-6 6" />
                         </svg>
                       </div>
