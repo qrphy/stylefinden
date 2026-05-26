@@ -102,7 +102,7 @@ export default function OutfitSimilarSection({ outfitsByPieces, similarPiecesRaw
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6">
               {outfitsByPieces.map((related) => {
                 const imgUrl = related.image
-                  ? urlFor(related.image).width(800).height(1067).url()
+                  ? urlFor(related.image).width(1400).height(1867).url()
                   : undefined
                 return (
                   <Link
