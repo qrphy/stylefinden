@@ -149,9 +149,17 @@ export default function NewsletterPopup() {
                 >
                   {submitStatus === "loading" ? "..." : "Subscribe"}
                 </button>
+
+                <button
+                  type="button"
+                  onClick={close}
+                  className="w-full py-3.5 border border-gray-300 text-xs font-semibold text-gray-500 tracking-widest uppercase hover:border-black hover:text-black transition-colors duration-200"
+                >
+                  No thanks
+                </button>
               </form>
 
-              <p className="mt-5 text-xs text-gray-400 leading-relaxed text-center">
+              <p className="mt-3 text-xs text-gray-400 leading-relaxed text-center">
                 By clicking &quot;SUBSCRIBE&quot; you confirm that you have read and accepted our{" "}
                 <a href="/privacy" className="underline underline-offset-2 hover:text-gray-600 transition-colors duration-200">
                   Privacy Policy
