@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import JsonLd from "@/components/seo/JsonLd"
 import Button from "@/components/shared/Button"
@@ -61,9 +62,9 @@ export default function HairstyleDetail({ hairstyle }: Props) {
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
         <nav className="breadcrumb-nav">
-          <a href="/" className="breadcrumb-link">Home</a>
+          <Link href="/" className="breadcrumb-link">Home</Link>
           <span>/</span>
-          <a href="/hairstyles" className="breadcrumb-link">Hairstyles</a>
+          <Link href="/hairstyles" className="breadcrumb-link">Hairstyles</Link>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{hairstyle.title}</span>
         </nav>
@@ -94,11 +95,11 @@ export default function HairstyleDetail({ hairstyle }: Props) {
                   {hairstyleTypeLabel[hairstyle.type] ?? hairstyle.type}
                 </span>
               )}
-              {hairstyle.length && (
+              {hairstyle.length ? (
                 <span className="badge bg-gray-100 text-gray-700">
                   {hairstyleLengthLabel[hairstyle.length] ?? hairstyle.length}
                 </span>
-              )}
+              ) : null}
               {hairstyle.mood && (
                 <span className="badge border border-gray-200 text-gray-600">
                   {hairstyleMoodLabel[hairstyle.mood] ?? hairstyle.mood}

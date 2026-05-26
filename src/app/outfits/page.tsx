@@ -126,7 +126,7 @@ export default async function OutfitsPage({ searchParams }: { searchParams: Sear
           </div>
           <Suspense fallback={
             <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">
-              Loading...
+              Loading…
             </p>
           }>
             <RankedOutfitsView

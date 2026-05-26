@@ -70,13 +70,16 @@ export default function NewsletterPopup() {
 
   return (
     <div
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="popup-title"
       className="fixed inset-0 z-[70] flex items-center justify-center px-4 bg-black/60"
       onClick={(e) => { if (e.target === e.currentTarget) close(); }}
+      onKeyDown={(e) => { if (e.key === 'Escape') close(); }}
     >
-      <div className="relative flex flex-col sm:flex-row w-full max-w-sm sm:max-w-3xl bg-white overflow-hidden sm:h-[min(520px,90vh)]">
+      <dialog
+        open
+        aria-modal="true"
+        aria-labelledby="popup-title"
+        className="relative flex flex-col sm:flex-row w-full max-w-sm sm:max-w-3xl bg-white overflow-hidden sm:h-[min(520px,90vh)] m-0 p-0 border-0"
+      >
 
         {/* Close — card seviyesinde, mobilde görsel üzerinde (beyaz), desktopda form üzerinde (siyah) */}
         <button
@@ -169,7 +172,7 @@ export default function NewsletterPopup() {
             </>
           )}
         </div>
-      </div>
+      </dialog>
     </div>
   );
 }

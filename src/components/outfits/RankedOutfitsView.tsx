@@ -2,6 +2,7 @@ import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { ALL_OUTFITS_RANKED_QUERY } from "@/lib/queries"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import Link from "next/link"
 import Button from "@/components/shared/Button"
 import PieceThumbnailStrip from "@/components/outfits/PieceThumbnailStrip"
 
@@ -120,12 +121,12 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
             {label}
           </span>
         ))}
-        <a
+        <Link
           href="/outfits"
           className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
         >
           Clear ×
-        </a>
+        </Link>
       </div>
 
       {topMatchCount > 0 && (
@@ -164,7 +165,7 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
               }))
 
             return (
-              <a
+              <Link
                 key={outfit._id}
                 href={`/outfits/${outfit.slug}`}
                 className="group flex flex-col gap-3"
@@ -195,7 +196,7 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
                   )}
                   <PieceThumbnailStrip pieces={pieceThumbnails} />
                 </div>
-              </a>
+              </Link>
             )
           })}
         </div>

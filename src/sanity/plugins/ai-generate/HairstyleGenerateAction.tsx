@@ -176,7 +176,7 @@ function HairstyleDialogContent({
           </Flex>
         )}
 
-        {result && !isLoading && (
+        {result !== null && !isLoading && (
           <Card tone="positive" padding={3} radius={2}>
             <Stack space={3}>
               <Text size={1} weight="semibold">Description:</Text>

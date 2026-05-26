@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import ImgPlaceholder from '@/components/shared/ImgPlaceholder'
 import { detectSeason } from '@/lib/detect-season'
 
@@ -302,18 +303,18 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
               </button>
             </div>
             <div className="flex items-center gap-6 sm:ml-auto">
-              <a
+              <Link
                 href="/style-quiz"
                 className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
               >
                 Take the quiz
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/outfits"
                 className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
               >
                 {occasion ? 'Skip' : 'Show me everything'}
-              </a>
+              </Link>
             </div>
           </div>
 

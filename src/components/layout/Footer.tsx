@@ -1,5 +1,7 @@
 // Site alt bilgisi — logo, Discover linkleri, Legal linkleri ve sosyal medya ikonları.
 // Mobilde her bölüm <details> akordiyonu olarak açılır/kapanır (CSS-only, JavaScript gerektirmez).
+import Link from 'next/link'
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200 mt-auto">
@@ -42,12 +44,12 @@ export default function Footer() {
           {/* Desktop — Discover */}
           <div className="hidden md:flex flex-col gap-3">
             <span className="footer-heading mb-1">Discover</span>
-            <a href="/outfits"     className="footer-link">Outfits</a>
-            <a href="/hairstyles"  className="footer-link">Hairstyles</a>
-            <a href="/accessories" className="footer-link">Accessories</a>
-            <a href="/trends"      className="footer-link">Trends</a>
-            <a href="/blog"        className="footer-link">Blog</a>
-            <a href="/style-guide" className="footer-link">Style Guide</a>
+            <Link href="/outfits"     className="footer-link">Outfits</Link>
+            <Link href="/hairstyles"  className="footer-link">Hairstyles</Link>
+            <Link href="/accessories" className="footer-link">Accessories</Link>
+            <Link href="/trends"      className="footer-link">Trends</Link>
+            <Link href="/blog"        className="footer-link">Blog</Link>
+            <Link href="/style-guide" className="footer-link">Style Guide</Link>
           </div>
 
           {/* Mobile accordion — Discover */}
@@ -59,21 +61,21 @@ export default function Footer() {
               </svg>
             </summary>
             <div className="accordion-content flex-col gap-3">
-              <a href="/outfits"     className="footer-link">Outfits</a>
-              <a href="/hairstyles"  className="footer-link">Hairstyles</a>
-              <a href="/accessories" className="footer-link">Accessories</a>
-              <a href="/trends"      className="footer-link">Trends</a>
-              <a href="/blog"        className="footer-link">Blog</a>
-              <a href="/style-guide" className="footer-link">Style Guide</a>
+              <Link href="/outfits"     className="footer-link">Outfits</Link>
+              <Link href="/hairstyles"  className="footer-link">Hairstyles</Link>
+              <Link href="/accessories" className="footer-link">Accessories</Link>
+              <Link href="/trends"      className="footer-link">Trends</Link>
+              <Link href="/blog"        className="footer-link">Blog</Link>
+              <Link href="/style-guide" className="footer-link">Style Guide</Link>
             </div>
           </details>
 
           {/* Desktop — Legal */}
           <div className="hidden md:flex flex-col gap-3">
             <span className="footer-heading mb-1">Legal</span>
-            <a href="/legal"   className="footer-link">Legal Notice</a>
-            <a href="/privacy" className="footer-link">Privacy Policy</a>
-            <a href="/contact" className="footer-link">Contact</a>
+            <Link href="/legal"   className="footer-link">Legal Notice</Link>
+            <Link href="/privacy" className="footer-link">Privacy Policy</Link>
+            <Link href="/contact" className="footer-link">Contact</Link>
           </div>
 
           {/* Mobile accordion — Legal */}
@@ -85,9 +87,9 @@ export default function Footer() {
               </svg>
             </summary>
             <div className="accordion-content flex-col gap-3">
-              <a href="/legal"   className="footer-link">Legal Notice</a>
-              <a href="/privacy" className="footer-link">Privacy Policy</a>
-              <a href="/contact" className="footer-link">Contact</a>
+              <Link href="/legal"   className="footer-link">Legal Notice</Link>
+              <Link href="/privacy" className="footer-link">Privacy Policy</Link>
+              <Link href="/contact" className="footer-link">Contact</Link>
             </div>
           </details>
 

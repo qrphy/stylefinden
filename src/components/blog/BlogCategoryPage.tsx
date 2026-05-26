@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { POSTS_BY_CATEGORY_QUERY } from "@/lib/queries"
 import type { BlogCategoryConfig } from "@/lib/blog-category-config"
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 
 type Props = {
@@ -40,9 +41,9 @@ export default async function BlogCategoryPage({ category, config }: Props) {
             <span key={i} className="flex items-center gap-2">
               {i > 0 && <span>/</span>}
               {crumb.href ? (
-                <a href={crumb.href} className="breadcrumb-link">
+                <Link href={crumb.href} className="breadcrumb-link">
                   {crumb.label}
-                </a>
+                </Link>
               ) : (
                 <span className="text-black">{crumb.label}</span>
               )}
@@ -96,7 +97,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                   : undefined
 
                 return (
-                  <a
+                  <Link
                     key={post._id}
                     href={`/blog/${post.slug}`}
                     className="group flex flex-col border border-gray-100 hover:border-gray-300 transition-colors duration-200 overflow-hidden"
@@ -135,7 +136,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                         </svg>
                       </span>
                     </div>
-                  </a>
+                  </Link>
                 )
               })}
             </div>
@@ -147,7 +148,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
               <p className="text-sm text-gray-500 leading-relaxed text-center max-w-xs">
                 No posts yet — check back soon.
               </p>
-              <a
+              <Link
                 href="/blog"
                 className="mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-500 transition-colors duration-200"
               >
@@ -155,7 +156,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                 <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 stroke-current" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </a>
+              </Link>
             </div>
           )}
 

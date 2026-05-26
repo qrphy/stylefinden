@@ -1,5 +1,6 @@
 // Blog yazısı detay layout bileşeni — /blog/[slug]/page.tsx tarafından kullanılır.
 // PortableText body, hero görsel, ilgili içerikler ve breadcrumb render eder.
+import Link from "next/link"
 import { PortableText } from "@portabletext/react"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
@@ -61,13 +62,13 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
 
         {/* Breadcrumb */}
         <nav className="breadcrumb-nav mb-8">
-          <a href="/" className="breadcrumb-link">Home</a>
+          <Link href="/" className="breadcrumb-link">Home</Link>
           <span>/</span>
-          <a href="/blog" className="breadcrumb-link">Blog</a>
+          <Link href="/blog" className="breadcrumb-link">Blog</Link>
           <span>/</span>
-          <a href={categoryHref} className="breadcrumb-link">
+          <Link href={categoryHref} className="breadcrumb-link">
             {categoryLabel[post.category] ?? post.category}
-          </a>
+          </Link>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{post.title}</span>
         </nav>
@@ -75,12 +76,12 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
         {/* Başlık + meta */}
         <div className="flex flex-col gap-4 mb-10">
           <div className="flex items-center gap-3 flex-wrap">
-            <a
+            <Link
               href={categoryHref}
               className={`badge-md hover:opacity-80 transition-opacity duration-200 ${categoryColor[post.category] ?? "bg-gray-100 text-gray-700"}`}
             >
               {categoryLabel[post.category] ?? post.category}
-            </a>
+            </Link>
             {post.publishedAt && (
               <span className="text-xs tracking-widest uppercase text-gray-400">
                 {formatDate(post.publishedAt)}
@@ -131,7 +132,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                 <h2 className="text-xl font-black text-black tracking-tight mb-6">Related Outfits</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {post.relatedOutfits.map((outfit) => (
-                    <a key={outfit._id} href={`/outfits/${outfit.slug}`} className="group flex flex-col gap-2">
+                    <Link key={outfit._id} href={`/outfits/${outfit.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                         <ImgPlaceholder
                           src={outfit.image ? urlFor(outfit.image).width(1400).height(1867).url() : undefined}
@@ -142,7 +143,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                       <span className="card-title px-0.5">
                         {outfit.title}
                       </span>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -153,7 +154,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                 <h2 className="text-xl font-black text-black tracking-tight mb-6">Related Accessories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {post.relatedAccessories.map((item) => (
-                    <a key={item._id} href={`/accessories/${item.slug}`} className="group flex flex-col gap-2">
+                    <Link key={item._id} href={`/accessories/${item.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-square">
                         <ImgPlaceholder
                           src={item.image ? urlFor(item.image).width(1400).height(1400).url() : undefined}
@@ -164,7 +165,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                       <span className="card-title px-0.5">
                         {item.title}
                       </span>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -175,7 +176,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                 <h2 className="text-xl font-black text-black tracking-tight mb-6">Related Hairstyles</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                   {post.relatedHairstyles.map((h) => (
-                    <a key={h._id} href={`/hairstyles/${h.slug}`} className="group flex flex-col gap-2">
+                    <Link key={h._id} href={`/hairstyles/${h.slug}`} className="group flex flex-col gap-2">
                       <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                         <ImgPlaceholder
                           src={h.image ? urlFor(h.image).width(1400).height(1867).url() : undefined}
@@ -186,7 +187,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                       <span className="card-title px-0.5">
                         {h.title}
                       </span>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -199,7 +200,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
       {/* ── Geri dön ── */}
       <div className="section-divider">
         <div className="container-page py-8 flex items-center justify-between">
-          <a
+          <Link
             href="/blog"
             className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group w-fit"
           >
@@ -207,9 +208,9 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
             Back to Blog
-          </a>
+          </Link>
           {post.category && (
-            <a
+            <Link
               href={categoryHref}
               className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-black transition-colors duration-200 group w-fit"
             >
@@ -217,7 +218,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
               <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current group-hover:translate-x-1 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </a>
+            </Link>
           )}
         </div>
       </div>

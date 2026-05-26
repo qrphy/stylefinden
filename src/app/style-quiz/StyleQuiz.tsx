@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { detectSeason } from '@/lib/detect-season'
 
@@ -75,22 +75,24 @@ type Step = 1 | 2 | 3
 
 export default function StyleQuiz() {
   const router = useRouter()
-  const [step, setStep]           = useState<Step>(1)
-  const [occasion, setOccasion]   = useState<string | null>(null)
-  const [adventure, setAdventure] = useState<Adventure | null>(null)
-  const [season, setSeason]       = useState<string>(detectSeason)
+  const [step, setStep]     = useState<Step>(1)
+  const [season, setSeason] = useState<string>(detectSeason)
+  const occasionRef         = useRef<string | null>(null)
+  const adventureRef        = useRef<Adventure | null>(null)
 
   function handleGoal(v: string) {
-    setOccasion(v)
+    occasionRef.current = v
     setStep(2)
   }
 
   function handleAdventure(v: Adventure) {
-    setAdventure(v)
+    adventureRef.current = v
     setStep(3)
   }
 
   function handleFinish() {
+    const occasion = occasionRef.current
+    const adventure = adventureRef.current
     if (!occasion || !adventure) return
     const overrides = OCCASION_ADVENTURE_OVERRIDE[occasion]?.[adventure]
     const styles = overrides ?? ADVENTURE_STYLES[adventure]
