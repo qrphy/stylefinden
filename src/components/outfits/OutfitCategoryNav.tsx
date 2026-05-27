@@ -124,7 +124,7 @@ export default function OutfitCategoryNav({ active }: Props) {
           {TAB_CONFIG.map((tab) => (
             <div
               key={tab.key}
-              onMouseEnter={() => openMenu(tab.key)}
+              onMouseEnter={() => active === "all" && openMenu(tab.key)}
               onMouseLeave={scheduleClose}
             >
               <a href={tab.href} className={tabCls(tab.key)}>
