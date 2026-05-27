@@ -1,7 +1,5 @@
-// İki modlu görsel bileşeni: src verilirse next/image ile Sanity CDN görselini render eder,
-// src yoksa "Soon" yazan gri placeholder gösterir — içerik CMS'e eklenmeden önce sayfa boş kalmaz.
-// blurDataURL verilirse yükleme sırasında Sanity LQIP blur önizlemesi gösterilir.
 import Image from "next/image";
+import { sanityImageLoader } from "@/lib/sanity-image-loader";
 
 type Props = {
   src?: string;
@@ -20,9 +18,10 @@ export default function ImgPlaceholder({
   priority = false,
   sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw",
   blurDataURL,
-  quality = 90,
+  quality = 85,
 }: Props) {
   if (src) {
+    const isSanity = src.startsWith("https://cdn.sanity.io");
     return (
       <Image
         src={src}
@@ -31,6 +30,7 @@ export default function ImgPlaceholder({
         sizes={sizes}
         priority={priority}
         quality={quality}
+        loader={isSanity ? sanityImageLoader : undefined}
         className={`${className} object-cover object-top`}
         placeholder={blurDataURL ? "blur" : "empty"}
         blurDataURL={blurDataURL}
