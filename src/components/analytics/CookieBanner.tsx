@@ -42,12 +42,14 @@ export default function CookieBanner() {
       </div>
       <div className="flex items-center gap-3">
         <button
+          type="button"
           onClick={decline}
           className="flex-1 text-xs tracking-widest uppercase border border-gray-600 text-gray-300 hover:border-white hover:text-white transition-colors duration-200 py-2.5 px-3"
         >
           Decline
         </button>
         <button
+          type="button"
           onClick={accept}
           className="flex-1 text-xs tracking-widest uppercase bg-white text-black hover:bg-gray-100 transition-colors duration-200 py-2.5 px-3"
         >

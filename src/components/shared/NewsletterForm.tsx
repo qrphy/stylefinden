@@ -64,6 +64,7 @@ export default function NewsletterForm() {
                 <p className="text-sm font-semibold tracking-widest uppercase text-white">Successfully subscribed!</p>
                 <p className="text-xs text-white/50 leading-relaxed">{message}</p>
                 <button
+                  type="button"
                   onClick={() => setStatus("idle")}
                   className="mt-2 text-xs tracking-widest uppercase text-white/40 hover:text-white transition-colors duration-200 underline underline-offset-4"
                 >

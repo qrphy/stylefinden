@@ -1,6 +1,7 @@
 // İletişim sayfası — e-posta adresi, yanıt süresi ve yasal sayfalara bağlantılar içerir.
 // Form yoktur; doğrudan e-posta yönlendirmesi kullanılır.
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -43,13 +44,13 @@ export default function ContactPage() {
         </p>
         <p className="text-sm text-gray-600">
           For more information please see our{" "}
-          <a href="/legal" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
+          <Link href="/legal" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
             Legal Notice
-          </a>{" "}
+          </Link>{" "}
           and{" "}
-          <a href="/privacy" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
+          <Link href="/privacy" className="underline underline-offset-2 hover:text-black transition-colors duration-200">
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
       </div>
