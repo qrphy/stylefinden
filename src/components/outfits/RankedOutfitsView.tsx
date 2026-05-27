@@ -10,6 +10,8 @@ type Props = {
   occasion?: string
   season?: string
   style?: string
+  color?: string
+  trend?: string
 }
 
 type OutfitDoc = {
@@ -22,46 +24,16 @@ type OutfitDoc = {
   occasion?: string
   occasions?: string[]
   featured?: boolean
-  pieces?: { _key: string; name: string; image?: object }[]
+  pieces?: { _key: string; name: string; image?: object; colorTag?: string }[]
 }
 
-// Collects all occasion values an outfit covers (single + multi-occasion array)
 function getOccasionSet(outfit: OutfitDoc): string[] {
   return [outfit.occasion, ...(outfit.occasions ?? [])].filter((o): o is string => Boolean(o))
 }
 
-// Maps filter value to all matching Sanity values (backward compat for legacy data)
 function filterToCandidates(filterOccasion: string): string[] {
   if (filterOccasion === 'date-evening') return ['date-night', 'evening', 'date-evening']
   return [filterOccasion]
-}
-
-function occasionMatches(outfit: OutfitDoc, filterOccasion: string): boolean {
-  const candidates = filterToCandidates(filterOccasion)
-  return getOccasionSet(outfit).some(o => candidates.includes(o))
-}
-
-function calcScore(outfit: OutfitDoc, filters: Props): number {
-  const occMatch = filters.occasion ? occasionMatches(outfit, filters.occasion) : false
-  // Bonus point if occasion is covered by multiple occasions array (more relevant match)
-  const multiOccBonus = filters.occasion && Array.isArray(outfit.occasions) && outfit.occasions.length > 0
-    ? (occasionMatches(outfit, filters.occasion) ? 1 : 0)
-    : 0
-  return (
-    (occMatch ? 3 : 0) +
-    multiOccBonus +
-    (filters.season && outfit.season === filters.season ? 2 : 0) +
-    (filters.style  && outfit.style  === filters.style  ? 2 : 0) +
-    (outfit.featured ? 1 : 0)
-  )
-}
-
-function matchBadge(score: number, maxPossible: number): string | null {
-  if (maxPossible === 0) return null
-  if (score >= 5) return 'Perfect Match'
-  if (score >= 3) return 'Close Match'
-  if (score >= 1) return 'You Might Like'
-  return null
 }
 
 const OCCASION_LABELS: Record<string, string> = {
@@ -73,72 +45,93 @@ const OCCASION_LABELS: Record<string, string> = {
 
 const SEASON_LABELS: Record<string, string> = {
   spring: 'Spring', summer: 'Summer', autumn: 'Autumn', winter: 'Winter',
+  'all-season': 'All Seasons',
 }
 
 const STYLE_LABELS: Record<string, string> = {
-  minimalist: 'Minimal', boho: 'Boho', streetstyle: 'Street',
+  minimalist: 'Minimalist', boho: 'Boho', streetstyle: 'Street Style',
   'old-money': 'Old Money', elegant: 'Elegant', y2k: 'Y2K',
-  'retro-vintage': 'Vintage', casual: 'Casual', 'clean-girl': 'Clean Girl',
-  'sienna-vibe': 'Sienna Vibe', 'korean-fashion': 'Korean', 'black-dark': 'Dark',
+  'retro-vintage': 'Retro Vintage', casual: 'Casual', 'clean-girl': 'Clean Girl',
+  'sienna-vibe': 'Sienna Vibe', 'korean-fashion': 'Korean Fashion', 'black-dark': 'Dark',
   'cute-coquette': 'Coquette', formal: 'Formal', classic: 'Classic',
   sporty: 'Sporty', western: 'Western', vintage: 'Vintage',
 }
 
-export default async function RankedOutfitsView({ occasion, season, style }: Props) {
+const COLOR_LABELS: Record<string, string> = {
+  black: 'Black', white: 'White', grey: 'Grey', beige: 'Beige',
+  navy: 'Navy', blue: 'Blue', red: 'Red', burgundy: 'Burgundy',
+  pink: 'Pink', orange: 'Orange', yellow: 'Yellow', green: 'Green',
+  khaki: 'Khaki', brown: 'Brown', purple: 'Purple', multicolor: 'Multicolor',
+}
+
+export default async function RankedOutfitsView({ occasion, season, style, color, trend }: Props) {
   const allOutfits: OutfitDoc[] = await client.fetch(
     ALL_OUTFITS_RANKED_QUERY,
     {},
     { next: { revalidate: 3600, tags: ['outfit'] } }
   )
 
-  const filters = { occasion, season, style }
-  const maxPossible =
-    (occasion ? 3 : 0) +
-    (season   ? 2 : 0) +
-    (style    ? 2 : 0) + 1
+  let filtered = allOutfits
+  if (season)   filtered = filtered.filter((o) => o.season === season)
+  if (style)    filtered = filtered.filter((o) => o.style === style)
+  if (trend)    filtered = filtered.filter((o) => o.style === trend)
+  if (occasion) {
+    filtered = filtered.filter((o) => {
+      const candidates = filterToCandidates(occasion)
+      return getOccasionSet(o).some((occ) => candidates.includes(occ))
+    })
+  }
+  if (color) {
+    filtered = filtered.filter((o) => o.pieces?.some((p) => p.colorTag === color))
+  }
 
-  const ranked = [...allOutfits]
-    .map((o) => ({ ...o, score: calcScore(o, filters) }))
-    .sort((a, b) => b.score - a.score)
+  const sorted = [...filtered].sort((a, b) => {
+    if (a.featured && !b.featured) return -1
+    if (!a.featured && b.featured) return 1
+    return 0
+  })
 
   const activeFilters = [
-    occasion && (OCCASION_LABELS[occasion] ?? occasion),
     season   && (SEASON_LABELS[season]     ?? season),
+    occasion && (OCCASION_LABELS[occasion] ?? occasion),
     style    && (STYLE_LABELS[style]       ?? style),
+    trend    && (STYLE_LABELS[trend]       ?? trend),
+    color    && (COLOR_LABELS[color]       ?? color),
   ].filter(Boolean) as string[]
 
-  const topMatchCount = ranked.filter((o) => o.score >= 3).length
+  const hasFilters = activeFilters.length > 0
 
   return (
     <div>
-      {/* Active filter pills + clear */}
-      <div className="flex items-center gap-3 mb-2 flex-wrap">
-        {activeFilters.map((label) => (
-          <span
-            key={label}
-            className="px-3 py-1 text-[10px] font-semibold tracking-widest uppercase bg-black text-white"
+      {hasFilters && (
+        <div className="flex items-center gap-3 mb-6 flex-wrap">
+          {activeFilters.map((label) => (
+            <span
+              key={label}
+              className="px-3 py-1 text-[10px] font-semibold tracking-widest uppercase bg-black text-white"
+            >
+              {label}
+            </span>
+          ))}
+          <Link
+            href="/outfits"
+            className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
           >
-            {label}
-          </span>
-        ))}
-        <Link
-          href="/outfits"
-          className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
-        >
-          Clear ×
-        </Link>
-      </div>
+            Clear ×
+          </Link>
+        </div>
+      )}
 
-      {topMatchCount > 0 && (
+      {hasFilters && (
         <p className="text-xs text-gray-400 tracking-widest uppercase mb-8">
-          {topMatchCount} match{topMatchCount !== 1 ? 'es' : ''} found
+          {sorted.length} look{sorted.length !== 1 ? 's' : ''} found
         </p>
       )}
 
-      {ranked.length === 0 ? (
+      {sorted.length === 0 ? (
         <div className="py-20 text-center border border-gray-100">
           <p className="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-6">
-            No outfits found for these filters.
+            No outfits found for this filter.
           </p>
           <Button href="/outfits" variant="ghost" arrow>
             Browse all collections
@@ -146,8 +139,7 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
-          {ranked.map((outfit) => {
-            const badge = matchBadge(outfit.score, maxPossible)
+          {sorted.map((outfit) => {
             const imageUrl = outfit.image
               ? urlFor(outfit.image).width(1400).height(1867).url()
               : undefined
@@ -178,13 +170,6 @@ export default async function RankedOutfitsView({ occasion, season, style }: Pro
                       sizes="(max-width: 768px) 100vw, 25vw"
                     />
                   </div>
-                  {badge && (
-                    <div className="absolute top-3 left-3">
-                      <span className="text-[9px] font-semibold tracking-widest uppercase bg-black text-white px-2 py-1">
-                        {badge}
-                      </span>
-                    </div>
-                  )}
                   <div className="card-overlay" />
                 </div>
                 <div className="flex flex-col gap-1.5 px-0.5">

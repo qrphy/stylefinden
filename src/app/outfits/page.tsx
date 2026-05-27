@@ -6,7 +6,7 @@ import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
 export const metadata: Metadata = {
   title: "Outfit Ideas for Women – Casual, Party & Summer Looks",
   description:
-    "Browse outfit ideas for women for every occasion and season — casual outfits, party looks, summer dresses, winter layers and more. New styles added weekly.",
+    "Browse outfit ideas for women for every occasion, season and aesthetic — casual outfits, party looks, summer dresses, winter layers and more. New styles added weekly.",
   keywords: [
     "outfit ideas for women",
     "women outfit ideas",
@@ -46,10 +46,34 @@ export const metadata: Metadata = {
   },
 }
 
-type SearchParams = Promise<{ occasion?: string; season?: string; style?: string }>
+type Tab = "all" | "season" | "occasion" | "style" | "trend" | "color"
+
+type SearchParams = Promise<{
+  tab?: string
+  occasion?: string
+  season?: string
+  style?: string
+  color?: string
+  trend?: string
+}>
+
+const VALID_TABS = ["season", "occasion", "style", "trend", "color"] as const
+
+function getActiveTab(params: Awaited<SearchParams>): Tab {
+  if (params.season)   return "season"
+  if (params.occasion) return "occasion"
+  if (params.style)    return "style"
+  if (params.trend)    return "trend"
+  if (params.color)    return "color"
+  if (params.tab && (VALID_TABS as readonly string[]).includes(params.tab)) {
+    return params.tab as Tab
+  }
+  return "all"
+}
 
 export default async function OutfitsPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams
+  const activeTab = getActiveTab(params)
 
   return (
     <main className="flex-1 bg-white">
@@ -65,7 +89,7 @@ export default async function OutfitsPage({ searchParams }: { searchParams: Sear
           </p>
         </div>
 
-        <OutfitCategoryNav active="all" />
+        <OutfitCategoryNav active={activeTab} />
 
         <Suspense fallback={
           <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">
@@ -76,6 +100,8 @@ export default async function OutfitsPage({ searchParams }: { searchParams: Sear
             occasion={params.occasion}
             season={params.season}
             style={params.style}
+            color={params.color}
+            trend={params.trend}
           />
         </Suspense>
 

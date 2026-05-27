@@ -8,7 +8,7 @@ import { defineQuery } from 'next-sanity'
 export const ALL_OUTFITS_RANKED_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(featured desc, _createdAt desc) {
     _id, title, "slug": slug.current, image, style, season, occasion, occasions, featured,
-    pieces[]{ _key, name, image }
+    pieces[]{ _key, name, image, colorTag }
   }
 `)
 
