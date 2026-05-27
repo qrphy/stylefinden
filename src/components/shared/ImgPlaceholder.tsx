@@ -18,7 +18,7 @@ export default function ImgPlaceholder({
   priority = false,
   sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw",
   blurDataURL,
-  quality = 85,
+  quality = 90,
 }: Props) {
   if (src) {
     const isSanity = src.startsWith("https://cdn.sanity.io");
