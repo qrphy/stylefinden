@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import SectionMainPage from "@/components/shared/SectionMainPage"
+import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
 
 export const metadata: Metadata = {
   title: "Outfit Collections by Season – Summer, Winter, Autumn & Spring",
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 export default function SeasonIndexPage() {
   return (
     <SectionMainPage
+      topNav={<OutfitCategoryNav active="season" />}
       hero={{
         eyebrow: "Seasonal Collections",
         heading: "Dress for every",

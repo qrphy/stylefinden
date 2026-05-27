@@ -1,3 +1,4 @@
+import { type ReactNode } from "react";
 import CollectionCard, { type CollectionItem } from "./CollectionCard";
 
 export type CollectionGroup = {
@@ -19,9 +20,10 @@ type Props = {
   };
   breadcrumb?: BreadcrumbItem[];
   collections: CollectionGroup[];
+  topNav?: ReactNode;
 };
 
-export default function SectionMainPage({ hero, breadcrumb, collections }: Props) {
+export default function SectionMainPage({ hero, breadcrumb, collections, topNav }: Props) {
   return (
     <main className="flex-1 bg-white">
 
@@ -62,6 +64,13 @@ export default function SectionMainPage({ hero, breadcrumb, collections }: Props
           </div>
         </div>
       </section>
+
+      {/* ── Top Nav (optional) ── */}
+      {topNav && (
+        <div className="container-page pt-8">
+          {topNav}
+        </div>
+      )}
 
       {/* ── Collection Groups ── */}
       {collections.map((group, i) => (

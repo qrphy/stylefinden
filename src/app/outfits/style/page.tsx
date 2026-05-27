@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import SectionMainPage from "@/components/shared/SectionMainPage"
+import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
 import { STYLE_ORDER, getStyleCard } from "@/lib/outfit-style-config"
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 export default function StyleIndexPage() {
   return (
     <SectionMainPage
+      topNav={<OutfitCategoryNav active="style" />}
       hero={{
         eyebrow: "Style Collections",
         heading: "Find your",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import SectionMainPage from "@/components/shared/SectionMainPage"
+import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
 import { OCCASION_ORDER, getOccasionCard } from "@/lib/outfit-occasion-config"
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
 export default function OccasionIndexPage() {
   return (
     <SectionMainPage
+      topNav={<OutfitCategoryNav active="occasion" />}
       hero={{
         eyebrow: "By Occasion",
         heading: "The right look for",
