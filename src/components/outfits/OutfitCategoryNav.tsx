@@ -112,9 +112,9 @@ export default function OutfitCategoryNav({ active }: Props) {
     }`
 
   return (
-    <div className="relative mb-10">
+    <div className="sticky top-0 z-40 bg-white mb-10">
       {/* Tab row */}
-      <nav className="flex items-center border-b border-gray-200 overflow-x-auto">
+      <nav className="flex items-center border-b border-gray-200 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <a href="/outfits" className={tabCls("all").replace("flex items-center gap-1 ", "")}>
           All Looks
         </a>
