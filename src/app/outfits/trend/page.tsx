@@ -4,14 +4,14 @@ import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
 import RankedOutfitsView from "@/components/outfits/RankedOutfitsView"
 
 export const metadata: Metadata = {
-  title: "Outfit Collections by Season – Summer, Winter, Autumn & Spring",
+  title: "Trending Outfit Aesthetics – Y2K, Old Money, Clean Girl & More",
   description:
-    "Browse curated outfit collections for every season – from light summer dresses to warm winter layering looks, fresh spring styles and earthy autumn tones.",
-  alternates: { canonical: "https://stylefinden.com/outfits/season" },
+    "Explore trending outfit aesthetics – from Y2K and Old Money to Clean Girl, Coquette and Korean Fashion. Curated looks for every aesthetic.",
+  alternates: { canonical: "https://stylefinden.com/outfits/trend" },
   openGraph: {
-    title: "Seasonal Outfit Collections | STYLEFINDEN",
-    description: "Curated outfit collections for every season.",
-    url: "https://stylefinden.com/outfits/season",
+    title: "Trending Outfit Aesthetics | STYLEFINDEN",
+    description: "Curated looks for every trending aesthetic.",
+    url: "https://stylefinden.com/outfits/trend",
     type: "website",
     locale: "en_US",
     siteName: "STYLEFINDEN",
@@ -19,24 +19,27 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Seasonal Outfit Collections | STYLEFINDEN",
-    description: "Curated outfit collections for every season.",
+    title: "Trending Outfit Aesthetics | STYLEFINDEN",
+    description: "Curated looks for every trending aesthetic.",
     images: ["/stylefinden-logo.png"],
   },
 }
 
-const SEASON_CHIPS = [
-  { label: "All Seasons", value: "" },
-  { label: "Spring",      value: "spring"     },
-  { label: "Summer",      value: "summer"     },
-  { label: "Autumn",      value: "autumn"     },
-  { label: "Winter",      value: "winter"     },
-  { label: "All Season",  value: "all-season" },
+const TREND_CHIPS = [
+  { label: "All",            value: ""               },
+  { label: "Y2K",            value: "y2k"            },
+  { label: "Old Money",      value: "old-money"      },
+  { label: "Clean Girl",     value: "clean-girl"     },
+  { label: "Korean Fashion", value: "korean-fashion" },
+  { label: "Coquette",       value: "cute-coquette"  },
+  { label: "Dark",           value: "black-dark"     },
+  { label: "Retro Vintage",  value: "retro-vintage"  },
+  { label: "Sienna Vibe",    value: "sienna-vibe"    },
 ]
 
 type SearchParams = Promise<{ filter?: string }>
 
-export default async function SeasonIndexPage({ searchParams }: { searchParams: SearchParams }) {
+export default async function TrendIndexPage({ searchParams }: { searchParams: SearchParams }) {
   const { filter } = await searchParams
 
   return (
@@ -44,24 +47,24 @@ export default async function SeasonIndexPage({ searchParams }: { searchParams: 
       <div className="container-page py-14 md:py-20">
 
         <div className="mb-10">
-          <span className="eyebrow">Seasonal Collections</span>
+          <span className="eyebrow">By Trend</span>
           <h1 className="hero-heading mt-3">
-            Dress for every <span className="italic font-light">season.</span>
+            Outfits for every <span className="italic font-light">aesthetic.</span>
           </h1>
           <p className="text-sm text-gray-500 mt-4 max-w-lg leading-relaxed">
-            From light summer dresses to warm winter layering looks – discover curated outfit collections for every season of the year.
+            From Y2K and Old Money to Clean Girl and Coquette – explore curated looks for every trending aesthetic.
           </p>
         </div>
 
-        <OutfitCategoryNav active="season" />
+        <OutfitCategoryNav active="trend" />
 
         <div className="flex gap-2 flex-wrap mb-8">
-          {SEASON_CHIPS.map((chip) => {
+          {TREND_CHIPS.map((chip) => {
             const isActive = chip.value === "" ? !filter : chip.value === filter
             return (
               <a
                 key={chip.value || "all"}
-                href={chip.value ? `/outfits/season?filter=${chip.value}` : "/outfits/season"}
+                href={chip.value ? `/outfits/trend?filter=${chip.value}` : "/outfits/trend"}
                 className={`px-3 py-1.5 text-[10px] font-semibold tracking-widest uppercase border transition-colors ${
                   isActive
                     ? "border-black bg-black text-white"
@@ -79,7 +82,7 @@ export default async function SeasonIndexPage({ searchParams }: { searchParams: 
             Loading…
           </p>
         }>
-          <RankedOutfitsView season={filter} />
+          <RankedOutfitsView trend={filter} />
         </Suspense>
 
       </div>

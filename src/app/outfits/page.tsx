@@ -46,35 +46,7 @@ export const metadata: Metadata = {
   },
 }
 
-type Tab = "all" | "season" | "occasion" | "style" | "trend" | "color"
-
-type SearchParams = Promise<{
-  tab?: string
-  occasion?: string
-  season?: string
-  style?: string
-  color?: string
-  trend?: string
-}>
-
-const VALID_TABS = ["season", "occasion", "style", "trend", "color"] as const
-
-function getActiveTab(params: Awaited<SearchParams>): Tab {
-  if (params.season)   return "season"
-  if (params.occasion) return "occasion"
-  if (params.style)    return "style"
-  if (params.trend)    return "trend"
-  if (params.color)    return "color"
-  if (params.tab && (VALID_TABS as readonly string[]).includes(params.tab)) {
-    return params.tab as Tab
-  }
-  return "all"
-}
-
-export default async function OutfitsPage({ searchParams }: { searchParams: SearchParams }) {
-  const params = await searchParams
-  const activeTab = getActiveTab(params)
-
+export default async function OutfitsPage() {
   return (
     <main className="flex-1 bg-white">
       <div className="container-page py-14 md:py-20">
@@ -89,20 +61,14 @@ export default async function OutfitsPage({ searchParams }: { searchParams: Sear
           </p>
         </div>
 
-        <OutfitCategoryNav active={activeTab} />
+        <OutfitCategoryNav active="all" />
 
         <Suspense fallback={
           <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">
             Loading…
           </p>
         }>
-          <RankedOutfitsView
-            occasion={params.occasion}
-            season={params.season}
-            style={params.style}
-            color={params.color}
-            trend={params.trend}
-          />
+          <RankedOutfitsView />
         </Suspense>
 
       </div>

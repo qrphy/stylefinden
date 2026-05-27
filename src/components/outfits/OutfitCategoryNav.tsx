@@ -78,11 +78,11 @@ const COLORS: DropdownItem[] = [
 ]
 
 const TAB_CONFIG: TabConfig[] = [
-  { key: "season",   label: "By Season",   href: "/outfits?tab=season",   queryKey: "season",   items: SEASONS   },
-  { key: "occasion", label: "By Occasion", href: "/outfits?tab=occasion", queryKey: "occasion", items: OCCASIONS },
-  { key: "style",    label: "By Style",    href: "/outfits?tab=style",    queryKey: "style",    items: STYLES    },
-  { key: "trend",    label: "By Trend",    href: "/outfits?tab=trend",    queryKey: "trend",    items: TRENDS    },
-  { key: "color",    label: "By Color",    href: "/outfits?tab=color",    queryKey: "color",    items: COLORS    },
+  { key: "season",   label: "By Season",   href: "/outfits/season",   queryKey: "filter",   items: SEASONS   },
+  { key: "occasion", label: "By Occasion", href: "/outfits/occasion", queryKey: "filter",   items: OCCASIONS },
+  { key: "style",    label: "By Style",    href: "/outfits/style",    queryKey: "filter",   items: STYLES    },
+  { key: "trend",    label: "By Trend",    href: "/outfits/trend",    queryKey: "filter",   items: TRENDS    },
+  { key: "color",    label: "By Color",    href: "/outfits/color",    queryKey: "filter",   items: COLORS    },
 ]
 
 export default function OutfitCategoryNav({ active }: Props) {
@@ -101,8 +101,6 @@ export default function OutfitCategoryNav({ active }: Props) {
   const cancelClose = useCallback(() => {
     clearTimeout(closeTimeout.current)
   }, [])
-
-  const activeConfig = TAB_CONFIG.find((t) => t.key === active)
 
   const tabCls = (key: Tab) =>
     `shrink-0 flex items-center gap-1 px-5 py-3 text-[10px] font-semibold tracking-widest uppercase border-b-2 -mb-px transition-colors duration-200 whitespace-nowrap ${
@@ -149,7 +147,7 @@ export default function OutfitCategoryNav({ active }: Props) {
             {TAB_CONFIG.find((t) => t.key === openDropdown)?.items.map((item) => (
               <a
                 key={item.value}
-                href={`/outfits?${TAB_CONFIG.find((t) => t.key === openDropdown)!.queryKey}=${item.value}`}
+                href={`/outfits/${openDropdown}?filter=${item.value}`}
                 className="px-5 py-3 text-[10px] font-semibold tracking-widest uppercase text-gray-500 hover:bg-gray-50 hover:text-black transition-colors whitespace-nowrap"
               >
                 {item.label}
@@ -159,20 +157,6 @@ export default function OutfitCategoryNav({ active }: Props) {
         )}
       </div>
 
-      {/* Mobile chip row — outside sticky so it scrolls with the page */}
-      {activeConfig && (
-        <div className="flex gap-2 flex-wrap mt-4 md:hidden">
-          {activeConfig.items.map((item) => (
-            <a
-              key={item.value}
-              href={`/outfits?${activeConfig.queryKey}=${item.value}`}
-              className="px-3 py-1.5 text-[10px] font-semibold tracking-widest uppercase border border-gray-200 text-gray-500 hover:border-black hover:text-black transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      )}
     </div>
   )
 }
