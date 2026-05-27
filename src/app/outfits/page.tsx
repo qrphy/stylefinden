@@ -62,7 +62,7 @@ const collections: CollectionGroup[] = [
     items: [
       { slug: "summer", label: "Summer Outfits",      description: "Light dresses, floral prints & linen looks for hot days",       tags: ["Maxi", "Midi", "Mini", "Floral"],        badge: "New", accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]", active: true, image: "/categories/outfits/summer.webp", priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
       { slug: "winter", label: "Cozy Winter Outfits", description: "Warm layering looks, coats and cozy combinations for cold days", tags: ["Coat", "Layering", "Knitwear", "Boots"], badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true, image: "/categories/outfits/winter.png",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
-      { slug: "spring", label: "Spring Looks",        description: "Pastel tones, light blazers and fresh combinations",             tags: ["Pastels", "Blazer", "Linen", "Floral"],  badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true, image: "/categories/outfits/spring.png",  sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
+      { slug: "spring", label: "Spring Looks",        description: "Pastel tones, light blazers and fresh combinations",             tags: ["Pastels", "Blazer", "Linen", "Floral"],  badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true, image: "/categories/outfits/spring.png",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
     ],
   },
   {
@@ -71,7 +71,7 @@ const collections: CollectionGroup[] = [
       "Dressed for the moment. From workwear and elegant evenings to party nights, school days and travel looks — find outfits built around where you're actually going. Each collection is curated for real life, not just the photo.",
     basePath: "/outfits/occasion",
     gridCols: "grid-cols-1 md:grid-cols-3",
-    items: OCCASION_ORDER.map(getOccasionCard),
+    items: OCCASION_ORDER.map((slug, i) => ({ ...getOccasionCard(slug), priority: i < 3 })),
   },
   {
     label: "Style Outfits",
@@ -79,7 +79,7 @@ const collections: CollectionGroup[] = [
       "Your aesthetic is a decision, not an accident. Whether you're drawn to boho layering, minimalist clean lines, old-money elegance, retro prints or western frontier energy — explore collections that commit to a point of view.",
     basePath: "/outfits/style",
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
-    items: STYLE_SLUGS.map(getStyleCard),
+    items: STYLE_SLUGS.map((slug, i) => ({ ...getStyleCard(slug), priority: i < 2 })),
   },
   {
     label: "Trend & Aesthetic",

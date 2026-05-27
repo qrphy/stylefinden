@@ -77,6 +77,7 @@ export function getOccasionCard(slug: string): CollectionItem {
     accentText: cfg.accentText,
     active: true,
     image: OCCASION_IMAGES[slug],
+    sizes: "(max-width: 768px) 100vw, 33vw",
   }
 }
 

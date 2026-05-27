@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
-import { Suspense } from "react"
-import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
-import RankedOutfitsView from "@/components/outfits/RankedOutfitsView"
+import SectionMainPage from "@/components/shared/SectionMainPage"
+import { STYLE_ORDER, getStyleCard } from "@/lib/outfit-style-config"
 
 export const metadata: Metadata = {
   title: "Outfit Collections by Style – Boho, Minimalist, Street Style & More",
@@ -25,69 +24,29 @@ export const metadata: Metadata = {
   },
 }
 
-const STYLE_CHIPS = [
-  { label: "All",          value: ""           },
-  { label: "Casual",       value: "casual"     },
-  { label: "Street Style", value: "streetstyle"},
-  { label: "Elegant",      value: "elegant"    },
-  { label: "Boho",         value: "boho"       },
-  { label: "Sporty",       value: "sporty"     },
-  { label: "Minimalist",   value: "minimalist" },
-  { label: "Classic",      value: "classic"    },
-  { label: "Vintage",      value: "vintage"    },
-  { label: "Formal",       value: "formal"     },
-  { label: "Western",      value: "western"    },
-]
-
-type SearchParams = Promise<{ filter?: string }>
-
-export default async function StyleIndexPage({ searchParams }: { searchParams: SearchParams }) {
-  const { filter } = await searchParams
-
+export default function StyleIndexPage() {
   return (
-    <main className="flex-1 bg-white">
-      <div className="container-page py-14 md:py-20">
-
-        <div className="mb-10">
-          <span className="eyebrow">Style Collections</span>
-          <h1 className="hero-heading mt-3">
-            Find your <span className="italic font-light">signature style.</span>
-          </h1>
-          <p className="text-sm text-gray-500 mt-4 max-w-lg leading-relaxed">
-            From effortless boho and clean minimalist looks to bold street style and timeless classic outfits – discover the style that speaks to you.
-          </p>
-        </div>
-
-        <OutfitCategoryNav active="style" />
-
-        <div className="flex gap-2 flex-wrap mb-8">
-          {STYLE_CHIPS.map((chip) => {
-            const isActive = chip.value === "" ? !filter : chip.value === filter
-            return (
-              <a
-                key={chip.value || "all"}
-                href={chip.value ? `/outfits/style?filter=${chip.value}` : "/outfits/style"}
-                className={`px-3 py-1.5 text-[10px] font-semibold tracking-widest uppercase border transition-colors ${
-                  isActive
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 text-gray-500 hover:border-black hover:text-black"
-                }`}
-              >
-                {chip.label}
-              </a>
-            )
-          })}
-        </div>
-
-        <Suspense fallback={
-          <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">
-            Loading…
-          </p>
-        }>
-          <RankedOutfitsView style={filter} />
-        </Suspense>
-
-      </div>
-    </main>
+    <SectionMainPage
+      hero={{
+        eyebrow: "Style Collections",
+        heading: "Find your",
+        headingItalic: "signature style.",
+        description:
+          "From effortless boho and clean minimalist looks to bold street style and timeless classic outfits – discover the style that speaks to you.",
+      }}
+      breadcrumb={[
+        { label: "Home", href: "/" },
+        { label: "Outfits", href: "/outfits" },
+        { label: "By Style" },
+      ]}
+      collections={[
+        {
+          label: "All Styles",
+          basePath: "/outfits/style",
+          gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
+          items: STYLE_ORDER.map(getStyleCard),
+        },
+      ]}
+    />
   )
 }

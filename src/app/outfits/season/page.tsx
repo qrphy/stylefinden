@@ -1,7 +1,5 @@
 import type { Metadata } from "next"
-import { Suspense } from "react"
-import OutfitCategoryNav from "@/components/outfits/OutfitCategoryNav"
-import RankedOutfitsView from "@/components/outfits/RankedOutfitsView"
+import SectionMainPage from "@/components/shared/SectionMainPage"
 
 export const metadata: Metadata = {
   title: "Outfit Collections by Season – Summer, Winter, Autumn & Spring",
@@ -25,64 +23,70 @@ export const metadata: Metadata = {
   },
 }
 
-const SEASON_CHIPS = [
-  { label: "All Seasons", value: "" },
-  { label: "Spring",      value: "spring"     },
-  { label: "Summer",      value: "summer"     },
-  { label: "Autumn",      value: "autumn"     },
-  { label: "Winter",      value: "winter"     },
-  { label: "All Season",  value: "all-season" },
-]
-
-type SearchParams = Promise<{ filter?: string }>
-
-export default async function SeasonIndexPage({ searchParams }: { searchParams: SearchParams }) {
-  const { filter } = await searchParams
-
+export default function SeasonIndexPage() {
   return (
-    <main className="flex-1 bg-white">
-      <div className="container-page py-14 md:py-20">
-
-        <div className="mb-10">
-          <span className="eyebrow">Seasonal Collections</span>
-          <h1 className="hero-heading mt-3">
-            Dress for every <span className="italic font-light">season.</span>
-          </h1>
-          <p className="text-sm text-gray-500 mt-4 max-w-lg leading-relaxed">
-            From light summer dresses to warm winter layering looks – discover curated outfit collections for every season of the year.
-          </p>
-        </div>
-
-        <OutfitCategoryNav active="season" />
-
-        <div className="flex gap-2 flex-wrap mb-8">
-          {SEASON_CHIPS.map((chip) => {
-            const isActive = chip.value === "" ? !filter : chip.value === filter
-            return (
-              <a
-                key={chip.value || "all"}
-                href={chip.value ? `/outfits/season?filter=${chip.value}` : "/outfits/season"}
-                className={`px-3 py-1.5 text-[10px] font-semibold tracking-widest uppercase border transition-colors ${
-                  isActive
-                    ? "border-black bg-black text-white"
-                    : "border-gray-200 text-gray-500 hover:border-black hover:text-black"
-                }`}
-              >
-                {chip.label}
-              </a>
-            )
-          })}
-        </div>
-
-        <Suspense fallback={
-          <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">
-            Loading…
-          </p>
-        }>
-          <RankedOutfitsView season={filter} />
-        </Suspense>
-
-      </div>
-    </main>
+    <SectionMainPage
+      hero={{
+        eyebrow: "Seasonal Collections",
+        heading: "Dress for every",
+        headingItalic: "season.",
+        description:
+          "From light summer dresses to warm winter layering looks – discover curated outfit collections for every season of the year.",
+      }}
+      breadcrumb={[
+        { label: "Home", href: "/" },
+        { label: "Outfits", href: "/outfits" },
+        { label: "By Season" },
+      ]}
+      collections={[
+        {
+          label: "All Seasons",
+          basePath: "/outfits/season",
+          gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
+          items: [
+            {
+              slug: "summer",
+              label: "Summer Dresses",
+              description: "Light dresses, floral prints & linen robes for hot days",
+              tags: ["Maxi", "Midi", "Mini", "Floral"],
+              badge: "New",
+              accent: "bg-[#EDCFA9]",
+              accentText: "text-[#f57f17]",
+              active: true,
+            },
+            {
+              slug: "winter",
+              label: "Winter Outfits",
+              description: "Warm layering looks, coats and cozy combinations for cold days",
+              tags: ["Coat", "Layering", "Knitwear", "Boots"],
+              badge: "New",
+              accent: "bg-[#e3f2fd]",
+              accentText: "text-[#1565c0]",
+              active: true,
+            },
+            {
+              slug: "autumn",
+              label: "Autumn Looks",
+              description: "Earth tones, trench coats and crisp transitional looks",
+              tags: ["Earth Tones", "Trench", "Midi", "Boots"],
+              badge: "New",
+              accent: "bg-[#efebe9]",
+              accentText: "text-[#4e342e]",
+              active: true,
+            },
+            {
+              slug: "spring",
+              label: "Spring Looks",
+              description: "Pastel tones, light blazers and fresh combinations",
+              tags: ["Pastels", "Blazer", "Linen", "Floral"],
+              badge: "New",
+              accent: "bg-[#e8f5e9]",
+              accentText: "text-[#2e7d32]",
+              active: true,
+            },
+          ],
+        },
+      ]}
+    />
   )
 }
