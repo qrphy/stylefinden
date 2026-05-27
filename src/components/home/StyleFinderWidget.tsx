@@ -226,6 +226,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
           {/* Item 7: Browsing history hint — shown only when no active selection */}
           {historyHint && !occasion && (
             <button
+              type="button"
               onClick={() => selectOccasion(historyHint.occasion)}
               className="self-start mt-1 text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
             >
@@ -241,6 +242,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
               Continuing from your last visit
             </span>
             <button
+              type="button"
               onClick={clearAll}
               className="ml-auto text-[10px] font-semibold tracking-widest uppercase text-gray-300 hover:text-black transition-colors duration-200"
             >
@@ -286,6 +288,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
             <div className="flex items-center gap-6">
               {occasion && (
                 <button
+                  type="button"
                   onClick={handleFind}
                   className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
                 >
@@ -296,6 +299,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
                 </button>
               )}
               <button
+                type="button"
                 onClick={handleSurprise}
                 className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
               >
@@ -353,6 +357,7 @@ function OccasionGrid({ options, selected, onSelect, counts }: {
         const count  = counts?.[opt.value]
         return (
           <button
+            type="button"
             key={opt.value}
             onClick={() => onSelect(opt.value)}
             className={`relative overflow-hidden aspect-[3/2] group border-2 transition-colors duration-200 ${
@@ -413,6 +418,7 @@ function PillGroup({ options, selected, onSelect, allowDeselect = false }: {
         const active = selected === opt.value
         return (
           <button
+            type="button"
             key={opt.value}
             onClick={() => {
               if (active && allowDeselect) onSelect(null)

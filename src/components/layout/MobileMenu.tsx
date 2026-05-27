@@ -31,6 +31,7 @@ export default function MobileMenu() {
       {/* Header bar */}
       <div className="relative flex items-center h-14 px-4 bg-white border-b border-gray-200">
         <button
+          type="button"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
           className="relative z-10 self-center"
@@ -52,6 +53,7 @@ export default function MobileMenu() {
       <div className={`fixed inset-0 z-50 bg-white flex flex-col transition-opacity duration-300 ${open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           {/* Close */}
           <button
+            type="button"
             onClick={() => setOpen(false)}
             aria-label="Close menu"
             className="absolute top-5 right-5 text-black text-lg leading-none hover:opacity-50 transition-opacity duration-200"
