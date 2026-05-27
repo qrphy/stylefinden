@@ -244,3 +244,8 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Hide scrollbar on overflow-x-auto nav elements */
+nav::-webkit-scrollbar {
+  display: none;
+}

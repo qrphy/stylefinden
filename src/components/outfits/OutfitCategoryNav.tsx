@@ -112,49 +112,54 @@ export default function OutfitCategoryNav({ active }: Props) {
     }`
 
   return (
-    <div className="sticky top-0 z-40 bg-white mb-10">
-      {/* Tab row */}
-      <nav className="flex items-center border-b border-gray-200 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        <a href="/outfits" className={tabCls("all").replace("flex items-center gap-1 ", "")}>
-          All Looks
-        </a>
-
-        {TAB_CONFIG.map((tab) => (
-          <div
-            key={tab.key}
-            onMouseEnter={() => openMenu(tab.key)}
-            onMouseLeave={scheduleClose}
-          >
-            <a href={tab.href} className={tabCls(tab.key)}>
-              {tab.label}
-              <svg width="7" height="4" viewBox="0 0 7 4" fill="currentColor" className="opacity-40 shrink-0 mt-px">
-                <path d="M0 0l3.5 4L7 0z" />
-              </svg>
-            </a>
-          </div>
-        ))}
-      </nav>
-
-      {/* Desktop dropdown panel */}
-      {openDropdown && (
-        <div
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}
-          className="absolute left-0 right-0 top-full z-50 bg-white border border-t-0 border-gray-200 hidden md:flex flex-wrap"
+    <div className="mb-10">
+      {/* Sticky tab row + dropdown */}
+      <div className="sticky top-0 z-40 bg-white relative">
+        <nav
+          className="flex items-center border-b border-gray-200 overflow-x-auto"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
         >
-          {TAB_CONFIG.find((t) => t.key === openDropdown)?.items.map((item) => (
-            <a
-              key={item.value}
-              href={`/outfits?${TAB_CONFIG.find((t) => t.key === openDropdown)!.queryKey}=${item.value}`}
-              className="px-5 py-3 text-[10px] font-semibold tracking-widest uppercase text-gray-500 hover:bg-gray-50 hover:text-black transition-colors whitespace-nowrap"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      )}
+          <a href="/outfits" className={tabCls("all").replace("flex items-center gap-1 ", "")}>
+            All Looks
+          </a>
 
-      {/* Mobile chip row — visible when a tab is active */}
+          {TAB_CONFIG.map((tab) => (
+            <div
+              key={tab.key}
+              onMouseEnter={() => openMenu(tab.key)}
+              onMouseLeave={scheduleClose}
+            >
+              <a href={tab.href} className={tabCls(tab.key)}>
+                {tab.label}
+                <svg width="7" height="4" viewBox="0 0 7 4" fill="currentColor" className="opacity-40 shrink-0 mt-px">
+                  <path d="M0 0l3.5 4L7 0z" />
+                </svg>
+              </a>
+            </div>
+          ))}
+        </nav>
+
+        {/* Desktop dropdown panel */}
+        {openDropdown && (
+          <div
+            onMouseEnter={cancelClose}
+            onMouseLeave={scheduleClose}
+            className="absolute left-0 right-0 top-full z-50 bg-white border border-t-0 border-gray-200 hidden md:flex flex-wrap"
+          >
+            {TAB_CONFIG.find((t) => t.key === openDropdown)?.items.map((item) => (
+              <a
+                key={item.value}
+                href={`/outfits?${TAB_CONFIG.find((t) => t.key === openDropdown)!.queryKey}=${item.value}`}
+                className="px-5 py-3 text-[10px] font-semibold tracking-widest uppercase text-gray-500 hover:bg-gray-50 hover:text-black transition-colors whitespace-nowrap"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Mobile chip row — outside sticky so it scrolls with the page */}
       {activeConfig && (
         <div className="flex gap-2 flex-wrap mt-4 md:hidden">
           {activeConfig.items.map((item) => (
