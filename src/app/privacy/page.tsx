@@ -1,6 +1,7 @@
 // Gizlilik politikası sayfası — GDPR kapsamında veri işleme, çerezler, Google Analytics,
 // Vercel Analytics, AdSense ve kullanıcı haklarını açıklar.
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -152,13 +153,13 @@ export default function PrivacyPage() {
       <p className="text-gray-700 leading-relaxed">
         For any privacy-related questions please contact us at the email address
         provided in the{" "}
-        <a href="/legal" className="underline underline-offset-2 hover:text-black transition-colors">
+        <Link href="/legal" className="underline underline-offset-2 hover:text-black transition-colors">
           Legal Notice
-        </a>
+        </Link>
         .
       </p>
 
-      <p className="text-xs text-gray-400 mt-12">Last updated: {new Date().getFullYear()}</p>
+      <p className="text-xs text-gray-400 mt-12" suppressHydrationWarning>Last updated: {new Date().getFullYear()}</p>
     </main>
   )
 }

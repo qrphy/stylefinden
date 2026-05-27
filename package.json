@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.71",
-    "@ai-sdk/openai": "^3.0.53",
     "@portabletext/react": "^6.0.3",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.23.0",

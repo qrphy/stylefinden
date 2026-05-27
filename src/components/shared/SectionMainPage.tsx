@@ -32,7 +32,7 @@ export default function SectionMainPage({ hero, breadcrumb, collections, topNav 
         <div className="container-page pt-8 pb-2">
           <nav className="breadcrumb-nav">
             {breadcrumb.map((crumb, i) => (
-              <span key={i} className="flex items-center gap-2">
+              <span key={crumb.href ?? crumb.label} className="flex items-center gap-2">
                 {i > 0 && <span>/</span>}
                 {crumb.href ? (
                   <a href={crumb.href} className="breadcrumb-link">

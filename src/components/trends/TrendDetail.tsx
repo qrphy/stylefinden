@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import JsonLd from "@/components/seo/JsonLd"
 import Button from "@/components/shared/Button"
@@ -80,9 +81,9 @@ export default function TrendDetail({ trend }: Props) {
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
         <nav className="breadcrumb-nav">
-          <a href="/" className="breadcrumb-link">Home</a>
+          <Link href="/" className="breadcrumb-link">Home</Link>
           <span>/</span>
-          <a href="/trends" className="breadcrumb-link">Trends</a>
+          <Link href="/trends" className="breadcrumb-link">Trends</Link>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{trend.title}</span>
         </nav>
@@ -110,7 +111,7 @@ export default function TrendDetail({ trend }: Props) {
               </div>
               <ul className="flex flex-col gap-2">
                 {trend.keyItems.map((item: string, i: number) => (
-                  <li key={i} className="flex items-center gap-3 p-3 bg-gray-50 border border-gray-100">
+                  <li key={item} className="flex items-center gap-3 p-3 bg-gray-50 border border-gray-100">
                     <span className="text-xs font-black text-gray-300 tracking-widest shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>

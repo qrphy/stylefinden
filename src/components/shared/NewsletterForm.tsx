@@ -4,6 +4,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Button from "@/components/shared/Button";
 
 export default function NewsletterForm() {
@@ -100,9 +101,9 @@ export default function NewsletterForm() {
                 )}
                 <p className="text-xs text-white/30 leading-relaxed">
                   By subscribing you agree to our{" "}
-                  <a href="/privacy" className="underline underline-offset-2 hover:text-white/60 transition-colors duration-200">
+                  <Link href="/privacy" className="underline underline-offset-2 hover:text-white/60 transition-colors duration-200">
                     Privacy Policy
-                  </a>
+                  </Link>
                   .
                 </p>
               </form>

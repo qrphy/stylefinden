@@ -1,4 +1,6 @@
 import Link from "next/link"
+
+const EMPTY_SIMILAR: never[] = []
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, occasionLabel } from "@/lib/outfit-labels"
@@ -20,7 +22,7 @@ type Props = {
   similarPiecesRaw?: SimilarPiecesResult[]
 }
 
-export default function OutfitSimilarSection({ outfitsByPieces, similarPiecesRaw = [] }: Props) {
+export default function OutfitSimilarSection({ outfitsByPieces, similarPiecesRaw = EMPTY_SIMILAR }: Props) {
   const grouped = PIECE_GROUPS.map(g => ({
     ...g,
     pieces: flatUnique(similarPiecesRaw.flatMap(r => r[g.key] ?? [])),

@@ -74,7 +74,7 @@ const SEASON_OPTIONS = [
 type Step = 1 | 2 | 3
 
 export default function StyleQuiz() {
-  const router = useRouter()
+  const { push } = useRouter()
   const [step, setStep]     = useState<Step>(1)
   const [season, setSeason] = useState<string>(detectSeason)
   const occasionRef         = useRef<string | null>(null)
@@ -101,7 +101,7 @@ export default function StyleQuiz() {
     const params = new URLSearchParams({ occasion })
     if (season && season !== 'any') params.set('season', season)
     params.set('style', pickedStyle)
-    router.push(`/outfits?${params.toString()}`)
+    push(`/outfits?${params.toString()}`)
   }
 
   const progress = step === 1 ? 33 : step === 2 ? 66 : 100

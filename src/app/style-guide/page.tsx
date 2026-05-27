@@ -1,6 +1,7 @@
 // Style Guide ana sayfası — vücut tipi rehberleri, renk teorisi, kapsül gardırop ve
 // mevsimsel stil konularını gruplandırarak gösterir. Tamamen statik içerik.
 import type { Metadata } from "next";
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 import {
   styleGuideTopics as topics,
@@ -163,18 +164,18 @@ export default function StyleGuidePage() {
               </h2>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
+              <Link
                 href="/outfits"
                 className="px-8 py-3 bg-white text-black text-xs font-semibold tracking-widest uppercase hover:bg-gray-100 transition-colors duration-200"
               >
                 Browse Outfits
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/trends"
                 className="px-8 py-3 border border-gray-700 text-white text-xs font-semibold tracking-widest uppercase hover:border-white transition-colors duration-200"
               >
                 Latest Trends
-              </a>
+              </Link>
             </div>
           </div>
         </div>

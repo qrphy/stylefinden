@@ -1,3 +1,4 @@
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import JsonLd from "@/components/seo/JsonLd"
 import Button from "@/components/shared/Button"
@@ -34,7 +35,9 @@ type Props = {
   outfits?: OutfitCard[]
 }
 
-export default function AccessoryDetail({ item, outfits = [] }: Props) {
+const EMPTY_OUTFITS: never[] = []
+
+export default function AccessoryDetail({ item, outfits = EMPTY_OUTFITS }: Props) {
   const imageUrl = item.image
     ? urlFor(item.image).url()
     : undefined
@@ -67,9 +70,9 @@ export default function AccessoryDetail({ item, outfits = [] }: Props) {
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="px-3 md:px-5 pt-6 pb-2">
         <nav className="breadcrumb-nav">
-          <a href="/" className="breadcrumb-link">Home</a>
+          <Link href="/" className="breadcrumb-link">Home</Link>
           <span>/</span>
-          <a href="/accessories" className="breadcrumb-link">Accessories</a>
+          <Link href="/accessories" className="breadcrumb-link">Accessories</Link>
           <span>/</span>
           <span className="text-black truncate max-w-[200px]">{item.title}</span>
         </nav>

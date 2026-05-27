@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
+import Link from "next/link"
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage"
 import RankedOutfitsView from "@/components/outfits/RankedOutfitsView"
 import { OCCASION_ORDER, getOccasionCard } from "@/lib/outfit-occasion-config"
@@ -114,12 +115,12 @@ export default async function OutfitsPage({ searchParams }: { searchParams: Sear
               <span className="eyebrow">Outfit Results</span>
               <h1 className="section-title-lg">Your matches.</h1>
             </div>
-            <a
+            <Link
               href="/outfits"
               className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200 self-start sm:self-auto"
             >
               ← All Collections
-            </a>
+            </Link>
           </div>
           <Suspense fallback={
             <p className="text-[10px] font-semibold tracking-widest uppercase text-gray-300">

@@ -1,9 +1,13 @@
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
 import OutfitTracker from "@/components/outfits/OutfitTracker"
 import OutfitSimilarSection from "@/components/outfits/OutfitSimilarSection"
+
+const EMPTY_OUTFITS: never[] = []
+const EMPTY_PIECES: never[] = []
 
 type SanityImage = {
   asset?: object
@@ -75,7 +79,7 @@ const SHOP_GROUPS = [
 ]
 
 
-export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiecesRaw = [], breadcrumbContext }: Props) {
+export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, similarPiecesRaw = EMPTY_PIECES, breadcrumbContext }: Props) {
   const imageUrl = outfit.image
     ? urlFor(outfit.image).url()
     : undefined
@@ -96,9 +100,9 @@ export default function OutfitDetail({ outfit, outfitsByPieces = [], similarPiec
       {/* ── Breadcrumb ──────────────────────────────────────────────────────── */}
       <div className="container-page pt-8 pb-2">
         <nav className="breadcrumb-nav">
-          <a href="/" className="breadcrumb-link">Home</a>
+          <Link href="/" className="breadcrumb-link">Home</Link>
           <span>/</span>
-          <a href="/outfits" className="breadcrumb-link">Outfits</a>
+          <Link href="/outfits" className="breadcrumb-link">Outfits</Link>
           {breadcrumbContext ? (
             <>
               <span>/</span>

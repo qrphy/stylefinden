@@ -1,6 +1,7 @@
 // Ana sayfa hero bölümü — editöryal tam-yükseklik layout
 // Editorial meta bar + 7/5 grid: devasa başlık sola, dikey görsel sağa
 // Grid container-page dışında — sağ görsel viewport kenarına kadar uzanır (full-bleed)
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 export default function HeroSection() {
@@ -32,7 +33,7 @@ export default function HeroSection() {
           </h1>
 
           <div className="flex items-center gap-6 pt-8 border-t border-gray-100 mt-8 md:mt-0">
-            <a
+            <Link
               href="/outfits"
               className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
             >
@@ -40,14 +41,14 @@ export default function HeroSection() {
               <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
-            </a>
+            </Link>
             <span className="w-px h-4 bg-gray-200" />
-            <a
+            <Link
               href="/trends"
               className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
             >
               Summer 2026 Trends
-            </a>
+            </Link>
           </div>
         </div>
 

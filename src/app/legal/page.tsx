@@ -61,7 +61,7 @@ export default function LegalPage() {
         the written consent of the respective author or creator.
       </p>
 
-      <p className="text-xs text-gray-400 mt-12">Last updated: {new Date().getFullYear()}</p>
+      <p className="text-xs text-gray-400 mt-12" suppressHydrationWarning>Last updated: {new Date().getFullYear()}</p>
     </main>
   )
 }

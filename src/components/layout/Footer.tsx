@@ -128,7 +128,7 @@ export default function Footer() {
 
       <div className="border-t border-gray-100 px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
         <span className="meta-label">The Style Platform</span>
-        <span className="meta-label">© {new Date().getFullYear()} Stylefinden</span>
+        <span className="meta-label" suppressHydrationWarning>© {new Date().getFullYear()} Stylefinden</span>
       </div>
 
     </footer>

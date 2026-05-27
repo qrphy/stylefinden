@@ -130,7 +130,7 @@ export default function Button(props: Props) {
 
   const { ...buttonRest } = rest as AsButton
   return (
-    <button className={classes} {...buttonRest}>
+    <button type="button" className={classes} {...buttonRest}>
       {content}
     </button>
   )

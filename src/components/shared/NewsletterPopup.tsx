@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 import { useEffect, useState } from "react";
 
@@ -164,9 +165,9 @@ export default function NewsletterPopup() {
 
               <p className="mt-3 text-xs text-gray-400 leading-relaxed text-center">
                 By clicking &quot;SUBSCRIBE&quot; you confirm that you have read and accepted our{" "}
-                <a href="/privacy" className="underline underline-offset-2 hover:text-gray-600 transition-colors duration-200">
+                <Link href="/privacy" className="underline underline-offset-2 hover:text-gray-600 transition-colors duration-200">
                   Privacy Policy
-                </a>{" "}
+                </Link>{" "}
                 and Terms of Use.
               </p>
             </>

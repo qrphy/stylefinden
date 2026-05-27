@@ -85,7 +85,7 @@ export default async function RankedOutfitsView({ occasion, season, style, color
     filtered = filtered.filter((o) => o.pieces?.some((p) => p.colorTag === color))
   }
 
-  const sorted = [...filtered].sort((a, b) => {
+  const sorted = filtered.toSorted((a, b) => {
     if (a.featured && !b.featured) return -1
     if (!a.featured && b.featured) return 1
     return 0

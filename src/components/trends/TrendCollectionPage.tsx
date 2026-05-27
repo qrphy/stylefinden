@@ -1,6 +1,7 @@
 // Paylaşılan trend koleksiyon sayfası bileşeni — season/aesthetic/category [slug] sayfaları kullanır.
 // Breadcrumb, hero, highlights, trend grid ve boş durum bölümlerini içerir.
 import type { TrendCollectionConfig } from "@/lib/trend-collection-config"
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
 
@@ -56,7 +57,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
             { label: dimensionLabel, href: dimensionHref },
             { label: config.label },
           ].map((crumb, i) => (
-            <span key={i} className="flex items-center gap-2">
+            <span key={crumb.href ?? crumb.label} className="flex items-center gap-2">
               {i > 0 && <span>/</span>}
               {crumb.href ? (
                 <a href={crumb.href} className="breadcrumb-link">
@@ -135,7 +136,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {config.highlights.map((point, i) => (
-                <div key={i} className="flex gap-4 p-5 border border-gray-100">
+                <div key={point} className="flex gap-4 p-5 border border-gray-100">
                   <span className="text-xs font-black text-gray-300 mt-0.5 shrink-0">
                     0{i + 1}
                   </span>
@@ -215,7 +216,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
               <p className="text-sm text-gray-500 leading-relaxed text-center max-w-xs">
                 More {config.label.toLowerCase()} trends are being curated — check back soon.
               </p>
-              <a
+              <Link
                 href="/trends"
                 className="mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-500 transition-colors duration-200"
               >
@@ -223,7 +224,7 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
                 <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
-              </a>
+              </Link>
             </div>
           )}
 

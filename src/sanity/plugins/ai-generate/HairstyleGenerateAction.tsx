@@ -140,7 +140,7 @@ function HairstyleDialogContent({
               Title: {title || '(empty — fill in the title field first)'}
             </Text>
             {hairType && <Text size={1} muted>Type: {hairType}</Text>}
-            {length && <Text size={1} muted>Length: {length}</Text>}
+            {length ? <Text size={1} muted>Length: {length}</Text> : null}
             {occasion && <Text size={1} muted>Occasion: {occasion}</Text>}
             {mood && <Text size={1} muted>Mood: {mood}</Text>}
           </Stack>
