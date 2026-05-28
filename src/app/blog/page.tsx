@@ -262,6 +262,31 @@ export default async function BlogPage() {
         </div>
       </section>
 
+      {/* Quick Style Rules */}
+      <section className="w-full bg-gray-50 border-t border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 xl:px-12 py-14 md:py-16">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-xs font-semibold tracking-widest uppercase text-gray-400">Quick Style Rules</span>
+            <div className="flex-1 h-px bg-gray-200" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {[
+              "The 1 in, 1 out rule: for every new item you buy, donate one you no longer wear.",
+              "Fit is everything — a well-fitted cheap piece beats an ill-fitted expensive one every time.",
+              "Neutral basics + one statement piece = a complete, balanced outfit.",
+              "Shoes and bag don't need to match exactly — they should complement each other in tone.",
+              "Layer to add depth: a blazer over a simple dress changes the entire register of an outfit.",
+              "When building a capsule, choose a 3-color palette that all work together.",
+            ].map((tip, i) => (
+              <div key={i} className="flex gap-4 p-5 border border-gray-200 bg-white">
+                <span className="text-xs font-black text-gray-300 mt-0.5 shrink-0">0{i + 1}</span>
+                <p className="text-sm text-gray-700 leading-relaxed">{tip}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
     </main>
   )
 }

@@ -49,7 +49,6 @@ export default function Footer() {
             <Link href="/accessories" className="footer-link">Accessories</Link>
             <Link href="/trends"      className="footer-link">Trends</Link>
             <Link href="/blog"        className="footer-link">Blog</Link>
-            <Link href="/style-guide" className="footer-link">Style Guide</Link>
           </div>
 
           {/* Mobile accordion — Discover */}
@@ -66,7 +65,6 @@ export default function Footer() {
               <Link href="/accessories" className="footer-link">Accessories</Link>
               <Link href="/trends"      className="footer-link">Trends</Link>
               <Link href="/blog"        className="footer-link">Blog</Link>
-              <Link href="/style-guide" className="footer-link">Style Guide</Link>
             </div>
           </details>
 
