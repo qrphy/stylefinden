@@ -4,6 +4,7 @@ import Link from "next/link"
 import { PortableText } from "@portabletext/react"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
+import { formatDate } from "@/lib/formatDate"
 
 type RelatedItem = { _id: string; title: string; slug: string; image?: object }
 
@@ -36,10 +37,6 @@ const categoryColor: Record<string, string> = {
   "occasion-guides":    "bg-gray-900 text-white",
   "seasonal-guides":    "bg-white text-black border border-black",
   "trend-reports":      "bg-white text-black border border-black",
-}
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
 }
 
 export default function BlogPostDetail({ post }: { post: BlogPost }) {

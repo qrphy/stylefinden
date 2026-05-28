@@ -5,6 +5,7 @@ import { urlFor } from "@/sanity/lib/image"
 import { FEATURED_POSTS_QUERY, LATEST_POSTS_QUERY } from "@/lib/queries"
 import { BLOG_CATEGORY_CONFIGS } from "@/lib/blog-category-config"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import { formatDate } from "@/lib/formatDate"
 
 export const revalidate = 3600
 
@@ -57,10 +58,6 @@ const categoryLabel: Record<string, string> = {
   "occasion-guides":    "Occasion Guide",
   "seasonal-guides":    "Seasonal",
   "trend-reports":      "Trends",
-}
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
 }
 
 type Post = {

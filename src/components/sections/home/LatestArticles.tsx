@@ -8,6 +8,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { HOME_POSTS_QUERY } from "@/lib/queries"
 import { categoryColor } from "@/constants/site"
 import type { BlogPost } from "@/types/blog"
+import { formatDate } from "@/lib/formatDate"
 
 
 const STATIC_POSTS = [
@@ -23,10 +24,6 @@ const categoryLabel: Record<string, string> = {
   "occasion-guides":    "Occasion Guide",
   "seasonal-guides":    "Seasonal",
   "trend-reports":      "Trends",
-}
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
 }
 
 export default async function LatestArticles() {

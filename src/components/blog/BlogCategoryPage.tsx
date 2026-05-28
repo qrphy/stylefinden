@@ -6,18 +6,11 @@ import { POSTS_BY_CATEGORY_QUERY } from "@/lib/queries"
 import type { BlogCategoryConfig } from "@/lib/blog-category-config"
 import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
+import { formatDate } from "@/lib/formatDate"
 
 type Props = {
   category: string
   config: BlogCategoryConfig
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  })
 }
 
 export default async function BlogCategoryPage({ category, config }: Props) {

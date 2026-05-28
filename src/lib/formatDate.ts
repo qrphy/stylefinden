@@ -1,3 +1,3 @@
-// Tarih biçimlendirme yardımcısı — ISO tarih dizelerini blog yazılarında kullanılan
-// okunabilir formata (ör. 'April 28, 2026') dönüştürür.
-export function formatDate(d: string) { return d; }
+export function formatDate(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+}
