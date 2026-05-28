@@ -89,6 +89,7 @@ function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopT
             src={outfit.image}
             alt={outfit.title}
             sizes="(max-width: 768px) 100vw, 33vw"
+            blurDataURL={outfit.lqip}
           />
         </div>
       </a>

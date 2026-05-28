@@ -30,21 +30,24 @@ type HairstyleItem = {
   title: string;
   slug?: string;
   image?: string;
+  lqip?: string;
   type?: string;
   length?: string;
   mood?: string;
   featured: boolean;
 };
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 
 export default async function HairstyleHighlights() {
   const sanityData = await client.fetch(HOME_HAIRSTYLES_QUERY, {}, { next: { revalidate: 3600, tags: ['hairstyle'] } });
 
   const hairstyles: HairstyleItem[] = sanityData.length > 0
-    ? sanityData.map((h: { _id: string; title: string; slug: string; image?: object; type?: string; length?: string; mood?: string; featured?: boolean }) => ({
+    ? sanityData.map((h: { _id: string; title: string; slug: string; image?: SanityImg; type?: string; length?: string; mood?: string; featured?: boolean }) => ({
         id: h._id,
         title: h.title,
         slug: h.slug,
         image: h.image ? urlFor(h.image).width(1400).height(1867).url() : undefined,
+        lqip: h.image?.lqip,
         type: h.type,
         length: h.length,
         mood: h.mood,
@@ -97,7 +100,7 @@ export default async function HairstyleHighlights() {
               className="group relative md:col-span-1 xl:col-span-2 overflow-hidden bg-gray-100 aspect-[3/4] md:aspect-auto md:row-span-2 flex flex-col justify-end"
             >
               <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
-                <ImgPlaceholder src={h.image} alt={h.title} />
+                <ImgPlaceholder src={h.image} alt={h.title} blurDataURL={h.lqip} />
               </div>
               <div className="absolute inset-0 bg-gradient-to-b from-black/100 to-black/50 -z-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent group-hover:from-black/50 transition-colors duration-300" />
@@ -123,7 +126,7 @@ export default async function HairstyleHighlights() {
             <a key={h.id} href={`/hairstyles/${h.slug ?? h.id}`} className="group flex flex-col gap-3">
               <div className="relative overflow-hidden bg-gray-100 aspect-[3/4]">
                 <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
-                  <ImgPlaceholder src={h.image} alt={h.title} />
+                  <ImgPlaceholder src={h.image} alt={h.title} blurDataURL={h.lqip} />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                 <div className="card-overlay" />

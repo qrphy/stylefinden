@@ -14,6 +14,7 @@ type Props = {
 }
 
 export default async function BlogCategoryPage({ category, config }: Props) {
+  type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
   const posts = await client.fetch(
     POSTS_BY_CATEGORY_QUERY,
     { category },
@@ -80,7 +81,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                 title: string
                 slug: string
                 excerpt?: string
-                heroImage?: object
+                heroImage?: SanityImg
                 category?: string
                 publishedAt?: string
                 tags?: string[]
@@ -88,6 +89,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                 const imgSrc = post.heroImage
                   ? urlFor(post.heroImage).width(1400).height(788).url()
                   : undefined
+                const imgLqip = post.heroImage?.lqip
 
                 return (
                   <Link
@@ -97,7 +99,7 @@ export default async function BlogCategoryPage({ category, config }: Props) {
                   >
                     {/* Image */}
                     <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-                      <ImgPlaceholder src={imgSrc} alt={post.title} />
+                      <ImgPlaceholder src={imgSrc} alt={post.title} blurDataURL={imgLqip} />
                       <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                       {post.category && (
                         <span className="absolute top-3 left-3 px-2 py-1 text-xs font-semibold tracking-widest uppercase bg-black text-white">

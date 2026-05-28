@@ -27,8 +27,11 @@ const categoryLabel: Record<string, string> = {
   "trend-reports":      "Trends",
 }
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+type HomePost = { _id: string; title: string; slug: string; excerpt?: string; heroImage?: SanityImg; category: string; publishedAt?: string }
+
 export default async function LatestArticles() {
-  const sanityPosts = await client.fetch(HOME_POSTS_QUERY, {}, { next: { revalidate: 3600, tags: ['post'] } }) as Pick<BlogPost, '_id' | 'title' | 'slug' | 'excerpt' | 'heroImage' | 'category' | 'publishedAt'>[]
+  const sanityPosts = await client.fetch(HOME_POSTS_QUERY, {}, { next: { revalidate: 3600, tags: ['post'] } }) as HomePost[]
 
   const useSanity = sanityPosts.length > 0
 
@@ -55,7 +58,7 @@ export default async function LatestArticles() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             <Link href={`/blog/${featured.slug}`} className="group xl:col-span-2 flex flex-col overflow-hidden">
               <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-                <ImgPlaceholder src={featured.heroImage ? urlFor(featured.heroImage).width(1400).height(788).url() : undefined} alt={featured.title} />
+                <ImgPlaceholder src={featured.heroImage ? urlFor(featured.heroImage).width(1400).height(788).url() : undefined} alt={featured.title} blurDataURL={featured.heroImage?.lqip} />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                 <span className={`absolute top-4 left-4 badge-md ${categoryColor[featured.category] ?? "bg-gray-100 text-gray-700"}`}>
                   {categoryLabel[featured.category] ?? featured.category}
@@ -84,7 +87,7 @@ export default async function LatestArticles() {
               {regular.map((post) => (
                 <Link key={post._id} href={`/blog/${post.slug}`} className="group flex gap-4 py-5 border-b border-gray-100 last:border-0 hover:opacity-60 transition-opacity duration-200">
                   <div className="relative w-20 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
-                    <ImgPlaceholder src={post.heroImage ? urlFor(post.heroImage).width(160).height(160).url() : undefined} alt={post.title} />
+                    <ImgPlaceholder src={post.heroImage ? urlFor(post.heroImage).width(160).height(160).url() : undefined} alt={post.title} blurDataURL={post.heroImage?.lqip} />
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
                   </div>
                   <div className="flex flex-col justify-center gap-2 flex-1 min-w-0">

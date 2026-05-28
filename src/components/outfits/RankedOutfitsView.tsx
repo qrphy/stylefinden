@@ -14,17 +14,18 @@ type Props = {
   trend?: string
 }
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 type OutfitDoc = {
   _id: string
   title: string
   slug: string
-  image?: object
+  image?: SanityImg
   style?: string
   season?: string
   occasion?: string
   occasions?: string[]
   featured?: boolean
-  pieces?: { _key: string; name: string; image?: object; colorTag?: string }[]
+  pieces?: { _key: string; name: string; image?: SanityImg; colorTag?: string }[]
 }
 
 function getOccasionSet(outfit: OutfitDoc): string[] {
@@ -140,9 +141,8 @@ export default async function RankedOutfitsView({ occasion, season, style, color
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
           {sorted.map((outfit) => {
-            const imageUrl = outfit.image
-              ? urlFor(outfit.image).width(1400).height(1867).url()
-              : undefined
+            const imageUrl = outfit.image ? urlFor(outfit.image).width(1400).height(1867).url() : undefined
+            const imageLqip = outfit.image?.lqip
             const subtitle = [
               outfit.style    ? (STYLE_LABELS[outfit.style]       ?? outfit.style)    : null,
               outfit.occasion ? (OCCASION_LABELS[outfit.occasion] ?? outfit.occasion) : null,
@@ -168,6 +168,7 @@ export default async function RankedOutfitsView({ occasion, season, style, color
                       src={imageUrl}
                       alt={outfit.title}
                       sizes="(max-width: 768px) 100vw, 25vw"
+                      blurDataURL={imageLqip}
                     />
                   </div>
                   <div className="card-overlay" />

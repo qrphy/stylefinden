@@ -6,14 +6,15 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
 import { formatDate } from "@/lib/formatDate"
 
-type RelatedItem = { _id: string; title: string; slug: string; image?: object }
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+type RelatedItem = { _id: string; title: string; slug: string; image?: SanityImg }
 
 export type BlogPost = {
   _id: string
   title: string
   slug: string
   excerpt?: string | null
-  heroImage?: object | null
+  heroImage?: SanityImg | null
   category: string
   publishedAt?: string | null
   body?: unknown[] | null
@@ -41,6 +42,7 @@ const categoryColor: Record<string, string> = {
 
 export default function BlogPostDetail({ post }: { post: BlogPost }) {
   const heroUrl = post.heroImage ? urlFor(post.heroImage).url() : undefined
+  const heroLqip = post.heroImage?.lqip
   const categoryHref = post.category ? `/blog/${post.category}` : "/blog"
 
   return (
@@ -49,7 +51,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
       {/* ── Hero görsel ── */}
       <section className="w-full bg-white">
         <div className="relative overflow-hidden bg-gray-100 w-full aspect-[4/3] sm:aspect-[16/9] md:aspect-[16/7] md:max-h-[520px]">
-          <ImgPlaceholder src={heroUrl} alt={post.title} priority sizes="100vw" />
+          <ImgPlaceholder src={heroUrl} alt={post.title} priority sizes="100vw" blurDataURL={heroLqip} />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40" />
         </div>
       </section>
@@ -134,6 +136,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                         <ImgPlaceholder
                           src={outfit.image ? urlFor(outfit.image).width(1400).height(1867).url() : undefined}
                           alt={outfit.title}
+                          blurDataURL={outfit.image?.lqip}
                         />
                         <div className="card-overlay" />
                       </div>
@@ -156,6 +159,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                         <ImgPlaceholder
                           src={item.image ? urlFor(item.image).width(1400).height(1400).url() : undefined}
                           alt={item.title}
+                          blurDataURL={item.image?.lqip}
                         />
                         <div className="card-overlay" />
                       </div>
@@ -178,6 +182,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
                         <ImgPlaceholder
                           src={h.image ? urlFor(h.image).width(1400).height(1867).url() : undefined}
                           alt={h.title}
+                          blurDataURL={h.image?.lqip}
                         />
                         <div className="card-overlay" />
                       </div>

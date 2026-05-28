@@ -8,8 +8,10 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { ACCESSORIES_BY_TYPE_QUERY } from "@/lib/queries";
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+
 // Sanity aksesuar dökümanını CategoryPage OutfitItem formatına dönüştürür
-function toItem(a: { _id: string; title: string; slug: string; image?: object; type?: string; occasion?: string; pairingTip?: string; tags?: string[]; featured?: boolean }): OutfitItem {
+function toItem(a: { _id: string; title: string; slug: string; image?: SanityImg; type?: string; occasion?: string; pairingTip?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: a._id,
     title: a.title,
@@ -17,6 +19,7 @@ function toItem(a: { _id: string; title: string; slug: string; image?: object; t
     tag: a.featured ? "Trending" : "New",
     style: a.type ?? '',
     image: a.image ? urlFor(a.image).width(1400).height(1400).url() : undefined,
+    lqip: a.image?.lqip,
     href: `/accessories/${a.slug}`,
   }
 }

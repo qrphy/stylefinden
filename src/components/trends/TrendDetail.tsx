@@ -7,12 +7,14 @@ import { trendSeasonLabel, trendCategoryLabel } from "@/lib/trend-labels"
 
 const BASE = "https://stylefinden.com"
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+
 export type TrendDetailData = {
   _id: string
   title: string
   slug: string
   description?: string
-  image?: object
+  image?: SanityImg
   season?: string
   category?: string
   keyItems?: string[]
@@ -24,9 +26,8 @@ type Props = {
 }
 
 export default function TrendDetail({ trend }: Props) {
-  const imageUrl = trend.image
-    ? urlFor(trend.image).url()
-    : undefined
+  const imageUrl = trend.image ? urlFor(trend.image).url() : undefined
+  const imageLqip = trend.image?.lqip
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -57,7 +58,7 @@ export default function TrendDetail({ trend }: Props) {
     <main>
       {/* ── Hero Banner ─────────────────────────────────────────────────────── */}
       <section className="relative w-full aspect-[16/9] md:aspect-[21/9] max-h-[600px] overflow-hidden bg-gray-100">
-        <ImgPlaceholder src={imageUrl} alt={trend.title} priority sizes="100vw" />
+        <ImgPlaceholder src={imageUrl} alt={trend.title} priority sizes="100vw" blurDataURL={imageLqip} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 px-3 md:px-5 pb-8 md:pb-12 flex flex-col gap-3">
           <div className="flex flex-wrap gap-1.5">

@@ -11,10 +11,12 @@ import { urlFor } from "@/sanity/lib/image";
 import { OUTFITS_BY_SEASON_QUERY } from "@/lib/queries";
 
 // Sanity dökümanını CategoryPage'in beklediği OutfitItem şekline dönüştürür
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+
 function toItem(o: {
-  _id: string; title: string; slug: string; image?: object; style?: string;
+  _id: string; title: string; slug: string; image?: SanityImg; style?: string;
   season?: string; occasion?: string; tags?: string[]; featured?: boolean;
-  pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }>
+  pieces?: Array<{ _key?: string; name: string; image?: SanityImg; affiliateUrl?: string }>
 }): OutfitItem {
   return {
     id: o._id,
@@ -23,6 +25,7 @@ function toItem(o: {
     tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
     style: o.style ?? '',
     image: o.image ? urlFor(o.image).width(1400).height(1867).url() : undefined,
+    lqip: o.image?.lqip,
     href: `/outfits/${o.slug}`,
     pieces: o.pieces?.map((p, i) => ({
       key: p._key ?? String(i),

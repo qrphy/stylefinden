@@ -8,12 +8,14 @@ import { accessoryTypeLabel, accessoryOccasionLabel } from "@/lib/accessory-labe
 
 const BASE = "https://stylefinden.com"
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+
 export type AccessoryDetailData = {
   _id: string
   title: string
   slug: string
   description?: string
-  image?: object
+  image?: SanityImg
   type?: string
   occasion?: string
   pairingTip?: string
@@ -25,7 +27,7 @@ type OutfitCard = {
   _id: string
   title: string
   slug: string
-  image?: object
+  image?: SanityImg
   style?: string
   occasion?: string
 }
@@ -38,9 +40,8 @@ type Props = {
 const EMPTY_OUTFITS: never[] = []
 
 export default function AccessoryDetail({ item, outfits = EMPTY_OUTFITS }: Props) {
-  const imageUrl = item.image
-    ? urlFor(item.image).url()
-    : undefined
+  const imageUrl = item.image ? urlFor(item.image).url() : undefined
+  const imageLqip = item.image?.lqip
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -97,6 +98,7 @@ export default function AccessoryDetail({ item, outfits = EMPTY_OUTFITS }: Props
                   alt={item.title}
                   priority
                   sizes="(max-width: 768px) 100vw, 40vw"
+                  blurDataURL={imageLqip}
                 />
                 <div className="piece-shop-overlay">
                   <span className="piece-shop-label">
@@ -114,6 +116,7 @@ export default function AccessoryDetail({ item, outfits = EMPTY_OUTFITS }: Props
                   alt={item.title}
                   priority
                   sizes="(max-width: 768px) 100vw, 40vw"
+                  blurDataURL={imageLqip}
                 />
               </div>
             )}

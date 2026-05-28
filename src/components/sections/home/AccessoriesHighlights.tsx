@@ -42,22 +42,25 @@ type AccessoryItem = {
   title: string;
   slug?: string;
   image?: string;
+  lqip?: string;
   category: string;
   badge: string;
   pairingTip?: string;
   occasion?: string;
   featured: boolean;
 };
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 
 export default async function AccessoriesHighlights() {
   const sanityData = await client.fetch(HOME_ACCESSORIES_QUERY, {}, { next: { revalidate: 3600, tags: ['accessory'] } });
 
   const accessories: AccessoryItem[] = sanityData.length > 0
-    ? sanityData.map((a: { _id: string; title: string; slug: string; image?: object; type?: string; occasion?: string; pairingTip?: string; tags?: string[]; featured?: boolean }) => ({
+    ? sanityData.map((a: { _id: string; title: string; slug: string; image?: SanityImg; type?: string; occasion?: string; pairingTip?: string; tags?: string[]; featured?: boolean }) => ({
         id: a._id,
         title: a.title,
         slug: a.slug,
         image: a.image ? urlFor(a.image).width(1400).height(1750).url() : undefined,
+        lqip: a.image?.lqip,
         category: a.type ?? "",
         badge: a.featured ? "Trending" : "New",
         pairingTip: a.pairingTip,
@@ -122,7 +125,7 @@ export default async function AccessoriesHighlights() {
                 {cat.featured && (
                   <a href={`/accessories/${cat.featured.slug ?? cat.featured.id}`} className="group relative overflow-hidden bg-gray-100 flex-shrink-0 w-full md:w-2/5 aspect-[4/5]">
                     <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
-                      <ImgPlaceholder src={cat.featured.image} alt={cat.featured.title} />
+                      <ImgPlaceholder src={cat.featured.image} alt={cat.featured.title} blurDataURL={cat.featured.lqip} />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent group-hover:from-black/45 transition-colors duration-300" />

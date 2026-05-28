@@ -8,8 +8,10 @@ import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HAIRSTYLES_BY_OCCASION_QUERY } from "@/lib/queries";
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+
 // Sanity hairstyle dökümanını CategoryPage OutfitItem formatına dönüştürür
-function toItem(h: { _id: string; title: string; slug: string; image?: object; type?: string; length?: string; mood?: string; tags?: string[]; featured?: boolean }): OutfitItem {
+function toItem(h: { _id: string; title: string; slug: string; image?: SanityImg; type?: string; length?: string; mood?: string; tags?: string[]; featured?: boolean }): OutfitItem {
   return {
     id: h._id,
     title: h.title,
@@ -17,6 +19,7 @@ function toItem(h: { _id: string; title: string; slug: string; image?: object; t
     tag: h.featured ? "Trending" : "New",
     style: h.type ?? '',
     image: h.image ? urlFor(h.image).width(1400).height(1867).url() : undefined,
+    lqip: h.image?.lqip,
     href: `/hairstyles/${h.slug}`,
   }
 }

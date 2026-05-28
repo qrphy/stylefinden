@@ -12,12 +12,14 @@ import {
 
 const BASE = "https://stylefinden.com"
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+
 export type HairstyleDetailData = {
   _id: string
   title: string
   slug: string
   description?: string
-  image?: object
+  image?: SanityImg
   type?: string
   length?: string
   mood?: string
@@ -30,9 +32,8 @@ type Props = {
 }
 
 export default function HairstyleDetail({ hairstyle }: Props) {
-  const imageUrl = hairstyle.image
-    ? urlFor(hairstyle.image).url()
-    : undefined
+  const imageUrl = hairstyle.image ? urlFor(hairstyle.image).url() : undefined
+  const imageLqip = hairstyle.image?.lqip
 
   const creativeWorkSchema = {
     "@context": "https://schema.org",
@@ -82,6 +83,7 @@ export default function HairstyleDetail({ hairstyle }: Props) {
                 alt={hairstyle.title}
                 priority
                 sizes="(max-width: 768px) 100vw, 40vw"
+                blurDataURL={imageLqip}
               />
             </div>
           </div>

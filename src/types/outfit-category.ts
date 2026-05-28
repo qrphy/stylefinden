@@ -14,6 +14,7 @@ export type OutfitItem = {
   tag: "Trending" | "New" | "Popular";
   style: string;
   image?: string;
+  lqip?: string;
   href: string;
   pieces?: PieceThumbnail[];
 };

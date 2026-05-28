@@ -22,7 +22,8 @@ const STATIC_OUTFITS: StaticOutfit[] = [
 
 type StaticOutfit = { id: string; title: string; subtitle: string; tag: string }
 type PieceThumb = { key: string; name: string; image?: string; affiliateUrl?: string }
-type OutfitCard = { id: string; title: string; subtitle: string; tag: string; slug: string; image?: string; pieces?: PieceThumb[] }
+type OutfitCard = { id: string; title: string; subtitle: string; tag: string; slug: string; image?: string; lqip?: string; pieces?: PieceThumb[] }
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 
 export default async function FeaturedOutfits() {
   const sanityOutfits = await client.fetch(HOME_OUTFITS_QUERY, {}, { next: { revalidate: 3600, tags: ['outfit'] } });
@@ -30,13 +31,14 @@ export default async function FeaturedOutfits() {
   const useSanity = sanityOutfits.length > 0;
 
   const outfits: OutfitCard[] = useSanity
-    ? sanityOutfits.map((o: { _id: string; title: string; slug: string; image?: object; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean; pieces?: Array<{ _key?: string; name: string; image?: object; affiliateUrl?: string }> }) => ({
+    ? sanityOutfits.map((o: { _id: string; title: string; slug: string; image?: SanityImg; style?: string; season?: string; occasion?: string; tags?: string[]; featured?: boolean; pieces?: Array<{ _key?: string; name: string; image?: SanityImg; affiliateUrl?: string }> }) => ({
         id: o._id,
         title: o.title,
         subtitle: o.occasion ?? o.season ?? "",
         tag: o.featured ? "Trending" : (o.tags?.[0] === "New" ? "New" : "Popular"),
         slug: o.slug,
         image: o.image ? urlFor(o.image).width(1400).height(1867).url() : undefined,
+        lqip: o.image?.lqip,
         pieces: o.pieces?.map((p, i) => ({
           key: p._key ?? String(i),
           name: p.name,
@@ -79,6 +81,7 @@ export default async function FeaturedOutfits() {
                       src={outfit.image}
                       alt={outfit.title}
                       sizes={isHero ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
+                      blurDataURL={outfit.lqip}
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-b from-gray-100 to-gray-200 -z-10" />

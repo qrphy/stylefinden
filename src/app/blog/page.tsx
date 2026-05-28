@@ -61,12 +61,13 @@ const categoryLabel: Record<string, string> = {
   "trend-reports":      "Trends",
 }
 
+type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 type Post = {
   _id: string
   title: string
   slug: string
   excerpt?: string | null
-  heroImage?: object | null
+  heroImage?: SanityImg | null
   category: string
   publishedAt?: string | null
   tags?: string[] | null
@@ -157,6 +158,7 @@ export default async function BlogPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
               {featuredPosts.map((post, i) => {
                 const imgUrl = post.heroImage ? urlFor(post.heroImage).width(1400).height(788).url() : undefined
+                const imgLqip = post.heroImage?.lqip
                 const isHero = i === 0 && featuredPosts.length >= 2
                 return (
                   <Link
@@ -165,7 +167,7 @@ export default async function BlogPage() {
                     className={`group flex flex-col overflow-hidden border border-gray-700 hover:border-gray-400 transition-colors duration-200 ${isHero ? "md:col-span-2" : ""}`}
                   >
                     <div className={`relative overflow-hidden bg-gray-800 ${isHero ? "aspect-[16/7]" : "aspect-[16/9]"}`}>
-                      <ImgPlaceholder src={imgUrl} alt={post.title} sizes={isHero ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"} />
+                      <ImgPlaceholder src={imgUrl} alt={post.title} sizes={isHero ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"} blurDataURL={imgLqip} />
                     </div>
                     <div className="flex flex-col gap-3 p-6 flex-1">
                       <div className="flex items-center gap-3 flex-wrap">
@@ -219,6 +221,7 @@ export default async function BlogPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
               {latestPosts.map((post) => {
                 const imgUrl = post.heroImage ? urlFor(post.heroImage).width(1400).height(788).url() : undefined
+                const imgLqip = post.heroImage?.lqip
                 return (
                   <Link
                     key={post._id}
@@ -226,7 +229,7 @@ export default async function BlogPage() {
                     className="group flex flex-col overflow-hidden border border-gray-100 hover:border-gray-300 transition-colors duration-200"
                   >
                     <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
-                      <ImgPlaceholder src={imgUrl} alt={post.title} sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" />
+                      <ImgPlaceholder src={imgUrl} alt={post.title} sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw" blurDataURL={imgLqip} />
                     </div>
                     <div className="flex flex-col gap-3 p-5 flex-1">
                       <div className="flex items-center gap-3 flex-wrap">
