@@ -1,6 +1,7 @@
 // Ana sayfadaki blog bölümü — en son 4 blog yazısını gösterir.
 // İlk yazı büyük öne çıkan kart (2 sütun), geri 3'ü sağ sütunda küçük liste.
 // Sanity'de yayınlanmış post varsa oradan çeker; yoksa STATIC_POSTS fallback'i kullanır.
+import Link from "next/link"
 import { client } from "@/sanity/lib/client"
 import Button from "@/components/shared/Button"
 import { urlFor } from "@/sanity/lib/image"
@@ -52,7 +53,7 @@ export default async function LatestArticles() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-            <a href={`/blog/${featured.slug}`} className="group xl:col-span-2 flex flex-col overflow-hidden">
+            <Link href={`/blog/${featured.slug}`} className="group xl:col-span-2 flex flex-col overflow-hidden">
               <div className="relative overflow-hidden bg-gray-100 aspect-[16/9]">
                 <ImgPlaceholder src={featured.heroImage ? urlFor(featured.heroImage).width(1400).height(788).url() : undefined} alt={featured.title} />
                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
@@ -77,11 +78,11 @@ export default async function LatestArticles() {
                   </svg>
                 </span>
               </div>
-            </a>
+            </Link>
 
             <div className="flex flex-col gap-5">
               {regular.map((post) => (
-                <a key={post._id} href={`/blog/${post.slug}`} className="group flex gap-4 py-5 border-b border-gray-100 last:border-0 hover:opacity-60 transition-opacity duration-200">
+                <Link key={post._id} href={`/blog/${post.slug}`} className="group flex gap-4 py-5 border-b border-gray-100 last:border-0 hover:opacity-60 transition-opacity duration-200">
                   <div className="relative w-20 flex-shrink-0 aspect-square overflow-hidden bg-gray-100">
                     <ImgPlaceholder src={post.heroImage ? urlFor(post.heroImage).width(160).height(160).url() : undefined} alt={post.title} />
                     <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 -z-10" />
@@ -97,7 +98,7 @@ export default async function LatestArticles() {
                       <span className="text-xs tracking-widest uppercase text-gray-400">{formatDate(post.publishedAt)}</span>
                     )}
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

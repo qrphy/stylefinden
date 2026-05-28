@@ -4,6 +4,7 @@ import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { FEATURED_POSTS_QUERY, LATEST_POSTS_QUERY } from "@/lib/queries"
 import { BLOG_CATEGORY_CONFIGS } from "@/lib/blog-category-config"
+import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { formatDate } from "@/lib/formatDate"
 
@@ -111,7 +112,7 @@ export default async function BlogPage() {
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {categories.map((cat) => (
-              <a
+              <Link
                 key={cat.slug}
                 href={`/blog/${cat.slug}`}
                 className="group flex flex-col gap-2 border border-gray-200 hover:border-black p-5 transition-colors duration-200"
@@ -132,7 +133,7 @@ export default async function BlogPage() {
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -158,7 +159,7 @@ export default async function BlogPage() {
                 const imgUrl = post.heroImage ? urlFor(post.heroImage).width(1400).height(788).url() : undefined
                 const isHero = i === 0 && featuredPosts.length >= 2
                 return (
-                  <a
+                  <Link
                     key={post._id}
                     href={`/blog/${post.slug}`}
                     className={`group flex flex-col overflow-hidden border border-gray-700 hover:border-gray-400 transition-colors duration-200 ${isHero ? "md:col-span-2" : ""}`}
@@ -190,7 +191,7 @@ export default async function BlogPage() {
                         </svg>
                       </span>
                     </div>
-                  </a>
+                  </Link>
                 )
               })}
             </div>
@@ -219,7 +220,7 @@ export default async function BlogPage() {
               {latestPosts.map((post) => {
                 const imgUrl = post.heroImage ? urlFor(post.heroImage).width(1400).height(788).url() : undefined
                 return (
-                  <a
+                  <Link
                     key={post._id}
                     href={`/blog/${post.slug}`}
                     className="group flex flex-col overflow-hidden border border-gray-100 hover:border-gray-300 transition-colors duration-200"
@@ -251,7 +252,7 @@ export default async function BlogPage() {
                         </svg>
                       </span>
                     </div>
-                  </a>
+                  </Link>
                 )
               })}
             </div>

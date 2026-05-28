@@ -1,6 +1,7 @@
 // Ana sayfadaki "Trending Outfits" bölümü — 8 outfit kartı 4'lü grid'de gösterir.
 // Sanity'de yayınlanmış outfit varsa oradan çeker; yoksa STATIC_OUTFITS fallback'i kullanır.
 // featured=true olan outfitler "Trending" etiketiyle öne çıkar.
+import Link from "next/link";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HOME_OUTFITS_QUERY } from "@/lib/queries";
@@ -67,7 +68,7 @@ export default async function FeaturedOutfits() {
           {outfits.map((outfit, index) => {
             const isHero = index === 0
             return (
-              <a
+              <Link
                 key={outfit.id}
                 href={`/outfits/${outfit.slug}`}
                 className={`group flex flex-col gap-3 ${isHero ? "md:col-span-2 xl:col-span-2" : ""}`}
@@ -108,7 +109,7 @@ export default async function FeaturedOutfits() {
                     <PieceThumbnailStrip pieces={outfit.pieces} />
                   </div>
                 )}
-              </a>
+              </Link>
             )
           })}
         </div>
