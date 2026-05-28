@@ -1,6 +1,6 @@
 import { createHash } from 'crypto'
 import { NextResponse } from 'next/server'
-import { supabase, createAdminClient } from '@/lib/supabase'
+import { getSupabase, createAdminClient } from '@/lib/supabase'
 
 function hashIp(ip: string): string {
   return createHash('sha256')
@@ -33,7 +33,7 @@ export async function GET(
   const fallbackUrl = searchParams.get('url')
 
   // Piece'i Supabase'den al (Awin feed sync aktif olduğunda dolar)
-  const { data: piece } = await supabase
+  const { data: piece } = await getSupabase()
     .from('pieces')
     .select('id, affiliate_url')
     .eq('id', pieceId)
@@ -49,7 +49,7 @@ export async function GET(
   // Outfit UUID'si (opsiyonel — tıklama context'i için)
   let outfitId: string | null = null
   if (outfitSanityId) {
-    const { data: outfit } = await supabase
+    const { data: outfit } = await getSupabase()
       .from('outfits')
       .select('id')
       .eq('sanity_id', outfitSanityId)
