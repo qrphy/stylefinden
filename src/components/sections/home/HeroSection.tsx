@@ -6,10 +6,10 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 
 export default function HeroSection() {
   return (
-    <section className="w-full bg-white overflow-hidden">
+    <section className="w-full bg-white overflow-hidden flex flex-col min-h-[100svh]">
 
       {/* Editorial meta bar */}
-      <div className="border-b border-gray-100">
+      <div className="border-b border-gray-100 shrink-0">
         <div className="container-page py-3 flex items-center justify-center">
           <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gray-400">
             Outfit Ideas · Hairstyles · Accessories · Trends
@@ -18,7 +18,7 @@ export default function HeroSection() {
       </div>
 
       {/* Main editorial grid — full viewport width, sağ görsel viewport kenarına uzanır */}
-      <div className="grid grid-cols-1 md:grid-cols-12 min-h-[80vh] md:min-h-[82vh]">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-12">
 
         {/* Left column — container-page padding ile eşleştirildi */}
         <div className="md:col-span-7 flex flex-col justify-between py-10 md:py-14 xl:py-16
@@ -60,12 +60,14 @@ export default function HeroSection() {
         <div className="hidden md:block md:col-span-5 relative">
           <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-100" />
           <div className="absolute inset-0">
-            <div className="relative h-full overflow-hidden bg-gray-100">
+            <div className="relative h-full overflow-hidden bg-white">
               <ImgPlaceholder
                 src="https://cdn.sanity.io/images/29dp442n/production/666e85f82cb0fbfa5affe8d7b1ff7d62b6ce1225-1772x2368.webp"
                 alt="Brown Lace Crop & Sequin Mini Skirt"
                 blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAQUBAAAAAAAAAAAAAAAAAAIDBQYHCP/EACYQAAICAgEDAgcAAAAAAAAAAAECAwQAEQUGEjEHYQgTIUFCUZH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAEAEQL/2gAMAwEAAhEDEQA/AOieSlFetNM3iNC38GZ96e9bp1SbMMwCWYyWVQNbTestfW/JDjumOTtdhf5cLEKPv9Mx34e+2ZeQtvA8EjMdB/JHt7Zj2ul0cAittWGJ7xhiihudsJe4+zWm7WjkQqw3lN6N5KFbyVKsaxlITsfvR1kyyK5IYbBxujxlKvejmhrokoBHcvnWJNdqHDKxCxLr8cMbXxhhTf/Z"
                 sizes="(max-width: 768px) 0px, 42vw"
+                objectFit="contain"
+                objectPosition="center"
                 priority
                 className="w-full h-full"
               />

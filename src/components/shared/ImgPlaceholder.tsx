@@ -11,6 +11,8 @@ type Props = {
   sizes?: string;
   blurDataURL?: string;
   quality?: number;
+  objectFit?: "cover" | "contain";
+  objectPosition?: "top" | "center" | "bottom";
 };
 
 export default function ImgPlaceholder({
@@ -21,9 +23,13 @@ export default function ImgPlaceholder({
   sizes = "(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw",
   blurDataURL,
   quality = 85,
+  objectFit = "cover",
+  objectPosition = "top",
 }: Props) {
   if (src) {
     const isSanity = src.startsWith("https://cdn.sanity.io");
+    const fitClass = objectFit === "contain" ? "object-contain" : "object-cover";
+    const posClass = { top: "object-top", center: "object-center", bottom: "object-bottom" }[objectPosition];
     return (
       <Image
         src={src}
@@ -33,7 +39,7 @@ export default function ImgPlaceholder({
         priority={priority}
         quality={quality}
         loader={isSanity ? sanityImageLoader : undefined}
-        className={`${className} object-cover object-top`}
+        className={`${className} ${fitClass} ${posClass}`}
         placeholder={blurDataURL ? "blur" : "empty"}
         blurDataURL={blurDataURL}
       />
