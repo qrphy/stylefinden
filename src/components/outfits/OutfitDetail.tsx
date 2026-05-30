@@ -5,6 +5,7 @@ import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
 import OutfitTracker from "@/components/outfits/OutfitTracker"
 import OutfitSimilarSection from "@/components/outfits/OutfitSimilarSection"
+import ShareButton from "@/components/shared/ShareButton"
 
 const EMPTY_OUTFITS: never[] = []
 const EMPTY_PIECES: never[] = []
@@ -139,6 +140,7 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
                   blurDataURL={imageLqip}
                 />
               </div>
+              <ShareButton url={`/outfits/${outfit.slug}`} title={outfit.title} />
               {imageUrl && (
                 <a
                   href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(`https://stylefinden.com/outfits/${outfit.slug}`)}&media=${encodeURIComponent(imageUrl)}&description=${encodeURIComponent(outfit.title)}`}

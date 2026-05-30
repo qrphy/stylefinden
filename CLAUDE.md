@@ -47,6 +47,7 @@ Minimalist siyah/beyaz tasarım dili, Türkçe içerik yönetimi, İngilizce sit
 
 | Koşul | Agent / Skill |
 |-------|--------------|
+| Affiliate linklerden outfit oluşturulacak | `sanity-editor` agent |
 | Sanity'e içerik eklenecek | `sanity-creator` agent |
 | GROQ sorgusu yazılacak/güncellenecek | `groq-writer` agent |
 | Yeni occasion, style, trend, blog kategorisi eklenecek | `collection-manager` agent |
