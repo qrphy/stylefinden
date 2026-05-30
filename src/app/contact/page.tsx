@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-bold mb-4">Contact</h1>
+      <h1 className="text-3xl font-black mb-4 uppercase tracking-tight">Contact</h1>
       <p className="text-gray-500 mb-12">
         Do you have questions, suggestions or would you like to collaborate?
         Just send us an email — we&apos;ll get back to you as soon as possible.
@@ -23,7 +23,7 @@ export default function ContactPage() {
         </p>
         <a
           href="mailto:contact@stylefinden.com"
-          className="text-lg font-medium text-black hover:text-gray-600 transition-colors duration-200"
+          className="text-lg font-semibold text-black hover:text-gray-600 transition-colors duration-200"
         >
           contact@stylefinden.com
         </a>
