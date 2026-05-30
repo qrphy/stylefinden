@@ -43,7 +43,7 @@ export default function MobileMenu() {
           onClick={() => setOpen((prev) => !prev)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
-          className="ml-auto relative z-[60] flex flex-col justify-between w-6 h-[18px]"
+          className="relative z-[60] flex flex-col justify-between w-6 h-[18px]"
         >
           <span
             className={`block h-px w-full bg-black transition-all duration-300 ease-in-out origin-center ${
