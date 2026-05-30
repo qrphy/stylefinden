@@ -12,7 +12,7 @@ export default function HeroSection() {
       <div className="border-b border-gray-100">
         <div className="container-page py-3 flex items-center justify-center">
           <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gray-400">
-            Your Style Platform
+            Outfit Ideas · Hairstyles · Accessories · Trends
           </span>
         </div>
       </div>
@@ -26,13 +26,17 @@ export default function HeroSection() {
                         pr-6 md:pr-10 xl:pr-16">
 
           <h1 className="font-display text-[clamp(52px,9vw,128px)] font-normal text-black leading-[0.9] tracking-tight">
-            Discover<br />
-            your<br />
+            Find your<br />
+            next<br />
             <span className="italic font-light">perfect</span><br />
-            style.
+            look.
           </h1>
 
-          <div className="flex items-center gap-6 pt-8 border-t border-gray-100 mt-8 md:mt-0">
+          <p className="text-sm text-gray-500 leading-relaxed mt-6 max-w-xs">
+            Curated outfits for every occasion and style — updated weekly.
+          </p>
+
+          <div className="flex items-center gap-6 pt-8 border-t border-gray-100 mt-6 md:mt-0">
             <Link
               href="/outfits"
               className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"

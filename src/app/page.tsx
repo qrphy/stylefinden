@@ -58,6 +58,7 @@ const FeaturedCategories    = dynamic(() => import("@/components/sections/home/F
 const SeasonalHighlights    = dynamic(() => import("@/components/sections/home/SeasonalHighlights"))
 const HairstyleHighlights   = dynamic(() => import("@/components/sections/home/HairstyleHighlights"))
 const AccessoriesHighlights = dynamic(() => import("@/components/sections/home/AccessoriesHighlights"))
+const NewsletterSection     = dynamic(() => import("@/components/sections/home/NewsletterSection"))
 const LatestArticles        = dynamic(() => import("@/components/sections/home/LatestArticles"))
 
 export default function Home() {
@@ -72,6 +73,7 @@ export default function Home() {
         <SeasonalHighlights />
         <HairstyleHighlights />
         <AccessoriesHighlights />
+        <NewsletterSection />
         <LatestArticles />
       </main>
     </>

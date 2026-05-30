@@ -215,36 +215,39 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
   }
 
   return (
-    <section className="w-full bg-white border-t border-gray-100 scroll-reveal">
+    <section className="w-full bg-black border-t border-gray-900 scroll-reveal">
       <div className="container-page py-14 md:py-16">
 
         <div className="section-header mb-8">
           <div className="flex flex-col gap-2">
-            <span className="eyebrow">Style Finder</span>
-            <h2 className="section-title-lg">Find your look.</h2>
+            <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gray-600">Style Finder</span>
+            <h2 className="font-display text-[clamp(32px,5vw,64px)] font-light text-white tracking-tight leading-[1.05]">
+              Find your<br className="hidden sm:block" /> perfect look.
+            </h2>
+            <p className="text-sm text-gray-500 leading-relaxed mt-1">Tell us the occasion, season and style.</p>
           </div>
           {/* Item 7: Browsing history hint — shown only when no active selection */}
           {historyHint && !occasion && (
             <button
               type="button"
               onClick={() => selectOccasion(historyHint.occasion)}
-              className="self-start mt-1 text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+              className="self-start mt-1 text-[10px] font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
             >
-              Based on your browsing: <span className="text-black">{historyHint.label}</span> &rarr;
+              Based on your browsing: <span className="text-gray-300">{historyHint.label}</span> &rarr;
             </button>
           )}
         </div>
 
         {/* Item 3: Restored session banner */}
         {hasRestored && (
-          <div className="flex items-center gap-4 mb-8 py-2.5 px-3 border border-gray-100 bg-gray-50">
-            <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400">
+          <div className="flex items-center gap-4 mb-8 py-2.5 px-3 border border-gray-800 bg-gray-900">
+            <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-500">
               Continuing from your last visit
             </span>
             <button
               type="button"
               onClick={clearAll}
-              className="ml-auto text-[10px] font-semibold tracking-widest uppercase text-gray-300 hover:text-black transition-colors duration-200"
+              className="ml-auto text-[10px] font-semibold tracking-widest uppercase text-gray-600 hover:text-white transition-colors duration-200"
             >
               Clear &times;
             </button>
@@ -284,13 +287,13 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
             </FinderStep>
           )}
 
-          <div className="pt-4 border-t border-gray-100 flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
+          <div className="pt-4 border-t border-gray-800 flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap sm:gap-x-6 sm:gap-y-3">
             <div className="flex items-center gap-6">
               {occasion && (
                 <button
                   type="button"
                   onClick={handleFind}
-                  className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
+                  className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-white hover:text-gray-400 transition-colors duration-200"
                 >
                   Find Outfits
                   <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
@@ -301,7 +304,7 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
               <button
                 type="button"
                 onClick={handleSurprise}
-                className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+                className="text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
               >
                 Surprise me
               </button>
@@ -309,13 +312,13 @@ export default function StyleFinderWidget({ occasionCounts }: Props) {
             <div className="flex items-center gap-6 sm:ml-auto">
               <Link
                 href="/style-quiz"
-                className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+                className="text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
               >
                 Take the quiz
               </Link>
               <Link
                 href="/outfits"
-                className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+                className="text-xs font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
               >
                 {occasion ? 'Skip' : 'Show me everything'}
               </Link>
@@ -336,8 +339,8 @@ function FinderStep({ number, question, children }: {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-baseline gap-3">
-        <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gray-300">0{number}</span>
-        <p className="text-sm font-semibold tracking-tight text-black">{question}</p>
+        <span className="text-[10px] font-semibold tracking-[0.3em] uppercase text-gray-700">0{number}</span>
+        <p className="text-sm font-semibold tracking-tight text-white">{question}</p>
       </div>
       {children}
     </div>
@@ -426,8 +429,8 @@ function PillGroup({ options, selected, onSelect, allowDeselect = false }: {
             }}
             className={`px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase border transition-colors duration-150
               ${active
-                ? 'bg-black text-white border-black'
-                : 'bg-white text-gray-500 border-gray-200 hover:border-black hover:text-black'
+                ? 'bg-white text-black border-white'
+                : 'bg-transparent text-gray-500 border-gray-700 hover:border-gray-400 hover:text-white'
               }`}
           >
             {opt.label}

@@ -62,8 +62,8 @@ const collections: CollectionGroup[] = [
     gridCols: "grid-cols-1 md:grid-cols-2 xl:grid-cols-4",
     items: [
       { slug: "summer", label: "Summer Outfits",      description: "Light dresses, floral prints & linen looks for hot days",       tags: ["Maxi", "Midi", "Mini", "Floral"],        badge: "New", accent: "bg-[#EDCFA9]", accentText: "text-[#f57f17]", active: true, image: "/categories/outfits/summer.webp", priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
-      { slug: "winter", label: "Cozy Winter Outfits", description: "Warm layering looks, coats and cozy combinations for cold days", tags: ["Coat", "Layering", "Knitwear", "Boots"], badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true, image: "/categories/outfits/winter.png",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
-      { slug: "spring", label: "Spring Looks",        description: "Pastel tones, light blazers and fresh combinations",             tags: ["Pastels", "Blazer", "Linen", "Floral"],  badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true, image: "/categories/outfits/spring.png",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
+      { slug: "winter", label: "Cozy Winter Outfits", description: "Warm layering looks, coats and cozy combinations for cold days", tags: ["Coat", "Layering", "Knitwear", "Boots"], badge: "New", accent: "bg-[#e3f2fd]", accentText: "text-[#1565c0]", active: true, image: "/categories/outfits/winter.webp",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
+      { slug: "spring", label: "Spring Looks",        description: "Pastel tones, light blazers and fresh combinations",             tags: ["Pastels", "Blazer", "Linen", "Floral"],  badge: "New", accent: "bg-[#e8f5e9]", accentText: "text-[#2e7d32]", active: true, image: "/categories/outfits/spring.webp",  priority: true, sizes: "(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw" },
     ],
   },
   {

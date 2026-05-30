@@ -56,20 +56,20 @@ export function getStyleConfig(slug: string): StyleConfig {
 }
 
 const STYLE_IMAGES: Record<string, string> = {
-  "boho":              "/categories/outfits/boho.png",
+  "boho":              "/categories/outfits/boho.webp",
   "minimalist":        "/categories/outfits/minimalist.png",
   "streetstyle":       "/categories/outfits/street-style.png",
-  "old-money":         "/categories/outfits/old-money.png",
+  "old-money":         "/categories/outfits/old-money.webp",
   "retro-vintage":     "/categories/outfits/retro-vintage.png",
-  "y2k":               "/categories/outfits/y2k.png",
-  "western":           "/categories/outfits/western.png",
+  "y2k":               "/categories/outfits/y2k.webp",
+  "western":           "/categories/outfits/western.webp",
   "sienna-vibe":       "/categories/outfits/sienna.webp",
   "black-dark":        "/categories/outfits/black-dark.png",
   "clean-girl":        "/categories/outfits/clean-girl.png",
   "korean-fashion":    "/categories/outfits/korean-fashion.webp",
   "party-night-out":   "/categories/outfits/party-night.webp",
   "cute-coquette":     "/categories/outfits/cute-coquette.webp",
-  "spring":            "/categories/outfits/spring.png",
+  "spring":            "/categories/outfits/spring.webp",
 }
 
 // CollectionCard için CollectionItem döndürür

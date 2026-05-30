@@ -101,6 +101,22 @@ export const OUTFITS_OCCASION_COUNTS_QUERY = defineQuery(`
   }
 `)
 
+// SEASONAL_OUTFITS_QUERY: SeasonalHighlights bölümü için mevsim başına 1 featured outfit görseli
+export const SEASONAL_OUTFITS_QUERY = defineQuery(`{
+  "spring": *[_type == "outfit" && season == "spring" && defined(image.asset)] | order(featured desc, _createdAt desc)[0] {
+    title, "slug": slug.current, image ${IMG}
+  },
+  "summer": *[_type == "outfit" && season == "summer" && defined(image.asset)] | order(featured desc, _createdAt desc)[0] {
+    title, "slug": slug.current, image ${IMG}
+  },
+  "autumn": *[_type == "outfit" && season == "autumn" && defined(image.asset)] | order(featured desc, _createdAt desc)[0] {
+    title, "slug": slug.current, image ${IMG}
+  },
+  "winter": *[_type == "outfit" && season == "winter" && defined(image.asset)] | order(featured desc, _createdAt desc)[0] {
+    title, "slug": slug.current, image ${IMG}
+  }
+}`)
+
 // Ana sayfadaki "Trending Outfits" bölümü için — sadece featured=true olanlar, max 6 adet
 export const FEATURED_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && featured == true && defined(slug.current)] | order(_createdAt desc) [0...6] {

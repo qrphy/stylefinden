@@ -58,7 +58,7 @@ export function getOccasionConfig(slug: string): OccasionConfig {
 const OCCASION_IMAGES: Record<string, string> = {
   office:           "/categories/outfits/office-business.jpeg",
   evening:          "/categories/outfits/evening-event.jpeg",
-  sport:            "/categories/outfits/sport-outdoor.png",
+  sport:            "/categories/outfits/sport-outdoor.webp",
   school:           "/categories/outfits/school-college.webp",
   travel:           "/categories/outfits/travel-vacation.png",
   "party-night-out":"/categories/outfits/party-night.webp",
