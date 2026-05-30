@@ -5,6 +5,7 @@ import { urlFor } from "@/sanity/lib/image"
 import { styleLabel, seasonLabel, occasionLabel } from "@/lib/outfit-labels"
 import OutfitTracker from "@/components/outfits/OutfitTracker"
 import OutfitSimilarSection from "@/components/outfits/OutfitSimilarSection"
+import RecentlyViewed from "@/components/outfits/RecentlyViewed"
 import ShareButton from "@/components/shared/ShareButton"
 
 const EMPTY_OUTFITS: never[] = []
@@ -266,6 +267,15 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
           </div>
         </div>
       </section>
+
+      {/* ── Recently Viewed ─────────────────────────────────────────────────── */}
+      <RecentlyViewed
+        currentSlug={outfit.slug}
+        currentTitle={outfit.title}
+        currentImageUrl={imageUrl}
+        currentStyle={outfit.style}
+        currentOccasion={outfit.occasion}
+      />
 
       {/* ── Similar Pieces + Similar Outfits ────────────────────────────────── */}
       <OutfitSimilarSection outfitsByPieces={outfitsByPieces} similarPiecesRaw={similarPiecesRaw} />
