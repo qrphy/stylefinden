@@ -142,12 +142,29 @@ export default function PrivacyPage() {
 
       <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">8. AI-Generated Content</h2>
       <p className="text-gray-700 leading-relaxed">
-        Some outfit descriptions and editorial content on this website are generated or
-        assisted by artificial intelligence using the <strong>Claude API</strong> by
-        Anthropic, PBC, 548 Market Street #72220, San Francisco, CA 94104, USA.
-        Content generation is based on editorial data (outfit names, style tags, season
-        context) — no visitor personal data is sent to Anthropic. Anthropic&apos;s
-        privacy policy applies to API usage:{" "}
+        Outfit styling images on this website are created using{" "}
+        <strong>Fashn AI</strong> (fashn.ai), a virtual try-on service. A synthetic
+        model is used — no real person is depicted — and actual garments are
+        digitally placed on that model. Images are intended for styling inspiration
+        only; the actual appearance of a garment on a real person may differ.
+        Fashn AI&apos;s privacy policy applies to image processing:{" "}
+        <a
+          href="https://fashn.ai/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2 hover:text-black transition-colors"
+        >
+          fashn.ai/privacy
+        </a>
+        .
+      </p>
+      <p className="text-gray-700 leading-relaxed mt-3">
+        Some outfit descriptions and editorial text are generated or assisted by
+        artificial intelligence using the <strong>Claude API</strong> by Anthropic,
+        PBC, 548 Market Street #72220, San Francisco, CA 94104, USA. Text generation
+        is based on editorial data (outfit names, style tags, season context) — no
+        visitor personal data is sent to Anthropic. Anthropic&apos;s privacy policy
+        applies to API usage:{" "}
         <a
           href="https://www.anthropic.com/privacy"
           target="_blank"

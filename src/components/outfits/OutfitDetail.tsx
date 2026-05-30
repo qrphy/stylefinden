@@ -128,14 +128,19 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 xl:gap-16">
 
           {/* Sol — Ana görsel */}
-          <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden">
-            <ImgPlaceholder
-              src={imageUrl}
-              alt={outfit.title}
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              blurDataURL={imageLqip}
-            />
+          <div className="flex flex-col gap-2">
+            <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden">
+              <ImgPlaceholder
+                src={imageUrl}
+                alt={outfit.title}
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                blurDataURL={imageLqip}
+              />
+            </div>
+            <p className="text-[10px] text-gray-400 leading-relaxed">
+              AI-generated styling image for inspiration. Actual fit may vary.
+            </p>
           </div>
 
           {/* Sağ — Detaylar */}
