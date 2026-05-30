@@ -61,7 +61,14 @@ export default function HeroSection() {
           <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-100" />
           <div className="absolute inset-0">
             <div className="relative h-full overflow-hidden bg-gray-100">
-              <ImgPlaceholder className="w-full h-full" />
+              <ImgPlaceholder
+                src="https://cdn.sanity.io/images/29dp442n/production/666e85f82cb0fbfa5affe8d7b1ff7d62b6ce1225-1772x2368.webp"
+                alt="Brown Lace Crop & Sequin Mini Skirt"
+                blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAQUBAAAAAAAAAAAAAAAAAAIDBQYHCP/EACYQAAICAgEDAgcAAAAAAAAAAAECAwQAEQUGEjEHYQgTIUFCUZH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAEAEQL/2gAMAwEAAhEDEQA/AOieSlFetNM3iNC38GZ96e9bp1SbMMwCWYyWVQNbTestfW/JDjumOTtdhf5cLEKPv9Mx34e+2ZeQtvA8EjMdB/JHt7Zj2ul0cAittWGJ7xhiihudsJe4+zWm7WjkQqw3lN6N5KFbyVKsaxlITsfvR1kyyK5IYbBxujxlKvejmhrokoBHcvnWJNdqHDKxCxLr8cMbXxhhTf/Z"
+                sizes="(max-width: 768px) 0px, 42vw"
+                priority
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
@@ -72,7 +79,13 @@ export default function HeroSection() {
       <div className="md:hidden">
         <div className="container-page pb-10">
           <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
-            <ImgPlaceholder className="w-full h-full" />
+            <ImgPlaceholder
+              src="https://cdn.sanity.io/images/29dp442n/production/666e85f82cb0fbfa5affe8d7b1ff7d62b6ce1225-1772x2368.webp"
+              alt="Brown Lace Crop & Sequin Mini Skirt"
+              blurDataURL="data:image/jpeg;base64,/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAbABQDASIAAhEBAxEB/8QAGgAAAQUBAAAAAAAAAAAAAAAAAAIDBQYHCP/EACYQAAICAgEDAgcAAAAAAAAAAAECAwQAEQUGEjEHYQgTIUFCUZH/xAAYAQADAQEAAAAAAAAAAAAAAAAAAQIDBP/EABcRAQEBAQAAAAAAAAAAAAAAAAEAEQL/2gAMAwEAAhEDEQA/AOieSlFetNM3iNC38GZ96e9bp1SbMMwCWYyWVQNbTestfW/JDjumOTtdhf5cLEKPv9Mx34e+2ZeQtvA8EjMdB/JHt7Zj2ul0cAittWGJ7xhiihudsJe4+zWm7WjkQqw3lN6N5KFbyVKsaxlITsfvR1kyyK5IYbBxujxlKvejmhrokoBHcvnWJNdqHDKxCxLr8cMbXxhhTf/Z"
+              sizes="100vw"
+              className="w-full h-full"
+            />
           </div>
         </div>
       </div>
