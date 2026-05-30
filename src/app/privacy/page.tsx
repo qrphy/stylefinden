@@ -62,11 +62,17 @@ export default function PrivacyPage() {
               <td className="px-4 py-3">Distinguishes visitors (statistics)</td>
               <td className="px-4 py-3">2 years</td>
             </tr>
-            <tr>
+            <tr className="border-b border-gray-100">
               <td className="px-4 py-3 font-mono text-xs">va_*</td>
               <td className="px-4 py-3">Vercel Analytics</td>
               <td className="px-4 py-3">Anonymous page view statistics</td>
               <td className="px-4 py-3">Session</td>
+            </tr>
+            <tr>
+              <td className="px-4 py-3 font-mono text-xs">ca-pub-*, IDE, __gads</td>
+              <td className="px-4 py-3">Google AdSense</td>
+              <td className="px-4 py-3">Personalized ad display (planned — not yet active)</td>
+              <td className="px-4 py-3">1–2 years</td>
             </tr>
           </tbody>
         </table>
