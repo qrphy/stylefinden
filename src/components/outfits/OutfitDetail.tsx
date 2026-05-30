@@ -129,14 +129,30 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
 
           {/* Sol — Ana görsel */}
           <div className="flex flex-col gap-2">
-            <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden">
-              <ImgPlaceholder
-                src={imageUrl}
-                alt={outfit.title}
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-                blurDataURL={imageLqip}
-              />
+            <div className="relative">
+              <div className="relative aspect-[3/4] w-full bg-gray-100 overflow-hidden">
+                <ImgPlaceholder
+                  src={imageUrl}
+                  alt={outfit.title}
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  blurDataURL={imageLqip}
+                />
+              </div>
+              {imageUrl && (
+                <a
+                  href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(`https://stylefinden.com/outfits/${outfit.slug}`)}&media=${encodeURIComponent(imageUrl)}&description=${encodeURIComponent(outfit.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Save to Pinterest"
+                  className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 bg-white px-2.5 py-1.5 text-[10px] font-semibold tracking-widest uppercase text-black hover:bg-black hover:text-white transition-colors duration-200"
+                >
+                  <svg viewBox="0 0 24 24" className="size-3.5 fill-current shrink-0" aria-hidden="true">
+                    <path d="M9.04 21.54c.96.29 1.93.46 2.96.46a10 10 0 0 0 10-10A10 10 0 0 0 12 2 10 10 0 0 0 2 12c0 4.25 2.67 7.9 6.44 9.34-.09-.78-.18-2.07.04-2.96l1.15-4.94s-.29-.58-.29-1.45c0-1.36.8-2.38 1.78-2.38.86 0 1.26.63 1.26 1.38 0 .86-.57 2.09-.86 3.27-.24 1.32.51 2.4 1.68 2.4 2.02 0 3.37-2.16 3.37-5.27 0-2.76-1.99-4.7-4.84-4.7-3.28 0-5.21 2.46-5.21 5.01 0 .99.37 2.04.84 2.62.09.11.1.2.08.31l-.31 1.26c-.05.19-.16.23-.37.14-1.39-.65-2.26-2.71-2.26-4.38 0-3.57 2.6-6.85 7.48-6.85 3.93 0 6.99 2.8 6.99 6.54 0 3.9-2.46 7.04-5.86 7.04-1.15 0-2.22-.59-2.58-1.29l-.7 2.61c-.25.97-.94 2.19-1.4 2.93z"/>
+                  </svg>
+                  Save
+                </a>
+              )}
             </div>
             <p className="text-[10px] text-gray-400 leading-relaxed">
               AI-generated styling image for inspiration. Actual fit may vary.
