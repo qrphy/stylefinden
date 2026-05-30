@@ -268,6 +268,9 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
         </div>
       </section>
 
+      {/* ── Similar Pieces + Similar Outfits ────────────────────────────────── */}
+      <OutfitSimilarSection outfitsByPieces={outfitsByPieces} similarPiecesRaw={similarPiecesRaw} />
+
       {/* ── Recently Viewed ─────────────────────────────────────────────────── */}
       <RecentlyViewed
         currentSlug={outfit.slug}
@@ -276,9 +279,6 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
         currentStyle={outfit.style}
         currentOccasion={outfit.occasion}
       />
-
-      {/* ── Similar Pieces + Similar Outfits ────────────────────────────────── */}
-      <OutfitSimilarSection outfitsByPieces={outfitsByPieces} similarPiecesRaw={similarPiecesRaw} />
 
       {/* ── CTA ─────────────────────────────────────────────────────────────── */}
       <section className="section-divider">
