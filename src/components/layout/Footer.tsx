@@ -71,6 +71,7 @@ export default function Footer() {
           {/* Desktop — Legal */}
           <div className="hidden md:flex flex-col gap-3">
             <span className="footer-heading mb-1">Legal</span>
+            <Link href="/about"   className="footer-link">About</Link>
             <Link href="/legal"   className="footer-link">Legal Notice</Link>
             <Link href="/privacy" className="footer-link">Privacy Policy</Link>
             <Link href="/contact" className="footer-link">Contact</Link>
@@ -85,6 +86,7 @@ export default function Footer() {
               </svg>
             </summary>
             <div className="accordion-content flex-col gap-3">
+              <Link href="/about"   className="footer-link">About</Link>
               <Link href="/legal"   className="footer-link">Legal Notice</Link>
               <Link href="/privacy" className="footer-link">Privacy Policy</Link>
               <Link href="/contact" className="footer-link">Contact</Link>
