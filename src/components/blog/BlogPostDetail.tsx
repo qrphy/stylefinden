@@ -5,6 +5,7 @@ import { PortableText } from "@portabletext/react"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
 import { formatDate } from "@/lib/formatDate"
+import ReadingProgressBar from "@/components/blog/ReadingProgressBar"
 
 type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 type RelatedItem = { _id: string; title: string; slug: string; image?: SanityImg }
@@ -47,6 +48,7 @@ export default function BlogPostDetail({ post }: { post: BlogPost }) {
 
   return (
     <main>
+      <ReadingProgressBar />
 
       {/* ── Hero görsel ── */}
       <section className="w-full bg-white">
