@@ -101,6 +101,17 @@ export const OUTFITS_OCCASION_COUNTS_QUERY = defineQuery(`
   }
 `)
 
+// QUIZ_RESULT_OUTFITS_QUERY: Style quiz result sayfası — stil eşleşmesi zorunlu, occasion önce sıralanır
+export const QUIZ_RESULT_OUTFITS_QUERY = defineQuery(`
+  *[_type == "outfit" && style == $style && defined(slug.current)] | order(
+    (occasion == $occasion) desc,
+    featured desc,
+    _createdAt desc
+  ) [0...6] {
+    _id, title, "slug": slug.current, image ${IMG}, style, season, occasion
+  }
+`)
+
 // SEASONAL_OUTFITS_QUERY: SeasonalHighlights bölümü için mevsim başına 1 featured outfit görseli
 export const SEASONAL_OUTFITS_QUERY = defineQuery(`{
   "spring": *[_type == "outfit" && season == "spring" && defined(image.asset)] | order(featured desc, _createdAt desc)[0] {

@@ -98,10 +98,9 @@ export default function StyleQuiz() {
     const styles = overrides ?? ADVENTURE_STYLES[adventure]
     const pickedStyle = styles[0] // most representative
 
-    const params = new URLSearchParams({ occasion })
+    const params = new URLSearchParams({ style: pickedStyle, occasion })
     if (season && season !== 'any') params.set('season', season)
-    params.set('style', pickedStyle)
-    push(`/outfits?${params.toString()}`)
+    push(`/style-quiz/result?${params.toString()}`)
   }
 
   const progress = step === 1 ? 33 : step === 2 ? 66 : 100
