@@ -87,7 +87,22 @@ export default function StyleResultPage({ styleKey, profile, occasion, outfits, 
               <span className="text-[9px] tracking-[0.2em] uppercase text-gray-700">
                 stylefinden.com
               </span>
-              <ShareResultButton url={resultUrl} styleName={profile.name} />
+              <div className="flex items-center gap-4">
+                <a
+                  href={`/api/og/quiz-result-story?style=${styleKey}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download={`my-style-${styleKey}.png`}
+                  className="flex items-center gap-1.5 text-[9px] font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
+                >
+                  <svg viewBox="0 0 24 24" className="size-3 stroke-current shrink-0" fill="none" strokeWidth={2}>
+                    <path d="M12 2v13M19 15l-7 7-7-7" />
+                    <path d="M5 21h14" />
+                  </svg>
+                  Story
+                </a>
+                <ShareResultButton url={resultUrl} styleName={profile.name} />
+              </div>
             </div>
           </div>
 
