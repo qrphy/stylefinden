@@ -217,16 +217,14 @@ export default function FavoritesPageView() {
                           blurDataURL={piece.image?.lqip as string | undefined}
                         />
                       </div>
-                      {piece.affiliateUrl && (
-                        <div className="piece-shop-overlay">
-                          <span className="piece-shop-label">
-                            Shop
-                            <svg viewBox="0 0 24 24" className="size-2 stroke-current" fill="none" strokeWidth={2.5}>
-                              <path d="M5 12h14M13 6l6 6-6 6" />
-                            </svg>
-                          </span>
-                        </div>
-                      )}
+                      <div className="piece-shop-overlay">
+                        <span className="piece-shop-label">
+                          Shop
+                          <svg viewBox="0 0 24 24" className="size-2 stroke-current" fill="none" strokeWidth={2.5}>
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                          </svg>
+                        </span>
+                      </div>
                     </div>
                     <span className="text-[10px] font-semibold text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-500 transition-colors duration-200">
                       {piece.name}
