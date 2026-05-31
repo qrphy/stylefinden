@@ -23,9 +23,6 @@ const generalSans = localFont({
 // Sitenin varsayılan SEO metadata'sı — her sayfada override edilebilir, edilmezse bu değerler kullanılır.
 export const metadata: Metadata = {
   metadataBase: new URL("https://stylefinden.com"),
-  alternates: {
-    canonical: "https://stylefinden.com",
-  },
   title: {
     default: "STYLEFINDEN",
     template: "%s | STYLEFINDEN",

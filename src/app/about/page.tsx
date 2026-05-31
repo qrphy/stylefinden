@@ -4,6 +4,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "About",
   description: "Stylefinden is an AI-assisted fashion editorial platform curating outfits, hairstyles and accessories for everyday style inspiration.",
+  alternates: { canonical: "https://stylefinden.com/about" },
 }
 
 export default function AboutPage() {

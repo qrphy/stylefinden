@@ -13,12 +13,22 @@ export async function generateMetadata({ searchParams }: { searchParams: SearchP
   const { style } = await searchParams
   const profile = style ? STYLE_PROFILES[style] : undefined
   const name = profile?.name ?? 'Your Style'
+  const ogImageUrl = style ? `/api/og/quiz-result?style=${style}` : undefined
   return {
     title: `${name} Style — Quiz Result | STYLEFINDEN`,
     description: profile
       ? `You got ${name}. ${profile.tagline} Discover outfits curated for your personality.`
       : 'Discover your style personality and find outfits made for you.',
     alternates: { canonical: 'https://stylefinden.com/style-quiz/result' },
+    ...(ogImageUrl && {
+      openGraph: {
+        images: [{ url: ogImageUrl, width: 1200, height: 630 }],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        images: [ogImageUrl],
+      },
+    }),
   }
 }
 

@@ -47,31 +47,48 @@ export default function StyleResultPage({ styleKey, profile, occasion, outfits, 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="container-page pt-12 pb-10 md:pt-16 md:pb-14">
         <div className="max-w-2xl">
-          <span className="eyebrow mb-4 block">Style Quiz Result</span>
+          <span className="eyebrow mb-8 block">Style Quiz Result</span>
 
-          {occasionName && (
-            <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-gray-400 mb-3">
-              {occasionName} look
-            </p>
-          )}
+          {/* ── Shareable card ──────────────────────────────────────────────── */}
+          <div className="bg-black text-white p-8 md:p-12 mb-8 max-w-sm">
+            <div className="flex items-center justify-between mb-10">
+              <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-white">STYLEFINDEN</span>
+              {occasionName && (
+                <span className="text-[9px] font-semibold tracking-[0.25em] uppercase text-gray-500">
+                  {occasionName}
+                </span>
+              )}
+            </div>
 
-          <h1 className="font-display text-[clamp(48px,8vw,96px)] font-light tracking-tight leading-[1] text-black mb-4">
-            {profile.name}
-          </h1>
+            <div className="mb-8">
+              <p className="text-[9px] font-semibold tracking-[0.35em] uppercase text-gray-500 mb-4">
+                My Style Is
+              </p>
+              <h1 className="font-black text-[clamp(36px,8vw,56px)] text-white leading-[1] tracking-tight mb-4">
+                {profile.name}
+              </h1>
+              <p className="text-sm text-gray-400 italic leading-relaxed">
+                &ldquo;{profile.tagline}&rdquo;
+              </p>
+            </div>
 
-          <p className="text-base text-gray-400 tracking-wide italic mb-8">
-            &ldquo;{profile.tagline}&rdquo;
-          </p>
+            <div className="flex flex-wrap gap-2 mb-10">
+              {profile.traits.map((trait) => (
+                <span
+                  key={trait}
+                  className="px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase border border-gray-700 text-gray-500"
+                >
+                  {trait}
+                </span>
+              ))}
+            </div>
 
-          <div className="flex flex-wrap gap-2 mb-8">
-            {profile.traits.map((trait) => (
-              <span
-                key={trait}
-                className="px-3 py-1.5 text-[10px] font-semibold tracking-widest uppercase border border-gray-200 text-gray-600"
-              >
-                {trait}
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-gray-700">
+                stylefinden.com
               </span>
-            ))}
+              <ShareResultButton url={resultUrl} styleName={profile.name} />
+            </div>
           </div>
 
           <p className="body-text max-w-lg">
@@ -125,25 +142,22 @@ export default function StyleResultPage({ styleKey, profile, occasion, outfits, 
 
       {/* ── CTAs ─────────────────────────────────────────────────────────────── */}
       <section className="section-divider">
-        <div className="container-page py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-          <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href={`/outfits?style=${styleKey}${occasion ? `&occasion=${occasion}` : ''}`}
-              className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
-            >
-              All {profile.name} outfits
-              <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </Link>
-            <Link
-              href="/style-quiz"
-              className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
-            >
-              Retake quiz
-            </Link>
-          </div>
-          <ShareResultButton url={resultUrl} styleName={profile.name} />
+        <div className="container-page py-12 flex flex-wrap items-center gap-4">
+          <Link
+            href={`/outfits?style=${styleKey}${occasion ? `&occasion=${occasion}` : ''}`}
+            className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
+          >
+            All {profile.name} outfits
+            <svg viewBox="0 0 24 24" className="size-3 stroke-current group-hover:translate-x-0.5 transition-transform duration-200" fill="none" strokeWidth={2}>
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
+          <Link
+            href="/style-quiz"
+            className="text-xs font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+          >
+            Retake quiz
+          </Link>
         </div>
       </section>
 

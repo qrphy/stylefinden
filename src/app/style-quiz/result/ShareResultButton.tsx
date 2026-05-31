@@ -32,21 +32,21 @@ export default function ShareResultButton({ url, styleName }: Props) {
   return (
     <button
       onClick={handleShare}
-      className="flex items-center gap-2 text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+      className="flex items-center gap-1.5 text-[9px] font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
     >
       {copied ? (
         <>
-          <svg viewBox="0 0 24 24" className="size-3.5 stroke-current shrink-0" fill="none" strokeWidth={2.5}>
+          <svg viewBox="0 0 24 24" className="size-3 stroke-current shrink-0" fill="none" strokeWidth={2.5}>
             <path d="M5 13l4 4L19 7" />
           </svg>
-          Link copied
+          Copied
         </>
       ) : (
         <>
-          <svg viewBox="0 0 24 24" className="size-3.5 stroke-current shrink-0" fill="none" strokeWidth={2}>
+          <svg viewBox="0 0 24 24" className="size-3 stroke-current shrink-0" fill="none" strokeWidth={2}>
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13" />
           </svg>
-          Share your result
+          Share
         </>
       )}
     </button>
