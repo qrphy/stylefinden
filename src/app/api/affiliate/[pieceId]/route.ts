@@ -2,9 +2,23 @@ import { createHash } from 'crypto'
 import { NextResponse } from 'next/server'
 import { getSupabase, createAdminClient } from '@/lib/supabase'
 
+const ALLOWED_AFFILIATE_HOSTS = ['www.awin1.com', 'awin1.com', 'click.awin.com']
+
+function sanitizeAffiliateUrl(url: string | null): string | null {
+  if (!url) return null
+  try {
+    const { hostname } = new URL(url)
+    return ALLOWED_AFFILIATE_HOSTS.includes(hostname) ? url : null
+  } catch {
+    return null
+  }
+}
+
 function hashIp(ip: string): string {
+  const salt = process.env.IP_HASH_SALT
+  if (!salt) throw new Error('IP_HASH_SALT env var is required')
   return createHash('sha256')
-    .update(ip + (process.env.IP_HASH_SALT ?? 'stylefinden'))
+    .update(ip + salt)
     .digest('hex')
     .slice(0, 16)
 }
@@ -41,9 +55,10 @@ export async function GET(
     .single()
 
   if (!piece) {
-    // Supabase'de henüz yoksa fallback URL'e yönlendir
-    if (!fallbackUrl) return NextResponse.redirect(new URL('/', req.url), { status: 302 })
-    return NextResponse.redirect(fallbackUrl, { status: 302 })
+    // Supabase'de henüz yoksa fallback URL'e yönlendir (yalnızca güvenilir Awin domainleri)
+    const safeUrl = sanitizeAffiliateUrl(fallbackUrl)
+    if (!safeUrl) return NextResponse.redirect(new URL('/', req.url), { status: 302 })
+    return NextResponse.redirect(safeUrl, { status: 302 })
   }
 
   // Outfit UUID'si (opsiyonel — tıklama context'i için)

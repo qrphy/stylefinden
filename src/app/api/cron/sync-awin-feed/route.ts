@@ -7,11 +7,12 @@ export const maxDuration = 300
 export async function GET(req: Request) {
   // Vercel Cron sends: Authorization: Bearer {CRON_SECRET}
   const secret = process.env.CRON_SECRET
-  if (secret) {
-    const auth = req.headers.get('authorization')
-    if (auth !== `Bearer ${secret}`) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
+  if (!secret) {
+    return NextResponse.json({ error: 'CRON_SECRET not configured' }, { status: 500 })
+  }
+  const auth = req.headers.get('authorization')
+  if (auth !== `Bearer ${secret}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   const apiKey = process.env.AWIN_API_KEY
