@@ -10,6 +10,13 @@ import Button from '@/components/shared/Button'
 import { useLocalFavorites } from '@/hooks/useLocalFavorites'
 import { styleLabel, occasionLabel } from '@/lib/outfit-labels'
 
+type FavPiece = {
+  _key: string
+  name: string
+  image?: { asset?: object; hotspot?: object; crop?: object; lqip?: string }
+  affiliateUrl?: string
+}
+
 type FavOutfit = {
   _id: string
   title: string
@@ -18,6 +25,7 @@ type FavOutfit = {
   style?: string
   season?: string
   occasion?: string
+  pieces?: FavPiece[]
 }
 
 export default function FavoritesPageView() {
@@ -116,7 +124,7 @@ export default function FavoritesPageView() {
                       />
                     </div>
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-1.5">
                       <Link
                         href={`/outfits/${outfit.slug}`}
                         className="card-title line-clamp-2 hover:text-gray-500 transition-colors"
@@ -130,6 +138,41 @@ export default function FavoritesPageView() {
                             outfit.occasion ? occasionLabel[outfit.occasion] ?? outfit.occasion : null,
                           ].filter(Boolean).join(' · ')}
                         </p>
+                      )}
+                      {outfit.pieces && outfit.pieces.length > 0 && (
+                        <div className="flex items-center gap-1 pt-1.5 border-t border-gray-100">
+                          {outfit.pieces.slice(0, 4).map((piece) => {
+                            const pieceUrl = piece.image
+                              ? urlFor(piece.image).width(120).height(120).url()
+                              : undefined
+                            const inner = (
+                              <div
+                                key={piece._key}
+                                className="shrink-0 size-9 relative bg-gray-100 border border-gray-200 overflow-hidden"
+                                title={piece.name}
+                              >
+                                <ImgPlaceholder src={pieceUrl} alt={piece.name} sizes="36px" />
+                              </div>
+                            )
+                            return piece.affiliateUrl ? (
+                              <a
+                                key={piece._key}
+                                href={piece.affiliateUrl}
+                                target="_blank"
+                                rel="noopener noreferrer sponsored"
+                                aria-label={`Shop ${piece.name}`}
+                                className="hover:opacity-75 transition-opacity"
+                              >
+                                {inner}
+                              </a>
+                            ) : inner
+                          })}
+                          {outfit.pieces.length > 4 && (
+                            <div className="shrink-0 size-9 bg-gray-100 border border-gray-200 flex items-center justify-center">
+                              <span className="text-[9px] font-semibold text-gray-400 leading-none">+{outfit.pieces.length - 4}</span>
+                            </div>
+                          )}
+                        </div>
                       )}
                     </div>
                   </article>

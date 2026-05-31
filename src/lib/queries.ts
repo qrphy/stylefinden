@@ -10,7 +10,8 @@ const IMG = `{ asset, hotspot, crop, "lqip": asset->metadata.lqip }`
 // OUTFITS_BY_IDS_QUERY: Favorites sayfası için ID array'inden batch fetch
 export const OUTFITS_BY_IDS_QUERY = defineQuery(`
   *[_type == "outfit" && _id in $ids] {
-    _id, title, "slug": slug.current, image ${IMG}, style, season, occasion
+    _id, title, "slug": slug.current, image ${IMG}, style, season, occasion,
+    pieces[]{ _key, name, image ${IMG}, affiliateUrl }
   }
 `)
 
