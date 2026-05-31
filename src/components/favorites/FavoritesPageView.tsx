@@ -28,6 +28,20 @@ type FavOutfit = {
   pieces?: FavPiece[]
 }
 
+function aggregatePieces(outfits: FavOutfit[]): FavPiece[] {
+  const seen = new Set<string>()
+  const result: FavPiece[] = []
+  for (const outfit of outfits) {
+    for (const piece of outfit.pieces ?? []) {
+      if (!piece.image) continue
+      if (seen.has(piece.name)) continue
+      seen.add(piece.name)
+      result.push(piece)
+    }
+  }
+  return result
+}
+
 export default function FavoritesPageView() {
   const { ids, hydrated } = useLocalFavorites()
   const [fetchedOutfits, setFetchedOutfits] = useState<FavOutfit[]>([])
@@ -39,7 +53,6 @@ export default function FavoritesPageView() {
 
     const key = ids.join(',')
 
-    // fetch only when the set of IDs changes (new favorite added)
     if (ids.length === 0) {
       setFetchedOutfits([])
       setLoading(false)
@@ -58,13 +71,13 @@ export default function FavoritesPageView() {
       .finally(() => setLoading(false))
   }, [ids, hydrated]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Keep order matching localStorage (most recently saved first)
   const orderMap = new Map(ids.map((id, i) => [id, i]))
   const visibleOutfits = fetchedOutfits
     .filter(o => ids.includes(o._id))
     .sort((a, b) => (orderMap.get(a._id) ?? 0) - (orderMap.get(b._id) ?? 0))
 
   const isEmpty = hydrated && !loading && visibleOutfits.length === 0
+  const allPieces = aggregatePieces(visibleOutfits)
 
   return (
     <main>
@@ -85,7 +98,7 @@ export default function FavoritesPageView() {
         )}
       </section>
 
-      {/* Grid */}
+      {/* Outfit Grid */}
       {!isEmpty ? (
         <section className="container-page py-10 md:py-14">
           {loading || !hydrated ? (
@@ -116,7 +129,6 @@ export default function FavoritesPageView() {
                         <div className="card-overlay" />
                       </Link>
 
-                      {/* Remove from favorites */}
                       <FavoriteButton
                         id={outfit._id}
                         title={outfit.title}
@@ -124,7 +136,7 @@ export default function FavoritesPageView() {
                       />
                     </div>
 
-                    <div className="flex flex-col gap-1.5">
+                    <div className="flex flex-col gap-1">
                       <Link
                         href={`/outfits/${outfit.slug}`}
                         className="card-title line-clamp-2 hover:text-gray-500 transition-colors"
@@ -138,41 +150,6 @@ export default function FavoritesPageView() {
                             outfit.occasion ? occasionLabel[outfit.occasion] ?? outfit.occasion : null,
                           ].filter(Boolean).join(' · ')}
                         </p>
-                      )}
-                      {outfit.pieces && outfit.pieces.length > 0 && (
-                        <div className="flex items-center gap-1 pt-1.5 border-t border-gray-100">
-                          {outfit.pieces.slice(0, 4).map((piece) => {
-                            const pieceUrl = piece.image
-                              ? urlFor(piece.image).width(120).height(120).url()
-                              : undefined
-                            const inner = (
-                              <div
-                                key={piece._key}
-                                className="shrink-0 size-9 relative bg-gray-100 border border-gray-200 overflow-hidden"
-                                title={piece.name}
-                              >
-                                <ImgPlaceholder src={pieceUrl} alt={piece.name} sizes="36px" />
-                              </div>
-                            )
-                            return piece.affiliateUrl ? (
-                              <a
-                                key={piece._key}
-                                href={piece.affiliateUrl}
-                                target="_blank"
-                                rel="noopener noreferrer sponsored"
-                                aria-label={`Shop ${piece.name}`}
-                                className="hover:opacity-75 transition-opacity"
-                              >
-                                {inner}
-                              </a>
-                            ) : inner
-                          })}
-                          {outfit.pieces.length > 4 && (
-                            <div className="shrink-0 size-9 bg-gray-100 border border-gray-200 flex items-center justify-center">
-                              <span className="text-[9px] font-semibold text-gray-400 leading-none">+{outfit.pieces.length - 4}</span>
-                            </div>
-                          )}
-                        </div>
                       )}
                     </div>
                   </article>
@@ -199,6 +176,70 @@ export default function FavoritesPageView() {
             </p>
           </div>
           <Button variant="primary" href="/outfits" arrow>Browse Outfits</Button>
+        </section>
+      )}
+
+      {/* Shop the Look — all pieces from saved outfits */}
+      {!isEmpty && allPieces.length > 0 && (
+        <section className="section-divider">
+          <div className="container-page py-12 md:py-16">
+            <div className="flex flex-col gap-2 mb-8">
+              <span className="eyebrow">From your saved looks</span>
+              <h2 className="section-title">Shop the Look</h2>
+            </div>
+
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2">
+              {allPieces.map((piece, i) => {
+                const imgUrl = piece.image
+                  ? urlFor(piece.image).width(400).height(500).url()
+                  : undefined
+                const Tag = piece.affiliateUrl ? 'a' : 'div'
+                const linkProps = piece.affiliateUrl
+                  ? {
+                      href: `/api/affiliate/${piece._key}?url=${encodeURIComponent(piece.affiliateUrl)}`,
+                      target: '_blank',
+                      rel: 'noopener noreferrer sponsored',
+                    }
+                  : {}
+                return (
+                  <Tag
+                    key={piece._key ?? i}
+                    {...linkProps}
+                    className="group flex flex-col gap-1.5"
+                    aria-label={piece.affiliateUrl ? `Shop ${piece.name}` : undefined}
+                  >
+                    <div className="relative aspect-[4/5] w-full bg-gray-50 overflow-hidden">
+                      <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.06]">
+                        <ImgPlaceholder
+                          src={imgUrl}
+                          alt={piece.name}
+                          sizes="(max-width: 640px) 25vw, (max-width: 1024px) 16vw, 10vw"
+                          blurDataURL={piece.image?.lqip as string | undefined}
+                        />
+                      </div>
+                      {piece.affiliateUrl && (
+                        <div className="piece-shop-overlay">
+                          <span className="piece-shop-label">
+                            Shop
+                            <svg viewBox="0 0 24 24" className="size-2 stroke-current" fill="none" strokeWidth={2.5}>
+                              <path d="M5 12h14M13 6l6 6-6 6" />
+                            </svg>
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <span className="text-[10px] font-semibold text-black tracking-tight leading-snug line-clamp-2 group-hover:text-gray-500 transition-colors duration-200">
+                      {piece.name}
+                    </span>
+                  </Tag>
+                )
+              })}
+            </div>
+
+            <p className="text-[10px] text-gray-400 leading-relaxed mt-6">
+              Affiliate links — supports STYLEFINDEN at no extra cost.
+            </p>
+          </div>
         </section>
       )}
 
