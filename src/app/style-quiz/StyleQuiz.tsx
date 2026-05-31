@@ -4,72 +4,51 @@ import { useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { detectSeason } from '@/lib/detect-season'
 
-// Q1 — What is your main goal when getting dressed?
+// Q1 — What are you getting dressed for?
 const GOAL_OPTIONS = [
-  {
-    value: 'office',
-    label: 'Work & Professional',
-    description: 'Meetings, office, presentations',
-  },
-  {
-    value: 'casual',
-    label: 'Everyday Comfort',
-    description: 'Errands, coffee, casual hangouts',
-  },
-  {
-    value: 'date-evening',
-    label: 'Date Night',
-    description: 'Dinner, romantic evenings, shows',
-  },
-  {
-    value: 'party-night-out',
-    label: 'Going Out',
-    description: 'Parties, clubs, night events',
-  },
-  {
-    value: 'travel',
-    label: 'Travel & Adventure',
-    description: 'Trips, exploring, on-the-go',
-  },
-  {
-    value: 'wedding',
-    label: 'Special Occasion',
-    description: 'Weddings, galas, ceremonies',
-  },
+  { value: 'casual',          label: 'Everyday Comfort',    description: 'Errands, coffee, casual hangouts' },
+  { value: 'office',          label: 'Work & Professional', description: 'Meetings, office, presentations' },
+  { value: 'date-evening',    label: 'Date Night',          description: 'Dinner, romantic evenings, shows' },
+  { value: 'party-night-out', label: 'Going Out',           description: 'Parties, clubs, night events' },
+  { value: 'school',          label: 'School / Campus',     description: 'Classes, campus, study days' },
+  { value: 'travel',          label: 'Travel & Adventure',  description: 'Trips, exploring, on-the-go' },
+  { value: 'sport',           label: 'Sport & Active',      description: 'Gym, outdoors, athleisure' },
+  { value: 'beach',           label: 'Beach & Vacation',    description: 'Sun, sea, resort looks' },
+  { value: 'festival',        label: 'Festival & Events',   description: 'Concerts, festivals, outdoor events' },
+  { value: 'wedding',         label: 'Special Occasion',    description: 'Weddings, galas, ceremonies' },
 ]
 
 // Q2 — How adventurous is your style?
 type Adventure = 'classic' | 'balanced' | 'bold'
 
 const ADVENTURE_OPTIONS: { value: Adventure; label: string; description: string }[] = [
-  { value: 'classic', label: 'Keep it timeless', description: 'Clean lines, neutral palette, nothing trendy' },
-  { value: 'balanced', label: 'Mix classic & fresh', description: 'A few trends, mostly wearable pieces' },
-  { value: 'bold',    label: 'Stand out',           description: 'Statement pieces, color, personality' },
+  { value: 'classic',  label: 'Keep it timeless',    description: 'Clean lines, neutral palette, nothing trendy' },
+  { value: 'balanced', label: 'Mix classic & fresh',  description: 'A few trends, mostly wearable pieces' },
+  { value: 'bold',     label: 'Stand out',            description: 'Statement pieces, color, personality' },
 ]
 
-// Q2 result → style candidates
-const ADVENTURE_STYLES: Record<Adventure, string[]> = {
-  classic:  ['minimalist', 'clean-girl', 'classic', 'old-money', 'formal'],
-  balanced: ['elegant', 'casual', 'retro-vintage', 'sienna-vibe', 'korean-fashion', 'boho'],
-  bold:     ['y2k', 'streetstyle', 'cute-coquette', 'black-dark', 'western', 'festival'],
-}
-
-// Q2 occasion override for better style matching
-const OCCASION_ADVENTURE_OVERRIDE: Record<string, Partial<Record<Adventure, string[]>>> = {
-  office:            { classic: ['minimalist', 'classic', 'formal', 'old-money'], balanced: ['elegant', 'clean-girl'], bold: ['old-money', 'elegant'] },
-  'date-evening':    { classic: ['minimalist', 'classic', 'old-money'], balanced: ['elegant', 'retro-vintage', 'sienna-vibe'], bold: ['y2k', 'cute-coquette', 'black-dark'] },
-  'party-night-out': { classic: ['elegant', 'old-money'], balanced: ['retro-vintage', 'cute-coquette'], bold: ['y2k', 'streetstyle', 'black-dark'] },
+// Per occasion × adventure → one specific style result
+const STYLE_MAP: Record<string, Record<Adventure, string>> = {
+  casual:            { classic: 'minimalist',    balanced: 'casual',         bold: 'streetstyle'   },
+  office:            { classic: 'minimalist',    balanced: 'old-money',      bold: 'elegant'       },
+  'date-evening':    { classic: 'minimalist',    balanced: 'elegant',        bold: 'cute-coquette' },
+  'party-night-out': { classic: 'old-money',     balanced: 'retro-vintage',  bold: 'y2k'           },
+  school:            { classic: 'clean-girl',    balanced: 'korean-fashion', bold: 'y2k'           },
+  travel:            { classic: 'minimalist',    balanced: 'casual',         bold: 'streetstyle'   },
+  sport:             { classic: 'clean-girl',    balanced: 'casual',         bold: 'streetstyle'   },
+  beach:             { classic: 'minimalist',    balanced: 'boho',           bold: 'festival'      },
+  festival:          { classic: 'boho',          balanced: 'retro-vintage',  bold: 'festival'      },
+  wedding:           { classic: 'formal',        balanced: 'elegant',        bold: 'cute-coquette' },
 }
 
 // Q3 — Season
 const SEASON_OPTIONS = [
-  { value: 'spring',  label: 'Spring',  description: 'Mar – May' },
-  { value: 'summer',  label: 'Summer',  description: 'Jun – Aug' },
-  { value: 'autumn',  label: 'Autumn',  description: 'Sep – Nov' },
-  { value: 'winter',  label: 'Winter',  description: 'Dec – Feb' },
-  { value: 'any',     label: 'Any',     description: 'No preference' },
+  { value: 'spring', label: 'Spring', description: 'Mar – May' },
+  { value: 'summer', label: 'Summer', description: 'Jun – Aug' },
+  { value: 'autumn', label: 'Autumn', description: 'Sep – Nov' },
+  { value: 'winter', label: 'Winter', description: 'Dec – Feb' },
+  { value: 'any',    label: 'Any',    description: 'No preference' },
 ]
-
 
 type Step = 1 | 2 | 3
 
@@ -94,9 +73,8 @@ export default function StyleQuiz() {
     const occasion = occasionRef.current
     const adventure = adventureRef.current
     if (!occasion || !adventure) return
-    const overrides = OCCASION_ADVENTURE_OVERRIDE[occasion]?.[adventure]
-    const styles = overrides ?? ADVENTURE_STYLES[adventure]
-    const pickedStyle = styles[0] // most representative
+
+    const pickedStyle = STYLE_MAP[occasion]?.[adventure] ?? 'minimalist'
 
     const params = new URLSearchParams({ style: pickedStyle, occasion })
     if (season && season !== 'any') params.set('season', season)
@@ -111,7 +89,7 @@ export default function StyleQuiz() {
       {/* Header */}
       <div className="mb-12">
         <span className="eyebrow">Style Quiz</span>
-        <h1 className="section-title-lg mt-2">What's your look?</h1>
+        <h1 className="section-title-lg mt-2">What&apos;s your look?</h1>
         <p className="text-sm text-gray-400 mt-3 tracking-wide">
           3 quick questions. Personalized outfit results.
         </p>
