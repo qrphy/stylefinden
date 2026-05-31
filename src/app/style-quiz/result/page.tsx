@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { client } from '@/sanity/lib/client'
-import { QUIZ_RESULT_OUTFITS_QUERY } from '@/lib/queries'
+import { QUIZ_RESULT_OUTFITS_QUERY, QUIZ_RESULT_FALLBACK_QUERY } from '@/lib/queries'
 import { STYLE_PROFILES } from '@/lib/style-profiles'
 import StyleResultPage from './StyleResultPage'
 
 type SearchParams = Promise<{ style?: string; occasion?: string; season?: string }>
+
+const FETCH_OPTS = { next: { revalidate: 3600, tags: ['outfit'] } }
 
 export async function generateMetadata({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> {
   const { style } = await searchParams
@@ -27,11 +29,22 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
 
   const profile = STYLE_PROFILES[style]
 
-  const outfits = await client.fetch(
+  // Primary: style match (occasion-boosted)
+  let outfits = await client.fetch(
     QUIZ_RESULT_OUTFITS_QUERY,
     { style, occasion: occasion ?? '' },
-    { next: { revalidate: 3600, tags: ['outfit'] } },
+    FETCH_OPTS,
   )
+
+  // Fallback: no style match → show occasion/recent outfits
+  const usingFallback = !outfits?.length
+  if (usingFallback) {
+    outfits = await client.fetch(
+      QUIZ_RESULT_FALLBACK_QUERY,
+      { occasion: occasion ?? '' },
+      FETCH_OPTS,
+    )
+  }
 
   const resultUrl = `/style-quiz/result?style=${style}${occasion ? `&occasion=${occasion}` : ''}${season ? `&season=${season}` : ''}`
 
@@ -41,6 +54,7 @@ export default async function Page({ searchParams }: { searchParams: SearchParam
       profile={profile}
       occasion={occasion}
       outfits={outfits ?? []}
+      usingFallback={usingFallback}
       resultUrl={resultUrl}
     />
   )

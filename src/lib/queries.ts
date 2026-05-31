@@ -101,6 +101,17 @@ export const OUTFITS_OCCASION_COUNTS_QUERY = defineQuery(`
   }
 `)
 
+// QUIZ_RESULT_FALLBACK_QUERY: Stil eşleşmesi yoksa occasion → tüm outfitler fallback
+export const QUIZ_RESULT_FALLBACK_QUERY = defineQuery(`
+  *[_type == "outfit" && defined(slug.current)] | order(
+    (occasion == $occasion) desc,
+    featured desc,
+    _createdAt desc
+  ) [0...6] {
+    _id, title, "slug": slug.current, image ${IMG}, style, season, occasion
+  }
+`)
+
 // STYLE_GUIDE_OUTFITS_QUERY: /styles/[slug] sayfası — stil ile eşleşen tüm outfitler, featured önce
 export const STYLE_GUIDE_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && style == $style && defined(slug.current)] | order(featured desc, _createdAt desc) {

@@ -8,7 +8,7 @@ import { detectSeason } from '@/lib/detect-season'
 const GOAL_OPTIONS = [
   { value: 'casual',          label: 'Everyday Comfort',    description: 'Errands, coffee, casual hangouts' },
   { value: 'office',          label: 'Work & Professional', description: 'Meetings, office, presentations' },
-  { value: 'date-evening',    label: 'Date Night',          description: 'Dinner, romantic evenings, shows' },
+  { value: 'date-night',       label: 'Date Night',          description: 'Dinner, romantic evenings, shows' },
   { value: 'party-night-out', label: 'Going Out',           description: 'Parties, clubs, night events' },
   { value: 'school',          label: 'School / Campus',     description: 'Classes, campus, study days' },
   { value: 'travel',          label: 'Travel & Adventure',  description: 'Trips, exploring, on-the-go' },
@@ -31,7 +31,7 @@ const ADVENTURE_OPTIONS: { value: Adventure; label: string; description: string 
 const STYLE_MAP: Record<string, Record<Adventure, string>> = {
   casual:            { classic: 'minimalist',    balanced: 'casual',         bold: 'streetstyle'   },
   office:            { classic: 'minimalist',    balanced: 'old-money',      bold: 'elegant'       },
-  'date-evening':    { classic: 'minimalist',    balanced: 'elegant',        bold: 'cute-coquette' },
+  'date-night':      { classic: 'minimalist',    balanced: 'elegant',        bold: 'cute-coquette' },
   'party-night-out': { classic: 'old-money',     balanced: 'retro-vintage',  bold: 'y2k'           },
   school:            { classic: 'clean-girl',    balanced: 'korean-fashion', bold: 'y2k'           },
   travel:            { classic: 'minimalist',    balanced: 'casual',         bold: 'streetstyle'   },

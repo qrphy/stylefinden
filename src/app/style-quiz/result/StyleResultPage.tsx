@@ -19,7 +19,7 @@ type Outfit = {
 const occasionLabel: Record<string, string> = {
   casual: 'Casual',
   office: 'Office',
-  'date-evening': 'Date Night',
+  'date-night': 'Date Night',
   'party-night-out': 'Going Out',
   travel: 'Travel',
   wedding: 'Wedding',
@@ -34,10 +34,11 @@ type Props = {
   profile: StyleProfile
   occasion?: string
   outfits: Outfit[]
+  usingFallback?: boolean
   resultUrl: string
 }
 
-export default function StyleResultPage({ styleKey, profile, occasion, outfits, resultUrl }: Props) {
+export default function StyleResultPage({ styleKey, profile, occasion, outfits, usingFallback, resultUrl }: Props) {
   const occasionName = occasion ? occasionLabel[occasion] : null
 
   return (
@@ -83,8 +84,13 @@ export default function StyleResultPage({ styleKey, profile, occasion, outfits, 
       {outfits.length > 0 && (
         <section className="section-divider">
           <div className="container-page py-10 md:py-14 flex flex-col gap-6">
+            {usingFallback && (
+              <p className="text-xs text-gray-400 border border-gray-100 px-3 py-2">
+                We&apos;re building out the {profile.name} collection — here are some looks you might enjoy in the meantime.
+              </p>
+            )}
             <div className="section-header">
-              <span className="eyebrow">Outfits for you</span>
+              <span className="eyebrow">{usingFallback ? 'You might also like' : 'Outfits for you'}</span>
               <Link
                 href={`/outfits?style=${styleKey}${occasion ? `&occasion=${occasion}` : ''}`}
                 className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"

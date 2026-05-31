@@ -21,7 +21,7 @@ const OCCASIONS = [
     image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=75&fit=crop&auto=format',
   },
   {
-    value: 'date-evening',
+    value: 'date-night',
     label: 'Date / Evening',
     image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&q=75&fit=crop&auto=format',
   },
@@ -93,7 +93,7 @@ const ALL_STYLES = [
 const OCCASION_STYLES: Record<string, string[]> = {
   casual:            ['minimalist', 'boho', 'streetstyle', 'casual', 'clean-girl', 'retro-vintage', 'y2k', 'old-money', 'korean-fashion', 'sienna-vibe'],
   office:            ['minimalist', 'old-money', 'elegant', 'clean-girl', 'formal', 'classic'],
-  'date-evening':    ['elegant', 'old-money', 'y2k', 'cute-coquette', 'clean-girl', 'minimalist', 'retro-vintage', 'sienna-vibe', 'formal', 'classic', 'black-dark'],
+  'date-night':      ['elegant', 'old-money', 'y2k', 'cute-coquette', 'clean-girl', 'minimalist', 'retro-vintage', 'sienna-vibe', 'formal', 'classic', 'black-dark'],
   'party-night-out': ['y2k', 'streetstyle', 'old-money', 'elegant', 'cute-coquette', 'retro-vintage', 'black-dark'],
   school:            ['casual', 'clean-girl', 'minimalist', 'streetstyle', 'y2k', 'cute-coquette', 'korean-fashion'],
   travel:            ['casual', 'minimalist', 'boho', 'streetstyle', 'clean-girl', 'old-money'],
