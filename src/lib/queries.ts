@@ -101,6 +101,13 @@ export const OUTFITS_OCCASION_COUNTS_QUERY = defineQuery(`
   }
 `)
 
+// STYLE_GUIDE_OUTFITS_QUERY: /styles/[slug] sayfası — stil ile eşleşen tüm outfitler, featured önce
+export const STYLE_GUIDE_OUTFITS_QUERY = defineQuery(`
+  *[_type == "outfit" && style == $style && defined(slug.current)] | order(featured desc, _createdAt desc) {
+    _id, title, "slug": slug.current, image ${IMG}, occasion, season
+  }
+`)
+
 // QUIZ_RESULT_OUTFITS_QUERY: Style quiz result sayfası — stil eşleşmesi zorunlu, occasion önce sıralanır
 export const QUIZ_RESULT_OUTFITS_QUERY = defineQuery(`
   *[_type == "outfit" && style == $style && defined(slug.current)] | order(

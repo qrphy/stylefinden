@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { client } from '@/sanity/lib/client'
 import { QUIZ_RESULT_OUTFITS_QUERY } from '@/lib/queries'
-import StyleResultPage, { STYLE_PROFILES } from './StyleResultPage'
+import { STYLE_PROFILES } from '@/lib/style-profiles'
+import StyleResultPage from './StyleResultPage'
 
 type SearchParams = Promise<{ style?: string; occasion?: string; season?: string }>
 
