@@ -7,6 +7,7 @@ type FavoritesCtx = {
   ids: string[]
   toggle: (id: string) => void
   isFavorite: (id: string) => boolean
+  clearAll: () => void
   count: number
   hydrated: boolean
 }
@@ -37,8 +38,13 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
 
   const isFavorite = useCallback((id: string) => ids.includes(id), [ids])
 
+  const clearAll = useCallback(() => {
+    setIds([])
+    try { localStorage.removeItem(KEY) } catch {}
+  }, [])
+
   return (
-    <Ctx.Provider value={{ ids, toggle, isFavorite, count: ids.length, hydrated }}>
+    <Ctx.Provider value={{ ids, toggle, isFavorite, clearAll, count: ids.length, hydrated }}>
       {children}
     </Ctx.Provider>
   )

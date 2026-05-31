@@ -43,7 +43,7 @@ function aggregatePieces(outfits: FavOutfit[]): FavPiece[] {
 }
 
 export default function FavoritesPageView() {
-  const { ids, hydrated } = useLocalFavorites()
+  const { ids, hydrated, clearAll } = useLocalFavorites()
   const [fetchedOutfits, setFetchedOutfits] = useState<FavOutfit[]>([])
   const [loading, setLoading] = useState(true)
   const fetchedIds = useRef<string>('')
@@ -88,14 +88,27 @@ export default function FavoritesPageView() {
           <span>/</span>
           <span className="text-black">Saved Looks</span>
         </nav>
-        <h1 className="page-heading">Saved Looks</h1>
-        {!isEmpty && (
-          <p className="body-text text-gray-500 mt-2">
-            {hydrated && !loading
-              ? `${visibleOutfits.length} outfit${visibleOutfits.length !== 1 ? 's' : ''} saved`
-              : 'Your personal outfit collection'}
-          </p>
-        )}
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h1 className="page-heading">Saved Looks</h1>
+            {!isEmpty && (
+              <p className="body-text text-gray-500 mt-2">
+                {hydrated && !loading
+                  ? `${visibleOutfits.length} outfit${visibleOutfits.length !== 1 ? 's' : ''} saved`
+                  : 'Your personal outfit collection'}
+              </p>
+            )}
+          </div>
+          {!isEmpty && hydrated && !loading && (
+            <button
+              type="button"
+              onClick={clearAll}
+              className="shrink-0 mt-1 text-[11px] font-semibold tracking-widest uppercase text-gray-400 hover:text-black transition-colors duration-200"
+            >
+              Clear all
+            </button>
+          )}
+        </div>
       </section>
 
       {/* Outfit Grid */}
