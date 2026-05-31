@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function LegalPage() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-black mb-8 uppercase tracking-tight">Legal Notice</h1>
+    <main className="max-w-3xl mx-auto px-6 md:px-8 py-10 md:py-16">
+      <h1 className="text-2xl md:text-3xl font-black mb-6 md:mb-8 uppercase tracking-tight">Legal Notice</h1>
 
       <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">Website Operator</h2>
       <p className="text-gray-700 leading-relaxed">

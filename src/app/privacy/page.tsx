@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-black mb-8 uppercase tracking-tight">Privacy Policy</h1>
+    <main className="max-w-3xl mx-auto px-6 md:px-8 py-10 md:py-16">
+      <h1 className="text-2xl md:text-3xl font-black mb-6 md:mb-8 uppercase tracking-tight">Privacy Policy</h1>
 
       <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">1. General Information</h2>
       <p className="text-gray-700 leading-relaxed">
@@ -40,7 +40,8 @@ export default function PrivacyPage() {
         functionality and, with your consent, analytics. The table below gives an overview:
       </p>
 
-      <div className="overflow-x-auto">
+      {/* Desktop table */}
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-sm border border-gray-200">
           <thead className="bg-gray-50">
             <tr>
@@ -77,6 +78,23 @@ export default function PrivacyPage() {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* Mobile card list */}
+      <div className="sm:hidden flex flex-col gap-3">
+        {[
+          { name: "sf_cookie_consent", provider: "Stylefinden", purpose: "Stores your cookie consent choice", duration: "Until deleted" },
+          { name: "_ga, _ga_*", provider: "Google Analytics", purpose: "Distinguishes visitors (statistics)", duration: "2 years" },
+          { name: "va_*", provider: "Vercel Analytics", purpose: "Anonymous page view statistics", duration: "Session" },
+          { name: "ca-pub-*, IDE, __gads", provider: "Google AdSense", purpose: "Personalized ad display (planned — not yet active)", duration: "1–2 years" },
+        ].map((row) => (
+          <div key={row.name} className="border border-gray-200 p-3 text-sm text-gray-700">
+            <p className="font-mono text-xs text-black mb-1">{row.name}</p>
+            <p><span className="font-semibold">Provider:</span> {row.provider}</p>
+            <p><span className="font-semibold">Purpose:</span> {row.purpose}</p>
+            <p><span className="font-semibold">Duration:</span> {row.duration}</p>
+          </div>
+        ))}
       </div>
 
       <p className="text-gray-700 leading-relaxed mt-4">
