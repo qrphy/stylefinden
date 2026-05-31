@@ -6,6 +6,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with us for questions, feedback or collaboration inquiries.",
+  alternates: { canonical: "https://stylefinden.com/contact" },
 }
 
 export default function ContactPage() {

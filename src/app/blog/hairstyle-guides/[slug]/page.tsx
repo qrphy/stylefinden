@@ -1,2 +1,5 @@
-// Tek bir saç stili rehberi yazısı — blog yazısı layout'unu yeniden kullanır, saç stiline özgü ilgili içerikleri gösterir.
-export default function Page() { return null; }
+import { notFound } from 'next/navigation'
+
+export default function Page() {
+  notFound()
+}

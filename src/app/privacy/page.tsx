@@ -4,6 +4,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "Privacy Policy of Stylefinden — information on data processing, cookies, affiliate links and your rights.",
+  alternates: { canonical: "https://stylefinden.com/privacy" },
 }
 
 export default function PrivacyPage() {

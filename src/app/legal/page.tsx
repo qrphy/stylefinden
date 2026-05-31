@@ -4,6 +4,7 @@ import Link from "next/link"
 export const metadata: Metadata = {
   title: "Legal Notice",
   description: "Legal notice and disclosure for Stylefinden — website operator, contact information and liability.",
+  alternates: { canonical: "https://stylefinden.com/legal" },
 }
 
 export default function LegalPage() {
