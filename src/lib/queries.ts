@@ -7,6 +7,13 @@ import { defineQuery } from 'next-sanity'
 const IMG = `{ asset, hotspot, crop, "lqip": asset->metadata.lqip }`
 
 // ── Outfit sorguları ──────────────────────────────────────────────────────────
+// OUTFITS_BY_IDS_QUERY: Favorites sayfası için ID array'inden batch fetch
+export const OUTFITS_BY_IDS_QUERY = defineQuery(`
+  *[_type == "outfit" && _id in $ids] {
+    _id, title, "slug": slug.current, image ${IMG}, style, season, occasion
+  }
+`)
+
 // ALL_OUTFITS_RANKED_QUERY: Ranking sistemi için tüm outfitler — sadece skor alanları
 export const ALL_OUTFITS_RANKED_QUERY = defineQuery(`
   *[_type == "outfit" && defined(slug.current)] | order(featured desc, _createdAt desc) {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { navLinks } from "@/constants/navigation";
+import FavoritesNavIcon from "./FavoritesNavIcon";
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function MobileMenu() {
           STYLEFINDEN
         </a>
 
-        {/* Hamburger — sağda, panel üstünde (z-[60]), X'e morph olur */}
+        {/* Hamburger — solda, panel üstünde (z-[60]), X'e morph olur */}
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
@@ -61,6 +62,11 @@ export default function MobileMenu() {
             }`}
           />
         </button>
+
+        {/* Favorites icon — sağda, hamburger ile aynı z seviyesinde */}
+        <div className="relative z-[60] ml-auto">
+          <FavoritesNavIcon />
+        </div>
       </div>
 
       {/* Tam ekran menü — soldan kayarak açılır */}

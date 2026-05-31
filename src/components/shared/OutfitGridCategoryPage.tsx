@@ -3,6 +3,7 @@ import ImgPlaceholder from "@/components/shared/ImgPlaceholder";
 import Breadcrumb from "@/components/shared/Breadcrumb";
 import RelatedGrid from "@/components/shared/RelatedGrid";
 import StyleGuideSection from "@/components/shared/StyleGuideSection";
+import FavoriteButton from "@/components/shared/FavoriteButton";
 import type { ConversionConfig } from "@/components/shared/ConversionCategoryPage";
 
 type Props = {
@@ -79,20 +80,27 @@ function OutfitCard({ outfit, showShopTheLook }: { outfit: OutfitItem; showShopT
   return (
     <article>
       {/* Image */}
-      <a
-        href={outfit.href}
-        className="group block relative aspect-[3/4] w-full overflow-hidden bg-gray-100"
-        aria-label={`View ${outfit.title}`}
-      >
-        <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
-          <ImgPlaceholder
-            src={outfit.image}
-            alt={outfit.title}
-            sizes="(max-width: 768px) 100vw, 33vw"
-            blurDataURL={outfit.lqip}
-          />
-        </div>
-      </a>
+      <div className="group relative aspect-[3/4] w-full overflow-hidden bg-gray-100">
+        <a
+          href={outfit.href}
+          className="absolute inset-0"
+          aria-label={`View ${outfit.title}`}
+        >
+          <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.02]">
+            <ImgPlaceholder
+              src={outfit.image}
+              alt={outfit.title}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              blurDataURL={outfit.lqip}
+            />
+          </div>
+        </a>
+        <FavoriteButton
+          id={String(outfit.id)}
+          title={outfit.title}
+          className="absolute top-3 right-3 z-10 size-8 px-2"
+        />
+      </div>
 
       {/* Title */}
       <div className="mt-4">

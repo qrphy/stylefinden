@@ -1,6 +1,7 @@
 // Site üst navigasyon çubuğu — masaüstünde logo + ortalanmış nav linkleri, mobilde MobileMenu bileşeni görünür.
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import FavoritesNavIcon from "./FavoritesNavIcon";
 import { navLinks } from "@/constants/navigation";
 
 export default function Header() {
@@ -39,6 +40,11 @@ export default function Header() {
               {link.label}
             </a>
           ))}
+        </div>
+
+        {/* Right actions */}
+        <div className="ml-auto flex items-center">
+          <FavoritesNavIcon />
         </div>
 
       </div>

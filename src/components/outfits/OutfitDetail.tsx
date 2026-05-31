@@ -7,6 +7,7 @@ import OutfitTracker from "@/components/outfits/OutfitTracker"
 import OutfitSimilarSection from "@/components/outfits/OutfitSimilarSection"
 import RecentlyViewed from "@/components/outfits/RecentlyViewed"
 import ShareButton from "@/components/shared/ShareButton"
+import FavoriteButton from "@/components/shared/FavoriteButton"
 
 const EMPTY_OUTFITS: never[] = []
 const EMPTY_PIECES: never[] = []
@@ -142,6 +143,11 @@ export default function OutfitDetail({ outfit, outfitsByPieces = EMPTY_OUTFITS, 
                 />
               </div>
               <ShareButton url={`/outfits/${outfit.slug}`} title={outfit.title} />
+              <FavoriteButton
+                id={outfit._id}
+                title={outfit.title}
+                className="absolute top-3 right-3 z-10 size-9 px-2.5"
+              />
               {imageUrl && (
                 <a
                   href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(`https://stylefinden.com/outfits/${outfit.slug}`)}&media=${encodeURIComponent(imageUrl)}&description=${encodeURIComponent(outfit.title)}`}
