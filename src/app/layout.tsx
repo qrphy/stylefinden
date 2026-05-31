@@ -12,6 +12,7 @@ import Footer from "@/components/layout/Footer"
 import ScrollToTop from "@/components/shared/ScrollToTop"
 import NewsletterPopup from "@/components/shared/NewsletterPopup"
 import { SanityLive } from "@/sanity/lib/live"
+import { FavoritesProvider } from "@/contexts/FavoritesContext"
 
 const generalSans = localFont({
   src: "./fonts/GeneralSans-Variable.woff2",
@@ -112,6 +113,7 @@ export default function RootLayout({
       className={`${generalSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <FavoritesProvider>
         {/* Üst navigasyon çubuğu — tüm sayfalarda sabit */}
         <Header />
         {/* Sayfanın kendi içeriği burada render edilir */}
@@ -131,6 +133,7 @@ export default function RootLayout({
         <Footer />
         {/* Sanity Live Preview — Sanity Studio'dan gerçek zamanlı içerik güncellemelerini dinler */}
         <SanityLive />
+        </FavoritesProvider>
       </body>
     </html>
   );

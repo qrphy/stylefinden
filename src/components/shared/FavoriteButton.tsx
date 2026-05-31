@@ -20,14 +20,14 @@ export default function FavoriteButton({ id, title, className = '' }: Props) {
       onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggle(id) }}
       aria-label={saved ? `Remove ${title} from saved looks` : `Save ${title}`}
       aria-pressed={saved}
-      className={`flex items-center justify-center bg-white hover:bg-black transition-colors duration-200 group ${className}`}
+      className={`flex items-center justify-center bg-white hover:bg-black transition-colors duration-200 group/btn ${className}`}
     >
       <svg
         viewBox="0 0 24 24"
         className={`size-3.5 transition-colors duration-200 ${
           saved
             ? 'fill-black stroke-black'
-            : 'fill-none stroke-black group-hover:stroke-white'
+            : 'fill-none stroke-black group-hover/btn:stroke-white'
         }`}
         strokeWidth={2}
         aria-hidden="true"
