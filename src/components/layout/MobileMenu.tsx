@@ -34,7 +34,7 @@ export default function MobileMenu() {
       <div className="relative flex items-center h-14 px-4 bg-white border-b border-gray-200">
         <Link
           href="/"
-          className="absolute inset-x-0 flex justify-center items-center h-14 brand-logo text-2xl"
+          className="absolute left-1/2 -translate-x-1/2 brand-logo text-2xl"
         >
           STYLEFINDEN
         </Link>
