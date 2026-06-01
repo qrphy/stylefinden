@@ -86,15 +86,6 @@ export default function StyleQuiz() {
   return (
     <div className="max-w-2xl mx-auto">
 
-      {/* Header */}
-      <div className="mb-12">
-        <span className="eyebrow">Style Quiz</span>
-        <h1 className="section-title-lg mt-2">What&apos;s your look?</h1>
-        <p className="text-sm text-gray-400 mt-3 tracking-wide">
-          3 quick questions. Personalized outfit results.
-        </p>
-      </div>
-
       {/* Progress bar */}
       <div className="h-px bg-gray-100 mb-10 relative">
         <div
