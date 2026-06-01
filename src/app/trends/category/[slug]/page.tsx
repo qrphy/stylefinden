@@ -30,6 +30,13 @@ export async function generateMetadata({
       type: "website",
       locale: "en_US",
       siteName: "STYLEFINDEN",
+      images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${config.seo.title} | STYLEFINDEN`,
+      description: config.seo.description,
+      images: ["/stylefinden-logo.png"],
     },
   }
 }

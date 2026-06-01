@@ -20,11 +20,22 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: `${profile.name} Style Outfits — ${profile.tagline} | STYLEFINDEN`,
     description: `Explore ${profile.name} aesthetic outfits. ${profile.description}`,
+    keywords: [profile.name, `${profile.name} style`, `${profile.name} outfits`, `${profile.name} aesthetic`, ...profile.traits, 'style guide', 'STYLEFINDEN'],
     alternates: { canonical: `https://stylefinden.com/styles/${slug}` },
     openGraph: {
       title: `${profile.name} Style — STYLEFINDEN`,
       description: profile.description,
       url: `https://stylefinden.com/styles/${slug}`,
+      type: 'website',
+      siteName: 'STYLEFINDEN',
+      locale: 'en_US',
+      images: [{ url: '/stylefinden-logo.png', width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${profile.name} Style — STYLEFINDEN`,
+      description: profile.description,
+      images: ['/stylefinden-logo.png'],
     },
   }
 }

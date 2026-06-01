@@ -25,10 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `You got ${profile.name}. ${profile.tagline} Discover outfits curated for your personality.`,
     alternates: { canonical: `https://stylefinden.com/style-quiz/result/${style}` },
     openGraph: {
+      title: `My Style is ${profile.name} — STYLEFINDEN Style Quiz`,
+      description: `${profile.tagline} Discover ${profile.name} outfits curated for your personality.`,
+      url: `https://stylefinden.com/style-quiz/result/${style}`,
+      type: 'website',
+      siteName: 'STYLEFINDEN',
+      locale: 'en_US',
       images: [{ url: `/api/og/quiz-result?style=${style}`, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
+      title: `My Style is ${profile.name} — STYLEFINDEN Style Quiz`,
+      description: `${profile.tagline} Discover ${profile.name} outfits curated for your personality.`,
       images: [`/api/og/quiz-result?style=${style}`],
     },
   }

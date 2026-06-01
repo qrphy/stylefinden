@@ -6,7 +6,7 @@ import StyleFinderWidgetServer from "@/components/home/StyleFinderWidgetServer"
 import JsonLd from "@/components/seo/JsonLd"
 
 export const metadata: Metadata = {
-  title: "STYLEFINDEN — Outfit Ideas, Hairstyles & Fashion Trends for Women",
+  title: { absolute: "Outfit Ideas, Hairstyles & Fashion Trends for Women | STYLEFINDEN" },
   description: "Discover outfit ideas, hairstyles and accessories for every occasion and style. From casual outfits to party looks — your go-to fashion platform for modern women.",
   keywords: [
     "outfit ideas for women",
@@ -24,17 +24,17 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://stylefinden.com" },
   openGraph: {
-    title: "STYLEFINDEN — Outfit Ideas, Hairstyles & Fashion Trends for Women",
+    title: "Outfit Ideas, Hairstyles & Fashion Trends for Women | STYLEFINDEN",
     description: "Outfit ideas, hairstyles and accessories for every style and occasion — from casual looks to party outfits.",
     url: "https://stylefinden.com",
     type: "website",
     siteName: "STYLEFINDEN",
     locale: "en_US",
-    images: [{ url: "/stylefinden-logo.png" }],
+    images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "STYLEFINDEN — Outfit Ideas, Hairstyles & Fashion Trends for Women",
+    title: "Outfit Ideas, Hairstyles & Fashion Trends for Women | STYLEFINDEN",
     description: "Outfit ideas, hairstyles and accessories for every style and occasion — from casual looks to party outfits.",
     images: ["/stylefinden-logo.png"],
   },

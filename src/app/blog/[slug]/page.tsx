@@ -24,7 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ogImage = post.heroImage ? urlFor(post.heroImage).width(1200).height(630).url() : undefined
   const description = post.excerpt
-    ? `${post.excerpt.slice(0, 155)}`
+    ? post.excerpt.length > 155
+      ? `${post.excerpt.slice(0, 152).trimEnd()}…`
+      : post.excerpt
     : `Read ${post.title} — styling tips and fashion inspiration on STYLEFINDEN.`
 
   return buildMetadata({

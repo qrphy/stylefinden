@@ -10,6 +10,21 @@ export const metadata: Metadata = {
   description: config.seo.description,
   keywords: config.seo.keywords,
   alternates: { canonical: "https://stylefinden.com/blog/seasonal-guides" },
+  openGraph: {
+    title: `${config.seo.title} | STYLEFINDEN`,
+    description: config.seo.description,
+    url: "https://stylefinden.com/blog/seasonal-guides",
+    type: "website",
+    siteName: "STYLEFINDEN",
+    locale: "en_US",
+    images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${config.seo.title} | STYLEFINDEN`,
+    description: config.seo.description,
+    images: ["/stylefinden-logo.png"],
+  },
 }
 
 export default function Page() {

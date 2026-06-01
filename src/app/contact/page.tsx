@@ -4,9 +4,24 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with us for questions, feedback or collaboration inquiries.",
+  title: "Contact STYLEFINDEN — Questions, Feedback & Collaboration",
+  description: "Get in touch with STYLEFINDEN for questions, feedback or collaboration inquiries about fashion, outfits and style. We respond within 1–3 business days.",
   alternates: { canonical: "https://stylefinden.com/contact" },
+  openGraph: {
+    title: "Contact STYLEFINDEN — Questions, Feedback & Collaboration",
+    description: "Reach out to STYLEFINDEN for questions, feedback or collaboration. Fashion platform for outfit ideas, hairstyles and style trends.",
+    url: "https://stylefinden.com/contact",
+    type: "website",
+    siteName: "STYLEFINDEN",
+    locale: "en_US",
+    images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact STYLEFINDEN",
+    description: "Get in touch for questions, feedback or collaboration.",
+    images: ["/stylefinden-logo.png"],
+  },
 }
 
 export default function ContactPage() {

@@ -4,6 +4,8 @@ import { client } from "@/sanity/lib/client"
 import { getOutfit, getOutfitsByPieceTags, getSimilarPieces } from "@/lib/sanity-fetchers"
 import OutfitDetail from "@/components/outfits/OutfitDetail"
 import { styleLabel, occasionLabel, seasonLabel } from "@/lib/outfit-labels"
+import { buildMetadata } from "@/components/seo/MetadataBuilder"
+import { urlFor } from "@/sanity/lib/image"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -21,11 +23,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const outfit = await getOutfit(slug)
   if (!outfit) return {}
-  return {
+
+  const ogImage = outfit.image ? urlFor(outfit.image).width(1200).height(630).url() : undefined
+  const style    = outfit.style   ? (styleLabel[outfit.style]     ?? outfit.style)    : ""
+  const occasion = outfit.occasion ? (occasionLabel[outfit.occasion] ?? outfit.occasion) : ""
+  const description = outfit.description
+    ?? `Discover the ${outfit.title} outfit${style ? ` — ${style} style` : ""}${occasion ? ` for ${occasion}` : ""}. Get inspired on STYLEFINDEN.`
+
+  return buildMetadata({
     title: outfit.title,
-    description: outfit.description ?? `Discover the ${outfit.title} outfit on STYLEFINDEN.`,
-    alternates: { canonical: `https://stylefinden.com/outfits/${slug}` },
-  }
+    description,
+    canonical: `https://stylefinden.com/outfits/${slug}`,
+    ogImage,
+    keywords: [outfit.title, style, occasion, "outfit", "fashion", "STYLEFINDEN"].filter(Boolean),
+  })
 }
 
 function resolveBreadcrumbContext(from: string | undefined): { href: string; label: string } | undefined {

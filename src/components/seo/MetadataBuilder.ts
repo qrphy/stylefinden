@@ -24,7 +24,7 @@ export function buildMetadata({
 }: BuildMetadataOptions): Metadata {
   const images = ogImage
     ? [{ url: ogImage, width: 1200, height: 630 }]
-    : [{ url: DEFAULT_OG }]
+    : [{ url: DEFAULT_OG, width: 1200, height: 630 }]
 
   return {
     title,

@@ -5,7 +5,27 @@ import { STYLE_PROFILES } from '@/lib/style-profiles'
 export const metadata: Metadata = {
   title: 'Style Guides — Find Your Aesthetic | STYLEFINDEN',
   description: 'From minimalist to Y2K, old money to coquette — explore 17 style guides with curated outfits for every aesthetic.',
+  keywords: [
+    'style guides', 'aesthetic styles', 'fashion aesthetics', 'personal style',
+    'minimalist style', 'y2k aesthetic', 'old money style', 'boho aesthetic',
+    'style finder', 'fashion personality', 'style inspiration', 'style types',
+  ],
   alternates: { canonical: 'https://stylefinden.com/styles' },
+  openGraph: {
+    title: 'Style Guides — Find Your Aesthetic | STYLEFINDEN',
+    description: 'Explore 17 style guides — minimalist, Y2K, old money, boho and more. Curated outfits for every aesthetic.',
+    url: 'https://stylefinden.com/styles',
+    type: 'website',
+    siteName: 'STYLEFINDEN',
+    locale: 'en_US',
+    images: [{ url: '/stylefinden-logo.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Style Guides — Find Your Aesthetic | STYLEFINDEN',
+    description: 'Explore 17 style guides — minimalist, Y2K, old money, boho and more.',
+    images: ['/stylefinden-logo.png'],
+  },
 }
 
 const STYLE_ORDER = [
