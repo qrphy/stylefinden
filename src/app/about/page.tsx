@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Stylefinden is an AI-assisted fashion editorial platform curating outfits, hairstyles and accessories for everyday style inspiration.",
+  description: "Stylefinden is a fashion editorial platform curating outfits, hairstyles and accessories for everyday style inspiration.",
   alternates: { canonical: "https://stylefinden.com/about" },
 }
 
@@ -25,12 +25,9 @@ export default function AboutPage() {
 
       <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">Editorial Approach</h2>
       <p className="text-gray-700 leading-relaxed">
-        Stylefinden&#8482; uses artificial intelligence to support content creation at scale —
-        including outfit descriptions, trend analysis and styling suggestions. All AI-assisted
-        content is reviewed and curated by our editorial team before publication. Outfit styling
-        images are produced using Fashn AI virtual try-on technology with synthetic models;
-        no real person is depicted. Images are for inspiration only — the actual appearance
-        of garments may differ.
+        Every piece of content is reviewed and curated by our editorial team before publication.
+        Outfit styling images feature synthetic models; no real person is depicted.
+        Images are for inspiration only — the actual appearance of garments may differ.
       </p>
 
       <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">Independence</h2>

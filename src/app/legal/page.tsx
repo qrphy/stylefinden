@@ -47,16 +47,11 @@ export default function LegalPage() {
         are independent of commercial relationships.
       </p>
 
-      <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">AI-Generated Content</h2>
+      <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">Editorial Content</h2>
       <p className="text-gray-700 leading-relaxed">
-        Stylefinden&#8482; uses artificial intelligence tools to support content
-        creation. Outfit styling images are produced using{" "}
-        <strong>Fashn AI</strong> virtual try-on technology with synthetic models —
-        no real person is depicted. Some outfit descriptions and editorial text are
-        generated or assisted by the <strong>Claude API</strong> (Anthropic, PBC).
-        AI-assisted content is reviewed and curated by our editorial team before
-        publication. Images are for styling inspiration only; the actual appearance
-        of garments may differ.
+        All content is reviewed and curated by our editorial team before publication.
+        Outfit styling images feature synthetic models — no real person is depicted.
+        Images are for styling inspiration only; the actual appearance of garments may differ.
       </p>
 
       <h2 className="text-sm font-black uppercase tracking-widest mt-10 mb-3">Liability for Content</h2>
