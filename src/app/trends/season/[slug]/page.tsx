@@ -2,6 +2,7 @@
 import type { Metadata } from "next"
 import TrendCollectionPage from "@/components/trends/TrendCollectionPage"
 import { getTrendSeasonConfig, TREND_SEASON_CONFIGS } from "@/lib/trend-collection-config"
+import { buildMetadata } from "@/components/seo/MetadataBuilder"
 
 export const dynamicParams = true
 
@@ -16,27 +17,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const config = getTrendSeasonConfig(slug)
-  return {
+  return buildMetadata({
     title: config.seo.title,
     description: config.seo.description,
+    canonical: `https://stylefinden.com/trends/season/${slug}`,
     keywords: config.seo.keywords,
-    alternates: { canonical: `https://stylefinden.com/trends/season/${slug}` },
-    openGraph: {
-      title: `${config.seo.title} | STYLEFINDEN`,
-      description: config.seo.description,
-      url: `https://stylefinden.com/trends/season/${slug}`,
-      type: "website",
-      locale: "en_US",
-      siteName: "STYLEFINDEN",
-      images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${config.seo.title} | STYLEFINDEN`,
-      description: config.seo.description,
-      images: ["/stylefinden-logo.png"],
-    },
-  }
+  })
 }
 
 export default async function TrendSeasonPage({

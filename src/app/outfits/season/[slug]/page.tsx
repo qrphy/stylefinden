@@ -3,6 +3,7 @@
 // yoksa STATIC_OUTFITS[slug] dizisine düş. CategoryPage paylaşılan layout'u kullanır.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { buildMetadata } from "@/components/seo/MetadataBuilder";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage";
 import { type ConversionConfig } from "@/components/shared/ConversionCategoryPage";
@@ -401,27 +402,12 @@ export async function generateMetadata(
   const { slug } = await params;
   const data = seasons[slug];
   if (!data) return {};
-  return {
+  return buildMetadata({
     title: data.seo.title,
     description: data.seo.description,
+    canonical: `https://stylefinden.com/outfits/season/${slug}`,
     keywords: data.seo.keywords,
-    alternates: { canonical: `https://stylefinden.com/outfits/season/${slug}` },
-    openGraph: {
-      title: `${data.seo.title} | STYLEFINDEN`,
-      description: data.seo.description,
-      url: `https://stylefinden.com/outfits/season/${slug}`,
-      type: "website",
-      locale: "en_US",
-      siteName: "STYLEFINDEN",
-      images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${data.seo.title} | STYLEFINDEN`,
-      description: data.seo.description,
-      images: ["/stylefinden-logo.png"],
-    },
-  };
+  });
 }
 
 // Sayfa bileşeni: Sanity'den veri çeker, fallback uygular ve CategoryPage'e aktarır

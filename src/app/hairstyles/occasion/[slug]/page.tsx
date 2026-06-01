@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { CategoryData, OutfitItem } from "@/types/outfit-category";
 import OutfitGridCategoryPage from "@/components/shared/OutfitGridCategoryPage";
+import { buildMetadata } from "@/components/seo/MetadataBuilder";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HAIRSTYLES_BY_OCCASION_QUERY } from "@/lib/queries";
@@ -263,27 +264,12 @@ export async function generateMetadata(
   const { slug } = await params;
   const data = hairstyleOccasions[slug];
   if (!data) return {};
-  return {
+  return buildMetadata({
     title: data.seo.title,
     description: data.seo.description,
+    canonical: `https://stylefinden.com/hairstyles/occasion/${slug}`,
     keywords: data.seo.keywords,
-    alternates: { canonical: `https://stylefinden.com/hairstyles/occasion/${slug}` },
-    openGraph: {
-      title: `${data.seo.title} | STYLEFINDEN`,
-      description: data.seo.description,
-      url: `https://stylefinden.com/hairstyles/occasion/${slug}`,
-      type: "website",
-      locale: "en_US",
-      siteName: "STYLEFINDEN",
-      images: [{ url: "/stylefinden-logo.png", width: 1200, height: 630 }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${data.seo.title} | STYLEFINDEN`,
-      description: data.seo.description,
-      images: ["/stylefinden-logo.png"],
-    },
-  };
+  });
 }
 
 // Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
