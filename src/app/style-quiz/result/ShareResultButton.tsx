@@ -31,6 +31,7 @@ export default function ShareResultButton({ url, styleName }: Props) {
 
   return (
     <button
+      type="button"
       onClick={handleShare}
       className="flex items-center gap-1.5 text-[9px] font-semibold tracking-widest uppercase text-gray-500 hover:text-white transition-colors duration-200"
     >

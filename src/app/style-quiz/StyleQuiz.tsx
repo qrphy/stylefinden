@@ -114,6 +114,7 @@ export default function StyleQuiz() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {GOAL_OPTIONS.map((opt) => (
               <button
+                type="button"
                 key={opt.value}
                 onClick={() => handleGoal(opt.value)}
                 className="group flex flex-col gap-1 p-4 border border-gray-200 text-left hover:border-black transition-colors duration-150"
@@ -132,6 +133,7 @@ export default function StyleQuiz() {
           <div className="flex flex-col gap-3">
             {ADVENTURE_OPTIONS.map((opt) => (
               <button
+                type="button"
                 key={opt.value}
                 onClick={() => handleAdventure(opt.value)}
                 className="group flex items-center justify-between p-5 border border-gray-200 text-left hover:border-black transition-colors duration-150"
@@ -156,6 +158,7 @@ export default function StyleQuiz() {
           <div className="flex flex-wrap gap-2 mb-8">
             {SEASON_OPTIONS.map((opt) => (
               <button
+                type="button"
                 key={opt.value}
                 onClick={() => setSeason(opt.value)}
                 className={`px-4 py-2.5 text-[10px] font-semibold tracking-widest uppercase border transition-colors duration-150
@@ -174,6 +177,7 @@ export default function StyleQuiz() {
 
           <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
             <button
+              type="button"
               onClick={handleFinish}
               className="group flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-400 transition-colors duration-200"
             >
@@ -203,6 +207,7 @@ function QuizStep({ question, children }: { question: string; children: React.Re
 function BackButton({ onClick }: { onClick: () => void }) {
   return (
     <button
+      type="button"
       onClick={onClick}
       className="text-[10px] font-semibold tracking-widest uppercase text-gray-300 hover:text-black transition-colors duration-200"
     >
