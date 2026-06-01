@@ -32,13 +32,13 @@ export default function Header() {
                         lg:gap-10
                         xl:gap-10">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="nav-link"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 

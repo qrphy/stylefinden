@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { navLinks } from "@/constants/navigation";
 import FavoritesNavIcon from "./FavoritesNavIcon";
 
@@ -31,12 +32,12 @@ export default function MobileMenu() {
     <div className="md:hidden">
       {/* Header bar */}
       <div className="relative flex items-center h-14 px-4 bg-white border-b border-gray-200">
-        <a
+        <Link
           href="/"
           className="absolute inset-x-0 flex justify-center items-center h-14 brand-logo text-2xl"
         >
           STYLEFINDEN
-        </a>
+        </Link>
 
         {/* Hamburger — solda, panel üstünde (z-[60]), X'e morph olur */}
         <button
@@ -78,14 +79,14 @@ export default function MobileMenu() {
         {/* Nav links */}
         <nav className="flex-1 flex flex-col justify-center px-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
               className="mobile-nav-link"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -115,9 +116,9 @@ export default function MobileMenu() {
               </div>
               <p className="text-[11px] text-gray-400 leading-relaxed">
                 By providing your email address, you agree to our{" "}
-                <a href="/privacy" className="underline underline-offset-2">
+                <Link href="/privacy" className="underline underline-offset-2">
                   Privacy Policy
-                </a>
+                </Link>
                 .
               </p>
             </form>
