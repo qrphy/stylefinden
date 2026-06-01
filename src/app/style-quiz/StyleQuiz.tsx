@@ -76,9 +76,9 @@ export default function StyleQuiz() {
 
     const pickedStyle = STYLE_MAP[occasion]?.[adventure] ?? 'minimalist'
 
-    const params = new URLSearchParams({ style: pickedStyle, occasion })
+    const params = new URLSearchParams({ occasion })
     if (season && season !== 'any') params.set('season', season)
-    push(`/style-quiz/result?${params.toString()}`)
+    push(`/style-quiz/result/${pickedStyle}${params.size ? `?${params}` : ''}`)
   }
 
   const progress = step === 1 ? 33 : step === 2 ? 66 : 100

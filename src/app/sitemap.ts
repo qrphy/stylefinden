@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next"
 import { client } from "@/sanity/lib/client"
+import { STYLE_PROFILES } from "@/lib/style-profiles"
 
 const base = "https://stylefinden.com"
 
@@ -36,6 +37,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/accessories`,                   lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
     { url: `${base}/trends`,                        lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
     { url: `${base}/blog`,                          lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
+    { url: `${base}/style-quiz`,                    lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    // ── Style quiz result pages ──────────────────────────────────────────────
+    ...Object.keys(STYLE_PROFILES).map((style) => ({
+      url: `${base}/style-quiz/result/${style}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     // ── Outfit categories ────────────────────────────────────────────────────
     { url: `${base}/outfits/season/summer`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },
     { url: `${base}/outfits/season/winter`,         lastModified: new Date(), changeFrequency: "weekly",  priority: 0.7 },

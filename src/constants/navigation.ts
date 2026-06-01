@@ -6,4 +6,5 @@ export const navLinks = [
   { href: "/accessories", label: "Accessories" },
   { href: "/trends",      label: "Trends"      },
   { href: "/blog",        label: "Blog"        },
+  { href: "/style-quiz",  label: "Style Quiz"  },
 ];
