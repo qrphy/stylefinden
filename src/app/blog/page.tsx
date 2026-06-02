@@ -7,6 +7,7 @@ import { BLOG_CATEGORY_CONFIGS } from "@/lib/blog-category-config"
 import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { formatDate } from "@/lib/formatDate"
+import SectionComingSoonPopup from "@/components/shared/SectionComingSoonPopup"
 
 export const revalidate = 3600
 
@@ -87,6 +88,13 @@ export default async function BlogPage() {
 
   return (
     <main>
+      <SectionComingSoonPopup
+        section="Blog"
+        storageKey="coming_soon_blog"
+        outfitsHref="/outfits"
+        outfitsLabel="Browse Outfits"
+        description="We're working on style guides, trend reports and hairstyle inspiration — this section launches soon."
+      />
 
       {/* Hero */}
       <section className="w-full border-b border-gray-100 bg-white">

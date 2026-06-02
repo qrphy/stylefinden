@@ -2,6 +2,7 @@
 // göre gruplandırarak SectionMainPage paylaşımlı layout'u ile gösterir.
 import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
+import SectionComingSoonPopup from "@/components/shared/SectionComingSoonPopup";
 import {
   TREND_SEASON_ORDER, getTrendSeasonCard,
   TREND_AESTHETIC_ORDER, getTrendAestheticCard,
@@ -73,14 +74,22 @@ const collections: CollectionGroup[] = [
 
 export default function TrendsPage() {
   return (
-    <SectionMainPage
-      hero={{
-        eyebrow: "Fashion Trends",
-        heading: "Stay ahead of",
-        headingItalic: "every trend.",
-        description: "Explore the latest fashion trends curated by season, aesthetic and category — from quiet luxury to Y2K revivals and beyond.",
-      }}
-      collections={collections}
-    />
+    <>
+      <SectionComingSoonPopup
+        section="Trends"
+        storageKey="coming_soon_trends"
+        outfitsHref="/outfits"
+        outfitsLabel="Browse Outfits"
+      />
+      <SectionMainPage
+        hero={{
+          eyebrow: "Fashion Trends",
+          heading: "Stay ahead of",
+          headingItalic: "every trend.",
+          description: "Explore the latest fashion trends curated by season, aesthetic and category — from quiet luxury to Y2K revivals and beyond.",
+        }}
+        collections={collections}
+      />
+    </>
   );
 }

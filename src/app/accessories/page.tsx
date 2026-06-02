@@ -2,6 +2,7 @@
 // koleksiyonları SectionMainPage paylaşımlı layout'u ile gösterir.
 import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
+import SectionComingSoonPopup from "@/components/shared/SectionComingSoonPopup";
 
 export const metadata: Metadata = {
   title: "Fashion Accessories – Jewelry Trends, Bags & Shoes for Women",
@@ -54,14 +55,22 @@ const collections: CollectionGroup[] = [
 
 export default function AccessoriesPage() {
   return (
-    <SectionMainPage
-      hero={{
-        eyebrow: "Accessories Collections",
-        heading: "The finishing",
-        headingItalic: "touch.",
-        description: "Browse curated accessories – bags, jewelry, shoes and scarves sorted by type. The right accessory transforms any outfit.",
-      }}
-      collections={collections}
-    />
+    <>
+      <SectionComingSoonPopup
+        section="Accessories"
+        storageKey="coming_soon_accessories"
+        outfitsHref="/outfits"
+        outfitsLabel="Browse Outfits"
+      />
+      <SectionMainPage
+        hero={{
+          eyebrow: "Accessories Collections",
+          heading: "The finishing",
+          headingItalic: "touch.",
+          description: "Browse curated accessories – bags, jewelry, shoes and scarves sorted by type. The right accessory transforms any outfit.",
+        }}
+        collections={collections}
+      />
+    </>
   );
 }

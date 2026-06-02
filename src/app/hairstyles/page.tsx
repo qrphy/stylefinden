@@ -2,6 +2,7 @@
 // koleksiyonları SectionMainPage paylaşımlı layout'u ile gösterir.
 import type { Metadata } from "next";
 import SectionMainPage, { type CollectionGroup } from "@/components/shared/SectionMainPage";
+import SectionComingSoonPopup from "@/components/shared/SectionComingSoonPopup";
 
 export const metadata: Metadata = {
   title: "Hairstyle Ideas – Braids, Buns, Waves & Hair Cuts for Women",
@@ -67,14 +68,22 @@ const collections: CollectionGroup[] = [
 
 export default function HairstylesPage() {
   return (
-    <SectionMainPage
-      hero={{
-        eyebrow: "Hairstyle Collections",
-        heading: "Find your",
-        headingItalic: "perfect cut.",
-        description: "Browse curated hairstyle collections – sorted by hair type and occasion. From braids and buns to wedding and everyday looks.",
-      }}
-      collections={collections}
-    />
+    <>
+      <SectionComingSoonPopup
+        section="Hairstyles"
+        storageKey="coming_soon_hairstyles"
+        outfitsHref="/outfits"
+        outfitsLabel="Browse Outfits"
+      />
+      <SectionMainPage
+        hero={{
+          eyebrow: "Hairstyle Collections",
+          heading: "Find your",
+          headingItalic: "perfect cut.",
+          description: "Browse curated hairstyle collections – sorted by hair type and occasion. From braids and buns to wedding and everyday looks.",
+        }}
+        collections={collections}
+      />
+    </>
   );
 }
