@@ -83,6 +83,7 @@ export default function SectionComingSoonPopup({
 
   return (
     <div
+      role="presentation"
       className="fixed inset-0 z-[70] flex items-center justify-center px-4 bg-black/60"
       onClick={(e) => { if (e.target === e.currentTarget) close(); }}
       onKeyDown={(e) => { if (e.key === "Escape") close(); }}
@@ -95,6 +96,7 @@ export default function SectionComingSoonPopup({
       >
         {/* Close */}
         <button
+          type="button"
           onClick={close}
           aria-label="Close"
           className="absolute top-4 right-4 z-10 text-white sm:text-white hover:opacity-60 transition-opacity duration-200 leading-none text-lg"
@@ -116,7 +118,7 @@ export default function SectionComingSoonPopup({
             </h2>
             <p className="text-sm text-white/60 leading-relaxed">
               {description ??
-                `We're curating the best ${section.toLowerCase()} content — this section launches soon.`}
+                `We're curating the best ${section.toLowerCase()} content. This section launches soon.`}
             </p>
           </div>
 
@@ -148,6 +150,7 @@ export default function SectionComingSoonPopup({
                 We&apos;ll notify you as soon as this section goes live.
               </p>
               <button
+                type="button"
                 onClick={close}
                 className="mt-2 w-full py-3 border border-black text-xs font-semibold tracking-widest uppercase text-black hover:bg-black hover:text-white transition-colors duration-200"
               >
