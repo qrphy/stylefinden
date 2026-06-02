@@ -8,6 +8,7 @@ import { buildMetadata } from "@/components/seo/MetadataBuilder";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { HAIRSTYLES_BY_TYPE_QUERY } from "@/lib/queries";
+import ComingSoon from "@/components/shared/ComingSoon";
 
 type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 
@@ -272,7 +273,6 @@ export async function generateMetadata(
   });
 }
 
-// Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
 export default async function HairstyleTypePage(
   { params }: { params: Promise<{ slug: string }> }
 ) {
@@ -280,10 +280,37 @@ export default async function HairstyleTypePage(
   const data = hairstyleTypes[slug];
   if (!data) notFound();
   const hairstyles = await client.fetch(HAIRSTYLES_BY_TYPE_QUERY, { type: slug }, { next: { revalidate: 3600, tags: ['hairstyle'] } });
-  const items = hairstyles.length > 0 ? hairstyles.map(toItem) : (STATIC_HAIRSTYLES[slug] ?? []);
+
+  if (hairstyles.length === 0) {
+    return (
+      <main className="flex-1 bg-white">
+        <section className="w-full border-b border-gray-100">
+          <div className="container-page py-12 md:py-16 xl:py-20">
+            <div className="flex flex-col gap-5 max-w-2xl">
+              <span className="eyebrow">Hairstyles</span>
+              <h1 className="hero-heading">{data.label}</h1>
+              <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-lg">{data.description}</p>
+            </div>
+          </div>
+        </section>
+        <section className="w-full">
+          <div className="container-page py-12 md:py-16">
+            <ComingSoon
+              title={data.label}
+              subtitle={data.subtitle}
+              description={`We're curating ${data.label.toLowerCase()} looks — this collection launches soon.`}
+              backLabel="Browse Outfits"
+              backHref="/outfits"
+            />
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <OutfitGridCategoryPage
-      data={{ ...data, outfits: items }}
+      data={{ ...data, outfits: hairstyles.map(toItem) }}
       config={{ introText: data.description, variations: [] }}
       slug={slug}
       basePath="/hairstyles/type"

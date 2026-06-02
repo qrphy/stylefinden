@@ -4,6 +4,7 @@ import type { TrendCollectionConfig } from "@/lib/trend-collection-config"
 import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { urlFor } from "@/sanity/lib/image"
+import ComingSoon from "@/components/shared/ComingSoon"
 
 type TrendItem = {
   _id: string
@@ -209,23 +210,12 @@ export default function TrendCollectionPage({ slug, dimension, config, trends = 
               })}
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-4 py-16 border border-gray-100">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-300">
-                Coming Soon
-              </span>
-              <p className="text-sm text-gray-500 leading-relaxed text-center max-w-xs">
-                More {config.label.toLowerCase()} trends are being curated — check back soon.
-              </p>
-              <Link
-                href="/trends"
-                className="mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-500 transition-colors duration-200"
-              >
-                All Trends
-                <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            </div>
+            <ComingSoon
+              title={`${config.label} Trends`}
+              description={`We're curating the best ${config.label.toLowerCase()} trend looks — this collection launches soon.`}
+              backLabel="Browse All Trends"
+              backHref="/trends"
+            />
           )}
 
         </div>

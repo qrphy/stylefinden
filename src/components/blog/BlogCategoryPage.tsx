@@ -7,6 +7,7 @@ import type { BlogCategoryConfig } from "@/lib/blog-category-config"
 import Link from "next/link"
 import ImgPlaceholder from "@/components/shared/ImgPlaceholder"
 import { formatDate } from "@/lib/formatDate"
+import ComingSoon from "@/components/shared/ComingSoon"
 
 type Props = {
   category: string
@@ -136,23 +137,12 @@ export default async function BlogCategoryPage({ category, config }: Props) {
               })}
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-4 py-20 border border-gray-100">
-              <span className="text-xs font-semibold tracking-widest uppercase text-gray-300">
-                Coming Soon
-              </span>
-              <p className="text-sm text-gray-500 leading-relaxed text-center max-w-xs">
-                No posts yet — check back soon.
-              </p>
-              <Link
-                href="/blog"
-                className="mt-2 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-black hover:text-gray-500 transition-colors duration-200"
-              >
-                All Articles
-                <svg viewBox="0 0 24 24" className="size-3.5 stroke-current" fill="none" strokeWidth={2}>
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            </div>
+            <ComingSoon
+              title={config.label}
+              description={`We're working on ${config.label.toLowerCase()} articles — this section launches soon.`}
+              backLabel="Browse All Articles"
+              backHref="/blog"
+            />
           )}
 
         </div>

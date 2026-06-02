@@ -8,6 +8,7 @@ import { buildMetadata } from "@/components/seo/MetadataBuilder";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { ACCESSORIES_BY_TYPE_QUERY } from "@/lib/queries";
+import ComingSoon from "@/components/shared/ComingSoon";
 
 type SanityImg = { asset?: object; hotspot?: object; crop?: object; lqip?: string }
 
@@ -272,7 +273,6 @@ export async function generateMetadata(
   });
 }
 
-// Sayfa bileşeni: Sanity verisi yoksa statik fallback uygular, CategoryPage'e iletir
 export default async function AccessoryTypePage(
   { params }: { params: Promise<{ slug: string }> }
 ) {
@@ -280,10 +280,37 @@ export default async function AccessoryTypePage(
   const data = accessoryTypes[slug];
   if (!data) notFound();
   const accessories = await client.fetch(ACCESSORIES_BY_TYPE_QUERY, { type: slug }, { next: { revalidate: 3600, tags: ['accessory'] } });
-  const items = accessories.length > 0 ? accessories.map(toItem) : (STATIC_ACCESSORIES[slug] ?? []);
+
+  if (accessories.length === 0) {
+    return (
+      <main className="flex-1 bg-white">
+        <section className="w-full border-b border-gray-100">
+          <div className="container-page py-12 md:py-16 xl:py-20">
+            <div className="flex flex-col gap-5 max-w-2xl">
+              <span className="eyebrow">Accessories</span>
+              <h1 className="hero-heading">{data.label}</h1>
+              <p className="text-sm md:text-base text-gray-500 leading-relaxed max-w-lg">{data.description}</p>
+            </div>
+          </div>
+        </section>
+        <section className="w-full">
+          <div className="container-page py-12 md:py-16">
+            <ComingSoon
+              title={data.label}
+              subtitle={data.subtitle}
+              description={`We're curating ${data.label.toLowerCase()} styles — this collection launches soon.`}
+              backLabel="Browse Outfits"
+              backHref="/outfits"
+            />
+          </div>
+        </section>
+      </main>
+    );
+  }
+
   return (
     <OutfitGridCategoryPage
-      data={{ ...data, outfits: items }}
+      data={{ ...data, outfits: accessories.map(toItem) }}
       config={{ introText: data.description, variations: [] }}
       slug={slug}
       basePath="/accessories/type"
