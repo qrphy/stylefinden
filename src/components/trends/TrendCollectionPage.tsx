@@ -29,13 +29,15 @@ const DIMENSION_LABELS: Record<Props["dimension"], string> = {
   category: "By Category",
 }
 
+const EMPTY_TRENDS: TrendItem[] = []
+
 const DIMENSION_HREFS: Record<Props["dimension"], string> = {
   season: "/trends/season",
   aesthetic: "/trends/aesthetic",
   category: "/trends/category",
 }
 
-export default function TrendCollectionPage({ slug, dimension, config, trends = [] }: Props) {
+export default function TrendCollectionPage({ slug, dimension, config, trends = EMPTY_TRENDS }: Props) {
   const dimensionLabel = DIMENSION_LABELS[dimension]
   const dimensionHref = DIMENSION_HREFS[dimension]
 

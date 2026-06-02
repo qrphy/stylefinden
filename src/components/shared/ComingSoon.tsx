@@ -111,6 +111,7 @@ export default function ComingSoon({
                   <input
                     type="email"
                     required
+                    aria-label="Email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="your@email.com"
@@ -124,6 +125,7 @@ export default function ComingSoon({
                     variant="primary"
                     invert
                     disabled={status === "loading"}
+                    aria-label="Subscribe to newsletter"
                     className="shrink-0"
                   >
                     {status === "loading" ? "..." : "Subscribe"}
